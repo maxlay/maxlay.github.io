@@ -6,14 +6,17 @@
 凤凰资讯,http://183.207.249.35/PLTV/3/224/3221226923/index.m3u8
 凤凰资讯,http://39.134.176.166/hwltc.tv.cdn.zj.chinamobile.com/PLTV/88888888/224/3221228597/index.m3u8
 凤凰香港,http://183.207.249.35/PLTV/3/224/3221226975/index.m3u8
+##
 
 ##其他频道##
 澳门,http://61.244.22.4/ch3/ch3.live/playelist.m3u8
 红牛REDBULL,https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
 日本全天新聞 ,https://n24-cdn-live.ntv.co.jp/ch01/index.m3u8
+##
 
-##分享迷##
+##魔都眼##
 上海魔都眼,http://bililive.kksmg.com/hls/sdi80/playlist.m3u8
+##
 
 ##赵一诺##
 动漫秀场,http://140.207.241.2:8080/live/program/live/dmxchd/4000000/mnf.m3u8
@@ -37,6 +40,7 @@
 动画王国,http://183.207.249.15/PLTV/3/224/3221225555/index.m3u8
 黑莓动画,http://183.207.249.7/PLTV/3/224/3221225555/index.m3u8
 猪侠英雄,https://newcntv.qcloudcdn.com/asp/hls/1200/0303000a/3/default/0f03b08bc7b042358144617000fd2931/1200.m3u8
+##
 
 ##4K频道##
 冬奥纪实8K,http://117.148.179.157/PLTV/88888888/224/3221233448/index.m3u8
