@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>私人DNS去广告AdGuard Home | 黄磊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单来说，你所访问的互联网，无论国内国外，无论有线无线，无论ipv4还是ipv6，在你发起访问时，都会最先在DNS上查询对应的服务器ip，然后网关再访问对应ip服务器上的内容，你访问一个网站，或者打开一个app，或者点播互联网电视，甚至喊一声小爱同学，在触发的刹那就需要至少一次访问DNS来查询服务器所在的ip，很多情况下你访问的内容又会被分散在多个服务器上，因为CDN的服务，每个URL都会有不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="私人DNS去广告AdGuard Home">
+<meta property="og:url" content="https://maxlay.github.io/2019/08/31/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BAdns%E5%8E%BB%E5%B9%BF%E5%91%8A/index.html">
+<meta property="og:site_name" content="黄磊">
+<meta property="og:description" content="简单来说，你所访问的互联网，无论国内国外，无论有线无线，无论ipv4还是ipv6，在你发起访问时，都会最先在DNS上查询对应的服务器ip，然后网关再访问对应ip服务器上的内容，你访问一个网站，或者打开一个app，或者点播互联网电视，甚至喊一声小爱同学，在触发的刹那就需要至少一次访问DNS来查询服务器所在的ip，很多情况下你访问的内容又会被分散在多个服务器上，因为CDN的服务，每个URL都会有不同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://camo.githubusercontent.com/5e2bfa17c27773b70ca99ddd3b70995f15d24b62/68747470733a2f2f63646e2e616467756172642e636f6d2f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966">
+<meta property="article:published_time" content="2019-08-31T13:15:18.000Z">
+<meta property="article:modified_time" content="2022-08-06T05:47:21.033Z">
+<meta property="article:author" content="HuangLei">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/5e2bfa17c27773b70ca99ddd3b70995f15d24b62/68747470733a2f2f63646e2e616467756172642e636f6d2f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">黄磊</div>
+      
+        <div id="subtitle">I’m PADI No.1409AZ6094</div>
+      
+       <ul class="my-socials">
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD">我的爱好</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C">我的工作</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC">我的婚礼</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C">我的旅行</a>
+          
+            <a class="main-nav-link" href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91">其他视频</a>
+          
+            <a class="main-nav-link" href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7">买过的货</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">黄磊</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="maxlay.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD">我的爱好</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C">我的工作</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC">我的婚礼</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C">我的旅行</a></li>
+      
+        <li><a href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91">其他视频</a></li>
+      
+        <li><a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7">买过的货</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-如何搭建私人dns去广告" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BAdns%E5%8E%BB%E5%B9%BF%E5%91%8A/" class="article-date">
+  <time datetime="2019-08-31T13:15:18.000Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      私人DNS去广告AdGuard Home
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://camo.githubusercontent.com/5e2bfa17c27773b70ca99ddd3b70995f15d24b62/68747470733a2f2f63646e2e616467756172642e636f6d2f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966"></p>
+<p>简单来说，你所访问的互联网，无论国内国外，无论有线无线，无论ipv4还是ipv6，在你发起访问时，都会最先在DNS上查询对应的服务器ip，然后网关再访问对应ip服务器上的内容，你访问一个网站，或者打开一个app，或者点播互联网电视，甚至喊一声小爱同学，在触发的刹那就需要至少一次访问DNS来查询服务器所在的ip，很多情况下你访问的内容又会被分散在多个服务器上，因为CDN的服务，每个URL都会有不同ip，每个ip可能又会对应多个域名，DNS会随着你的访问，频繁查询非常多次，一个家庭一分钟几万次DNS的查询很正常，所以DNS才是目前制约互联网访问速度的瓶颈。</p>
+<span id="more"></span>
+<p>以往宽带速度慢，20M以下，你完全无所谓DNS的那点查询的延时，因为查询后的内容回传都需要很长时间，但是都9102年了，现在200M的宽带已经很普遍了，民用千兆网也是小众的存在着。网速是以往的10倍，甚至50倍，内容的传输已经花不了太多时间了。DNS的查询时间变得更值得讨论了。</p>
+<p>很多家庭升级了宽带带宽后发现速度还是不快，这明显是DNS制约了互联网的访问，很多家庭用的是宽带运营商推送的DNS，比如浙江湖州移动的官方DNS就是211.140.188.188和211.140.13.188，湖州移动的全体用户，用的都只是这两个DNS，千军万马都在这个独木桥上过，只要这两台服务器稍有问题，整个地区的互联网访问都会受影响。</p>
+<p>看到这里有人会说，那你别用ISP的DNS了，可以选择使用公共DNS，比如位于杭州的阿里的223.5.5.5和223.6.6.6，我的观点是，就算再近的DNS，ping值都不会小于10吧？就算再强的算力，再快速的查询，数据在层层交换和路由下，都只会更慢。这就是你换了公共DNS，还是访问缓慢的原因。</p>
+<p>铺垫到这里，相信很多人已经睡着了，下面是写给认真看完的朋友。</p>
+<p>我是怎么处理这个问题的？我用的是湖州移动的200M光纤宽带，运营商赠送的华为千兆光猫HS8545M，pppoe拨号用的是双千兆的小米路由器3G，刷Pandavan固件，因为我住多层顶楼带阁楼，所以楼上也同样有线连了一台小米路由器3，楼上的3负责楼上的设备5GHZ入网和内网DNS服务，楼下的除了负责5GHZ的wifi覆盖同时也负责pppoe拨号和DHCP，这样，楼上和楼下的路由器共同支撑起了全屋智能家居，所有不带屏幕的设备走2.4GHZ，有屏幕的走5GHZ。ssid名称密码一致，频道一致，设置了<a href="javascript:void(0);">自动剔除已连接的弱信号</a>和<a href="javascript:void(0);">自动拒绝未连接的弱信号</a>，这样拿着手机和平板在楼上楼下可以无缝漫游，不变换内网ip。除了楼上的有线路由（AP模式），我一楼厕所里还放了一台工作模式在无线接入点 (AP)的小米路由mini，wan口lan口都没有插任何设备，接通电源后纯粹用它的5GHZ频段来无线桥接主路由，拓展wifi覆盖，连接速度TRate日常保持在800M左右，200M的带宽无压力跑满。反而是楼上有线连接的小米路由3标配是双百兆，所以楼上极限带宽就是100M，而且早年墙内弱电布的五类线，也就100M到顶了，而且小米路由3的运存是128M，跑DNS后内存日常剩余30M左右，算是榨干了硬件性能。</p>
+<p>为什么用楼上的路由3负责DNS解析，因为楼下的小米路由3G已经作为接入设备，需要有一定的内存冗余，内存日常剩余130M左右，可以保证宽带接入的稳定性，楼上的设备日常CPU空闲，不用它做DNS，天理不容。</p>
+<p>那我是怎么办到的呢？我把两台小米路由都刷了Padavan。</p>
+<p>具体方法：<a target="_blank" rel="noopener" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a></p>
+<p>然后，用Padavan里的AdGuard Home插件，搭建私人去广告DNS服务。内网DNS访问的ping值小于1毫秒，而且独立CPU，解析快狠准。AdGuard Home的上游 DNS 服务器用的是ISP推荐和阿里DNS，第一次访问时会自动同时查询上游服务器，之后就会加速解析。</p>
+<p>AdGuard Home这么有名，我这里就不多介绍了，用来在内网旁路由上免费部署，亲测非常好用。<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">https://github.com/AdguardTeam/AdGuardHome</a></p>
+<p>当然，如果你嫌刷路由麻烦，也可以部署到操作系统上，我在自己的MacBook Pro和MacMini上也都部署了独立的AdGuard Home Mac版，比用路由更快。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome/releases">https://github.com/AdguardTeam/AdGuardHome/releases</a></p>
+<p>部署方法在官网上有介绍，我这里也不多余介绍了。</p>
+<p><a target="_blank" rel="noopener" href="https://adguard.com/zh_cn/adguard-home/overview.html">https://adguard.com/zh_cn&#x2F;adguard-home&#x2F;overview.html</a></p>
+<p>同时，为了隐藏桌面操作系统的网络访问请求，我把上游服务器地址设置成：tls:&#x2F;&#x2F;dns.adguard.com<br>tls:&#x2F;&#x2F;dns.quad9.net<br>tls:&#x2F;&#x2F;1.1.1.1</p>
+<p>之所以将<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>部署在旁路由上是因为我需要家里有2台路由负责无线网的覆盖，你当然可以部署在家里唯一的路由器上，如果家里设备不多，小于50个ip，我想应该也是没有问题的。稳定性可以自测，<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>在路由器上占用的内存并不多，几十兆吧，小米路由器3G有256M的运存，完全可以胜任。</p>
+<p>另外，对有能力实现Padavan的<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>用户，我想提醒一下：</p>
+<p>作为旁路由可以把服务端口5353改为53，如果是主路由上实现的，还是保留在5353，因为服务启动时会在DNSMASQ里自动加入127.0.0.1#5353的语句。</p>
+<p>另外，也建议更改<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的后台端口和用户名密码，安全第一，万一有人能蹭你家wifi呢？</p>
+<p>这里，分享一下我在用的<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的过滤器和 Hosts 拦截清单：</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/user1121114685/koolproxyR/_rule/_list/master/kpr/_our/_rule.txt">https://raw.githubusercontent.com/user1121114685/koolproxyR\_rule\_list/master/kpr\_our\_rule.txt</a><br><a target="_blank" rel="noopener" href="https://easylist-downloads.adblockplus.org/yt/_annoyances/_full.txt">https://easylist-downloads.adblockplus.org/yt\_annoyances\_full.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt">https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt</a><br><a target="_blank" rel="noopener" href="https://easylist-downloads.adblockplus.org/easylistchina.txt">https://easylist-downloads.adblockplus.org/easylistchina.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Zereao/AD/_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt">https://raw.githubusercontent.com/Zereao/AD\_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt">https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt">https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts">https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts</a><br><a target="_blank" rel="noopener" href="https://hosts.nfz.moe/full/hosts">https://hosts.nfz.moe/full/hosts</a></p>
+<p>最后提醒一下刷Padavan的朋友，玩Padavan插件就需要部署opt，要外插U盘，而U盘需要事先用DM分区格式化成ext4文件系统，切记。</p>
+<p>另外，截至2019年9月1日的AdGuard Home可以用的版本是v0.98.1，如果在opt里只下载了压缩包，可以手动解压，程序就可以运行了，当然，你也可以手动下载解压安装包：<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome/_linux/_mips.tar.gz">https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome\_linux\_mips.tar.gz</a></p>
+<p>最后的最后，如果你实在搞不定，或者不想花时间，那就老老实实用好DNSMASQ，效果也还不错。</p>
+<p><a target="_blank" rel="noopener" href="http://huanglei.site/padavan-dnsmasq/">http://huanglei.site/padavan-dnsmasq/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2019/08/31/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BAdns%E5%8E%BB%E5%B9%BF%E5%91%8A/" data-id="cl6hh5ezw0066px0v713babss" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AdGuard Home 提升稳定性部署
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/31/%E5%9C%A8%E5%A4%A9%E7%8C%AB%E4%B9%B0%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA%E6%8C%87%E5%8D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在天猫买蓝牙耳机指南</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 HuangLei<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD" class="mobile-nav-link">我的爱好</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C" class="mobile-nav-link">我的工作</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC" class="mobile-nav-link">我的婚礼</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C" class="mobile-nav-link">我的旅行</a>
+  
+    <a href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91" class="mobile-nav-link">其他视频</a>
+  
+    <a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7" class="mobile-nav-link">买过的货</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小米路由3G刷Padavan固件 | 黄磊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：http:&#x2F;&#x2F;www.miwifi.com&#x2F;miwifi_download.html 2、小米SSH权限获取：https:&#x2F;&#x2F;d.miwifi.com&#x2F;rom&#x2F;ssh 3、Bootloader：https:&#x2F;&#x2F;breed.hackpascal.net 4、Padavan：http:&#x2F;&#x2F;opt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小米路由3G刷Padavan固件">
+<meta property="og:url" content="https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/index.html">
+<meta property="og:site_name" content="黄磊">
+<meta property="og:description" content="为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：http:&#x2F;&#x2F;www.miwifi.com&#x2F;miwifi_download.html 2、小米SSH权限获取：https:&#x2F;&#x2F;d.miwifi.com&#x2F;rom&#x2F;ssh 3、Bootloader：https:&#x2F;&#x2F;breed.hackpascal.net 4、Padavan：http:&#x2F;&#x2F;opt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-01T11:22:12.000Z">
+<meta property="article:modified_time" content="2022-08-06T05:47:20.797Z">
+<meta property="article:author" content="HuangLei">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">黄磊</div>
+      
+        <div id="subtitle">I’m PADI No.1409AZ6094</div>
+      
+       <ul class="my-socials">
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD">我的爱好</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C">我的工作</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC">我的婚礼</a>
+          
+            <a class="main-nav-link" href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C">我的旅行</a>
+          
+            <a class="main-nav-link" href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91">其他视频</a>
+          
+            <a class="main-nav-link" href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7">买过的货</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">黄磊</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="maxlay.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD">我的爱好</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C">我的工作</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC">我的婚礼</a></li>
+      
+        <li><a href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C">我的旅行</a></li>
+      
+        <li><a href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91">其他视频</a></li>
+      
+        <li><a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7">买过的货</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-xiaomi-3g-padavan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/01/xiaomi-3g-padavan/" class="article-date">
+  <time datetime="2018-04-01T11:22:12.000Z" itemprop="datePublished">2018-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小米路由3G刷Padavan固件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：<a target="_blank" rel="noopener" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 2、小米SSH权限获取：<a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh?userId=">https://d.miwifi.com/rom/ssh</a> 3、Bootloader：<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net</a> 4、Padavan：<a target="_blank" rel="noopener" href="http://opt.cn2qq.com/padavan">http://opt.cn2qq.com/padavan</a> 原理无外乎就是先获得SSH权限，用root账号登录后刷入Bootloader，然后连电脑线刷Padavan。</p>
+<span id="more"></span>
+<h2 id="解鎖小米路由器SSH功能"><a href="#解鎖小米路由器SSH功能" class="headerlink" title="解鎖小米路由器SSH功能"></a>解鎖小米路由器SSH功能</h2><ol>
+<li>確保你的小米路由器已綁定小米賬號，且在Chrome 登入</li>
+<li><a target="_blank" rel="noopener" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 這里ROM 去下載 <em><strong>開發版，登录web后台，刷入下载好的开发版固件，去下面站点领取密码。</strong></em></li>
+<li><a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh">https://d.miwifi.com/rom/ssh</a> ，領取你的ssh 密碼，用戶名: root，同时，下载对应提供的MIWIFI.bin的升级包到FAT16格式的U盘根目录上，插上U盘，断电，按住reset插电启动，等黄灯闪烁后放开，等重启之后，就可以SSH登录路由器了。获得SSH权限的方法也可以参考： <a target="_blank" rel="noopener" href="http://huanglei.site/go/root">http://huanglei.site/go/root</a></li>
+</ol>
+<h2 id="下載-Breed-部分"><a href="#下載-Breed-部分" class="headerlink" title="下載 Breed 部分"></a>下載 Breed 部分</h2><p>下載地址：<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net/</a>  (搜尋<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">breed-mt7621-xiaomi-r3g.bin</a>)</p>
+<ol>
+<li><p>用ssh 進入 <a href="mailto:&#114;&#111;&#111;&#x74;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#x33;&#x31;&#x2e;&#x31;">&#114;&#111;&#111;&#x74;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#x33;&#x31;&#x2e;&#x31;</a></p>
+</li>
+<li><p>cd &#x2F;tmp &amp;&amp; wget <a target="_blank" rel="noopener" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin</a></p>
+</li>
+<li><p>或者用终端上传bin文件：</p>
+<p>scp &#x2F;Users&#x2F;huanglei&#x2F;Desktop&#x2F;breed-mt7621-xiaomi-r3g.bin <a href="mailto:root@192.168.31.1">root@192.168.31.1</a>:&#x2F;tmp&#x2F;breed-mt7621-xiaomi-r3g.bin</p>
+</li>
+<li><p>mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader</p>
+</li>
+<li><p>機器會重新啟動，指示燈變藍，這時需要確保電腦設置為自動獲取 IP 地址，並且是用網線連上的路由器</p>
+</li>
+<li><p>斷開小米路由器的電源，用牙籤等尖銳物按下路由器 reset 按鈕後重新接入電源；</p>
+</li>
+<li><p>等到 路由器的燈開始閃爍或 ping 通時即表明進入 Web 刷機模式，鬆開 reset 鍵</p>
+</li>
+<li><p>輸入 192.168.1.1，就進入不死 Breed 的控制台了。</p>
+</li>
+</ol>
+<h2 id="備份小米固件-x2F-刷入Padavan固件"><a href="#備份小米固件-x2F-刷入Padavan固件" class="headerlink" title="備份小米固件&#x2F;刷入Padavan固件"></a>備份小米固件&#x2F;刷入Padavan固件</h2><p>Breed Web 控制台依次选择：固件更新 -&gt; 常规固件 -&gt; 勾选固件复选框 -&gt; 浏览，选择上一步下载好的 Padavan 固件上传，刷入搞定！ 注意，此时在启动方式里面选择的是普通固件，如果想刷回小米原厂固件，进入“固件启动设置页面”，将固件类型选择为“小米 Mini”保存，然后就可以完美启动小米 Mini 原厂固件了，而且可以使用串口 (TTL) 登录。</p>
+<ul>
+<li>下載地址：<a target="_blank" rel="noopener" href="http://opt.cn2qq.com/padavan/MI-R3G_3.4.3.9-099.trx">MI-R3G_3.4.3.9-099.trx</a></li>
+</ul>
+<p>Padavan新的設定如下：Router IP: 192.168.123.1  User&#x2F;Password: admin</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/" data-id="cl6hh5ezb0058px0vd2rj5567" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/22/wordpress/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一步步搭建我的WordPress
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/30/xiaomi-mini-padavan/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小米路由mini刷Padavan固件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 HuangLei<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD" class="mobile-nav-link">我的爱好</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C" class="mobile-nav-link">我的工作</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E5%A9%9A%E7%A4%BC" class="mobile-nav-link">我的婚礼</a>
+  
+    <a href="/categories/%E6%88%91%E7%9A%84%E6%97%85%E8%A1%8C" class="mobile-nav-link">我的旅行</a>
+  
+    <a href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91" class="mobile-nav-link">其他视频</a>
+  
+    <a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7" class="mobile-nav-link">买过的货</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
