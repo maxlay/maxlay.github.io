@@ -10,7 +10,23 @@
 
     <url>
         <loc>https://maxlay.github.io/2022/08/08/deepmind/</loc>
-        <lastmod>2022-08-08T04:36:12.424Z</lastmod>
+        <lastmod>2022-08-08T05:30:50.668Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-08-08T05:30:01.518Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9C%8B%E7%9B%B4%E6%92%AD%E7%82%B9%E6%92%AD/</loc>
+        <lastmod>2022-08-08T05:28:59.799Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -89,14 +105,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-08-07T08:18:21.147Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2022/07/30/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8A%A8%E7%94%BB%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
         <lastmod>2022-08-07T08:07:56.316Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -107,14 +115,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/02/%E6%8E%A8%E8%8D%90%E5%9C%A8%E7%BA%BF%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
         <lastmod>2022-08-07T08:05:13.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9C%8B%E7%9B%B4%E6%92%AD%E7%82%B9%E6%92%AD/</loc>
-        <lastmod>2022-08-07T08:04:38.575Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
