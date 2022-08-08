@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/07/29/trackerslist/</loc>
+        <lastmod>2022-08-08T08:12:10.701Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/08/DeepMind/</loc>
+        <lastmod>2022-08-08T08:12:03.816Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/04/BiuBiu999/</loc>
         <lastmod>2022-08-08T07:29:54.078Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/06/kutvv/</loc>
         <lastmod>2022-08-08T07:27:30.210Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/08/DeepMind/</loc>
-        <lastmod>2022-08-08T07:25:26.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -99,14 +107,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/03/yt-dlp/</loc>
         <lastmod>2022-08-07T16:34:08.429Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/07/29/trackerslist/</loc>
-        <lastmod>2022-08-07T15:53:45.732Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
