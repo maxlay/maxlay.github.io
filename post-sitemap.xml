@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
+        <lastmod>2022-08-08T09:00:27.903Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/08/DeepMind/</loc>
-        <lastmod>2022-08-08T08:25:23.687Z</lastmod>
+        <lastmod>2022-08-08T08:28:59.650Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -907,14 +915,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/12/04/%E7%BB%99iphone6plus%E6%8D%A2%E5%90%8E%E7%BD%AE%E6%91%84%E5%83%8F%E5%A4%B4/</loc>
         <lastmod>2022-08-06T08:43:39.987Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
-        <lastmod>2022-08-06T08:43:39.985Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
