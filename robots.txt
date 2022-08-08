@@ -1,0 +1,3 @@
+Sitemap: https://maxlay.github.io
+
+User-agent: *
