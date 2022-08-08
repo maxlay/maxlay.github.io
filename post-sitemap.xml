@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/08/08/deepmind/</loc>
+        <lastmod>2022-08-08T04:36:12.424Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/06/kutvv/</loc>
+        <lastmod>2022-08-08T04:34:47.196Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2019/07/17/1000m/</loc>
         <lastmod>2022-08-07T18:50:46.684Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,14 +83,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/04/alitv/</loc>
         <lastmod>2022-08-07T08:33:24.647Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/06/kutvv/</loc>
-        <lastmod>2022-08-07T08:23:37.164Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
