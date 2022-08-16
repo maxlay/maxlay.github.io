@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/08/14/ShadowRocket2022/</loc>
+        <lastmod>2022-08-16T20:19:48.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2019/08/02/shadowrocket/</loc>
+        <lastmod>2022-08-16T20:19:00.225Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/16/%E6%B0%B4%E7%94%B5%E7%85%A4%E5%85%AC%E4%BC%97%E5%8F%B7/</loc>
         <lastmod>2022-08-16T19:15:49.097Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -27,14 +43,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/15/Tiktok/</loc>
         <lastmod>2022-08-16T18:18:51.971Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/14/ShadowRocket2022/</loc>
-        <lastmod>2022-08-15T13:46:44.224Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -763,14 +771,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/10/30/a6300-update/</loc>
         <lastmod>2022-08-06T08:43:40.076Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2019/08/02/shadowrocket/</loc>
-        <lastmod>2022-08-06T08:43:40.073Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
