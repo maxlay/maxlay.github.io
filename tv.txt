@@ -93,9 +93,6 @@ CCTV16,http://39.135.138.60:18890/TVOD/88888910/224/3221226233/index.m3u8
 海宁新闻综合,http://live.hndachao.cn/xwzh/sd/live.m3u8
 海宁生活服务,http://live.hndachao.cn/shfw/sd/live.m3u8
 武义新闻综合,http://l.cztvcloud.com/channels/lantian/SXwuyi1/720p.m3u8
-https://live.wzqmt.com/wztv1/sd/live.m3u8?_upt=fe7349cd1659161564
-https://live.wzqmt.com/wztv1/playlist.m3u8?_upt=6179e8be1659155201
-https://live.wzqmt.com/wztv1/sd/live.m3u8?_upt=000000000000000000
 金华新闻综合,http://live.plus.jinhua.com.cn/xwzh/playlist.m3u8
 金华教育科技,http://live.plus.jinhua.com.cn/jykj/playlist.m3u8
 金华公共频道,http://live.plus.jinhua.com.cn/jjsh/playlist.m3u8
