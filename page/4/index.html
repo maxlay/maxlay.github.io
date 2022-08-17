@@ -125,63 +125,6 @@
   
 
     
-    <article id="post-ipv6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/16/ipv6/" class="article-date">
-  <time datetime="2021-07-15T20:20:06.000Z" itemprop="datePublished">2021-07-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/16/ipv6/">Padavan开启IPV6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>   如果你的运营商已支持<code>IPV6</code>，比如你也是浙江移动宽带用户</p>
-<h3 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h3><p>   进入<code>自定义设置 -&gt; 脚本 -&gt; 路由器启动后执行</code>脚本中添加代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod /lib/modules/$(uname -r)/kernel/net/napt66/napt66.ko wan\_if=eth3</span><br></pre></td></tr></table></figure>
-
-<p>   在<code>自定义设置 -&gt; 脚本 -&gt; 在防火墙规则启动后执行:</code>脚本中添加代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip6tables -F</span><br><span class="line">ip6tables -P INPUT ACCEPT</span><br><span class="line">ip6tables -P FORWARD ACCEPT</span><br><span class="line">ip6tables -P OUTPUT ACCEPT</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>   修改<code>外部网络（WAN）-&gt; IPv6设置</code>，范例如下：</p>
-<p><img src="https://doge.uk/wp-content/uploads/2020/03/3167532700.png" alt="外部网络（WAN）- IPv6设置"></p>
-<p>   其中ipv6内网地址是用主路由Mac地址在<a target="_blank" rel="noopener" href="https://cd34.com/rfc4193/">RFC4193 IPv6 Generator</a> 生成的，<br>不是随便写的。设置完毕重启路由，等一会儿就能获取到IPV6地址啦。<br>   内网 LAN - DHCP 服务器 - DNSv6 我填的是2400:3200::1<br>   设置完可以用这个网站测试一下：<a target="_blank" rel="noopener" href="https://www.test-ipv6.com/">IPv6 测试 (test-ipv6.com)</a></p>
-<p>本文大量借鉴：<a target="_blank" rel="noopener" href="https://doge.uk/coding/padavan-ipv6-napt66.html">Padavan路由下使用NAPT66模块访问移动IPV6网络 - 松鼠の博客 (doge.uk)</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2021/07/16/ipv6/" data-id="cl6hh5ex2002tpx0vfiyubnia" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
     <article id="post-治病" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/07/09/%E6%B2%BB%E7%97%85/" class="article-date">
@@ -607,6 +550,58 @@
     <footer class="article-footer">
       
         <a data-url="https://maxlay.github.io/2021/06/27/clash/" data-id="cl6hh5evu001npx0vgl2h3xys" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-我的家庭入门级nas搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2019-11-08T05:57:06.000Z" itemprop="datePublished">2019-11-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/">我的家庭入门级NAS搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标题可能起大了，这几个月来一直没写文章，是因为懒，其实这段时间，我玩的东西还真的不少，我也有考虑过做视频，来替代本Wordpress。</p>
+<p>家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「<a target="_blank" rel="noopener" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a>」来实现SMB服务，如果你不需要<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a> ，我可能更推荐Hanwckf的固件「<a target="_blank" rel="noopener" href="https://github.com/hanwckf/rt-n56u/releases">https://github.com/hanwckf/rt-n56u/releases</a>」，比Padavan的固件「<a target="_blank" rel="noopener" href="https://opt.cn2qq.com/padavan">https://opt.cn2qq.com/padavan</a>」更加小巧，用来SMB更稳定，网上也有Padavan和Hanwckf固件的网速对比。同样的硬件刷不同的固件，因为芯片的驱动程序和算法的不同，居然网速和稳定性会有很大差别，太玄幻了。另外，路由的USB口连接一个USB3扩展分线器，分线器上插了一个被格式化成EXT4的4G容量的2.0U盘用来opt，另外再插两个双盘位的USB3.0的硬盘盒，四块被格式化成EXFAT的2.0T容量的WD3.5寸硬盘用来存数据。这样做，防止频繁的opt调用机械硬盘，机械硬盘在不使用时可以休眠减少损耗。opt是用来开<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>等程序的，刷Padavan的魅力就在opt。</p>
+<p><img src="https://maxlay.github.io/uploads/2019/11/WechatIMG4-1024x631.jpeg"></p>
+        
+          <p class="article-more-link">
+            <a href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/" data-id="cl6hh5f0i0072px0v9kq0fdk7" class="article-share-link">分享到</a>
       
 
       
