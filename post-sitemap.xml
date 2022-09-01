@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/08/29/NAD/</loc>
+        <lastmod>2022-09-01T05:24:44.145Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/01/2022%E7%9A%84%E9%85%B7%E6%9A%91/</loc>
+        <lastmod>2022-09-01T05:24:11.736Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/30/%E9%9B%85%E8%BF%AA%E7%94%B5%E5%8A%A8%E8%BD%A6/</loc>
         <lastmod>2022-08-31T07:14:42.570Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://maxlay.github.io/2021/11/04/%E7%94%B5%E5%8A%A8%E8%87%AA%E8%A1%8C%E8%BD%A6%E9%9D%A0%E8%BF%91%E8%A7%A3%E9%94%81/</loc>
         <lastmod>2022-08-31T06:38:52.047Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/29/NAD/</loc>
-        <lastmod>2022-08-28T18:56:55.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
