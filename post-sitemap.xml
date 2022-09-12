@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/05/%E7%BD%91%E9%80%9F%E6%B5%8B%E8%AF%95/</loc>
+        <lastmod>2022-09-12T11:09:55.709Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/09/apple-ml-neuman/</loc>
+        <lastmod>2022-09-12T11:05:56.129Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/11/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E8%BF%9B%E8%B4%A7%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-09-12T11:02:01.269Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/09/10/esign/</loc>
         <lastmod>2022-09-12T08:42:07.757Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -43,14 +67,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/06/%E5%85%B3%E4%BA%8E%E4%B9%B0%E8%BD%A6%E9%99%A9/</loc>
         <lastmod>2022-09-09T17:45:48.643Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/05/%E7%BD%91%E9%80%9F%E6%B5%8B%E8%AF%95/</loc>
-        <lastmod>2022-09-09T15:27:41.154Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -283,14 +299,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/04/%E6%8E%A8%E8%8D%90%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-09-09T05:45:48.176Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/09/apple-ml-neuman/</loc>
-        <lastmod>2022-09-09T02:13:04.550Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
