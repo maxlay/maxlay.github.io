@@ -140,6 +140,60 @@ var _hmt = _hmt || [];
   
 
     
+    <article id="post-adguard-home-提升稳定性部署" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time datetime="2019-09-03T10:26:33.000Z" itemprop="datePublished">2019-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/">AdGuard Home 提升稳定性部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>举个不十分恰当的例子，把互联网比作城市供水，每个地区自来水厂提供的水质和你所在管网末端位置的不同，有些家庭会明智的选择使用前置净水器，可以解决管道中的二次污染、软化水质、阻止水垢、防止锈蚀、保护净水器，当然还有太阳能和燃气热水器等等，但最终享受干净水的是人。精致的家庭还会使用厨下式厨余垃圾处理器，而落后的家庭甚至都不知道什么是前置净水器、什么是厨余处理器。所以总会有精致的家庭和落后的家庭，知识是永远不对称的存在着。互联网和供水一样，有大带宽和小带宽，有管网污染的问题，有被政府监控和被黑客偷窥的问题，还有烦人的广告问题，无论是视频前和视频中的广告，所以在入户光猫之后的主路由器上安装并使用私人DNS（AdGuard Home），就可以有助于“清洗流量”，虽然那些广告和监控程序不是DDOS的攻击，但一样是不可忽视的。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg"></p>
+<p>我在主路由的5353端口部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，另外，在家里的其他两个路由的53端口也部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，然后<a href="javascript:spoiler_toggle('spoiler_conf')">自定义配置文件 “dnsmasq.conf”</a></p>
+<p>all-servers<br>dhcp-option&#x3D;252,”\n”<br>server&#x3D;10.1.1.2<br>server&#x3D;10.1.1.3<br>server&#x3D;127.0.0.1#5353 #AdGuardHome<br>no-resolv #AdGuardHome<br>dns-forward-max&#x3D;1000 #AdGuardHome</p>
+<p>按照这样的设置，路由器会同时查询内网的三台<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，大大提高稳定性，三台垮一台甚至两台都不影响上网，而且私人DNS服务都在内网，ping值都小于1毫秒，独立硬件，解析速度也有保障，算是榨干所有路由硬件性能了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/" data-id="cl6hh5eua000upx0v8im4hash" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-如何搭建私人dns去广告" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/31/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BAdns%E5%8E%BB%E5%B9%BF%E5%91%8A/" class="article-date">
@@ -607,58 +661,6 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
         <a data-url="https://maxlay.github.io/2019/07/17/%E7%BB%BF%E8%81%94mfi%E8%8B%B9%E6%9E%9Cpd%E5%BF%AB%E5%85%85/" data-id="cl6hh5f0w007upx0v09x7fqpd" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-apple-music" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/apple-music/" class="article-date">
-  <time datetime="2019-07-09T02:15:47.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/apple-music/">苹果音乐4个月免费试用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>链接：<a target="_blank" rel="noopener" href="https://applemusic.co/en-us/code/5d0399799899a50015e36b34">https://applemusic.co/en-us/code/5d0399799899a50015e36b34</a></p>
-<p>点击“立即订阅”，然后按提示操作领取4个月免费试用。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/07/IMG_0437-1024x685.jpeg"></p>
-        
-          <p class="article-more-link">
-            <a href="/2019/07/09/apple-music/#more">......</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2019/07/09/apple-music/" data-id="cl6hh5eus0014px0vhj3tfxdd" class="article-share-link">分享到</a>
       
 
       
