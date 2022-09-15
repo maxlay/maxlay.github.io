@@ -173,14 +173,11 @@ var _hmt = _hmt || [];
 <p>开篇提到:2022年3月15日在 JD买了一块512G的海康SSD硬盘（281.8元）。买这块SSD的原因是2012年买的MacMini的系统分区SSD损坏，恢复系统还好有TimeMachine，一键恢复。</p>
 </blockquote>
 <p>这款损坏的480G的SSD硬盘是2018年11月11日淘宝双十一时从天猫ShineDisk旗舰店购买的，当时付款367.80元。3年半左右的时间就坏了，表现为无法写入也无法读出。今天整理硬盘准备挂载到软路由上的时候看到它躺在我的回收盒里吃灰，想想还是抢救一下它，结果，也确实抢救了回来。把它当作热备份数据交换优盘使用还是可以的，损坏过的硬盘就不再让它做系统盘了。</p>
-<h4 id="这里聊一下抢救的思路："><a href="#这里聊一下抢救的思路：" class="headerlink" title="这里聊一下抢救的思路："></a>这里聊一下抢救的思路：</h4><p>1、拆开看下板子有没有什么地方脱焊，如果焊点都没有什么问题，那多半是可以通过厂家的“量产工具”再生的。但是量产工具每个厂甚至每个系列都是不同的，要根据你SSD的主控和颗粒来查找，量产过的SSD就像刚从厂里出来的一样，你还需要分区和格式化。</p>
-<p>2、我的这款ShineDisk480G的主控是YS9083XT，深圳得一微电子。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8413.jpeg"><br>闪存颗粒是6颗PFH18 -37AF，美光大S，AF降级片。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8414.jpeg"><br>知道主控和颗粒名称后，就可以找对应工厂的“量产工具”(USB DISK PRODUCTION TOOL，简称是PDT)。怎么找？用谷歌找！</p>
-<p>3、幸运的是，我在<a target="_blank" rel="noopener" href="https://xfjportal.com/">https://xfjportal.com/</a> 找到了它的量产工具：<a target="_blank" rel="noopener" href="https://xfjportal.com/wp-content/uploads/2021/09/YS9083XT_V8.00.00.16.766_FW190402.rar">YS9083XT_V8.00.00.16.766_FW190402</a></p>
-<p>4、我这块SSD开机还能认盘，如果开机不认盘，可以用镊子短接后开机，每块SSD短接的焊点位都不同，可以去<a target="_blank" rel="noopener" href="https://www.upantool.com/">https://www.upantool.com/</a> 碰碰运气。</p>
-<p>5、USB连好硬盘，打开“量产工具”，设置好参数，点“开始”，等5分钟，提示修复成功。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8415.png" alt="ShineDisk480G的参数是这样的"></p>
-<p>6、打开DiskGenius，分区和格式化。结束！</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2022/09/15/MPTOOL/#more">......</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
