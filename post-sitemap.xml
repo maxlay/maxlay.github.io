@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/16/npalyer/</loc>
+        <lastmod>2022-09-18T01:28:41.307Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/09/18/TrollStore/</loc>
-        <lastmod>2022-09-17T15:43:52.969Z</lastmod>
+        <lastmod>2022-09-18T01:27:58.576Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/04/zFuse/</loc>
+        <lastmod>2022-09-18T01:26:45.767Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -19,14 +35,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/10/esign/</loc>
         <lastmod>2022-09-17T10:41:20.304Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/16/npalyer/</loc>
-        <lastmod>2022-09-17T10:27:25.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -131,14 +139,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/03/yt-dlp/</loc>
         <lastmod>2022-09-09T09:12:58.394Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/04/zFuse/</loc>
-        <lastmod>2022-09-09T09:12:37.079Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
