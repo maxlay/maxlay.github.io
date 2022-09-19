@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/20/HomeAssistant/</loc>
+        <lastmod>2022-09-19T17:11:14.084Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/13/r66s/</loc>
+        <lastmod>2022-09-19T16:38:54.936Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/05/27/%E8%8E%B1%E8%8A%AC%E9%AB%98%E9%80%9F%E5%90%B9%E9%A3%8E%E6%9C%BA/</loc>
         <lastmod>2022-09-19T13:11:21.267Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,14 +83,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/15/MPTOOL/</loc>
         <lastmod>2022-09-15T12:56:34.729Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/13/r66s/</loc>
-        <lastmod>2022-09-14T11:12:55.736Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
