@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/13/r66s/</loc>
+        <lastmod>2022-09-22T02:34:01.123Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/09/21/Windows/</loc>
         <lastmod>2022-09-21T15:40:45.440Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +27,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/20/HomeAssistant/</loc>
         <lastmod>2022-09-19T17:11:14.084Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/13/r66s/</loc>
-        <lastmod>2022-09-19T16:38:54.936Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
