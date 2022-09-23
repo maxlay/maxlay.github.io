@@ -141,6 +141,159 @@ var _hmt = _hmt || [];
   
 
     
+    <article id="post-youtube-ad" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/26/youtube-ad/" class="article-date">
+  <time datetime="2021-07-26T04:06:31.000Z" itemprop="datePublished">2021-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/26/youtube-ad/">YouTube去广告</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/youtube.jpg"></p>
+<p>最近“烟花”台风，在家YouTube看视频，虽然可以手动跳过广告，可还是挺浪费时间的，在GitHub上研究一番，发现：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kboghdady/youTube_ads_4_pi-hole/blob/master/youtubelist.txt">youTube_ads_4_pi-hole&#x2F;youtubelist.txt at master · kboghdady&#x2F;youTube_ads_4_pi-hole · GitHub</a></p>
+<p>那么，把它加入到我的Shadowrocket规则列表里，试用一下发现不是完全屏蔽广告，但可以肉眼可见的减少广告数量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2021/07/26/youtube-ad/" data-id="cl6hh5ezh005epx0v69418xvc" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-ipv6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/16/ipv6/" class="article-date">
+  <time datetime="2021-07-15T20:20:06.000Z" itemprop="datePublished">2021-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/16/ipv6/">Padavan开启IPV6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>   如果你的运营商已支持<code>IPV6</code>，比如你也是浙江移动宽带用户</p>
+<h3 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h3><p>   进入<code>自定义设置 -&gt; 脚本 -&gt; 路由器启动后执行</code>脚本中添加代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod /lib/modules/$(uname -r)/kernel/net/napt66/napt66.ko wan\_if=eth3</span><br></pre></td></tr></table></figure>
+
+<p>   在<code>自定义设置 -&gt; 脚本 -&gt; 在防火墙规则启动后执行:</code>脚本中添加代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip6tables -F</span><br><span class="line">ip6tables -P INPUT ACCEPT</span><br><span class="line">ip6tables -P FORWARD ACCEPT</span><br><span class="line">ip6tables -P OUTPUT ACCEPT</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>   修改<code>外部网络（WAN）-&gt; IPv6设置</code>，范例如下：</p>
+<p><img src="https://doge.uk/wp-content/uploads/2020/03/3167532700.png" alt="外部网络（WAN）- IPv6设置"></p>
+<p>   其中ipv6内网地址是用主路由Mac地址在<a target="_blank" rel="noopener" href="https://cd34.com/rfc4193/">RFC4193 IPv6 Generator</a> 生成的，<br>不是随便写的。设置完毕重启路由，等一会儿就能获取到IPV6地址啦。<br>   内网 LAN - DHCP 服务器 - DNSv6 我填的是2400:3200::1<br>   设置完可以用这个网站测试一下：<a target="_blank" rel="noopener" href="https://www.test-ipv6.com/">IPv6 测试 (test-ipv6.com)</a></p>
+<p>本文大量借鉴：<a target="_blank" rel="noopener" href="https://doge.uk/coding/padavan-ipv6-napt66.html">Padavan路由下使用NAPT66模块访问移动IPV6网络 - 松鼠の博客 (doge.uk)</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2021/07/16/ipv6/" data-id="cl6hh5ex2002tpx0vfiyubnia" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-治病" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/09/%E6%B2%BB%E7%97%85/" class="article-date">
+  <time datetime="2021-07-09T10:53:27.000Z" itemprop="datePublished">2021-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E6%8E%A8%E8%8D%90/">我的推荐</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/09/%E6%B2%BB%E7%97%85/">得了大病怎么治</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/puzzle.jpg"></p>
+<p>1、无论选择中医还是西医治疗都必须先选择医生，最基础的也必须是正规医科大学毕业并遵守希波拉底誓言，有德有才的在院就业看诊的医生。当然，如果医生足够优秀，比如看肿瘤的医生，本身是csco的青年委员或者是副组长，那就更好了。（华山和中山的医生就是csco的人）<br>2、达到医保大病等级的疾病，有条件的，医保异地就医申报后，选择国内顶级医疗资源，北上广附近地区的群众可以就近选择对应大城市的专科医院。<br>3、比如我在浙江北部地区，距离上海90分钟车程，我就选择去挤兑上海的医疗资源，北京301或者302之类医院就显得鞭长莫及了。<br>4、每个医院都有各自的擅长，按科室的优秀程度选择对应的医院就诊，比如这次家人患病，我就先在本地三乙和三甲医院确诊，转院至上海复旦大学附属华山医院、中国人民解放军海军军医大学附属长海医院、复旦大学附属中山医院就诊，然后再转回本地私人医院（挂靠本地三甲医院，号称国际分院）来执行慢病治疗方案和尝试后期的康复治疗。前后经历六家医院。<br>5、最次的也都是三甲正规医院，对于那些都进不了医保的，先不怀疑其专业程度是否国家（医保）认可，甚至也先不看其以往病例口碑，连CT都不看就夸夸其谈，说在医院治疗不如归隐山林活的久的屁话，这么反科学反医学毫无人性的把病人的智商按在地上摩擦。为了骗几个救命钱毫无底线，希望这类骗子尽快归案，也希望能获得重刑（放古代，我希望这种货诛九族）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2021/07/09/%E6%B2%BB%E7%97%85/" data-id="cl6hh5f0p007epx0vc4w6elsm" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-外卖优惠券" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/07/05/%E5%A4%96%E5%8D%96%E4%BC%98%E6%83%A0%E5%88%B8/" class="article-date">
@@ -473,158 +626,6 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
         <a data-url="https://maxlay.github.io/2021/06/28/clash%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A8%E8%8D%90/" data-id="cl6hh5evx001rpx0v91ijf8td" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-clash" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/06/27/clash/" class="article-date">
-  <time datetime="2021-06-27T15:44:38.000Z" itemprop="datePublished">2021-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E6%8E%A8%E8%8D%90/">我的推荐</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/27/clash/">自用的clash订阅链接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="clash://install-config?url=https://suo.yt/WnmRgE9">clash:&#x2F;&#x2F;install-config?url&#x3D;https://suo.yt/WnmRgE9</a></p>
-<p><a href="clash://install-config?url=https://suo.yt/lufAHDd">clash:&#x2F;&#x2F;install-config?url&#x3D;https://suo.yt/lufAHDd</a></p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/clsahjd.jpg"></p>
-<p>看懂的小朋友可以直接点击上面的完整版链接</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2021/06/27/clash/" data-id="cl6hh5evu001npx0vgl2h3xys" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-奥宇星非可视楼宇对讲机" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/06/%E5%A5%A5%E5%AE%87%E6%98%9F%E9%9D%9E%E5%8F%AF%E8%A7%86%E6%A5%BC%E5%AE%87%E5%AF%B9%E8%AE%B2%E6%9C%BA/" class="article-date">
-  <time datetime="2020-03-06T12:12:06.000Z" itemprop="datePublished">2020-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/%E5%A5%A5%E5%AE%87%E6%98%9F%E9%9D%9E%E5%8F%AF%E8%A7%86%E6%A5%BC%E5%AE%87%E5%AF%B9%E8%AE%B2%E6%9C%BA/">奥宇星非可视楼宇对讲机</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>小区楼道用的对讲机是奥宇星的非可视楼宇对讲机，<a target="_blank" rel="noopener" href="https://v.youku.com/v_show/id_XMjgwNjAxMDk2.html">可以使用密码和ic卡开门，链接是操作教程。</a></p>
-<p><a target="_blank" rel="noopener" href="https://list.youku.com/albumlist/show/id_847146.html">https://list.youku.com/albumlist/show/id_847146.html</a></p>
-<p>厂家的管理员超级密码是：017368</p>
-<blockquote>
-<p>我设置了楼道门禁的密码，家里用的是指纹锁，电瓶车是手机蓝牙距离解锁的，所以原则上，我的生活告别了实体钥匙的束缚。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2020/03/06/%E5%A5%A5%E5%AE%87%E6%98%9F%E9%9D%9E%E5%8F%AF%E8%A7%86%E6%A5%BC%E5%AE%87%E5%AF%B9%E8%AE%B2%E6%9C%BA/" data-id="cl7j0oay500000h0v24lofy5v" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-我的家庭入门级nas搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/" class="article-date">
-  <time datetime="2019-11-08T05:57:06.000Z" itemprop="datePublished">2019-11-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E6%8E%A8%E8%8D%90/">我的推荐</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/">我的家庭入门级NAS搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标题可能起大了，这几个月来一直没写文章，是因为懒，其实这段时间，我玩的东西还真的不少，我也有考虑过做视频，来替代本Wordpress。</p>
-<p>家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「<a target="_blank" rel="noopener" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a>」来实现SMB服务，如果你不需要<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a> ，我可能更推荐Hanwckf的固件「<a target="_blank" rel="noopener" href="https://github.com/hanwckf/rt-n56u/releases">https://github.com/hanwckf/rt-n56u/releases</a>」，比Padavan的固件「<a target="_blank" rel="noopener" href="https://opt.cn2qq.com/padavan">https://opt.cn2qq.com/padavan</a>」更加小巧，用来SMB更稳定，网上也有Padavan和Hanwckf固件的网速对比。同样的硬件刷不同的固件，因为芯片的驱动程序和算法的不同，居然网速和稳定性会有很大差别，太玄幻了。另外，路由的USB口连接一个USB3扩展分线器，分线器上插了一个被格式化成EXT4的4G容量的2.0U盘用来opt，另外再插两个双盘位的USB3.0的硬盘盒，四块被格式化成EXFAT的2.0T容量的WD3.5寸硬盘用来存数据。这样做，防止频繁的opt调用机械硬盘，机械硬盘在不使用时可以休眠减少损耗。opt是用来开<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>等程序的，刷Padavan的魅力就在opt。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/11/WechatIMG4-1024x631.jpeg"></p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/#more">......</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/" data-id="cl6hh5f0i0072px0v9kq0fdk7" class="article-share-link">分享到</a>
       
 
       
