@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2018/11/16/t-me/</loc>
+        <lastmod>2022-09-24T01:58:40.381Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/09/10/esign/</loc>
         <lastmod>2022-09-23T18:43:56.621Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -35,14 +43,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/19/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AAMac%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-09-23T17:27:36.286Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2018/11/16/t-me/</loc>
-        <lastmod>2022-09-23T17:07:59.249Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
