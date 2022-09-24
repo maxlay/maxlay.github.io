@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/02/28/ielts/</loc>
+        <lastmod>2022-09-24T02:25:52.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-09-24T02:17:08.215Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2018/11/16/t-me/</loc>
-        <lastmod>2022-09-24T01:58:40.381Z</lastmod>
+        <lastmod>2022-09-24T02:11:30.667Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -27,14 +43,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/22/YouTube/</loc>
         <lastmod>2022-09-23T18:41:04.629Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-09-23T17:33:06.103Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
