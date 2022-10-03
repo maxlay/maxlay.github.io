@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/10/03/jetbrains/</loc>
+        <lastmod>2022-10-03T19:22:50.622Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/17/alist/</loc>
+        <lastmod>2022-10-03T18:53:07.696Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/02/%E6%8E%A8%E8%8D%90%E5%9C%A8%E7%BA%BF%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
+        <lastmod>2022-10-03T18:41:59.065Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/02/%E5%A4%A7%E7%96%86%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
         <lastmod>2022-10-03T17:52:46.590Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -27,14 +51,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/30/linux/</loc>
         <lastmod>2022-10-03T15:19:21.938Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/17/alist/</loc>
-        <lastmod>2022-10-03T13:11:38.262Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -99,14 +115,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/04/%E6%8E%A8%E8%8D%90%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-09-30T13:46:26.107Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/02/%E6%8E%A8%E8%8D%90%E5%9C%A8%E7%BA%BF%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
-        <lastmod>2022-09-30T12:11:04.161Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
