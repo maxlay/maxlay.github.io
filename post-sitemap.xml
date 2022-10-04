@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/10/04/Time/</loc>
+        <lastmod>2022-10-04T04:18:53.440Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
+        <lastmod>2022-10-04T03:49:54.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/02/%E5%A4%A7%E7%96%86%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
         <lastmod>2022-10-04T03:32:39.529Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -35,14 +51,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/01/01/TaoBaoReName/</loc>
         <lastmod>2022-10-04T02:37:38.340Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
-        <lastmod>2022-10-04T02:18:11.375Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
