@@ -9,8 +9,48 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/01/01/TaoBaoReName/</loc>
+        <lastmod>2022-10-04T02:37:38.340Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
+        <lastmod>2022-10-04T02:18:11.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
+        <lastmod>2022-10-04T01:47:41.362Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/03/jetbrains/</loc>
-        <lastmod>2022-10-03T19:22:50.622Z</lastmod>
+        <lastmod>2022-10-04T01:46:20.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/02/%E6%8E%A8%E8%8D%90%E5%9C%A8%E7%BA%BF%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
+        <lastmod>2022-10-03T20:15:08.849Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/30/linux/</loc>
+        <lastmod>2022-10-03T19:41:21.819Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -19,14 +59,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/17/alist/</loc>
         <lastmod>2022-10-03T18:53:07.696Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/02/%E6%8E%A8%E8%8D%90%E5%9C%A8%E7%BA%BF%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
-        <lastmod>2022-10-03T18:41:59.065Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -43,14 +75,6 @@
     <url>
         <loc>https://maxlay.github.io/2015/12/20/%E5%A9%9A%E7%BA%B1%E7%85%A7%E6%8B%8D%E6%91%84%E8%8A%B1%E7%B5%AE/</loc>
         <lastmod>2022-10-03T17:25:16.017Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/30/linux/</loc>
-        <lastmod>2022-10-03T15:19:21.938Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -83,14 +107,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-10-03T12:39:43.589Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
-        <lastmod>2022-10-03T12:37:47.268Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1419,14 +1435,6 @@
     <url>
         <loc>https://maxlay.github.io/2021/07/16/ipv6/</loc>
         <lastmod>2022-08-06T08:43:40.093Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
-        <lastmod>2022-08-06T08:43:40.070Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
