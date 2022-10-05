@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
+        <lastmod>2022-10-05T09:17:37.489Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/03/yt-dlp/</loc>
+        <lastmod>2022-10-05T09:01:02.677Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/05/%E5%8A%A0%E9%80%9FGithub/</loc>
         <lastmod>2022-10-05T07:48:34.581Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -227,14 +243,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/01/01/TaoBaoReName/</loc>
         <lastmod>2022-10-04T02:37:38.340Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
-        <lastmod>2022-10-04T01:47:41.362Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -611,14 +619,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/06/%E5%85%B3%E4%BA%8E%E4%B9%B0%E8%BD%A6%E9%99%A9/</loc>
         <lastmod>2022-09-09T17:45:48.643Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/03/yt-dlp/</loc>
-        <lastmod>2022-09-09T09:12:58.394Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
