@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2018/08/27/my-mercedes-gla/</loc>
+        <lastmod>2022-10-09T03:19:50.949Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/09/19/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AAMac%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-10-08T04:17:10.516Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -131,14 +139,6 @@
     <url>
         <loc>https://maxlay.github.io/2016/09/20/%E5%AF%8C%E6%98%A5%E8%B7%AF%E6%B1%A1%E6%B0%B4%E7%AE%A1%E9%81%93%E6%94%B9%E9%80%A0/</loc>
         <lastmod>2022-10-04T10:50:11.317Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2018/08/27/my-mercedes-gla/</loc>
-        <lastmod>2022-10-04T10:49:37.741Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
