@@ -10,7 +10,15 @@
 
     <url>
         <loc>https://maxlay.github.io/2022/10/09/%E7%89%9B%E8%9B%99%E5%8A%A9%E6%89%8B/</loc>
-        <lastmod>2022-10-11T01:11:29.761Z</lastmod>
+        <lastmod>2022-10-11T01:29:43.412Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/15/Tiktok/</loc>
+        <lastmod>2022-10-11T01:17:53.487Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -483,14 +491,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/24/%E5%9C%A8%E6%B9%96%E5%B7%9E%E5%9D%90%E5%85%AC%E4%BA%A4/</loc>
         <lastmod>2022-09-24T14:54:04.644Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/15/Tiktok/</loc>
-        <lastmod>2022-09-24T14:37:09.271Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
