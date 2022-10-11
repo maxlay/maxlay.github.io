@@ -141,6 +141,54 @@ var _hmt = _hmt || [];
   
 
     
+    <article id="post-莱芬高速吹风机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/05/27/%E8%8E%B1%E8%8A%AC%E9%AB%98%E9%80%9F%E5%90%B9%E9%A3%8E%E6%9C%BA/" class="article-date">
+  <time datetime="2022-05-27T13:04:27.000Z" itemprop="datePublished">2022-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7/">买过的货</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/27/%E8%8E%B1%E8%8A%AC%E9%AB%98%E9%80%9F%E5%90%B9%E9%A3%8E%E6%9C%BA/">莱芬高速吹风机</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8429.jpeg"></p>
+<p>今天收到前两天PDD下单的高速电吹风机，是在老罗带货间种草的国产品牌莱芬，到手价格536.99元。顺手再PDD一个挂架，4.7元。</p>
+<p><a target="_blank" rel="noopener" href="https://p.pinduoduo.com/d3tfCA6z">https://p.pinduoduo.com/d3tfCA6z</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://maxlay.github.io/2022/05/27/%E8%8E%B1%E8%8A%AC%E9%AB%98%E9%80%9F%E5%90%B9%E9%A3%8E%E6%9C%BA/" data-id="cl88sdk8t0000ix8qh2j4hdt8" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-从Manjaro到Fydeos" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/04/18/%E4%BB%8EManjaro%E5%88%B0Fydeos/" class="article-date">
@@ -584,63 +632,6 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
         <a data-url="https://maxlay.github.io/2021/07/26/youtube-ad/" data-id="cl6hh5ezh005epx0v69418xvc" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-ipv6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/16/ipv6/" class="article-date">
-  <time datetime="2021-07-15T20:20:06.000Z" itemprop="datePublished">2021-07-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/">我的爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/16/ipv6/">Padavan开启IPV6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>   如果你的运营商已支持<code>IPV6</code>，比如你也是浙江移动宽带用户</p>
-<h3 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h3><p>   进入<code>自定义设置 -&gt; 脚本 -&gt; 路由器启动后执行</code>脚本中添加代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod /lib/modules/$(uname -r)/kernel/net/napt66/napt66.ko wan\_if=eth3</span><br></pre></td></tr></table></figure>
-
-<p>   在<code>自定义设置 -&gt; 脚本 -&gt; 在防火墙规则启动后执行:</code>脚本中添加代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip6tables -F</span><br><span class="line">ip6tables -P INPUT ACCEPT</span><br><span class="line">ip6tables -P FORWARD ACCEPT</span><br><span class="line">ip6tables -P OUTPUT ACCEPT</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>   修改<code>外部网络（WAN）-&gt; IPv6设置</code>，范例如下：</p>
-<p><img src="https://doge.uk/wp-content/uploads/2020/03/3167532700.png" alt="外部网络（WAN）- IPv6设置"></p>
-<p>   其中ipv6内网地址是用主路由Mac地址在<a target="_blank" rel="noopener" href="https://cd34.com/rfc4193/">RFC4193 IPv6 Generator</a> 生成的，<br>不是随便写的。设置完毕重启路由，等一会儿就能获取到IPV6地址啦。<br>   内网 LAN - DHCP 服务器 - DNSv6 我填的是2400:3200::1<br>   设置完可以用这个网站测试一下：<a target="_blank" rel="noopener" href="https://www.test-ipv6.com/">IPv6 测试 (test-ipv6.com)</a></p>
-<p>本文大量借鉴：<a target="_blank" rel="noopener" href="https://doge.uk/coding/padavan-ipv6-napt66.html">Padavan路由下使用NAPT66模块访问移动IPV6网络 - 松鼠の博客 (doge.uk)</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://maxlay.github.io/2021/07/16/ipv6/" data-id="cl6hh5ex2002tpx0vfiyubnia" class="article-share-link">分享到</a>
       
 
       
