@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/10/15/Office365E5/</loc>
+        <lastmod>2022-10-15T05:59:56.456Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/10/02/%E5%A4%A7%E7%96%86%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
+        <lastmod>2022-10-15T05:52:18.519Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/13/Telegram%E7%94%B5%E6%8A%A5/</loc>
-        <lastmod>2022-10-14T03:38:52.152Z</lastmod>
+        <lastmod>2022-10-14T03:52:40.474Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -323,14 +339,6 @@
     <url>
         <loc>https://maxlay.github.io/2020/07/14/%E7%88%B1%E5%B1%B1%E5%B0%8F%E5%AD%A6%E9%BB%84%E5%A5%95%E8%8F%B22020%E6%9A%91%E5%81%87%E4%BD%9C%E4%B8%9A/</loc>
         <lastmod>2022-10-09T06:08:21.253Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/02/%E5%A4%A7%E7%96%86%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
-        <lastmod>2022-10-09T05:28:21.609Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
