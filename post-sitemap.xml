@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/26/quark/</loc>
+        <lastmod>2022-10-16T00:41:01.694Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/19/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AAMac%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-10-16T00:27:49.492Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/15/Office365E5/</loc>
         <lastmod>2022-10-15T16:42:09.050Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -115,22 +131,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/22/YouTube/</loc>
         <lastmod>2022-10-11T13:18:13.454Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/26/quark/</loc>
-        <lastmod>2022-10-11T12:52:41.070Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/19/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AAMac%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-10-11T10:14:45.811Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
