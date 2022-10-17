@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://maxlay.github.io/2022/10/15/Office365E5/</loc>
-        <lastmod>2022-10-17T12:10:57.305Z</lastmod>
+        <loc>https://maxlay.github.io/2022/10/16/HowToLiveLonger/</loc>
+        <lastmod>2022-10-17T16:21:42.679Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://maxlay.github.io/2022/10/13/Telegram%E7%94%B5%E6%8A%A5/</loc>
-        <lastmod>2022-10-17T12:10:40.453Z</lastmod>
+        <lastmod>2022-10-17T16:21:15.995Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/10/15/Office365E5/</loc>
+        <lastmod>2022-10-17T12:10:57.305Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -147,14 +155,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/10/14/yun-139-com/</loc>
         <lastmod>2022-10-17T11:53:03.299Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/16/HowToLiveLonger/</loc>
-        <lastmod>2022-10-17T11:48:47.122Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
