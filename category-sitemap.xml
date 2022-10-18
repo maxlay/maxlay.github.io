@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C/</loc>
+        <lastmod>2022-10-18T06:52:23.256Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E7%2588%25B1%25E5%25A5%25BD/</loc>
         <lastmod>2022-10-17T16:21:42.679Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,13 +25,6 @@
     <url>
         <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E6%258E%25A8%25E8%258D%2590/</loc>
         <lastmod>2022-10-17T16:21:15.995Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C/</loc>
-        <lastmod>2022-10-17T12:10:57.305Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
