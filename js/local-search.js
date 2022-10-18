@@ -1,6 +1,5 @@
 /* global CONFIG */
 
-
 document.addEventListener('DOMContentLoaded', () => {
   // Popup Window
   let isfetched = false;
