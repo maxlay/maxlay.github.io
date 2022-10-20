@@ -9,22 +9,36 @@
 
 
     <url>
-        <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E7%2588%25B1%25E5%25A5%25BD/</loc>
-        <lastmod>2022-10-19T18:20:47.056Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E6%258E%25A8%25E8%258D%2590/</loc>
-        <lastmod>2022-10-19T04:24:36.923Z</lastmod>
+        <lastmod>2022-10-20T04:53:07.058Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C/</loc>
-        <lastmod>2022-10-18T06:52:23.256Z</lastmod>
+        <lastmod>2022-10-20T04:52:47.856Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/categories/%25E4%25B9%25B0%25E8%25BF%2587%25E7%259A%2584%25E8%25B4%25A7/</loc>
+        <lastmod>2022-10-20T04:52:47.848Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/categories/%25E5%2585%25B6%25E4%25BB%2596%25E8%25A7%2586%25E9%25A2%2591/</loc>
+        <lastmod>2022-10-20T04:52:47.843Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E7%2588%25B1%25E5%25A5%25BD/</loc>
+        <lastmod>2022-10-20T04:52:47.830Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -37,22 +51,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/categories/%25E5%2585%25B6%25E4%25BB%2596%25E8%25A7%2586%25E9%25A2%2591/</loc>
-        <lastmod>2022-10-09T10:25:22.115Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/categories/%25E6%2588%2591%25E7%259A%2584%25E6%2597%2585%25E8%25A1%258C/</loc>
         <lastmod>2022-10-09T06:12:10.224Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/categories/%25E4%25B9%25B0%25E8%25BF%2587%25E7%259A%2584%25E8%25B4%25A7/</loc>
-        <lastmod>2022-09-24T14:33:53.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
