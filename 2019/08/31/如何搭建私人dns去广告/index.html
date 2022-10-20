@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="简单来说，你所访问的互联网，无论国内国外，无论有线无线，无论ipv4还是ipv6，在你发起访问时，都会最先在DNS上查询对应的服务器ip，然后网关再访问对应ip服务器上的内容，你访问一个网站，或者打开一个app，或者点播互联网电视，甚至喊一声小爱同学，在触发的刹那就需要至少一次访问DNS来查询服务器所在的ip，很多情况下你访问的内容又会被分散在多个服务器上，因为CDN的服务，每个URL都会有不同">
@@ -162,9 +163,7 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -206,7 +205,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -258,20 +257,20 @@
 <p>为什么用楼上的路由3负责DNS解析，因为楼下的小米路由3G已经作为接入设备，需要有一定的内存冗余，内存日常剩余130M左右，可以保证宽带接入的稳定性，楼上的设备日常CPU空闲，不用它做DNS，天理不容。</p>
 <p>那我是怎么办到的呢？我把两台小米路由都刷了Padavan。</p>
 <p>然后，用Padavan里的AdGuard Home插件，搭建私人去广告DNS服务。内网DNS访问的ping值小于1毫秒，而且独立CPU，解析快狠准。AdGuard Home的上游 DNS 服务器用的是ISP推荐和阿里DNS，第一次访问时会自动同时查询上游服务器，之后就会加速解析。</p>
-<p>AdGuard Home这么有名，我这里就不多介绍了，用来在内网旁路由上免费部署，亲测非常好用。<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">https://github.com/AdguardTeam/AdGuardHome</a></p>
+<p>AdGuard Home这么有名，我这里就不多介绍了，用来在内网旁路由上免费部署，亲测非常好用。<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">https://github.com/AdguardTeam/AdGuardHome</a></p>
 <p>当然，如果你嫌刷路由麻烦，也可以部署到操作系统上，我在自己的MacBook Pro和MacMini上也都部署了独立的AdGuard Home Mac版，比用路由更快。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome/releases">https://github.com/AdguardTeam/AdGuardHome/releases</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome/releases">https://github.com/AdguardTeam/AdGuardHome/releases</a></p>
 <p>部署方法在官网上有介绍，我这里也不多余介绍了。</p>
-<p><a target="_blank" rel="noopener" href="https://adguard.com/zh_cn/adguard-home/overview.html">https://adguard.com/zh_cn&#x2F;adguard-home&#x2F;overview.html</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://adguard.com/zh_cn/adguard-home/overview.html">https://adguard.com/zh_cn&#x2F;adguard-home&#x2F;overview.html</a></p>
 <p>同时，为了隐藏桌面操作系统的网络访问请求，我把上游服务器地址设置成：tls:&#x2F;&#x2F;dns.adguard.com<br>tls:&#x2F;&#x2F;dns.quad9.net<br>tls:&#x2F;&#x2F;1.1.1.1</p>
-<p>之所以将<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>部署在旁路由上是因为我需要家里有2台路由负责无线网的覆盖，你当然可以部署在家里唯一的路由器上，如果家里设备不多，小于50个ip，我想应该也是没有问题的。稳定性可以自测，<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>在路由器上占用的内存并不多，几十兆吧，小米路由器3G有256M的运存，完全可以胜任。</p>
-<p>另外，对有能力实现Padavan的<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>用户，我想提醒一下：</p>
+<p>之所以将<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>部署在旁路由上是因为我需要家里有2台路由负责无线网的覆盖，你当然可以部署在家里唯一的路由器上，如果家里设备不多，小于50个ip，我想应该也是没有问题的。稳定性可以自测，<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>在路由器上占用的内存并不多，几十兆吧，小米路由器3G有256M的运存，完全可以胜任。</p>
+<p>另外，对有能力实现Padavan的<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>用户，我想提醒一下：</p>
 <p>作为旁路由可以把服务端口5353改为53，如果是主路由上实现的，还是保留在5353，因为服务启动时会在DNSMASQ里自动加入127.0.0.1#5353的语句。</p>
-<p>另外，也建议更改<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的后台端口和用户名密码，安全第一，万一有人能蹭你家wifi呢？</p>
-<p>这里，分享一下我在用的<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的过滤器和 Hosts 拦截清单：</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/user1121114685/koolproxyR/_rule/_list/master/kpr/_our/_rule.txt">https://raw.githubusercontent.com/user1121114685/koolproxyR\_rule\_list/master/kpr\_our\_rule.txt</a><br><a target="_blank" rel="noopener" href="https://easylist-downloads.adblockplus.org/yt/_annoyances/_full.txt">https://easylist-downloads.adblockplus.org/yt\_annoyances\_full.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt">https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt</a><br><a target="_blank" rel="noopener" href="https://easylist-downloads.adblockplus.org/easylistchina.txt">https://easylist-downloads.adblockplus.org/easylistchina.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Zereao/AD/_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt">https://raw.githubusercontent.com/Zereao/AD\_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt">https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt">https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt</a><br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts">https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts</a><br><a target="_blank" rel="noopener" href="https://hosts.nfz.moe/full/hosts">https://hosts.nfz.moe/full/hosts</a></p>
+<p>另外，也建议更改<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的后台端口和用户名密码，安全第一，万一有人能蹭你家wifi呢？</p>
+<p>这里，分享一下我在用的<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome">AdGuardHome</a>的过滤器和 Hosts 拦截清单：</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/user1121114685/koolproxyR/_rule/_list/master/kpr/_our/_rule.txt">https://raw.githubusercontent.com/user1121114685/koolproxyR\_rule\_list/master/kpr\_our\_rule.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://easylist-downloads.adblockplus.org/yt/_annoyances/_full.txt">https://easylist-downloads.adblockplus.org/yt\_annoyances\_full.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt">https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://easylist-downloads.adblockplus.org/easylistchina.txt">https://easylist-downloads.adblockplus.org/easylistchina.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/Zereao/AD/_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt">https://raw.githubusercontent.com/Zereao/AD\_Rules/master/ChinaList%2BEasyList(%E4%BF%AE%E6%AD%A3).txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt">https://raw.githubusercontent.com/hl2guide/All-in-One-Customized-Adblock-List/master/deanoman-adblocklist.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt">https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts">https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hosts.nfz.moe/full/hosts">https://hosts.nfz.moe/full/hosts</a></p>
 <p>最后提醒一下刷Padavan的朋友，玩Padavan插件就需要部署opt，要外插U盘，而U盘需要事先用DM分区格式化成ext4文件系统，切记。</p>
-<p>另外，截至2019年9月1日的AdGuard Home可以用的版本是v0.98.1，如果在opt里只下载了压缩包，可以手动解压，程序就可以运行了，当然，你也可以手动下载解压安装包：<a target="_blank" rel="noopener" href="https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome/_linux/_mips.tar.gz">https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome\_linux\_mips.tar.gz</a></p>
+<p>另外，截至2019年9月1日的AdGuard Home可以用的版本是v0.98.1，如果在opt里只下载了压缩包，可以手动解压，程序就可以运行了，当然，你也可以手动下载解压安装包：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome/_linux/_mips.tar.gz">https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.98.1/AdGuardHome\_linux\_mips.tar.gz</a></p>
 <p>最后的最后，如果你实在搞不定，或者不想花时间，那就老老实实用好DNSMASQ，效果也还不错。</p>
 
     </div>
@@ -279,6 +278,28 @@
     
     
     
+    
+		
+	  	<div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+		
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>HuangLei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://maxlay.github.io/2019/08/31/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BAdns%E5%8E%BB%E5%B9%BF%E5%91%8A/" title="私人DNS去广告AdGuard Home">https://maxlay.github.io/2019/08/31/如何搭建私人dns去广告/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -358,8 +379,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei"
-      src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -382,23 +402,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -437,7 +460,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -456,8 +479,10 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

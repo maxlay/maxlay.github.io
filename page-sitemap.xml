@@ -10,6 +10,15 @@
     
     
     <url>
+        <loc>https://maxlay.github.io/404.html</loc>
+        <lastmod>2022-10-20T07:00:13.382Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
         <loc>https://maxlay.github.io/about/</loc>
         <lastmod>2022-10-20T05:46:08.699Z</lastmod>
         <changefreq>weekly</changefreq>

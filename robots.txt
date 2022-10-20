@@ -1,3 +1,14 @@
-Sitemap: https://maxlay.github.io
 
 User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/
+Disallow: /upload/
+Disallow: sppstore/
+Disallow: appstore/
+
+Sitemap: https://maxlay.github.io/sitemap.xml
