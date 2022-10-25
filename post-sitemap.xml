@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/10/20/WARP/</loc>
+        <lastmod>2022-10-25T03:04:05.471Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/26/%E5%8A%9E%E7%90%86%E7%A7%BB%E5%8A%A8%E9%A3%9E%E4%BA%AB8%E5%85%83%E5%A5%97%E9%A4%90/</loc>
         <lastmod>2022-10-25T02:54:45.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -275,14 +283,6 @@
     <url>
         <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
         <lastmod>2022-10-24T15:00:30.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/20/WARP/</loc>
-        <lastmod>2022-10-24T14:59:53.694Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
