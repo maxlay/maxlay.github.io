@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/10/FFmpeg.png">
 <meta property="article:published_time" content="2022-10-29T12:22:33.000Z">
-<meta property="article:modified_time" content="2022-10-29T12:44:59.741Z">
+<meta property="article:modified_time" content="2022-10-30T15:09:57.700Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
@@ -252,11 +252,11 @@
 
 <h4 id="1080P的批量压缩"><a href="#1080P的批量压缩" class="headerlink" title="1080P的批量压缩"></a>1080P的批量压缩</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in /Volumes/Disk/*.*; do ffmpeg -hwaccel videotoolbox -i &quot;$i&quot; -c:v h264_videotoolbox -b:v 3M -c:a copy &quot;$&#123;i%.*&#125;-HL.MP4&quot;; done</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>批量把&#x2F;Volumes&#x2F;Disk&#x2F;目录下的所有视频文件压缩用GPU压缩成码率是3M的MP4</p>
+<p>批量把&#x2F;Volumes&#x2F;Disk&#x2F;目录下的所有视频文件用GPU压缩成码率是3M的MP4文件</p>
 </blockquote>
 <h4 id="4K的批量压缩"><a href="#4K的批量压缩" class="headerlink" title="4K的批量压缩"></a>4K的批量压缩</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in /Volumes/Disk/*.*; do ffmpeg -hwaccel videotoolbox -i &quot;$i&quot; -c:v h264_videotoolbox -b:v 12M -c:a copy &quot;$&#123;i%.*&#125;-HL.MP4&quot;; done</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>1920<em>1080的码率在3M左右，按这个尺寸，3840</em>2160的码率应该是3M的4倍，就是12M左右</p>
+<p>1920X1080的码率在3M左右，按这个尺寸，3840X2160的码率应该是3M的4倍，就是12M左右</p>
 </blockquote>
 <h4 id="视频合并"><a href="#视频合并" class="headerlink" title="视频合并"></a>视频合并</h4><p>批量合并视频 ffmpeg 需要知道被合并视频的位置和顺序。<br>因此我们建立一个 file.txt 文件来告诉它。文件内部格式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file &#x27;path/to/file001.ts&#x27; </span><br><span class="line">file &#x27;path/to/file002.ts&#x27;</span><br><span class="line">file &#x27;path/to/file003.ts&#x27; </span><br></pre></td></tr></table></figure>
@@ -380,7 +380,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">220</span>
+          <span class="site-state-item-count">221</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
