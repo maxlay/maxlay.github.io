@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta property="og:type" content="website">
@@ -157,7 +156,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -193,12 +194,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/04/06/pandavan%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E9%87%8D%E6%96%B0%E6%8B%A8%E5%8F%B7/">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/08/22/%E5%B1%8F%E8%94%BDiOS%E6%9B%B4%E6%96%B0%E5%9B%BA%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -207,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/04/06/pandavan%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E9%87%8D%E6%96%B0%E6%8B%A8%E5%8F%B7/" class="post-title-link" itemprop="url">Padavan定时自动重新拨号</a>
+            <a href="/2022/08/22/%E5%B1%8F%E8%94%BDiOS%E6%9B%B4%E6%96%B0%E5%9B%BA%E4%BB%B6/" class="post-title-link" itemprop="url">屏蔽iOS更新固件</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +218,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-04-06 22:22:30" itemprop="dateCreated datePublished" datetime="2019-04-06T22:22:30+08:00">2019-04-06</time>
+              <time title="创建时间：2022-08-22 16:15:12" itemprop="dateCreated datePublished" datetime="2022-08-22T16:15:12+08:00">2022-08-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,11 +241,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>路由器为什么要定时自动重新拨号？因为ip用的久了，优先级就降低了，下载对固定ip的访问会被降速，我的策略是每24小时重新pppoe拨号一次，来获得新ip，至于移动宽带光猫如何设置成拨号连接方式，可以百度，有很多教程。</p>
-<p>移动光猫的超级用户名是：CMCCAdmin 密码是：aDm8H%MdA</p>
-<p>早晚5点定时开网（重启wan口）：</p>
-<p>0 5 * * * restart_wan #删除开头的#启动命令<br>0 17 * * * restart_wan #删除开头的#启动命令</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/04/%E4%B8%8B%E8%BD%BD-839x1024.png"></p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/08/22/%E5%B1%8F%E8%94%BDiOS%E6%9B%B4%E6%96%B0%E5%9B%BA%E4%BB%B6/result.mp3"></audio></p>
+
+<p>苹果iOS系统是通过安装描述文件来刷最新的测试版固件，这个描述文件是苹果通过邮件主动分发给付费开发者，最近苹果日子不好过，蚊子肉也是肉，所以对私自分发描述文件的多个网站发起诉讼，逼迫关站。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/betahub.png"><br>我常用的尝鲜派，不知道什么时候也会关站。<br><a target="_blank" rel="noopener" href="https://www.betahub.cn/">https://www.betahub.cn</a></p>
+<p>我目前在用iPhoneX的iOS13.5.1，iPadOS13.6，这个版本多数APP都支持，反应速度不错，没有明显的BUG，升级14后系统反应慢，发热增高，得不偿失，所以我选择让他们永远停留在13。然而不更新固件也是需要通过安装描述文件来实现的，我怕尝鲜派关站，所以备份了这个描述文件，以备不时之需：<br><a href="https://maxlay.github.io/noota.mobileconfig">https://maxlay.github.io/noota.mobileconfig</a></p>
+<p>这个文件原文来自于：<br><a target="_blank" rel="noopener" href="https://ibeta-www.oss-cn-beijing.aliyuncs.com/configs/noota.mobileconfig">https://ibeta-www.oss-cn-beijing.aliyuncs.com/configs/noota.mobileconfig</a></p>
 
       
     </div>
@@ -266,12 +268,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/04/01/%E5%B0%8F%E7%B1%B3%E7%B1%B3%E5%AE%B6%E6%99%BA%E8%83%BD%E6%91%84%E5%83%8F%E6%9C%BA%E4%BA%91%E5%8F%B0%E7%89%88%E6%95%91%E7%A0%96/">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/08/21/%E5%92%96%E5%95%A1%E6%B8%A3%E8%89%BE%E8%8D%89%E7%81%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -280,7 +282,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/04/01/%E5%B0%8F%E7%B1%B3%E7%B1%B3%E5%AE%B6%E6%99%BA%E8%83%BD%E6%91%84%E5%83%8F%E6%9C%BA%E4%BA%91%E5%8F%B0%E7%89%88%E6%95%91%E7%A0%96/" class="post-title-link" itemprop="url">小米米家智能摄像机云台版救砖</a>
+            <a href="/2022/08/21/%E5%92%96%E5%95%A1%E6%B8%A3%E8%89%BE%E8%8D%89%E7%81%B0/" class="post-title-link" itemprop="url">咖啡渣艾草灰</a>
         </h2>
 
         <div class="post-meta">
@@ -290,7 +292,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-04-01 12:24:15" itemprop="dateCreated datePublished" datetime="2019-04-01T12:24:15+08:00">2019-04-01</time>
+              <time title="创建时间：2022-08-21 11:45:48" itemprop="dateCreated datePublished" datetime="2022-08-21T11:45:48+08:00">2022-08-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,7 +300,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">我的爱好</span></a>
+                  <a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7/" itemprop="url" rel="index"><span itemprop="name">买过的货</span></a>
                 </span>
             </span>
 
@@ -313,13 +315,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近我的小米米家智能摄像机云台版1080有一个3.4.9_0215的固件更新，我也没怎么在意就同意更新了，结果非常打脸的在重启以后就一直黄灯没反应了。</p>
-<p>米家app的官方固件更新，居然给刷成砖了！</p>
-<p>赶紧上小米论坛找解决方案，找到了这个：</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://bbs.xiaomi.cn/t-34830064">http://bbs.xiaomi.cn/t-34830064</a></p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/08/21/%E5%92%96%E5%95%A1%E6%B8%A3%E8%89%BE%E8%8D%89%E7%81%B0/result.mp3"></audio></p>
+
+<p>男人过了40就会关注一些奇奇怪怪的事，对于一个不抽烟不喝酒不赌博的人来说，完全不能理解为什么人们会冒着摄入一类致癌物风险获得的那一点点多巴胺奖励，就没有更无聊的事可做吗？</p>
+<img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/smoking.jpg" style="zoom: 33%;" />
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/04/01/%E5%B0%8F%E7%B1%B3%E7%B1%B3%E5%AE%B6%E6%99%BA%E8%83%BD%E6%91%84%E5%83%8F%E6%9C%BA%E4%BA%91%E5%8F%B0%E7%89%88%E6%95%91%E7%A0%96/#more" rel="contents">
+              <a class="btn" href="/2022/08/21/%E5%92%96%E5%95%A1%E6%B8%A3%E8%89%BE%E8%8D%89%E7%81%B0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -345,12 +347,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/03/23/lovedeathrobots/">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/08/20/%E6%8E%A8%E8%8D%90%E6%8A%96%E9%9F%B3%E4%B8%8A%E7%9A%84%E5%AE%9D%E8%97%8FUP%E4%B8%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -359,7 +361,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/03/23/lovedeathrobots/" class="post-title-link" itemprop="url">《爱，死亡和机器人》1080P</a>
+            <a href="/2022/08/20/%E6%8E%A8%E8%8D%90%E6%8A%96%E9%9F%B3%E4%B8%8A%E7%9A%84%E5%AE%9D%E8%97%8FUP%E4%B8%BB/" class="post-title-link" itemprop="url">推荐抖音上的宝藏UP主</a>
         </h2>
 
         <div class="post-meta">
@@ -369,358 +371,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-23 00:43:24" itemprop="dateCreated datePublished" datetime="2019-03-23T00:43:24+08:00">2019-03-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">我的爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>magnet:?xt&#x3D;urn:btih:8AA28A0E1D07708F30A2E460A40CD2D2FCEE9670</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/03/timg.jpeg"></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/02/24/%E4%BB%8A%E5%A4%A9%E6%83%B3%E9%9A%8F%E6%89%8B%E6%8B%8D%E6%8B%8D%E8%A7%86%E9%A2%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/24/%E4%BB%8A%E5%A4%A9%E6%83%B3%E9%9A%8F%E6%89%8B%E6%8B%8D%E6%8B%8D%E8%A7%86%E9%A2%91/" class="post-title-link" itemprop="url">今天想随手拍拍视频</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-24 14:32:33" itemprop="dateCreated datePublished" datetime="2019-02-24T14:32:33+08:00">2019-02-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">我的爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天天气真好，适合用Sony A6300和E50mm F1.8镜头配合智云CRANE-M稳定器拍拍东西，后期剪辑用Final Cut Pro X，片头用Adobe After Effects，BGM用echo App，字体用开源字体，配音用RODE VIDEOMIC，4K成片会上传YouTube。拍什么去上海的路上想…</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/02/WechatIMG2-1021x1024.jpeg"></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/02/11/freedownloadmanager/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/11/freedownloadmanager/" class="post-title-link" itemprop="url">FreeDownLoadManager</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-11 03:58:29" itemprop="dateCreated datePublished" datetime="2019-02-11T03:58:29+08:00">2019-02-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">我的爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>科普一个macOS下可以替代迅雷，正常bt和磁力下载的软件：</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.freedownloadmanager.org/zh/">https://www.freedownloadmanager.org/zh/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/02/03/alipay2019/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/03/alipay2019/" class="post-title-link" itemprop="url">2019春节支付宝五福卡</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-03 22:57:09" itemprop="dateCreated datePublished" datetime="2019-02-03T22:57:09+08:00">2019-02-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">我的爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/02/weibo-473x1024.jpg"></p>
-<p>坐等今年春节支付宝五福红包?</p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/01/25/beatssolo3wireless/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/25/beatssolo3wireless/" class="post-title-link" itemprop="url">BeatsSolo3Wireless</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-25 13:19:15" itemprop="dateCreated datePublished" datetime="2019-01-25T13:19:15+08:00">2019-01-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7/" itemprop="url" rel="index"><span itemprop="name">买过的货</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.beatsbydre.com/cn/headphones/solo3-wireless"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/01/Unknown-1024x622.png"></a></p>
-<p>2016年10月25日收到的生日礼物，用了两年多，耳机皮罩开始开裂，某宝花33元买了副厂皮罩，换上后，跟新的一样。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://your.beatsbydre.com/#/download?locale=zh-CN">当然，如果你愿意也可以更新一下固件。</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/01/16/%E4%B9%B0%E4%BA%86%E4%B8%AA%E5%8F%AE%E9%9B%B6%E6%99%BA%E8%83%BD%E8%A7%86%E9%A2%91%E9%97%A8%E9%93%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/16/%E4%B9%B0%E4%BA%86%E4%B8%AA%E5%8F%AE%E9%9B%B6%E6%99%BA%E8%83%BD%E8%A7%86%E9%A2%91%E9%97%A8%E9%93%83/" class="post-title-link" itemprop="url">买了个叮零智能视频门铃</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-16 01:36:13" itemprop="dateCreated datePublished" datetime="2019-01-16T01:36:13+08:00">2019-01-16</time>
+              <time title="创建时间：2022-08-20 11:41:08" itemprop="dateCreated datePublished" datetime="2022-08-20T11:41:08+08:00">2022-08-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -743,8 +394,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/01/img_8125.jpg"> 众筹等了整整一个月的产品，上面是我真实的评价。 简单说就是个摄像头，在按门铃或者有人经过的时候录下6秒的视频并推送给你，另外，也可以实时视频对讲，如果按门铃的是家人朋友，你大可以告诉他开门的密码。当然，如果是有指纹权限的人开门也会被忠实记录具体时间和6秒视频。功能很多，有兴趣的可以去小米或者京东找找看。 <img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/01/img_8121.jpg"> 本家创业者，必须支持一下！</p>
-
+          <blockquote>
+<p>推荐抖音上几个我关注的UP主和近期作品</p>
+</blockquote>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/tiktoknews.jpg"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/20/%E6%8E%A8%E8%8D%90%E6%8A%96%E9%9F%B3%E4%B8%8A%E7%9A%84%E5%AE%9D%E8%97%8FUP%E4%B8%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -765,12 +426,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/01/16/%E6%B9%96%E5%B7%9E%E4%B8%8B%E4%BA%86%E4%B8%80%E4%B8%AA%E5%A4%9A%E6%9C%88%E7%9A%84%E9%9B%A8/">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/08/19/TimeMachine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -779,7 +440,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/01/16/%E6%B9%96%E5%B7%9E%E4%B8%8B%E4%BA%86%E4%B8%80%E4%B8%AA%E5%A4%9A%E6%9C%88%E7%9A%84%E9%9B%A8/" class="post-title-link" itemprop="url">湖州下了一个多月的雨</a>
+            <a href="/2022/08/19/TimeMachine/" class="post-title-link" itemprop="url">TimeMachine</a>
         </h2>
 
         <div class="post-meta">
@@ -789,76 +450,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-01-16 01:20:27" itemprop="dateCreated datePublished" datetime="2019-01-16T01:20:27+08:00">2019-01-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%B0%E8%BF%87%E7%9A%84%E8%B4%A7/" itemprop="url" rel="index"><span itemprop="name">买过的货</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我家住顶楼带阁楼，所以用屋顶太阳能热水器，结果，湖州淅淅沥沥下了一个多月的雨，这一个多月里我就没看到太阳能热水器的水温高于37度的。 这是要赶尽杀绝我？ 滚蛋，老子买燃烧热水器…… <img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/01/img_8094.png"> 燃烧热水器花了1000不到，找人在橱柜上打孔接冷热水和燃烧，材料人工一共花了500元。 所以这台热水器一共花了1500元。 不要相信官方的包安装！官方所谓的安装不包含打孔和燃烧管连接，你需要事先找人外墙打孔，橱柜打孔，然后再等官方安装，预约排到3天后，然后3天后还说突然有新的安装，需要再拖延一两天，卧槽，我难道之前的预约是假的吗？然后，官方就只是挂个机，所有三通接管耗材都是另外收费，装完还要再叫港华燃气来接燃烧管，我尼玛，果断拒绝这么坑的官方安装。 我自己找的安装工安装花了一个上午的时间，装完我就洗了个澡： <img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/01/img_8128.jpg"> 燃气前200方2.92元每立方，后200方3.5元每立方，我这次澡花费燃气0.38元。 1500元按8年摊销到每天，再算上浴霸采暖和自来水费，每天使用成本在1块钱左右，而且，夏天和有太阳的时候，完全可以不用燃气，可以用回太阳能热水器。</p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2019/01/01/huzhou/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/01/huzhou/" class="post-title-link" itemprop="url">我的家乡--湖州--</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-01 13:30:12" itemprop="dateCreated datePublished" datetime="2019-01-01T13:30:12+08:00">2019-01-01</time>
+              <time title="创建时间：2022-08-19 16:00:51" itemprop="dateCreated datePublished" datetime="2022-08-19T16:00:51+08:00">2022-08-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -881,7 +473,95 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://v.qq.com/x/page/h08199ilrhg.html">https://v.qq.com/x/page/h08199ilrhg.html</a> <img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6471-1-3.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6472-1-4.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6473-1-4.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6474-1-4.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6475-1-5.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6476-1.jpg"><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2018/07/img_6477-1-1.jpg"></p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/08/19/TimeMachine/result.mp3"></audio></p>
+
+<p>MacOS 的内置备份功能。可以使用 TimeMachine 对桌面端设备所有文件进行自动备份，包括应用、音乐、照片、电子邮件、文稿和系统文件。如果拥有备份，当原始文件从 MacOS 永久性删除或者 Mac 中的硬盘（或 SSD）被抹掉或更换时，可以从备份恢复文件。同时，新硬盘也可以使用备份完全一比一恢复，可以选择恢复到对应备份时间点，甚是方便。</p>
+<img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/command.jpg" style="zoom:25%;" />
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/19/TimeMachine/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/08/18/%E5%A3%AE%E5%BF%97%E5%87%8C%E4%BA%912/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/18/%E5%A3%AE%E5%BF%97%E5%87%8C%E4%BA%912/" class="post-title-link" itemprop="url">壮志凌云2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-18 19:37:54" itemprop="dateCreated datePublished" datetime="2022-08-18T19:37:54+08:00">2022-08-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96%E8%A7%86%E9%A2%91/" itemprop="url" rel="index"><span itemprop="name">其他视频</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/08/18/%E5%A3%AE%E5%BF%97%E5%87%8C%E4%BA%912/result.mp3"></audio></p>
+
+
+<p>主演：汤姆·克鲁斯 詹妮弗·康纳利 迈尔斯·特勒 乔恩·哈姆 方·基默 莫妮卡.巴巴罗…<br>在线播放链接：<a target="_blank" rel="noopener" href="https://www.libvio.me/play/714236-1-1.html">https://www.libvio.me/play/714236-1-1.html</a></p>
+<img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/08/1661416411256.jpg" style="zoom: 33%;" />
+
+<p>   作为海空卫士王伟烈士的老乡，我是以批判的角度审视这部美式无脑英雄主义爽片，全篇主旨讲述的是美帝训练和实施偷城后全身而退，美帝人命是命，其他人命不是命。美式意识形态，就像是婴幼儿的逻辑，我打你可以，你防御不行，胆敢反击更是邪恶至极。</p>
+<p>   我联想到的是01年南海撞机和99年我大使馆被炸，我国不就是美帝的眼中钉肉中刺么。敌国的电影，如果我去贡献票房，院线给敌国影业公司分账，敌国公司纳税，敌国国税进账，敌国财政就多一份钱可以拨款研制武器扩充军费。受害者是谁？敌国电影，哪一部是我推荐的网站里没有的？哪部奈飞的美剧是网盘里没有的?《<a href="https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/">推荐一些看电影的网站</a>》美帝是民主灯塔还是世界矛盾源头，湾湾亲美台独那些狗奴，是标准的忘祖数典，天雷滚滚。</p>
+<p>   支持国产影视，国内独立投资制作的电影电视剧，希望国内能有奈飞这样的影视制作公司诞生。而优爱腾收了年费，还要收提前典映费，巧立名目还历年财务报亏损，真的一直亏损，开公司是做慈善么？不纳税，不要脸！吃相难看，真亏损的话还是尽快倒闭吧，别TMD出来丢人现眼。</p>
+<p>   扯远了，《壮志凌云2》电影开篇说60岁的阿汤爷爷是超高音速载具试飞员，驾驶洛马SR-72额定6马赫侦察机超频飞出了10.4马赫，飞机失控烧毁坠机，人一点事没有，没有擦破一点油皮，神功护体，还去野酒吧喝了一杯。开篇就是这么胡说八道，你肉身是怎么在10马赫的空气摩擦里不气化的？你倒是铮铮铁骨，肉身钢铁侠啊，观众都是傻子，就编剧你一人是大聪明。后面还有偷跑驾驶交战国无人机库的F14，硬刚三架五代机的神奇桥段，反正别国机库都没有守卫，别国飞行员都是家家酒的水平，就你美帝飞行员厉害？标准的无脑爽片，足显美帝骨子里的傲慢。</p>
 
       
     </div>
@@ -902,7 +582,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -960,7 +640,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -983,26 +664,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -1041,7 +722,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -1060,10 +741,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -1078,10 +757,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

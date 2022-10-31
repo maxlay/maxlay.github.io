@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="支付宝、微信、米家、QQ、淘宝、微博等等日常App都有自己的url scheme，可以用快捷指令和siri一步跳转到对应功能页面，实现方便的一键访问。 比如敲击手机后壳两下，触发对应的快捷指令，或者直接把快捷指令的图标放在桌面上，用siri触发，或者自动定时触发，十分便捷。 如何获得url scheme？可以点“添加到桌面”按钮，然后复制URL，一般是data:text&#x2F;html;bas">
@@ -161,7 +160,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -203,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -247,10 +248,10 @@
         <p>支付宝、微信、米家、QQ、淘宝、微博等等日常App都有自己的url scheme，可以用快捷指令和siri一步跳转到对应功能页面，实现方便的一键访问。</p>
 <p>比如敲击手机后壳两下，触发对应的快捷指令，或者直接把快捷指令的图标放在桌面上，用siri触发，或者自动定时触发，十分便捷。</p>
 <p>如何获得url scheme？可以点“添加到桌面”按钮，然后复制URL，一般是data:text&#x2F;html;base64，开头，一串base64编码。</p>
-<p>把base64之后的代码复制到<a target="_blank" rel="external nofollow noopener noreferrer" href="https://base64.us/">Base64 在线编码解码 Base64 加密解密 - Base64.us</a>（base64.us）解码后可以看到HTML，支付宝是alipay:&#x2F;&#x2F; 开头，微信是weixin:&#x2F;&#x2F; 开头，米家是mihome:&#x2F;&#x2F; 开头，QQ是 mqq:&#x2F;&#x2F;开头，淘宝是taobao:&#x2F;&#x2F;开头，微博是sinaweibo:&#x2F;&#x2F;开头，把url scheme用快捷指令的safari浏览器打开，就能直接跳转，比如敲两下后壳打开带有疫苗完成的健康码，只需要一秒钟。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://cloud.tencent.com/developer/article/1397306">iOS常用URL Scheme附录 - 云+社区 - 腾讯云 (tencent.com)</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/26809878">有用有趣的URL Scheme，持续更新…… - 知乎 (zhihu.com)</a></p>
-<p>捷径库：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://jiejingku.net/">https://jiejingku.net</a></p>
+<p>把base64之后的代码复制到<a target="_blank" rel="noopener" href="https://base64.us/">Base64 在线编码解码 Base64 加密解密 - Base64.us</a>（base64.us）解码后可以看到HTML，支付宝是alipay:&#x2F;&#x2F; 开头，微信是weixin:&#x2F;&#x2F; 开头，米家是mihome:&#x2F;&#x2F; 开头，QQ是 mqq:&#x2F;&#x2F;开头，淘宝是taobao:&#x2F;&#x2F;开头，微博是sinaweibo:&#x2F;&#x2F;开头，把url scheme用快捷指令的safari浏览器打开，就能直接跳转，比如敲两下后壳打开带有疫苗完成的健康码，只需要一秒钟。</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1397306">iOS常用URL Scheme附录 - 云+社区 - 腾讯云 (tencent.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26809878">有用有趣的URL Scheme，持续更新…… - 知乎 (zhihu.com)</a></p>
+<p>捷径库：<a target="_blank" rel="noopener" href="https://jiejingku.net/">https://jiejingku.net</a></p>
 
     </div>
 
@@ -274,7 +275,7 @@
     <a href="https://maxlay.github.io/2021/07/28/%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4%E4%B8%80%E6%AD%A5%E5%88%B0%E4%BD%8D/" title="快捷指令一步到位">https://maxlay.github.io/2021/07/28/快捷指令一步到位/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -358,7 +359,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -381,26 +383,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -439,7 +441,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -458,10 +460,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -476,10 +476,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

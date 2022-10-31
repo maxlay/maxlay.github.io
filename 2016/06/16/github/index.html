@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="昨天把手头的iPhonePlus、iPad pro、MacBook pro更新到了iOS10和MacOS10.12，然而苹果抛弃了PPTP协议，而我之前在VPS上搭建的就是PPTP协议的VPN，好尴尬。今天上GitHub找了个支持OpenVZ的Cisco-IPSec-VPN-Install的shell，一分钟完成Cisco-IPSec-VPN的搭建。链接在这里：https:&#x2F;&#x2F;github.co">
@@ -163,7 +162,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -205,7 +206,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -246,9 +247,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://maxlay.github.io/uploads/2016/06/fluidicon.png"><img src="https://maxlay.github.io/uploads/2016/06/fluidicon.png" alt="fluidicon" style="zoom: 33%;"></a> 昨天把手头的iPhonePlus、iPad pro、MacBook pro更新到了iOS10和MacOS10.12，然而苹果抛弃了PPTP协议，而我之前在VPS上搭建的就是PPTP协议的VPN，好尴尬。今天上GitHub找了个支持OpenVZ的Cisco-IPSec-VPN-Install的shell，一分钟完成Cisco-IPSec-VPN的搭建。链接在这里：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/lokyshin/Cisco-IPSec-VPN-Install">https://github.com/lokyshin/Cisco-IPSec-VPN-Install</a> 这个脚本完美支持搬瓦工这样的OpenVZ技术的VPS。</p>
+        <p><a href="https://maxlay.github.io/uploads/2016/06/fluidicon.png"><img src="https://maxlay.github.io/uploads/2016/06/fluidicon.png" alt="fluidicon" style="zoom: 33%;" /></a> 昨天把手头的iPhonePlus、iPad pro、MacBook pro更新到了iOS10和MacOS10.12，然而苹果抛弃了PPTP协议，而我之前在VPS上搭建的就是PPTP协议的VPN，好尴尬。今天上GitHub找了个支持OpenVZ的Cisco-IPSec-VPN-Install的shell，一分钟完成Cisco-IPSec-VPN的搭建。链接在这里：<a target="_blank" rel="noopener" href="https://github.com/lokyshin/Cisco-IPSec-VPN-Install">https://github.com/lokyshin/Cisco-IPSec-VPN-Install</a> 这个脚本完美支持搬瓦工这样的OpenVZ技术的VPS。</p>
 <span id="more"></span>
-<p>搭建方法：“ wget –no-check-certificate <a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/lokyshin/Cisco-IPSec-VPN-Install/master/CIVInstall.sh">https://raw.githubusercontent.com/lokyshin/Cisco-IPSec-VPN-Install/master/CIVInstall.sh</a> &amp;&amp; chmod +x CIVInstall.sh &amp;&amp; bash CIVInstall.sh 2&gt;&amp;1 tee civaws_install.log ” 执行时会自动生成CA证书，会询问新建的账号名密码等。需要注意的是：</p>
+<p>搭建方法：“ wget –no-check-certificate <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lokyshin/Cisco-IPSec-VPN-Install/master/CIVInstall.sh">https://raw.githubusercontent.com/lokyshin/Cisco-IPSec-VPN-Install/master/CIVInstall.sh</a> &amp;&amp; chmod +x CIVInstall.sh &amp;&amp; bash CIVInstall.sh 2&gt;&amp;1 tee civaws_install.log ” 执行时会自动生成CA证书，会询问新建的账号名密码等。需要注意的是：</p>
 <p>每次重启服务器后，不要忘了手动运行“bash startvpn.sh”，当然，也可以配置成自动启动。用户配置文件位置在&#x2F;usr&#x2F;local&#x2F;etc&#x2F;ipsec.secrets，可以自己添加账号，而每个账号也没有什么登录限制。</p>
 <hr>
 Airbnb：https://github.com/airbnb 
@@ -282,7 +283,7 @@ Zhihu（知乎）：https://github.com/zhihu
 
 <hr>
 
-<h3 id="如何注册美区苹果账号："><a href="#如何注册美区苹果账号：" class="headerlink" title="如何注册美区苹果账号："></a>如何注册美区苹果账号：</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/getlantern/lantern/wiki/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BA%E8%8B%B9%E6%9E%9C%E8%B4%A6%E5%8F%B7">https://github.com/getlantern/lantern/wiki/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BA%E8%8B%B9%E6%9E%9C%E8%B4%A6%E5%8F%B7</a></p>
+<h3 id="如何注册美区苹果账号："><a href="#如何注册美区苹果账号：" class="headerlink" title="如何注册美区苹果账号："></a>如何注册美区苹果账号：</h3><p><a target="_blank" rel="noopener" href="https://github.com/getlantern/lantern/wiki/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BA%E8%8B%B9%E6%9E%9C%E8%B4%A6%E5%8F%B7">https://github.com/getlantern/lantern/wiki/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BA%E8%8B%B9%E6%9E%9C%E8%B4%A6%E5%8F%B7</a></p>
 
     </div>
 
@@ -306,7 +307,7 @@ Zhihu（知乎）：https://github.com/zhihu
     <a href="https://maxlay.github.io/2016/06/16/github/" title="GitHub 神一样的存在">https://maxlay.github.io/2016/06/16/github/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -391,7 +392,8 @@ Zhihu（知乎）：https://github.com/zhihu
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -414,26 +416,26 @@ Zhihu（知乎）：https://github.com/zhihu
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -472,7 +474,7 @@ Zhihu（知乎）：https://github.com/zhihu
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -491,10 +493,8 @@ Zhihu（知乎）：https://github.com/zhihu
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -509,10 +509,6 @@ Zhihu（知乎）：https://github.com/zhihu
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="本站目前运行在我购买的搬瓦工 https:&#x2F;&#x2F;bwh1.net 的Centos6系统上，主要提供ShadowSocksR服务、AMH面板和WordPress服务。AMH是WordPress运行环境，WordPress是本站Blog的程序框架。 时过境迁，本站已经服役2年多的时间，记录着我的技术笔记。 最近这几天打算更换新的操作系统，启用Debian系统，这样我就可以使用谷歌的BBR https:&#x2F;">
@@ -161,7 +160,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -203,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -244,11 +245,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本站目前运行在我购买的搬瓦工 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://bandwagonhost.com/aff.php?aff=40408">https://bwh1.net</a> 的Centos6系统上，主要提供ShadowSocksR服务、AMH面板和WordPress服务。AMH是WordPress运行环境，WordPress是本站Blog的程序框架。 时过境迁，本站已经服役2年多的时间，记录着我的技术笔记。 最近这几天打算更换新的操作系统，启用Debian系统，这样我就可以使用谷歌的BBR <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/google/bbr">https://github.com/google/bbr</a> 给链路加速、用牛逼哄哄的V2Ray <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/v2ray">http://huanglei.site/v2ray</a> 给我的iOS和MacOS设备全速FQ、同时仍然使用SSR <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a> 给我的路由器使用<a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/padavan-ssr">http://huanglei.site/padavan-ssr</a>，安装新的宝塔面板 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://bt.cn/">https://bt.cn</a> 和新版WordPress <a target="_blank" rel="external nofollow noopener noreferrer" href="https://cn.wordpress.org/txt-download">https://cn.wordpress.org/txt-download</a> 。 这么多服务每年仅仅需要支付121.88元人民币的VPS费用，软件部分全部免费，VPS每月提供550GB流量，每天Youtube也完全够用，VPS性能也还可以，CPU:1*CPU - Intel(R) Xeon(R) CPU E3-1275 v5 @ 3.60GHz ；内存：256M ；硬盘：12.24G；huanglei.site这个国际顶级域名首年9元人民币，续费80元5年，2021年11月8号到期，这个域名除了用作本站的解析还承担了我的个人邮箱的解析。域名加服务器每年一共137.88元人民币。 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://ip.cn/index.php?ip=huanglei.site">https://ip.cn/index.php?ip=huanglei.site</a> 显示我的服务器物理地址在GeoIP: Los Angeles, California, United States IT7 Networks 洛杉矶，加利福尼亚，美国IT7机房。所以也不需要国内备案，如果被墙，也可以免费更换机房和ip，然后更改一下域名解析 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://account.aliyun.com/login/login.htm">https://account.aliyun.com/login/login.htm</a> ，就又复活了。 另外，我在谷歌云 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://cloud.google.com/free">https://cloud.google.com/free</a> 也申请了VPC，用信用卡获赠了300美金一年的使用权，同样的系统和软件也一模一样做了个备份，用于容灾和切换使用，网速哪个快用哪个。2019年1月6日过期，可有可无的存在。 接下来详细说一下，我是怎么做的：</p>
+        <p>本站目前运行在我购买的搬瓦工 <a target="_blank" rel="noopener" href="https://bandwagonhost.com/aff.php?aff=40408">https://bwh1.net</a> 的Centos6系统上，主要提供ShadowSocksR服务、AMH面板和WordPress服务。AMH是WordPress运行环境，WordPress是本站Blog的程序框架。 时过境迁，本站已经服役2年多的时间，记录着我的技术笔记。 最近这几天打算更换新的操作系统，启用Debian系统，这样我就可以使用谷歌的BBR <a target="_blank" rel="noopener" href="https://github.com/google/bbr">https://github.com/google/bbr</a> 给链路加速、用牛逼哄哄的V2Ray <a target="_blank" rel="noopener" href="http://huanglei.site/v2ray">http://huanglei.site/v2ray</a> 给我的iOS和MacOS设备全速FQ、同时仍然使用SSR <a target="_blank" rel="noopener" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a> 给我的路由器使用<a target="_blank" rel="noopener" href="http://huanglei.site/padavan-ssr">http://huanglei.site/padavan-ssr</a>，安装新的宝塔面板 <a target="_blank" rel="noopener" href="https://bt.cn/">https://bt.cn</a> 和新版WordPress <a target="_blank" rel="noopener" href="https://cn.wordpress.org/txt-download">https://cn.wordpress.org/txt-download</a> 。 这么多服务每年仅仅需要支付121.88元人民币的VPS费用，软件部分全部免费，VPS每月提供550GB流量，每天Youtube也完全够用，VPS性能也还可以，CPU:1*CPU - Intel(R) Xeon(R) CPU E3-1275 v5 @ 3.60GHz ；内存：256M ；硬盘：12.24G；huanglei.site这个国际顶级域名首年9元人民币，续费80元5年，2021年11月8号到期，这个域名除了用作本站的解析还承担了我的个人邮箱的解析。域名加服务器每年一共137.88元人民币。 <a target="_blank" rel="noopener" href="https://ip.cn/index.php?ip=huanglei.site">https://ip.cn/index.php?ip=huanglei.site</a> 显示我的服务器物理地址在GeoIP: Los Angeles, California, United States IT7 Networks 洛杉矶，加利福尼亚，美国IT7机房。所以也不需要国内备案，如果被墙，也可以免费更换机房和ip，然后更改一下域名解析 <a target="_blank" rel="noopener" href="https://account.aliyun.com/login/login.htm">https://account.aliyun.com/login/login.htm</a> ，就又复活了。 另外，我在谷歌云 <a target="_blank" rel="noopener" href="https://cloud.google.com/free">https://cloud.google.com/free</a> 也申请了VPC，用信用卡获赠了300美金一年的使用权，同样的系统和软件也一模一样做了个备份，用于容灾和切换使用，网速哪个快用哪个。2019年1月6日过期，可有可无的存在。 接下来详细说一下，我是怎么做的：</p>
 <span id="more"></span>
-<p>1、备份我原先的WordPress，主要就是备份wwwroot目录和mysql数据库，cd进入根目录下的home或者www，“tar -zcvf huangleiback.tar.gz wwwroot”备份，下载到本地，然后上传服务器后在目标目录“tar -xzvf huangleiback.tar.gz”，简单粗暴，数据库用phpmyadmin手动导入导出，也没什么技术含量。 2、购买搬瓦工的VPS <a target="_blank" rel="external nofollow noopener noreferrer" href="https://bwh1.net/">https://bwh1.net</a> 和谷歌云的VPC <a target="_blank" rel="external nofollow noopener noreferrer" href="https://cloud.google.com/free">https://cloud.google.com/free</a> 这我就不详细说了，百度有很多教程。 3、给新的VPS安装Debian8系统，然后： <strong><code>apt-get update -y &amp;&amp; apt-get install curl -y</code></strong> <code>**bash &lt;(curl -s -L https://233blog.com/v2ray.sh)**</code> #V2Ray安装参数参考：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://233blog.com/post/16">https://233blog.com/post/16</a> <strong><code>wget -O ssr.sh http://huanglei.site/shadowsocksR.sh &amp;&amp; sh ssr.sh</code></strong> #SSR安装参数参考：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a></p>
+<p>1、备份我原先的WordPress，主要就是备份wwwroot目录和mysql数据库，cd进入根目录下的home或者www，“tar -zcvf huangleiback.tar.gz wwwroot”备份，下载到本地，然后上传服务器后在目标目录“tar -xzvf huangleiback.tar.gz”，简单粗暴，数据库用phpmyadmin手动导入导出，也没什么技术含量。 2、购买搬瓦工的VPS <a target="_blank" rel="noopener" href="https://bwh1.net/">https://bwh1.net</a> 和谷歌云的VPC <a target="_blank" rel="noopener" href="https://cloud.google.com/free">https://cloud.google.com/free</a> 这我就不详细说了，百度有很多教程。 3、给新的VPS安装Debian8系统，然后： <strong><code>apt-get update -y &amp;&amp; apt-get install curl -y</code></strong> <code>**bash &lt;(curl -s -L https://233blog.com/v2ray.sh)**</code> #V2Ray安装参数参考：<a target="_blank" rel="noopener" href="https://233blog.com/post/16">https://233blog.com/post/16</a> <strong><code>wget -O ssr.sh http://huanglei.site/shadowsocksR.sh &amp;&amp; sh ssr.sh</code></strong> #SSR安装参数参考：<a target="_blank" rel="noopener" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a></p>
 <p><code>**wget -O bbr.sh https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh &amp;&amp; sh bbr.sh**</code></p>
-<p>#用bbr加速v2ray的端口 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bandwagonhost.net/bandwagonhost-bbr.html">https://www.bandwagonhost.net/bandwagonhost-bbr.html</a> #bbr还可以参考：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bandwagonhost.net/1082.html">https://www.bandwagonhost.net/1082.html</a> <code>**wget -O bt.sh http://huanglei.site/bt.sh &amp;&amp; sh bt.sh**</code> #宝塔bt安装参数参考：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://docs.bt.cn/431320">http://docs.bt.cn/431320</a> #或者# wget -O install.sh <a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.bt.cn/install/install-ubuntu.sh">http://download.bt.cn/install/install-ubuntu.sh</a> &amp;&amp; bash install.sh 4、面板环境安装和配置<a target="_blank" rel="external nofollow noopener noreferrer" href="http://docs.bt.cn/424211">http://docs.bt.cn/424211</a> 面板操作指令<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bt.cn/btcode.html">https://www.bt.cn/btcode.html</a> 5、把事先备份好的备份或者新下载的WordPress上传后配置，WordPress就大功告成了。 我购买的VPS内存只有256M，所以安装完这么多服务后，内存是很吃紧的，去bt面板里配置一下PHP，把并发调低一些，内存就够用了。 至此，服务器安装了V2Ray和BBR，iOS和MacOS可以全速FQ <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/v2ray">http://huanglei.site/v2ray</a> ，V2Ray只能选择安装SS，而我比较喜欢SSR <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a> ，所以单独安装了SSR，SSR能用在我的路由器上 <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/padavan-ssr">http://huanglei.site/padavan-ssr</a> ，同时用宝塔面板配置LNMP环境安装WordPress为我提供Blog服务。 其实小众的梯子不少，为什么用小众，就是因为小众的梯子被墙的几率比较小，速度会比较快，当然，如果用的人多啦，也就不小众了，那我会找更多小众的来使用。手机平板和电脑上使用全速梯子很重要，而路由器多数情况是给家里不愿意安装客户端的设备和来宾使用的。</p>
+<p>#用bbr加速v2ray的端口 <a target="_blank" rel="noopener" href="https://www.bandwagonhost.net/bandwagonhost-bbr.html">https://www.bandwagonhost.net/bandwagonhost-bbr.html</a> #bbr还可以参考：<a target="_blank" rel="noopener" href="https://www.bandwagonhost.net/1082.html">https://www.bandwagonhost.net/1082.html</a> <code>**wget -O bt.sh http://huanglei.site/bt.sh &amp;&amp; sh bt.sh**</code> #宝塔bt安装参数参考：<a target="_blank" rel="noopener" href="http://docs.bt.cn/431320">http://docs.bt.cn/431320</a> #或者# wget -O install.sh <a target="_blank" rel="noopener" href="http://download.bt.cn/install/install-ubuntu.sh">http://download.bt.cn/install/install-ubuntu.sh</a> &amp;&amp; bash install.sh 4、面板环境安装和配置<a target="_blank" rel="noopener" href="http://docs.bt.cn/424211">http://docs.bt.cn/424211</a> 面板操作指令<a target="_blank" rel="noopener" href="https://www.bt.cn/btcode.html">https://www.bt.cn/btcode.html</a> 5、把事先备份好的备份或者新下载的WordPress上传后配置，WordPress就大功告成了。 我购买的VPS内存只有256M，所以安装完这么多服务后，内存是很吃紧的，去bt面板里配置一下PHP，把并发调低一些，内存就够用了。 至此，服务器安装了V2Ray和BBR，iOS和MacOS可以全速FQ <a target="_blank" rel="noopener" href="http://huanglei.site/v2ray">http://huanglei.site/v2ray</a> ，V2Ray只能选择安装SS，而我比较喜欢SSR <a target="_blank" rel="noopener" href="http://huanglei.site/shadowsocksrinstall">http://huanglei.site/shadowsocksrinstall</a> ，所以单独安装了SSR，SSR能用在我的路由器上 <a target="_blank" rel="noopener" href="http://huanglei.site/padavan-ssr">http://huanglei.site/padavan-ssr</a> ，同时用宝塔面板配置LNMP环境安装WordPress为我提供Blog服务。 其实小众的梯子不少，为什么用小众，就是因为小众的梯子被墙的几率比较小，速度会比较快，当然，如果用的人多啦，也就不小众了，那我会找更多小众的来使用。手机平板和电脑上使用全速梯子很重要，而路由器多数情况是给家里不愿意安装客户端的设备和来宾使用的。</p>
 
     </div>
 
@@ -272,7 +273,7 @@
     <a href="https://maxlay.github.io/2018/04/22/wordpress/" title="一步步搭建我的WordPress">https://maxlay.github.io/2018/04/22/wordpress/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -356,7 +357,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -379,26 +381,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -437,7 +439,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -456,10 +458,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -474,10 +474,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

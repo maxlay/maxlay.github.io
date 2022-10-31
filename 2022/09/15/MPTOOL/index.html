@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="前天买的R66S软路由今天到货了，预料之中的好，先用两天看看稳定性再讲。我把它放光猫后面，让它PPPoe、DHCP、DNS、OpenClash，晚一点再玩玩Docker。原先的三台路由直接改成AP模式，用千兆交换机接在软路由的LAN口上。 《我的数字资产》  开篇提到:2022年3月15日在 JD买了一块512G的海康SSD硬盘（281.8元）。买这块SSD的原因是2012年买的MacMini">
@@ -165,7 +164,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -207,7 +208,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,7 +249,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p align="center"><audio controls src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/09/15/MPTOOL/result.mp3"></audio></p>
+        <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/09/15/MPTOOL/result.mp3"></audio></p>
 
 <p>前天买的R66S软路由今天到货了，预料之中的好，先用两天看看稳定性再讲。我把它放光猫后面，让它PPPoe、DHCP、DNS、OpenClash，晚一点再玩玩Docker。原先的三台路由直接改成AP模式，用千兆交换机接在软路由的LAN口上。</p>
 <p><a href="https://maxlay.github.io/2022/08/09/%E6%88%91%E7%9A%84%E6%95%B0%E5%AD%97%E8%B5%84%E4%BA%A7/">《我的数字资产》</a></p>
@@ -259,9 +260,9 @@
 <span id="more"></span>
 
 <h4 id="这里聊一下抢救的思路："><a href="#这里聊一下抢救的思路：" class="headerlink" title="这里聊一下抢救的思路："></a>这里聊一下抢救的思路：</h4><p>1、拆开看下板子有没有什么地方脱焊，如果焊点都没有什么问题，那多半是可以通过厂家的“量产工具”再生的。但是量产工具每个厂甚至每个系列都是不同的，要根据你SSD的主控和颗粒来查找，量产过的SSD就像刚从厂里出来的一样，你还需要分区和格式化。</p>
-<p>2、我的这款ShineDisk480G的主控是YS9083XT，深圳得一微电子。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8413.jpeg" style="zoom: 10%;"><br>闪存颗粒是6颗PFH18 -37AF，美光大S，AF降级片。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8414.jpeg" style="zoom:10%;"><br>知道主控和颗粒名称后，就可以找对应工厂的“量产工具”(USB DISK PRODUCTION TOOL，简称是PDT)。怎么找？用谷歌找！</p>
-<p>3、幸运的是，我在<a target="_blank" rel="external nofollow noopener noreferrer" href="https://xfjportal.com/">https://xfjportal.com/</a> 找到了它的量产工具：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://xfjportal.com/wp-content/uploads/2021/09/YS9083XT_V8.00.00.16.766_FW190402.rar">YS9083XT_V8.00.00.16.766_FW190402</a></p>
-<p>4、我这块SSD开机还能认盘，如果开机不认盘，可以用镊子短接后开机，每块SSD短接的焊点位都不同，可以去<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.upantool.com/">https://www.upantool.com/</a> 碰碰运气。</p>
+<p>2、我的这款ShineDisk480G的主控是YS9083XT，深圳得一微电子。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8413.jpeg" style="zoom: 10%;" /><br>闪存颗粒是6颗PFH18 -37AF，美光大S，AF降级片。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8414.jpeg" style="zoom:10%;" /><br>知道主控和颗粒名称后，就可以找对应工厂的“量产工具”(USB DISK PRODUCTION TOOL，简称是PDT)。怎么找？用谷歌找！</p>
+<p>3、幸运的是，我在<a target="_blank" rel="noopener" href="https://xfjportal.com/">https://xfjportal.com/</a> 找到了它的量产工具：<a target="_blank" rel="noopener" href="https://xfjportal.com/wp-content/uploads/2021/09/YS9083XT_V8.00.00.16.766_FW190402.rar">YS9083XT_V8.00.00.16.766_FW190402</a></p>
+<p>4、我这块SSD开机还能认盘，如果开机不认盘，可以用镊子短接后开机，每块SSD短接的焊点位都不同，可以去<a target="_blank" rel="noopener" href="https://www.upantool.com/">https://www.upantool.com/</a> 碰碰运气。</p>
 <p>5、USB连好硬盘，打开“量产工具”，设置好参数，点“开始”，等5分钟，提示修复成功。</p>
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/09/IMG_8415.png" alt="ShineDisk480G的参数是这样的"></p>
 <p>6、打开DiskGenius，分区和格式化。结束！</p>
@@ -288,7 +289,7 @@
     <a href="https://maxlay.github.io/2022/09/15/MPTOOL/" title="修复ShineDisk480G硬盘">https://maxlay.github.io/2022/09/15/MPTOOL/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -373,7 +374,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -396,26 +398,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -454,7 +456,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -473,10 +475,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -491,10 +491,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

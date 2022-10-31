@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：http:&#x2F;&#x2F;www.miwifi.com&#x2F;miwifi_download.html 2、小米SSH权限获取：https:&#x2F;&#x2F;d.miwifi.com&#x2F;rom&#x2F;ssh 3、Bootloader：https:&#x2F;&#x2F;breed.hackpascal.net 4、Padavan：http:&#x2F;&#x2F;opt">
@@ -161,7 +160,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -203,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -244,21 +245,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 2、小米SSH权限获取：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://d.miwifi.com/rom/ssh?userId=">https://d.miwifi.com/rom/ssh</a> 3、Bootloader：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://breed.hackpascal.net/">https://breed.hackpascal.net</a> 4、Padavan：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://opt.cn2qq.com/padavan">http://opt.cn2qq.com/padavan</a> 原理无外乎就是先获得SSH权限，用root账号登录后刷入Bootloader，然后连电脑线刷Padavan。</p>
+        <p>为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：<a target="_blank" rel="noopener" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 2、小米SSH权限获取：<a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh?userId=">https://d.miwifi.com/rom/ssh</a> 3、Bootloader：<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net</a> 4、Padavan：<a target="_blank" rel="noopener" href="http://opt.cn2qq.com/padavan">http://opt.cn2qq.com/padavan</a> 原理无外乎就是先获得SSH权限，用root账号登录后刷入Bootloader，然后连电脑线刷Padavan。</p>
 <span id="more"></span>
 <h2 id="解鎖小米路由器SSH功能"><a href="#解鎖小米路由器SSH功能" class="headerlink" title="解鎖小米路由器SSH功能"></a>解鎖小米路由器SSH功能</h2><ol>
 <li>確保你的小米路由器已綁定小米賬號，且在Chrome 登入</li>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 這里ROM 去下載 <em><strong>開發版，登录web后台，刷入下载好的开发版固件，去下面站点领取密码。</strong></em></li>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://d.miwifi.com/rom/ssh">https://d.miwifi.com/rom/ssh</a> ，領取你的ssh 密碼，用戶名: root，同时，下载对应提供的MIWIFI.bin的升级包到FAT16格式的U盘根目录上，插上U盘，断电，按住reset插电启动，等黄灯闪烁后放开，等重启之后，就可以SSH登录路由器了。获得SSH权限的方法也可以参考： <a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/go/root">http://huanglei.site/go/root</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 這里ROM 去下載 <em><strong>開發版，登录web后台，刷入下载好的开发版固件，去下面站点领取密码。</strong></em></li>
+<li><a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh">https://d.miwifi.com/rom/ssh</a> ，領取你的ssh 密碼，用戶名: root，同时，下载对应提供的MIWIFI.bin的升级包到FAT16格式的U盘根目录上，插上U盘，断电，按住reset插电启动，等黄灯闪烁后放开，等重启之后，就可以SSH登录路由器了。获得SSH权限的方法也可以参考： <a target="_blank" rel="noopener" href="http://huanglei.site/go/root">http://huanglei.site/go/root</a></li>
 </ol>
-<h2 id="下載-Breed-部分"><a href="#下載-Breed-部分" class="headerlink" title="下載 Breed 部分"></a>下載 Breed 部分</h2><p>下載地址：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://breed.hackpascal.net/">https://breed.hackpascal.net/</a>  (搜尋<a target="_blank" rel="external nofollow noopener noreferrer" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">breed-mt7621-xiaomi-r3g.bin</a>)</p>
+<h2 id="下載-Breed-部分"><a href="#下載-Breed-部分" class="headerlink" title="下載 Breed 部分"></a>下載 Breed 部分</h2><p>下載地址：<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net/</a>  (搜尋<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">breed-mt7621-xiaomi-r3g.bin</a>)</p>
 <ol>
 <li><p>用ssh 進入 <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#x38;&#46;&#51;&#49;&#x2e;&#x31;">&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#x38;&#46;&#51;&#49;&#x2e;&#x31;</a></p>
 </li>
-<li><p>cd &#x2F;tmp &amp;&amp; wget <a target="_blank" rel="external nofollow noopener noreferrer" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin</a></p>
+<li><p>cd &#x2F;tmp &amp;&amp; wget <a target="_blank" rel="noopener" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin</a></p>
 </li>
 <li><p>或者用终端上传bin文件：</p>
-<p>scp &#x2F;Users&#x2F;huanglei&#x2F;Desktop&#x2F;breed-mt7621-xiaomi-r3g.bin <a href="mailto:root@192.168.31.1" rel="external nofollow noopener noreferrer" target="_blank">root@192.168.31.1</a>:&#x2F;tmp&#x2F;breed-mt7621-xiaomi-r3g.bin</p>
+<p>scp &#x2F;Users&#x2F;huanglei&#x2F;Desktop&#x2F;breed-mt7621-xiaomi-r3g.bin <a href="mailto:root@192.168.31.1">root@192.168.31.1</a>:&#x2F;tmp&#x2F;breed-mt7621-xiaomi-r3g.bin</p>
 </li>
 <li><p>mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader</p>
 </li>
@@ -273,7 +274,7 @@
 </ol>
 <h2 id="備份小米固件-x2F-刷入Padavan固件"><a href="#備份小米固件-x2F-刷入Padavan固件" class="headerlink" title="備份小米固件&#x2F;刷入Padavan固件"></a>備份小米固件&#x2F;刷入Padavan固件</h2><p>Breed Web 控制台依次选择：固件更新 -&gt; 常规固件 -&gt; 勾选固件复选框 -&gt; 浏览，选择上一步下载好的 Padavan 固件上传，刷入搞定！ 注意，此时在启动方式里面选择的是普通固件，如果想刷回小米原厂固件，进入“固件启动设置页面”，将固件类型选择为“小米 Mini”保存，然后就可以完美启动小米 Mini 原厂固件了，而且可以使用串口 (TTL) 登录。</p>
 <ul>
-<li>下載地址：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://opt.cn2qq.com/padavan/MI-R3G_3.4.3.9-099.trx">MI-R3G_3.4.3.9-099.trx</a></li>
+<li>下載地址：<a target="_blank" rel="noopener" href="http://opt.cn2qq.com/padavan/MI-R3G_3.4.3.9-099.trx">MI-R3G_3.4.3.9-099.trx</a></li>
 </ul>
 <p>Padavan新的設定如下：Router IP: 192.168.123.1  User&#x2F;Password: admin</p>
 
@@ -299,7 +300,7 @@
     <a href="https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/" title="小米路由3G刷Padavan固件">https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -384,7 +385,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -407,26 +409,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -465,7 +467,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -484,10 +486,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -502,10 +502,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   

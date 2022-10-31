@@ -14,11 +14,10 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="标题可能起大了，这几个月来一直没写文章，是因为懒，其实这段时间，我玩的东西还真的不少，我也有考虑过做视频，来替代本Wordpress。 家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「http:&#x2F;&#x2F;huanglei.site&#x2F;?s&#x3D;padavan」来实现SMB服务，如果你不需要AdGuard Home ，我可能更推">
@@ -164,7 +163,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -206,7 +207,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/./logo.png">
       <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,16 +249,16 @@
 
       
         <p>标题可能起大了，这几个月来一直没写文章，是因为懒，其实这段时间，我玩的东西还真的不少，我也有考虑过做视频，来替代本Wordpress。</p>
-<p>家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「<a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a>」来实现SMB服务，如果你不需要<a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a> ，我可能更推荐Hanwckf的固件「<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/hanwckf/rt-n56u/releases">https://github.com/hanwckf/rt-n56u/releases</a>」，比Padavan的固件「<a target="_blank" rel="external nofollow noopener noreferrer" href="https://opt.cn2qq.com/padavan">https://opt.cn2qq.com/padavan</a>」更加小巧，用来SMB更稳定，网上也有Padavan和Hanwckf固件的网速对比。同样的硬件刷不同的固件，因为芯片的驱动程序和算法的不同，居然网速和稳定性会有很大差别，太玄幻了。另外，路由的USB口连接一个USB3扩展分线器，分线器上插了一个被格式化成EXT4的4G容量的2.0U盘用来opt，另外再插两个双盘位的USB3.0的硬盘盒，四块被格式化成EXFAT的2.0T容量的WD3.5寸硬盘用来存数据。这样做，防止频繁的opt调用机械硬盘，机械硬盘在不使用时可以休眠减少损耗。opt是用来开<a target="_blank" rel="external nofollow noopener noreferrer" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>等程序的，刷Padavan的魅力就在opt。</p>
+<p>家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「<a target="_blank" rel="noopener" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a>」来实现SMB服务，如果你不需要<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a> ，我可能更推荐Hanwckf的固件「<a target="_blank" rel="noopener" href="https://github.com/hanwckf/rt-n56u/releases">https://github.com/hanwckf/rt-n56u/releases</a>」，比Padavan的固件「<a target="_blank" rel="noopener" href="https://opt.cn2qq.com/padavan">https://opt.cn2qq.com/padavan</a>」更加小巧，用来SMB更稳定，网上也有Padavan和Hanwckf固件的网速对比。同样的硬件刷不同的固件，因为芯片的驱动程序和算法的不同，居然网速和稳定性会有很大差别，太玄幻了。另外，路由的USB口连接一个USB3扩展分线器，分线器上插了一个被格式化成EXT4的4G容量的2.0U盘用来opt，另外再插两个双盘位的USB3.0的硬盘盒，四块被格式化成EXFAT的2.0T容量的WD3.5寸硬盘用来存数据。这样做，防止频繁的opt调用机械硬盘，机械硬盘在不使用时可以休眠减少损耗。opt是用来开<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>等程序的，刷Padavan的魅力就在opt。</p>
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/11/WechatIMG4-1024x631.jpeg"></p>
 <span id="more"></span>
 <p>4块2.0T的硬盘根目录要建两个空文件，一个起名“Android”用来防止小米电视和小米盒子等安卓盒子连接SMB硬盘后悄悄建立Android目录，同样，为了防止路由在机械硬盘建立opt目录，也建一个“opt”的空文件。如果觉得碍眼，可以设置属性隐藏文件。</p>
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/11/FireShot-Capture-021-MI-R3G-Wireless-Router-%E5%85%B6%E4%BB%96%E8%AE%BE%E7%BD%AE-10.1.1.1-630x1024.png"></p>
 <p>为了减少硬盘的损耗，我设置成硬盘超时半小时休眠，而且，其实ORICO的硬盘盒本来也会15分钟自动休眠，平常不用的时候，硬盘是通电不启动状态，开始使用时会有几十秒的启动时间，家用，要求就不那么高了。</p>
 <p>测速方面，5GHZ的wifi连接下，写入大概是12M&#x2F;S，读取大概是20M&#x2F;S，基本上和我的200M移动光宽带持平，在YouTube上下载的4K视频可以流畅播放，加载时间也完全可以忍受。</p>
-<p>MacOS的SMB网络看片，我用iiNA「<a target="_blank" rel="external nofollow noopener noreferrer" href="https://iina.io/">https://iina.io</a>」</p>
+<p>MacOS的SMB网络看片，我用iiNA「<a target="_blank" rel="noopener" href="https://iina.io/">https://iina.io</a>」</p>
 <p>iOS和iPadOS的SMB网络看片，我用nPlayer，共享正版的安装方法：</p>
-<p>先安装Panda Helper「<a target="_blank" rel="external nofollow noopener noreferrer" href="https://m.pandahelp.vip/regular?s=appzyz">https://m.pandahelp.vip/regular?s=appzyz</a>」</p>
+<p>先安装Panda Helper「<a target="_blank" rel="noopener" href="https://m.pandahelp.vip/regular?s=appzyz">https://m.pandahelp.vip/regular?s=appzyz</a>」</p>
 <p>然后在Panda Helper的APP里搜索nPlayer安装。</p>
 <p>小米电视和小米盒子自带的视频，播放视频非常好用，不推荐安装第三方软件。</p>
 <p>我不用Android和windows，所以没办法推荐软件。</p>
@@ -284,7 +285,7 @@
     <a href="https://maxlay.github.io/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/" title="我的家庭入门级NAS搭建">https://maxlay.github.io/2019/11/08/我的家庭入门级nas搭建/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -368,7 +369,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="HuangLei" src="/./logo.png">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
   <p class="site-author-name" itemprop="name">HuangLei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -391,26 +393,26 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -449,7 +451,7 @@
       <a href="https://maxlay.github.io/tv.txt" target="_blank">zFuse</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">kuTvv</a> |
       <a href="https://maxlay.github.io/tv.m3u" target="_blank">VLC</a> |
-      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank" rel="external nofollow noopener noreferrer">Clash & ShadowRocket</a> |
+      <a href="clash://install-config?url=https://suo.yt/WnmRgE9" target="_blank">Clash & ShadowRocket</a> |
       <a href="https://maxlay.github.io/aria2" target="_blank">aria2</a> 
  
   </div>
@@ -468,10 +470,8 @@
   </div>
 
   
-  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -486,10 +486,6 @@
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-    <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
