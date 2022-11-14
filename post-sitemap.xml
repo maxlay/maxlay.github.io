@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/11/15/harvard/</loc>
+        <lastmod>2022-11-14T05:59:55.024Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/11/14/stanford/</loc>
+        <lastmod>2022-11-14T05:59:14.855Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2018/02/09/iphonexfastcharge/</loc>
         <lastmod>2022-11-14T05:38:48.718Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -339,14 +355,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/14/%E5%90%88%E5%90%8C%E7%A4%BA%E8%8C%83%E6%96%87%E6%9C%AC%E5%BA%93/</loc>
         <lastmod>2022-11-14T05:15:55.445Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/11/14/stanford/</loc>
-        <lastmod>2022-11-14T05:15:25.263Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
