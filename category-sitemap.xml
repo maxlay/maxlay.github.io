@@ -9,8 +9,29 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/categories/%25E4%25B9%25B0%25E8%25B4%25A7/</loc>
+        <lastmod>2022-11-14T05:38:48.718Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/categories/%25E6%258E%25A8%25E8%258D%2590/</loc>
-        <lastmod>2022-11-14T05:22:27.677Z</lastmod>
+        <lastmod>2022-11-14T05:38:08.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/categories/%25E5%25B7%25A5%25E4%25BD%259C/</loc>
+        <lastmod>2022-11-14T05:33:20.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/categories/%25E5%25AD%25A6%25E4%25B9%25A0/</loc>
+        <lastmod>2022-11-14T05:32:12.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -30,29 +51,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/categories/%25E5%25AD%25A6%25E4%25B9%25A0/</loc>
-        <lastmod>2022-11-14T05:19:07.931Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/categories/%25E5%25B7%25A5%25E4%25BD%259C/</loc>
-        <lastmod>2022-11-14T05:15:55.445Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/categories/%25E4%25B9%25B0%25E8%25B4%25A7/</loc>
-        <lastmod>2022-11-14T05:09:07.014Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/categories/%25E7%2588%25B1%25E5%25A5%25BD/</loc>
-        <lastmod>2022-11-14T04:49:33.069Z</lastmod>
+        <lastmod>2022-11-14T04:49:33.058Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -9,6 +9,198 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2018/02/09/iphonexfastcharge/</loc>
+        <lastmod>2022-11-14T05:38:48.718Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2018/10/18/youtube-download/</loc>
+        <lastmod>2022-11-14T05:38:08.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2018/12/15/cloudflareweb/</loc>
+        <lastmod>2022-11-14T05:37:38.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2019/02/11/freedownloadmanager/</loc>
+        <lastmod>2022-11-14T05:37:19.033Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2019/07/17/%E7%BB%BF%E8%81%94mfi%E8%8B%B9%E6%9E%9Cpd%E5%BF%AB%E5%85%85/</loc>
+        <lastmod>2022-11-14T05:36:41.778Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2019/08/02/shadowrocket/</loc>
+        <lastmod>2022-11-14T05:36:14.851Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/</loc>
+        <lastmod>2022-11-14T05:36:01.366Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/06/28/shellclash/</loc>
+        <lastmod>2022-11-14T05:35:38.982Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/06/29/worldwide-iptv-channels/</loc>
+        <lastmod>2022-11-14T05:35:15.339Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/07/16/ipv6/</loc>
+        <lastmod>2022-11-14T05:34:58.519Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/07/26/youtube-ad/</loc>
+        <lastmod>2022-11-14T05:34:43.262Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/04/18/%E4%BB%8EManjaro%E5%88%B0Fydeos/</loc>
+        <lastmod>2022-11-14T05:34:11.894Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/07/28/aria2/</loc>
+        <lastmod>2022-11-14T05:33:49.464Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/07/29/trackerslist/</loc>
+        <lastmod>2022-11-14T05:33:35.887Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/01/hexo/</loc>
+        <lastmod>2022-11-14T05:33:20.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/19/TimeMachine/</loc>
+        <lastmod>2022-11-14T05:33:05.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/27/StarlinkV2/</loc>
+        <lastmod>2022-11-14T05:32:38.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/09/apple-ml-neuman/</loc>
+        <lastmod>2022-11-14T05:32:12.620Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/11/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E8%BF%9B%E8%B4%A7%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-11-14T05:31:56.318Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/20/HomeAssistant/</loc>
+        <lastmod>2022-11-14T05:31:39.118Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/22/YouTube/</loc>
+        <lastmod>2022-11-14T05:31:19.782Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/10/22/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E7%94%B5%E5%95%86%E4%BA%BA%E7%9A%84%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-11-14T05:30:27.348Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/10/29/FFmpeg/</loc>
+        <lastmod>2022-11-14T05:29:49.210Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/10/30/qBittorrent%E5%A2%9E%E5%BC%BA%E7%89%88/</loc>
+        <lastmod>2022-11-14T05:29:32.438Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2013/09/09/%E4%B8%93%E5%88%A9%E6%90%9C%E7%B4%A2/</loc>
         <lastmod>2022-11-14T05:22:27.677Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -305,14 +497,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/</loc>
-        <lastmod>2022-11-14T04:49:33.069Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2016/06/16/switchresx/</loc>
         <lastmod>2022-11-14T04:49:33.058Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -369,14 +553,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2019/07/17/%E7%BB%BF%E8%81%94mfi%E8%8B%B9%E6%9E%9Cpd%E5%BF%AB%E5%85%85/</loc>
-        <lastmod>2022-11-14T04:49:32.994Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2019/02/24/%E4%BB%8A%E5%A4%A9%E6%83%B3%E9%9A%8F%E6%89%8B%E6%8B%8D%E6%8B%8D%E8%A7%86%E9%A2%91/</loc>
         <lastmod>2022-11-14T04:49:32.991Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -385,48 +561,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/08/19/TimeMachine/</loc>
-        <lastmod>2022-11-14T04:49:32.989Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/04/18/%E4%BB%8EManjaro%E5%88%B0Fydeos/</loc>
-        <lastmod>2022-11-14T04:49:32.985Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/20/HomeAssistant/</loc>
-        <lastmod>2022-11-14T04:49:32.981Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2018/02/09/iphonexfastcharge/</loc>
-        <lastmod>2022-11-14T04:49:32.975Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2018/08/11/mercedes-benz/</loc>
         <lastmod>2022-11-14T04:49:32.955Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2018/10/18/youtube-download/</loc>
-        <lastmod>2022-11-14T04:49:32.950Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -443,22 +579,6 @@
     <url>
         <loc>https://maxlay.github.io/2019/01/01/huzhou/</loc>
         <lastmod>2022-11-14T04:49:32.942Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2019/02/11/freedownloadmanager/</loc>
-        <lastmod>2022-11-14T04:49:32.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/29/FFmpeg/</loc>
-        <lastmod>2022-11-14T04:49:32.930Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -521,24 +641,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/07/28/aria2/</loc>
-        <lastmod>2022-11-14T04:49:32.881Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/</loc>
         <lastmod>2022-11-14T04:49:32.877Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/09/apple-ml-neuman/</loc>
-        <lastmod>2022-11-14T04:49:32.875Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -571,22 +675,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/24/nextrocket/</loc>
         <lastmod>2022-11-14T04:49:32.852Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/11/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E8%BF%9B%E8%B4%A7%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-11-14T04:49:32.847Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/08/01/hexo/</loc>
-        <lastmod>2022-11-14T04:49:32.842Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -633,24 +721,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/10/22/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E7%94%B5%E5%95%86%E4%BA%BA%E7%9A%84%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-11-14T04:49:32.818Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2022/09/08/iPhone14/</loc>
         <lastmod>2022-11-14T04:49:32.816Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/22/YouTube/</loc>
-        <lastmod>2022-11-14T04:49:32.809Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -689,24 +761,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2021/07/26/youtube-ad/</loc>
-        <lastmod>2022-11-14T04:49:32.778Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2022/09/15/MPTOOL/</loc>
         <lastmod>2022-11-14T04:49:32.769Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/07/16/ipv6/</loc>
-        <lastmod>2022-11-14T04:49:32.767Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -723,14 +779,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/10/30/a6300-update/</loc>
         <lastmod>2022-11-14T04:49:32.743Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2019/08/02/shadowrocket/</loc>
-        <lastmod>2022-11-14T04:49:32.739Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -763,14 +811,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/11/08/%E6%9C%88%E5%85%A8%E9%A3%9F/</loc>
         <lastmod>2022-11-14T04:49:32.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/30/qBittorrent%E5%A2%9E%E5%BC%BA%E7%89%88/</loc>
-        <lastmod>2022-11-14T04:49:32.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -811,14 +851,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/10/24/12315/</loc>
         <lastmod>2022-11-14T04:49:32.701Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/06/28/shellclash/</loc>
-        <lastmod>2022-11-14T04:49:32.696Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -881,14 +913,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/07/29/trackerslist/</loc>
-        <lastmod>2022-11-14T04:49:32.642Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2019/04/25/%E5%9F%BA%E5%B8%A6%E9%AB%98%E9%80%9A%E8%BF%98%E6%98%AF%E8%8B%B1%E7%89%B9%E5%B0%94/</loc>
         <lastmod>2022-11-14T04:49:32.640Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -937,14 +961,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/08/27/StarlinkV2/</loc>
-        <lastmod>2022-11-14T04:49:32.615Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2019/08/19/%E5%B0%8F%E7%B1%B3%E7%9B%92%E5%AD%90%E5%9B%BA%E4%BB%B6%E9%99%8D%E7%BA%A7/</loc>
         <lastmod>2022-11-14T04:49:32.613Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -985,14 +1001,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2021/06/29/worldwide-iptv-channels/</loc>
-        <lastmod>2022-11-14T04:49:32.587Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2018/10/31/macos-mojava-wallpapers/</loc>
         <lastmod>2022-11-14T04:49:32.582Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1011,14 +1019,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/12/25/byebyebandwagonhost/</loc>
         <lastmod>2022-11-14T04:49:32.572Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2018/12/15/cloudflareweb/</loc>
-        <lastmod>2022-11-14T04:49:32.570Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
