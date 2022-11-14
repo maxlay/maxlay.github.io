@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/11/14/stanford/</loc>
+        <lastmod>2022-11-14T04:33:17.069Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/22/Google/</loc>
+        <lastmod>2022-11-14T02:46:57.007Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/11/12/%E9%BB%91%E8%8B%B9%E6%9E%9C/</loc>
         <lastmod>2022-11-13T10:49:16.513Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -43,14 +59,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/10/12/%E4%B8%8A%E7%BD%91%E7%9A%84%E5%A7%BF%E5%8A%BF/</loc>
         <lastmod>2022-11-12T15:55:37.951Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/22/Google/</loc>
-        <lastmod>2022-11-12T15:54:17.057Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
