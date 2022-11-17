@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
+        <lastmod>2022-11-17T04:57:32.792Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/10/28/%E9%BB%91%E4%BA%9A%E5%BD%93/</loc>
         <lastmod>2022-11-17T04:23:35.687Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -859,14 +867,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/10/30/a6300-update/</loc>
         <lastmod>2022-11-14T04:49:32.743Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2016/06/16/github/</loc>
-        <lastmod>2022-11-14T04:49:32.736Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
