@@ -9,6 +9,54 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/11/16/DockerDesktop/</loc>
+        <lastmod>2022-11-20T06:55:19.785Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
+        <lastmod>2022-11-20T06:37:21.171Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/09/04/%E6%8E%A8%E8%8D%90%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-11-20T06:35:03.223Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/11/19/Charles/</loc>
+        <lastmod>2022-11-20T06:16:51.333Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-11-20T06:05:06.203Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/11/18/VMware/</loc>
+        <lastmod>2022-11-20T05:47:20.053Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/11/11/%E9%BB%91%E8%B1%B92/</loc>
         <lastmod>2022-11-17T05:45:12.699Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -57,24 +105,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-11-16T10:13:38.765Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2022/11/13/%E4%B8%AD%E5%9B%BD%E9%AB%98%E8%A1%80%E5%8E%8B%E4%B8%B4%E5%BA%8A%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/</loc>
         <lastmod>2022-11-16T09:31:32.030Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/11/16/DockerDesktop/</loc>
-        <lastmod>2022-11-16T08:54:36.275Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -459,14 +491,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/03/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E7%94%B5%E5%AD%90%E4%B9%A6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2022-11-14T05:13:58.623Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/04/%E6%8E%A8%E8%8D%90%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
-        <lastmod>2022-11-14T05:13:42.980Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1435,14 +1459,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/15/Tiktok/</loc>
         <lastmod>2022-11-14T04:49:04.524Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2021/07/05/%E6%88%91%E5%9C%A8%E7%94%A8%E7%9A%84%E7%BD%91%E7%9B%98/</loc>
-        <lastmod>2022-11-14T04:49:04.522Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
