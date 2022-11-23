@@ -109,20 +109,11 @@ Clarity4K,https://d3thiix3tzne5u.cloudfront.net/playlist2160p.m3u8
 湖州公共民生,http://live1.plus.hugd.com/ggpd1/playlist.m3u8
 德清新闻综合,http://live.yingxi.tv/channel1/sd/live.m3u8
 德清文化生活,http://live.yingxi.tv/channel2/sd/live.m3u8
-福州少儿,http://live.zohi.tv/video/s10001-sepd-4/index.m3u8?$超清1080P
-福州生活,http://live.zohi.tv/video/s10001-shpd-3/index.m3u8?$超清1080P
-福州影视,http://live.zohi.tv/video/s10001-yspd-2/index.m3u8?$超清1080P
-福州综合,http://live.zohi.tv/video/s10001-FZTV-1/index.m3u8?$超清1080P
 浙江钱江,http://hw-m-l.cztv.com/channels/lantian/channel02/1080p.m3u8?k=ace136d16e3700972b06cca5316b34d8&t=1577153432
 浙江6套,http://hw-m-l.cztv.com/channels/lantian/channel06/1080p.m3u8?k=7902d458851930a3cab9763349e1425c&t=1577153702
 浙江公共频道,http://hw-m-l.cztv.com/channels/lantian/channel07/1080p.m3u8?k=4812130c6c3788cf5c6a6ba64a47678c&t=1577153743
 浙江少儿频道,http://hw-m-l.cztv.com/channels/lantian/channel08/1080p.m3u8?k=1a7559a51eeb880b021619a07f463ac4&t=1577153787
 浙江国际,http://hw-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8?k=48877e6c28c2a0215eb8712eb48b888d&t=157715388
-杭州HTV-1,http://live.aikan.miguvideo.com/PLTV/88888888/224/3221229307/index.m3u8
-杭州HTV-2,http://live.aikan.miguvideo.com/PLTV/88888888/224/3221229310/index.m3u8
-杭州HTV-3,http://live.aikan.miguvideo.com/PLTV/88888888/224/3221229313/index.m3u8
-杭州HTV-4,http://live.aikan.miguvideo.com/PLTV/88888888/224/3221229377/index.m3u8
-杭州HTV-5,http://live.aikan.miguvideo.com/PLTV/88888888/224/3221229316/index.m3u8
 萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
 余姚新闻综合,http://l.cztvcloud.com/channels/lantian/SXyuyao1/720p.m3u8
 余姚姚江文化,http://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
@@ -190,6 +181,8 @@ Clarity4K,https://d3thiix3tzne5u.cloudfront.net/playlist2160p.m3u8
 青田电视台,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
 ##
 ##央视##
+CCTV16-4K-SDR源,http://111.20.105.192:6610/000000001000/5000000008000023254/index.m3u8?channel-id=bestzb&Contentid=5000000008000023254&livemode=1&stbId=3
+CCTV16-4K-HLG源,http://27.36.62.163:9090/live/4010.m3u8
 CCTV-13新闻 (1080p),http://39.134.115.163:8080/PLTV/88888910/224/3221225638/index.m3u8
 CCTV-13新闻 (1080p),http://39.135.138.59:18890/PLTV/88888910/224/3221225638/index.m3u8
 CCTV-13新闻 (1080p),http://39.135.138.58:18890/PLTV/88888888/224/3221225638/index.m3u8
