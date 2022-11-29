@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="HomeKit是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的软路由部署Docker版的HomeAssistant实现HomeKit需要避很多坑，这里浅谈一下几个重点。 硬件首先我的软路由的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。  日常用MacOS版的SD Clone对TF卡刷固件和备份固件。 固件软路由的固件我选用flippy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HomeKit">
+<meta property="og:url" content="https://maxlay.github.io/2022/11/27/HomeKit/index.html">
+<meta property="og:site_name" content="Huanglei">
+<meta property="og:description" content="HomeKit是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的软路由部署Docker版的HomeAssistant实现HomeKit需要避很多坑，这里浅谈一下几个重点。 硬件首先我的软路由的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。  日常用MacOS版的SD Clone对TF卡刷固件和备份固件。 固件软路由的固件我选用flippy">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg">
+<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dockerman.jpeg">
+<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0024.jpeg">
+<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0023.jpeg">
+<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_9612.jpeg">
+<meta property="article:published_time" content="2022-11-27T02:54:08.000Z">
+<meta property="article:modified_time" content="2022-11-29T04:24:10.838Z">
+<meta property="article:author" content="HuangLei">
+<meta property="article:tag" content="Huanglei">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg">
+
+<link rel="canonical" href="https://maxlay.github.io/2022/11/27/HomeKit/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HomeKit | Huanglei</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbb0ba12b85ec26c4c55b8fa19381af9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Huanglei</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">I’m PADI No.1409AZ6094</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">248</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/27/HomeKit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HomeKit
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-27 10:54:08" itemprop="dateCreated datePublished" datetime="2022-11-27T10:54:08+08:00">2022-11-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>HomeKit</strong>是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>部署Docker版的<a href="https://maxlay.github.io/2022/09/20/HomeAssistant/">HomeAssistant</a>实现HomeKit需要避很多坑，这里浅谈一下几个重点。</p>
+<h5 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h5><p>首先我的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg"></p>
+<p>日常用MacOS版的SD Clone对TF卡刷固件和备份固件。</p>
+<h5 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h5><p><a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的固件我选用flippy大佬20221018第8版启用6.0内核的固件，在店犀牛公布的百度云里有，名称是：openwrt_rk3568_r66s_R22.10.10_k6.0.2-flippy-78+.7z  分享链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666">https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666</a> </p>
+<h5 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h5><p>这个OpenWRT固件的Docker是20.10.17版，且不用调整分区扩容，上手就能用。<br>镜像加速器可以用：<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">《Docker Desktop on Mac》</a>里提到的配置，拉取homeassistant&#x2F;home-assistant镜像大约10分钟可以搞定，然后新建容器的时候网络选HOSTS。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=&quot;HuangleiHASS&quot; --network=host -v /opt/docker/hassio:/config -e TZ=&quot;Asia/Shanghai&quot; homeassistant/home-assistant</span><br></pre></td></tr></table></figure>
+
+<p>去Docker Man里配置允许的端口：</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dockerman.jpeg"></p>
+<p>把8123、21063、21064、21065、51827都打开。</p>
+<p>然后去Docker对应容器的控制台里修改configuration.yaml文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/docker/hassio</span><br><span class="line">vi configuration.yaml</span><br></pre></td></tr></table></figure>
+<p>configuration.yaml里添加下面的内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="attr">server_port:</span> <span class="number">8123</span></span><br><span class="line">  <span class="attr">use_x_forwarded_for:</span> <span class="literal">True</span></span><br><span class="line">  <span class="attr">trusted_proxies:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">::1/128</span></span><br><span class="line">  <span class="attr">ip_ban_enabled:</span> <span class="literal">False</span></span><br><span class="line">  <span class="attr">login_attempts_threshold:</span> <span class="number">5</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">homekit:</span></span><br><span class="line">  <span class="attr">ip_address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+
+<p>ESC键，输入:wq 保存和退出。</p>
+<h5 id="Homeassistant"><a href="#Homeassistant" class="headerlink" title="Homeassistant"></a>Homeassistant</h5><p>启动容器里的Homeassistant，浏览器打开软路由ip的8123端口，因为用的是TF卡，读写都很慢，需要等，大约10分钟之后就会让你创建管理员身份并登陆。<br>然后像<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">《Docker Desktop on Mac》</a>里提到的那样<a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip">下载解压Xiaomi MIoT</a>，按<a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw">说明</a>把custom_components目录复制到Doker的&#x2F;opt&#x2F;docker&#x2F;hassio目录下（这里我是直接sftp到软路由来实现的），随后再登陆Homeassistant里添加集成，搜索安装Xiaomi MIoT和搜索安装HomeKit。</p>
+<h5 id="Xiaomi-MIoT"><a href="#Xiaomi-MIoT" class="headerlink" title="Xiaomi MIoT"></a>Xiaomi MIoT</h5><p>登陆配置Xiaomi MIoT里的小米米家账号可以自动同步“设备”，检查完整性，不完整可以多配置几次。</p>
+<h5 id="Homeassistant仪表盘"><a href="#Homeassistant仪表盘" class="headerlink" title="Homeassistant仪表盘"></a>Homeassistant仪表盘</h5><p>如果你想通过iPAD的Safari打开Homeassistant的仪表盘来日常控制设备也是可以的，也可以适当美化一下Homeassistant的仪表盘，自己按习惯的操作思路配置仪表盘，我既配置了仪表盘也启用了HomeKit。</p>
+<h5 id="HomeKit"><a href="#HomeKit" class="headerlink" title="HomeKit"></a>HomeKit</h5><p>用iOS或iPadOS里的家庭APP扫Homeassistant通知栏里的HASS Bridge：21064对应的二维码添加设备到HomeKit里，可以按设备属性新建房间来分类管理。也可以在家庭APP里添加自动化来创建设备的条件触发，怎么让自己觉得方便就怎么来。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0024.jpeg"></p>
+<p>也可以把iPad或者HomePod设置成中枢，手机脱离软路由网络环境也能继续控制家里的设备。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0023.jpeg"></p>
+<p>可以按自己的操作习惯把常用配件放在iOS或者iPadOS的电池下拉的“控制中心”里，实现系统级的管理设备。下拉点击，就像你平时调整音量和屏幕亮度那样方便。</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_9612.jpeg"></p>
+
+    </div>
+
+    
+    
+    
+    
+		
+	  	<div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+		
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>HuangLei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://maxlay.github.io/2022/11/27/HomeKit/" title="HomeKit">https://maxlay.github.io/2022/11/27/HomeKit/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/26/ProMovie/" rel="prev" title="ProMovie">
+      <i class="fa fa-chevron-left"></i> ProMovie
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+  
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">固件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Docker"><span class="nav-number">3.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Homeassistant"><span class="nav-number">4.</span> <span class="nav-text">Homeassistant</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Xiaomi-MIoT"><span class="nav-number">5.</span> <span class="nav-text">Xiaomi MIoT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Homeassistant%E4%BB%AA%E8%A1%A8%E7%9B%98"><span class="nav-number">6.</span> <span class="nav-text">Homeassistant仪表盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HomeKit"><span class="nav-number">7.</span> <span class="nav-text">HomeKit</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
+  <p class="site-author-name" itemprop="name">HuangLei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">248</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCrzS5Nrhk_vP489GNyD1VxQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCrzS5Nrhk_vP489GNyD1VxQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/e53787" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/e53787" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;e53787" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+  
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HuangLei</span>
+</div>
+  <div class="powered-by">    
+      <a href="https://maxlay.github.io/sitemap.xml" target="_blank">RSS</a> |
+      <a href="https://maxlay.github.io/aliyun.txt" target="_blank">AliyunPan</a> |
+      <a href="https://maxlay.github.io/999.json" target="_blank">BiuBiu</a>  |
+      <a href="https://maxlay.github.io/tv.m3u" target="_blank">ntPlayer</a> |
+      <a href="https://maxlay.github.io/sppstore" target="_blank">Store</a> |
+      <a href="https://maxlay.github.io/aria2" target="_blank">Aria2</a> 
+ 
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

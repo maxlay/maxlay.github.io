@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">247</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">248</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,87 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/17/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/17/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E5%88%86%E4%BA%AB/" class="post-title-link" itemprop="url">阿里云盘分享链接的集中管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-17 08:48:09" itemprop="dateCreated datePublished" datetime="2022-11-17T08:48:09+08:00">2022-11-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/17/阿里云盘分享/result.mp3"></audio></p>
+
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/aliyun.jpeg"></p>
+<p>阿里云盘不开会员，到期后因为没有剩余空间就无法保存别人分享的文件，虽然可以<a href="https://maxlay.github.io/2022/10/10/violentmonkey/">用插件来在线观看和直接下载别人分享的资源</a>，但不能集中管理，我们用户看重的是阿里云盘里的资源，而不是阿里云盘给的空间容量虚数，没有资源的空间容量毫无意义。<br>关于不开会员集中管理分享资源，我的解决方案是用<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">Mac桌面端Docker</a>一个<a href="https://maxlay.github.io/2022/09/17/alist/">alist</a>，用<a href="https://maxlay.github.io/2022/10/21/Fileball/">webdav挂载</a>来实现分享文件的集中管理，你将拥有一个<a href="https://maxlay.github.io/aliyun.txt">几乎无限容量大的只读资源库</a>，可以随时全速查询、在线观看和下载资源。唯一的缺点是如果某资源失效，对应的文件夹就无法使用，所以还是建议对具有收藏价值的资源做好下载保存。但又有多少资源是具备收藏价值的呢，况且大多数分享链接既然分享出来就不会设置时效，可以一直使用。我把日常搜集到的阿里分享资源链接汇集到一个文件里并常驻在本博客页脚，名字是“<a href="https://maxlay.github.io/aliyun.txt">AliyunPan</a>”，将不定期维护。</p>
+<h3 id="我搜集维护的阿里分享链接集："><a href="#我搜集维护的阿里分享链接集：" class="headerlink" title="我搜集维护的阿里分享链接集："></a>我搜集维护的阿里分享链接集：</h3><p><a href="https://maxlay.github.io/aliyun.txt">https://maxlay.github.io/aliyun.txt</a></p>
+<h4 id="Step1："><a href="#Step1：" class="headerlink" title="Step1："></a>Step1：</h4><p><a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/install/mac-install/">https://docs.docker.com/desktop/install/mac-install/</a><br>下载安装自己CPU对应版本的Docker Desktop on Mac</p>
+<h4 id="Step2："><a href="#Step2：" class="headerlink" title="Step2："></a>Step2：</h4><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/install/docker.html">https://alist.nn.ci/zh/guide/install/docker.html</a><br>安装发行版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name=&quot;alist&quot; xhofe/alist:latest</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3："><a href="#Step3：" class="headerlink" title="Step3："></a>Step3：</h4><p>查看管理员密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it alist ./alist admin</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step4"><a href="#Step4" class="headerlink" title="Step4:"></a>Step4:</h4><p><a target="_blank" rel="noopener" href="http://localhost:5244/@manage/storages">http://localhost:5244/@manage/storages</a><br>用管理员进入后台添加阿里云盘分享链接<br>需要填写刷新令牌、挂载路径和分享id这三个字段<br>刷新令牌获取说明在这里：<br><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html">https://alist.nn.ci/zh/guide/drivers/aliyundrive.html</a><br>其中挂载路径和分享id一致能方便后期管理，一目了然。<br>添加<a href="https://maxlay.github.io/aliyun.txt">AliyunPan</a>是体力活，一个一个得把分享链接S后面的数组添加进去。<br>alist把存储配置在sqlite3数据库里，存储路径在”data&#x2F;data.db”。<br><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/config/configuration.html#database">https://alist.nn.ci/zh/config/configuration.html#database</a><br>要是将来alist可以批量添加或者编辑一个配置文件那就太省事了。<br><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/alist.jpeg"></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -884,78 +965,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/07/%E8%BD%A6%E9%92%A5%E5%8C%99%E6%8D%A2%E7%94%B5%E6%B1%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/07/%E8%BD%A6%E9%92%A5%E5%8C%99%E6%8D%A2%E7%94%B5%E6%B1%A0/" class="post-title-link" itemprop="url">车钥匙换电池</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-07 18:21:14" itemprop="dateCreated datePublished" datetime="2022-11-07T18:21:14+08:00">2022-11-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%B0%E8%B4%A7/" itemprop="url" rel="index"><span itemprop="name">买货</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_9490.jpeg"></p>
-<blockquote>
-<p>无钥匙进入和发动汽车都会自动无线检测钥匙，其实比按键更费电池，我每两年就要换一次电池，上一次用的是双鹿的CR2032，这次用的是索尼的CR2032。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1027,7 +1036,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">247</span>
+          <span class="site-state-item-count">248</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
