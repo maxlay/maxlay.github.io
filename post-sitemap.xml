@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/12/08/%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%9F%E8%AE%A1%E6%A6%82%E7%8E%87%E5%85%A5%E9%97%A8%E8%AF%BE%E7%A8%8B/</loc>
+        <lastmod>2022-12-10T05:45:56.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/12/07/ChatGPT-Bot/</loc>
-        <lastmod>2022-12-10T04:44:47.440Z</lastmod>
+        <lastmod>2022-12-10T05:41:52.984Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2022/12/03/WindowsSoftware/</loc>
+        <lastmod>2022-12-10T05:02:47.692Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -35,14 +51,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/12/04/alist-webdav/</loc>
         <lastmod>2022-12-08T02:40:37.933Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/12/03/WindowsSoftware/</loc>
-        <lastmod>2022-12-04T07:06:10.755Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
