@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">272</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">273</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -193,6 +193,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/12/02/SmartDNS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/02/SmartDNS/" class="post-title-link" itemprop="url">SmartDNS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-02 08:43:13" itemprop="dateCreated datePublished" datetime="2022-12-02T08:43:13+08:00">2022-12-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://pymumu.github.io/smartdns/">https://pymumu.github.io/smartdns/</a></p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/smartdns-banner.png"></p>
+<p>SmartDNS 是一个运行在本地的 DNS 服务器，它接受来自本地客户端的 DNS 查询请求，然后从多个上游 DNS 服务器获取 DNS 查询结果，并将访问速度最快的结果返回给客户端，以此提高网络访问速度。 SmartDNS 同时支持指定特定域名 IP 地址，并高性匹配，可达到过滤广告的效果。</p>
+<p>我在用的R66S软路由刷的flippy固件就内置了SmartDNS 能在本地缓存最快的ip</p>
+<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/sdns.jpeg"></p>
+<p>我的自定义配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"># 本设置默认只使用国内公共DNS服务器，请自行修改以便充分运用其他服务器</span><br><span class="line"># 建议添加宽带运营商的DNS服务器于 &quot;国内组 (-group china)&quot;</span><br><span class="line">#</span><br><span class="line"># 127.0.0.1:6053       -默认组 = 国内组 (没有添加 -exclude-default-group)</span><br><span class="line"># 127.0.0.1:6054       -国内组</span><br><span class="line"># 127.0.0.1:6055       -国内https组</span><br><span class="line"># 127.0.0.1:6056       -国外组</span><br><span class="line"># 127.0.0.1:6057       -国外https组</span><br><span class="line">#</span><br><span class="line"># DNS监听端口号</span><br><span class="line">bind :6054             -group china</span><br><span class="line">bind :6055             -group china-https</span><br><span class="line">bind :6056             -group oversea</span><br><span class="line">bind :6057             -group oversea-https</span><br><span class="line">#</span><br><span class="line"># 上游UDP DNS</span><br><span class="line"># 国内组</span><br><span class="line">server 119.29.29.29    -group china</span><br><span class="line">server 114.114.114.114 -group china</span><br><span class="line">server 223.5.5.5       -group china</span><br><span class="line">server 180.76.76.76    -group china</span><br><span class="line">#</span><br><span class="line"># 国外组</span><br><span class="line">server 1.1.1.1         -group oversea                                  -exclude-default-group</span><br><span class="line">server 8.8.8.8         -group oversea                                  -exclude-default-group</span><br><span class="line">server 9.9.9.9         -group oversea                                  -exclude-default-group</span><br><span class="line">#</span><br><span class="line"># 以下配置值如果包含域名，除非已自行定义，否则交给路由器外网设置的DNS服务器解析，小心运用！</span><br><span class="line">#</span><br><span class="line"># 上游HTTPS DNS</span><br><span class="line"># 国内https组</span><br><span class="line">server-https  https://dns.alidns.com/dns-query    -group china-https   -exclude-default-group</span><br><span class="line">server-https  https://223.5.5.5/dns-query    -group china-https   -exclude-default-group</span><br><span class="line">server-https  https://doh.pub/dns-query  -group china-https   -exclude-default-group</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 国外htps组</span><br><span class="line">server-https https://1.1.1.1/dns-query            -group oversea-https -exclude-default-group</span><br><span class="line">server-https https://dns.cloudflare.com/dns-query -group oversea-https -exclude-default-group</span><br><span class="line">server-https https://dns.google/dns-query         -group oversea-https -exclude-default-group</span><br><span class="line">#</span><br><span class="line"># 指定域名使用server组解析</span><br><span class="line">nameserver /.cn/china</span><br><span class="line">#nameserver /.com/oversea-https</span><br><span class="line"># nameserver /.org/oversea-https</span><br><span class="line"># nameserver /.net/oversea-https</span><br><span class="line"># nameserver /.edu/oversea-https</span><br><span class="line">#</span><br><span class="line"># 测速模式选择，SmartDNS 的作者 pymumu 表示不建议修改。</span><br><span class="line"># &quot;大部分网站都是响应ping的。只有个别网站不响应ping，比如github，</span><br><span class="line"># 这种就单独用domain-rule配置一下特定域名的测速方式就好了&quot;</span><br><span class="line"># speed-check-mode ping,tcp:80</span><br><span class="line">domain-rules /.right.com.cn/ -speed-check-mode tcp:443,tcp:80</span><br><span class="line">#</span><br><span class="line"># 禁用IPV6解析</span><br><span class="line">force-AAAA-SOA yes</span><br><span class="line">#</span><br><span class="line"># 附加配置文件</span><br><span class="line"># 在此为anti-AD广告过滤列表，请勿与AdGuard Home重复设置</span><br><span class="line"># 文件若不存在则不生效，注意，必须定期手动更新并重启SmartDNS</span><br><span class="line"># 手动运行 wget -O /etc/smartdns/anti-ad-smartdns.conf https://anti-ad.net/anti-ad-for-smartdns.conf</span><br><span class="line">conf-file /etc/smartdns/anti-ad-smartdns.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/12/01/Github%E7%9A%84DNS%E8%A7%A3%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -240,7 +314,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://ping.chinaz.com/maxlay.github.io">https://ping.chinaz.com/maxlay.github.io</a></p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/12/01/Github的DNS解析/result.mp3"></audio></p>
+
+<p><a target="_blank" rel="noopener" href="https://ping.chinaz.com/maxlay.github.io">https://ping.chinaz.com/maxlay.github.io</a></p>
 <p>本站属于私人日志型博客，同步在Github的io服务器<br>能查询到Github.io的A解析有4个ip<br>这几天185.199.108.153这台服务器在抽风<br>而浙江移动的DNS偏偏就指向到了这台抽风的服务器<br>导致浙江移动用户无法访问本站<br>同时我也在本地ping了这4个ip，发现108和111的丢包严重，110相对109的ping值更低<br>我的临时补救方法是在SwitchHosts里新建一个对应解析字段<br>修改本地HOSTS解析到正确的ip上</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#185.199.108.153 maxlay.github.io</span><br><span class="line">#185.199.109.153 maxlay.github.io</span><br><span class="line">185.199.110.153 maxlay.github.io</span><br><span class="line">#185.199.111.153 maxlay.github.io</span><br></pre></td></tr></table></figure>
 
@@ -312,7 +388,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>我有一款<a target="_blank" rel="noopener" href="https://www.i4.cn/firmware_iPad_iPad%20Pro(12.9)_____.html">初代iPad Pro 12.9寸CPU是A9X，系统是iPadOS14.8.1</a>，成功安装了<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore巨魔商店</a>，<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore巨魔商店</a>可以免签安装iPA，不用再担心应用掉签，这里挑重点聊一聊方法：</p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/30/TrollStore巨魔商店/result.mp3"></audio></p>
+
+<p>我有一款<a target="_blank" rel="noopener" href="https://www.i4.cn/firmware_iPad_iPad%20Pro(12.9)_____.html">初代iPad Pro 12.9寸CPU是A9X，系统是iPadOS14.8.1</a>，成功安装了<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore巨魔商店</a>，<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore巨魔商店</a>可以免签安装iPA，不用再担心应用掉签，这里挑重点聊一聊方法：</p>
 <p>首先阅读Github上安装巨魔助手的说明：<br><a target="_blank" rel="noopener" href="https://github.com/opa334/TrollStore/blob/main/install_trollhelper.md">https://github.com/opa334/TrollStore/blob/main/install_trollhelper.md</a></p>
 <p>iPadOS14.8.1只能用<a target="_blank" rel="noopener" href="https://checkra.in/releases/0.12.4-beta">checkra1n 0.12.4越狱</a>，且原版针对A9X设备的驱动内核上有问题，执行过程会报-20的错，所以需要-k参数带补丁来启动。</p>
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/1669865189551.jpg"></p>
@@ -533,7 +611,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>HomeKit</strong>是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>部署Docker版的<a href="https://maxlay.github.io/2022/09/20/HomeAssistant/">HomeAssistant</a>实现HomeKit需要避很多坑，这里浅谈一下几个重点。</p>
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/27/HomeKit/result.mp3"></audio></p>
+
+<p><strong>HomeKit</strong>是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>部署Docker版的<a href="https://maxlay.github.io/2022/09/20/HomeAssistant/">HomeAssistant</a>实现HomeKit需要避很多坑，这里浅谈一下几个重点。</p>
 <h5 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h5><p>首先我的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。</p>
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg"></p>
 <p>日常用MacOS版的SD Clone对TF卡刷固件和备份固件。</p>
@@ -850,7 +930,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <img src="https://ghproxy.com/https://github.com/thedaviddelta/lingva-translate/raw/main/public/logo.svg" style="zoom:33%;" />
+          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/23/LingvaTranslate/result.mp3"></audio></p>
+
+<img src="https://ghproxy.com/https://github.com/thedaviddelta/lingva-translate/raw/main/public/logo.svg" style="zoom:33%;" />
 
 <p>前阵子谷歌翻译关闭了大陆服务器，lingva.ml这个项目是谷歌翻译的替代前端，作为免费和开源翻译器，提供一百多种语言，可以部署到自己服务器上来继续使用谷歌翻译服务。</p>
 <h5 id="Github链接："><a href="#Github链接：" class="headerlink" title="Github链接："></a>Github链接：</h5><p><a target="_blank" rel="noopener" href="https://github.com/thedaviddelta/lingva-translate">https://github.com/thedaviddelta/lingva-translate</a></p>
@@ -858,83 +940,6 @@
 <h5 id="Docker部署："><a href="#Docker部署：" class="headerlink" title="Docker部署："></a>Docker部署：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3000:3000 -e site_domain=lingva.ml -e force_default_theme=light -e default_source_lang=auto -e default_target_lang=en thedaviddelta/lingva-translate:latest</span><br></pre></td></tr></table></figure>
 
 <h5 id="实例站点："><a href="#实例站点：" class="headerlink" title="实例站点："></a>实例站点：</h5><p><a target="_blank" rel="noopener" href="https://lingva.ml/">https://lingva.ml</a><br><a target="_blank" rel="noopener" href="https://translate.jae.fi/">https://translate.jae.fi</a><br><a target="_blank" rel="noopener" href="https://lingva.garudalinux.org/">https://lingva.garudalinux.org</a><br><a target="_blank" rel="noopener" href="https://translate.dr460nf1r3.org/">https://translate.dr460nf1r3.org</a><br><a target="_blank" rel="noopener" href="https://translate.projectsegfau.lt/">https://translate.projectsegfau.lt</a><br><a target="_blank" rel="noopener" href="https://translate.plausibility.cloud/">https://translate.plausibility.cloud</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/22/TeslaMate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/22/TeslaMate/" class="post-title-link" itemprop="url">TeslaMate</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-22 11:08:14" itemprop="dateCreated datePublished" datetime="2022-11-22T11:08:14+08:00">2022-11-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/22/TeslaMate/result.mp3"></audio></p>
-
-<p>我的驾照是2002年获得的，我的第一辆车是2003年购买的本田飞度，第二辆车是2011年购买的别克凯越，第三辆车是2017年至今的奔驰GLA，第四辆车应该是几年之后的Tesla Model Q，或者Model Y等城市SUV车型。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/Q.png"></p>
-<p>Tesla Model Q在我看来定位更像是我最爱的本田飞度，飞度这辆车从2003年一直陪伴我到2017年，长达14年服役期间没有坏过，要提速有提速要省油又省油。相反，凯越这辆车是个油老虎，油门踩到发动机舱里都不带推背的，性价比完败飞度。所以凯越从2011年到2021年，只服役了10年，属于并不怎么及时得止损。GLA目前的感受属于介乎这两辆车之间，有加速有省油，按这两辆车在我人生中提供的上下限，GLA怎么也能陪伴10到17年，按13年算，2030年也许是我入手第一辆特斯拉电车的时间段，2030年的电池电控电机技术应该能比现在更成熟些，售价也能更合理些。</p>
-<p>介于2030年我要购买特斯拉，所以提前做做技术储备，来看看特斯拉自持私有数据记录平台TeslaMate。</p>
-<p>TeslaMate官方文档<br><a target="_blank" rel="noopener" href="https://docs.teslamate.org/docs/installation/docker">https://docs.teslamate.org/docs/installation/docker</a></p>
-<p>Github链接<br><a target="_blank" rel="noopener" href="https://github.com/adriankumpf/teslamate">https://github.com/adriankumpf/teslamate</a></p>
-<p>知乎上有人写了一个docker-compose方便一键部署<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/434370297">https://zhuanlan.zhihu.com/p/434370297</a></p>
 
       
     </div>
@@ -1023,7 +1028,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">272</span>
+          <span class="site-state-item-count">273</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
