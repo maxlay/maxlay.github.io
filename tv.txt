@@ -19,6 +19,7 @@ MTV,http://pluto-live.plutotv.net/egress/chandler/pluto01/live/VIACBS02/master_2
 FashionTV1,https://fashs043.cloudycdn.services/scte/africa/playlist.m3u8?live_suff
 FashionTV2,http://fash2043.cloudycdn.services//slive/_definst_/ftv_ftv_4k_hevc_73d_42080_default_466_hls.smil/chunklist_b10668000_t64NGs=.m3u8
 FashionTV3,http://lb.streaming.sk/fashiontv/stream/chunklist.m3u8
+HBO,http://platin4k.eu:80/eagleiptv/SsFAljPDDi/115473
 CNA,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
 KBS,https://kbsworld-ott.akamaized.net:443/hls/live/2002341/kbsworld/01.m3u8
 MBC,http://vod.mpmbc.co.kr:1935/live/encoder-tv/playlist.m3u8
@@ -116,10 +117,10 @@ nhkwlive,https://nhkwlive-xjp.akamaized.net/hls/live/2003458/nhkwlive-xjp-en/ind
 上海魔都眼实况,http://bililive.kksmg.com/hls/sdi80/playlist.m3u8
 ##
 ##央视##
-CCTV-13新闻 (1080p),http://39.134.115.163:8080/PLTV/88888910/224/3221225638/index.m3u8
-CCTV-13新闻 (1080p),http://39.135.138.59:18890/PLTV/88888910/224/3221225638/index.m3u8
-CCTV-13新闻 (1080p),http://39.135.138.58:18890/PLTV/88888888/224/3221225638/index.m3u8
-CCTV-13新闻 (1080p),http://hwrr.jx.chinamobile.com:8080/PLTV/88888888/224/3221225638/index.m3u8
+CCTV-13新闻,http://183.207.249.36/PLTV/4/224/3221227387/index.m3u8
+CCTV-13新闻,http://183.207.249.14/PLTV/3/224/3221225560/index.m3u8
+CCTV-13新闻,http://39.135.138.59:18890/PLTV/88888910/224/3221225638/index.m3u8
+CCTV-13新闻,http://39.135.138.58:18890/PLTV/88888888/224/3221225638/index.m3u8
 CCTV-1综合 (1080p),http://111.20.105.60:6060/yinhe/2/ch00000090990000001331/index.m3u8?virtualDomain=yinhe.live_hls.zte.com
 CCTV-2财经 (1080p),http://111.20.105.60:6060/yinhe/2/ch00000090990000001332/index.m3u8?virtualDomain=yinhe.live_hls.zte.com
 CCTV-3综艺 (1080p),http://111.20.105.60:6060/yinhe/2/ch00000090990000001598/index.m3u8?virtualDomain=yinhe.live_hls.zte.com
