@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/09/16/npalyer/</loc>
+        <lastmod>2023-01-28T10:56:20.165Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2023/01/27/repl-alist/</loc>
         <lastmod>2023-01-28T06:38:35.411Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1755,14 +1763,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/26/quark/</loc>
         <lastmod>2022-11-14T04:49:04.595Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/09/16/npalyer/</loc>
-        <lastmod>2022-11-14T04:49:04.592Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
