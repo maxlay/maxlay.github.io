@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2023/01/27/repl-alist/</loc>
+        <lastmod>2023-01-28T06:11:26.425Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2023-01-27T15:28:18.237Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +27,6 @@
     <url>
         <loc>https://maxlay.github.io/2023/01/26/%E6%BB%A1%E6%B1%9F%E7%BA%A2/</loc>
         <lastmod>2023-01-27T03:34:39.428Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2023/01/27/repl-alist/</loc>
-        <lastmod>2023-01-27T03:06:45.218Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
