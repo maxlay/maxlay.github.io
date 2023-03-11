@@ -1,0 +1,34 @@
+{
+	"request": [
+		{
+			"enable": true,
+			"name": "bing-cn-to-www",
+			"ruleType": "redirect",
+			"matchType": "prefix",
+			"pattern": "https://cn.bing.com",
+			"exclude": "",
+			"group": "bing-redirect",
+			"isFunction": false,
+			"action": "redirect",
+			"to": "https://www.bing.com"
+		}
+	],
+	"sendHeader": [
+		{
+			"enable": true,
+			"name": "bing",
+			"ruleType": "modifySendHeader",
+			"matchType": "regexp",
+			"pattern": "^http(s?)://www\\.bing\\.com/(.*)",
+			"exclude": "",
+			"group": "bing-direct",
+			"isFunction": false,
+			"action": {
+				"name": "x-forwarded-for",
+				"value": "8.8.8.8"
+			}
+		}
+	],
+	"receiveHeader": [],
+	"receiveBody": []
+}
