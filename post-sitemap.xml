@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2023/03/17/chathub/</loc>
+        <lastmod>2023-03-17T15:09:06.117Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2023/03/17/%E5%9B%BD%E5%86%85%E7%94%A8%E6%AD%A3%E7%89%88ChatGPT/</loc>
+        <lastmod>2023-03-17T14:58:37.064Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2023/03/13/stable-diffusion/</loc>
+        <lastmod>2023-03-16T00:15:37.022Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2023/03/12/ChatGPT-Dev/</loc>
         <lastmod>2023-03-12T00:56:51.467Z</lastmod>
         <changefreq>weekly</changefreq>
