@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2023/03/17/%E5%9B%BD%E5%86%85%E7%94%A8%E6%AD%A3%E7%89%88ChatGPT/</loc>
+        <lastmod>2023-04-01T00:04:14.836Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/11/16/DockerDesktop/</loc>
         <lastmod>2023-03-31T14:35:46.593Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -27,14 +35,6 @@
     <url>
         <loc>https://maxlay.github.io/2023/03/24/bard/</loc>
         <lastmod>2023-03-24T03:34:18.752Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2023/03/17/%E5%9B%BD%E5%86%85%E7%94%A8%E6%AD%A3%E7%89%88ChatGPT/</loc>
-        <lastmod>2023-03-17T22:57:14.995Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
