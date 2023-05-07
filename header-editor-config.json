@@ -1,31 +1,18 @@
 {
-	"request": [
-		{
-			"enable": true,
-			"name": "bing-cn-to-www",
-			"ruleType": "redirect",
-			"matchType": "prefix",
-			"pattern": "https://cn.bing.com",
-			"exclude": "",
-			"group": "bing-redirect",
-			"isFunction": false,
-			"action": "redirect",
-			"to": "https://www.bing.com"
-		}
-	],
+	"request": [],
 	"sendHeader": [
 		{
 			"enable": true,
-			"name": "bing",
+			"name": "Huanglei's New Bing",
 			"ruleType": "modifySendHeader",
-			"matchType": "regexp",
-			"pattern": "^http(s?)://www\\.bing\\.com/(.*)",
+			"matchType": "url",
+			"pattern": ".*://www.bing.com/.*",
 			"exclude": "",
-			"group": "bing-direct",
+			"group": "Huanglei's New Bing",
 			"isFunction": false,
 			"action": {
-				"name": "x-forwarded-for",
-				"value": "8.8.8.8"
+				"name": "x-forwarder-for",
+				"value": "1.32.232.123"
 			}
 		}
 	],
