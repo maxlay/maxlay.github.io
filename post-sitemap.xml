@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/11/18/VMware/</loc>
+        <lastmod>2023-07-23T02:51:49.123Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2023/07/23/%E7%BB%99%E5%8D%81%E4%B8%80%E5%B9%B4%E5%89%8D%E7%9A%84MBP%E5%8D%87%E7%BA%A7%E7%A1%AC%E7%9B%98/</loc>
         <lastmod>2023-07-23T00:46:24.874Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -523,14 +531,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/11/24/%E5%90%83%E5%A4%9F%E4%B8%80%E7%99%BE%E4%B8%AA%E6%A9%98%E5%AD%90/</loc>
         <lastmod>2022-11-24T20:49:57.475Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/11/18/VMware/</loc>
-        <lastmod>2022-11-23T06:13:33.414Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
