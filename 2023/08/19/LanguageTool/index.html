@@ -27,7 +27,7 @@
 <meta property="og:description" content="LanguageTool：https:&#x2F;&#x2F;github.com&#x2F;languagetool-org&#x2F;languagetool Docker：Try one of the following projects for a community-contributed Docker file:https:&#x2F;&#x2F;github.com&#x2F;Erikvl87&#x2F;docker-languagetool (Docker H">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-18T16:07:57.000Z">
-<meta property="article:modified_time" content="2023-08-19T04:00:19.647Z">
+<meta property="article:modified_time" content="2023-08-21T09:50:42.862Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
@@ -254,17 +254,30 @@
 <p>如果 PULL 得比较慢，可以试着修改’Docker Engine’。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;builder&quot;: &#123;</span><br><span class="line">    &quot;gc&quot;: &#123;</span><br><span class="line">      &quot;defaultKeepStorage&quot;: &quot;20GB&quot;,</span><br><span class="line">      &quot;enabled&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;experimental&quot;: false,</span><br><span class="line">  &quot;features&quot;: &#123;</span><br><span class="line">    &quot;buildkit&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;max-concurrent-downloads&quot;: 20,</span><br><span class="line">  &quot;max-concurrent-uploads&quot;: 10,</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://mirror.baidubce.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>安装并且成功运行后，备份这个镜像可以执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export -o D:\LanguageTool\LanguageTool.tar &lt;container_id&gt;</span><br></pre></td></tr></table></figure>
 
+<p>备份的镜像需要恢复可以执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker load -i D:\LanguageTool\LanguageTool.tar</span><br><span class="line">docker run --rm -p 8010:8010 image_id</span><br></pre></td></tr></table></figure>
 
 <p>下载安装Microsoft .NET Framework 3.5 Service Pack 1（完整软件包）</p>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=25150">https://www.microsoft.com/zh-cn/download/details.aspx?id=25150</a></p>
-<p>下载安装Microsoft .NET Framework 3.5 的中文语言包</p>
+<p>下载安装Microsoft .NET Framework 3.5 的中文语言包（可选）</p>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=21891">https://www.microsoft.com/zh-cn/download/details.aspx?id=21891</a></p>
+<p>下载安装Microsoft .NET Framework 3.5 （离线安装）</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1SyEpLXguNyWrFMZuWFNaew">https://pan.baidu.com/s/1SyEpLXguNyWrFMZuWFNaew </a><br>提取码：AQAQ</p>
+<blockquote>
+<p>如果需要离线安装Microsoft .NET Framework 3.5，可以把下载好的 CAB 放在 D:\LanguageTool 目录里，然后在管理员身份打开的 CMD 里运行安装：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:netfx3 /Source:D:\LanguageTool</span><br></pre></td></tr></table></figure>
+
 <p>下载安装Visual Studio 2010 Tools for Office Runtime</p>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=48217">https://www.microsoft.com/zh-CN/download/details.aspx?id=48217</a></p>
 <p>下载安装languagetool-msword10-addin</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jaumeortola/languagetool-msword10-addin/releases">https://github.com/jaumeortola/languagetool-msword10-addin/releases</a></p>
-<p>可以运行在Microsoft Word 2003, 2007, 2010, 2013 and 2016 (Windows).</p>
+<blockquote>
+<p>它可以运行在Microsoft Word 2003, 2007, 2010, 2013 and 2016 (Windows).</p>
+</blockquote>
 <p>用OUninstall.exe卸载完 2016 之前的版本</p>
 <p><a target="_blank" rel="noopener" href="https://www.lanzouw.com/iDv5kw77egb">https://www.lanzouw.com/iDv5kw77egb</a></p>
 <p>下载 Office2016 专业增强版</p>
