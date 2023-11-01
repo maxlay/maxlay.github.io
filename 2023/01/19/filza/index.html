@@ -19,16 +19,16 @@
     var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。 那么怎么解决这个问题？ 解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制抖音安装目录里的“D">
+  <meta name="description" content="用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。 那么怎么解决这个问题？ 解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制（App 管理器里找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Filza">
 <meta property="og:url" content="https://maxlay.github.io/2023/01/19/filza/index.html">
 <meta property="og:site_name" content="Huanglei">
-<meta property="og:description" content="用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。 那么怎么解决这个问题？ 解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制抖音安装目录里的“D">
+<meta property="og:description" content="用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。 那么怎么解决这个问题？ 解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制（App 管理器里找">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2023/01/filza.jpeg">
 <meta property="article:published_time" content="2023-01-19T02:37:41.000Z">
-<meta property="article:modified_time" content="2023-02-11T10:03:44.201Z">
+<meta property="article:modified_time" content="2023-11-01T13:31:03.925Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
@@ -251,9 +251,11 @@
 <p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2023/01/filza.jpeg"></p>
 <p>用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。</p>
 <p>那么怎么解决这个问题？</p>
-<p>解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制抖音安装目录里的“Documents”和“Libary”目录写入权限，不允许抖音缓存。问题就迎刃而解了。</p>
-<p>有几个细节，首先，抖音需要重新安装，安装好之后打开，不要刷视频，马上去登陆自己的账号，登陆好之后立刻退出并关闭进程。打开Filza在App管理器里定位到抖音的“Documents”和“Libary”目录，目录选中的权限全部取消，系统会自动只保留mobile权限。</p>
-<p>至此，抖音可以正常横屏或者竖屏使用，功能上没有任何问题，同时抖音占用的文稿和数据将永远停留在159MB左右。抖音短视频会在内存里交换，不会保存到本地形成缓存，没有缓存就不会被当成CDN割韭菜。</p>
+<p>解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制（App 管理器里找到的）“抖音”下面两个目录地址的写入和执行权限，限制权限前先删除这两个目录里的文档，不允许抖音缓存。问题就迎刃而解了。</p>
+<p>Libary -&gt; Application Support -&gt; gurd_cache</p>
+<p>和</p>
+<p>Libary -&gt;Caches</p>
+<p>至此我的抖音占用的文稿和数据将永远停留在255MB左右。抖音视频会在内存里交换，不会保存到本地形成缓存，没有缓存就不会被当成CDN割韭菜。</p>
 <p>要知道你手机存储颗粒的写入次数不是无限的，写入次数耗尽，硬盘就报废了，抖音把视频存在你手机里，根据算法会在你刷视频的同时把你手机里缓存的视频上传给你同网段的其他使用者，类似当年BT种子下载。这种技术可以大幅度减少抖音服务器的压力，把你的手机当成抖音的服务器。你的手机既要花费额外的电力，又要花费额外的上传带宽，这可都是你花的钱。</p>
 
     </div>
