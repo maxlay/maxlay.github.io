@@ -126,12 +126,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">301</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">288</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,117 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2023/08/19/LanguageTool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/19/LanguageTool/" class="post-title-link" itemprop="url">LanguageTool</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-19 00:07:57" itemprop="dateCreated datePublished" datetime="2023-08-19T00:07:57+08:00">2023-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="LanguageTool"><a href="#LanguageTool" class="headerlink" title="LanguageTool"></a>LanguageTool</h3><p><a target="_blank" rel="noopener" href="https://github.com/languagetool-org/languagetool">https://github.com/languagetool-org/languagetool</a></p>
+<h4 id="Docker-gt-LanguageTool"><a href="#Docker-gt-LanguageTool" class="headerlink" title="Docker-&gt;LanguageTool"></a>Docker-&gt;LanguageTool</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Erikvl87/docker-languagetool">https://github.com/Erikvl87/docker-languagetool</a> (<a target="_blank" rel="noopener" href="https://hub.docker.com/r/erikvl87/languagetool">Docker Hub</a>)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull erikvl87/languagetool</span><br><span class="line">docker run --rm -p 8010:8010 erikvl87/languagetool</span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/silvio/docker-languagetool">https://github.com/silvio/docker-languagetool</a> (<a target="_blank" rel="noopener" href="https://hub.docker.com/r/silviof/docker-languagetool">Docker Hub</a>)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull silviof/docker-languagetool</span><br><span class="line">docker run --rm -p 8010:8010 silviof/docker-languagetool</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>如果 PULL 得比较慢，可以试着修改’Docker Engine’：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;builder&quot;: &#123;</span><br><span class="line">    &quot;gc&quot;: &#123;</span><br><span class="line">      &quot;defaultKeepStorage&quot;: &quot;20GB&quot;,</span><br><span class="line">      &quot;enabled&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;experimental&quot;: false,</span><br><span class="line">  &quot;features&quot;: &#123;</span><br><span class="line">    &quot;buildkit&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;max-concurrent-downloads&quot;: 20,</span><br><span class="line">  &quot;max-concurrent-uploads&quot;: 10,</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://mirror.baidubce.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装并且成功运行后，备份这个镜像可以执行"><a href="#安装并且成功运行后，备份这个镜像可以执行" class="headerlink" title="安装并且成功运行后，备份这个镜像可以执行"></a>安装并且成功运行后，备份这个镜像可以执行</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export -o D:\LanguageTool\LanguageTool.tar &lt;container_id&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="备份的镜像需要恢复可以执行"><a href="#备份的镜像需要恢复可以执行" class="headerlink" title="备份的镜像需要恢复可以执行"></a>备份的镜像需要恢复可以执行</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker load -i D:\LanguageTool\LanguageTool.tar</span><br><span class="line">docker run --rm -p 8010:8010 &lt;image_id&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在-word-上使用"><a href="#在-word-上使用" class="headerlink" title="在 word 上使用"></a>在 word 上使用</h3><h4 id="1-下载安装Microsoft-NET-Framework-3-5-Service-Pack-1（完整软件包）"><a href="#1-下载安装Microsoft-NET-Framework-3-5-Service-Pack-1（完整软件包）" class="headerlink" title="1. 下载安装Microsoft .NET Framework 3.5 Service Pack 1（完整软件包）"></a>1. 下载安装Microsoft .NET Framework 3.5 Service Pack 1（完整软件包）</h4><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=25150">https://www.microsoft.com/zh-cn/download/details.aspx?id=25150</a></p>
+<h5 id="下载安装Microsoft-NET-Framework-3-5-的中文语言包（可选）"><a href="#下载安装Microsoft-NET-Framework-3-5-的中文语言包（可选）" class="headerlink" title="下载安装Microsoft .NET Framework 3.5 的中文语言包（可选）"></a>下载安装Microsoft .NET Framework 3.5 的中文语言包（可选）</h5><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=21891">https://www.microsoft.com/zh-cn/download/details.aspx?id=21891</a></p>
+<h5 id="下载安装Microsoft-NET-Framework-3-5-（离线安装）"><a href="#下载安装Microsoft-NET-Framework-3-5-（离线安装）" class="headerlink" title="下载安装Microsoft .NET Framework 3.5 （离线安装）"></a>下载安装Microsoft .NET Framework 3.5 （离线安装）</h5><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1SyEpLXguNyWrFMZuWFNaew">https://pan.baidu.com/s/1SyEpLXguNyWrFMZuWFNaew </a><br>提取码：AQAQ</p>
+<blockquote>
+<p>如果需要离线安装Microsoft .NET Framework 3.5，可以把下载好的 CAB 放在 D:\LanguageTool 目录里，然后在管理员身份打开的 CMD 里运行安装：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:netfx3 /Source:D:\LanguageTool</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-下载安装Visual-Studio-2010-Tools-for-Office-Runtime"><a href="#2-下载安装Visual-Studio-2010-Tools-for-Office-Runtime" class="headerlink" title="2. 下载安装Visual Studio 2010 Tools for Office Runtime"></a>2. 下载安装Visual Studio 2010 Tools for Office Runtime</h4><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=48217">https://www.microsoft.com/zh-CN/download/details.aspx?id=48217</a></p>
+<h4 id="3-下载安装languagetool-msword10-addin"><a href="#3-下载安装languagetool-msword10-addin" class="headerlink" title="3. 下载安装languagetool-msword10-addin"></a>3. 下载安装languagetool-msword10-addin</h4><p><a target="_blank" rel="noopener" href="https://github.com/jaumeortola/languagetool-msword10-addin/releases">https://github.com/jaumeortola/languagetool-msword10-addin/releases</a></p>
+<blockquote>
+<p>它可以运行在Microsoft Word 2003, 2007, 2010, 2013, 2016 (Windows).</p>
+<blockquote>
+<p>LanguageTool-msword10-addin本地服务的地址填<br><a target="_blank" rel="noopener" href="http://localhost:8010/v2">http://localhost:8010/v2</a></p>
+</blockquote>
+</blockquote>
+<h4 id="4-用OUninstall-exe卸载完-2016-之前的版本（可选）"><a href="#4-用OUninstall-exe卸载完-2016-之前的版本（可选）" class="headerlink" title="4. 用OUninstall.exe卸载完 2016 之前的版本（可选）"></a>4. 用OUninstall.exe卸载完 2016 之前的版本（可选）</h4><p><a target="_blank" rel="noopener" href="https://www.lanzouw.com/iDv5kw77egb">https://www.lanzouw.com/iDv5kw77egb</a></p>
+<h4 id="5-下载-Office2016-专业增强版"><a href="#5-下载-Office2016-专业增强版" class="headerlink" title="5. 下载 Office2016 专业增强版"></a>5. 下载 Office2016 专业增强版</h4><p><a target="_blank" rel="noopener" href="https://www.123pan.com/s/ZrzA-kOZgh">https://www.123pan.com/s/ZrzA-kOZgh</a></p>
+<h4 id="6-激活-Office2016-HEU-KMS-Activator"><a href="#6-激活-Office2016-HEU-KMS-Activator" class="headerlink" title="6. 激活 Office2016 (HEU KMS Activator)"></a>6. 激活 Office2016 (HEU KMS Activator)</h4><p><a target="_blank" rel="noopener" href="https://www.lanzouw.com/ibVCwuzvt2h">https://www.lanzouw.com/ibVCwuzvt2h</a></p>
+<h3 id="在-EDGE-x2F-Chrome-上使用-无法脱机使用"><a href="#在-EDGE-x2F-Chrome-上使用-无法脱机使用" class="headerlink" title="在 EDGE&#x2F;Chrome 上使用 (无法脱机使用)"></a>在 EDGE&#x2F;Chrome 上使用 (无法脱机使用)</h3><h4 id="Grammar-Checker-amp-Paraphraser-–-LanguageTool"><a href="#Grammar-Checker-amp-Paraphraser-–-LanguageTool" class="headerlink" title="Grammar Checker &amp; Paraphraser – LanguageTool"></a>Grammar Checker &amp; Paraphraser – LanguageTool</h4><p><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/hfjadhjooeceemgojogkhlppanjkbobc">https://microsoftedge.microsoft.com/addons/detail/hfjadhjooeceemgojogkhlppanjkbobc</a></p>
+<h4 id="本地服务的地址填"><a href="#本地服务的地址填" class="headerlink" title="本地服务的地址填"></a>本地服务的地址填</h4><p><a target="_blank" rel="noopener" href="http://localhost:8010/v2">http://localhost:8010/v2</a></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -903,82 +1014,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2023/03/17/%E5%9B%BD%E5%86%85%E7%94%A8%E6%AD%A3%E7%89%88ChatGPT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/17/%E5%9B%BD%E5%86%85%E7%94%A8%E6%AD%A3%E7%89%88ChatGPT/" class="post-title-link" itemprop="url">国内用正版ChatGPT</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-17 22:53:16" itemprop="dateCreated datePublished" datetime="2023-03-17T22:53:16+08:00">2023-03-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://chat18.aichatos.xyz/">https://chat18.aichatos.xyz/</a></p>
-<p>这个工具可以在国内不翻墙不申请账号的情况下使用正版ChatGPT的所有能力，</p>
-<p>当然，你也可以开启开发者模式来使用ChatGPT的完整性能：</p>
-<p><a href="https://maxlay.github.io/2023/03/12/ChatGPT-Dev/">https://maxlay.github.io/2023/03/12/ChatGPT-Dev/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1046,14 +1085,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">301</span>
+          <span class="site-state-item-count">288</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
