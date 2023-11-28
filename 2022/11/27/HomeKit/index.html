@@ -26,17 +26,17 @@
 <meta property="og:site_name" content="Huanglei">
 <meta property="og:description" content="HomeKit是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的软路由部署Docker版的HomeAssistant实现HomeKit需要避很多坑，这里浅谈一下几个重点。 硬件首先我的软路由的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。  日常用MacOS版的SD Clone对TF卡刷固件和备份固件。 固件软路由的固件我选用flip">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg">
-<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dockerman.jpeg">
-<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0024.jpeg">
-<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0023.jpeg">
-<meta property="og:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_9612.jpeg">
+<meta property="og:image" content="https://maxlay.github.io/uploads/2022/11/dxnyj.jpg">
+<meta property="og:image" content="https://maxlay.github.io/uploads/2022/11/dockerman.jpeg">
+<meta property="og:image" content="https://maxlay.github.io/uploads/2022/11/IMG_0024.jpeg">
+<meta property="og:image" content="https://maxlay.github.io/uploads/2022/11/IMG_0023.jpeg">
+<meta property="og:image" content="https://maxlay.github.io/uploads/2022/11/IMG_9612.jpeg">
 <meta property="article:published_time" content="2022-11-27T02:54:08.000Z">
-<meta property="article:modified_time" content="2022-12-30T12:17:47.995Z">
+<meta property="article:modified_time" content="2023-11-28T22:20:36.168Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg">
+<meta name="twitter:image" content="https://maxlay.github.io/uploads/2022/11/dxnyj.jpg">
 
 <link rel="canonical" href="https://maxlay.github.io/2022/11/27/HomeKit/">
 
@@ -254,14 +254,14 @@
 
 <p><strong>HomeKit</strong>是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>部署Docker版的<a href="https://maxlay.github.io/2022/09/20/HomeAssistant/">HomeAssistant</a>实现HomeKit需要避很多坑，这里浅谈一下几个重点。</p>
 <h5 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h5><p>首先我的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dxnyj.jpg"></p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/dxnyj.jpg"></p>
 <p>日常用MacOS版的SD Clone对TF卡刷固件和备份固件。</p>
 <h5 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h5><p><a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的固件我选用flippy大佬20221018第8版启用6.0内核的固件，在店犀牛公布的百度云里有，名称是：openwrt_rk3568_r66s_R22.10.10_k6.0.2-flippy-78+.7z  分享链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666">https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666</a> </p>
 <h5 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h5><p>这个OpenWRT固件的Docker是20.10.17版，且不用调整分区扩容，上手就能用。<br>镜像加速器可以用：<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">《Docker Desktop on Mac》</a>里提到的配置，拉取homeassistant&#x2F;home-assistant镜像大约10分钟可以搞定，然后新建容器的时候网络选HOSTS。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=&quot;HuangleiHASS&quot; --network=host -v /opt/docker/hassio:/config -e TZ=&quot;Asia/Shanghai&quot; homeassistant/home-assistant</span><br></pre></td></tr></table></figure>
 
 <p>去Docker Man里配置允许的端口：</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/dockerman.jpeg"></p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/dockerman.jpeg"></p>
 <p>把8123、21063、21064、21065、51827都打开。</p>
 <p>然后去Docker对应容器的控制台里修改configuration.yaml文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/docker/hassio</span><br><span class="line">vi configuration.yaml</span><br></pre></td></tr></table></figure>
@@ -273,11 +273,11 @@
 <h5 id="Xiaomi-MIoT"><a href="#Xiaomi-MIoT" class="headerlink" title="Xiaomi MIoT"></a>Xiaomi MIoT</h5><p>登陆配置Xiaomi MIoT里的小米米家账号可以自动同步“设备”，检查完整性，不完整可以多配置几次。</p>
 <h5 id="Homeassistant仪表盘"><a href="#Homeassistant仪表盘" class="headerlink" title="Homeassistant仪表盘"></a>Homeassistant仪表盘</h5><p>如果你想通过iPAD的Safari打开Homeassistant的仪表盘来日常控制设备也是可以的，也可以适当美化一下Homeassistant的仪表盘，自己按习惯的操作思路配置仪表盘，我既配置了仪表盘也启用了HomeKit。</p>
 <h5 id="HomeKit"><a href="#HomeKit" class="headerlink" title="HomeKit"></a>HomeKit</h5><p>用iOS或iPadOS里的家庭APP扫Homeassistant通知栏里的HASS Bridge：21064对应的二维码添加设备到HomeKit里，可以按设备属性新建房间来分类管理。也可以在家庭APP里添加自动化来创建设备的条件触发，怎么让自己觉得方便就怎么来。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0024.jpeg"></p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_0024.jpeg"></p>
 <p>也可以把iPad或者HomePod设置成中枢，手机脱离软路由网络环境也能继续控制家里的设备。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_0023.jpeg"></p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_0023.jpeg"></p>
 <p>可以按自己的操作习惯把常用配件放在iOS或者iPadOS的电池下拉的“控制中心”里，实现系统级的管理设备。下拉点击，就像你平时调整音量和屏幕亮度那样方便。</p>
-<p><img src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2022/11/IMG_9612.jpeg"></p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_9612.jpeg"></p>
 
     </div>
 
