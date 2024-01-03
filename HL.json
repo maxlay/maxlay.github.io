@@ -11,8 +11,8 @@
 {"name":"阿里影视","url":"http://aliys.cn:90/api.php/v1.vod"}
 ],
 
-"zhujiexi":"https://www.icesun.cn/tools/player-m3u8.php?url=#https://www.bavei.com/vip/?url=#https://api.tyun77.cn/api.php/provide/parserUrl?url=#https://play99.gitee.io/play3/index?v=#https://player.77lehuo.com/aliplayer/?url=#https://www.administratorw.com/video.php?url=#https://www.1717yun.com/api/?url=",
-"beiyongjiexi":"https://www.playm3u8.cn/jiexi.php?url=#https://www.8090g.cn/?url=#https://www.pangujiexi.com/pangu/?url=#https://svip.bljiex.cc/?v=#https://660e.com/?url=",
+"zhujiexi":"https://api.tyun77.cn/api.php/provide/parserUrl?url=#https://www.icesun.cn/tools/player-m3u8.php?url=#https://play99.gitee.io/play3/index?v=#https://player.77lehuo.com/aliplayer/?url=#https://www.administratorw.com/video.php?url=",
+"beiyongjiexi":"https://api.tyun77.cn/api.php/provide/parserUrl?url=#https://www.icesun.cn/tools/player-m3u8.php?url=#https://play99.gitee.io/play3/index?v=#https://player.77lehuo.com/aliplayer/?url=#https://www.administratorw.com/video.php?url=#",
 "dianshizhibo":"https://maxlay.github.io/tv.txt",
 
 "caijizhan": [
