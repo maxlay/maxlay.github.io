@@ -1,9 +1,8 @@
 {"zhuyejiekou": [
-{"name":"555电影1","url":"https://www.555yy1.com/api.php/app/"},
+{"name":"555电影1","url":"https://www.555yy6.com/api.php/app/"},
 {"name":"555电影2","url":"https://www.555yy3.com/api.php/app/"},
 {"name":"555电影3","url":"https://www.555yy4.com/api.php/app/"},
-{"name":"555电影4","url":"https://www.555yy6.com/api.php/app/"},
-{"name":"555电影5","url":"https://www.555yy7.com/api.php/app/"},
+{"name":"555电影4","url":"https://www.555yy7.com/api.php/app/"},
 {"name":"阿里影视","url":"http://aliys.cn:90/api.php/v1.vod"}
 ],
 
@@ -15,14 +14,11 @@
 {"name":"新浪资源(切)","url":"http://api.xinlangapi.com/xinlangapi.php"},
 {"name":"阿里影视(聚)","url":"http://aliys.cn:90/api.php"},
 {"name":"红牛资源(切)","url":"https://www.hongniuzy2.com/api.php"},
-{"name":"樱花资源(切)","url":"https://m3u8.apiyhzy.com/api.php"},
 {"name":"无尽资源(切)","url":"https://api.wujinapi.net/api.php"},
 {"name":"天空资源(切)","url":"https://api.tiankongapi.com/api.php"},
 {"name":"看看资源(切)","url":"https://zy.hikan.xyz/api.php"},
 {"name":"U酷资源(优)","url":"https://api.ukuapi.com/api.php"},
 {"name":"量子资源(切)","url":"http://cj.lziapi.com/api.php"},
-{"name":"樱花资源(切)","url":"https://m3u8.apiyhzy.com/api.php"},
-{"name":"光速资源(切)","url":"https://api.guangsuapi.com/api.php"},
 {"name":"百度资源(切)","url":"https://api.apibdzy.com/api.php"},
 {"name":"卧龙资源(切)","url":"https://collect.wolongzyw.com/api.php"}
 ],
