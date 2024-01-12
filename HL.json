@@ -1,13 +1,9 @@
 {"zhuyejiekou": [
-{"name":"555电影1","url":"https://555flim.site/api.php/app/"},
-{"name":"555电影2","url":"https://www.555yy1.com/api.php/app/"},
-{"name":"555电影3","url":"https://555movie.vip/api.php/app/"},
-{"name":"555电影4","url":"https://555flim.bond/api.php/app/"},
-{"name":"555电影5","url":"https://555movie.xyz/api.php/app/"},
-{"name":"555电影6","url":"https://www.555yy3.com/api.php/app/"},
-{"name":"555电影7","url":"https://www.555yy4.com/api.php/app/"},
-{"name":"555电影8","url":"https://www.555yy6.com/api.php/app/"},
-{"name":"555电影9","url":"https://www.555yy7.com/api.php/app/"},
+{"name":"555电影1","url":"https://www.555yy1.com/api.php/app/"},
+{"name":"555电影2","url":"https://www.555yy3.com/api.php/app/"},
+{"name":"555电影3","url":"https://www.555yy4.com/api.php/app/"},
+{"name":"555电影4","url":"https://www.555yy6.com/api.php/app/"},
+{"name":"555电影5","url":"https://www.555yy7.com/api.php/app/"},
 {"name":"阿里影视","url":"http://aliys.cn:90/api.php/v1.vod"}
 ],
 
@@ -16,12 +12,10 @@
 "dianshizhibo":"https://maxlay.github.io/tv.txt",
 
 "caijizhan": [
-{"name":"雨哥哥影视(聚)","url":"http://cj.baozi66.top:66/api.php"},
+{"name":"新浪资源(切)","url":"http://api.xinlangapi.com/xinlangapi.php"},
 {"name":"阿里影视(聚)","url":"http://aliys.cn:90/api.php"},
-{"name":"天堂资源(官)","url":"http://vipmv.cc/api.php"},
 {"name":"红牛资源(切)","url":"https://www.hongniuzy2.com/api.php"},
 {"name":"樱花资源(切)","url":"https://m3u8.apiyhzy.com/api.php"},
-{"name":"新浪资源(切)","url":"http://api.xinlangapi.com/xinlangapi.php"},
 {"name":"无尽资源(切)","url":"https://api.wujinapi.net/api.php"},
 {"name":"天空资源(切)","url":"https://api.tiankongapi.com/api.php"},
 {"name":"看看资源(切)","url":"https://zy.hikan.xyz/api.php"},
@@ -34,7 +28,7 @@
 ],
 
 
-"tiyuzhibo": "https://m.zhibo8.net",
+"tiyuzhibo": "",
 "reci":"https://v.sogou.com",
 "wuqu":"aHR0cDovL3d3dy5kanV1LmNvbQ==",
 
@@ -42,7 +36,6 @@
 {"name": "斗鱼一起看","fanye": "aHR0cHM6Ly93d3cuZG91eXUuY29tL2dhcGkvcmtjL2RpcmVjdG9yeS9taXhMaXN0LzJfMjA4Lw==","qianzhui": "aHR0cDovL2VwZy4xMTIxMTQueHl6L2RvdXl1Lw=="},
 {"name": "斗鱼舞蹈区","fanye": "aHR0cHM6Ly93d3cuZG91eXUuY29tL2dhcGkvcmtjL2RpcmVjdG9yeS9taXhMaXN0LzJfMTAwOC8=","qianzhui": "aHR0cHM6Ly9tLmRvdXl1LmNvbS8="},
 {"name": "斗鱼二次元","fanye": "aHR0cHM6Ly93d3cuZG91eXUuY29tL2dhcGkvcmtjL2RpcmVjdG9yeS9taXhMaXN0LzJfMTc0Lw==","qianzhui": "aHR0cHM6Ly9tLmRvdXl1LmNvbS8="},
-{"name": "B站一起看","fanye": "aHR0cHM6Ly9hcGkubGl2ZS5iaWxpYmlsaS5jb20veGxpdmUvd2ViLWludGVyZmFjZS92MS9zZWNvbmQvZ2V0TGlzdD9wbGF0Zm9ybT13ZWImcGFyZW50X2FyZWFfaWQ9MTAmYXJlYV9pZD0zMyZzb3J0X3R5cGU9b25saW5lJnBhZ2U9","qianzhui": "aHR0cHM6Ly9lcGcuMTEyMTE0Lnh5ei9iaWxpLw=="},
 {"name": "B站舞见","fanye": "aHR0cHM6Ly9hcGkubGl2ZS5iaWxpYmlsaS5jb20veGxpdmUvd2ViLWludGVyZmFjZS92MS9zZWNvbmQvZ2V0TGlzdD9wbGF0Zm9ybT13ZWImcGFyZW50X2FyZWFfaWQ9MSZhcmVhX2lkPTIwNyZzb3J0X3R5cGU9b25saW5lJnBhZ2U9","qianzhui": "aHR0cHM6Ly9lcGcuMTEyMTE0Lnh5ei9iaWxpLw=="},
 {"name": "虎牙一起看","fanye": "aHR0cHM6Ly93d3cuaHV5YS5jb20vY2FjaGUucGhwP209TGl2ZUxpc3QmZG89Z2V0TGl2ZUxpc3RCeVBhZ2UmZ2FtZUlkPTIxMzUmdGFnQWxsPTAmY2FsbGJhY2s9Z2V0TGl2ZUxpc3RKc29ucENhbGxiYWNrJnBhZ2U9","qianzhui": "aHR0cHM6Ly9lcGcuMTEyMTE0Lnh5ei9odXlhLw=="},
 {"name": "虎牙星秀","fanye": "aHR0cHM6Ly93d3cuaHV5YS5jb20vY2FjaGUucGhwP209TGl2ZUxpc3QmZG89Z2V0TGl2ZUxpc3RCeVBhZ2UmZ2FtZUlkPTE2NjMmdGFnQWxsPTAmY2FsbGJhY2s9Z2V0TGl2ZUxpc3RKc29ucENhbGxiYWNrJnBhZ2U9","qianzhui": "aHR0cHM6Ly9lcGcuMTEyMTE0Lnh5ei9odXlhLw=="},
