@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">288</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">276</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -193,480 +193,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/27/HomeKit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/27/HomeKit/" class="post-title-link" itemprop="url">HomeKit</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-27 10:54:08" itemprop="dateCreated datePublished" datetime="2022-11-27T10:54:08+08:00">2022-11-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/27/HomeKit/result.mp3"></audio></p>
-
-<p><strong>HomeKit</strong>是苹果2014年发布的智能家居平台，作为系统级智能设备操控，响应和操控便利性要优于应用级。在家里的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>部署Docker版的<a href="https://maxlay.github.io/2022/09/20/HomeAssistant/">HomeAssistant</a>实现HomeKit需要避很多坑，这里浅谈一下几个重点。</p>
-<h5 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h5><p>首先我的<a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的硬件是2G内存版的R66S，TF卡存储，刷写固件比较方便。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/dxnyj.jpg"></p>
-<p>日常用MacOS版的SD Clone对TF卡刷固件和备份固件。</p>
-<h5 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h5><p><a href="https://maxlay.github.io/2022/09/13/r66s/">软路由</a>的固件我选用flippy大佬20221018第8版启用6.0内核的固件，在店犀牛公布的百度云里有，名称是：openwrt_rk3568_r66s_R22.10.10_k6.0.2-flippy-78+.7z  分享链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666">https://pan.baidu.com/s/1L3URkSfazKceYG2JarDE2w?pwd=6666</a> </p>
-<h5 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h5><p>这个OpenWRT固件的Docker是20.10.17版，且不用调整分区扩容，上手就能用。<br>镜像加速器可以用：<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">《Docker Desktop on Mac》</a>里提到的配置，拉取homeassistant&#x2F;home-assistant镜像大约10分钟可以搞定，然后新建容器的时候网络选HOSTS。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=&quot;HuangleiHASS&quot; --network=host -v /opt/docker/hassio:/config -e TZ=&quot;Asia/Shanghai&quot; homeassistant/home-assistant</span><br></pre></td></tr></table></figure>
-
-<p>去Docker Man里配置允许的端口：</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/dockerman.jpeg"></p>
-<p>把8123、21063、21064、21065、51827都打开。</p>
-<p>然后去Docker对应容器的控制台里修改configuration.yaml文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/docker/hassio</span><br><span class="line">vi configuration.yaml</span><br></pre></td></tr></table></figure>
-<p>configuration.yaml里添加下面的内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="attr">server_port:</span> <span class="number">8123</span></span><br><span class="line">  <span class="attr">use_x_forwarded_for:</span> <span class="literal">True</span></span><br><span class="line">  <span class="attr">trusted_proxies:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">::1/128</span></span><br><span class="line">  <span class="attr">ip_ban_enabled:</span> <span class="literal">False</span></span><br><span class="line">  <span class="attr">login_attempts_threshold:</span> <span class="number">5</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">homekit:</span></span><br><span class="line">  <span class="attr">ip_address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-
-<p>ESC键，输入:wq 保存和退出。</p>
-<h5 id="Homeassistant"><a href="#Homeassistant" class="headerlink" title="Homeassistant"></a>Homeassistant</h5><p>启动容器里的Homeassistant，浏览器打开软路由ip的8123端口，因为用的是TF卡，读写都很慢，需要等，大约10分钟之后就会让你创建管理员身份并登陆。<br>然后像<a href="https://maxlay.github.io/2022/11/16/DockerDesktop/">《Docker Desktop on Mac》</a>里提到的那样<a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip">下载解压Xiaomi MIoT</a>，按<a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw">说明</a>把custom_components目录复制到Doker的&#x2F;opt&#x2F;docker&#x2F;hassio目录下（这里我是直接sftp到软路由来实现的），随后再登陆Homeassistant里添加集成，搜索安装Xiaomi MIoT和搜索安装HomeKit。</p>
-<h5 id="Xiaomi-MIoT"><a href="#Xiaomi-MIoT" class="headerlink" title="Xiaomi MIoT"></a>Xiaomi MIoT</h5><p>登陆配置Xiaomi MIoT里的小米米家账号可以自动同步“设备”，检查完整性，不完整可以多配置几次。</p>
-<h5 id="Homeassistant仪表盘"><a href="#Homeassistant仪表盘" class="headerlink" title="Homeassistant仪表盘"></a>Homeassistant仪表盘</h5><p>如果你想通过iPAD的Safari打开Homeassistant的仪表盘来日常控制设备也是可以的，也可以适当美化一下Homeassistant的仪表盘，自己按习惯的操作思路配置仪表盘，我既配置了仪表盘也启用了HomeKit。</p>
-<h5 id="HomeKit"><a href="#HomeKit" class="headerlink" title="HomeKit"></a>HomeKit</h5><p>用iOS或iPadOS里的家庭APP扫Homeassistant通知栏里的HASS Bridge：21064对应的二维码添加设备到HomeKit里，可以按设备属性新建房间来分类管理。也可以在家庭APP里添加自动化来创建设备的条件触发，怎么让自己觉得方便就怎么来。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_0024.jpeg"></p>
-<p>也可以把iPad或者HomePod设置成中枢，手机脱离软路由网络环境也能继续控制家里的设备。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_0023.jpeg"></p>
-<p>可以按自己的操作习惯把常用配件放在iOS或者iPadOS的电池下拉的“控制中心”里，实现系统级的管理设备。下拉点击，就像你平时调整音量和屏幕亮度那样方便。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_9612.jpeg"></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/26/ProMovie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/26/ProMovie/" class="post-title-link" itemprop="url">ProMovie</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-26 22:20:47" itemprop="dateCreated datePublished" datetime="2022-11-26T22:20:47+08:00">2022-11-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://maxlay.github.io/uploads/2022/11/promovie.png"></p>
-<p>ProMovie官网：<br><a target="_blank" rel="noopener" href="https://promovieapp.com/">https://promovieapp.com</a></p>
-<p>iPhone上最优秀的专业拍摄软件之一，可以去应用商店下载，也可以在这里下载ipa签名安装。</p>
-<p><a target="_blank" rel="noopener" href="https://link.jscdn.cn/sharepoint/aHR0cHM6Ly80bDF5NG4tbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvaHVhbmdsZWktem1jY180bDF5NG5fb25taWNyb3NvZnRfY29tL0VXLVRUT0Zqc3dkUHBTT2xyMGlCVVdFQmFfRjBuSkdGa1dwMlRWUFZWdElqYkE_ZT1oWklBTXE.ipa">ProMovie1.11.6 iPA下载</a></p>
-<blockquote>
-<p>可以使用<a href="https://maxlay.github.io/2022/09/10/esign/">轻松签+</a>、<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore</a>、<a href="https://maxlay.github.io/2022/10/09/%E7%89%9B%E8%9B%99%E5%8A%A9%E6%89%8B/">牛蛙助手</a>搞定签名免费安装。</p>
-</blockquote>
-<p>抖音上关于ProMovie的使用教程：<br><a target="_blank" rel="noopener" href="https://www.douyin.com/video/7019960714429271307">https://www.douyin.com/video/7019960714429271307</a></p>
-<p>抖音上其他关于ProMovie的视频：<br><a target="_blank" rel="noopener" href="https://www.douyin.com/search/ProMovie?type=video">https://www.douyin.com/search/ProMovie?type=video</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/25/infuse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/25/infuse/" class="post-title-link" itemprop="url">infuse</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-25 18:42:33" itemprop="dateCreated datePublished" datetime="2022-11-25T18:42:33+08:00">2022-11-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://maxlay.github.io/uploads/2022/11/infuse7-hero_4x.png"></p>
-<p>INFUSE官网：<br><a target="_blank" rel="noopener" href="https://firecore.com/infuse">https://firecore.com/infuse</a></p>
-<p>TVOS、iOS、iPadOS上最优秀的电影播放器，与<a href="https://maxlay.github.io/2022/11/17/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E5%88%86%E4%BA%AB/">Alist</a>配合可以获得最优秀的观影体验。</p>
-<p><a target="_blank" rel="noopener" href="https://link.jscdn.cn/sharepoint/aHR0cHM6Ly80bDF5NG4tbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvaHVhbmdsZWktem1jY180bDF5NG5fb25taWNyb3NvZnRfY29tL0VReENGVGt2UC10Q2pZT25ndlkzS3hRQk1MUFFPcVpWUG8wNDI4X2JlUlZzdUE_ZT1iOFhaYms.ipa">Infuse Pro 7.4.5 破解版iPA下载</a></p>
-<p><a target="_blank" rel="noopener" href="https://link.jscdn.cn/sharepoint/aHR0cHM6Ly80bDF5NG4tbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvaHVhbmdsZWktem1jY180bDF5NG5fb25taWNyb3NvZnRfY29tL0VWS2RMM2hydl94SHE1SUxBYnRRNXpRQnhPbkFSSWxWTkxPNGhSLUFLYzhiaFE_ZT1nNDVDRWM.ipa">Infuse Pro 7.4.9 破解版iPA下载</a></p>
-<blockquote>
-<p>可以使用<a href="https://maxlay.github.io/2022/09/10/esign/">轻松签+</a>、<a href="https://maxlay.github.io/2022/09/18/TrollStore/">TrollStore</a>、<a href="https://maxlay.github.io/2022/10/09/%E7%89%9B%E8%9B%99%E5%8A%A9%E6%89%8B/">牛蛙助手</a>搞定签名免费安装。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/24/%E5%90%83%E5%A4%9F%E4%B8%80%E7%99%BE%E4%B8%AA%E6%A9%98%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/24/%E5%90%83%E5%A4%9F%E4%B8%80%E7%99%BE%E4%B8%AA%E6%A9%98%E5%AD%90/" class="post-title-link" itemprop="url">吃够一百个橘子</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-24 04:16:27" itemprop="dateCreated datePublished" datetime="2022-11-24T04:16:27+08:00">2022-11-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%A7%86%E9%A2%91/" itemprop="url" rel="index"><span itemprop="name">视频</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://maxlay.github.io/uploads/2022/11/IMG_9588.jpeg"></p>
-<p><video controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/24/吃够一百个橘子/100.mov"> </video></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/23/LingvaTranslate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/23/LingvaTranslate/" class="post-title-link" itemprop="url">LingvaTranslate</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-23 14:47:10" itemprop="dateCreated datePublished" datetime="2022-11-23T14:47:10+08:00">2022-11-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/23/LingvaTranslate/result.mp3"></audio></p>
-
-<img src="https://ghproxy.com/https://github.com/thedaviddelta/lingva-translate/raw/main/public/logo.svg" style="zoom:33%;" />
-
-<p>前阵子谷歌翻译关闭了大陆服务器，lingva.ml这个项目是谷歌翻译的替代前端，作为免费和开源翻译器，提供一百多种语言，可以部署到自己服务器上来继续使用谷歌翻译服务。</p>
-<h5 id="Github链接："><a href="#Github链接：" class="headerlink" title="Github链接："></a>Github链接：</h5><p><a target="_blank" rel="noopener" href="https://github.com/thedaviddelta/lingva-translate">https://github.com/thedaviddelta/lingva-translate</a></p>
-<h5 id="它是如何工作的？"><a href="#它是如何工作的？" class="headerlink" title="它是如何工作的？"></a>它是如何工作的？</h5><p>受NewPipe，Nitter，Invidious或Bibliogram等项目的启发，Lingva在不直接访问任何Google相关服务的情况下抓取Google翻译并检索翻译，从而阻止它们跟踪。</p>
-<h5 id="Docker部署："><a href="#Docker部署：" class="headerlink" title="Docker部署："></a>Docker部署：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3000:3000 -e site_domain=lingva.ml -e force_default_theme=light -e default_source_lang=auto -e default_target_lang=en thedaviddelta/lingva-translate:latest</span><br></pre></td></tr></table></figure>
-
-<h5 id="实例站点："><a href="#实例站点：" class="headerlink" title="实例站点："></a>实例站点：</h5><p><a target="_blank" rel="noopener" href="https://lingva.ml/">https://lingva.ml</a><br><a target="_blank" rel="noopener" href="https://translate.jae.fi/">https://translate.jae.fi</a><br><a target="_blank" rel="noopener" href="https://lingva.garudalinux.org/">https://lingva.garudalinux.org</a><br><a target="_blank" rel="noopener" href="https://translate.dr460nf1r3.org/">https://translate.dr460nf1r3.org</a><br><a target="_blank" rel="noopener" href="https://translate.projectsegfau.lt/">https://translate.projectsegfau.lt</a><br><a target="_blank" rel="noopener" href="https://translate.plausibility.cloud/">https://translate.plausibility.cloud</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/22/TeslaMate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/22/TeslaMate/" class="post-title-link" itemprop="url">TeslaMate</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-22 11:08:14" itemprop="dateCreated datePublished" datetime="2022-11-22T11:08:14+08:00">2022-11-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/22/TeslaMate/result.mp3"></audio></p>
-
-<p>我的驾照是2002年获得的，我的第一辆车是2003年购买的本田飞度，第二辆车是2011年购买的别克凯越，第三辆车是2017年至今的奔驰GLA，第四辆车应该是几年之后的Tesla Model Q，或者Model Y等城市SUV车型。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/Q.png"></p>
-<p>Tesla Model Q在我看来定位更像是我最爱的本田飞度，飞度这辆车从2003年一直陪伴我到2017年，长达14年服役期间没有坏过，要提速有提速要省油又省油。相反，凯越这辆车是个油老虎，油门踩到发动机舱里都不带推背的，性价比完败飞度。所以凯越从2011年到2021年，只服役了10年，属于并不怎么及时得止损。GLA目前的感受属于介乎这两辆车之间，有加速有省油，按这两辆车在我人生中提供的上下限，GLA怎么也能陪伴10到17年，按13年算，2030年也许是我入手第一辆特斯拉电车的时间段，2030年的电池电控电机技术应该能比现在更成熟些，售价也能更合理些。</p>
-<p>介于2030年我要购买特斯拉，所以提前做做技术储备，来看看特斯拉自持私有数据记录平台TeslaMate。</p>
-<p>TeslaMate官方文档<br><a target="_blank" rel="noopener" href="https://docs.teslamate.org/docs/installation/docker">https://docs.teslamate.org/docs/installation/docker</a></p>
-<p>Github链接<br><a target="_blank" rel="noopener" href="https://github.com/adriankumpf/teslamate">https://github.com/adriankumpf/teslamate</a></p>
-<p>知乎上有人写了一个docker-compose方便一键部署<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/434370297">https://zhuanlan.zhihu.com/p/434370297</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/21/pd-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -714,96 +240,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p align="center"><audio controls="" src="https://ghproxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/2022/11/21/pd-1/result.mp3"></audio></p>
+          <p align="center"><audio controls="" src="https://maxlay.github.io/2022/11/21/pd-1/result.mp3"></audio></p>
 
 <p><img src="https://maxlay.github.io/uploads/2022/11/pd1.png"></p>
 <p>我理解抗衰老的形式有3种，逆转、冻龄、和延缓，今天在药研网公众号上看到了一篇文章，可能实现了当年秦始皇的愿望。现代医学就是科学，科学从来没有定论，科学就是在时间轴上，从后往前推翻的过程，所以请自行判断：</p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eTWgi9_suGQmngXSwdZ9UQ">https://mp.weixin.qq.com/s/eTWgi9_suGQmngXSwdZ9UQ</a></p>
 <p>该研究发现，PD-L1在衰老细胞中异质性表达，PD-L1阳性衰老细胞会随着年龄的增长而不断在体内积累。通过PD-1&#x2F;PD-L1免疫检查点阻断疗法来清除PD-L1阳性的衰老细胞，或将成为一种颇具前景的抗衰老治疗策略。换句话说，治疗肿瘤的PD-1抑制类药物可能会像当年的可乐配方从咳嗽药水变成了碳酸饮料一样，从不能完全治愈肿瘤变成了可以逆转衰老的药物。PD-1抑制剂在对抗肿瘤细胞的过程中把衰老细胞当作了疾病给顺带手治了，听起来确实不可思议。其实药物这件事，从来都是有它的副作用的，就像网红司美格鲁肽的副作用是减重，FDA居然就批准了用它来减肥，哪一天FDA会批准哪一款PD-1抑制类药物用来逆转衰老，也不是完全不可能。</p>
 <p>其他相关链接：<br><a target="_blank" rel="noopener" href="https://www.pd1.cn/pd1-news/15650.html">https://www.pd1.cn/pd1-news/15650.html</a><br><a target="_blank" rel="noopener" href="http://www.ittime.com.cn/news/news_62193.shtml">http://www.ittime.com.cn/news/news_62193.shtml</a><br><a target="_blank" rel="noopener" href="https://news.bioon.com/article/4b4ce4685322.html">https://news.bioon.com/article/4b4ce4685322.html</a><br><a target="_blank" rel="noopener" href="http://scholarsupdate.hi2net.com/news.asp?NewsID=33259">http://scholarsupdate.hi2net.com/news.asp?NewsID=33259</a><br><a target="_blank" rel="noopener" href="https://www.cn-healthcare.com/article/20221105/content-574486.html">https://www.cn-healthcare.com/article/20221105/content-574486.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/20/Emby%E5%85%AC%E7%9B%8A%E6%9C%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/20/Emby%E5%85%AC%E7%9B%8A%E6%9C%8D/" class="post-title-link" itemprop="url">Emby公益服</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-20 15:36:00" itemprop="dateCreated datePublished" datetime="2022-11-20T15:36:00+08:00">2022-11-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://emby.plusmedia.site/">https://emby.plusmedia.site</a></p>
-<p>账号：普拉斯影业<br>密码：plusisbest</p>
-<blockquote>
-<p>这个Emby公益服总容量110TB共计158818部影视且不定时更新</p>
-</blockquote>
-<p>可以直接点击用web访问，也可以在iPadOS上使用Fileball添加连接</p>
-<p><a href="https://maxlay.github.io/2022/10/21/Fileball/">https://maxlay.github.io/2022/10/21/Fileball/</a></p>
-<p>方法：FIleball-&gt;”连接”-&gt;”添加媒体服务器”-&gt;”连接到Emby”-&gt;如图：</p>
-<p><img src="https://maxlay.github.io/uploads/2022/11/IMG_0021.jpeg"></p>
-<p>备用地址：</p>
-<p><a target="_blank" rel="noopener" href="https://emby-cf.plusmedia.site/">https://emby-cf.plusmedia.site</a></p>
-<p><a target="_blank" rel="noopener" href="https://emby.xeton.dev/">https://emby.xeton.dev</a></p>
-<p><a target="_blank" rel="noopener" href="https://jellyfin.xeton.dev/">https://jellyfin.xeton.dev</a></p>
-<p><a target="_blank" rel="noopener" href="https://movie.xeton.dev/">https://movie.xeton.dev</a></p>
-<p><a target="_blank" rel="noopener" href="https://servers.xeton.dev/">https://servers.xeton.dev</a></p>
 
       
     </div>
@@ -986,10 +429,564 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/16/DockerDesktop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/16/DockerDesktop/" class="post-title-link" itemprop="url">Docker Desktop on Mac</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-16 10:31:08" itemprop="dateCreated datePublished" datetime="2022-11-16T10:31:08+08:00">2022-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在Mac桌面端管理家里的智能家电，我的方案是在MacOS上Docker一个Home Assistant。<br>一方面可以学习Mac下的Docker Desktop。<br>一方面可以再探索一下Home Assistant和Xiaomi MIoT插件。</p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/1668519377890.jpg"></p>
+<h4 id="Step1"><a href="#Step1" class="headerlink" title="Step1:"></a>Step1:</h4><p><a href="https://maxlay.github.io/2022/10/05/%E5%8A%A0%E9%80%9FGithub/">https://maxlay.github.io/2022/10/05/%E5%8A%A0%E9%80%9FGithub/</a></p>
+<blockquote>
+<p>*确保可以访问Github（可选）</p>
+</blockquote>
+<h4 id="Step2："><a href="#Step2：" class="headerlink" title="Step2："></a>Step2：</h4><p><a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/install/mac-install/">https://docs.docker.com/desktop/install/mac-install/</a></p>
+<blockquote>
+<p>下载安装自己CPU对应版本的Docker Desktop on Mac</p>
+</blockquote>
+<h4 id="Step3："><a href="#Step3：" class="headerlink" title="Step3："></a>Step3：</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;builder&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;gc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;defaultKeepStorage&quot;</span><span class="punctuation">:</span> <span class="string">&quot;20GB&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;experimental&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;buildkit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://9cpn8tt6.mirror.aliyuncs.com&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>增加阿里的镜像源到“Preferences”里的“Docker Engine”</p>
+<p>可以自己阿里生成地址：<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+<p>腾讯云镜像地址：<a target="_blank" rel="noopener" href="https://ccr.ccs.tencentyun.com/">https://ccr.ccs.tencentyun.com</a></p>
+<p>百度云镜像地址：<a target="_blank" rel="noopener" href="https://mirror.baidubce.com/">https://mirror.baidubce.com</a></p>
+</blockquote>
+<p>或者用Docker命令也能添加</p>
+<p>创建一台安装有Docker环境的Linux虚拟机，指定机器名称为default，同时配置Docker加速器地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-machine create --engine-registry-mirror=https://9cpn8tt6.mirror.aliyuncs.com -d virtualbox default</span><br></pre></td></tr></table></figure>
+<p>看机器的环境配置，并配置到本地，并通过Docker客户端访问Docker服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-machine env default</span><br><span class="line">eval &quot;$(docker-machine env default)&quot;</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Step4："><a href="#Step4：" class="headerlink" title="Step4："></a>Step4：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=&quot;home-assistant&quot; -v ~/hassio:/config -e &quot;TZ=America/Denver&quot; -p 8123:8123 homeassistant/home-assistant</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在Docker阿里云镜像高速拉取并一键创建HomeAssistant到~&#x2F;hassio目录</p>
+</blockquote>
+<h4 id="Step5："><a href="#Step5：" class="headerlink" title="Step5："></a>Step5：</h4><p>打开<a target="_blank" rel="noopener" href="http://localhost:8123/">http://localhost:8123/</a> 创建管理员并登陆</p>
+<h4 id="Step6："><a href="#Step6：" class="headerlink" title="Step6："></a>Step6：</h4><p>从<br><a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip">https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip</a><br>下载Xiaomi MIoT插件解压后<br><a target="_blank" rel="noopener" href="https://github.com/ha0y/xiaomi_miot_raw">https://github.com/ha0y/xiaomi_miot_raw</a><br>按说明把custom_components目录复制到~&#x2F;hassio下</p>
+<h4 id="Step7："><a href="#Step7：" class="headerlink" title="Step7："></a>Step7：</h4><p>配置-&gt;设备与服务-&gt;添加集成-&gt;搜索Xiaomi MIoT-&gt;填写手机号和小米的密码-&gt;添加所有支持的设备<br>配置-&gt;设备与服务-&gt;添加集成-&gt;搜索HomeKit</p>
+<h4 id="Step8："><a href="#Step8：" class="headerlink" title="Step8："></a>Step8：</h4><p>iOS和iPadOS端下载“家庭”APP，扫描HomeAssistant里HomeKIt二维码添加配件。</p>
+<p>Docker核心技术原理以及应用:</p>
+<p><a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/919XqEM8gGe">https://www.aliyundrive.com/s/919XqEM8gGe</a></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/15/harvard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/15/harvard/" class="post-title-link" itemprop="url">Harvard</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-15 13:44:58" itemprop="dateCreated datePublished" datetime="2022-11-15T13:44:58+08:00">2022-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://maxlay.github.io/2022/11/15/harvard/result.mp3"></audio></p>
+
+<img src="https://maxlay.github.io/uploads/2022/11/harvard.png" style="zoom: 67%;" />
+
+<p>哈佛大学（Harvard University），简称“哈佛”，位于美国马萨诸塞州波士顿都市区剑桥市的一所私立研究型大学，哈佛大学建立于1636年，最早由马萨诸塞州殖民地立法机关创建，初名“新市民学院”。  为了纪念在成立初期给予学院慷慨支持的约翰·哈佛牧师，学校于1639年3月更名为“哈佛学院（Harvard College）”。1780年，哈佛学院正式改称“哈佛大学”。 常春藤盟校、全球大学高研院联盟成员。哈佛大学由十所学院以及一个高等研究所构成。 该校还负责管理运行哈佛-史密松森天体物理中心、麻省总医院、波士顿儿童医院等机构。哈佛大学的OLI(Open Learning Initiative)为大众提供了一系列免费的视频课程(取自edX选题)，涵盖了一系列典型的大学主题，包括，艺术，历史，数学，统计，计算机科学等。</p>
+<p>DCE课程搜索和注册<br><a target="_blank" rel="noopener" href="https://courses.dce.harvard.edu/">https://courses.dce.harvard.edu</a></p>
+<p>哈佛扩展学院的在线学习介绍<br><a target="_blank" rel="noopener" href="https://extension.harvard.edu/about/online-learning/">https://extension.harvard.edu/about/online-learning/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/14/stanford/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/14/stanford/" class="post-title-link" itemprop="url">Stanford</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-14 12:09:00" itemprop="dateCreated datePublished" datetime="2022-11-14T12:09:00+08:00">2022-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://maxlay.github.io/2022/11/14/stanford/result.mp3"></audio></p>
+
+<img src="https://maxlay.github.io/uploads/2022/11/R-C.png" style="zoom: 33%;" />
+
+<p>斯坦福大学（Stanford University），全名小利兰·斯坦福大学（Leland Stanford Junior University），简称“斯坦福”，位于美国加州旧金山湾区南部帕罗奥多市境内，临近高科技园区硅谷（Silicon Valley），是私立研究型大学，全球大学高研院联盟成员。 斯坦福大学于1885年成立，1891年开始正式招生，占地约33平方公里（8180英亩），目前在校生人数16937人，教职工1534人，其中61%的人取得终身教授资格。截止2020年，现任教职工中有19位诺贝尔奖得主、1位菲尔兹奖得主、163位美国国家科学院院士、101位美国国家工程院院士、287位美国文理科学院院士、4位普利策奖得主、18位美国国家科学奖章得主和29位麦克阿瑟天才奖得主等等。斯坦福大学与加州大学伯克利分校共同构成美国西部的学术中心，并负责运行管理SLAC国家加速器实验室、胡佛研究所等机构。2022年5月，入选英国政府“高潜力人才签证计划” ；斯坦福大学在多个美国国内外大学排名中均在十强之列，其中世界大学学术排名更是多年来都一直将其列作世界第二，仅次于哈佛大学。斯坦福大学学科在世界排名均处于领先地位，尤其在统计与运筹学、电气工程学、计算机科学、医学、商学、社会科学等多个学科领域拥有世界级的学术影响力。斯坦佛在线免费课程涉及的学科：创新与设计思维、网络安全、人工智能、数字化转型、领导与管理、环境与能源、健康与医药、艺术与人文、教育。</p>
+<p>斯坦福在线免费课程<br><a target="_blank" rel="noopener" href="https://online.stanford.edu/explore?filter%5B0%5D=free_or_paid:free&keywords=&items_per_page=12">https://online.stanford.edu</a></p>
+<p>斯坦福在线自由内容图书馆<br><a target="_blank" rel="noopener" href="https://online.stanford.edu/content-gallery">https://online.stanford.edu/content-gallery</a></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/13/%E4%B8%AD%E5%9B%BD%E9%AB%98%E8%A1%80%E5%8E%8B%E4%B8%B4%E5%BA%8A%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/13/%E4%B8%AD%E5%9B%BD%E9%AB%98%E8%A1%80%E5%8E%8B%E4%B8%B4%E5%BA%8A%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">中国高血压临床实践指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-13 17:49:51" itemprop="dateCreated datePublished" datetime="2022-11-13T17:49:51+08:00">2022-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%81%A5%E5%BA%B7/" itemprop="url" rel="index"><span itemprop="name">健康</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://maxlay.github.io/2022/11/13/中国高血压临床实践指南/result.mp3"></audio></p>
+
+<p><img src="https://maxlay.github.io/uploads/2022/11/1668324927109135.png"></p>
+<p>　　11月13日上午，<strong>《中国高血压临床实践指南》</strong>发布会于线上举行。该指南由以心血管科和高血压为主的多领域专家研究制定，形成了针对高血压的44个关键临床问题和102条推荐意见。 基于近年来大量高质量证据，针对临床较关心的<strong>高血压诊断界值、不同人群降压目标</strong>等内容，新版指南作出了重要调整。</p>
+<h3 id="130-x2F-80-mmHg！"><a href="#130-x2F-80-mmHg！" class="headerlink" title="130&#x2F;80 mmHg！"></a><strong>130&#x2F;80 mmHg！</strong></h3><h4 id="高血压诊断界值下调"><a href="#高血压诊断界值下调" class="headerlink" title="高血压诊断界值下调"></a><strong>高血压诊断界值下调</strong></h4><p>​		新版指南推荐将我国成人高血压的诊断界值由收缩压≥140 mmHg和&#x2F;或舒张压≥90 mmHg<strong>下调至收缩压≥130 mmHg和&#x2F;或舒张压≥80 mmHg</strong>（1B）。</p>
+<p>　　研究结果表明，我国<strong>40岁以下青年人群</strong>中，血压值为<strong>130至139&#x2F;80至89mmHg</strong>的人群脑卒中风险，特别是脑出血风险明显增加。此次推荐高血压诊断标准改为<strong>130&#x2F;80mmHg</strong>，对我国心脑血管疾病，特别是脑卒中的预防具有明确的必要性和可行性。</p>
+<p><img src="https://maxlay.github.io/uploads/2022/11/85651668326346698.jpg"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/13/%E4%B8%AD%E5%9B%BD%E9%AB%98%E8%A1%80%E5%8E%8B%E4%B8%B4%E5%BA%8A%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/12/%E9%BB%91%E8%8B%B9%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/%E9%BB%91%E8%8B%B9%E6%9E%9C/" class="post-title-link" itemprop="url">黑苹果</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-12 18:31:39" itemprop="dateCreated datePublished" datetime="2022-11-12T18:31:39+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://maxlay.github.io/uploads/2022/11/macpro.png"></p>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial">https://heipg.cn/tutorial</a><br>新手可以先学学黑苹果的基础知识</p>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/efi">https://heipg.cn/efi</a><br>首先了解哪些硬件方案有EFI支持</p>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/drivers">https://heipg.cn/drivers</a><br>然后了解哪些硬件有Mac驱动的支持</p>
+<p><a href="https://maxlay.github.io/2022/10/19/%E5%9C%A8%E7%BA%BF%E9%85%8D%E7%BD%AEPC%E7%BB%84%E8%A3%85%E6%9C%BA/">https://maxlay.github.io/2022/10/19/在线配置PC组装机/</a><br>可以在线查询组装机的配件方案</p>
+<p><a href="https://maxlay.github.io/2022/09/19/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AAMac%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/">https://maxlay.github.io/2022/09/19/推荐几个Mac软件下载网站/</a><br>搞定硬件和系统之后可以去这里找Mac软件</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/10/APPClip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/10/APPClip/" class="post-title-link" itemprop="url">AppClip</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-10 21:14:17" itemprop="dateCreated datePublished" datetime="2022-11-10T21:14:17+08:00">2022-11-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <img src="https://maxlay.github.io/uploads/2022/11/IMG_9488.jpeg" style="zoom: 50%;" />
+
+<blockquote>
+<p>iOS14以上的设备可以用系统相机直接识别这个<a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/guide/iphone/iphb3a73ec53/14.0/ios/14.0">苹果轻应用码</a>，识别出来是2022年12月将要发布的新款苹果手表的表盘，抢先体验。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/11/09/ntplayer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/09/ntplayer/" class="post-title-link" itemprop="url">ntPlayer</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-09 18:52:21" itemprop="dateCreated datePublished" datetime="2022-11-09T18:52:21+08:00">2022-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://maxlay.github.io/uploads/2022/11/IMG_9493.png"></p>
+<p><a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/ntplayer/id1613758141">https://apps.apple.com/us/app/ntplayer/id1613758141</a></p>
+<blockquote>
+<p>比VLC优秀的IPTV播放器，配合我的m3u地址看电视绝佳。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://maxlay.github.io/tv.m3u</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1057,7 +1054,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">288</span>
+          <span class="site-state-item-count">276</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
