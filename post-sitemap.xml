@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2022/10/10/violentmonkey/</loc>
+        <lastmod>2024-01-20T19:31:29.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2022/08/05/BiuBiu999/</loc>
         <lastmod>2024-01-15T12:03:22.357Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -123,14 +131,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/09/apple-ml-neuman/</loc>
         <lastmod>2024-01-14T10:44:05.149Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/10/10/violentmonkey/</loc>
-        <lastmod>2024-01-14T10:44:05.141Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
