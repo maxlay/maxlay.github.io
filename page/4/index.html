@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">275</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">276</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,85 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2023/01/19/filza/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/19/filza/" class="post-title-link" itemprop="url">Filza</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-19 10:37:41" itemprop="dateCreated datePublished" datetime="2023-01-19T10:37:41+08:00">2023-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">推荐</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p align="center"><audio controls="" src="https://maxlay.github.io/2023/01/19/Filza/result.mp3"></audio></p>
+
+<p><img src="https://maxlay.github.io/uploads/2023/01/filza.jpeg"></p>
+<p>用iPad Pro刷抖音，发现抖音在iPad上不能横屏使用。抖音只在首次安装打开时可以横屏使用的，只要多刷几个视频关闭抖音第二次打开之后就无法横屏使用了，网上的教程都不好使。同时抖音会大量使用本地缓存，超过2.5G的缓存，不知道是不是在利用我的存储和带宽在做CDN。</p>
+<p>那么怎么解决这个问题？</p>
+<p>解决的思路简单来说就是用TrollStore来安装Filza，然后用Filza限制（App 管理器里找到的）“抖音”下面两个目录地址的写入和执行权限，限制权限前先删除这两个目录里的文档，不允许抖音缓存。问题就迎刃而解了。</p>
+<p>Libary -&gt; Application Support -&gt; gurd_cache</p>
+<p>和</p>
+<p>Libary -&gt;Caches</p>
+<p>至此我的抖音占用的文稿和数据将永远停留在255MB左右。抖音视频会在内存里交换，不会保存到本地形成缓存，没有缓存就不会被当成CDN割韭菜。</p>
+<p>要知道你手机存储颗粒的写入次数不是无限的，写入次数耗尽，硬盘就报废了，抖音把视频存在你手机里，根据算法会在你刷视频的同时把你手机里缓存的视频上传给你同网段的其他使用者，类似当年BT种子下载。这种技术可以大幅度减少抖音服务器的压力，把你的手机当成抖音的服务器。你的手机既要花费额外的电力，又要花费额外的上传带宽，这可都是你花的钱。</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -884,76 +963,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2022/12/13/%E9%98%B2%E7%96%AB%E5%8F%A3%E7%BD%A9%E7%9A%84%E6%89%A7%E8%A1%8C%E6%A0%87%E5%87%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/13/%E9%98%B2%E7%96%AB%E5%8F%A3%E7%BD%A9%E7%9A%84%E6%89%A7%E8%A1%8C%E6%A0%87%E5%87%86/" class="post-title-link" itemprop="url">防疫口罩的执行标准</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-12-13 10:40:52" itemprop="dateCreated datePublished" datetime="2022-12-13T10:40:52+08:00">2022-12-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%B0%E8%B4%A7/" itemprop="url" rel="index"><span itemprop="name">买货</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近实施了新的十条防疫政策，对于家里有老人小孩的家庭，需要格外做好个人防护。口罩尤为重要，购买时留意一下口罩产品的执行标准，买对口罩。</p>
-<p><img src="https://maxlay.github.io/uploads/2022/12/IMG_9662.jpeg"></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1025,7 +1034,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">275</span>
+          <span class="site-state-item-count">276</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
