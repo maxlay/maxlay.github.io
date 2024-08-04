@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2024/07/27/TVBox/</loc>
+        <lastmod>2024-08-04T00:50:31.957Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2024/08/04/FlClash/</loc>
         <lastmod>2024-08-04T00:40:17.561Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -2211,14 +2219,6 @@
     <url>
         <loc>https://maxlay.github.io/2021/07/05/%E5%A4%96%E5%8D%96%E4%BC%98%E6%83%A0%E5%88%B8/</loc>
         <lastmod>2022-11-14T04:47:53.003Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2024/07/27/TVBox/</loc>
-        <lastmod>2022-01-01T00:08:09.897Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
