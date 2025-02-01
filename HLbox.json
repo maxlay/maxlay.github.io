@@ -1,7 +1,11 @@
 {
     "urls": [
         {
-            "name": "🚀100KM",
+            "name": "推荐：猫影视",
+            "url": "http://meowtv.top/tv"
+        },
+        {
+            "name": "🚀騷零接口",
             "url": "https://100km.top/0"
         },
         {
@@ -9,16 +13,44 @@
             "url": "http://xhztv.top/xhz"
         },
         {
-            "name": "🚀巧技",
+            "name": "🚀世纪",
+            "url": "https://pandown.pro/tvbox/tvbox.json"
+        },
+        {
+            "name": "🚀Qiaoji8",
             "url": "http://cdn.qiaoji8.com/tvbox.json"
         },
         {
-            "name": "🚀360",
+            "name": "🚀Top98",
             "url": "http://home.jundie.top:81/top98.json"
         },
         {
-            "name": "🚀HG",
+            "name": "🚀HGYX",
             "url": "https://api.hgyx.vip/hgyx.json"
+        },
+        {
+            "name": "🚀小米",
+            "url": "https://mi.mpanso.me/DEMO.json"
+        },        
+        {
+            "name": "🚀 南风",
+            "url": "https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
+        }, 
+        {
+            "name": "🚀 长青",
+            "url": "http://yuan.haitangw.net/tv/"
+        }, 
+        {
+            "name": "🚀 YHY科技",
+            "url": "https://d.kstore.dev/download/7336/yhykeji.json"
+        }, 
+        {
+            "name": "🚀 忙忙",
+            "url": "https://d.kstore.dev/download/11340/mmrjk.json"
+        }, 
+        {
+            "name": "🚀18+",
+            "url": "https://ghfast.top/https://raw.githubusercontent.com/bizhangjie/CatVodSpider/main/json/index18.json"
         }
     ]
 }
