@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">280</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">281</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,90 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2023/08/12/%E7%BB%99%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E5%8D%87%E7%BA%A7%E5%86%85%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/12/%E7%BB%99%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E5%8D%87%E7%BA%A7%E5%86%85%E5%AD%98/" class="post-title-link" itemprop="url">给十年前的笔记本电脑升级内存</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-12 21:31:45" itemprop="dateCreated datePublished" datetime="2023-08-12T21:31:45+08:00">2023-08-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>上周给单位里两台联想笔记本申请升级内存和硬盘，从原先的 4G 顶格上到 8G*2&#x3D;16G，机械硬盘换 SSD，结果原先只能在 Win7 上苟延残喘的蜗牛辣鸡，瞬间能在 Win10 甚至 Win11上兴风作浪了。</p>
+<p>想想家里还有一台 2013 年上市的Acer Aspire EC470G series闲置吃灰，上 PDD 花 73.31 元巨资购入两条 8G 的海力士 DDR3L 1600mhz 低电压内存，给主板顶格拉满，系统直接安排 Win11。</p>
+<p><img src="https://maxlay.github.io/uploads/2023/08/IMG_1230.jpeg"></p>
+<p>如果你有旧笔电在吃灰，升级内存和硬盘，重装一下操作系统，体验会像是获得了一台新电脑。如果你有动手能力，直接拆机，看有几个内存槽。确定内存条类型，我是直接问 AIGC，一般都会得到准确答案。内存16G 起步，硬盘1T 起步，如果主板有 M2 接口就直接下单 M2 硬盘，没有就传统 SSD。现在 PDD 上的内存条和 SSD 就像不要钱一样的便宜。</p>
+<p>升级完硬件，操作系统的安装可以去这个帖子看看：<br><a href="https://maxlay.github.io/2022/09/21/Windows/">https://maxlay.github.io/2022/09/21/Windows/</a></p>
+<blockquote>
+<p>想知道自己的主板能支持最大安装多少内存可以用管理员打开 CMD，用下面的命令查看。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic memphysical get maxcapacity</span><br></pre></td></tr></table></figure>
+<p>最大内存 k&#x2F;1024&#x3D;M&#x2F;1021&#x3D;G </p>
+<p>33554432&#x2F;1024&#x2F;1021&#x3D;32GB说明最高支持32GB的内存</p>
+<p>67108864&#x2F;1024&#x2F;1021&#x3D;64GB说明最高支持64GB的内存</p>
+<p>查看内存槽数量可以 输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic memorychip list brief </span><br></pre></td></tr></table></figure>
+<p>或者 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic memphysical list brief </span><br></pre></td></tr></table></figure>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -885,84 +969,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2023/02/27/SPSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/27/SPSS/" class="post-title-link" itemprop="url">SPSS</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-27 07:58:26" itemprop="dateCreated datePublished" datetime="2023-02-27T07:58:26+08:00">2023-02-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>IBM SPSS Statistics 27.0.1 IF026 (x64) Multilingual macOS</p>
-<p><a target="_blank" rel="noopener" href="https://link.jscdn.cn/sharepoint/aHR0cHM6Ly80bDF5NG4tbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvaHVhbmdsZWktem1jY180bDF5NG5fb25taWNyb3NvZnRfY29tL0VTS2ZFSmFBNVpOSnB4LWpCcVljWm1VQjIzNnh0cVNJS1ZxRTBYXzgxVFAwb2c_ZT1ISlcyd3I.zip">下载地址</a></p>
-<p><img src="https://maxlay.github.io/uploads/2023/02/spss.png"></p>
-<blockquote>
-<p>注册IBM的账号可以试用30天，我找到的这个版本带证书，可以用到2037年。<br>首先安装软件，将JRE文件夹拷贝到&#x2F;Applications&#x2F;IBM SPSS Statistics 27&#x2F;Resources 目录下<br>再将lservrc证书文件拷贝到&#x2F;Applications&#x2F;IBM SPSS Statistics 27&#x2F;Resources&#x2F;Activation目录下<br>破解结束，就是这么简单。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1030,7 +1040,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">280</span>
+          <span class="site-state-item-count">281</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
