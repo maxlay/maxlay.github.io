@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">279</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">280</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,75 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2018/09/07/itunes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/07/itunes/" class="post-title-link" itemprop="url">优化iTunes的备份存放路径</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-07 02:32:50" itemprop="dateCreated datePublished" datetime="2018-09-07T02:32:50+08:00">2018-09-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://maxlay.github.io/uploads/2018/09/1-1024x505.jpg"> 为什么要优化iTunes的备份存放路径 因为macOS的iTunes会把iOS设备的备份路径存放在系统盘下，如果你没有第二个硬盘，是不需要看本文的，但保不齐你会想把这个备份路径放在其他存储器的时候。 打开终端，输入创建软链接的命令，这与系统创建的『替身』是有差别的。 ln -s &#x2F;Volumes&#x2F;DiskII&#x2F;itunes&#x2F;Backup &#x2F;Users&#x2F;huanglei&#x2F;Desktop 前面的路径是我的第二块硬盘准备存放Backup的目标目录，后面的路径是我的桌面，执行完会在桌面看到这个软链接文件。 点一下桌面，键盘按住Shift+Command+&gt;打开隐藏文件可见（再按一次可以关闭），按住Shift+Command+G打开前往文件夹，进入 &#x2F;Users&#x2F;huanglei&#x2F;Library&#x2F;Application Support&#x2F;MobileSync&#x2F; 其中huanglei是我的用户名，删除Backup文件夹，把桌面的Backup软链接按住Command拖放到这个目录里。 至此，iTunes备份iOS设备的时候，会把备份全部放到&#x2F;Volumes&#x2F;DiskII&#x2F;itunes&#x2F;Backup里面，这对我这台只有128G的MBPr特别有用，DiskII是我常年插在机身上的一个SanDisk的CZ43，128G优盘，价廉物美，放这类备份很合适很合适。</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -849,82 +918,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2018/04/01/xiaomi-3g-padavan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/01/xiaomi-3g-padavan/" class="post-title-link" itemprop="url">小米路由3G刷Padavan固件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-01 19:22:12" itemprop="dateCreated datePublished" datetime="2018-04-01T19:22:12+08:00">2018-04-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">爱好</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>为什么要刷路由器？因为官方固件性能差，有些固件还搜集用户数据，做各种有的没的限制。 1、小米开发版固件下载：<a target="_blank" rel="noopener" href="http://www.miwifi.com/miwifi_download.html">http://www.miwifi.com/miwifi_download.html</a> 2、小米SSH权限获取：<a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh?userId=">https://d.miwifi.com/rom/ssh</a> 3、Bootloader：<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net</a> 4、Padavan：<a target="_blank" rel="noopener" href="http://opt.cn2qq.com/padavan">http://opt.cn2qq.com/padavan</a> 原理无外乎就是先获得SSH权限，用root账号登录后刷入Bootloader，然后连电脑线刷Padavan。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/04/01/xiaomi-3g-padavan/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -996,7 +989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">279</span>
+          <span class="site-state-item-count">280</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
