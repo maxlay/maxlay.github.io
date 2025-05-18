@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://maxlay.github.io/2025/04/26/OK%E5%BD%B1%E8%A7%86/</loc>
-        <lastmod>2025-04-26T11:20:51.160Z</lastmod>
+        <loc>https://maxlay.github.io/2024/12/29/TVBox-Plus/</loc>
+        <lastmod>2025-05-18T10:37:37.708Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://maxlay.github.io/2024/07/27/TVBox/</loc>
-        <lastmod>2025-04-26T11:12:03.040Z</lastmod>
+        <lastmod>2025-05-18T10:35:53.638Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2025/04/26/OK%E5%BD%B1%E8%A7%86/</loc>
+        <lastmod>2025-05-18T10:34:11.798Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -35,14 +43,6 @@
     <url>
         <loc>https://maxlay.github.io/2025/04/05/%E9%9D%92%E5%90%AC%E9%9F%B3%E4%B9%90/</loc>
         <lastmod>2025-04-05T03:43:27.241Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2024/12/29/TVBox-Plus/</loc>
-        <lastmod>2025-01-01T06:35:34.783Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
