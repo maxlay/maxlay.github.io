@@ -1,13 +1,13 @@
 {
     "urls": [
         {
+            "name": "🦄南风",
+            "url": "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
+        },
+        {
             "url": "http://肥猫.com",
             "name": "🦄肥猫"
-        },  
-        {
-            "name": "🦄南风",
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
-        },
+        }, 
         {
             "url": "http://www.饭太硬.com/tv",
             "name": "🦄饭太硬"
@@ -72,10 +72,6 @@
             "name": "🦄流云",
             "url":"https://github.moeyy.xyz/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json"
         },  
-        {
-            "url": "http://szyyds.cn/tv/x.json",
-            "name": "🦄小马"
-        },	
         { 
            "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer", 
            "name": "少儿频道" 
