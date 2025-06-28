@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2025/06/28/diagrams/</loc>
+        <lastmod>2025-06-28T05:29:58.939Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2023/10/05/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
+        <lastmod>2025-06-28T05:09:18.500Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2025/04/26/OK%E5%BD%B1%E8%A7%86/</loc>
         <lastmod>2025-06-28T04:48:10.885Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -91,14 +107,6 @@
     <url>
         <loc>https://maxlay.github.io/2024/08/04/FlClash/</loc>
         <lastmod>2024-08-04T00:40:17.561Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2023/10/05/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
-        <lastmod>2024-03-25T10:52:59.732Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -777,14 +785,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/12/12/%E9%80%9A%E4%BF%A1%E8%A1%8C%E7%A8%8B%E5%8D%A1%E4%B8%8B%E7%BA%BF/</loc>
-        <lastmod>2023-11-28T22:20:36.391Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2019/07/17/%E7%BB%BF%E8%81%94mfi%E8%8B%B9%E6%9E%9Cpd%E5%BF%AB%E5%85%85/</loc>
         <lastmod>2023-11-28T22:20:36.386Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1401,14 +1401,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2023/01/20/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</loc>
-        <lastmod>2023-11-28T22:20:35.789Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2022/09/03/%E6%8E%A8%E8%8D%90%E5%87%A0%E4%B8%AA%E7%94%B5%E5%AD%90%E4%B9%A6%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99/</loc>
         <lastmod>2023-11-28T22:20:35.785Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1467,14 +1459,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/08/29/NAD/</loc>
         <lastmod>2023-11-28T22:20:35.742Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/12/04/alist-webdav/</loc>
-        <lastmod>2023-11-28T22:20:35.711Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1579,14 +1563,6 @@
     <url>
         <loc>https://maxlay.github.io/2022/09/27/OSLAW/</loc>
         <lastmod>2023-11-28T22:20:35.599Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/12/11/Bigdata/</loc>
-        <lastmod>2023-11-28T22:20:35.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1873,32 +1849,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2023/01/27/repl-alist/</loc>
-        <lastmod>2023-02-03T18:24:18.401Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2023/02/02/repl-trojan/</loc>
-        <lastmod>2023-02-02T15:43:12.877Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2023/01/11/iptv/</loc>
         <lastmod>2023-01-13T04:13:51.036Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2022/12/17/replit/</loc>
-        <lastmod>2022-12-20T06:41:22.292Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
