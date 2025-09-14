@@ -14,24 +14,14 @@
   ],
   "sites": [
     {
-      "key": "Tg|豆瓣",
-      "name": "🔍HuangLei",
+      "key": "csp_Czsapp",
+      "name": "🏭Huanglei",
       "type": 3,
-      "api": "csp_TgYunDouBanPan",
+      "api": "csp_Czsapp",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[object Object]"
-    },
-    {
-      "key": "ConfigCenter",
-      "name": "🅿网盘配置中心",
-      "type": 3,
-      "api": "csp_ConfigCenter",
-      "searchable": 0,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[object Object]"
+      "filterable": 1,
+      "ext": "https://www.czzymovie.com/"
     },
     {
       "key": "csp_Gz360",
@@ -180,16 +170,7 @@
       "quickSearch": 1,
       "filterable": 1
     },
-    {
-      "key": "csp_Czsapp",
-      "name": "🏭厂长",
-      "type": 3,
-      "api": "csp_Czsapp",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "https://www.czzymovie.com/"
-    },
+
     {
       "key": "csp_Tvyb",
       "name": "☁️TVB云播",
