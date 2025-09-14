@@ -1,11 +1,15 @@
 {
     "urls": [
         {
+            "name": "🦄HuangLei",
+            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.json"
+        },
+        {
             "name": "🦄南风",
             "url": "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
         },
         {
-            "url": "http://肥猫.com",
+            "url": "http://hello.肥猫.com",
             "name": "🦄肥猫"
         }, 
         {
@@ -17,8 +21,24 @@
             "url": "http://xhztv.top/xhz"
         },
         {
-            "url": "https://tv.xn--yhqu5zs87a.top",
-            "name": "🦄菜妮丝"
+            "name": "🦄小米",
+            "url": "http://miqk.cc/小米/DEMO.json"
+        },
+        {
+            "name": "🦄王二小",
+            "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.top"
+        },
+        {
+            "name": "🦄菜妮丝",
+            "url": "https://tv.xn--yhqu5zs87a.top"
+        },
+        {
+            "name": "🦄ok321",
+            "url": "http://ok321.top/tv"
+        },
+        {
+            "name": "🦄潇洒",
+            "url": "https://9877.kstore.space/AnotherD/api.json"
         },
         {
             "name": "🦄老虎",
@@ -51,10 +71,6 @@
         {
             "name": "🦄胜寒",
             "url": "https://wget.la/https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json"
-        },
-        {
-            "url": "https://7337.kstore.space/twvip/%E8%87%AA%E7%94%A8%E6%B5%8B%E8%AF%95.json",
-            "name": "🦄天微"
         },
         {
              "url": "https://www.lianyingtv.com/fast/fast",

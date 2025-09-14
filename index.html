@@ -245,44 +245,14 @@
 <p>耳机：籁特易耳 星悦（PDD：105.9 元入手)</p>
 <p>无损播放器：Poweramp破解版（用 MT 管理器修改了版本，Google Play 商店不会报升级。）</p>
 <p>下载FLAC：<a href="https://maxlay.github.io/2025/04/05/%E9%9D%92%E5%90%AC%E9%9F%B3%E4%B9%90/">青听音乐</a> （FLAC 文件一般下24bit&#x2F;48kHz左右的）</p>
-<blockquote>
-<p>LDAC 是索尼开发的高清蓝牙音频编解码器，支持最高 990kbps 的传输速率（是传统 SBC 的 3 倍），能提供接近无损音质的无线音频体验。小米 14 pro 和星悦都支持LDAC且都是蓝牙 5.4，之前用的 Beats Solo3 是苹果的AAC方案。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>编解码器</th>
-<th>比特率</th>
-<th>音质表现</th>
-<th>适用场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>LDAC (990kbps)</strong></td>
-<td>990kbps</td>
-<td>细节丰富，声场开阔</td>
-<td>发烧级音乐（FLAC&#x2F;DSD）</td>
-</tr>
-<tr>
-<td><strong>LDAC (660kbps)</strong></td>
-<td>660kbps</td>
-<td>平衡音质与稳定性</td>
-<td>日常流媒体（Tidal&#x2F;QQ音乐）</td>
-</tr>
-<tr>
-<td><strong>AAC</strong></td>
-<td>256kbps</td>
-<td>中频突出，但高频压缩</td>
-<td>通话&#x2F;视频（如 AirPods）</td>
-</tr>
-<tr>
-<td><strong>SBC</strong></td>
-<td>328kbps</td>
-<td>基础音质，低频模糊</td>
-<td>兼容性备用方案</td>
-</tr>
-</tbody></table>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/19/%E7%B1%81%E7%89%B9%E6%98%93%E8%80%B3%E6%98%9F%E6%82%A6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -356,9 +326,6 @@
 </blockquote>
 <p>我在用的版本：<a target="_blank" rel="noopener" href="https://wget.la/https://github.com/xifangczy/cat-catch/releases/download/2.6.3/cat-catch-2.6.3-edge.crx">https://wget.la/https://github.com/xifangczy/cat-catch/releases/download/2.6.3/cat-catch-2.6.3-edge.crx</a></p>
 <p>这个插件可以把视频网站的 URL 解析出来，可以直接把链接推送给 OK 影视或者影视仓来播放。</p>
-<p>猫抓插件的“数据发送“功能设置：</p>
-<p>请求方式 ：POST<br>Content-Type：application&#x2F;x-www-form-urlencoded<br>地址：<a target="_blank" rel="noopener" href="http://192.168.1.100:9978/action">http://192.168.1.100:9978/action</a>   {我的电视 IP 是 192.168.1.100}<br>请求体：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;url&quot;: &quot;$&#123;url&#125;&quot;,</span><br><span class="line">&quot;do&quot;:&quot;push&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/18/%E7%8C%AB%E6%8A%93/#more" rel="contents">
@@ -511,9 +478,14 @@
 <blockquote>
 <p>windows 版的浙政钉最近调整了安全策略，1 小时不操作就会锁定客户端要求扫码，那我就用脚本每半小时操作一下它。使用方法是下载上面网站里的软件，复制下面的代码新建一个自动操作的脚本。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#NoEnv</span><br><span class="line">#SingleInstance Force</span><br><span class="line">#Persistent</span><br><span class="line">SetTitleMatchMode, 2 ; 窗口标题部分匹配</span><br><span class="line"></span><br><span class="line">; ===== 用户配置区域 =====</span><br><span class="line">targetApp := &quot;浙政钉&quot;       ; 窗口标题包含的关键词</span><br><span class="line">intervalMinutes := 30       ; 执行间隔(分钟)</span><br><span class="line">clickX1 := 33               ; 点击的X坐标(相对于窗口)</span><br><span class="line">clickY1 := 500             ; 点击的Y坐标(相对于窗口)</span><br><span class="line">clickX2 := 33               ; 点击的X坐标(相对于窗口)</span><br><span class="line">clickY2 := 130             ; 点击的Y坐标(相对于窗口)</span><br><span class="line"></span><br><span class="line">; =======================</span><br><span class="line"></span><br><span class="line">; 创建托盘菜单</span><br><span class="line">Menu, Tray, Add, 暂停/继续, TogglePause</span><br><span class="line">Menu, Tray, Add, 立即执行, RunNow</span><br><span class="line">Menu, Tray, Add</span><br><span class="line">Menu, Tray, Add, 退出, ExitApp</span><br><span class="line">Menu, Tray, Default, 暂停/继续</span><br><span class="line">Menu, Tray, NoStandard</span><br><span class="line"></span><br><span class="line">; 初始化状态</span><br><span class="line">isPaused := false</span><br><span class="line">SetTimer, ClickPosition, % intervalMinutes * 60000 ; 转换为毫秒</span><br><span class="line"></span><br><span class="line">; 首次执行提示</span><br><span class="line">MsgBox, 64, 黄磊的浙政钉助手, 脚本已启动！`n每 %intervalMinutes% 分钟将在后台点击一次。`n</span><br><span class="line"></span><br><span class="line">return</span><br><span class="line"></span><br><span class="line">; 主执行函数</span><br><span class="line">ClickPosition:</span><br><span class="line">    ; 查找浙政钉窗口</span><br><span class="line">    WinGet, winList, List, ahk_exe DingTalkGov.exe</span><br><span class="line">    Loop, %winList%</span><br><span class="line">    &#123;</span><br><span class="line">        winID := winList%A_Index%</span><br><span class="line">        WinGetTitle, title, ahk_id %winID%</span><br><span class="line">        if InStr(title, targetApp)</span><br><span class="line">        &#123;</span><br><span class="line">            ; 后台消息级点击 (不激活窗口)</span><br><span class="line">            ControlClick, X%clickX1% Y%clickY1%, ahk_id %winID%,,,, NA</span><br><span class="line">            Sleep, 3000</span><br><span class="line">            ControlClick, X%clickX2% Y%clickY2%, ahk_id %winID%,,,, NA</span><br><span class="line">            TrayTip, 浙政钉助手, 已执行后台点击 (窗口: %title%),, 1</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    TrayTip, 黄磊的浙政钉助手, 未找到浙政钉窗口!,, 3</span><br><span class="line">return</span><br><span class="line"></span><br><span class="line">; 暂停/继续</span><br><span class="line">TogglePause:</span><br><span class="line">    isPaused := !isPaused</span><br><span class="line">    if isPaused &#123;</span><br><span class="line">        SetTimer, ClickPosition, Off</span><br><span class="line">        TrayTip, 黄磊的浙政钉助手, 已暂停, 5, 1</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        SetTimer, ClickPosition, On</span><br><span class="line">        TrayTip, 黄磊的浙政钉助手, 已恢复运行, 5, 1</span><br><span class="line">        Gosub, ClickPosition ; 立即执行一次</span><br><span class="line">    &#125;</span><br><span class="line">    Menu, Tray, Rename, 暂停/继续, % isPaused ? &quot;继续&quot; : &quot;暂停&quot;</span><br><span class="line">return</span><br><span class="line"></span><br><span class="line">; 立即执行</span><br><span class="line">RunNow:</span><br><span class="line">    Gosub, ClickPosition</span><br><span class="line">return</span><br><span class="line"></span><br><span class="line">; 退出程序</span><br><span class="line">ExitApp:</span><br><span class="line">    ExitApp</span><br><span class="line">return</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/25/autohotkey/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
