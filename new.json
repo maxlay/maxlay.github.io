@@ -4914,19 +4914,7 @@
       "ext": "[objectObject]"
     }
   ],
-  "lives": [
-    {
-      "group": "自定义",
-      "channels": [
-        {
-          "name": "直播源",
-          "urls": [
-            "about:blank"
-          ]
-        }
-      ]
-    }
-  ],
+
   "parses": [
     {
       "name": "Web聚合",
