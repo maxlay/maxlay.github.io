@@ -1,7 +1,15 @@
 {
-"lives":[
-{"name":"浙江移动宽带可用的直播线路","type":0,"url":"https://xn--xls-mf3g9f.v.nxog.top/m/tv/?ou=欧歌APP","epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}","logo":"https://py.nxog.eu.org/https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name}.png","playerType":2,"timeout":10}
-],
+  "lives":[
+    {
+    "name":"浙江移动宽带可用的直播线路",
+    "type":0,
+    "url":"https://xn--xls-mf3g9f.v.nxog.top/m/tv/?ou=欧歌APP",
+    "epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+    "logo":"https://py.nxog.eu.org/https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name}.png",
+    "playerType":2,
+    "timeout":10
+    }
+  ],
   "sites": [
     {
       "key": "csp_Czsapp",
@@ -542,66 +550,6 @@
       "api": "csp_kongbai",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "盘Ta",
-      "name": "🍥盘Ta",
-      "type": 3,
-      "api": "csp_PanTa",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "AList",
-      "name": "🅰AList",
-      "type": 3,
-      "api": "csp_AList",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/json/alist.json"
-    },
-    {
-      "key": "网盘集合",
-      "name": "🅿网盘集合|4K",
-      "type": 3,
-      "api": "csp_网盘集合",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "Youtube",
-      "name": "⚡Youtube（墙外）",
-      "type": 3,
-      "api": "csp_Youtube",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "TgYunPan|本地",
-      "name": "🅿TgYunPan|本地（墙外）",
-      "type": 3,
-      "api": "csp_TgYunPanLocal",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "push_agent",
-      "name": "🐧裙：926953902",
-      "type": 3,
-      "api": "csp_Push",
-      "searchable": 0,
-      "quickSearch": 0,
       "filterable": 0,
       "ext": "[objectObject]"
     },
