@@ -524,16 +524,6 @@
       "ext": "[objectObject]"
     },
     {
-      "key": "csp_PanSearch",
-      "name": "📀盘搜索",
-      "type": 3,
-      "api": "csp_PanSearch",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
       "key": "木偶",
       "name": "🧸木偶",
       "type": 3,
@@ -652,36 +642,8 @@
       "filterable": 0,
       "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/js/TXSP.js"
     },
-    {
-      "key": "优酷视频",
-      "name": "优酷｜视频",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/js/YKSP.js"
-    },
-    {
-      "key": "芒果视频",
-      "name": "芒果｜视频",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/js/MGSP.js"
-    },
-    {
-      "key": "爱奇艺",
-      "name": "爱奇艺｜视频",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/js/AQY.js"
-    },
+
+
     {
       "key": "双星",
       "name": "双星｜4K",
@@ -692,27 +654,9 @@
       "filterable": 0,
       "ext": "https://gitee.com/PizazzXS/another-d/raw/master/cloud/js/SX.js"
     },
+
+
     {
-      "key": "校长",
-      "name": "校长｜4K",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/cloud/js/XZ.js"
-    },
-    {
-      "key": "人人电影网",
-      "name": "人人｜4K",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/cloud/js/RRDYW.js"
-    },
-        {
       "key": "采集之王",
       "name": "采集｜合集",
       "type": 3,
@@ -732,240 +676,7 @@
       "filterable": 0,
       "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/js/JQQ.js"
     },
-       {
-      "key": "56动漫",
-      "name": "56｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/56DM.js"
-    },
     {
-      "key": "NT动漫",
-      "name": "NT｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/NTDM.js"
-    },
-    {
-      "key": "Anime1",
-      "name": "A1｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/Anime1.js"
-    },
-    {
-      "key": "好看动漫",
-      "name": "好看｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/HKDM.js"
-    },
-    {
-      "key": "奇米动漫",
-      "name": "奇米｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/QMDM.js"
-    },
-    {
-      "key": "花子动漫",
-      "name": "花子｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/HZDM.js"
-    },
-    {
-      "key": "动画片",
-      "name": "动画片｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/DHPDQ.js"
-    },
-       {
-      "key": "路漫漫",
-      "name": "路漫漫｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/LMM.js"
-    },
-    {
-      "key": "动漫岛",
-      "name": "动漫岛｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/DMD.js"
-    },
-    {
-      "key": "去看吧",
-      "name": "去看吧｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/QKB.js"
-    },
-    {
-      "key": "爱弹幕",
-      "name": "爱弹幕｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/ADM.js"
-    },
-    {
-      "key": "异世界",
-      "name": "异世界｜动漫",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/anime/js/YSJ.js"
-    },
-    {
-      "key": "网络直播",
-      "name": "网络｜直播",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/webcast/py/WLZB.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "哔哩直播",
-      "name": "哔哩｜直播",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/webcast/py/BLZB.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "甜圈短剧",
-      "name": "甜圈｜短剧",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/TQDJ.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "锦鲤短剧",
-      "name": "锦鲤｜短剧",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/JLDJ.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "剧王短剧",
-      "name": "剧王｜短剧",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/JWDJ.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "短剧屋",
-      "name": "短剧屋｜短剧",
-      "type": 3,
-      "api": "csp_XYQHiker",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/json/DJWu.json"
-    },
-       {
-      "key": "爱奇艺弹幕",
-      "name": "👑爱奇艺",
-      "type": 3,
-      "api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/yiwu369/6758/raw/master/JS/爱奇艺弹幕.js"
-    },
-    {
-      "key": "腾讯弹幕",
-      "name": "👑腾讯",
-      "type": 3,
-      "api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/yiwu369/6758/raw/master/JS/腾讯弹幕.js"
-    },
-    {
-      "key": "优酷弹幕",
-      "name": "👑优酷",
-      "type": 3,
-      "api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/yiwu369/6758/raw/master/JS/优酷弹幕.js"
-    },
-    {
-      "key": "芒果弹幕",
-      "name": "👑芒果",
-      "type": 3,
-      "api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://gitee.com/yiwu369/6758/raw/master/JS/芒果弹幕.js"
-    },
-       {
-      "key": "河马短剧",
-      "name": "🦛┃河马┃短剧",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/HMDJ.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "偷乐短剧",
-      "name": "☺️┃偷乐┃短剧",
-      "type": 3,
-      "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/TLDJ.py",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-       {
       "key": "云播影视",
       "name": "☁️┃云播┃影视",
       "type": 3,
@@ -1085,16 +796,7 @@
       "filterable": 1,
       "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/libvio.js"
     },
-    {
-      "key": "js_czsapp",
-      "name": "🏭️┃厂长┃Js",
-      "type": 3,
-      "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/czspp.js"
-    },
+
     {
       "key": "js_大师兄",
       "name": "🐵┃师兄┃影视",
