@@ -12,8 +12,44 @@
   ],
   "sites": [
     {
-      "key": "csp_Czsapp",
+      "key": "影视站",
       "name": "🦄Huanglei-Beta",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+        "科幻片",
+        "战争片",
+        "动作片",
+        "喜剧片",
+        "恐怖片",
+        "爱情片",
+        "剧情片",
+        "记录片",
+        "国产剧",
+        "欧美剧",
+        "香港剧",
+        "韩国剧",
+        "台湾剧",
+        "日本剧",
+        "海外剧",
+        "泰国剧",
+        "大陆综艺",
+        "港台综艺",
+        "日韩综艺",
+        "欧美综艺",
+        "国产动漫",
+        "日韩动漫",
+        "欧美动漫",
+        "港台动漫",
+        "海外动漫"
+      ]
+    },
+    {
+      "key": "csp_Czsapp",
+      "name": "🦄厂长",
       "type": 3,
       "api": "csp_Czsapp",
       "searchable": 1,
@@ -50,7 +86,7 @@
     },
     {
       "key": "巧技二",
-      "name": "💢聚搜┃仅搜索",
+      "name": "💢聚搜",
       "type": 3,
       "api": "csp_qiao2",
       "searchable": 1,
@@ -90,7 +126,7 @@
     },
     {
       "key": "猎手影视",
-      "name": "🐆┃猎手┃影视",
+      "name": "🐆┃猎手",
       "type": 3,
       "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/LSYS.py",
       "searchable": 1,
@@ -99,7 +135,7 @@
     },
     {
       "key": "奇优",
-      "name": "🍩┃奇优┃影视",
+      "name": "🍩┃奇优",
       "type": 3,
       "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
       "searchable": 1,
@@ -109,7 +145,7 @@
     },
     {
       "key": "dr_360影视",
-      "name": "📺┃360(官)",
+      "name": "📺┃360",
       "type": 3,
       "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
       "searchable": 1,
@@ -408,15 +444,7 @@
       "filterable": 1,
       "ext": "https://dm84.net"
     },
-    {
-      "key": "csp_Ysj",
-      "name": "📮异世界",
-      "type": 3,
-      "api": "csp_Ysj",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
+
     {
       "key": "樱花",
       "name": "💮樱花",
@@ -426,97 +454,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://wget.la/raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/json/樱花动漫.json"
-    },
-    {
-      "key": "豆瓣",
-      "name": "🚀豆瓣预告",
-      "type": 3,
-      "api": "csp_YGP",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-
-    {
-      "key": "片库",
-      "name": "🅿片库",
-      "type": 3,
-      "api": "csp_Qiwei",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "二小",
-      "name": "😈二小",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "至臻",
-      "name": "💯至臻",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "蜡笔",
-      "name": "🖍︎蜡笔",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "欧哥",
-      "name": "🅾欧哥",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "多多",
-      "name": "🌟多多",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "星剧社",
-      "name": "⭐️星剧社",
-      "type": 3,
-      "api": "csp_Star2",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
-    {
-      "key": "木偶",
-      "name": "🧸木偶",
-      "type": 3,
-      "api": "csp_kongbai",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "[objectObject]"
-    },
+    },    
     {
       "key": "闪电",
       "name": "⚡闪电",
@@ -602,44 +540,6 @@
         "电影/纪录片"
       ]
     },
- 
-    {
-      "key": "影视站",
-      "name": "影视站",
-      "type": 1,
-      "api": "https://cj.lziapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "科幻片",
-        "恐怖片",
-        "爱情片",
-        "剧情片",
-        "战争片",
-        "记录片",
-        "国产剧",
-        "欧美剧",
-        "香港剧",
-        "韩国剧",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "港台动漫",
-        "海外动漫",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "欧美综艺"
-      ]
-    },
-
     {
       "key": "百度",
       "name": "🎏百度┃采集",
@@ -927,8 +827,6 @@
         "动漫"
       ]
     },
-  
- 
     {
       "key": "哔哩",
       "name": "🅱️哔哩哔哩",
@@ -1386,5 +1284,5 @@
     "cms.qdwght.com"
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
-  "spider": "https://jihulab.com/yoursmile6/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8"
+  "spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/HLbox.json;md5;c6aaf6a9498e1e1d07126779c687bdd8"
 }
