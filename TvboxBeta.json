@@ -31,6 +31,15 @@
       "filterable": 1
     },
     {
+      "key": "csp_Ikanbot",
+      "name": "👾Ikanbot",
+      "type": 3,
+      "api": "csp_Ikanbot",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
       "key": "csp_LiteApple",
       "name": "🍎苹果",
       "type": 3,
@@ -294,15 +303,7 @@
       "quickSearch": 1,
       "filterable": 1
     },
-    {
-      "key": "csp_Ikanbot",
-      "name": "👾Ikanbot",
-      "type": 3,
-      "api": "csp_Ikanbot",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
+
     {
       "key": "csp_Lkdy",
       "name": "🏔️来看",
@@ -603,16 +604,7 @@
       "filterable": 0,
       "ext": "http://tt.ysdqjs.cn"
     },
-    {
-      "key": "csp_Wwys",
-      "name": "🌾️┃农民┃影视",
-      "type": 3,
-      "api": "csp_Wwys",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://www.wwgz.cn"
-    },
+
     {
       "key": "荐片",
       "name": "🎬┃荐片┃影视",
@@ -1493,16 +1485,6 @@
       "ext": "http://fmys.top/lib/jzyy.js"
     },
    
-    {
-      "key": "星芽短剧2",
-      "name": "星芽短剧",
-      "type": 3,
-      "api": "https://weixine.net/js/lib/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": "https://weixine.net/js/xingya.js"
-    },
     {
       "key": "旺旺",
       "name": "旺旺短剧",
