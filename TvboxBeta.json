@@ -13,7 +13,7 @@
   "sites": [
     {
       "key": "影视站",
-      "name": "🦄Huanglei-Beta",
+      "name": "🦄HuangleiBeta",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/",
       "searchable": 1,

@@ -1,12 +1,12 @@
 {
     "urls": [
         {
-            "name": "🦄HuangLei",
-            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.json"
+            "name": "🦄HuangLeiBeta",
+            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TvboxBeta.json"
         },
         {
-            "name": "🦄HuangLei-Beta",
-            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TvboxBeta.json"
+            "name": "🦄备用",
+            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.json"
         },
         {
             "name": "🦄南风",
