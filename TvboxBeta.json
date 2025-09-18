@@ -49,7 +49,7 @@
     },
     {
       "key": "csp_Czsapp",
-      "name": "🦄厂长",
+      "name": "🏭厂长",
       "type": 3,
       "api": "csp_Czsapp",
       "searchable": 1,
@@ -86,7 +86,7 @@
     },
     {
       "key": "巧技二",
-      "name": "💢聚搜",
+      "name": "🔍聚搜",
       "type": 3,
       "api": "csp_qiao2",
       "searchable": 1,
@@ -96,7 +96,7 @@
     },
     {
       "key": "热播",
-      "name": "♨热播",
+      "name": "🏜热播",
       "type": 3,
       "api": "csp_TTian",
       "searchable": 1,
@@ -106,7 +106,7 @@
     },
     {
       "key": "追剧",
-      "name": "✈追剧",
+      "name": "💻追剧",
       "type": 3,
       "api": "csp_TTian",
       "searchable": 1,
@@ -126,7 +126,7 @@
     },
     {
       "key": "猎手影视",
-      "name": "🐆┃猎手",
+      "name": "🐆猎手",
       "type": 3,
       "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/LSYS.py",
       "searchable": 1,
@@ -135,7 +135,7 @@
     },
     {
       "key": "奇优",
-      "name": "🍩┃奇优",
+      "name": "🍩奇优",
       "type": 3,
       "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
       "searchable": 1,
@@ -145,7 +145,7 @@
     },
     {
       "key": "dr_360影视",
-      "name": "📺┃360",
+      "name": "3️⃣360",
       "type": 3,
       "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
       "searchable": 1,
@@ -303,7 +303,7 @@
     },
     {
       "key": "面包",
-      "name": "🎁面包",
+      "name": "🍞面包",
       "type": 3,
       "api": "csp_XBPQ",
       "searchable": 1,
@@ -323,7 +323,7 @@
     },
     {
       "key": "csp_Jiaozi",
-      "name": "🥣饺子",
+      "name": "🥟饺子",
       "type": 3,
       "api": "csp_Jiaozi",
       "searchable": 1,
@@ -468,7 +468,7 @@
 
     {
       "key": "潮流",
-      "name": "🏜┃潮流┃APP",
+      "name": "🏜潮流",
       "type": 3,
       "api": "csp_AppRJ",
       "searchable": 1,
@@ -479,7 +479,7 @@
 
     {
       "key": "星辉",
-      "name": "🦢┃星辉┃APP",
+      "name": "🦢星辉",
       "type": 3,
       "api": "csp_AppRJ",
       "searchable": 1,
@@ -490,7 +490,7 @@
 
     {
       "key": "荐片",
-      "name": "🎬┃荐片┃影视",
+      "name": "🎬荐片",
       "type": 3,
       "api": "csp_Jianpian",
       "searchable": 1,
@@ -501,7 +501,7 @@
 
     {
       "key": "taopian",
-      "name": "🕹️淘片┃采集",
+      "name": "🕹️淘片",
       "type": 1,
       "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
       "searchable": 1,
@@ -542,7 +542,7 @@
     },
     {
       "key": "百度",
-      "name": "🎏百度┃采集",
+      "name": "🎏百度",
       "type": 1,
       "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -553,7 +553,7 @@
  
     {
       "key": "欧乐影院",
-      "name": "🌹┃欧乐┃影院",
+      "name": "😹欧乐",
       "type": 4,
       "api": "https://py.doube.eu.org/spider?site=OleVod",
       "searchable": 1,
@@ -562,7 +562,7 @@
     },
     {
       "key": "py_apple",
-      "name": "🍎┃苹果┃影视",
+      "name": "🍎苹果",
       "type": 3,
       "api": "http://fmys.top/py/apple.py",
       "searchable": 1,
@@ -573,7 +573,7 @@
 
     {
       "key": "魔都资源",
-      "name": "魔都影院",
+      "name": "👹魔都",
       "type": 1,
       "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -607,7 +607,7 @@
     },
     {
       "key": "电影天堂",
-      "name": "电影天堂",
+      "name": "😇天堂",
       "type": 1,
       "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -644,7 +644,7 @@
     },
     {
       "key": "天涯资源",
-      "name": "天涯影院",
+      "name": "🏔天涯",
       "type": 1,
       "api": "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -678,7 +678,7 @@
     },
     {
       "key": "非凡资源",
-      "name": "非凡影院",
+      "name": "👼非凡",
       "type": 1,
       "api": "http://ffzy.tv/api.php/provide/vod/",
       "searchable": 1,
@@ -715,7 +715,7 @@
     },
     {
       "key": "1080资源",
-      "name": "1080影院",
+      "name": "🔟80影院",
       "type": 1,
       "api": "https://api.yzzy-api.com/inc/apijson.php",
       "searchable": 1,
@@ -747,7 +747,7 @@
     },
     {
       "key": "360资源",
-      "name": "360影院",
+      "name": "360️⃣",
       "type": 1,
       "api": "https://360zy.com/api.php/provide/vod",
       "searchable": 1,
@@ -779,7 +779,7 @@
     },
     {
       "key": "极速资源",
-      "name": "极速影院",
+      "name": "💨极速",
       "type": 1,
       "api": "https://jszyapi.com/api.php/provide/vod/at/json",
       "searchable": 1,
@@ -814,7 +814,7 @@
     },
     {
       "key": "猫咪资源",
-      "name": "猫咪影院",
+      "name": "😽猫咪",
       "type": 1,
       "api": "http://zy.xmm.hk/api.php/provide/vod/?ac=list",
       "searchable": 1,
