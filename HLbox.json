@@ -17,12 +17,12 @@
             "url": "https://9877.kstore.space/AnotherD/api.json"
         },
         {
-            "url": "http://hello.肥猫.com",
-            "name": "🦄肥猫"
+            "name": "🦄肥猫",
+            "url": "http://hello.肥猫.com"
         }, 
         {
-            "url": "http://www.饭太硬.com/tv",
-            "name": "🦄饭太硬"
+            "name": "🦄饭太硬",
+            "url": "http://www.饭太硬.com/tv"
         }, 
         {
             "name": "🦄小盒子",
@@ -69,8 +69,8 @@
             "url": "https://wget.la/https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json"
         },
         {
-             "url": "https://www.lianyingtv.com/fast/fast",
-             "name": "🦄恋影"
+             "name": "🦄恋影",
+             "url": "https://www.lianyingtv.com/fast/fast"
         },
         {
             "name": "🦄香雅情",
@@ -85,12 +85,8 @@
             "url":"https://wget.la/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json"
         },  
         { 
-           "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer", 
-           "name": "👶少儿频道" 
-        },
-        {
-            "name": "♻♻这是底线♻♻",
-            "url": "https://wget.la/https://raw.githubusercontent.com/bizhangjie/CatVodSpider/main/json/index18.json"
+           "name": "👶少儿频道", 
+           "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer"
         }
     ]
 }
