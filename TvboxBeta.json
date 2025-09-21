@@ -135,7 +135,7 @@
     },
     {
       "key": "奇优",
-      "name": "🍩奇优",
+      "name": "🥇奇优",
       "type": 3,
       "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js",
       "searchable": 1,
@@ -226,7 +226,7 @@
     },
     {
       "key": "csp_Qiyou",
-      "name": "🦌奇优",
+      "name": "🏆奇优",
       "type": 3,
       "api": "csp_Qiyou",
       "searchable": 1,
@@ -323,7 +323,7 @@
     },
     {
       "key": "csp_Jiaozi",
-      "name": "🥟饺子",
+      "name": "😋饺子",
       "type": 3,
       "api": "csp_Jiaozi",
       "searchable": 1,
@@ -352,7 +352,7 @@
     },
     {
       "key": "csp_Jianpian",
-      "name": "🧲荐片",
+      "name": "🈵荐片",
       "type": 3,
       "api": "csp_Jianpian",
       "searchable": 1,
@@ -362,7 +362,7 @@
     },
     {
       "key": "csp_xlys",
-      "name": "🧲修罗",
+      "name": "📛修罗",
       "type": 3,
       "api": "csp_xlys",
       "searchable": 1,
@@ -372,7 +372,7 @@
     },
     {
       "key": "csp_New6v",
-      "name": "🧲新6V",
+      "name": "6️⃣新6V",
       "type": 3,
       "api": "csp_New6v",
       "searchable": 1,
@@ -381,7 +381,7 @@
     },
     {
       "key": "csp_DyGod",
-      "name": "🧲电影天堂",
+      "name": "🔱电影天堂",
       "type": 3,
       "api": "csp_DyGod",
       "searchable": 1,
@@ -390,7 +390,7 @@
     },
     {
       "key": "csp_QnMp4",
-      "name": "🧲七妹",
+      "name": "💮七妹",
       "type": 3,
       "api": "csp_QnMp4",
       "searchable": 1,
@@ -399,7 +399,7 @@
     },
     {
       "key": "csp_MeijuTT",
-      "name": "🧲美剧天堂",
+      "name": "🎗美剧天堂",
       "type": 3,
       "api": "csp_MeijuTT",
       "searchable": 1,
@@ -408,7 +408,7 @@
     },
     {
       "key": "csp_MeijuMi",
-      "name": "🧲美剧迷",
+      "name": "🎯美剧迷",
       "type": 3,
       "api": "csp_MeijuMi",
       "searchable": 1,
@@ -418,7 +418,7 @@
     },
     {
       "key": "csp_BLSGod",
-      "name": "🧲80S影视",
+      "name": "🌈80S影视",
       "type": 3,
       "api": "csp_BLSGod",
       "searchable": 1,
@@ -479,7 +479,7 @@
 
     {
       "key": "星辉",
-      "name": "🦢星辉",
+      "name": "☃星辉",
       "type": 3,
       "api": "csp_AppRJ",
       "searchable": 1,
@@ -839,7 +839,7 @@
     },
     {
       "key": "相声小品",
-      "name": "🅱️相声小品",
+      "name": "🎭相声小品",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -849,7 +849,7 @@
     },
     {
       "key": "戏曲",
-      "name": "🅱️戏曲",
+      "name": "🤡戏曲",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -859,7 +859,7 @@
     },
     {
       "key": "少儿",
-      "name": "🅱️少儿",
+      "name": "🧒少儿",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -869,7 +869,7 @@
     },
     {
       "key": "小学",
-      "name": "🅱️小学",
+      "name": "🏫小学",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -879,7 +879,7 @@
     },
     {
       "key": "初中",
-      "name": "🅱️初中",
+      "name": "🏫初中",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -889,7 +889,7 @@
     },
     {
       "key": "高中",
-      "name": "🅱️高中",
+      "name": "🏫高中",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
