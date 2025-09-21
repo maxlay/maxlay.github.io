@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2025/08/20/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
+        <lastmod>2025-09-21T02:13:09.547Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2025/09/18/OK%E5%BD%B1%E8%A7%86/</loc>
         <lastmod>2025-09-18T03:58:21.129Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -35,14 +43,6 @@
     <url>
         <loc>https://maxlay.github.io/2025/08/18/%E7%8C%AB%E6%8A%93/</loc>
         <lastmod>2025-09-14T11:27:19.589Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2025/07/27/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
-        <lastmod>2025-07-27T05:54:51.565Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
