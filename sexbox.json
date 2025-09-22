@@ -1,5 +1,4 @@
 {
-  "spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/custom_spider.jar;md5;8d592f6d2d1434ea5ec8506b56265485",
 "lives":[
     {
     "name":"浙江移动宽带可用的直播线路",
@@ -955,5 +954,7 @@
     "cdnjs.hnfenxun.com",
     "cms.qdwght.com"
   ],
-  "wallpaper": "https://bing.img.run/uhd.php"
+  "wallpaper": "https://bing.img.run/uhd.php",
+  "spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/custom_spider.jar;md5;8d592f6d2d1434ea5ec8506b56265485"
 }
+
