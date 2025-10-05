@@ -1274,11 +1274,11 @@
     "cms.qdwght.com"
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
-  "spider": "https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
+  "spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
   "lives":[
 {"name":"浙江移动宽带可用的直播线路",
 "type":0,
-"url":"https://hk.gh-proxy.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+"url":"https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
 "playerType":2,
 "epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
 },
