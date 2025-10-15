@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name         浙里学习小助手
+// @name         浙里学习
 // @namespace    https://bbs.tampermonkey.net.cn/
-// @version      2.5
-// @description  郑重声明：本脚本为学习油猴脚本编写使用，不得实际将其用于各类学习网站进行刷课行为，不得实际在网站上运行此代码，不得使用本脚本进行收付费活动
-// @author       yaxiyeye
+// @version      2025
+// @description  郑重声明：本脚本不得实际将其用于各类学习网站进行刷课行为，不得实际在网站上运行此代码，不得使用本脚本进行收付费活动
+// @author       E53787
 // @run-at       document-start
 // @match        https://www.zjce.gov.cn/*
+// @match        https://*.zjce.gov.cn/*
 // @require      https://scriptcat.org/lib/637/1.4.3/ajaxHooker.js
 // @require      https://scriptcat.org/lib/1167/1.0.0/%E8%84%9A%E6%9C%AC%E7%8C%ABUI%E5%BA%93.js
 // @require      https://scriptcat.org/lib/513/2.0.0/ElementGetter.js
@@ -36,10 +37,6 @@
         if (match && match[1]) {
             params["videoid"] = match[1]
         }
-
-
-
-
         return params
     }
     //获取当前界面的token
@@ -312,7 +309,7 @@
                         style: { width: "24px", verticalAlign: "middle" },
                         draggable: "false",
                     }),
-                    CAT_UI.Text("浙里学习小助手", {
+                    CAT_UI.Text("浙里学习2025", {
                         style: { fontSize: "16px" },
                     }),
                 ],
@@ -408,7 +405,7 @@
                     const learnstatus = GM_getValue('learnstatus')
                     if (learnstatus === false) {
                         if (yiwancheng >= mubiao) {
-                            CAT_UI.Message.success(`学完了你还学什么?`)
+                            CAT_UI.Message.success(`学完了！`)
                             setlearntext('开始学习')
                             GM_setValue('learnstatus', false)
                         } else {
@@ -543,7 +540,7 @@
             } else {
 
             }
-        }, 1000 * 60 * 10)
+        }, 5000)
 
         const params = getUrlParams()
         // console.log(params)
@@ -565,7 +562,7 @@
                 window.open(`https://www.zjce.gov.cn/home`, '_self')
             } else {
                 //继续播放
-                videodiv.playbackRate = 1
+                videodiv.playbackRate = 4
                 videodiv.muted = true
                 videodiv.play()
                 console.log("重新播放")
