@@ -242,7 +242,7 @@
       
           <p>标题可能起大了，这几个月来一直没写文章，是因为懒，其实这段时间，我玩的东西还真的不少，我也有考虑过做视频，来替代本Wordpress。</p>
 <p>家里连接光猫的主路由是小米路由3G，是一个千兆USB3的性价比产品，官网已经不卖了，要去淘宝或者闲鱼。这次依然用Padavan固件「<a target="_blank" rel="noopener" href="http://huanglei.site/?s=padavan">http://huanglei.site/?s=padavan</a>」来实现SMB服务，如果你不需要<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a> ，我可能更推荐Hanwckf的固件「<a target="_blank" rel="noopener" href="https://github.com/hanwckf/rt-n56u/releases">https://github.com/hanwckf/rt-n56u/releases</a>」，比Padavan的固件「<a target="_blank" rel="noopener" href="https://opt.cn2qq.com/padavan">https://opt.cn2qq.com/padavan</a>」更加小巧，用来SMB更稳定，网上也有Padavan和Hanwckf固件的网速对比。同样的硬件刷不同的固件，因为芯片的驱动程序和算法的不同，居然网速和稳定性会有很大差别，太玄幻了。另外，路由的USB口连接一个USB3扩展分线器，分线器上插了一个被格式化成EXT4的4G容量的2.0U盘用来opt，另外再插两个双盘位的USB3.0的硬盘盒，四块被格式化成EXFAT的2.0T容量的WD3.5寸硬盘用来存数据。这样做，防止频繁的opt调用机械硬盘，机械硬盘在不使用时可以休眠减少损耗。opt是用来开<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>等程序的，刷Padavan的魅力就在opt。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/11/WechatIMG4-1024x631.jpeg"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/11/WechatIMG4-1024x631.jpeg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/11/08/%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%85%A5%E9%97%A8%E7%BA%A7nas%E6%90%AD%E5%BB%BA/#more" rel="contents">
@@ -319,7 +319,7 @@
 
       
           <p>举个不十分恰当的例子，把互联网比作城市供水，每个地区自来水厂提供的水质和你所在管网末端位置的不同，有些家庭会明智的选择使用前置净水器，可以解决管道中的二次污染、软化水质、阻止水垢、防止锈蚀、保护净水器，当然还有太阳能和燃气热水器等等，但最终享受干净水的是人。精致的家庭还会使用厨下式厨余垃圾处理器，而落后的家庭甚至都不知道什么是前置净水器、什么是厨余处理器。所以总会有精致的家庭和落后的家庭，知识是永远不对称的存在着。互联网和供水一样，有大带宽和小带宽，有管网污染的问题，有被政府监控和被黑客偷窥的问题，还有烦人的广告问题，无论是视频前和视频中的广告，所以在入户光猫之后的主路由器上安装并使用私人DNS（AdGuard Home），就可以有助于“清洗流量”，虽然那些广告和监控程序不是DDOS的攻击，但一样是不可忽视的。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg"></p>
 <p>我在主路由的5353端口部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，另外，在家里的其他两个路由的53端口也部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，然后<a href="javascript:spoiler_toggle('spoiler_conf')">自定义配置文件 “dnsmasq.conf”</a></p>
 <p>all-servers<br>dhcp-option&#x3D;252,”\n”<br>server&#x3D;10.1.1.2<br>server&#x3D;10.1.1.3<br>server&#x3D;127.0.0.1#5353 #AdGuardHome<br>no-resolv #AdGuardHome<br>dns-forward-max&#x3D;1000 #AdGuardHome</p>
 <p>按照这样的设置，路由器会同时查询内网的三台<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，大大提高稳定性，三台垮一台甚至两台都不影响上网，而且私人DNS服务都在内网，ping值都小于1毫秒，独立硬件，解析速度也有保障，算是榨干所有路由硬件性能了。</p>
@@ -475,7 +475,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/08/IMG_0909.jpg"></p>
+          <p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/08/IMG_0909.jpg"></p>
 <p>用了14年的淘宝，最近碰到一家卖蓝牙耳机的奇葩店。</p>
 <p><a target="_blank" rel="noopener" href="https://detail.tmall.com/item.htm?id=595938910726">https://detail.tmall.com/item.htm?id=595938910726</a></p>
 <p>专门写个帖子，给他们宣传宣传，天猫店没办法给他差评。</p>
@@ -634,7 +634,7 @@
       
           <h2 id="去电视开机广告："><a href="#去电视开机广告：" class="headerlink" title="去电视开机广告："></a>去电视开机广告：</h2><p>一句话，用ES文件浏览器在小米电视主目录建一个空的miad的压缩包来替换原有目录，用来阻止广告文件的下载存储。</p>
 <h2 id="以往内容："><a href="#以往内容：" class="headerlink" title="以往内容："></a>以往内容：</h2><p>今天是2019年的5月17日电信日，最近看小米电视和小米盒子又开始有广告了，之前我用路由器的Pandavan固件的koolproxy插件去广告，结果发现最近几天该插件的规则服务器挂了，显示404，估计是被收编了。同时，小米也更新了广告规则，所以这次我改用adbyby，亲测可以流畅去广告。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/05/b3ff7bf3-292d-4e9e-bf2b-00fdf9310173-1024x702.png"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/05/b3ff7bf3-292d-4e9e-bf2b-00fdf9310173-1024x702.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/08/15/%E5%B0%8F%E7%B1%B3%E7%94%B5%E8%A7%86%E5%8E%BB%E5%B9%BF%E5%91%8A/#more" rel="contents">
@@ -790,7 +790,7 @@
 <p>Safari访问<a target="_blank" rel="noopener" href="https://m.pandahelp.vip/regular">https://m.pandahelp.vip/regular</a></p>
 <p>或者直接安装签名<a target="_blank" rel="noopener" href="http://t.pandahelp.vip/provision/pandav1.mobileprovision">http://t.pandahelp.vip/provision/pandav1.mobileprovision</a></p>
 <p>下载安装Panda Helper，然后在“工具”里可以找到Shadowroket点安装。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/08/IMG_0742-473x1024.jpg"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/08/IMG_0742-473x1024.jpg"></p>
 <p>增加clash订阅：<a target="_blank" rel="noopener" href="https://suo.yt/WnmRgE9">https://suo.yt/WnmRgE9</a></p>
 
       
@@ -860,7 +860,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/07/29381f30e924b899636a084a60061d950a7bf66a-1024x576.jpg"></p>
+          <p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/07/29381f30e924b899636a084a60061d950a7bf66a-1024x576.jpg"></p>
 <p>复仇者联盟4（2019年）</p>
 <p>magnet:?xt&#x3D;urn:btih:DB1B8F575202D07FC6F172288440710F2A159049</p>
 <p>magnet:?xt&#x3D;urn:btih:D7B1C19E44B1153DA4EB329126D6C70E22C15F84</p>
@@ -941,7 +941,7 @@
           <p>首先，买套好的房子，小区有电信和移动的光纤直接到户的服务。</p>
 <p>然后，申请目前性价比最高的200M带宽的光纤宽带，我用的ISP是浙江移动，因为我对境外速度有要求，我不打游戏，对在电信机房idc的服务器没有依赖。</p>
 <p>关于ISP赠送的光猫，我的经验是必须用华为千兆光猫，我父母家和自己家用的都是华为的<strong>HS8545M</strong>设备，之前上百兆带宽的时候，浙江移动有提供过其他厂牌的光猫，实测都不满意，我就投诉要求换设备。同时，当时100M带宽的时候，我就让安装师傅把光纤口放在千兆口上，配合家里的千兆光猫，100M带宽实测达到130M左右。现在用的200M带宽，实测下载达到过264M，上传达到过63M。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/07/IMG_0510-1024x733.jpg"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/07/IMG_0510-1024x733.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/07/17/1000m/#more" rel="contents">

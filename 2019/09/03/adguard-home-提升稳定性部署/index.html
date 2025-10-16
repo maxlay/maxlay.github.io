@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="Huanglei">
 <meta property="og:description" content="举个不十分恰当的例子，把互联网比作城市供水，每个地区自来水厂提供的水质和你所在管网末端位置的不同，有些家庭会明智的选择使用前置净水器，可以解决管道中的二次污染、软化水质、阻止水垢、防止锈蚀、保护净水器，当然还有太阳能和燃气热水器等等，但最终享受干净水的是人。精致的家庭还会使用厨下式厨余垃圾处理器，而落后的家庭甚至都不知道什么是前置净水器、什么是厨余处理器。所以总会有精致的家庭和落后的家庭，知识是永">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg">
+<meta property="og:image" content="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg">
 <meta property="article:published_time" content="2019-09-03T10:26:33.000Z">
-<meta property="article:modified_time" content="2025-10-15T12:35:29.902Z">
+<meta property="article:modified_time" content="2025-10-16T10:03:16.952Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg">
+<meta name="twitter:image" content="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg">
 
 <link rel="canonical" href="https://maxlay.github.io/2019/09/03/adguard-home-%E6%8F%90%E5%8D%87%E7%A8%B3%E5%AE%9A%E6%80%A7%E9%83%A8%E7%BD%B2/">
 
@@ -247,7 +247,7 @@
 
       
         <p>举个不十分恰当的例子，把互联网比作城市供水，每个地区自来水厂提供的水质和你所在管网末端位置的不同，有些家庭会明智的选择使用前置净水器，可以解决管道中的二次污染、软化水质、阻止水垢、防止锈蚀、保护净水器，当然还有太阳能和燃气热水器等等，但最终享受干净水的是人。精致的家庭还会使用厨下式厨余垃圾处理器，而落后的家庭甚至都不知道什么是前置净水器、什么是厨余处理器。所以总会有精致的家庭和落后的家庭，知识是永远不对称的存在着。互联网和供水一样，有大带宽和小带宽，有管网污染的问题，有被政府监控和被黑客偷窥的问题，还有烦人的广告问题，无论是视频前和视频中的广告，所以在入户光猫之后的主路由器上安装并使用私人DNS（AdGuard Home），就可以有助于“清洗流量”，虽然那些广告和监控程序不是DDOS的攻击，但一样是不可忽视的。</p>
-<p><img src="https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg"></p>
+<p><img src="https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/uploads/2019/09/Jietu20190905-131727-902x1024.jpg"></p>
 <p>我在主路由的5353端口部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，另外，在家里的其他两个路由的53端口也部署了<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，然后<a href="javascript:spoiler_toggle('spoiler_conf')">自定义配置文件 “dnsmasq.conf”</a></p>
 <p>all-servers<br>dhcp-option&#x3D;252,”\n”<br>server&#x3D;10.1.1.2<br>server&#x3D;10.1.1.3<br>server&#x3D;127.0.0.1#5353 #AdGuardHome<br>no-resolv #AdGuardHome<br>dns-forward-max&#x3D;1000 #AdGuardHome</p>
 <p>按照这样的设置，路由器会同时查询内网的三台<a target="_blank" rel="noopener" href="http://huanglei.site/%e5%a6%82%e4%bd%95%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badns%e5%8e%bb%e5%b9%bf%e5%91%8a/">AdGuard Home</a>，大大提高稳定性，三台垮一台甚至两台都不影响上网，而且私人DNS服务都在内网，ping值都小于1毫秒，独立硬件，解析速度也有保障，算是榨干所有路由硬件性能了。</p>
