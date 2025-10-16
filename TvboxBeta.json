@@ -103,7 +103,8 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "7lj763gg0939791h1l3888jig44gi291li"
-    },
+    },
+
     {
       "key": "狂风",
       "name": "🌪狂风",
@@ -1274,24 +1275,25 @@
     "cms.qdwght.com"
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
-  "spider": "https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
+  "spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
   "lives":[
   {"name":"浙江移动宽带可用的直播线路",
 	"type":0,
-	"url":"https://hk.gh-proxy.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
 	"playerType":2,
 	"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
   },
   {"name":"浙江移动宽带可用的直播线路ipV6线路",
 	"type":0,
-	"url":"https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
 	"playerType":2
   },
   {"name":"Huanglei补充线路",
 	"type":0,
-	"url":"https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
 	"playerType":2
   }
 
   ]
 }
+
