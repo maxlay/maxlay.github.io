@@ -1,6 +1,6 @@
 {
-
-  "sites": [
+"spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
+"sites": [
     {
       "key": "影视站",
       "name": "🦄HuangleiBeta",
@@ -1281,9 +1281,8 @@
     "cdnjs.hnfenxun.com",
     "cms.qdwght.com"
   ],
-  "wallpaper": "https://bing.img.run/uhd.php",
-  "spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
-  "lives":[
+"wallpaper": "https://bing.img.run/uhd.php",
+"lives":[
   {"name":"浙江移动宽带可用的直播线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
@@ -1305,6 +1304,7 @@
 
   ]
 }
+
 
 
 
