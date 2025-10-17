@@ -1291,9 +1291,12 @@
   {"name":"Huanglei补充线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
+	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+    "logo":"https://py.nxog.eu.org/https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name}.png",
 	"playerType":2
   }
 
   ]
 }
+
 
