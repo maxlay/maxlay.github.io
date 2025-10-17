@@ -1,18 +1,50 @@
-
- 
 {
-  "lives":[
-    {
-    "name":"浙江移动宽带可用的直播线路",
-    "type":0,
-    "url":"https://xn--xls-mf3g9f.v.nxog.top/m/tv/?ou=欧歌APP",
-    "epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
-    "logo":"https://py.nxog.eu.org/https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name}.png",
-    "playerType":2,
-    "timeout":10
-    }
-  ],
+  "spider": "https://jihulab.com/yoursmile6/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
   "sites": [
+      {
+      "key": "影视站",
+      "name": "🦄HuangleiBeta",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+"预告片",
+"大陆综艺",
+"国产剧",
+"电影解说",
+"科幻片",
+"战争片",
+"动作片",
+"喜剧片",
+"爱情片",
+"记录片",
+"恐怖片",
+"剧情片",
+"伦理片",
+"短剧",
+"香港剧",
+"韩国剧",
+"欧美剧",
+"台湾剧",
+"日本剧",
+"海外剧",
+"泰国剧",
+"港台综艺",
+"日韩综艺",
+"欧美综艺",
+"国产动漫",
+"日韩动漫",
+"欧美动漫",
+"港台动漫",
+"海外动漫",
+"足球",
+"篮球",
+"网球",
+"斯诺克"
+      ]
+    },
     {
       "key": "csp_Czsapp",
       "name": "🏭Huanglei",
@@ -1134,5 +1166,22 @@
     "pv.vipwm.cc"
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
-  "spider": "https://jihulab.com/yoursmile6/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8"
+ "lives":[
+  {"name":"浙江移动宽带可用的直播线路",
+	"type":0,
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+	"playerType":2,
+	"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
+  },
+  {"name":"浙江移动宽带可用的直播线路ipV6线路",
+	"type":0,
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
+	"playerType":2
+  },
+  {"name":"Huanglei补充线路",
+	"type":0,
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
+	"playerType":2
+  }
+  
 }
