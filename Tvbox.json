@@ -1284,28 +1284,28 @@
   ],
 "wallpaper": "https://bing.img.run/uhd.php",
 "lives":[
-  {"name":"点这里切换线路：ipV4主线路",
+  {"name":"点这里切换线路：高清咪咕线路",
+	"type":0,
+	"url":"https://migu.lifit.uk/migu.php?userId=390926249&userToken=nlps1E0BA1D846A9A8EF64B7",
+	"playerType":2
+  },
+  {"name":"点这里切换线路：标清咪咕线路",
+	"type":0,
+	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
+	"playerType":2,
+	"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
+  },
+  {"name":"点这里切换线路：ipV4备用线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
 	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
     "logo":"https://py.nxog.eu.org/https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name}.png",
 	"playerType":2
   },
-  {"name":"点这里切换线路：咪咕线路",
-	"type":0,
-	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
-	"playerType":2,
-	"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
-  },
-  {"name":"点这里切换线路：备用移动宽带ipV6线路",
+  {"name":"点这里切换线路：移动ipV6线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
 	"playerType":2
   }
   ]
 }
-
-
-
-
-
