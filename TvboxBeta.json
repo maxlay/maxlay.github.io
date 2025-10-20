@@ -1298,7 +1298,7 @@
   },
   {"name":"点这里切换线路：我的高清咪咕线路",
 	"type":0,
-	"url":"hhttps://migu.lifit.uk/migu.php?userId=390926249&userToken=nlps1E0BA1D846A9A8EF64B7,
+	"url":"hhttps://migu.lifit.uk/migu.php?userId=390926249&userToken=nlps1E0BA1D846A9A8EF64B7",
 	"playerType":2,
 	"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
   },
