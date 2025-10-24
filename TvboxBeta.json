@@ -1286,13 +1286,8 @@
   {"name":"点这里切换线路：标清咪咕线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
-	"playerType":2,
-	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}"
-  },
-  {"name":"点这里切换线路：高清咪咕线路",
-	"type":0,
-	"url":"https://migu.lifit.uk/migu.php?userId=390926249&userToken=nlpsD4A873D46B274B175303",
-	"playerType":2
+	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+        "playerType":2,
   },
   {"name":"点这里切换线路：ipV4备用线路",
 	"type":0,
@@ -1304,6 +1299,7 @@
   {"name":"点这里切换线路：移动ipV6线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
+        "epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
 	"playerType":2
   }
   ]
