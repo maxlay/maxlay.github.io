@@ -1287,7 +1287,7 @@
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
 	"playerType":2,
-	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}"
   },
   {"name":"点这里切换线路：高清咪咕线路",
 	"type":0,
