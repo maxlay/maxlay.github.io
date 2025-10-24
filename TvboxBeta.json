@@ -111,7 +111,6 @@
       "filterable": 1,
       "ext": "7lj763gg0939791h1l3888jig44gi291li"
     },
-
     {
       "key": "狂风",
       "name": "🌪狂风",
@@ -201,7 +200,6 @@
       "filterable": 1,
       "ext": "7lj763gg402i79425h2384j4g949j899hll9990i9kjl6l740h1342hjlg1848401g8610h9995i998j351gl38kklkj1hkhll757010k7hji6h377ih37k060g35161jhl3i5h0l2702g7299452l4297k5697g5390lk6935k2i9g48l8j2kh27l1g014k7j9475g8"
     },
-
     {
       "key": "csp_SaoHuo",
       "name": "🔥骚火",
@@ -1286,8 +1284,13 @@
   {"name":"点这里切换线路：标清咪咕线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
-	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
-        "playerType":2,
+	"playerType":2,
+	"epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}"
+  },
+  {"name":"点这里切换线路：高清咪咕线路",
+	"type":0,
+	"url":"https://migu.lifit.uk/migu.php?userId=390926249&userToken=nlpsD4A873D46B274B175303",
+	"playerType":2
   },
   {"name":"点这里切换线路：ipV4备用线路",
 	"type":0,
@@ -1299,7 +1302,6 @@
   {"name":"点这里切换线路：移动ipV6线路",
 	"type":0,
 	"url":"https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
-        "epg":"http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
 	"playerType":2
   }
   ]
