@@ -2289,6 +2289,12 @@
     "cdnjs.hnfenxun.com",
     "cms.qdwght.com"
   ],
+ "headers":[
+   {
+     "host":"hlsztemgsplive.miguvideo.com",
+     "header":{"User-Agent":"bingcha/1.1(mianfeifenxiang)"}
+   }
+  ],
   "hosts": [
     "cache.ott.*.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
     "cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
@@ -2300,13 +2306,20 @@
   "wallpaper": "https://bing.img.run/uhd.php",
   "lives": [
     {
-      "name": "点这里切换线路:移动ipV6线路",
+      "name":"点这里切换线路:咪咕线路",
+      "type":0,
+      "playerType":2,
+      "url":"https://fy.188766.xyz/?ip=&mima=mianfeidehaimaiqian&json=true",
+      "ua":"bingcha/1.1(mianfeifenxiang)"
+    },
+    {
+      "name": "点这里切换线路:MyipV6线路",
       "type": 0,
       "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
       "playerType": 2
     },
     {
-      "name": "点这里切换线路:ipV4备用线路",
+      "name": "点这里切换线路:MyipV4线路",
       "type": 0,
       "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
       "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
