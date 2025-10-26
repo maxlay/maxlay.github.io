@@ -2,37 +2,20 @@
   "spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/custom_spider.jar;md5;8d592f6d2d1434ea5ec8506b56265485",
   "sites": [
     {
-      "key": "美少女",
-      "name": "🔞美少女",
+      "key": "KpgxdyE",
+      "name": "🔞AV资源",
       "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
+      "api": "https://www.pgxdy.com/api/xml.php",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
     },
+
     {
       "key": "*淫水机资源",
       "name": "🔞淫水机",
       "type": 0,
       "api": "https://www.xrbsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "*美少女资源",
-      "name": "🔞美少女资源",
-      "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "zp100",
-      "name": "🔞乐播",
-      "type": 0,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/xml/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
@@ -47,96 +30,6 @@
       "filterable": 0
     },
     {
-      "key": "💞美少女资源💞",
-      "name": "💞美少女资源💞",
-      "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0
-    },
-    {
-      "key": "💞乐播资源💞",
-      "name": "💞乐播资源💞",
-      "type": 1,
-      "api": "https://lbapi9.com/api.php/provide/vod/",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0
-    },
-    {
-      "key": "msnii.com",
-      "name": "🔞成人46",
-      "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "lbapi9.com",
-      "name": "🔞成人50",
-      "type": 1,
-      "api": "https://lbapi9.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "pwd_袜子",
-      "name": "🔞袜子",
-      "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0
-    },
-    {
-      "key": "kxgav.com",
-      "name": "🔞成人44",
-      "type": 0,
-      "api": "https://www.kxgav.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "💞淫水机资源💞",
-      "name": "💞淫水机资源💞",
-      "type": 0,
-      "api": "https://www.xrbsp.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0
-    },
-    {
-      "key": "*美少女",
-      "name": "🔞美少女",
-      "type": 0,
-      "api": "https://www.msnii.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "(18+)乐播",
-      "name": "🔞(18+)乐播",
-      "type": 0,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/xml",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "*乐播",
-      "name": "🔞乐播🔞",
-      "type": 0,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/xml",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "*白嫖",
       "name": "🔞白嫖🔞",
       "type": 0,
@@ -146,57 +39,12 @@
       "filterable": 0
     },
     {
-      "key": "*饮水机",
-      "name": "🔞饮水机🔞",
-      "type": 0,
-      "api": "https://www.xrbsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "KpgxdyE",
-      "name": "🔞AV资源",
-      "type": 0,
-      "api": "https://www.pgxdy.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "gdlsE",
-      "name": "🔞香奶儿资源",
-      "type": 0,
-      "api": "https://www.gdlsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "xrbsp.com",
-      "name": "🔞成人66",
-      "type": 0,
-      "api": "https://www.xrbsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
       "key": "*香奶儿",
       "name": "🔞香奶儿",
       "type": 0,
       "api": "https://www.gdlsp.com/api/xml.php",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "*香奶儿资源",
-      "name": "🔞香奶儿资源",
-      "type": 0,
-      "api": "https://www.gdlsp.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
       "filterable": 0
     },
     {

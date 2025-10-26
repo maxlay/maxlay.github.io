@@ -2284,18 +2284,6 @@
     "cdnjs.hnfenxun.com",
     "cms.qdwght.com"
   ],
-  "doh": [
-    {
-      "name": "优选阿里",
-      "url": "https://dns.alidns.com",
-      "ips": [
-        "223.5.5.5",
-        "223.6.6.6",
-        "2400:3200::1",
-        "2400:3200:baba::1"
-      ]
-    }
-  ],
   "hosts": [
     "cache.ott.*.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
     "cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
