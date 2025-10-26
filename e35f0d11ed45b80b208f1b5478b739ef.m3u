@@ -1,4 +1,8 @@
 #EXTM3U x-tvg-url="https://py.nxog.eu.org/https://raw.githubusercontent.com/fanmingming/live/main/e.xml"
+#EXTINF:-1 tvg-name="凤凰中文" tvg-logo="https://live.fanmingming.com/tv/凤凰卫视中文台.png" group-title="港澳台频道",凤凰中文
+http://222.212.84.190:54123/udp/239.93.1.9:2192
+#EXTINF:-1 tvg-name="凤凰资讯" tvg-logo="https://live.fanmingming.com/tv/凤凰卫视资讯台.png" group-title="港澳台频道",凤凰资讯
+http://222.212.84.190:54123/udp/239.93.1.4:2191
 #EXTINF:-1 group-title="🐲HuangLei分享" tvg-name="HuangLei免费分享" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/%E6%AC%A7%E6%AD%8C%E5%85%8D%E8%B4%B9%E5%88%86%E4%BA%AB.png",HuangLei免费分享
 https://xn--vusr00g.v.nxog.top/m/tv/xjj.php?id=0
 #EXTINF:-1 group-title="🐲HuangLei分享" tvg-name="关注HuangLeiAPP" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/%E5%85%B3%E6%B3%A8%E6%AC%A7%E6%AD%8CAPP.png",关注HuangLeiAPP
