@@ -2306,33 +2306,33 @@
   "wallpaper": "https://bing.img.run/uhd.php",
   "lives": [
     {
-      "name": "点这里切换线路:咪咕线路A",
+      "name": "推荐播放线路：冰茶",
       "type":0,
       "playerType":2,
       "url":"https://fy.188766.xyz/?ip=&mishitong=true&mima=bingchawusifengxian",
       "ua":"bingcha/1.1(mianfeifenxiang)"
     },
     {
-      "name": "点这里切换线路:咪咕线路B",
+      "name": "优秀线路：develop202",
       "type": 0,
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
       "playerType": 2,
       "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"
     },
     {
-      "name": "点这里切换线路: 黄磊的咪咕",
+      "name": "黄磊的线路: 高清会员咪咕",
       "type": 0,
       "url": "https://migu.lifit.uk/migu.php?userId=390926249&userToken=nlpsD4A873D46B274B175303",
       "playerType": 2
     },
     {
-      "name": "点这里切换线路:MyipV6线路",
+      "name": "备用线路：需有ipv6支持",
       "type": 0,
       "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u",
       "playerType": 2
     },
     {
-      "name": "点这里切换线路:MyipV4线路",
+      "name": "一般线路：ipv4即可",
       "type": 0,
       "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u",
       "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
