@@ -1,5 +1,5 @@
 {
-  "spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/custom_spider.jar;md5;8d592f6d2d1434ea5ec8506b56265485",
+  //"spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/custom_spider.jar;md5;8d592f6d2d1434ea5ec8506b56265485",
   "sites": [
     {
       "key": "KpgxdyE",
@@ -45,6 +45,15 @@
       "api": "https://www.gdlsp.com/api/xml.php",
       "searchable": 1,
       "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "*lu5269",
+      "name": "🔞lu5269",
+      "type": 1,
+      "api": "https://lu5269.cc/api.php/provide/vod/",
+      "searchable": 0,
+      "quickSearch": 0,
       "filterable": 0
     },
     {
