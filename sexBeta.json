@@ -46,24 +46,6 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
-    },
-    {
-      "key": "*lu5269",
-      "name": "🔞lu5269",
-      "type": 0,
-      "api": "https://lu5269.cc/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "*KK写真资源",
-      "name": "🔞KK写真资源",
-      "type": 0,
-      "api": "https://kkzy.me/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
     }
   ],
   "parses": [
