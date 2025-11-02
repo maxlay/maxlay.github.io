@@ -31,7 +31,7 @@
     },
     {
       "key": "*白嫖",
-      "name": "🔞白嫖🔞",
+      "name": "🔞白嫖",
       "type": 0,
       "api": "https://www.kxgav.com/api/xml.php",
       "searchable": 1,
@@ -50,19 +50,19 @@
     {
       "key": "*lu5269",
       "name": "🔞lu5269",
-      "type": 1,
+      "type": 0,
       "api": "https://lu5269.cc/api.php/provide/vod/",
-      "searchable": 0,
-      "quickSearch": 0,
+      "searchable": 1,
+      "quickSearch": 1,
       "filterable": 0
     },
     {
       "key": "*KK写真资源",
       "name": "🔞KK写真资源",
-      "type": 1,
+      "type": 0,
       "api": "https://kkzy.me/api.php/provide/vod/",
-      "searchable": 0,
-      "quickSearch": 0,
+      "searchable": 1,
+      "quickSearch": 1,
       "filterable": 0
     }
   ],
