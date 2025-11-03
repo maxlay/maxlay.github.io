@@ -496,6 +496,21 @@
             ]
         }, 
         {
+            "key": "电影先生", 
+            "name": "👨电影先生", 
+            "type": 1, 
+            "api": "https://silidm.com/api.php/provide/vod/", 
+            "searchable": 1, 
+            "quickSearch": 1, 
+            "filterable": 1, 
+            "categories": [
+                "电影", 
+                "剧集", 
+                "综艺", 
+                "动漫"
+            ]
+        }, 
+        {
             "key": "猎手影视", 
             "name": "🐆猎手", 
             "type": 3, 
