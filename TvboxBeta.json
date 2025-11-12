@@ -549,34 +549,7 @@
                 "大陸綜藝","陸劇","韓劇","美劇","日劇","台劇","港劇","海外劇","動作片","科幻片","戰爭片","喜劇片","恐怖片","懸疑片","奇幻片","紀錄片","愛情片","動畫電影","劇情片","日本動漫","大陸動漫","韓國動漫","歐美動漫","港台動漫","泰劇","歐美綜藝","韓國日本綜藝","台灣香港綜藝","短劇"
             ]
         }, 
-        {
-            "key": "jszyapi", 
-            "name": "🤠jszyapi", 
-            "type": 1, 
-            "api": "https://jszyapi.com/api.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0
-        }, 
-        {
-            "key": "zeqaht", 
-            "name": "🤖zeqaht", 
-            "type": 1, 
-            "api": "https://api.zeqaht.com/api.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0
-        }, 
-        {
-            "key": "360zy"
-            "name": "☢️360zy", 
-            "type": 1, 
-            "api": "https://360zy.com/api.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0
-        }, 
-        
+       
         {
             "key": "taopian", 
             "name": "🕹️淘片", 
