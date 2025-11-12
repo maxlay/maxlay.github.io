@@ -213,8 +213,8 @@
             "filterable": 0
         }, 
         {
-            "key": "lzi", 
-            "name": "😏lzi", 
+            "key": "量子资源", 
+            "name": "😏量子", 
             "type": 1, 
             "api": "https://cj.lziapi.com/api.php/provide/vod/", 
             "searchable": 1, 
@@ -276,8 +276,8 @@
             "filterable": 0
         }, 
         {
-            "key": "360zy", 
-            "name": "☢️360zy", 
+            "key": "360资源", 
+            "name": "☢️360", 
             "type": 1, 
             "api": "https://360zy.com/api.php/provide/vod/", 
             "searchable": 1, 
@@ -294,17 +294,8 @@
             "filterable": 0
         }, 
         {
-            "key": "xinlangapi", 
-            "name": "😜xinlangapi", 
-            "type": 1, 
-            "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0
-        },
-        {
-            "key": "xinlangapi", 
-            "name": "😜xinlangapi", 
+            "key": "新浪", 
+            "name": "😜新浪", 
             "type": 1, 
             "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/", 
             "searchable": 1, 
