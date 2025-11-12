@@ -125,7 +125,7 @@
             "key": "电影天堂", 
             "name": "😇天堂", 
             "type": 1, 
-            "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list", 
+            "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/", 
             "searchable": 1, 
             "quickSearch": 1, 
             "filterable": 1, 
@@ -553,7 +553,7 @@
             "key": "jszyapi", 
             "name": "🤠jszyapi", 
             "type": 1, 
-            "api": "https://jszyapi.com/api.php/provide/vod/?ac=list", 
+            "api": "https://jszyapi.com/api.php/provide/vod/", 
             "searchable": 1, 
             "quickSearch": 1, 
             "filterable": 0
@@ -562,16 +562,16 @@
             "key": "zeqaht", 
             "name": "🤖zeqaht", 
             "type": 1, 
-            "api": "https://api.zeqaht.com/api.php/provide/vod/?ac=list", 
+            "api": "https://api.zeqaht.com/api.php/provide/vod/", 
             "searchable": 1, 
             "quickSearch": 1, 
             "filterable": 0
         }, 
         {
-            "key": 360zy
+            "key": "360zy"
             "name": "☢️360zy", 
             "type": 1, 
-            "api": "https://360zy.com/api.php/provide/vod/?ac=list", 
+            "api": "https://360zy.com/api.php/provide/vod/", 
             "searchable": 1, 
             "quickSearch": 1, 
             "filterable": 0
