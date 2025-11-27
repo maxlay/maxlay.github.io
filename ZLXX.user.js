@@ -7,6 +7,7 @@
 // @run-at       document-start
 // @match        https://www.zjce.gov.cn/*
 // @match        https://*.zjce.gov.cn/*
+// @match        https://zjce.gov.cn/*
 // @require      https://scriptcat.org/lib/637/1.4.3/ajaxHooker.js
 // @require      https://scriptcat.org/lib/1167/1.0.0/%E8%84%9A%E6%9C%AC%E7%8C%ABUI%E5%BA%93.js
 // @require      https://scriptcat.org/lib/513/2.0.0/ElementGetter.js
@@ -521,7 +522,7 @@
         console.log(videodiv)
         //5秒重新点击播放按钮
         const inter = setInterval(function () {
-            videodiv.playbackRate = 1
+            videodiv.playbackRate = 4
             videodiv.muted = true
             videodiv.play()
         }, 5000)
