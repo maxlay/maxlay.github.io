@@ -166,24 +166,6 @@
             "filterable": 0
         }, 
         {
-            "key": "猎手影视", 
-            "name": "🐆猎手", 
-            "type": 3, 
-            "api": "https://gitee.com/PizazzXS/another-d/raw/master/movie/py/LSYS.py", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1
-        }, 
-        {
-            "key": "非凡资源", 
-            "name": "👼非凡", 
-            "type": 1, 
-            "api": "http://ffzy.tv/api.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0
-        }, 
-        {
             "key": "量子资源", 
             "name": "😏量子", 
             "type": 1, 
@@ -248,15 +230,6 @@
             "filterable": 1
         }, 
         {
-            "key": "csp_LiteApple", 
-            "name": "🍎苹果", 
-            "type": 3, 
-            "api": "csp_LiteApple", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1
-        }, 
-        {
             "key": "csp_Ikanbot", 
             "name": "👾Ikanbot", 
             "type": 3, 
@@ -309,36 +282,6 @@
             "quickSearch": 1, 
             "filterable": 1, 
             "ext": "7lj763gg0939791h1l3888jig44gi291li"
-        }, 
-        {
-            "key": "追剧", 
-            "name": "✈追剧", 
-            "type": 3, 
-            "api": "csp_TTian", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "7lj763gg0939791h1l2681i6g94li291li"
-        }, 
-        {
-            "key": "huomaoys", 
-            "name": "😺火猫", 
-            "type": 3, 
-            "api": "csp_Muou", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "7lj763gg0939790i413gi484k8058896highi4414h68l7g6hk8qiaojig9k2k289l9ik807i213k5j602"
-        }, 
-        {
-            "key": "主角", 
-            "name": "🍃主角", 
-            "type": 3, 
-            "api": "csp_Muou", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "7lj763gg402i794247258k9jh6598585l3g6ij13il8g20g9qiaoji8j9i9k1g3k90h7i507i213k5j602"
         }
     ], 
     "parses": [
