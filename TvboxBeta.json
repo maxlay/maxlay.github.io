@@ -331,26 +331,6 @@
             "ext": "7lj763gg0939790i413gi484k8058896highi4414h68l7g6hk8qiaojig9k2k289l9ik807i213k5j602"
         }, 
         {
-            "key": "csp_SaoHuo", 
-            "name": "🔥骚火", 
-            "type": 3, 
-            "api": "csp_SaoHuo", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "https://shdy5.us"
-        }, 
-        {
-            "key": "csp_Wwys", 
-            "name": "👩‍🌾农民", 
-            "type": 3, 
-            "api": "csp_Wwys", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "https://vip.wwgz.cn:5200/"
-        }, 
-        {
             "key": "主角", 
             "name": "🍃主角", 
             "type": 3, 
