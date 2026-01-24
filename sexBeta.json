@@ -43,7 +43,7 @@
     //"spider": "https://cdn.crashmc.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
-  
+  "wallpaper": "https://bing.img.run/uhd.php",
   "sites": [
   
     {
@@ -1760,8 +1760,8 @@
     "cache.ott.wasulive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
     "cache.ott.fifalive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
     "cache.ott.hnbblive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com"
-  ],
-  "wallpaper": "https://深色壁纸.xxooo.cf"
+  ]
+  //"wallpaper": "https://深色壁纸.xxooo.cf"
 }
 
 

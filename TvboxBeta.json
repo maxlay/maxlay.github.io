@@ -16,13 +16,13 @@
             "ua": "bingcha/1.1(mianfeibuhuaqian)", 
             "url": "https://bc.188766.xyz/?ip=&mishitong=true&mima=bingcha1130"
         }, 
-       // {
-       //     "name": "优秀线路：develop202", 
-       //     "type": 0, 
-       //     "playerType": 2, 
-       //     "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-       //     "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
-       // }, 
+        {
+            "name": "优秀线路：develop202", 
+            "type": 0, 
+            "playerType": 2, 
+            "epg": "http://epg.51zmt.top:8000/e.xml.gz",
+            "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
+        }, 
        // {
        //     "name": "黄磊的线路: 高清会员咪咕", 
        //     "type": 0, 
@@ -35,17 +35,18 @@
             "type": 0, 
             "playerType": 2, 
             "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-            "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u"
+            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u"
         }, 
         {
             "name": "一般线路：ipv4即可", 
             "type": 0, 
             "playerType": 2, 
             "epg": "http://epg.51zmt.top:8000/e.xml.gz", 
-            "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u"
+            "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u"
         }
     ],
     "spider": "https://jihulab.com/yoursmile2/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
+    "wallpaper": "https://bing.img.run/uhd.php",
     //"spider": "https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://gh.monlor.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://cdn.crashmc.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
@@ -1417,6 +1418,5 @@
         "cache.ott.wasulive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com", 
         "cache.ott.fifalive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com", 
         "cache.ott.hnbblive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com"
-    ], 
-    "wallpaper": "https://深色壁纸.xxooo.cf"
+    ]
 }
