@@ -96,9 +96,21 @@
                 "斯诺克"
             ]
         }, 
+
+{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+"key":"💢推荐",
+"name":"AI3搜索",
+"type":3,
+"api":"csp_AI",
+"searchable":1,
+"quickSearch":1,
+"filterable":0,
+"playerType":2,
+"ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"},
+
         {
             "key":"巧技二",
-            "name":"💢推荐-聚搜",
+            "name":"💢推荐1",
             "type":3,
             "api":"csp_qiao2",
             "searchable":1,
@@ -108,7 +120,7 @@
          },
          {
             "key":"巧技五",
-            "name":"💢推荐-聚搜2",
+            "name":"💢推荐2",
             "type":3,
             "api":"csp_qiao2",
             "searchable":1,
@@ -161,17 +173,6 @@
 "api":"csp_qiao2",
 "playerType":2,"
 ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"},
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"AI3",
-"name":"AI3搜索",
-"type":3,
-"api":"csp_AI",
-"searchable":1,
-"quickSearch":1,
-"filterable":0,
-"playerType":2,
-"ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"},
 
 {"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
 "key":"天天",
