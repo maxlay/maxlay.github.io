@@ -154,7 +154,7 @@
         {
            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
            "key":"巧技二",
-           "name":"巧技二搜索",
+           "name":" 🐸巧技二搜索",
            "type":3,
            "api":"csp_qiao2",
            "playerType":2,
@@ -163,7 +163,7 @@
         {
            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
            "key":"巧技五",
-           "name":"巧技五搜索",
+           "name":" 🐝巧技五搜索",
            "type":3,
            "api":"csp_qiao2",
            "playerType":2,
@@ -172,7 +172,7 @@
         {
            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
            "key":"天天",
-           "name":"天天",
+           "name":" 🌕天天",
            "type":3,
            "api":"csp_TTian",
            "playerType":2,
@@ -181,14 +181,14 @@
         {
            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
            "key":"剧评",
-           "name":"剧评",
+           "name":" ❄剧评",
            "type":3,
            "api":"csp_Jpys",
            "playerType":1,
            "ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
         },
         {
-            "key": "360资源", 
+            "key": "360", 
             "name": "☢️360", 
             "type": 1, 
             "api": "https://360zy.com/api.php/provide/vod/", 
@@ -197,7 +197,7 @@
             "filterable": 0
         }, 
         {
-            "key": "量子资源", 
+            "key": "量子", 
             "name": "😏量子", 
             "type": 1, 
             "api": "https://cj.lziapi.com/api.php/provide/vod/", 
@@ -206,7 +206,7 @@
             "filterable": 0
         }, 
         {
-            "key": "极速资源", 
+            "key": "极速", 
             "name": "💨极速", 
             "type": 1, 
             "api": "https://jszyapi.com/api.php/provide/vod/", 
@@ -215,7 +215,7 @@
             "filterable": 0
         }, 
         {
-            "key": "如意资源", 
+            "key": "如意", 
             "name": "🐲如意", 
             "type": 1, 
             "api": "https://www.ryzy.tv/api.php/provide/vod/", 
@@ -224,7 +224,7 @@
             "filterable": 0
         }, 
         {
-            "key": "魔都资源", 
+            "key": "魔都", 
             "name": "👹魔都", 
             "type": 1, 
             "api": "https://www.mdzyapi.com/api.php/provide/vod/", 
@@ -244,7 +244,7 @@
         }, 
         {
             "key": "csp_DyGod", 
-            "name": "🧲电影天堂", 
+            "name": " 🌈电影天堂", 
             "type": 3, 
             "api": "csp_DyGod", 
             "searchable": 1, 
@@ -253,7 +253,7 @@
         }, 
         {
             "key": "csp_BLSGod", 
-            "name": "🧲80S影视", 
+            "name": " ☃80S影视", 
             "type": 3, 
             "api": "csp_BLSGod", 
             "searchable": 1, 
@@ -294,17 +294,8 @@
             "filterable": 0
         }, 
     {
-      "key": "电影天堂",
-      "name": "电影天堂",
-      "type": 1,
-      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "小苹果",
-      "name": "小苹果",
+      "name": " 🍎小苹果",
       "type": 4,
       "api": "http://zhangqun1818.serv00.net/pingguo.php",
       "searchable": 1,
@@ -313,7 +304,7 @@
     },
     {
       "key": "猫眼",
-      "name": "猫眼",
+      "name": " 🐱猫眼",
       "type": 1,
       "api": "https://api.maoyanapi.top/api.php/provide/vod",
       "searchable": 1,
@@ -322,7 +313,7 @@
     },
     {
       "key": "四个圈",
-      "name": "四个圈",
+      "name": " ⭕四个圈",
       "type": 1,
       "api": "https://pg.fenwe078.cf/api.php/provide/vod/",
       "searchable": 1,
@@ -332,7 +323,7 @@
 
     {
       "key": "映迷影视",
-      "name": "映迷影视",
+      "name": " 💠映迷影视",
       "type": 1,
       "api": "https://www.inmi.app/api.php/provide/vod/",
       "searchable": 1,
@@ -342,7 +333,7 @@
 
     {
       "key": "飘零影院",
-      "name": "飘零影院",
+      "name": " ⚜飘零影院",
       "type": 1,
       "api": "https://p2100.net/api.php/provide/vod/",
       "searchable": 1,
@@ -352,7 +343,7 @@
 
     {
       "key": "索尼影视",
-      "name": "索尼影视",
+      "name": " 🎉索尼影视",
       "type": 1,
       "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -360,8 +351,8 @@
       "filterable": 0
     },
     {
-      "key": "花旗资源",
-      "name": "花旗资源",
+      "key": "花旗",
+      "name": " ⛳花旗",
       "type": 1,
       "api": "https://www.seacms.org/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -369,8 +360,8 @@
       "filterable": 0
     },
     {
-      "key": "卧龙资源",
-      "name": "卧龙资源",
+      "key": "卧龙",
+      "name": " 🦂卧龙",
       "type": 1,
       "api": "https://collect.wolongzy.cc/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -378,8 +369,8 @@
       "filterable": 0
     },
     {
-      "key": "豪华资源",
-      "name": "豪华资源",
+      "key": "豪华",
+      "name": " 🦕豪华",
       "type": 1,
       "api": "https://hhzyapi.com/api.php/provide/vod",
       "searchable": 1,
@@ -387,8 +378,8 @@
       "filterable": 0
     },
     {
-      "key": "茅台资源",
-      "name": "茅台资源",
+      "key": "茅台",
+      "name": " 🔥茅台",
       "type": 1,
       "api": "https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/",
       "searchable": 1,
@@ -396,8 +387,8 @@
       "filterable": 0
     },
     {
-      "key": "天涯资源",
-      "name": "天涯资源",
+      "key": "天涯",
+      "name": " 🌊天涯",
       "type": 1,
       "api": "https://tyyszyapi.com/api.php/provide/vod/",
       "searchable": 1,
@@ -405,8 +396,8 @@
       "filterable": 0
     },
     {
-      "key": "柚子资源",
-      "name": "柚子资源",
+      "key": "柚子",
+      "name": " ⛈柚子",
       "type": 0,
       "api": "https://api.yzzy-api.com/inc/api.php",
       "searchable": 1,
@@ -414,24 +405,14 @@
       "filterable": 0
     },
     {
-      "key": "爱奇艺资源",
-      "name": "爱奇艺资源",
+      "key": "爱奇艺",
+      "name": " 💥爱奇艺",
       "type": 1,
       "api": "https://iqiyizyapi.com/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
-    }, 
-        {
-            "key": "天天", 
-            "name": "⛅天天", 
-            "type": 3, 
-            "api": "csp_TTian", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "7lj763gg0939791h1l3888jig44gi291li"
-        }
+    }
     ], 
     "parses": [
         {
