@@ -23,13 +23,6 @@
             "epg": "http://epg.51zmt.top:8000/e.xml.gz",
             "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
         }, 
-       // {
-       //     "name": "黄磊的线路: 高清会员咪咕", 
-       //     "type": 0, 
-       //     "playerType": 2, 
-       //     "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-       //     "url": "https://migu.lifit.uk/migu.php?userId=390926249&userToken=nlpsD4A873D46B274B175303"
-       // }, 
         {
             "name": "备用线路：需有ipv6支持", 
             "type": 0, 
@@ -45,13 +38,14 @@
             "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u"
         }
     ],
-    "spider": "https://jihulab.com/yoursmile2/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
     "wallpaper": "https://bing.img.run/uhd.php",
+    "spider": "https://jihulab.com/yoursmile2/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
+
     //"spider": "https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://gh.monlor.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://cdn.crashmc.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
     //"spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
-    //"spider": "https://hub.gitmirror.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
+
     "sites": [
         {
             "key": "HuangleiBeta", 
@@ -65,7 +59,6 @@
                 "预告片", 
                 "大陆综艺", 
                 "国产剧", 
-                "电影解说", 
                 "科幻片", 
                 "战争片", 
                 "动作片", 
@@ -74,7 +67,6 @@
                 "记录片", 
                 "恐怖片", 
                 "剧情片", 
-                "短剧", 
                 "香港剧", 
                 "韩国剧", 
                 "欧美剧", 
@@ -85,29 +77,31 @@
                 "港台综艺", 
                 "日韩综艺", 
                 "欧美综艺", 
+                "电影解说", 
                 "国产动漫", 
                 "日韩动漫", 
                 "欧美动漫", 
                 "港台动漫", 
                 "海外动漫", 
+                "短剧", 
                 "足球", 
                 "篮球", 
                 "网球", 
                 "斯诺克"
             ]
         }, 
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"AI3",
-"name":"💢推荐",
-"type":3,
-"api":"csp_AI",
-"searchable":1,
-"quickSearch":1,
-"filterable":0,
-"playerType":2,
-"ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"},
-
+        {            
+            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+            "key":"AI3",
+            "name":"💢推荐",
+            "type":3,
+            "api":"csp_AI",
+            "searchable":1,
+            "quickSearch":1,
+            "filterable":0,
+            "playerType":2,
+            "ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"
+        },
         {
             "key":"巧技二",
             "name":"💢推荐1",
@@ -157,51 +151,42 @@
             "filterable": 0, 
             "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/奇优.js"
         }, 
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"巧技二",
-"name":"巧技二搜索",
-"type":3,
-"api":"csp_qiao2",
-"playerType":2,
-"ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"},
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"巧技五",
-"name":"巧技五搜索",
-"type":3,
-"api":"csp_qiao2",
-"playerType":2,"
-ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"},
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"天天",
-"name":"天天",
-"type":3,
-"api":"csp_TTian",
-"playerType":2,
-"ext":"7lj763gg0939791h1l3888jig44gi291li"},
-
-{"jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-"key":"剧评",
-"name":"剧评",
-"type":3,
-"api":"csp_Jpys",
-"playerType":1,
-"ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"},
-
         {
-            "key": "Kimivod", 
-            "name": "ⓂKimivod", 
-            "type": 1, 
-            "api": "https://kimivod.com/api.php/provide/vod/", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0, 
-            "categories": [
-                "大陸綜藝","陸劇","韓劇","美劇","日劇","台劇","港劇","海外劇","動作片","科幻片","戰爭片","喜劇片","恐怖片","懸疑片","奇幻片","紀錄片","愛情片","動畫電影","劇情片","日本動漫","大陸動漫","韓國動漫","歐美動漫","港台動漫","泰劇","歐美綜藝","韓國日本綜藝","台灣香港綜藝","短劇"
-            ]
-        }, 
+           "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+           "key":"巧技二",
+           "name":"巧技二搜索",
+           "type":3,
+           "api":"csp_qiao2",
+           "playerType":2,
+           "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"
+        },
+        {
+           "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+           "key":"巧技五",
+           "name":"巧技五搜索",
+           "type":3,
+           "api":"csp_qiao2",
+           "playerType":2,
+           "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"
+        },
+        {
+           "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+           "key":"天天",
+           "name":"天天",
+           "type":3,
+           "api":"csp_TTian",
+           "playerType":2,
+           "ext":"7lj763gg0939791h1l3888jig44gi291li"
+        },
+        {
+           "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+           "key":"剧评",
+           "name":"剧评",
+           "type":3,
+           "api":"csp_Jpys",
+           "playerType":1,
+           "ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+        },
         {
             "key": "360资源", 
             "name": "☢️360", 
@@ -307,16 +292,6 @@ ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk93
             "searchable": 1, 
             "quickSearch": 1, 
             "filterable": 0
-        }, 
-        {
-            "key": "dr_360影视", 
-            "name": "3️⃣60", 
-            "type": 3, 
-            "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0, 
-            "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/360.js"
         }, 
     {
       "key": "电影天堂",
