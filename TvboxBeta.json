@@ -47,6 +47,30 @@
     //"spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
 
     "sites": [
+
+	{
+	  "key":"xiaoya",
+	  "name":"小雅|4K",
+	  "type":3,
+	  "api":"csp_AListSh",
+	  "jar":"http://47.120.12.26:5678/tvbox/libsxiaoya_proxy.jar",
+	  "searchable":1,
+	  "quickSearch":1,
+	  "filterable":1,
+	  "changeable":1,
+	  	  "ext":[
+	  	  {"name":"丫仙女","server":"http://47.120.12.26:5678/","startPage":"/","search":true,"noPoster":true},
+	  	  {"name":"每日更新","server":"http://47.120.12.26:5678/","startPage":"/每日更新"},
+	  	  {"name":"丫的宝库","server":"http://47.120.12.26:5678/","startPage":"/","filters":{"全部":".","国产剧":"((电视剧.*(国产|中国|华语|台湾|香港|港台))|(国产剧))","国产电影":"(电影.*(国产|中国|华语|台湾|香港|港台))","电视剧":"(电视剧|国产剧|美剧|韩剧)","电影":"(电影)","综艺":"(综艺|真人秀|脱口秀)","纪录片":"(纪录片)"}},
+	  	  {"name":"电影","server":"http://47.120.12.26:5678/","startPage":"/电影"},
+	  	  {"name":"电视剧","server":"http://47.120.12.26:5678/","startPage":"/电视剧"},
+	  	  {"name":"短剧","server":"http://47.120.12.26:5678/","startPage":"/每日更新/爽文短剧"},
+	  	  {"name":"综艺","server":"http://47.120.12.26:5678/","startPage":"/综艺"},
+	  	  {"name":"纪录片","server":"http://47.120.12.26:5678/","startPage":"/纪录片"},
+	  	  {"name":"动漫","server":"http://47.120.12.26:5678/","startPage":"/动漫/合集（115）"},
+	  	  {"name":"儿童","server":"http://47.120.12.26:5678/","startPage":"/动漫/儿童"}
+	  	]
+	},
         {
             "key": "HuangleiBeta", 
             "name": "🦄HuangleiBeta", 
@@ -102,55 +126,26 @@
             "playerType":2,
             "ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"
         },
-        {
-            "key":"巧技二",
-            "name":"💢推荐1",
-            "type":3,
-            "api":"csp_qiao2",
-            "searchable":1,
-            "quickSearch":1,
-            "filterable":1,
-            "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"
-         },
-         {
-            "key":"巧技五",
-            "name":"💢推荐2",
-            "type":3,
-            "api":"csp_qiao2",
-            "searchable":1,
-            "quickSearch":1,
-            "filterable":1,
-            "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"
-        },
-        {
-            "key": "金牌", 
-            "name": "🥇推荐-金牌", 
-            "type": 3, 
-            "api": "csp_Jpys", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1, 
-            "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
-        }, 
-        {
-            "key": "csp_Gz360", 
-            "name": "🍉推荐-瓜子", 
-            "type": 3, 
-            "api": "csp_Gz360", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 1
-        }, 
-        {
-            "key": "奇优", 
-            "name": "🥇奇优", 
-            "type": 3, 
-            "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js", 
-            "searchable": 1, 
-            "quickSearch": 1, 
-            "filterable": 0, 
-            "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/奇优.js"
-        }, 
+//        {
+//            "key":"巧技二",
+//            "name":"💢推荐1",
+//            "type":3,
+//            "api":"csp_qiao2",
+//            "searchable":1,
+//            "quickSearch":1,
+//            "filterable":1,
+//            "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"
+//         },
+//        {
+//           "key":"巧技五",
+//           "name":"💢推荐2",
+//           "type":3,
+//           "api":"csp_qiao2",
+//           "searchable":1,
+//           "quickSearch":1,
+//           "filterable":1,
+//           "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"
+//        },
         {
            "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
            "key":"巧技二",
@@ -187,6 +182,35 @@
            "playerType":1,
            "ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
         },
+        {
+            "key": "金牌", 
+            "name": "🥇推荐-金牌", 
+            "type": 3, 
+            "api": "csp_Jpys", 
+            "searchable": 1, 
+            "quickSearch": 1, 
+            "filterable": 1, 
+            "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+        }, 
+        {
+            "key": "csp_Gz360", 
+            "name": "🍉推荐-瓜子", 
+            "type": 3, 
+            "api": "csp_Gz360", 
+            "searchable": 1, 
+            "quickSearch": 1, 
+            "filterable": 1
+        }, 
+        {
+            "key": "奇优", 
+            "name": "🥇奇优", 
+            "type": 3, 
+            "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js", 
+            "searchable": 1, 
+            "quickSearch": 1, 
+            "filterable": 0, 
+            "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/奇优.js"
+        }, 
         {
             "key": "360", 
             "name": "☢️360", 
