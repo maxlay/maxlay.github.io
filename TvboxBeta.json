@@ -24,14 +24,7 @@
         "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     }, 
     {
-        "name": "备用线路：需有ipv6支持", 
-        "type": 0, 
-        "playerType": 2, 
-        "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-        "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/3d75a78a0fc7ede372c03598d6d10367.m3u"
-    }, 
-    {
-        "name": "一般线路：ipv4即可", 
+        "name": "一般线路：应急用", 
         "type": 0, 
         "playerType": 2, 
         "epg": "http://epg.51zmt.top:8000/e.xml.gz", 
@@ -42,10 +35,6 @@
     "wallpaper": "https://bing.img.run/uhd.php",
 
     //"spider": "https://jihulab.com/yoursmile2/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
-    //"spider": "https://hk.gh-proxy.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
-    //"spider": "https://gh.monlor.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
-    //"spider": "https://cdn.crashmc.com/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
-    //"spider": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/Tvbox.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8", 
 
     "sites": [
     {
