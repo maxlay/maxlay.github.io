@@ -426,8 +426,64 @@
       
 
 <div class="sidebar-custom-image">
+<a href="https://xima.tv/1_M82DLO" target="_blank" class="sidebar-custom-banner">
 <img src="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/ximalaya.jpg" alt="">
+</a>
 </div>
+
+
+
+<!--  -->
+<a href="https://xima.tv/1_M82DLO" target="_blank" class="sidebar-custom-banner" id="ximalaya-banner">
+  <img src="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/ximalaya.jpg" alt="">
+</a>
+
+<!--  () -->
+<img src="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/ximalaya-preview.png" class="mouse-follow-img" id="mouse-follow-img" style="display: none;">
+
+<style>
+.mouse-follow-img {
+  position: fixed;
+  pointer-events: none; /*  */
+  z-index: 9999;
+  width: 40px; /*  */
+  height: auto;
+  transition: opacity 0.1s; /*  */
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const banner = document.getElementById('ximalaya-banner');
+  const followImg = document.getElementById('mouse-follow-img');
+  let isFollowing = false;
+  
+  // banner
+  banner.addEventListener('mouseenter', function() {
+    isFollowing = true;
+    followImg.style.display = 'block';
+    followImg.style.opacity = '0.8'; // 
+  });
+  
+  // banner
+  banner.addEventListener('mousemove', function(e) {
+    if (!isFollowing) return;
+    
+    // 
+    followImg.style.left = (e.clientX + 15) + 'px';
+    followImg.style.top = (e.clientY + 15) + 'px';
+  });
+  
+  // banner
+  banner.addEventListener('mouseleave', function() {
+    isFollowing = false;
+    followImg.style.opacity = '0'; // 
+    setTimeout(() => {
+      followImg.style.display = 'none';
+    }, 100);
+  });
+});
+</script>
 
     </div>
   </aside>
