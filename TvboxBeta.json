@@ -38,8 +38,8 @@
 
     "sites": [
     {
-        "key": "HuangleiBeta", 
-        "name": "🦄HuangleiBeta", 
+        "key": "HuangLeiBeta", 
+        "name": "🦄HuangLeiBeta", 
         "type": 1, 
         "api": "https://wolongzyw.com/api.php/provide/vod/", 
         "searchable": 1, 
