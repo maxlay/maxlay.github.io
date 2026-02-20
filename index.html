@@ -193,6 +193,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2026/02/20/FlClash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/02/20/FlClash/" class="post-title-link" itemprop="url">FlClash</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-02-20 08:02:06" itemprop="dateCreated datePublished" datetime="2026-02-20T08:02:06+08:00">2026-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://github.com/chen08209/FlClash">https://github.com/chen08209/FlClash</a></p>
+<p>全平台科学上网客户端</p>
+<blockquote>
+<p> 我一直在用 2016 年 10 月购买的小米电视 3S 55 寸，LG 面板的 4K 电视。亲测FlClash能在小米电视上正常运行，同时还能全程只用遥控器操作。这个客户端的特点是可以在平板（手机）上，电视（盒子）上，也可以在MacBook 上和 PC 上轻松实现，作者更新非常勤奋，可以作为主力替代其他客户端使用。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">function main(config) &#123;</span><br><span class="line">  if (!config.experimental) config.experimental = &#123;&#125;;</span><br><span class="line">  Object.assign(config.experimental, &#123;</span><br><span class="line">    &quot;udp-hole-punch&quot;: true,       </span><br><span class="line">    &quot;ignore-resolve-fail&quot;: true,</span><br><span class="line">    &quot;skip-auth-preface&quot;: true     </span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  config[&quot;keep-alive-interval&quot;] = 10;</span><br><span class="line">  config.experimental[&quot;unified-delay&quot;] = true; </span><br><span class="line">  config.experimental[&quot;tcp-concurrent&quot;] = true;</span><br><span class="line">  const testUrl = &quot;http://cp.cloudflare.com/generate_204&quot;;</span><br><span class="line">  const groups = config[&quot;proxy-groups&quot;] || [];</span><br><span class="line"></span><br><span class="line">  groups.forEach(group =&gt; &#123;</span><br><span class="line">    if (group.type === &quot;url-test&quot; || group.type === &quot;fallback&quot;) &#123;</span><br><span class="line">      group.url = testUrl;</span><br><span class="line">      group.interval = 240; </span><br><span class="line">      group.tolerance = 40;</span><br><span class="line">      group.timeout = 2500;</span><br><span class="line">      group.lazy = true; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  const autoGroup = &#123;</span><br><span class="line">    name: &quot;🚀 自动最优&quot;,</span><br><span class="line">    type: &quot;url-test&quot;,</span><br><span class="line">    url: testUrl,</span><br><span class="line">    interval: 180,</span><br><span class="line">    tolerance: 30,</span><br><span class="line">    include-all: true, </span><br><span class="line">    icon: &quot;https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg&quot;</span><br><span class="line">  &#125;;</span><br><span class="line">  groups.unshift(autoGroup); </span><br><span class="line"></span><br><span class="line">  return config;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>电视端免框架安装即用的油管客户端：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yuliskov/smarttube">https://github.com/yuliskov/smarttube</a></p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2026/02/07/skills/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,90 +1006,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/19/%E7%B1%81%E7%89%B9%E6%98%93%E8%80%B3%E6%98%9F%E6%82%A6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2025/08/18/%E7%8C%AB%E6%8A%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/08/18/%E7%8C%AB%E6%8A%93/" class="post-title-link" itemprop="url">猫抓</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-08-18 22:18:17" itemprop="dateCreated datePublished" datetime="2025-08-18T22:18:17+08:00">2025-08-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="https://store-images.s-microsoft.com/image/apps.3082.8f3c020f-c5ff-4986-925c-8df5b2cfb323.d9377eaf-b6fe-4994-b82d-ed0e46dbdbed.2cbf08d0-102e-49aa-965d-9bb883c04dec?mode=scale&h=100&q=90&w=100" style="zoom: 250%;" />
-
-<p><a target="_blank" rel="noopener" href="https://cat-catch.bmmmd.com/">https://cat-catch.bmmmd.com/</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/xifangczy/cat-catch">https://github.com/xifangczy/cat-catch</a></p>
-<blockquote>
-<p>猫抓(cat-catch) 资源嗅探扩展，能够帮你筛选列出当前页面的资源。</p>
-</blockquote>
-<p>我在用的版本：<a target="_blank" rel="noopener" href="https://wget.la/https://github.com/xifangczy/cat-catch/releases/download/2.6.3/cat-catch-2.6.3-edge.crx">https://wget.la/https://github.com/xifangczy/cat-catch/releases/download/2.6.3/cat-catch-2.6.3-edge.crx</a></p>
-<p>这个插件可以把视频网站的 URL 解析出来，可以直接把链接推送给 OK 影视或者影视仓来播放。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/08/18/%E7%8C%AB%E6%8A%93/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
