@@ -8,22 +8,6 @@
         "logo": "https://epg.iill.top/logo/{name}.png",
         "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     }, 
-        {
-          "name": "BMCH",
-          "type":"0",
-          "pass": true,
-          "url": "https://gh.halonice.com/https:/raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
-          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
-          "logo": "https://epg.v1.mk/logo/{name}.png"
-        },
-        {
-          "name": "Tianmu",
-          "type":"0",
-          "pass": true,
-          "url": "https://ghfile.geekertao.top/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
-          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
-          "logo": "https://epg.v1.mk/logo/{name}.png"
-        },
     {
         "name": "一般线路：应急用", 
         "type": 0, 
