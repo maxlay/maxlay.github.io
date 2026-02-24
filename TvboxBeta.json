@@ -1,6 +1,12 @@
 {
     "lives": [
     {
+        "name": "推荐线路：Kimentanm",
+        "type": 0,
+        "playerType": 2,
+        "url": "https://wget.la/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
+    },
+    {
         "name": "优秀线路：develop202", 
         "type": 0, 
         "playerType": 2, 
