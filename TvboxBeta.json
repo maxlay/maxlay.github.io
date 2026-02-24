@@ -4,8 +4,8 @@
         "name": "优秀线路：develop202", 
         "type": 0, 
         "playerType": 2, 
-        "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
-        "logo": "https://epg.iill.top/logo/{name}.png",
+        "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
+        "logo": "https://epg.v1.mk/logo/{name}.png", 
         "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     }, 
     {
