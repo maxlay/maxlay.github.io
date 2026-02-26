@@ -9,8 +9,32 @@
 
 
     <url>
+        <loc>https://maxlay.github.io/2025/08/20/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
+        <lastmod>2026-02-26T13:42:54.400Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2025/08/19/%E7%B1%81%E7%89%B9%E6%98%93%E8%80%B3%E6%98%9F%E6%82%A6/</loc>
+        <lastmod>2026-02-26T13:38:10.875Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://maxlay.github.io/2026/01/26/%E6%9E%81%E9%99%90%E5%AE%A1%E5%88%A4/</loc>
+        <lastmod>2026-02-26T13:35:26.035Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://maxlay.github.io/2025/09/18/OK%E5%BD%B1%E8%A7%86/</loc>
-        <lastmod>2026-02-25T09:37:14.337Z</lastmod>
+        <lastmod>2026-02-26T13:28:51.440Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -363,14 +387,6 @@
     <url>
         <loc>https://maxlay.github.io/2026/02/01/NotebookLM/</loc>
         <lastmod>2026-02-01T00:54:52.483Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2026/01/26/%E6%9E%81%E9%99%90%E5%AE%A1%E5%88%A4/</loc>
-        <lastmod>2026-01-26T11:11:33.724Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -977,14 +993,6 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2022/08/24/%E5%9C%A8%E6%B9%96%E5%B7%9E%E5%9D%90%E5%85%AC%E4%BA%A4/</loc>
-        <lastmod>2026-01-24T06:30:53.313Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2021/07/09/%E6%B2%BB%E7%97%85/</loc>
         <lastmod>2026-01-24T06:30:53.309Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1027,14 +1035,6 @@
     <url>
         <loc>https://maxlay.github.io/2018/06/06/no-watch-os5/</loc>
         <lastmod>2026-01-24T06:30:53.290Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2025/08/20/Bilibili%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
-        <lastmod>2026-01-24T06:30:53.288Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1689,24 +1689,8 @@
     </url>
 
     <url>
-        <loc>https://maxlay.github.io/2025/08/19/%E7%B1%81%E7%89%B9%E6%98%93%E8%80%B3%E6%98%9F%E6%82%A6/</loc>
-        <lastmod>2025-10-09T10:42:25.193Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://maxlay.github.io/2025/06/07/%E6%89%93%E5%8D%B0%E6%9C%BA%E6%98%AF%E6%80%8E%E4%B9%88%E5%9D%8F%E7%9A%84/</loc>
         <lastmod>2025-10-09T10:36:22.787Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://maxlay.github.io/2025/07/25/autohotkey/</loc>
-        <lastmod>2025-09-14T11:28:14.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
