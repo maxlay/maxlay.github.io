@@ -1,0 +1,43 @@
+
+.post-block {
+    position: relative !important;
+    background: #fff !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    margin-bottom: 30px !important;
+    margin-top: 0 !important;
+    border: 1px solid #e6e6e6 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    overflow: visible !important;
+}
+
+.post-block:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.12), 
+        0 0 10px rgba(180, 180, 180, 0.4) !important;
+    border-color: #ccc !important;
+}
+
+.post-block::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 2px !important;
+    height: 100% !important;
+    background: linear-gradient(to bottom, #dcdcdc, #999999) !important;
+    opacity: 0.7 !important;
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    display: block !important; /* 防止被隐藏 */
+}
+
+.post-block:hover::before {
+    opacity: 1 !important;
+    width: 6px !important;
+    background: linear-gradient(to bottom, #ffffff, #bbbbbb) !important;
+    box-shadow: 2px 0 8px rgba(200, 200, 200, 0.6) !important;
+}
