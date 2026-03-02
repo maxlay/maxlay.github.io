@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
   <div class="powered-by">    
       <a href="https://maxlay.github.io/sitemap.xml" target="_blank">RSS</a> |
-      <a href="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/HLbox.json" target="_blank">TVBox.json</a> 
+      <a href="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/HLbox.json" target="_blank">TVBox</a> 
  
   </div>
 
@@ -557,6 +557,224 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   
+
+  
+  
+
+<style>
+/*  -  */
+@media (min-width: 992px) {
+  /*  */
+  .sidebar-toggle-btn {
+    position: absolute !important;
+    top: 18px !important;
+    left: 11px !important;
+    z-index: 9999 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+  }
+
+  /*  */
+  .sidebar-toggle-btn.active {
+    background: #000 !important;
+    box-shadow: 0 0 15px 2px #39ff14 !important;
+  }
+
+  /* SVG  -  */
+  .sidebar-toggle-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    transition: all 0.5s ease !important;
+    /* currentColor */
+    fill: transparent !important;
+    stroke: #333 !important;
+    stroke-width: 2px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+  /*  -  +  */
+  .sidebar-toggle-btn.active svg {
+    fill: transparent !important;
+    stroke: #ffffff !important; /*  */
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 0 4px #39ff14) !important; /*  */
+    transform: rotate(180deg) !important;
+  }
+
+  /*  */
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(10deg); }
+  }
+
+  .sidebar-toggle-btn {
+    animation: shake 1s ease 0.5s 1 !important;
+  }
+
+  /*  */
+  .container {
+    position: relative !important;
+  }
+
+  /*  Pisces  -  */
+  .main {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+
+  .content-wrap {
+    flex: 1 !important;
+    max-width: none !important;
+  }
+
+  /*  -  */
+  body.sidebar-collapsed .header {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: all 0.5s ease !important;
+  }
+
+  body.sidebar-collapsed .sidebar {
+    flex: 0 0 0px !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: all 0.5s ease !important;
+  }
+
+  /*  -  */
+  body.sidebar-collapsed .main-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.sidebar-collapsed .content-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/*  */
+@media (max-width: 991px) {
+  .sidebar-toggle-btn {
+    display: none !important;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  //  Next 
+  setTimeout(function() {
+    // SVGcurrentColor
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'sidebar-toggle-btn';
+    // SVG
+    toggleBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    `;
+
+    // .container
+    const container = document.querySelector('.container');
+    if (container) {
+      container.insertBefore(toggleBtn, container.firstChild);
+    }
+
+    // localStorage
+    const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    
+    // 
+    if (isCollapsed) {
+      document.body.classList.add('sidebar-collapsed');
+      toggleBtn.classList.add('active');
+    }
+
+    // 
+    let isClicking = false;
+    toggleBtn.addEventListener('click', function() {
+      if (isClicking) return;
+      isClicking = true;
+      
+      const isActive = this.classList.contains('active');
+      
+      if (isActive) {
+        this.classList.remove('active');
+        document.body.classList.remove('sidebar-collapsed');
+        localStorage.setItem('sidebarCollapsed', 'false');
+      } else {
+        this.classList.add('active');
+        document.body.classList.add('sidebar-collapsed');
+        localStorage.setItem('sidebarCollapsed', 'true');
+      }
+      
+      setTimeout(() => {
+        isClicking = false;
+      }, 300);
+    });
+  }, 300);
+});
+</script>
+
+
+
+<style>
+/*  */
+.footer-inner {
+  text-align: center !important;
+}
+
+/*  */
+.footer .copyright,
+.footer .powered-by {
+  display: block !important;
+  float: none !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  line-height: 1.6 !important;
+}
+
+/*  */
+.footer .copyright {
+  margin-bottom: 8px !important;
+}
+
+.footer .powered-by {
+  margin-top: 8px !important;
+}
+
+/* 100% */
+.footer {
+  width: 100% !important;
+  clear: both !important;
+}
+</style>
 
 </body>
 </html>
