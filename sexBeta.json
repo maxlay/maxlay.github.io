@@ -1,11 +1,32 @@
 {
+    "headers": [
+    {
+        "host": "hlsztemgsplive.miguvideo.com",
+        "header": {
+            "User-Agent": "bingcha/1.1 (mianfeifenxiang) "
+        }
+    }
+    ],
     "lives": [
     {
-        "name": "优秀线路：develop202", 
+        "name": "推荐线路：原冰茶",
+        "type": 0,
+        "playerType": 2,
+        "url": "https://ds65.tv1288.xyz",
+        "ua": "bingcha/1.1 (mianfeifenxiang) "
+    },
+    {
+        "name": "推荐线路：Kimentanm",
+        "type": 0,
+        "playerType": 2,
+        "url": "https://wget.la/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
+    },
+    {
+        "name": "推荐线路：develop202", 
         "type": 0, 
         "playerType": 2, 
-        "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
-        "logo": "https://epg.iill.top/logo/{name}.png",
+        "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
+        "logo": "https://epg.v1.mk/logo/{name}.png", 
         "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     }, 
     {
@@ -16,27 +37,10 @@
         "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u"
     }
     ],
-  "wallpaper": "https://bing.img.run/uhd.php",
-  "sites": [
-  
-    {
-      "key": "淫水机资源",
-      "name": "🔞淫水机",
-      "type": 0,
-      "api": "https://www.xrbsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "KpgxdyE",
-      "name": "🔞AV资源",
-      "type": 0,
-      "api": "https://www.pgxdy.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
+
+    "wallpaper": "https://bing.img.run/uhd.php",
+    
+    "sites": [
     {
       "key": "乐播资源",
       "name": "🔞乐播资源",
@@ -47,22 +51,22 @@
       "filterable": 0
     },
     {
-      "key": "白嫖",
-      "name": "🔞白嫖",
-      "type": 0,
-      "api": "https://www.kxgav.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
+            "key": "91md.me",
+            "name": "成人19",
+            "type": 1,
+            "api": "http://91md.me/api.php/provide/vod/",
+            "quickSearch": 1,
+            "searchable": 1,
+            "filterable": 1
     },
     {
-      "key": "香奶儿",
-      "name": "🔞香奶儿",
-      "type": 0,
-      "api": "https://www.gdlsp.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
+            "key": "*番号",
+            "name": "*番号",
+            "type": 1,
+            "quickSearch": 1,
+            "searchable": 1,
+            "filterable": 1,
+            "api": "http://fhapi9.com/api.php/provide/vod/"
     },
     {
       "key": "艾旦影视",

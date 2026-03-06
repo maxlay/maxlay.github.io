@@ -126,70 +126,6 @@
        "ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312hk935886ig2l05g9"
     },
     {
-       "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-       "key":"剧评",
-       "name":"👾剧评",
-       "type":3,
-       "api":"csp_Jpys",
-       "playerType":1,
-       "ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
-    },
-    {
-        "key": "奇优", 
-        "name": "🥇奇优", 
-        "type": 3, 
-        "api": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/drpy2.min.js", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0, 
-        "ext": "https://wget.la/https://raw.githubusercontent.com/liu673cn/box/main/libs/js/奇优.js"
-    }, 
-    {
-        "key": "360", 
-        "name": "☢️360", 
-        "type": 1, 
-        "api": "https://360zy.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
-        "key": "量子", 
-        "name": "😏量子", 
-        "type": 1, 
-        "api": "https://cj.lziapi.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
-        "key": "极速", 
-        "name": "💨极速", 
-        "type": 1, 
-        "api": "https://jszyapi.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
-        "key": "如意", 
-        "name": "🐲如意", 
-        "type": 1, 
-        "api": "https://www.ryzy.tv/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
-        "key": "魔都", 
-        "name": "👹魔都", 
-        "type": 1, 
-        "api": "https://www.mdzyapi.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
         "key": "电影先生", 
         "name": "👨电影先生", 
         "type": 1, 
@@ -205,73 +141,29 @@
         ]
     }, 
     {
-        "key": "电影天堂", 
-        "name": "😇天堂", 
+       "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+       "key":"剧评",
+       "name":"👾剧评",
+       "type":3,
+       "api":"csp_Jpys",
+       "playerType":1,
+       "ext":"7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+    },
+
+    {
+        "key": "360", 
+        "name": "☢️360", 
         "type": 1, 
-        "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/", 
+        "api": "https://360zy.com/api.php/provide/vod/", 
         "searchable": 1, 
         "quickSearch": 1, 
         "filterable": 0
     }, 
     {
-      "key": "小苹果",
-      "name": " 🍎小苹果",
-      "type": 4,
-      "api": "http://zhangqun1818.serv00.net/pingguo.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "猫眼",
-      "name": " 🐱猫眼",
-      "type": 1,
-      "api": "https://api.maoyanapi.top/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "四个圈",
-      "name": " ⭕四个圈",
-      "type": 1,
-      "api": "https://pg.fenwe078.cf/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "映迷影视",
       "name": " 💠映迷影视",
       "type": 1,
       "api": "https://www.inmi.app/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "飘零影院",
-      "name": " ⚜飘零影院",
-      "type": 1,
-      "api": "https://p2100.net/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "索尼影视",
-      "name": " 🎉索尼影视",
-      "type": 1,
-      "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "花旗",
-      "name": " ⛳花旗",
-      "type": 1,
-      "api": "https://www.seacms.org/api.php/provide/vod/?ac=list",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
@@ -286,37 +178,10 @@
       "filterable": 0
     },
     {
-      "key": "豪华",
-      "name": " 🦕豪华",
-      "type": 1,
-      "api": "https://hhzyapi.com/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "茅台",
       "name": " 🔥茅台",
       "type": 1,
       "api": "https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "天涯",
-      "name": " 🌊天涯",
-      "type": 1,
-      "api": "https://tyyszyapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "柚子",
-      "name": " ⛈柚子",
-      "type": 0,
-      "api": "https://api.yzzy-api.com/inc/api.php",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
