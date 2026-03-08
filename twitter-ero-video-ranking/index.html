@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎬 我的视频库浏览器</title>
+    <title>🎬 X.com 的视频合集</title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -307,7 +307,7 @@
         // 2. 初始化加载
         async function init() {
             try {
-                loadingEl.innerText = `正在从 GitHub (via wget.la) 并行加载 ${TOTAL_CHUNKS} 个分片...`;
+                loadingEl.innerText = `正在加载数据： ${TOTAL_CHUNKS} ...`;
                 
                 await loadMergedData();
                 
