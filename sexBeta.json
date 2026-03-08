@@ -41,6 +41,15 @@
     "wallpaper": "https://bing.img.run/uhd.php",
     
     "sites": [
+  {
+            "key": "*番号",
+            "name": "番号资源",
+            "type": 1,
+            "quickSearch": 1,
+            "searchable": 1,
+            "filterable": 1,
+            "api": "http://fhapi9.com/api.php/provide/vod/"
+    },
     {
       "key": "乐播资源",
       "name": "🔞乐播资源",
@@ -49,34 +58,6 @@
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 0
-    },
-    {
-            "key": "91md.me",
-            "name": "成人19",
-            "type": 1,
-            "api": "http://91md.me/api.php/provide/vod/",
-            "quickSearch": 1,
-            "searchable": 1,
-            "filterable": 1
-    },
-    {
-            "key": "*番号",
-            "name": "*番号",
-            "type": 1,
-            "quickSearch": 1,
-            "searchable": 1,
-            "filterable": 1,
-            "api": "http://fhapi9.com/api.php/provide/vod/"
-    },
-    {
-      "key": "艾旦影视",
-      "name": "🔞艾旦影视",
-      "type": 1,
-      "api": "https://lovedan.net/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "categories": ["海外抖音","网红主播","福利视频","港台三级","韩国伦理","西方伦理","日本伦理"]
     }
   ],
   "parses": [
