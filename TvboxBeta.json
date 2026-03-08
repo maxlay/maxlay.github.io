@@ -125,15 +125,6 @@
       "filterable": 0
     },
     {
-      "key": "卧龙",
-      "name": "🦂卧龙",
-      "type": 1,
-      "api": "https://collect.wolongzy.cc/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "茅台",
       "name": "🔥茅台",
       "type": 1,
@@ -141,60 +132,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
-    }, 
-    {
-        "key": "360", 
-        "name": "☢️360", 
-        "type": 1, 
-        "api": "https://360zy.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0
-    }, 
-    {
-        "key": "HuangLeiBeta", 
-        "name": "👾待修复", 
-        "type": 1, 
-        "api": "https://wolongzyw.com/api.php/provide/vod/", 
-        "searchable": 1, 
-        "quickSearch": 1, 
-        "filterable": 0, 
-        "categories": [
-        "预告片", 
-        "大陆综艺", 
-        "国产剧", 
-        "科幻片", 
-        "战争片", 
-        "动作片", 
-        "喜剧片", 
-        "爱情片", 
-        "记录片", 
-        "恐怖片", 
-        "剧情片", 
-        "香港剧", 
-        "韩国剧", 
-        "欧美剧", 
-        "台湾剧", 
-        "日本剧", 
-        "海外剧", 
-        "泰国剧", 
-        "港台综艺", 
-        "日韩综艺", 
-        "欧美综艺", 
-        "电影解说", 
-        "国产动漫", 
-        "日韩动漫", 
-        "欧美动漫", 
-        "港台动漫", 
-        "海外动漫", 
-        "短剧", 
-        "足球", 
-        "篮球", 
-        "网球", 
-        "斯诺克"
-        ]
     }
-
     ], 
     "parses": [
     {
