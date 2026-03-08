@@ -1,0 +1,57 @@
+name: Auto Sync Twitter Data
+
+on:
+  schedule:
+    # 每 6 小时运行一次 (UTC 时间)
+    # 具体时间点：00:00, 06:00, 12:00, 18:00 (UTC)
+    # 对应北京时间：08:00, 14:00, 20:00, 次日 02:00
+    - cron: '0 */6 * * *'
+  
+  # 允许手动触发，方便测试
+  workflow_dispatch:
+
+jobs:
+  sync-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f scripts/requirements.txt ]; then pip install -r scripts/requirements.txt; fi
+
+      # 4. 运行脚本
+      - name: Run Python Script
+        run: |
+          python scripts/update.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      # 5. 提交并推送更改
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add twitter-ero-video-ranking/
+            git commit -m "chore: auto update twitter video ranking data [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
