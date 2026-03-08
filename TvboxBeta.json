@@ -54,7 +54,7 @@
     },
     {
       "key": "爱奇艺",
-      "name": "💢推荐1",
+      "name": "💢推荐A",
       "type": 1,
       "api": "https://iqiyizyapi.com/api.php/provide/vod/",
       "searchable": 1,
@@ -64,7 +64,7 @@
     {        
         "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
         "key":"AI3",
-        "name":"💢推荐2",
+        "name":"💢推荐B",
         "type":3,
         "api":"csp_AI",
         "searchable":1,
@@ -75,17 +75,8 @@
     },
     {
        "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
-       "key":"天天",
-       "name":"💢推荐3",
-       "type":3,
-       "api":"csp_TTian",
-       "playerType":2,
-       "ext":"7lj763gg0939791h1l3888jig44gi291li"
-    },
-    {
-       "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
        "key":"巧技二",
-       "name":"💢推荐4",
+       "name":"💢推荐C",
        "type":3,
        "api":"csp_qiao2",
        "playerType":2,
@@ -94,7 +85,7 @@
     {
        "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
        "key":"巧技五",
-       "name":"💢推荐5",
+       "name":"💢推荐D",
        "type":3,
        "api":"csp_qiao2",
        "playerType":2,
@@ -115,9 +106,18 @@
         "动漫"
         ]
     }, 
+  {
+       "jar":"http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+       "key":"天天",
+       "name":"💢天天",
+       "type":3,
+       "api":"csp_TTian",
+       "playerType":2,
+       "ext":"7lj763gg0939791h1l3888jig44gi291li"
+    },
     {
       "key": "映迷影视",
-      "name": "💠映迷影视",
+      "name": "💠映迷",
       "type": 1,
       "api": "https://www.inmi.app/api.php/provide/vod/",
       "searchable": 1,
