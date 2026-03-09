@@ -135,86 +135,23 @@ def should_include_video(item):
     if t > 600:
         return True
     
-    # 2. 5 分钟 < time <= 10 分钟 (300 < t <= 600), favorite > 100 (代码中写的是3，按你的代码逻辑)
+    # 2. 5 分钟 < time <= 10 分钟 (300 < t <= 600), favorite > 100
     if 300 < t <= 600:
         return fav > 3
     
-    # 3. 3 分钟 < time <= 5 分钟 (180 < t <= 300), favorite > 1000 (代码中写的是5，按你的代码逻辑)
+    # 3. 3 分钟 < time <= 5 分钟 (180 < t <= 300), favorite > 1000
     if 180 < t <= 300:
         return fav > 5
     
-    # 4. 1 分钟 < time <= 3 分钟 (60 < t <= 180), favorite > 10000 (代码中写的是10，按你的代码逻辑)
+    # 4. 1 分钟 < time <= 3 分钟 (60 < t <= 180), favorite > 10000
     if 60 < t <= 180:
         return fav > 10
     
-    # 5. time <= 1 分钟 (t <= 60), favorite > 100000 (代码中写的是20，按你的代码逻辑)
+    # 5. time <= 1 分钟 (t <= 60), favorite > 100000
     if t <= 60:
         return fav > 20
     
     return False
-
-def deduplicate_data(data):
-    """
-    对数据进行去重：
-    1. thumbnail 重复：只保留第 1 条
-    2. url_cd + time 组合重复：只保留第 1 条
-    此函数应在筛选和排序之前执行。
-    """
-    if not data:
-        return []
-
-    seen_thumbnails = set()
-    seen_combos = set()
-    unique_data = []
-    
-    removed_thumb_count = 0
-    removed_combo_count = 0
-
-    print("正在执行去重操作 (thumbnail 和 url_cd+time 均只保留第 1 条)...")
-
-    for item in data:
-        if not isinstance(item, dict):
-            continue
-
-        thumb = item.get('thumbnail')
-        url_cd = item.get('url_cd')
-        time_val = item.get('time')
-        
-        combo = (url_cd, time_val)
-        
-        is_duplicate = False
-        reason = ""
-
-        # 检查 thumbnail 重复
-        if thumb and thumb in seen_thumbnails:
-            is_duplicate = True
-            reason = "thumbnail 重复"
-            removed_thumb_count += 1
-        
-        # 检查 url_cd + time 组合重复 (如果上面已经判定重复，这里就不需要再检查了)
-        if not is_duplicate and url_cd is not None and time_val is not None:
-            if combo in seen_combos:
-                is_duplicate = True
-                reason = "url_cd+time 组合重复"
-                removed_combo_count += 1
-
-        if is_duplicate:
-            # print(f"跳过重复项: {reason}") # 调试用，可开启
-            continue
-
-        # 保留该条目，并记录指纹
-        unique_data.append(item)
-        
-        if thumb:
-            seen_thumbnails.add(thumb)
-        if url_cd is not None and time_val is not None:
-            seen_combos.add(combo)
-
-    print(f"去重完成: 原始 {len(data)} 条 -> 剩余 {len(unique_data)} 条")
-    print(f"  - 因 thumbnail 重复移除: {removed_thumb_count} 条")
-    print(f"  - 因 url_cd+time 组合重复移除: {removed_combo_count} 条")
-    
-    return unique_data
 
 def process_and_split_data(data):
     """排序、替换 URL 并拆分写入文件"""
@@ -231,22 +168,13 @@ def process_and_split_data(data):
     if len(valid_data) != total:
         print(f"警告: 原始数据中有 {total - len(valid_data)} 条非字典数据已被过滤。")
     
-    # ================= 【新增】去重步骤 (在筛选前) =================
-    # 先进行去重，减少后续筛选和排序的数据量
-    valid_data = deduplicate_data(valid_data)
-    # ===========================================================
-
-    if not valid_data:
-        print("警告: 去重后没有剩余任何数据，后续步骤将跳过。")
-        return
-
-    # ================= 筛选步骤 =================
+    # ================= 新增筛选步骤 =================
     print("正在根据时间和收藏数条件筛选视频...")
     original_count = len(valid_data)
     filtered_data = [item for item in valid_data if should_include_video(item)]
     filtered_count = len(filtered_data)
     
-    print(f"筛选完成: 去重后数据 {original_count} 条 -> 筛选后剩余 {filtered_count} 条 (移除了 {original_count - filtered_count} 条)")
+    print(f"筛选完成: 原始数据 {original_count} 条 -> 筛选后剩余 {filtered_count} 条 (移除了 {original_count - filtered_count} 条)")
     
     if filtered_count == 0:
         print("警告: 筛选后没有剩余任何数据，后续步骤将跳过。")
@@ -268,10 +196,9 @@ def process_and_split_data(data):
 
     # 2. 替换 URL
     print("正在替换图片 URL...")
-    # 优化：直接在对象上修改，避免整个大字符串序列化再反序列化的开销
-    for item in valid_data:
-        if 'thumbnail' in item and item['thumbnail']:
-            item['thumbnail'] = item['thumbnail'].replace(OLD_URL_PREFIX, NEW_URL_PREFIX)
+    json_str = json.dumps(valid_data, ensure_ascii=False)
+    modified_json_str = json_str.replace(OLD_URL_PREFIX, NEW_URL_PREFIX)
+    processed_data = json.loads(modified_json_str)
     print("URL 替换完成。")
 
     # 3. 写入文件
@@ -280,10 +207,10 @@ def process_and_split_data(data):
     print(f"开始拆分 (每块 {CHUNK_SIZE} 条)...")
     
     files_created = 0
-    current_total = len(valid_data)
+    current_total = len(processed_data)
     
     for i in range(0, current_total, CHUNK_SIZE):
-        chunk = valid_data[i:i+CHUNK_SIZE]
+        chunk = processed_data[i:i+CHUNK_SIZE]
         filename = f'data-part-{i//CHUNK_SIZE}.json'
         full_path = os.path.join(OUTPUT_ROOT_DIR, filename)
         
