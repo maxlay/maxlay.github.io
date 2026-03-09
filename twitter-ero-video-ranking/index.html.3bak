@@ -213,7 +213,7 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 顶部翻页控件 -->
+    <!-- 顶部翻页控件 (新增) -->
     <div class="pagination" id="top-pagination" style="display:none;">
         <button class="page-btn" id="top-prev-btn">上一页</button>
         <span class="page-info" id="top-page-info">第 1 / 1 页</span>
@@ -224,7 +224,7 @@
     <div id="video-grid" class="grid"></div>
     <div id="loading-msg" class="loading">正在初始化...</div>
 
-    <!-- 底部翻页控件 -->
+    <!-- 底部翻页控件 (原有) -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="prev-btn">上一页</button>
         <span class="page-info" id="page-info">第 1 / 1 页</span>
@@ -233,8 +233,10 @@
 
     <script>
         // ================= 配置区域 =================
-        // 修改点：直接指定单个 JSON 文件的 URL
-        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
+        const BASE_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking';
+        const DATA_PREFIX = '/data-part-'; 
+        const DATA_SUFFIX = '.json';
+        const TOTAL_CHUNKS = 3; 
         
         const ITEMS_PER_PAGE = 48;    
         // ===========================================
@@ -253,7 +255,7 @@
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         
-        // DOM 元素 (顶部)
+        // DOM 元素 (顶部 - 新增)
         const topPaginationEl = document.getElementById('top-pagination');
         const topPageInfoEl = document.getElementById('top-page-info');
         const topPrevBtn = document.getElementById('top-prev-btn');
@@ -264,34 +266,40 @@
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
 
-        // 1. 单文件加载函数
-        async function loadSingleData() {
+        // 1. 分段加载与合并函数
+        async function loadMergedData() {
             progressContainer.classList.add('active');
             updateProgress(0, "开始下载远程数据...");
 
-            try {
-                const res = await fetch(DATA_URL);
+            const promises = [];
+            
+            for (let i = 0; i < TOTAL_CHUNKS; i++) {
+                const url = `${BASE_URL}${DATA_PREFIX}${i}${DATA_SUFFIX}`;
                 
-                if (!res.ok) {
-                    throw new Error(`下载失败 (HTTP ${res.status})\nURL: ${DATA_URL}`);
-                }
+                const downloadTask = fetch(url)
+                    .then(res => {
+                        if (!res.ok) throw new Error(`分片 ${i} 下载失败 (HTTP ${res.status})\nURL: ${url}`);
+                        return res.json();
+                    })
+                    .then(data => {
+                        const currentCompleted = i + 1;
+                        const percent = Math.round((currentCompleted / TOTAL_CHUNKS) * 100);
+                        updateProgress(percent, `已合并 ${currentCompleted}/${TOTAL_CHUNKS} 分片`);
+                        return data;
+                    });
+                
+                promises.push(downloadTask);
+            }
 
-                updateProgress(50, "解析数据中...");
+            try {
+                const results = await Promise.all(promises);
+                allData = results.flat();
                 
-                const data = await res.json();
-                
-                // 处理可能的数据结构差异 (有时数据可能在 data 字段下，有时直接是数组)
-                if (Array.isArray(data)) {
-                    allData = data;
-                } else if (data.data && Array.isArray(data.data)) {
-                    allData = data.data;
-                } else {
-                    allData = [data]; // 如果既不是数组也没有 data 字段，尝试作为单个对象处理
+                if (allData.length === 0 && results.length > 0 && results[0].data) {
+                     allData = results.flatMap(r => r.data || []);
                 }
 
                 updateProgress(100, "加载完成");
-                
-                // 短暂延迟后隐藏进度条，让用户感知到完成
                 setTimeout(() => {
                     progressContainer.classList.remove('active');
                 }, 800);
@@ -310,9 +318,9 @@
         // 2. 初始化加载
         async function init() {
             try {
-                loadingEl.innerText = `正在加载数据...`;
+                loadingEl.innerText = `正在加载数据： ${TOTAL_CHUNKS} ...`;
                 
-                await loadSingleData();
+                await loadMergedData();
                 
                 if (allData.length === 0) {
                     loadingEl.innerHTML = "⚠️ 数据为空";
@@ -322,11 +330,11 @@
                 filteredData = [...allData];
                 totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
                 
-                // 从 LocalStorage 读取上次的页码
+                // 【修改点 1】从 LocalStorage 读取上次的页码
                 const savedPage = localStorage.getItem('videoListCurrentPage');
                 if (savedPage) {
                     let parsedPage = parseInt(savedPage, 10);
-                    // 防止保存的页码超出范围
+                    // 防止保存的页码超出范围（例如数据变少了）
                     if (parsedPage > totalPages) parsedPage = totalPages;
                     if (parsedPage < 1) parsedPage = 1;
                     currentPage = parsedPage;
@@ -339,13 +347,13 @@
                 paginationEl.style.display = 'flex';
                 topPaginationEl.style.display = 'flex';
                 
-                renderPage(currentPage);
+                renderPage(currentPage); // 使用读取到的页码渲染
                 setupEvents();
 
             } catch (err) {
                 console.error(err);
                 progressContainer.classList.remove('active');
-                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请确保以下文件可访问:<br>${DATA_URL}</small>`;
+                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请确保以下文件可访问:<br>${BASE_URL}/data-part-0.json<br>${BASE_URL}/data-part-1.json<br>${BASE_URL}/data-part-2.json</small>`;
                 loadingEl.className = 'error';
             }
         }
@@ -354,7 +362,7 @@
         function renderPage(page) {
             currentPage = page;
             
-            // 保存当前页码到 LocalStorage
+            // 【修改点 2】保存当前页码到 LocalStorage
             localStorage.setItem('videoListCurrentPage', currentPage);
 
             gridEl.innerHTML = '';
@@ -375,11 +383,11 @@
             });
 
             updatePaginationUI();
-            
-            // 滚动逻辑
+            // 只有在非首次加载（或手动翻页）时才滚动到顶部，避免初始化时闪烁
             if (performance.navigation.type == 1) { 
                  window.scrollTo(0, 0);
             } else if (currentPage > 1) {
+                 // 如果是翻页操作，强制滚动到顶部以便看到新内容
                  window.scrollTo(0, 0);
             }
         }
@@ -418,7 +426,7 @@
             return a;
         }
 
-        // 5. 分页逻辑更新
+        // 5. 分页逻辑更新 (同时更新顶部和底部)
         function updatePaginationUI() {
             const infoText = `第 ${currentPage} / ${totalPages} 页`;
             
@@ -427,7 +435,7 @@
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === totalPages;
 
-            // 更新顶部
+            // 更新顶部 (新增)
             topPageInfoEl.innerText = infoText;
             topPrevBtn.disabled = currentPage === 1;
             topNextBtn.disabled = currentPage === totalPages;
@@ -438,7 +446,7 @@
             prevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
             nextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
 
-            // 顶部按钮事件
+            // 顶部按钮事件 (新增)
             topPrevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
             topNextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
         }
