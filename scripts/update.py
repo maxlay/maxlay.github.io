@@ -137,19 +137,19 @@ def should_include_video(item):
     
     # 2. 5 分钟 < time <= 10 分钟 (300 < t <= 600), favorite > 100
     if 300 < t <= 600:
-        return fav > 100
+        return fav > 150
     
     # 3. 3 分钟 < time <= 5 分钟 (180 < t <= 300), favorite > 1000
     if 180 < t <= 300:
-        return fav > 1000
+        return fav > 300
     
     # 4. 1 分钟 < time <= 3 分钟 (60 < t <= 180), favorite > 10000
     if 60 < t <= 180:
-        return fav > 10000
+        return fav > 450
     
     # 5. time <= 1 分钟 (t <= 60), favorite > 100000
     if t <= 60:
-        return fav > 100000
+        return fav > 600
     
     return False
 
