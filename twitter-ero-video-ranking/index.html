@@ -108,8 +108,7 @@
         
         .thumb-container {
             position: relative; width: 100%; 
-            /* 保持 9:16 视频比例，如果需要更短可改为 130% 或 150% */
-            padding-top: 177.77%; 
+            padding-top: 177.77%; /* 9:16 比例 */
             background: #000;
         }
         
@@ -143,7 +142,7 @@
             display: flex; justify-content: space-between;
         }
 
-        /* --- 分页控件 (三等分) --- */
+        /* --- 分页控件 --- */
         .pagination {
             display: flex; 
             justify-content: space-between; 
@@ -177,7 +176,7 @@
             transform: none; border-color: #333;
         }
 
-        /* 只有顶部的中间按钮可点击 */
+        /* 顶部中间按钮可点击 */
         .page-info-container {
             display: flex;
             flex-direction: column;
@@ -192,12 +191,12 @@
             min-width: 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            cursor: pointer; /* 仅顶部有指针 */
+            cursor: pointer;
             position: relative;
             z-index: 10;
         }
         
-        /* 底部中间按钮不可点击样式 */
+        /* 底部中间按钮不可点击 */
         #date-trigger {
             cursor: default;
             background: #252525;
@@ -208,7 +207,7 @@
             border-color: #333;
             background: #252525;
         }
-        #date-trigger::after { content: none; } /* 底部不显示日历图标 */
+        #date-trigger::after { content: none; }
 
         .page-info-container:hover {
             border-color: var(--accent);
@@ -247,13 +246,12 @@
         .loading { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; }
         .error { color: #ff4444; text-align: center; padding: 20px; }
         
-        /* --- 桌面端适配 (关键修改：一行 6 个) --- */
+        /* --- 桌面端适配 (一行 6 个) --- */
         @media (min-width: 768px) {
             body { padding: 20px 40px; }
             .stats-main { font-size: 1.1rem; }
             .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
             
-            /* 平板及中等屏幕：4 列 */
             .grid {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 15px;
@@ -285,37 +283,36 @@
             .page-count { font-size: 0.9rem; }
         }
 
-        /* 大屏幕：一行 6 个 (1920px+) */
+        /* 大屏幕：一行 6 个 (1400px+) */
         @media (min-width: 1400px) {
             .grid {
                 grid-template-columns: repeat(6, 1fr);
                 gap: 18px;
             }
-            
-            /* 可选：如果您希望大屏幕上的视频卡片高度也相应缩短，以容纳更多行
-               取消下面这行的注释，将比例从 177% (9:16) 改为 130% (约 4:5) 
-            */
-            /* .thumb-container { padding-top: 130%; } */
-            
             .card:hover { transform: translateY(-6px); }
             .play-icon { width: 50px; height: 50px; font-size: 32px; }
             .title { font-size: 14px; }
             .meta { font-size: 12px; }
         }
 
-        /* --- Flatpickr 深度定制 (手动定位 + 深色主题) --- */
+        /* --- Flatpickr 深度定制 (FIXED 定位方案) --- */
         .flatpickr-calendar {
             background: #2d2d2d !important;
             border: 1px solid #444 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
             border-radius: 8px !important;
-            /* 移除默认定位，由 JS 控制 */
-            left: 0 !important;
+            
+            /* 【核心修改】强制固定位置 */
+            position: fixed !important; /* 使用 fixed 脱离文档流，相对于视口定位 */
+            top: 230px !important;      /* 纵向固定在 230px */
+            left: 50% !important;       /* 横向先移到 50% */
+            transform: translateX(-50%) !important; /* 再向左移自身一半，实现完美居中 */
+            
             right: auto !important;
-            top: 0 !important;
-            transform: none !important;
+            bottom: auto !important;
             margin: 0 !important;
             z-index: 99999 !important;
+            
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s;
@@ -378,10 +375,9 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 顶部分页 (包含可点击的日期选择器) -->
+    <!-- 顶部分页 -->
     <div class="pagination" id="top-pagination" style="display:none;">
         <button class="page-btn" id="top-newer-btn" disabled>最新</button>
-        <!-- 只有这个按钮绑定了点击事件 -->
         <div class="page-info-container" id="top-date-trigger">
             <span class="page-date" id="top-page-date">--</span>
             <span class="page-count" id="top-page-count">0 部</span>
@@ -393,10 +389,9 @@
     <div id="video-grid" class="grid"></div>
     <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
 
-    <!-- 底部分页 (中间按钮不可点击) -->
+    <!-- 底部分页 -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="newer-btn" disabled>最新</button>
-        <!-- 底部中间按钮仅用于展示，无点击事件 -->
         <div class="page-info-container" id="date-trigger">
             <span class="page-date" id="page-date">--</span>
             <span class="page-count" id="page-count">0 部</span>
@@ -445,7 +440,6 @@
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
         let allData = [], groupedData = {}, sortedDates = [], currentDateKey = "";
         let fpInstance = null; 
-        let currentTriggerElement = null; 
 
         const gridEl = document.getElementById('video-grid');
         const loadingEl = document.getElementById('loading-msg');
@@ -457,9 +451,7 @@
         const topNewerBtn = document.getElementById('top-newer-btn');
         const topOlderBtn = document.getElementById('top-older-btn');
         
-        // 仅顶部触发器
         const topDateTrigger = document.getElementById('top-date-trigger');
-        // 底部触发器不再用于打开日历
 
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
@@ -547,7 +539,6 @@
                 });
             }
             updateUI();
-            // 滚动到顶部时稍微偏移，避免遮挡顶部按钮
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
@@ -555,7 +546,6 @@
             const idx = sortedDates.indexOf(currentDateKey);
             const count = groupedData[currentDateKey].length;
             
-            // 同步顶部和底部的文字
             [document.getElementById('page-date'), document.getElementById('top-page-date')].forEach(el => el.innerText = currentDateKey);
             [document.getElementById('page-count'), document.getElementById('top-page-count')].forEach(el => el.innerText = `${count} 部`);
 
@@ -580,53 +570,14 @@
             }
         }
 
-        // 【核心修复】：手动精准定位日历到顶部按钮下方
-        function positionCalendar(triggerElement) {
-            if (!fpInstance || !triggerElement || !fpInstance.calendarContainer) return;
-            
-            const calendar = fpInstance.calendarContainer;
-            // 获取按钮的精准位置信息（包含滚动偏移）
-            const rect = triggerElement.getBoundingClientRect();
-            
-            // 1. 计算水平居中：按钮的水平中心点（相对于文档）
-            const triggerCenterX = rect.left + (rect.width / 2) + window.scrollX;
-            // 2. 计算垂直位置：按钮下沿 + 8px 间距（相对于文档）
-            const triggerBottomY = rect.bottom + window.scrollY + 8;
-            
-            // 3. 基础定位样式（绝对定位）
-            calendar.style.position = 'absolute';
-            calendar.style.top = `${triggerBottomY}px`;
-            calendar.style.left = `${triggerCenterX}px`;
-            calendar.style.right = 'auto';
-            calendar.style.bottom = 'auto';
-            
-            // 4. 关键：向左平移自身宽度的50%，实现完美居中
-            calendar.style.transform = 'translateX(-50%)';
-            
-            // 5. 边界保护：防止日历超出屏幕可视区域
-            // 先显示日历以获取实际宽度
-            const originalDisplay = calendar.style.display;
-            calendar.style.display = 'block';
-            const calWidth = calendar.offsetWidth;
-            
-            // 检查左边界
-            const calLeftEdge = triggerCenterX - (calWidth / 2);
-            if (calLeftEdge < 10) {
-                // 超出左边界，贴左显示（保留10px边距）
-                calendar.style.left = '10px';
-                calendar.style.transform = 'none';
-            } 
-            // 检查右边界
-            else if (calLeftEdge + calWidth > window.innerWidth - 10) {
-                // 超出右边界，贴右显示（保留10px边距）
-                calendar.style.left = 'auto';
-                calendar.style.right = '10px';
-                calendar.style.transform = 'none';
-            }
-            
-            // 恢复原始显示状态
-            if (originalDisplay !== 'block') {
-                calendar.style.display = originalDisplay;
+        // 【核心修改】：不再计算位置，直接使用 CSS 固定的 top: 230px 和居中
+        // 这个函数现在只负责确保日历打开
+        function ensureCalendarPosition() {
+            // 由于 CSS 已经写了 position: fixed; top: 230px; left: 50%; transform: translateX(-50%)
+            // 这里不需要任何 JS 计算，浏览器会自动处理
+            if(fpInstance && fpInstance.calendarContainer) {
+                // 强制重绘以确保样式应用
+                fpInstance.calendarContainer.style.display = 'block';
             }
         }
 
@@ -655,7 +606,7 @@
                     }
                 },
                 position: "auto", 
-                static: true,     // 禁止 flatpickr 自动计算位置
+                static: true,     
                 appendTo: document.body
             };
 
@@ -667,36 +618,23 @@
 
             fpInstance = flatpickr(hiddenInput, commonConfig);
 
-            // 仅绑定顶部按钮
-            const openCalendar = (e, triggerEl) => {
+            const openCalendar = (e) => {
                 e.stopPropagation();
-                currentTriggerElement = triggerEl;
-                
                 if(fpInstance) {
                     fpInstance.setDate(currentDateKey);
                     fpInstance.open();
-                    // 打开后稍作延迟确保 DOM 渲染完成，再执行定位
-                    setTimeout(() => positionCalendar(triggerEl), 10);
+                    // 打开后确保位置正确（虽然 CSS 已固定，但调用一下以防万一）
+                    setTimeout(() => ensureCalendarPosition(), 10);
                 }
             };
 
-            // 只有顶部按钮有点击事件
-            topDateTrigger.onclick = (e) => openCalendar(e, topDateTrigger);
+            // 仅绑定顶部按钮
+            topDateTrigger.onclick = openCalendar;
             
-            // 底部按钮无点击事件，仅作展示
-            
-            // 监听滚动和缩放，动态修正位置
-            window.addEventListener('scroll', () => {
-                if(fpInstance && fpInstance.isOpen && currentTriggerElement) {
-                    positionCalendar(currentTriggerElement);
-                }
-            }, true);
-            
+            // 监听窗口变化，虽然 fixed 定位通常不需要，但以防字体缩放导致布局微调
             window.addEventListener('resize', () => {
-                if(fpInstance && fpInstance.isOpen && currentTriggerElement) {
-                    positionCalendar(currentTriggerElement);
-                }
                 updateUI();
+                if(fpInstance && fpInstance.isOpen) ensureCalendarPosition();
             });
             
             // 点击其他地方关闭日历
