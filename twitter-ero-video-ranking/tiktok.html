@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎬 沉浸式竖屏 (智能内存版)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🎬 极致性能竖屏流</title>
     <style>
         :root {
             --bg-color: #000000;
@@ -12,13 +12,13 @@
             --accent: #fe2c55;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: pan-y; }
 
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: var(--bg-color); color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
+            overflow: hidden; /* 禁止 body 滚动 */
         }
 
         /* --- 密码保护 --- */
@@ -46,13 +46,15 @@
         }
         .login-error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
 
-        /* --- 滚动容器 --- */
+        /* --- 核心滚动容器 --- */
         #video-container {
             width: 100%; height: 100%;
             overflow-y: scroll;
+            overflow-x: hidden;
             scroll-snap-type: y mandatory;
-            scroll-behavior: auto; /* 禁用平滑滚动以保证定位精准 */
+            scroll-behavior: auto; /* 关键：禁用平滑滚动，保证滑动跟手和惯性自然 */
             -webkit-overflow-scrolling: touch;
+            will-change: scroll-position; /* 性能优化 */
         }
         #video-container::-webkit-scrollbar { display: none; }
         #video-container { scrollbar-width: none; }
@@ -62,34 +64,48 @@
             position: relative;
             width: 100%; height: 100%;
             scroll-snap-align: start;
-            background: #111;
+            background: #000;
+            contain: strict; /* 关键：严格隔离样式和布局，提升销毁/重建性能 */
             display: flex;
             justify-content: center;
             align-items: center;
-            /* 关键：未激活时允许快速销毁/重建 */
-            contain: layout style paint; 
         }
 
         .video-frame {
             width: 100%; height: 100%;
             border: none;
             display: block;
-            pointer-events: none; /* 默认禁止交互，防止误触 */
+            pointer-events: none; /* 默认禁止交互，让滑动穿透 */
             background: #000;
+            visibility: hidden; /* 默认隐藏，防止未加载完成闪烁 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-frame.loaded {
+            visibility: visible;
+            opacity: 1;
         }
 
+        /* 激活状态：允许交互 */
+        .video-card.active .video-frame {
+            pointer-events: auto;
+        }
+
+        /* 交互遮罩：覆盖在 iframe 上，捕获点击以激活，但不捕获滑动 */
         .interaction-shield {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 10;
+            z-index: 20;
             background: transparent;
+            /* 不需要 pointer-events: none，因为我们需要它捕获 click 来激活 */
+            /* 但滑动是浏览器的原生行为，只要不 preventDefault 就能穿透 */
         }
         
+        /* 激活后隐藏遮罩 */
         .video-card.active .interaction-shield {
-            opacity: 0; pointer-events: none;
-        }
-        .video-card.active .video-frame {
-            pointer-events: auto;
+            pointer-events: none;
+            opacity: 0;
         }
 
         .tap-hint {
@@ -104,7 +120,7 @@
             pointer-events: none;
             opacity: 1;
             transition: opacity 0.3s;
-            z-index: 5;
+            z-index: 15;
             text-align: center;
         }
         .video-card.active .tap-hint { opacity: 0; }
@@ -115,7 +131,7 @@
             padding: 20px 15px 80px 15px;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             pointer-events: none;
-            z-index: 20;
+            z-index: 30;
         }
         .video-account {
             font-size: 18px; font-weight: 700; margin-bottom: 8px;
@@ -136,11 +152,6 @@
             border-radius: 30px; display: none;
         }
         .empty-state { display: none; width: 80%; }
-        
-        /* 占位符样式 (当 iframe 被移除时显示) */
-        .placeholder {
-            color: #444; font-size: 14px; text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -158,11 +169,11 @@
 
     <!-- 2. 视频流容器 -->
     <div id="video-container">
-        <!-- 动态插入 -->
+        <!-- 动态插入，仅保留 2 个节点 -->
     </div>
 
     <!-- 3. 状态 -->
-    <div id="loading-msg" class="loading-state">正在整理视频队列...</div>
+    <div id="loading-msg" class="loading-state">正在初始化队列...</div>
     <div id="empty-msg" class="empty-state">
         <h2>😕 未找到合适的视频</h2>
         <p>数据源中可能没有符合竖屏 (A&lt;B) 分辨率的视频。</p>
@@ -171,17 +182,15 @@
     <script>
         // ================= 配置 =================
         const CORRECT_PASSWORD = "821025";
-        const COOKIE_AUTH = "tiktok_iframe_auth";
-        const COOKIE_PROGRESS = "tiktok_play_progress"; // 记录进度
+        const COOKIE_AUTH = "tiktok_perf_auth";
+        const COOKIE_PROGRESS = "tiktok_perf_progress";
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
         
-        // 内存管理配置
-        const KEEP_RANGE = 2; // 保持当前视频上下各多少个视频在 DOM 中 (1=仅当前，2=当前+上下各1个)
-        
-        let allVideos = []; // 排序后的数据
-        let currentIndex = -1; // 当前正在播放的索引
-        let isScrolling = false;
-        let scrollTimeout = null;
+        let allVideos = []; 
+        let currentIndex = -1;
+        let lastScrollTop = 0;
+        let scrollFrameId = null;
+        let isRestoring = false;
 
         // ================= 密码逻辑 =================
         function setPermanentCookie(name, value, days = 3650) {
@@ -224,22 +233,22 @@
         async function initApp() {
             const loadingEl = document.getElementById('loading-msg');
             const emptyEl = document.getElementById('empty-msg');
-            const container = document.getElementById('video-container');
-
+            
             loadingEl.style.display = 'block';
-            loadingEl.innerText = "正在下载并排序视频...";
+            loadingEl.innerText = "下载并排序中...";
 
             try {
                 const res = await fetch(DATA_URL);
-                if (!res.ok) throw new Error('网络响应失败');
+                if (!res.ok) throw new Error('网络失败');
                 const data = await res.json();
                 const rawData = Array.isArray(data) ? data : (data.data || []);
 
                 // 1. 筛选竖屏
                 let filtered = filterVerticalVideos(rawData);
                 
-                // 2. 【关键】按时间从旧到新排序 (posted_at 升序)
-                // 这样索引 0 是最旧的，索引 N 是最新的。用户向上滑 (index 增加) 是看新视频。
+                // 2. 排序：旧 -> 新 (升序)
+                // 索引 0 = 最旧，索引 N = 最新
+                // 向上滑 (scrollTop 增加) = 索引增加 = 看新视频
                 filtered.sort((a, b) => {
                     const timeA = new Date(a.posted_at || 0).getTime();
                     const timeB = new Date(b.posted_at || 0).getTime();
@@ -255,18 +264,18 @@
                 }
 
                 // 3. 恢复进度
-                restoreProgress();
+                await restoreProgress();
 
-                // 4. 初始渲染 (只渲染可见区域附近)
-                renderVisibleRange();
+                // 4. 初始渲染 (当前 + 下一个)
+                renderStrictRange();
 
-                // 5. 绑定滚动监听
-                setupScrollListener();
+                // 5. 绑定高性能滚动监听
+                setupHighPerfScroll();
                 setupInteraction();
 
             } catch (err) {
                 console.error(err);
-                loadingEl.innerText = '加载失败：' + err.message;
+                loadingEl.innerText = '失败：' + err.message;
                 loadingEl.style.color = '#ff4444';
                 loadingEl.style.background = 'rgba(50,0,0,0.8)';
             }
@@ -280,130 +289,102 @@
                 if (match) {
                     const w = parseInt(match[1], 10);
                     const h = parseInt(match[2], 10);
-                    return w < h;
+                    return w < h; // 严格竖屏
                 }
                 return false;
             });
         }
 
-        // 恢复进度逻辑
-        function restoreProgress() {
+        async function restoreProgress() {
             const progressStr = getCookie(COOKIE_PROGRESS);
+            const container = document.getElementById('video-container');
+            
             if (progressStr) {
                 try {
                     const progress = JSON.parse(progressStr);
-                    const targetId = progress.id;
-                    
-                    // 查找该 ID 在排序后数组中的索引
-                    const index = allVideos.findIndex(v => v.id === targetId);
+                    const index = allVideos.findIndex(v => v.id === progress.id);
                     
                     if (index !== -1) {
                         currentIndex = index;
-                        // 延迟一点滚动，确保 DOM 已准备
-                        setTimeout(() => {
-                            const container = document.getElementById('video-container');
-                            const cardHeight = container.clientHeight;
-                            container.scrollTop = index * cardHeight;
-                            console.log(`✅ 恢复到视频索引: ${index}, ID: ${targetId}`);
-                        }, 100);
+                        isRestoring = true;
+                        
+                        // 强制滚动到指定位置
+                        const cardHeight = window.innerHeight;
+                        container.scrollTop = index * cardHeight;
+                        
+                        // 等待滚动完成
+                        await new Promise(r => setTimeout(r, 100));
+                        isRestoring = false;
+                        console.log(`✅ 已恢复至索引: ${index}`);
                         return;
                     }
-                } catch (e) {
-                    console.warn("进度解析失败", e);
-                }
+                } catch (e) { console.warn("进度解析失败", e); }
             }
-            // 默认从第一个开始
             currentIndex = 0;
+            container.scrollTop = 0;
         }
 
-        // 保存进度
         function saveProgress(index) {
             if (index < 0 || index >= allVideos.length) return;
             const video = allVideos[index];
-            const data = {
-                id: video.id,
-                index: index,
-                timestamp: Date.now()
-            };
-            // 使用会话 Cookie 或短期 Cookie，这里设为 7 天
+            const data = { id: video.id, index: index, ts: Date.now() };
             const date = new Date();
             date.setDate(date.getDate() + 7);
             document.cookie = `${COOKIE_PROGRESS}=${encodeURIComponent(JSON.stringify(data))}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
         }
 
-        // 渲染可见范围 (虚拟滚动核心)
-        function renderVisibleRange() {
+        // 【核心】严格范围渲染：只保留 Current 和 Next (共 2 个)
+        function renderStrictRange() {
             const container = document.getElementById('video-container');
-            const cardHeight = container.clientHeight || window.innerHeight;
-            
-            // 计算当前应该显示的索引范围
-            // scrollTop / cardHeight 得到大概的索引
-            const scrollIndex = Math.round(container.scrollTop / cardHeight);
-            
-            // 如果索引没变，且 DOM 已经存在，则不需要重绘（优化性能）
-            if (Math.abs(scrollIndex - currentIndex) < 0.5 && container.children.length > 0) {
-                // 仅仅更新激活状态，不重绘 DOM
-                updateActiveState(scrollIndex);
-                return;
-            }
+            const targetCurrent = currentIndex;
+            const targetNext = currentIndex + 1;
 
-            currentIndex = Math.max(0, Math.min(scrollIndex, allVideos.length - 1));
-            
-            // 确定需要保留的范围 [start, end]
-            const start = Math.max(0, currentIndex - KEEP_RANGE);
-            const end = Math.min(allVideos.length - 1, currentIndex + KEEP_RANGE);
-
-            // 清理不在范围内的 DOM
+            // 1. 清理：移除所有不在 [targetCurrent, targetNext] 范围内的 DOM
             const cards = Array.from(container.children);
-            cards.forEach((card, idx) => {
-                const cardIndex = parseInt(card.dataset.index);
-                if (cardIndex < start || cardIndex > end) {
-                    // 移除 DOM，释放内存 (iframe 会被销毁)
-                    card.remove();
+            cards.forEach(card => {
+                const idx = parseInt(card.dataset.index);
+                if (idx !== targetCurrent && idx !== targetNext) {
+                    card.remove(); // 彻底销毁，释放内存
                 }
             });
 
-            // 补充缺失的 DOM
-            for (let i = start; i <= end; i++) {
-                if (!document.querySelector(`.video-card[data-index="${i}"]`)) {
-                    createVideoCard(i, container);
+            // 2. 补充：如果缺失 Current 或 Next，则创建
+            [targetCurrent, targetNext].forEach(idx => {
+                if (idx >= 0 && idx < allVideos.length) {
+                    if (!document.querySelector(`.video-card[data-index="${idx}"]`)) {
+                        createVideoCard(idx, container, idx === targetCurrent);
+                    }
                 }
-            }
+            });
 
-            updateActiveState(currentIndex);
-            saveProgress(currentIndex);
+            // 3. 更新激活状态
+            updateActiveState(targetCurrent);
+            
+            // 4. 保存进度
+            if (!isRestoring) saveProgress(targetCurrent);
         }
 
-        function createVideoCard(index, container) {
+        function createVideoCard(index, container, isActive) {
             const item = allVideos[index];
             const card = document.createElement('div');
             card.className = 'video-card';
+            if (isActive) card.classList.add('active');
             card.dataset.index = index;
-            // 初始高度设为 100%，由 CSS 控制
-            card.style.height = '100%'; 
 
-            // 只有当 index == currentIndex 时才立即加载 src，否则可以先不加载 src 或者加载但由 CSS 隐藏？
-            // 为了"还未播放的视频只加载一个"，我们策略是：
-            // 当前 (currentIndex): 立即加载 src
-            // 下一个 (currentIndex + 1): 立即加载 src (预加载)，但不播放 (iframe 内部自控)
-            // 其他: 暂时不设置 src，或者设置 src 但等待进入范围
-            
-            // 优化：为了体验流畅，我们在创建时就设置 src，依靠浏览器自身的缓存和 iframe 生命周期。
-            // 但如果要严格节省流量，可以只对 current 和 current+1 设置 src。
-            const shouldLoadSrc = (index <= currentIndex + 1);
-            const srcAttr = shouldLoadSrc ? `src="${item.url}"` : '';
-            const loadingAttr = shouldLoadSrc ? '' : 'loading="lazy"';
+            // 策略：
+            // Current: 立即加载 src
+            // Next: 立即加载 src (预加载)，但因为不是 active 且有遮罩，通常不会自动播放声音/画面，仅缓冲
+            const src = item.url;
 
             card.innerHTML = `
                 <iframe class="video-frame" 
-                    ${srcAttr}
-                    ${loadingAttr}
+                    src="${src}" 
                     scrolling="no" 
                     allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     data-index="${index}">
                 </iframe>
                 <div class="interaction-shield"></div>
-                <div class="tap-hint">点击交互<br><span style="font-size:10px;opacity:0.7">(暂停/音量)</span></div>
+                <div class="tap-hint">${isActive ? '点击交互' : '预加载中...'}</div>
                 <div class="video-overlay">
                     <div class="video-account">@${item.tweet_account || 'Unknown'}</div>
                     <div class="video-meta">
@@ -413,84 +394,74 @@
                     </div>
                 </div>
             `;
-            
-            // 简单的插入排序，保持 DOM 顺序
-            const nextSibling = Array.from(container.children).find(c => parseInt(c.dataset.index) > index);
-            if (nextSibling) {
-                container.insertBefore(card, nextSibling);
-            } else {
-                container.appendChild(card);
-            }
 
-            // 如果这是当前激活的，立即设置 src (如果之前没设)
-            if (index === currentIndex && !shouldLoadSrc) {
-                 const iframe = card.querySelector('iframe');
-                 iframe.src = item.url;
-            }
+            // 插入到正确顺序
+            const existing = Array.from(container.children);
+            const nextNode = existing.find(c => parseInt(c.dataset.index) > index);
+            if (nextNode) container.insertBefore(card, nextNode);
+            else container.appendChild(card);
+
+            // 监听 iframe 加载完成，显示画面
+            const iframe = card.querySelector('iframe');
+            iframe.addEventListener('load', () => {
+                iframe.classList.add('loaded');
+            });
         }
 
         function updateActiveState(activeIndex) {
             const cards = document.querySelectorAll('.video-card');
             cards.forEach(card => {
                 const idx = parseInt(card.dataset.index);
-                const iframe = card.querySelector('iframe');
-                const item = allVideos[idx];
-
                 if (idx === activeIndex) {
-                    // 激活当前
                     card.classList.add('active');
-                    // 确保 src 存在
-                    if (!iframe.src || iframe.src === window.location.href) {
-                        iframe.src = item.url;
-                    }
+                    card.querySelector('.tap-hint').innerText = '点击交互';
                 } else {
-                    // 取消激活
                     card.classList.remove('active');
-                    // 可选策略：如果离得太远，上面 renderVisibleRange 已经移除了。
-                    // 如果只是相邻但未激活，我们可以选择不移除 src，让浏览器挂着，
-                    // 或者为了省流，移除 src (但这会导致滑回来要重新加载)
-                    // 鉴于要求"还未播放的只加载一个"，我们保持 iframe 存在但非激活状态通常不会消耗太多 CPU，
-                    // 除非 iframe 内部有定时器。Twitter 的播放器通常在不可见时会暂停。
+                    card.querySelector('.tap-hint').innerText = '预加载中...';
                 }
             });
         }
 
-        function setupScrollListener() {
+        // 高性能滚动监听 (使用 requestAnimationFrame)
+        function setupHighPerfScroll() {
             const container = document.getElementById('video-container');
-            let ticking = false;
+            const cardHeight = window.innerHeight;
 
-            container.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        renderVisibleRange();
-                        ticking = false;
+            const onScroll = () => {
+                const scrollTop = container.scrollTop;
+                // 计算最近的索引
+                const newIndex = Math.round(scrollTop / cardHeight);
+
+                // 只有当索引变化且非恢复模式时才更新
+                if (newIndex !== currentIndex && !isRestoring) {
+                    currentIndex = Math.max(0, Math.min(newIndex, allVideos.length - 1));
+                    
+                    // 使用 rAF 批量更新 DOM，避免频繁重绘
+                    if (scrollFrameId) cancelAnimationFrame(scrollFrameId);
+                    scrollFrameId = requestAnimationFrame(() => {
+                        renderStrictRange();
                     });
-                    ticking = true;
                 }
                 
-                // 防抖保存进度
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    saveProgress(currentIndex);
-                }, 1000);
-            });
+                lastScrollTop = scrollTop;
+            };
+
+            container.addEventListener('scroll', onScroll, { passive: true });
         }
 
         function setupInteraction() {
-            // 委托事件处理
-            document.getElementById('video-container').addEventListener('click', (e) => {
+            const container = document.getElementById('video-container');
+            container.addEventListener('click', (e) => {
                 const shield = e.target.closest('.interaction-shield');
                 if (shield) {
                     const card = shield.parentElement;
-                    const cards = document.querySelectorAll('.video-card');
+                    const idx = parseInt(card.dataset.index);
                     
-                    // 取消其他
-                    cards.forEach(c => {
-                        if (c !== card) c.classList.remove('active');
-                    });
+                    // 激活当前点击的
+                    currentIndex = idx;
                     
-                    // 激活当前
-                    card.classList.add('active');
+                    // 重新渲染以确保 DOM 状态正确 (可能会把原来的 Next 变成 Current，并加载新的 Next)
+                    renderStrictRange();
                 }
             });
         }
