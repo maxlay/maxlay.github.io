@@ -23,78 +23,6 @@
             padding: 20px;
         }
 
-        /* --- 新增：密码保护相关样式 --- */
-        #login-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            backdrop-filter: blur(5px);
-        }
-
-        .login-box {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 300px;
-            border: 1px solid #444;
-        }
-
-        .login-box h2 {
-            margin-top: 0;
-            color: var(--text-main);
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .login-input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: #1a1a1a;
-            border: 1px solid #555;
-            color: white;
-            border-radius: 6px;
-            font-size: 16px;
-            text-align: center;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .login-input:focus {
-            border-color: var(--accent);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .login-btn:hover {
-            background-color: #1ed760;
-        }
-
-        .login-error {
-            color: #ff4444;
-            font-size: 14px;
-            margin-top: 15px;
-            display: none;
-        }
-        /* ----------------------------- */
-
         /* 顶部控制栏 */
         .header {
             display: flex;
@@ -273,17 +201,6 @@
 </head>
 <body>
 
-    <!-- === 新增：密码保护遮罩层 === -->
-    <div id="login-overlay">
-        <div class="login-box">
-            <h2>🔒 访问验证</h2>
-            <input type="password" id="passwordInput" class="login-input" placeholder="请输入密码" autofocus>
-            <button onclick="checkPassword()" class="login-btn">进入</button>
-            <p id="loginError" class="login-error">密码错误！页面即将关闭...</p>
-        </div>
-    </div>
-    <!-- ========================== -->
-
     <!-- 头部 -->
     <div class="header">
         <div class="stats" id="stats-display">准备加载...</div>
@@ -305,83 +222,17 @@
 
     <!-- 视频列表 -->
     <div id="video-grid" class="grid"></div>
-    <!-- 初始隐藏 loading，防止未验证时看到文字 -->
-    <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
+    <div id="loading-msg" class="loading">正在初始化...</div>
 
     <!-- 底部翻页控件 -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="prev-btn">上一页</button>
-        <span class="page-info" id="page-info">第 1 / 1 页</button>
+        <span class="page-info" id="page-info">第 1 / 1 页</span>
         <button class="page-btn" id="next-btn">下一页</button>
     </div>
 
     <script>
-        // ================= 密码保护逻辑 (新增) =================
-        const CORRECT_PASSWORD = "821025";
-        const COOKIE_NAME = "x_video_auth_verified";
-        
-        // 设置永久 Cookie (10年)
-        function setPermanentCookie(name, value) {
-            const date = new Date();
-            date.setFullYear(date.getFullYear() + 10);
-            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
-        }
-
-        // 获取 Cookie
-        function getCookie(name) {
-            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            if (match) return decodeURIComponent(match[2]);
-            return null;
-        }
-
-        // 验证函数
-        function checkPassword() {
-            const input = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('loginError');
-            const overlay = document.getElementById('login-overlay');
-
-            if (input === CORRECT_PASSWORD) {
-                // 成功：设置 Cookie，隐藏遮罩，启动主程序
-                setPermanentCookie(COOKIE_NAME, "true");
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto'; // 恢复滚动
-                init(); // 启动原有的加载逻辑
-            } else {
-                // 失败
-                errorMsg.style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-                setTimeout(() => {
-                    window.close();
-                    if (!window.closed) {
-                        document.body.innerHTML = '<div style="color:red;text-align:center;margin-top:20%;"><h1>⛔ 访问拒绝</h1><p>密码错误</p></div>';
-                    }
-                }, 1500);
-            }
-        }
-
-        // 支持回车键
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        // 页面加载时立即检查
-        (function() {
-            if (getCookie(COOKIE_NAME) === "true") {
-                // 已有记录，直接隐藏遮罩并启动
-                document.getElementById('login-overlay').style.display = 'none';
-                document.body.style.overflow = 'auto';
-                // 延迟一点点确保 DOM 就绪，然后启动原有逻辑
-                setTimeout(init, 50);
-            } else {
-                // 无记录，保持遮罩，禁止背景滚动
-                document.body.style.overflow = 'hidden';
-                // 确保 loading 信息在验证前不可见
-                document.getElementById('loading-msg').style.display = 'none';
-            }
-        })();
-        // =======================================================
-
-        // ================= 原有配置区域 =================
+        // ================= 配置区域 =================
         // 修改点：直接指定单个 JSON 文件的 URL
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
         
@@ -458,18 +309,9 @@
 
         // 2. 初始化加载
         async function init() {
-            // 防止重复初始化（如果用户快速操作）
-            if (loadingEl.style.display === 'none' && gridEl.children.length > 0 && !loadingEl.innerText.includes("加载失败")) {
-                 // 如果已经有内容且不是错误状态，可能是 Cookie 验证后已经运行过一次，这里做个简单保护
-                 // 但为了保险起见，如果是第一次通过 Cookie 进入，gridEl 是空的，会继续执行
-                 if(gridEl.children.length === 0) { /* continue */ } else { return; }
-            }
-
-            // 显示 Loading
-            loadingEl.style.display = 'block';
-            loadingEl.innerText = `正在加载数据...`;
-            
             try {
+                loadingEl.innerText = `正在加载数据...`;
+                
                 await loadSingleData();
                 
                 if (allData.length === 0) {
@@ -609,8 +451,8 @@
             return num.toString();
         }
 
-        // 注意：init() 现在由密码验证逻辑调用，不再自动在底部调用
-        // init(); 
+        // 启动
+        init();
     </script>
 </body>
 </html>
