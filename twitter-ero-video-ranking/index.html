@@ -146,7 +146,7 @@
             align-items: stretch;
             flex-wrap: nowrap;
             width: 100%;
-            position: relative; /* 为子元素定位提供参考 */
+            position: relative;
         }
         
         #top-pagination { margin-top: 0; margin-bottom: 15px; }
@@ -187,7 +187,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             cursor: pointer;
             position: relative;
-            z-index: 10; /* 确保点击区域在上 */
+            z-index: 10;
         }
         .page-info-container:hover {
             border-color: var(--accent);
@@ -263,25 +263,30 @@
             .page-count { font-size: 0.9rem; }
         }
 
-        /* --- Flatpickr 深度定制 (修复位置 + 深色主题) --- */
+        /* --- Flatpickr 深度定制 (手动定位 + 深色主题) --- */
         .flatpickr-calendar {
             background: #2d2d2d !important;
             border: 1px solid #444 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
             border-radius: 8px !important;
-            /* 关键修复：强制居中 */
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            /* 确保在最上层 */
+            left: 0 !important;
+            right: 0 !important;
+            transform: none !important;
+            margin: 0 !important;
             z-index: 99999 !important;
-            /* 稍微增加顶部间距，避免紧贴按钮 */
-            margin-top: 8px !important;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
         }
         
-        /* 箭头也要居中 (如果显示了箭头) */
-        .flatpickr-calendar.arrowTop::before, .flatpickr-calendar.arrowTop::after {
-            left: 50% !important;
-            transform: translateX(-50%) !important;
+        .flatpickr-calendar.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .flatpickr-calendar.arrowTop::before, .flatpickr-calendar.arrowTop::after,
+        .flatpickr-calendar.arrowBottom::before, .flatpickr-calendar.arrowBottom::after {
+            display: none !important;
         }
 
         .flatpickr-day { color: #ddd !important; }
@@ -394,6 +399,7 @@
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
         let allData = [], groupedData = {}, sortedDates = [], currentDateKey = "";
         let fpInstance = null; 
+        let currentTriggerElement = null; 
 
         const gridEl = document.getElementById('video-grid');
         const loadingEl = document.getElementById('loading-msg');
@@ -408,6 +414,7 @@
         const dateTrigger = document.getElementById('date-trigger');
         const topDateTrigger = document.getElementById('top-date-trigger');
 
+        // 【修改点】：将字段名从 posted_at 改为 created_at
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
             const d = new Date(dateStr);
@@ -424,7 +431,8 @@
                 
                 groupedData = {};
                 allData.forEach(item => {
-                    const k = formatDateKey(item.posted_at);
+                    // 【修改点】：使用 item.created_at 进行分组
+                    const k = formatDateKey(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
                 });
@@ -525,6 +533,29 @@
             }
         }
 
+        function positionCalendar(triggerElement) {
+            if (!fpInstance || !triggerElement) return;
+            
+            const calendar = fpInstance.calendarContainer;
+            const rect = triggerElement.getBoundingClientRect();
+            const scrollY = window.scrollY || window.pageYOffset;
+            
+            const left = rect.left + (rect.width / 2);
+            const top = rect.bottom + scrollY + 8; 
+            
+            calendar.style.position = 'absolute';
+            calendar.style.left = `${left}px`;
+            calendar.style.top = `${top}px`;
+            calendar.style.transform = 'translateX(-50%)'; 
+            calendar.style.right = 'auto';
+            
+            const calRect = calendar.getBoundingClientRect();
+            if (calRect.right > window.innerWidth) {
+                const adjustment = calRect.right - window.innerWidth + 10;
+                calendar.style.transform = `translateX(calc(-50% - ${adjustment}px))`;
+            }
+        }
+
         function setupEvents() {
             const goNew = () => { const i=sortedDates.indexOf(currentDateKey); if(i>0) renderPage(sortedDates[i-1]); };
             const goOld = () => { const i=sortedDates.indexOf(currentDateKey); if(i<sortedDates.length-1) renderPage(sortedDates[i+1]); };
@@ -532,7 +563,6 @@
             newerBtn.onclick = goNew; olderBtn.onclick = goOld;
             topNewerBtn.onclick = goNew; topOlderBtn.onclick = goOld;
 
-            // 初始化 Flatpickr
             const commonConfig = {
                 locale: "zh",
                 dateFormat: "Y-m-d",
@@ -541,45 +571,54 @@
                 disable: [
                     date => {
                         const dStr = date.toISOString().split('T')[0];
+                        // 【修改点】：这里依赖 sortedDates，而 sortedDates 已经由 created_at 生成，所以逻辑自动同步
                         return !sortedDates.includes(dStr);
                     }
                 ],
                 onChange: (selectedDates, dateStr) => {
                     if(dateStr && sortedDates.includes(dateStr)) {
                         renderPage(dateStr);
+                        if(fpInstance) fpInstance.close();
                     }
                 },
-                // 关键：强制位置为底部居中
-                position: "bottom center",
-                appendTo: document.body,
-                static: false // 确保它是动态定位的
+                position: "auto",
+                static: true,
+                appendTo: document.body
             };
 
             if(fpInstance) fpInstance.destroy();
             
-            // 创建一个隐藏的 input 来绑定 flatpickr，或者直接使用自定义元素
-            // 这里使用一个临时 input 策略，但通过 click 事件手动触发打开
             const hiddenInput = document.createElement('input');
             hiddenInput.style.display = 'none';
             document.body.appendChild(hiddenInput);
 
             fpInstance = flatpickr(hiddenInput, commonConfig);
 
-            const openCalendar = (e) => {
-                e.stopPropagation(); // 防止冒泡
+            const openCalendar = (e, triggerEl) => {
+                e.stopPropagation();
+                currentTriggerElement = triggerEl;
+                
                 if(fpInstance) {
                     fpInstance.setDate(currentDateKey);
                     fpInstance.open();
+                    setTimeout(() => positionCalendar(triggerEl), 10);
                 }
             };
 
-            dateTrigger.onclick = openCalendar;
-            topDateTrigger.onclick = openCalendar;
+            dateTrigger.onclick = (e) => openCalendar(e, dateTrigger);
+            topDateTrigger.onclick = (e) => openCalendar(e, topDateTrigger);
             
-            let timer;
+            window.addEventListener('scroll', () => {
+                if(fpInstance && fpInstance.isOpen && currentTriggerElement) {
+                    positionCalendar(currentTriggerElement);
+                }
+            }, true);
+            
             window.addEventListener('resize', () => {
-                clearTimeout(timer);
-                timer = setTimeout(updateUI, 200);
+                if(fpInstance && fpInstance.isOpen && currentTriggerElement) {
+                    positionCalendar(currentTriggerElement);
+                }
+                updateUI();
             });
         }
 
