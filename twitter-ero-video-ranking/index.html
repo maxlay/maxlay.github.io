@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔞 ✖.com 的视频🔞 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -14,14 +14,16 @@
             --hover: #3d3d3d;
             --progress-bg: #444;
             --btn-disabled: #2a2a2a;
+            --header-height: 60px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 15px; /* 手机端默认内边距 */
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* --- 密码保护相关样式 --- */
@@ -38,110 +40,119 @@
 
         .login-box {
             background: var(--card-bg);
-            padding: 40px;
+            padding: 30px 20px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 300px;
+            width: 85%;
+            max-width: 320px;
             border: 1px solid #444;
         }
 
-        .login-box h2 { margin-top: 0; color: var(--text-main); font-size: 20px; margin-bottom: 20px; }
+        .login-box h2 { margin-top: 0; color: var(--text-main); font-size: 1.2rem; margin-bottom: 20px; }
         .login-input {
-            width: 100%; padding: 12px; margin-bottom: 15px; background: #1a1a1a;
-            border: 1px solid #555; color: white; border-radius: 6px;
+            width: 100%; padding: 14px; margin-bottom: 15px; background: #1a1a1a;
+            border: 1px solid #555; color: white; border-radius: 8px;
             font-size: 16px; text-align: center; box-sizing: border-box; outline: none;
         }
         .login-input:focus { border-color: var(--accent); }
         .login-btn {
-            width: 100%; padding: 12px; background-color: var(--accent); color: white;
-            border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
+            width: 100%; padding: 14px; background-color: var(--accent); color: white;
+            border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
             font-weight: bold; transition: background 0.2s;
         }
         .login-btn:hover { background-color: #1ed760; }
         .login-error { color: #ff4444; font-size: 14px; margin-top: 15px; display: none; }
 
-        /* 顶部控制栏 - 强制单行 */
+        /* 顶部控制栏 - 深度优化 */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: nowrap; /* 禁止换行 */
-            overflow: hidden;  /* 防止溢出 */
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            flex-wrap: nowrap; 
+            overflow: hidden;
+            padding-bottom: 10px;
             border-bottom: 1px solid #333;
+            height: auto;
+            min-height: 40px;
         }
 
         .stats-container {
             display: flex;
             align-items: center;
-            gap: 15px;
-            white-space: nowrap; /* 关键：强制内容不换行 */
+            gap: 10px;
+            white-space: nowrap; 
             overflow: hidden;
             text-overflow: ellipsis;
-            flex-shrink: 1; /* 允许在极端情况下收缩 */
+            flex-shrink: 1;
+            width: 100%;
         }
 
         .stats-main { 
-            font-size: 1.1rem; 
+            font-size: 0.95rem; 
             color: var(--text-main); 
-            font-weight: bold; 
+            font-weight: 600; 
+            flex-shrink: 0;
         }
 
         .stats-sub {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--accent);
             font-weight: 600;
             background: rgba(29, 185, 84, 0.1);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 6px;
             display: inline-block;
-            cursor: pointer; /* 提示可点击 */
+            cursor: pointer;
             transition: all 0.2s;
             border: 1px solid rgba(29, 185, 84, 0.3);
+            flex-shrink: 0;
+            max-width: 45%; /* 防止在极窄屏幕撑开 */
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .stats-sub:hover {
             background: rgba(29, 185, 84, 0.25);
-            transform: translateY(-1px);
         }
 
-        .stats-sub:active {
-            transform: translateY(1px);
-        }
-
-        /* 进度条样式 */
+        /* 进度条 */
         .progress-container {
-            width: 100%; height: 6px; background-color: var(--progress-bg);
-            border-radius: 3px; margin: 15px 0 25px 0; overflow: hidden;
+            width: 100%; height: 4px; background-color: var(--progress-bg);
+            border-radius: 2px; margin: 10px 0 15px 0; overflow: hidden;
             display: none; position: relative;
         }
         .progress-container.active { display: block; }
         .progress-bar {
             height: 100%; background-color: var(--accent); width: 0%;
-            transition: width 0.3s ease-out; border-radius: 3px;
+            transition: width 0.3s ease-out; border-radius: 2px;
         }
         .progress-text {
-            position: absolute; right: 0; top: -20px;
-            font-size: 12px; color: var(--text-sub); white-space: nowrap;
+            position: absolute; right: 0; top: -18px;
+            font-size: 10px; color: var(--text-sub); white-space: nowrap;
         }
 
-        /* 视频网格 */
+        /* 视频网格 - 响应式核心 */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            /* 手机端默认2列，大屏自动增加 */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px;
         }
 
         .card {
             background: var(--card-bg); border-radius: 8px; overflow: hidden;
             cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
             position: relative; text-decoration: none; color: inherit; display: block;
+            will-change: transform;
+        }
+        .card:active {
+            transform: scale(0.98);
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
             background: var(--hover);
         }
         .thumb-container {
@@ -157,46 +168,49 @@
         }
         .card:hover .play-overlay { opacity: 1; }
         .play-icon {
-            font-size: 40px; color: white; background: rgba(0,0,0,0.6);
-            border-radius: 50%; width: 60px; height: 60px;
+            font-size: 32px; color: white; background: rgba(0,0,0,0.6);
+            border-radius: 50%; width: 50px; height: 50px;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid white;
         }
         .duration-badge {
-            position: absolute; bottom: 8px; right: 8px;
-            background: rgba(0,0,0,0.8); color: white;
-            padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 2;
+            position: absolute; bottom: 6px; right: 6px;
+            background: rgba(0,0,0,0.85); color: white;
+            padding: 2px 5px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2;
         }
-        .info { padding: 12px; }
+        .info { padding: 10px; }
         .title {
-            font-size: 14px; font-weight: 600; margin-bottom: 8px;
+            font-size: 13px; font-weight: 600; margin-bottom: 6px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            color: var(--text-main);
+            color: var(--text-main); line-height: 1.4;
         }
         .meta {
-            font-size: 12px; color: var(--text-sub);
+            font-size: 11px; color: var(--text-sub);
             display: flex; justify-content: space-between;
         }
 
-        /* 分页控件 - 全新布局 */
+        /* 分页控件 - 移动端适配核心 */
         .pagination {
             display: flex; 
-            justify-content: center; 
-            gap: 15px;
-            margin-top: 30px; 
+            justify-content: space-between; /* 两端对齐，中间留白给日期 */
+            gap: 8px;
+            margin-top: 20px; 
             align-items: center; 
-            flex-wrap: nowrap; /* 禁止换行 */
+            flex-wrap: nowrap;
+            width: 100%;
         }
         
-        #top-pagination { margin-top: 0; margin-bottom: 20px; }
+        #top-pagination { margin-top: 0; margin-bottom: 15px; }
 
         .page-btn {
             background: var(--card-bg); border: 1px solid #555;
-            color: white; padding: 10px 20px; border-radius: 6px;
+            color: white; padding: 8px 10px; border-radius: 6px;
             cursor: pointer; transition: 0.2s; font-weight: 500;
-            display: flex; align-items: center; gap: 8px;
-            min-width: 120px;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
+            flex: 1; /* 按钮平分剩余空间 */
+            max-width: 100px; /* 限制最大宽度，防止挤压中间 */
+            font-size: 0.85rem;
+            min-height: 44px; /* 触摸友好高度 */
         }
 
         .page-btn:hover:not(:disabled) { 
@@ -206,7 +220,7 @@
         }
         
         .page-btn:disabled { 
-            opacity: 0.4; 
+            opacity: 0.3; 
             cursor: not-allowed; 
             background: var(--btn-disabled); 
             transform: none;
@@ -215,44 +229,79 @@
 
         .page-info-container {
             display: flex;
+            flex-direction: column; /* 手机上可能堆叠，但这里尝试横排 */
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 4px;
             background: #222;
-            padding: 10px 20px;
+            padding: 6px 12px;
             border-radius: 8px;
             border: 1px solid #444;
-            min-width: 200px;
-            justify-content: center;
+            flex: 2; /* 中间日期区域更宽 */
+            min-width: 140px;
+            text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         .page-date {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             color: var(--text-main);
+            line-height: 1.2;
         }
 
         .page-count {
-            font-size: 0.95rem;
+            font-size: 0.8rem;
             color: var(--accent);
             background: rgba(29, 185, 84, 0.15);
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
             font-weight: 600;
         }
 
-        .loading { text-align: center; padding: 50px; color: var(--text-sub); }
+        .loading { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; }
         .error { color: #ff4444; text-align: center; padding: 20px; }
         
-        @media (max-width: 768px) {
-            .header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .stats-container { width: 100%; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
-            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .pagination { gap: 8px; }
-            .page-btn { padding: 8px 12px; font-size: 13px; min-width: 80px; }
-            .page-info-container { padding: 8px 12px; min-width: 140px; }
-            .page-date { font-size: 0.95rem; }
-            .page-count { font-size: 0.85rem; }
+        /* --- 桌面端媒体查询 (大于 768px) --- */
+        @media (min-width: 768px) {
+            body { padding: 20px 40px; }
+            
+            .header { margin-bottom: 20px; }
+            .stats-main { font-size: 1.2rem; }
+            .stats-sub { font-size: 1rem; padding: 4px 12px; }
+
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            
+            .pagination {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .page-btn {
+                max-width: 160px;
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                min-height: auto;
+            }
+
+            .page-info-container {
+                flex-direction: row;
+                gap: 12px;
+                padding: 10px 20px;
+                min-width: 220px;
+            }
+
+            .page-date { font-size: 1.1rem; }
+            .page-count { font-size: 0.95rem; }
+        }
+
+        /* --- 超大屏优化 --- */
+        @media (min-width: 1200px) {
+            body { padding: 20px 60px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
         }
     </style>
 </head>
@@ -272,7 +321,6 @@
     <div class="header">
         <div class="stats-container">
             <div class="stats-main" id="stats-total">准备加载...</div>
-            <!-- 增加点击事件 -->
             <div class="stats-sub" id="stats-newest" style="display:none;" title="点击跳转到最新一页">
                 加载中...
             </div>
@@ -287,17 +335,12 @@
 
     <!-- 顶部分页控件 -->
     <div class="pagination" id="top-pagination" style="display:none;">
-        <!-- 左边：最新/更新的一天 -->
-        <button class="page-btn" id="top-newer-btn" disabled>最新的一天</button>
-        
-        <!-- 中间：当前日期 -->
+        <button class="page-btn" id="top-newer-btn" disabled>最新</button>
         <div class="page-info-container">
             <span class="page-date" id="top-page-date">--</span>
             <span class="page-count" id="top-page-count">0 部</span>
         </div>
-
-        <!-- 右边：更旧的一天 -->
-        <button class="page-btn" id="top-older-btn" disabled>更旧的一天</button>
+        <button class="page-btn" id="top-older-btn" disabled>最旧</button>
     </div>
 
     <!-- 视频列表 -->
@@ -306,17 +349,12 @@
 
     <!-- 底部分页控件 -->
     <div class="pagination" id="pagination" style="display:none;">
-        <!-- 左边：最新/更新的一天 -->
-        <button class="page-btn" id="newer-btn" disabled>最新的一天</button>
-        
-        <!-- 中间：当前日期 -->
+        <button class="page-btn" id="newer-btn" disabled>最新</button>
         <div class="page-info-container">
             <span class="page-date" id="page-date">--</span>
             <span class="page-count" id="page-count">0 部</span>
         </div>
-
-        <!-- 右边：更旧的一天 -->
-        <button class="page-btn" id="older-btn" disabled>更旧的一天</button>
+        <button class="page-btn" id="older-btn" disabled>最旧</button>
     </div>
 
     <script>
@@ -379,7 +417,6 @@
         let allData = [];
         let groupedData = {}; 
         let sortedDates = []; 
-        
         let currentDateKey = ""; 
 
         // DOM 元素
@@ -391,7 +428,6 @@
         const paginationEl = document.getElementById('pagination');
         const topPaginationEl = document.getElementById('top-pagination');
         
-        // 按钮定义：Newer (更新/最新), Older (更旧)
         const newerBtn = document.getElementById('newer-btn');
         const olderBtn = document.getElementById('older-btn');
         const topNewerBtn = document.getElementById('top-newer-btn');
@@ -422,13 +458,13 @@
 
         async function loadDataAndGroup() {
             progressContainer.classList.add('active');
-            updateProgress(0, "开始下载远程数据...");
+            updateProgress(0, "下载数据...");
 
             try {
                 const res = await fetch(DATA_URL);
-                if (!res.ok) throw new Error(`下载失败 (HTTP ${res.status})`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-                updateProgress(40, "解析数据中...");
+                updateProgress(40, "解析...");
                 const data = await res.json();
                 
                 if (Array.isArray(data)) {
@@ -439,25 +475,18 @@
                     allData = [data];
                 }
 
-                updateProgress(60, "按日期分组中...");
-                
+                updateProgress(60, "分组...");
                 groupedData = {};
                 allData.forEach(item => {
                     const dateKey = formatDateKey(item.posted_at);
-                    if (!groupedData[dateKey]) {
-                        groupedData[dateKey] = [];
-                    }
+                    if (!groupedData[dateKey]) groupedData[dateKey] = [];
                     groupedData[dateKey].push(item);
                 });
 
-                // 降序排序：最新的日期在索引 0
-                sortedDates = Object.keys(groupedData).sort((a, b) => {
-                    return new Date(b) - new Date(a);
-                });
+                sortedDates = Object.keys(groupedData).sort((a, b) => new Date(b) - new Date(a));
 
-                updateProgress(100, "加载完成");
+                updateProgress(100, "完成");
                 setTimeout(() => { progressContainer.classList.remove('active'); }, 800);
-                
                 return true;
             } catch (err) {
                 throw err;
@@ -470,18 +499,16 @@
         }
 
         async function init() {
-            if (loadingEl.style.display === 'none' && gridEl.children.length > 0) {
-                 if(gridEl.children.length === 0) { /* continue */ } else { return; }
-            }
+            if (loadingEl.style.display === 'none' && gridEl.children.length > 0) return;
 
             loadingEl.style.display = 'block';
-            loadingEl.innerText = `正在加载并整理数据...`;
+            loadingEl.innerText = `加载数据中...`;
             
             try {
                 await loadDataAndGroup();
                 
                 if (sortedDates.length === 0) {
-                    loadingEl.innerHTML = "⚠️ 数据为空或日期格式无法识别";
+                    loadingEl.innerHTML = "⚠️ 无数据";
                     return;
                 }
 
@@ -489,24 +516,15 @@
                 const newestDate = sortedDates[0];
                 const newestCount = groupedData[newestDate].length;
 
-                statsTotalEl.innerText = `共 ${totalCount.toLocaleString()} 个视频`;
+                statsTotalEl.innerText = `共 ${totalCount.toLocaleString()} 视频`;
                 statsNewestEl.style.display = 'inline-block';
-                // 设置点击事件
-                statsNewestEl.onclick = () => {
-                    renderPage(newestDate);
-                    window.scrollTo(0, 0);
-                };
+                statsNewestEl.onclick = () => { renderPage(newestDate); window.scrollTo(0, 0); };
                 statsNewestEl.innerText = `✨ 最新 (${newestDate}) 更新 ${newestCount} 部`;
 
                 const savedDate = localStorage.getItem('videoListLastDate');
-                if (savedDate && sortedDates.includes(savedDate)) {
-                    currentDateKey = savedDate;
-                } else {
-                    currentDateKey = sortedDates[0];
-                }
+                currentDateKey = (savedDate && sortedDates.includes(savedDate)) ? savedDate : sortedDates[0];
 
                 loadingEl.style.display = 'none';
-                
                 paginationEl.style.display = 'flex';
                 topPaginationEl.style.display = 'flex';
                 
@@ -516,7 +534,7 @@
             } catch (err) {
                 console.error(err);
                 progressContainer.classList.remove('active');
-                loadingEl.innerHTML = `❌ 加载失败: ${err.message}`;
+                loadingEl.innerHTML = `❌ 失败: ${err.message}`;
                 loadingEl.className = 'error';
             }
         }
@@ -524,18 +542,13 @@
         function renderPage(dateKey) {
             currentDateKey = dateKey;
             localStorage.setItem('videoListLastDate', dateKey);
-
             gridEl.innerHTML = '';
             
             const items = groupedData[dateKey] || [];
-            
             if (items.length === 0) {
-                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center;">该日期无数据</div>';
+                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding: 20px;">该日期无数据</div>';
             } else {
-                items.forEach(item => {
-                    const card = createCard(item);
-                    gridEl.appendChild(card);
-                });
+                items.forEach(item => gridEl.appendChild(createCard(item)));
             }
 
             updatePaginationUI();
@@ -549,7 +562,7 @@
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
             
-            const dateStr = item.posted_at ? new Date(item.posted_at).toLocaleDateString() : 'Unknown';
+            const dateStr = item.posted_at ? new Date(item.posted_at).toLocaleDateString() : '?';
             const mins = Math.floor((item.time || 0) / 60);
             const secs = (item.time || 0) % 60;
             const durationStr = `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -559,9 +572,7 @@
                 <div class="thumb-container">
                     <img class="thumb-img" src="${item.thumbnail}" loading="lazy" alt="thumb" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
                     <div class="duration-badge">${durationStr}</div>
-                    <div class="play-overlay">
-                        <div class="play-icon">▶</div>
-                    </div>
+                    <div class="play-overlay"><div class="play-icon">▶</div></div>
                 </div>
                 <div class="info">
                     <div class="title">${title}</div>
@@ -578,45 +589,39 @@
         function updatePaginationUI() {
             const currentIndex = sortedDates.indexOf(currentDateKey);
             const count = groupedData[currentDateKey].length;
-            const displayDate = currentDateKey; 
-
-            pageDateEl.innerText = displayDate;
+            
+            pageDateEl.innerText = currentDateKey;
             pageCountEl.innerText = `${count} 部`;
-            topPageDateEl.innerText = displayDate;
+            topPageDateEl.innerText = currentDateKey;
             topPageCountEl.innerText = `${count} 部`;
-
-            // 逻辑定义：
-            // sortedDates 是降序：[0]=最新, [1]=次新, ..., [last]=最旧
-            // "Newer" (更新) = 索引更小 (currentIndex - 1)
-            // "Older" (更旧) = 索引更大 (currentIndex + 1)
 
             const hasNewer = currentIndex > 0;
             const hasOlder = currentIndex < sortedDates.length - 1;
 
-            // 更新按钮状态
             newerBtn.disabled = !hasNewer;
             olderBtn.disabled = !hasOlder;
             topNewerBtn.disabled = !hasNewer;
             topOlderBtn.disabled = !hasOlder;
             
-            // 更新按钮文字
+            // 移动端简短文案，桌面端通过CSS自动调整或JS判断也可，这里统一用简短文案保证不换行
             if (hasNewer) {
-                const newerDate = sortedDates[currentIndex - 1];
-                const newerCount = groupedData[newerDate].length;
-                const btnText = `${newerDate} (${newerCount})`;
-                newerBtn.innerHTML = `⬅ ${btnText}`;
-                topNewerBtn.innerHTML = `⬅ ${btnText}`;
+                const d = sortedDates[currentIndex - 1];
+                const c = groupedData[d].length;
+                // 在非常小的屏幕上，可能只显示箭头和"新"
+                const isMobile = window.innerWidth < 400;
+                newerBtn.innerHTML = isMobile ? `⬅ ${d.split('-')[2]}日` : `⬅ ${d} (${c})`;
+                topNewerBtn.innerHTML = newerBtn.innerHTML;
             } else {
                 newerBtn.innerHTML = `已是最新`;
                 topNewerBtn.innerHTML = `已是最新`;
             }
 
             if (hasOlder) {
-                const olderDate = sortedDates[currentIndex + 1];
-                const olderCount = groupedData[olderDate].length;
-                const btnText = `${olderDate} (${olderCount})`;
-                olderBtn.innerHTML = `${btnText} ➡`;
-                topOlderBtn.innerHTML = `${btnText} ➡`;
+                const d = sortedDates[currentIndex + 1];
+                const c = groupedData[d].length;
+                const isMobile = window.innerWidth < 400;
+                olderBtn.innerHTML = isMobile ? `${d.split('-')[2]}日 ➡` : `${d} (${c}) ➡`;
+                topOlderBtn.innerHTML = olderBtn.innerHTML;
             } else {
                 olderBtn.innerHTML = `已是最旧`;
                 topOlderBtn.innerHTML = `已是最旧`;
@@ -626,23 +631,24 @@
         function setupEvents() {
             const goToNewer = () => {
                 const idx = sortedDates.indexOf(currentDateKey);
-                if (idx > 0) {
-                    renderPage(sortedDates[idx - 1]);
-                }
+                if (idx > 0) renderPage(sortedDates[idx - 1]);
             };
-
             const goToOlder = () => {
                 const idx = sortedDates.indexOf(currentDateKey);
-                if (idx < sortedDates.length - 1) {
-                    renderPage(sortedDates[idx + 1]);
-                }
+                if (idx < sortedDates.length - 1) renderPage(sortedDates[idx + 1]);
             };
 
-            // 绑定事件：左边按钮 -> Newer, 右边按钮 -> Older
             newerBtn.onclick = goToNewer;
             olderBtn.onclick = goToOlder;
             topNewerBtn.onclick = goToNewer;
             topOlderBtn.onclick = goToOlder;
+            
+            // 窗口大小改变时重新渲染按钮文字以适应屏幕
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(updatePaginationUI, 200);
+            });
         }
 
         function formatNumber(num) {
