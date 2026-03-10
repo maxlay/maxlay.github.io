@@ -13,6 +13,7 @@
             --accent: #1db954;
             --hover: #3d3d3d;
             --progress-bg: #444;
+            --date-badge-bg: #1db954;
         }
 
         body {
@@ -45,106 +46,69 @@
             border: 1px solid #444;
         }
 
-        .login-box h2 {
-            margin-top: 0;
-            color: var(--text-main);
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
+        .login-box h2 { margin-top: 0; color: var(--text-main); font-size: 20px; margin-bottom: 20px; }
         .login-input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: #1a1a1a;
-            border: 1px solid #555;
-            color: white;
-            border-radius: 6px;
-            font-size: 16px;
-            text-align: center;
-            box-sizing: border-box;
-            outline: none;
+            width: 100%; padding: 12px; margin-bottom: 15px; background: #1a1a1a;
+            border: 1px solid #555; color: white; border-radius: 6px;
+            font-size: 16px; text-align: center; box-sizing: border-box; outline: none;
         }
-
-        .login-input:focus {
-            border-color: var(--accent);
-        }
-
+        .login-input:focus { border-color: var(--accent); }
         .login-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
+            width: 100%; padding: 12px; background-color: var(--accent); color: white;
+            border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
+            font-weight: bold; transition: background 0.2s;
         }
-
-        .login-btn:hover {
-            background-color: #1ed760;
-        }
-
-        .login-error {
-            color: #ff4444;
-            font-size: 14px;
-            margin-top: 15px;
-            display: none;
-        }
+        .login-btn:hover { background-color: #1ed760; }
+        .login-error { color: #ff4444; font-size: 14px; margin-top: 15px; display: none; }
 
         /* 顶部控制栏 */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
         }
 
-        .stats { font-size: 1.2rem; color: var(--text-sub); font-weight: bold; }
-        
-        .tip {
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stats-main { 
+            font-size: 1.2rem; 
+            color: var(--text-main); 
+            font-weight: bold; 
+        }
+
+        .stats-sub {
             font-size: 0.9rem;
             color: var(--accent);
+            font-weight: 600;
             background: rgba(29, 185, 84, 0.1);
-            padding: 5px 10px;
+            padding: 2px 8px;
             border-radius: 4px;
+            display: inline-block;
         }
 
         /* 进度条样式 */
         .progress-container {
-            width: 100%;
-            height: 6px;
-            background-color: var(--progress-bg);
-            border-radius: 3px;
-            margin: 15px 0 25px 0;
-            overflow: hidden;
-            display: none; 
-            position: relative;
+            width: 100%; height: 6px; background-color: var(--progress-bg);
+            border-radius: 3px; margin: 15px 0 25px 0; overflow: hidden;
+            display: none; position: relative;
         }
-
-        .progress-container.active {
-            display: block;
-        }
-
+        .progress-container.active { display: block; }
         .progress-bar {
-            height: 100%;
-            background-color: var(--accent);
-            width: 0%;
-            transition: width 0.3s ease-out;
-            border-radius: 3px;
+            height: 100%; background-color: var(--accent); width: 0%;
+            transition: width 0.3s ease-out; border-radius: 3px;
         }
-
         .progress-text {
-            position: absolute;
-            right: 0;
-            top: -20px;
-            font-size: 12px;
-            color: var(--text-sub);
-            white-space: nowrap;
+            position: absolute; right: 0; top: -20px;
+            font-size: 12px; color: var(--text-sub); white-space: nowrap;
         }
 
         /* 视频网格 */
@@ -155,110 +119,101 @@
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            background: var(--card-bg); border-radius: 8px; overflow: hidden;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            position: relative; text-decoration: none; color: inherit; display: block;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             background: var(--hover);
         }
-
         .thumb-container {
-            position: relative;
-            width: 100%;
-            padding-top: 177.77%; 
-            background: #000;
+            position: relative; width: 100%; padding-top: 177.77%; background: #000;
         }
-
         .thumb-img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
         }
-
         .play-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.2s;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3); display: flex; align-items: center;
+            justify-content: center; opacity: 0; transition: opacity 0.2s;
         }
-
         .card:hover .play-overlay { opacity: 1; }
-
         .play-icon {
-            font-size: 40px;
-            color: white;
-            background: rgba(0,0,0,0.6);
-            border-radius: 50%;
-            width: 60px; height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 40px; color: white; background: rgba(0,0,0,0.6);
+            border-radius: 50%; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
             border: 2px solid white;
         }
-
         .duration-badge {
-            position: absolute;
-            bottom: 8px; right: 8px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 2;
+            position: absolute; bottom: 8px; right: 8px;
+            background: rgba(0,0,0,0.8); color: white;
+            padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 2;
         }
-
         .info { padding: 12px; }
-
         .title {
-            font-size: 14px; font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 14px; font-weight: 600; margin-bottom: 8px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
             color: var(--text-main);
         }
-
         .meta {
             font-size: 12px; color: var(--text-sub);
             display: flex; justify-content: space-between;
         }
 
-        /* 分页控件 */
+        /* 分页控件 - 增强版 */
         .pagination {
-            display: flex; justify-content: center; gap: 10px;
-            margin-top: 30px; align-items: center;
+            display: flex; justify-content: center; gap: 15px;
+            margin-top: 30px; align-items: center; flex-wrap: wrap;
         }
         
-        /* 顶部分页栏的特殊间距 */
-        #top-pagination {
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
+        #top-pagination { margin-top: 0; margin-bottom: 20px; }
 
         .page-btn {
             background: var(--card-bg); border: 1px solid #555;
-            color: white; padding: 8px 16px; border-radius: 4px;
-            cursor: pointer; transition: 0.2s;
-            min-width: 80px; /* 确保按钮有最小宽度，防止文字挤压 */
+            color: white; padding: 10px 20px; border-radius: 6px;
+            cursor: pointer; transition: 0.2s; font-weight: 500;
+            display: flex; align-items: center; gap: 8px;
         }
 
-        .page-btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
-        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; background: #222; }
-        .page-info { margin: 0 10px; color: var(--text-sub); min-width: 100px; text-align: center;}
+        .page-btn:hover:not(:disabled) { 
+            background: var(--accent); 
+            border-color: var(--accent); 
+            transform: translateY(-2px);
+        }
+        
+        .page-btn:disabled { 
+            opacity: 0.3; 
+            cursor: not-allowed; 
+            background: #222; 
+            transform: none;
+        }
+
+        .page-info-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #222;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #444;
+        }
+
+        .page-date {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .page-count {
+            font-size: 0.9rem;
+            color: var(--accent);
+            background: rgba(29, 185, 84, 0.15);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
 
         .loading { text-align: center; padding: 50px; color: var(--text-sub); }
         .error { color: #ff4444; text-align: center; padding: 20px; }
@@ -266,10 +221,10 @@
         @media (max-width: 600px) {
             .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .header { flex-direction: column; align-items: stretch; gap: 15px; }
-            .stats { text-align: center; }
-            .tip { text-align: center; }
-            .page-btn { padding: 6px 10px; font-size: 14px; min-width: 60px; }
-            .page-info { font-size: 12px; margin: 0 5px; }
+            .stats-container { align-items: center; }
+            .pagination { gap: 10px; }
+            .page-btn { padding: 8px 12px; font-size: 14px; }
+            .page-info-container { flex-direction: column; gap: 4px; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -287,8 +242,10 @@
 
     <!-- 头部 -->
     <div class="header">
-        <div class="stats" id="stats-display">准备加载...</div>
-        <div class="tip">💡 点击视频卡片将在新窗口播放</div>
+        <div class="stats-container">
+            <div class="stats-main" id="stats-total">准备加载...</div>
+            <div class="stats-sub" id="stats-newest" style="display:none;">正在计算...</div>
+        </div>
     </div>
 
     <!-- 进度条 -->
@@ -297,23 +254,28 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 顶部翻页控件 -->
+    <!-- 顶部分页控件 -->
     <div class="pagination" id="top-pagination" style="display:none;">
-        <button class="page-btn" id="top-prev-btn">上一页</button>
-        <span class="page-info" id="top-page-info">第 1 / 1 页</span>
-        <button class="page-btn" id="top-next-btn">下一页</button>
+        <button class="page-btn" id="top-prev-btn">⬅ 上一天</button>
+        <div class="page-info-container">
+            <span class="page-date" id="top-page-date">--</span>
+            <span class="page-count" id="top-page-count">0 部</span>
+        </div>
+        <button class="page-btn" id="top-next-btn">下一天 ➡</button>
     </div>
 
     <!-- 视频列表 -->
     <div id="video-grid" class="grid"></div>
     <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
 
-    <!-- 底部翻页控件 (已修复标签错误) -->
+    <!-- 底部分页控件 -->
     <div class="pagination" id="pagination" style="display:none;">
-        <button class="page-btn" id="prev-btn">上一页</button>
-        <!-- 修复点：这里原来是 </button>，现在改为 </span> -->
-        <span class="page-info" id="page-info">第 1 / 1 页</span>
-        <button class="page-btn" id="next-btn">下一页</button>
+        <button class="page-btn" id="prev-btn">⬅ 上一天</button>
+        <div class="page-info-container">
+            <span class="page-date" id="page-date">--</span>
+            <span class="page-count" id="page-count">0 部</span>
+        </div>
+        <button class="page-btn" id="next-btn">下一天 ➡</button>
     </div>
 
     <script>
@@ -370,49 +332,63 @@
             }
         })();
 
-        // ================= 原有配置区域 =================
+        // ================= 核心配置与数据逻辑 =================
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
-        const ITEMS_PER_PAGE = 120;    
-        // ===========================================
-
+        
         let allData = [];
-        let filteredData = [];
-        let currentPage = 1;
-        let totalPages = 1;
+        let groupedData = {}; // 结构: { "2026-03-10": [item1, item2], "2026-03-09": [...] }
+        let sortedDates = []; // 结构: ["2026-03-10", "2026-03-09", ...] (降序)
+        
+        let currentDateKey = ""; // 当前查看的日期字符串，如 "2026-03-10"
 
-        // DOM 元素 (底部)
+        // DOM 元素
         const gridEl = document.getElementById('video-grid');
         const loadingEl = document.getElementById('loading-msg');
-        const statsEl = document.getElementById('stats-display');
+        const statsTotalEl = document.getElementById('stats-total');
+        const statsNewestEl = document.getElementById('stats-newest');
+        
         const paginationEl = document.getElementById('pagination');
-        const pageInfoEl = document.getElementById('page-info');
+        const topPaginationEl = document.getElementById('top-pagination');
+        
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-        
-        // DOM 元素 (顶部)
-        const topPaginationEl = document.getElementById('top-pagination');
-        const topPageInfoEl = document.getElementById('top-page-info');
         const topPrevBtn = document.getElementById('top-prev-btn');
         const topNextBtn = document.getElementById('top-next-btn');
-        
-        // 进度条元素
+
+        const pageDateEl = document.getElementById('page-date');
+        const pageCountEl = document.getElementById('page-count');
+        const topPageDateEl = document.getElementById('top-page-date');
+        const topPageCountEl = document.getElementById('top-page-count');
+
         const progressContainer = document.getElementById('progress-container');
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
 
-        async function loadSingleData() {
+        // 辅助：格式化日期字符串 (YYYY-MM-DD)
+        function formatDateKey(dateStr) {
+            if (!dateStr) return "Unknown";
+            try {
+                const d = new Date(dateStr);
+                if (isNaN(d.getTime())) return "Unknown";
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${y}-${m}-${day}`;
+            } catch (e) {
+                return "Unknown";
+            }
+        }
+
+        // 1. 加载并分组数据
+        async function loadDataAndGroup() {
             progressContainer.classList.add('active');
             updateProgress(0, "开始下载远程数据...");
 
             try {
                 const res = await fetch(DATA_URL);
-                
-                if (!res.ok) {
-                    throw new Error(`下载失败 (HTTP ${res.status})`);
-                }
+                if (!res.ok) throw new Error(`下载失败 (HTTP ${res.status})`);
 
-                updateProgress(50, "解析数据中...");
-                
+                updateProgress(40, "解析数据中...");
                 const data = await res.json();
                 
                 if (Array.isArray(data)) {
@@ -423,11 +399,25 @@
                     allData = [data];
                 }
 
-                updateProgress(100, "加载完成");
+                updateProgress(60, "按日期分组中...");
                 
-                setTimeout(() => {
-                    progressContainer.classList.remove('active');
-                }, 800);
+                // 核心逻辑：按日期分组
+                groupedData = {};
+                allData.forEach(item => {
+                    const dateKey = formatDateKey(item.posted_at);
+                    if (!groupedData[dateKey]) {
+                        groupedData[dateKey] = [];
+                    }
+                    groupedData[dateKey].push(item);
+                });
+
+                // 对日期进行排序 (降序：最新的在前面)
+                sortedDates = Object.keys(groupedData).sort((a, b) => {
+                    return new Date(b) - new Date(a);
+                });
+
+                updateProgress(100, "加载完成");
+                setTimeout(() => { progressContainer.classList.remove('active'); }, 800);
                 
                 return true;
             } catch (err) {
@@ -440,87 +430,87 @@
             progressText.innerText = text;
         }
 
+        // 2. 初始化
         async function init() {
-            if (loadingEl.style.display === 'none' && gridEl.children.length > 0 && !loadingEl.innerText.includes("加载失败")) {
+            if (loadingEl.style.display === 'none' && gridEl.children.length > 0) {
                  if(gridEl.children.length === 0) { /* continue */ } else { return; }
             }
 
             loadingEl.style.display = 'block';
-            loadingEl.innerText = `正在加载数据...`;
+            loadingEl.innerText = `正在加载并整理数据...`;
             
             try {
-                await loadSingleData();
+                await loadDataAndGroup();
                 
-                if (allData.length === 0) {
-                    loadingEl.innerHTML = "⚠️ 数据为空";
+                if (sortedDates.length === 0) {
+                    loadingEl.innerHTML = "⚠️ 数据为空或日期格式无法识别";
                     return;
                 }
 
-                filteredData = [...allData];
-                totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
-                
-                // 确保 totalPages 至少为 1
-                if (totalPages < 1) totalPages = 1;
+                // 更新顶部统计
+                const totalCount = allData.length;
+                const newestDate = sortedDates[0];
+                const newestCount = groupedData[newestDate].length;
 
-                const savedPage = localStorage.getItem('videoListCurrentPage');
-                if (savedPage) {
-                    let parsedPage = parseInt(savedPage, 10);
-                    if (parsedPage > totalPages) parsedPage = totalPages;
-                    if (parsedPage < 1) parsedPage = 1;
-                    currentPage = parsedPage;
+                statsTotalEl.innerText = `共 ${totalCount.toLocaleString()} 个视频`;
+                statsNewestEl.style.display = 'inline-block';
+                statsNewestEl.innerText = `✨ 最新 (${newestDate}) 更新 ${newestCount} 部`;
+
+                // 确定当前查看的日期
+                const savedDate = localStorage.getItem('videoListLastDate');
+                if (savedDate && sortedDates.includes(savedDate)) {
+                    currentDateKey = savedDate;
+                } else {
+                    // 默认看最新的一天
+                    currentDateKey = sortedDates[0];
                 }
 
-                statsEl.innerText = `共 ${allData.length.toLocaleString()} 个视频`;
                 loadingEl.style.display = 'none';
                 
-                // 只有当总页数大于1时，才显示分页控件，避免单页时显示禁用的按钮
-                if (totalPages > 1) {
-                    paginationEl.style.display = 'flex';
-                    topPaginationEl.style.display = 'flex';
-                } else {
-                    paginationEl.style.display = 'none';
-                    topPaginationEl.style.display = 'none';
-                }
+                // 显示分页
+                paginationEl.style.display = 'flex';
+                topPaginationEl.style.display = 'flex';
                 
-                renderPage(currentPage);
+                renderPage(currentDateKey);
                 setupEvents();
 
             } catch (err) {
                 console.error(err);
                 progressContainer.classList.remove('active');
-                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请检查网络连接或数据源</small>`;
+                loadingEl.innerHTML = `❌ 加载失败: ${err.message}`;
                 loadingEl.className = 'error';
             }
         }
 
-        function renderPage(page) {
-            currentPage = page;
-            localStorage.setItem('videoListCurrentPage', currentPage);
+        // 3. 渲染指定日期的页面
+        function renderPage(dateKey) {
+            currentDateKey = dateKey;
+            localStorage.setItem('videoListLastDate', dateKey);
 
             gridEl.innerHTML = '';
             
-            const start = (page - 1) * ITEMS_PER_PAGE;
-            const end = start + ITEMS_PER_PAGE;
-            const pageItems = filteredData.slice(start, end);
-
-            if (pageItems.length === 0) {
-                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center;">无匹配结果</div>';
-                updatePaginationUI();
-                return;
+            const items = groupedData[dateKey] || [];
+            
+            if (items.length === 0) {
+                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center;">该日期无数据</div>';
+            } else {
+                // 可以在这里对单日内的数据进行二次排序（确保按时间倒序）
+                // 假设原始数据已经是倒序，但为了保险可以再排一次
+                // items.sort((a,b) => new Date(b.posted_at) - new Date(a.posted_at)); 
+                
+                items.forEach(item => {
+                    const card = createCard(item);
+                    gridEl.appendChild(card);
+                });
             }
-
-            pageItems.forEach(item => {
-                const card = createCard(item);
-                gridEl.appendChild(card);
-            });
 
             updatePaginationUI();
             
-            if (performance.navigation.type == 1 || currentPage > 1) {
-                 window.scrollTo(0, 0);
-            }
+            // 滚动到顶部
+            window.scrollTo(0, 0);
         }
 
+        // 4. 创建卡片 (保持原样)
         function createCard(item) {
             const a = document.createElement('a');
             a.className = 'card';
@@ -554,37 +544,71 @@
             return a;
         }
 
+        // 5. 更新分页 UI
         function updatePaginationUI() {
-            // 如果只有一页，直接隐藏分页栏，避免显示禁用的按钮
-            if (totalPages <= 1) {
-                paginationEl.style.display = 'none';
-                topPaginationEl.style.display = 'none';
-                return;
+            const currentIndex = sortedDates.indexOf(currentDateKey);
+            const count = groupedData[currentDateKey].length;
+            
+            // 格式化显示的日期 (去掉横杠或者保持，这里保持 YYYY-MM-DD 清晰)
+            const displayDate = currentDateKey; 
+
+            // 更新文本
+            pageDateEl.innerText = displayDate;
+            pageCountEl.innerText = `${count} 部`;
+            topPageDateEl.innerText = displayDate;
+            topPageCountEl.innerText = `${count} 部`;
+
+            // 按钮状态
+            // 上一页：索引 + 1 (因为数组是降序，索引越大日期越旧)
+            const hasPrev = currentIndex < sortedDates.length - 1;
+            const hasNext = currentIndex > 0;
+
+            prevBtn.disabled = !hasPrev;
+            nextBtn.disabled = !hasNext;
+            topPrevBtn.disabled = !hasPrev;
+            topNextBtn.disabled = !hasNext;
+            
+            // 按钮文字提示 (可选：显示上一天/下一天的日期)
+            if (hasPrev) {
+                const prevDate = sortedDates[currentIndex + 1];
+                const prevCount = groupedData[prevDate].length;
+                prevBtn.innerHTML = `⬅ ${prevDate} (${prevCount})`;
+                topPrevBtn.innerHTML = `⬅ ${prevDate} (${prevCount})`;
             } else {
-                // 确保在多页时显示
-                paginationEl.style.display = 'flex';
-                topPaginationEl.style.display = 'flex';
+                prevBtn.innerHTML = `⬅ 最早的一天`;
+                topPrevBtn.innerHTML = `⬅ 最早的一天`;
             }
 
-            const infoText = `第 ${currentPage} / ${totalPages} 页`;
-            
-            // 更新底部
-            pageInfoEl.innerText = infoText;
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
-
-            // 更新顶部
-            topPageInfoEl.innerText = infoText;
-            topPrevBtn.disabled = currentPage === 1;
-            topNextBtn.disabled = currentPage === totalPages;
+            if (hasNext) {
+                const nextDate = sortedDates[currentIndex - 1];
+                const nextCount = groupedData[nextDate].length;
+                nextBtn.innerHTML = `${nextDate} (${nextCount}) ➡`;
+                topNextBtn.innerHTML = `${nextDate} (${nextCount}) ➡`;
+            } else {
+                nextBtn.innerHTML = `最新的一天 ➡`;
+                topNextBtn.innerHTML = `最新的一天 ➡`;
+            }
         }
 
         function setupEvents() {
-            prevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
-            nextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
+            const goToPrev = () => {
+                const idx = sortedDates.indexOf(currentDateKey);
+                if (idx < sortedDates.length - 1) {
+                    renderPage(sortedDates[idx + 1]);
+                }
+            };
 
-            topPrevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
-            topNextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
+            const goToNext = () => {
+                const idx = sortedDates.indexOf(currentDateKey);
+                if (idx > 0) {
+                    renderPage(sortedDates[idx - 1]);
+                }
+            };
+
+            prevBtn.onclick = goToPrev;
+            nextBtn.onclick = goToNext;
+            topPrevBtn.onclick = goToPrev;
+            topNextBtn.onclick = goToNext;
         }
 
         function formatNumber(num) {

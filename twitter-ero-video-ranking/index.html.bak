@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🔞 ✖.com 的视频🔞 </title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-main: #ffffff;
+            --text-sub: #aaaaaa;
+            --accent: #1db954;
+            --hover: #3d3d3d;
+            --progress-bg: #444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- 密码保护相关样式 --- */
+        #login-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            backdrop-filter: blur(5px);
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 300px;
+            border: 1px solid #444;
+        }
+
+        .login-box h2 {
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #1a1a1a;
+            border: 1px solid #555;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .login-input:focus {
+            border-color: var(--accent);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #1ed760;
+        }
+
+        .login-error {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* 顶部控制栏 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stats { font-size: 1.2rem; color: var(--text-sub); font-weight: bold; }
+        
+        .tip {
+            font-size: 0.9rem;
+            color: var(--accent);
+            background: rgba(29, 185, 84, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: var(--progress-bg);
+            border-radius: 3px;
+            margin: 15px 0 25px 0;
+            overflow: hidden;
+            display: none; 
+            position: relative;
+        }
+
+        .progress-container.active {
+            display: block;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0%;
+            transition: width 0.3s ease-out;
+            border-radius: 3px;
+        }
+
+        .progress-text {
+            position: absolute;
+            right: 0;
+            top: -20px;
+            font-size: 12px;
+            color: var(--text-sub);
+            white-space: nowrap;
+        }
+
+        /* 视频网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: var(--hover);
+        }
+
+        .thumb-container {
+            position: relative;
+            width: 100%;
+            padding-top: 177.77%; 
+            background: #000;
+        }
+
+        .thumb-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .card:hover .play-overlay { opacity: 1; }
+
+        .play-icon {
+            font-size: 40px;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            width: 60px; height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .duration-badge {
+            position: absolute;
+            bottom: 8px; right: 8px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .info { padding: 12px; }
+
+        .title {
+            font-size: 14px; font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            color: var(--text-main);
+        }
+
+        .meta {
+            font-size: 12px; color: var(--text-sub);
+            display: flex; justify-content: space-between;
+        }
+
+        /* 分页控件 */
+        .pagination {
+            display: flex; justify-content: center; gap: 10px;
+            margin-top: 30px; align-items: center;
+        }
+        
+        /* 顶部分页栏的特殊间距 */
+        #top-pagination {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .page-btn {
+            background: var(--card-bg); border: 1px solid #555;
+            color: white; padding: 8px 16px; border-radius: 4px;
+            cursor: pointer; transition: 0.2s;
+            min-width: 80px; /* 确保按钮有最小宽度，防止文字挤压 */
+        }
+
+        .page-btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; background: #222; }
+        .page-info { margin: 0 10px; color: var(--text-sub); min-width: 100px; text-align: center;}
+
+        .loading { text-align: center; padding: 50px; color: var(--text-sub); }
+        .error { color: #ff4444; text-align: center; padding: 20px; }
+        
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .header { flex-direction: column; align-items: stretch; gap: 15px; }
+            .stats { text-align: center; }
+            .tip { text-align: center; }
+            .page-btn { padding: 6px 10px; font-size: 14px; min-width: 60px; }
+            .page-info { font-size: 12px; margin: 0 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 密码保护遮罩层 -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>🔒 访问验证</h2>
+            <input type="password" id="passwordInput" class="login-input" placeholder="请输入密码" autofocus>
+            <button onclick="checkPassword()" class="login-btn">进入</button>
+            <p id="loginError" class="login-error">密码错误！页面即将关闭...</p>
+        </div>
+    </div>
+
+    <!-- 头部 -->
+    <div class="header">
+        <div class="stats" id="stats-display">准备加载...</div>
+        <div class="tip">💡 点击视频卡片将在新窗口播放</div>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="progress-container" id="progress-container">
+        <span class="progress-text" id="progress-text">0%</span>
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- 顶部翻页控件 -->
+    <div class="pagination" id="top-pagination" style="display:none;">
+        <button class="page-btn" id="top-prev-btn">上一页</button>
+        <span class="page-info" id="top-page-info">第 1 / 1 页</span>
+        <button class="page-btn" id="top-next-btn">下一页</button>
+    </div>
+
+    <!-- 视频列表 -->
+    <div id="video-grid" class="grid"></div>
+    <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
+
+    <!-- 底部翻页控件 (已修复标签错误) -->
+    <div class="pagination" id="pagination" style="display:none;">
+        <button class="page-btn" id="prev-btn">上一页</button>
+        <!-- 修复点：这里原来是 </button>，现在改为 </span> -->
+        <span class="page-info" id="page-info">第 1 / 1 页</span>
+        <button class="page-btn" id="next-btn">下一页</button>
+    </div>
+
+    <script>
+        // ================= 密码保护逻辑 =================
+        const CORRECT_PASSWORD = "821025";
+        const COOKIE_NAME = "x_video_auth_verified";
+        
+        function setPermanentCookie(name, value) {
+            const date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
+        }
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            if (match) return decodeURIComponent(match[2]);
+            return null;
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('loginError');
+            const overlay = document.getElementById('login-overlay');
+
+            if (input === CORRECT_PASSWORD) {
+                setPermanentCookie(COOKIE_NAME, "true");
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                init();
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                setTimeout(() => {
+                    window.close();
+                    if (!window.closed) {
+                        document.body.innerHTML = '<div style="color:red;text-align:center;margin-top:20%;"><h1>⛔ 访问拒绝</h1><p>密码错误</p></div>';
+                    }
+                }, 1500);
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        (function() {
+            if (getCookie(COOKIE_NAME) === "true") {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                setTimeout(init, 50);
+            } else {
+                document.body.style.overflow = 'hidden';
+                document.getElementById('loading-msg').style.display = 'none';
+            }
+        })();
+
+        // ================= 原有配置区域 =================
+        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
+        const ITEMS_PER_PAGE = 120;    
+        // ===========================================
+
+        let allData = [];
+        let filteredData = [];
+        let currentPage = 1;
+        let totalPages = 1;
+
+        // DOM 元素 (底部)
+        const gridEl = document.getElementById('video-grid');
+        const loadingEl = document.getElementById('loading-msg');
+        const statsEl = document.getElementById('stats-display');
+        const paginationEl = document.getElementById('pagination');
+        const pageInfoEl = document.getElementById('page-info');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        // DOM 元素 (顶部)
+        const topPaginationEl = document.getElementById('top-pagination');
+        const topPageInfoEl = document.getElementById('top-page-info');
+        const topPrevBtn = document.getElementById('top-prev-btn');
+        const topNextBtn = document.getElementById('top-next-btn');
+        
+        // 进度条元素
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        async function loadSingleData() {
+            progressContainer.classList.add('active');
+            updateProgress(0, "开始下载远程数据...");
+
+            try {
+                const res = await fetch(DATA_URL);
+                
+                if (!res.ok) {
+                    throw new Error(`下载失败 (HTTP ${res.status})`);
+                }
+
+                updateProgress(50, "解析数据中...");
+                
+                const data = await res.json();
+                
+                if (Array.isArray(data)) {
+                    allData = data;
+                } else if (data.data && Array.isArray(data.data)) {
+                    allData = data.data;
+                } else {
+                    allData = [data];
+                }
+
+                updateProgress(100, "加载完成");
+                
+                setTimeout(() => {
+                    progressContainer.classList.remove('active');
+                }, 800);
+                
+                return true;
+            } catch (err) {
+                throw err;
+            }
+        }
+
+        function updateProgress(percent, text) {
+            progressBar.style.width = `${percent}%`;
+            progressText.innerText = text;
+        }
+
+        async function init() {
+            if (loadingEl.style.display === 'none' && gridEl.children.length > 0 && !loadingEl.innerText.includes("加载失败")) {
+                 if(gridEl.children.length === 0) { /* continue */ } else { return; }
+            }
+
+            loadingEl.style.display = 'block';
+            loadingEl.innerText = `正在加载数据...`;
+            
+            try {
+                await loadSingleData();
+                
+                if (allData.length === 0) {
+                    loadingEl.innerHTML = "⚠️ 数据为空";
+                    return;
+                }
+
+                filteredData = [...allData];
+                totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+                
+                // 确保 totalPages 至少为 1
+                if (totalPages < 1) totalPages = 1;
+
+                const savedPage = localStorage.getItem('videoListCurrentPage');
+                if (savedPage) {
+                    let parsedPage = parseInt(savedPage, 10);
+                    if (parsedPage > totalPages) parsedPage = totalPages;
+                    if (parsedPage < 1) parsedPage = 1;
+                    currentPage = parsedPage;
+                }
+
+                statsEl.innerText = `共 ${allData.length.toLocaleString()} 个视频`;
+                loadingEl.style.display = 'none';
+                
+                // 只有当总页数大于1时，才显示分页控件，避免单页时显示禁用的按钮
+                if (totalPages > 1) {
+                    paginationEl.style.display = 'flex';
+                    topPaginationEl.style.display = 'flex';
+                } else {
+                    paginationEl.style.display = 'none';
+                    topPaginationEl.style.display = 'none';
+                }
+                
+                renderPage(currentPage);
+                setupEvents();
+
+            } catch (err) {
+                console.error(err);
+                progressContainer.classList.remove('active');
+                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请检查网络连接或数据源</small>`;
+                loadingEl.className = 'error';
+            }
+        }
+
+        function renderPage(page) {
+            currentPage = page;
+            localStorage.setItem('videoListCurrentPage', currentPage);
+
+            gridEl.innerHTML = '';
+            
+            const start = (page - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const pageItems = filteredData.slice(start, end);
+
+            if (pageItems.length === 0) {
+                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center;">无匹配结果</div>';
+                updatePaginationUI();
+                return;
+            }
+
+            pageItems.forEach(item => {
+                const card = createCard(item);
+                gridEl.appendChild(card);
+            });
+
+            updatePaginationUI();
+            
+            if (performance.navigation.type == 1 || currentPage > 1) {
+                 window.scrollTo(0, 0);
+            }
+        }
+
+        function createCard(item) {
+            const a = document.createElement('a');
+            a.className = 'card';
+            a.href = item.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            
+            const dateStr = item.posted_at ? new Date(item.posted_at).toLocaleDateString() : 'Unknown';
+            const mins = Math.floor((item.time || 0) / 60);
+            const secs = (item.time || 0) % 60;
+            const durationStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+            const title = item.tweet_account ? `@${item.tweet_account}` : `ID: ${item.id}`;
+
+            a.innerHTML = `
+                <div class="thumb-container">
+                    <img class="thumb-img" src="${item.thumbnail}" loading="lazy" alt="thumb" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
+                    <div class="duration-badge">${durationStr}</div>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="title">${title}</div>
+                    <div class="meta">
+                        <span>👁️ ${formatNumber(item.pv)}</span>
+                        <span>❤️ ${formatNumber(item.favorite)}</span>
+                        <span>${dateStr}</span>
+                    </div>
+                </div>
+            `;
+            return a;
+        }
+
+        function updatePaginationUI() {
+            // 如果只有一页，直接隐藏分页栏，避免显示禁用的按钮
+            if (totalPages <= 1) {
+                paginationEl.style.display = 'none';
+                topPaginationEl.style.display = 'none';
+                return;
+            } else {
+                // 确保在多页时显示
+                paginationEl.style.display = 'flex';
+                topPaginationEl.style.display = 'flex';
+            }
+
+            const infoText = `第 ${currentPage} / ${totalPages} 页`;
+            
+            // 更新底部
+            pageInfoEl.innerText = infoText;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+
+            // 更新顶部
+            topPageInfoEl.innerText = infoText;
+            topPrevBtn.disabled = currentPage === 1;
+            topNextBtn.disabled = currentPage === totalPages;
+        }
+
+        function setupEvents() {
+            prevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
+            nextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
+
+            topPrevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
+            topNextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
+        }
+
+        function formatNumber(num) {
+            if (!num) return '0';
+            num = parseInt(num);
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+            return num.toString();
+        }
+    </script>
+</body>
+</html>
