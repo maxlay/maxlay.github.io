@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎬 X.com 的视频合集</title>
+    <title> 🔞 ✖.com 的视频🔞 </title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -23,7 +23,7 @@
             padding: 20px;
         }
 
-        /* --- 新增：密码保护相关样式 --- */
+        /* --- 密码保护相关样式 --- */
         #login-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -93,7 +93,6 @@
             margin-top: 15px;
             display: none;
         }
-        /* ----------------------------- */
 
         /* 顶部控制栏 */
         .header {
@@ -254,11 +253,12 @@
             background: var(--card-bg); border: 1px solid #555;
             color: white; padding: 8px 16px; border-radius: 4px;
             cursor: pointer; transition: 0.2s;
+            min-width: 80px; /* 确保按钮有最小宽度，防止文字挤压 */
         }
 
         .page-btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
-        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .page-info { margin: 0 10px; color: var(--text-sub); }
+        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; background: #222; }
+        .page-info { margin: 0 10px; color: var(--text-sub); min-width: 100px; text-align: center;}
 
         .loading { text-align: center; padding: 50px; color: var(--text-sub); }
         .error { color: #ff4444; text-align: center; padding: 20px; }
@@ -268,12 +268,14 @@
             .header { flex-direction: column; align-items: stretch; gap: 15px; }
             .stats { text-align: center; }
             .tip { text-align: center; }
+            .page-btn { padding: 6px 10px; font-size: 14px; min-width: 60px; }
+            .page-info { font-size: 12px; margin: 0 5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- === 新增：密码保护遮罩层 === -->
+    <!-- 密码保护遮罩层 -->
     <div id="login-overlay">
         <div class="login-box">
             <h2>🔒 访问验证</h2>
@@ -282,7 +284,6 @@
             <p id="loginError" class="login-error">密码错误！页面即将关闭...</p>
         </div>
     </div>
-    <!-- ========================== -->
 
     <!-- 头部 -->
     <div class="header">
@@ -305,49 +306,44 @@
 
     <!-- 视频列表 -->
     <div id="video-grid" class="grid"></div>
-    <!-- 初始隐藏 loading，防止未验证时看到文字 -->
     <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
 
-    <!-- 底部翻页控件 -->
+    <!-- 底部翻页控件 (已修复标签错误) -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="prev-btn">上一页</button>
-        <span class="page-info" id="page-info">第 1 / 1 页</button>
+        <!-- 修复点：这里原来是 </button>，现在改为 </span> -->
+        <span class="page-info" id="page-info">第 1 / 1 页</span>
         <button class="page-btn" id="next-btn">下一页</button>
     </div>
 
     <script>
-        // ================= 密码保护逻辑 (新增) =================
+        // ================= 密码保护逻辑 =================
         const CORRECT_PASSWORD = "821025";
         const COOKIE_NAME = "x_video_auth_verified";
         
-        // 设置永久 Cookie (10年)
         function setPermanentCookie(name, value) {
             const date = new Date();
             date.setFullYear(date.getFullYear() + 10);
             document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
         }
 
-        // 获取 Cookie
         function getCookie(name) {
             const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
             if (match) return decodeURIComponent(match[2]);
             return null;
         }
 
-        // 验证函数
         function checkPassword() {
             const input = document.getElementById('passwordInput').value;
             const errorMsg = document.getElementById('loginError');
             const overlay = document.getElementById('login-overlay');
 
             if (input === CORRECT_PASSWORD) {
-                // 成功：设置 Cookie，隐藏遮罩，启动主程序
                 setPermanentCookie(COOKIE_NAME, "true");
                 overlay.style.display = 'none';
-                document.body.style.overflow = 'auto'; // 恢复滚动
-                init(); // 启动原有的加载逻辑
+                document.body.style.overflow = 'auto';
+                init();
             } else {
-                // 失败
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').value = '';
                 setTimeout(() => {
@@ -359,32 +355,23 @@
             }
         }
 
-        // 支持回车键
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
 
-        // 页面加载时立即检查
         (function() {
             if (getCookie(COOKIE_NAME) === "true") {
-                // 已有记录，直接隐藏遮罩并启动
                 document.getElementById('login-overlay').style.display = 'none';
                 document.body.style.overflow = 'auto';
-                // 延迟一点点确保 DOM 就绪，然后启动原有逻辑
                 setTimeout(init, 50);
             } else {
-                // 无记录，保持遮罩，禁止背景滚动
                 document.body.style.overflow = 'hidden';
-                // 确保 loading 信息在验证前不可见
                 document.getElementById('loading-msg').style.display = 'none';
             }
         })();
-        // =======================================================
 
         // ================= 原有配置区域 =================
-        // 修改点：直接指定单个 JSON 文件的 URL
         const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
-        
         const ITEMS_PER_PAGE = 120;    
         // ===========================================
 
@@ -413,7 +400,6 @@
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
 
-        // 1. 单文件加载函数
         async function loadSingleData() {
             progressContainer.classList.add('active');
             updateProgress(0, "开始下载远程数据...");
@@ -422,25 +408,23 @@
                 const res = await fetch(DATA_URL);
                 
                 if (!res.ok) {
-                    throw new Error(`下载失败 (HTTP ${res.status})\nURL: ${DATA_URL}`);
+                    throw new Error(`下载失败 (HTTP ${res.status})`);
                 }
 
                 updateProgress(50, "解析数据中...");
                 
                 const data = await res.json();
                 
-                // 处理可能的数据结构差异 (有时数据可能在 data 字段下，有时直接是数组)
                 if (Array.isArray(data)) {
                     allData = data;
                 } else if (data.data && Array.isArray(data.data)) {
                     allData = data.data;
                 } else {
-                    allData = [data]; // 如果既不是数组也没有 data 字段，尝试作为单个对象处理
+                    allData = [data];
                 }
 
                 updateProgress(100, "加载完成");
                 
-                // 短暂延迟后隐藏进度条，让用户感知到完成
                 setTimeout(() => {
                     progressContainer.classList.remove('active');
                 }, 800);
@@ -456,16 +440,11 @@
             progressText.innerText = text;
         }
 
-        // 2. 初始化加载
         async function init() {
-            // 防止重复初始化（如果用户快速操作）
             if (loadingEl.style.display === 'none' && gridEl.children.length > 0 && !loadingEl.innerText.includes("加载失败")) {
-                 // 如果已经有内容且不是错误状态，可能是 Cookie 验证后已经运行过一次，这里做个简单保护
-                 // 但为了保险起见，如果是第一次通过 Cookie 进入，gridEl 是空的，会继续执行
                  if(gridEl.children.length === 0) { /* continue */ } else { return; }
             }
 
-            // 显示 Loading
             loadingEl.style.display = 'block';
             loadingEl.innerText = `正在加载数据...`;
             
@@ -480,11 +459,12 @@
                 filteredData = [...allData];
                 totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
                 
-                // 从 LocalStorage 读取上次的页码
+                // 确保 totalPages 至少为 1
+                if (totalPages < 1) totalPages = 1;
+
                 const savedPage = localStorage.getItem('videoListCurrentPage');
                 if (savedPage) {
                     let parsedPage = parseInt(savedPage, 10);
-                    // 防止保存的页码超出范围
                     if (parsedPage > totalPages) parsedPage = totalPages;
                     if (parsedPage < 1) parsedPage = 1;
                     currentPage = parsedPage;
@@ -493,9 +473,14 @@
                 statsEl.innerText = `共 ${allData.length.toLocaleString()} 个视频`;
                 loadingEl.style.display = 'none';
                 
-                // 显示顶部和底部分页栏
-                paginationEl.style.display = 'flex';
-                topPaginationEl.style.display = 'flex';
+                // 只有当总页数大于1时，才显示分页控件，避免单页时显示禁用的按钮
+                if (totalPages > 1) {
+                    paginationEl.style.display = 'flex';
+                    topPaginationEl.style.display = 'flex';
+                } else {
+                    paginationEl.style.display = 'none';
+                    topPaginationEl.style.display = 'none';
+                }
                 
                 renderPage(currentPage);
                 setupEvents();
@@ -503,16 +488,13 @@
             } catch (err) {
                 console.error(err);
                 progressContainer.classList.remove('active');
-                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请确保以下文件可访问:<br>${DATA_URL}</small>`;
+                loadingEl.innerHTML = `❌ 加载失败: ${err.message}<br><small>请检查网络连接或数据源</small>`;
                 loadingEl.className = 'error';
             }
         }
 
-        // 3. 渲染当前页
         function renderPage(page) {
             currentPage = page;
-            
-            // 保存当前页码到 LocalStorage
             localStorage.setItem('videoListCurrentPage', currentPage);
 
             gridEl.innerHTML = '';
@@ -534,15 +516,11 @@
 
             updatePaginationUI();
             
-            // 滚动逻辑
-            if (performance.navigation.type == 1) { 
-                 window.scrollTo(0, 0);
-            } else if (currentPage > 1) {
+            if (performance.navigation.type == 1 || currentPage > 1) {
                  window.scrollTo(0, 0);
             }
         }
 
-        // 4. 创建卡片
         function createCard(item) {
             const a = document.createElement('a');
             a.className = 'card';
@@ -576,8 +554,18 @@
             return a;
         }
 
-        // 5. 分页逻辑更新
         function updatePaginationUI() {
+            // 如果只有一页，直接隐藏分页栏，避免显示禁用的按钮
+            if (totalPages <= 1) {
+                paginationEl.style.display = 'none';
+                topPaginationEl.style.display = 'none';
+                return;
+            } else {
+                // 确保在多页时显示
+                paginationEl.style.display = 'flex';
+                topPaginationEl.style.display = 'flex';
+            }
+
             const infoText = `第 ${currentPage} / ${totalPages} 页`;
             
             // 更新底部
@@ -592,11 +580,9 @@
         }
 
         function setupEvents() {
-            // 底部按钮事件
             prevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
             nextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
 
-            // 顶部按钮事件
             topPrevBtn.onclick = () => { if (currentPage > 1) renderPage(currentPage - 1); };
             topNextBtn.onclick = () => { if (currentPage < totalPages) renderPage(currentPage + 1); };
         }
@@ -608,9 +594,6 @@
             if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
             return num.toString();
         }
-
-        // 注意：init() 现在由密码验证逻辑调用，不再自动在底部调用
-        // init(); 
     </script>
 </body>
 </html>
