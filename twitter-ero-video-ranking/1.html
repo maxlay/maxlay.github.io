@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎬 沉浸式竖屏视频流</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --text-sub: #cccccc;
+            --accent: #fe2c55; /* TikTok 红 */
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden; /* 禁止 body 滚动，由容器接管 */
+        }
+
+        /* --- 密码保护遮罩层 (同前) --- */
+        #login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 99999;
+            display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .login-box {
+            background: #222; padding: 30px; border-radius: 12px;
+            text-align: center; width: 80%; max-width: 320px;
+            border: 1px solid #444;
+        }
+        .login-input {
+            width: 100%; padding: 12px; margin: 15px 0;
+            background: #333; border: 1px solid #555; color: white;
+            border-radius: 6px; text-align: center; font-size: 16px;
+        }
+        .login-btn {
+            width: 100%; padding: 12px; background: var(--accent);
+            color: white; border: none; border-radius: 6px;
+            font-weight: bold; cursor: pointer;
+        }
+        .login-error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
+        /* ----------------------------- */
+
+        /* --- 核心：抖音式滚动容器 --- */
+        #video-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory; /* 关键：Y轴强制吸附 */
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
+        }
+
+        /* 隐藏滚动条 (Chrome/Safari) */
+        #video-container::-webkit-scrollbar { display: none; }
+        /* 隐藏滚动条 (Firefox) */
+        #video-container { scrollbar-width: none; }
+
+        /* --- 单个视频卡片 --- */
+        .video-card {
+            position: relative;
+            width: 100%;
+            height: 100%; /* 占满整个视口 */
+            scroll-snap-align: start; /* 关键：吸附起始位置 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            overflow: hidden;
+        }
+
+        /* 视频元素本身 */
+        .video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 覆盖填充，类似抖音 */
+            display: block;
+        }
+
+        /* 视频信息覆盖层 */
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 15px 80px 15px; /* 底部留白给手势区 */
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            pointer-events: none; /* 让点击穿透到视频 */
+            z-index: 10;
+        }
+
+        .video-account {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .video-meta {
+            font-size: 14px;
+            color: var(--text-sub);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* 加载中提示 */
+        .loading-state {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; font-size: 16px;
+            z-index: 50;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: none;
+        }
+
+        /* 错误/空状态 */
+        .empty-state {
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            height: 100%; text-align: center; padding: 20px;
+            color: #888;
+        }
+        
+        /* 暂停图标 (可选) */
+        .pause-icon {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: rgba(255,255,255,0.8);
+            display: none;
+            pointer-events: none;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 密码保护遮罩 -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="margin:0 0 10px 0;">🔒 验证访问</h2>
+            <p style="font-size:12px; color:#aaa; margin:0;">请输入密码查看竖屏视频</p>
+            <input type="password" id="passwordInput" class="login-input" placeholder="密码" autofocus>
+            <button onclick="checkPassword()" class="login-btn">进入</button>
+            <p id="loginError" class="login-error">密码错误！</p>
+        </div>
+    </div>
+
+    <!-- 2. 视频流容器 -->
+    <div id="video-container">
+        <!-- 视频卡片将通过 JS 动态插入这里 -->
+    </div>
+
+    <!-- 3. 状态提示 -->
+    <div id="loading-msg" class="loading-state">正在加载视频...</div>
+    <div id="empty-msg" class="empty-state" style="display:none;">
+        <h2>😕 没有找到竖屏视频</h2>
+        <p>数据源中可能没有符合 A&lt;B 分辨率的视频，或者网络加载失败。</p>
+    </div>
+
+    <script>
+        // ================= 配置与全局变量 =================
+        const CORRECT_PASSWORD = "821025";
+        const COOKIE_NAME = "tiktok_style_auth";
+        // 你的数据源 URL
+        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
+        
+        let allVideos = []; // 存储筛选后的竖屏视频数据
+
+        // ================= 密码保护逻辑 =================
+        function setPermanentCookie(name, value) {
+            const date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
+        }
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('loginError');
+            if (input === CORRECT_PASSWORD) {
+                setPermanentCookie(COOKIE_NAME, "true");
+                document.getElementById('login-overlay').style.display = 'none';
+                initApp(); // 启动应用
+            } else {
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    window.close();
+                    if (!window.closed) document.body.innerHTML = '<div style="color:red;text-align:center;margin-top:20%"><h1>⛔ 拒绝访问</h1></div>';
+                }, 1500);
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', e => { if(e.key==='Enter') checkPassword(); });
+
+        // 页面加载检查
+        (function() {
+            if (getCookie(COOKIE_NAME) === "true") {
+                document.getElementById('login-overlay').style.display = 'none';
+                setTimeout(initApp, 50);
+            } else {
+                document.body.style.overflow = 'hidden';
+            }
+        })();
+
+        // ================= 核心业务逻辑 =================
+
+        // 1. 初始化应用
+        async function initApp() {
+            const loadingEl = document.getElementById('loading-msg');
+            const emptyEl = document.getElementById('empty-msg');
+            const container = document.getElementById('video-container');
+
+            loadingEl.style.display = 'block';
+
+            try {
+                const res = await fetch(DATA_URL);
+                if (!res.ok) throw new Error('网络响应失败');
+                
+                const data = await res.json();
+                const rawData = Array.isArray(data) ? data : (data.data || []);
+
+                // 2. 筛选竖屏视频 (关键步骤)
+                allVideos = filterVerticalVideos(rawData);
+
+                loadingEl.style.display = 'none';
+
+                if (allVideos.length === 0) {
+                    emptyEl.style.display = 'flex';
+                    return;
+                }
+
+                // 3. 渲染视频列表
+                renderVideos(allVideos);
+
+                // 4. 设置观察器 (自动播放/暂停)
+                setupIntersectionObserver();
+
+            } catch (err) {
+                console.error(err);
+                loadingEl.innerText = '加载失败：' + err.message;
+                loadingEl.style.color = '#ff4444';
+            }
+        }
+
+        // 筛选函数：解析 URL 中的分辨率，只保留 宽 < 高
+        function filterVerticalVideos(videos) {
+            return videos.filter(item => {
+                if (!item.url) return false;
+                
+                // 尝试从 URL 中提取 WxH (例如 1080x1920)
+                // 匹配模式：数字 x 数字
+                const regex = /(\d+)x(\d+)/i;
+                const match = item.url.match(regex);
+
+                if (match) {
+                    const width = parseInt(match[1], 10);
+                    const height = parseInt(match[2], 10);
+                    
+                    // 核心判断：宽 < 高 才是竖屏
+                    if (width < height) {
+                        console.log(`✅ 选中竖屏: ${width}x${height} - ${item.tweet_account || item.id}`);
+                        return true;
+                    } else {
+                        // console.log(`❌ 跳过横屏/方屏: ${width}x${height}`);
+                        return false;
+                    }
+                }
+                
+                // 如果 URL 里没有分辨率信息，可以根据 thumbnail 比例判断，或者直接跳过
+                // 为了严谨，这里选择跳过无法判断分辨率的视频，防止横屏混入
+                return false;
+            });
+        }
+
+        // 渲染 DOM
+        function renderVideos(videos) {
+            const container = document.getElementById('video-container');
+            const fragment = document.createDocumentFragment();
+
+            videos.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                
+                // 构建 HTML
+                // 注意：autoplay 需要 muted 才能在大多数浏览器自动播放
+                card.innerHTML = `
+                    <video class="video-player" 
+                        src="${item.url}" 
+                        loop 
+                        playsinline 
+                        webkit-playsinline 
+                        muted 
+                        preload="metadata"
+                        data-index="${index}">
+                    </video>
+                    <div class="pause-icon">⏸</div>
+                    <div class="video-overlay">
+                        <div class="video-account">@${item.tweet_account || 'Unknown'}</div>
+                        <div class="video-meta">
+                            <span>❤️ ${formatNum(item.favorite)}</span>
+                            <span>👁️ ${formatNum(item.pv)}</span>
+                            <span>📅 ${item.posted_at ? new Date(item.posted_at).toLocaleDateString() : ''}</span>
+                        </div>
+                    </div>
+                `;
+                fragment.appendChild(card);
+            });
+
+            container.appendChild(fragment);
+        }
+
+        // 设置 IntersectionObserver 实现自动播放/暂停
+        function setupIntersectionObserver() {
+            const options = {
+                root: document.getElementById('video-container'),
+                threshold: 0.6 // 当视频 60% 可见时触发
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    const pauseIcon = entry.target.querySelector('.pause-icon');
+                    
+                    if (!video) return;
+
+                    if (entry.isIntersecting) {
+                        // 进入视口：尝试播放
+                        // 浏览器策略：必须先 muted 才能 autoplay
+                        video.muted = true; 
+                        const playPromise = video.play();
+                        
+                        if (playPromise !== undefined) {
+                            playPromise.then(_ => {
+                                // 播放成功
+                                pauseIcon.style.display = 'none';
+                            }).catch(error => {
+                                console.log("自动播放被阻止:", error);
+                                // 如果自动播放失败，显示暂停图标，等待用户点击
+                                pauseIcon.style.display = 'block';
+                            });
+                        }
+                    } else {
+                        // 离开视口：暂停
+                        video.pause();
+                        // 可选：重置 currentTime 以便下次从头播放，或者保留进度
+                        // video.currentTime = 0; 
+                    }
+                });
+            }, options);
+
+            // 监听所有视频卡片
+            document.querySelectorAll('.video-card').forEach(card => {
+                observer.observe(card);
+                
+                // 添加点击切换播放/暂停功能
+                card.addEventListener('click', () => {
+                    const video = card.querySelector('video');
+                    const pauseIcon = card.querySelector('.pause-icon');
+                    
+                    if (video.paused) {
+                        video.play();
+                        pauseIcon.style.display = 'none';
+                        video.muted = false; // 用户交互后取消静音
+                    } else {
+                        video.pause();
+                        pauseIcon.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        function formatNum(num) {
+            if (!num) return '0';
+            num = parseInt(num);
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+            return num.toString();
+        }
+    </script>
+</body>
+</html>
