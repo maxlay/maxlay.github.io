@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎬 沉浸式竖屏 (智能内存版)</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --text-sub: #cccccc;
+            --accent: #fe2c55;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color); color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- 密码保护 --- */
+        #login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 99999;
+            display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .login-box {
+            background: #222; padding: 30px; border-radius: 12px;
+            text-align: center; width: 80%; max-width: 320px;
+            border: 1px solid #444;
+        }
+        .login-input {
+            width: 100%; padding: 12px; margin: 15px 0;
+            background: #333; border: 1px solid #555; color: white;
+            border-radius: 6px; text-align: center; font-size: 16px; outline: none;
+        }
+        .login-input:focus { border-color: var(--accent); }
+        .login-btn {
+            width: 100%; padding: 12px; background: var(--accent);
+            color: white; border: none; border-radius: 6px;
+            font-weight: bold; cursor: pointer; font-size: 16px;
+        }
+        .login-error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
+
+        /* --- 滚动容器 --- */
+        #video-container {
+            width: 100%; height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: auto; /* 禁用平滑滚动以保证定位精准 */
+            -webkit-overflow-scrolling: touch;
+        }
+        #video-container::-webkit-scrollbar { display: none; }
+        #video-container { scrollbar-width: none; }
+
+        /* --- 视频卡片 --- */
+        .video-card {
+            position: relative;
+            width: 100%; height: 100%;
+            scroll-snap-align: start;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 关键：未激活时允许快速销毁/重建 */
+            contain: layout style paint; 
+        }
+
+        .video-frame {
+            width: 100%; height: 100%;
+            border: none;
+            display: block;
+            pointer-events: none; /* 默认禁止交互，防止误触 */
+            background: #000;
+        }
+
+        .interaction-shield {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 10;
+            background: transparent;
+        }
+        
+        .video-card.active .interaction-shield {
+            opacity: 0; pointer-events: none;
+        }
+        .video-card.active .video-frame {
+            pointer-events: auto;
+        }
+
+        .tap-hint {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s;
+            z-index: 5;
+            text-align: center;
+        }
+        .video-card.active .tap-hint { opacity: 0; }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 20px 15px 80px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            pointer-events: none;
+            z-index: 20;
+        }
+        .video-account {
+            font-size: 18px; font-weight: 700; margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .video-meta {
+            font-size: 14px; color: var(--text-sub);
+            display: flex; gap: 15px; align-items: center;
+        }
+
+        .loading-state, .empty-state {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; z-index: 50; color: #fff;
+        }
+        .loading-state {
+            background: rgba(0,0,0,0.7); padding: 15px 30px;
+            border-radius: 30px; display: none;
+        }
+        .empty-state { display: none; width: 80%; }
+        
+        /* 占位符样式 (当 iframe 被移除时显示) */
+        .placeholder {
+            color: #444; font-size: 14px; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 密码保护 -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="margin:0 0 10px 0;">🔒 验证访问</h2>
+            <p style="font-size:12px; color:#aaa; margin:0;">请输入密码</p>
+            <input type="password" id="passwordInput" class="login-input" placeholder="密码" autofocus>
+            <button onclick="checkPassword()" class="login-btn">进入</button>
+            <p id="loginError" class="login-error">密码错误！</p>
+        </div>
+    </div>
+
+    <!-- 2. 视频流容器 -->
+    <div id="video-container">
+        <!-- 动态插入 -->
+    </div>
+
+    <!-- 3. 状态 -->
+    <div id="loading-msg" class="loading-state">正在整理视频队列...</div>
+    <div id="empty-msg" class="empty-state">
+        <h2>😕 未找到合适的视频</h2>
+        <p>数据源中可能没有符合竖屏 (A&lt;B) 分辨率的视频。</p>
+    </div>
+
+    <script>
+        // ================= 配置 =================
+        const CORRECT_PASSWORD = "821025";
+        const COOKIE_AUTH = "tiktok_iframe_auth";
+        const COOKIE_PROGRESS = "tiktok_play_progress"; // 记录进度
+        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
+        
+        // 内存管理配置
+        const KEEP_RANGE = 2; // 保持当前视频上下各多少个视频在 DOM 中 (1=仅当前，2=当前+上下各1个)
+        
+        let allVideos = []; // 排序后的数据
+        let currentIndex = -1; // 当前正在播放的索引
+        let isScrolling = false;
+        let scrollTimeout = null;
+
+        // ================= 密码逻辑 =================
+        function setPermanentCookie(name, value, days = 3650) {
+            const date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
+        }
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('loginError');
+            if (input === CORRECT_PASSWORD) {
+                setPermanentCookie(COOKIE_AUTH, "true");
+                document.getElementById('login-overlay').style.display = 'none';
+                initApp();
+            } else {
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    window.close();
+                    if (!window.closed) document.body.innerHTML = '<div style="color:red;text-align:center;margin-top:20%"><h1>⛔ 拒绝访问</h1></div>';
+                }, 1500);
+            }
+        }
+        document.getElementById('passwordInput').addEventListener('keypress', e => { if(e.key==='Enter') checkPassword(); });
+
+        (function() {
+            if (getCookie(COOKIE_AUTH) === "true") {
+                document.getElementById('login-overlay').style.display = 'none';
+                setTimeout(initApp, 50);
+            } else {
+                document.body.style.overflow = 'hidden';
+            }
+        })();
+
+        // ================= 核心逻辑 =================
+
+        async function initApp() {
+            const loadingEl = document.getElementById('loading-msg');
+            const emptyEl = document.getElementById('empty-msg');
+            const container = document.getElementById('video-container');
+
+            loadingEl.style.display = 'block';
+            loadingEl.innerText = "正在下载并排序视频...";
+
+            try {
+                const res = await fetch(DATA_URL);
+                if (!res.ok) throw new Error('网络响应失败');
+                const data = await res.json();
+                const rawData = Array.isArray(data) ? data : (data.data || []);
+
+                // 1. 筛选竖屏
+                let filtered = filterVerticalVideos(rawData);
+                
+                // 2. 【关键】按时间从旧到新排序 (posted_at 升序)
+                // 这样索引 0 是最旧的，索引 N 是最新的。用户向上滑 (index 增加) 是看新视频。
+                filtered.sort((a, b) => {
+                    const timeA = new Date(a.posted_at || 0).getTime();
+                    const timeB = new Date(b.posted_at || 0).getTime();
+                    return timeA - timeB;
+                });
+
+                allVideos = filtered;
+                loadingEl.style.display = 'none';
+
+                if (allVideos.length === 0) {
+                    emptyEl.style.display = 'block';
+                    return;
+                }
+
+                // 3. 恢复进度
+                restoreProgress();
+
+                // 4. 初始渲染 (只渲染可见区域附近)
+                renderVisibleRange();
+
+                // 5. 绑定滚动监听
+                setupScrollListener();
+                setupInteraction();
+
+            } catch (err) {
+                console.error(err);
+                loadingEl.innerText = '加载失败：' + err.message;
+                loadingEl.style.color = '#ff4444';
+                loadingEl.style.background = 'rgba(50,0,0,0.8)';
+            }
+        }
+
+        function filterVerticalVideos(videos) {
+            return videos.filter(item => {
+                if (!item.url) return false;
+                const regex = /(\d+)x(\d+)/i;
+                const match = item.url.match(regex);
+                if (match) {
+                    const w = parseInt(match[1], 10);
+                    const h = parseInt(match[2], 10);
+                    return w < h;
+                }
+                return false;
+            });
+        }
+
+        // 恢复进度逻辑
+        function restoreProgress() {
+            const progressStr = getCookie(COOKIE_PROGRESS);
+            if (progressStr) {
+                try {
+                    const progress = JSON.parse(progressStr);
+                    const targetId = progress.id;
+                    
+                    // 查找该 ID 在排序后数组中的索引
+                    const index = allVideos.findIndex(v => v.id === targetId);
+                    
+                    if (index !== -1) {
+                        currentIndex = index;
+                        // 延迟一点滚动，确保 DOM 已准备
+                        setTimeout(() => {
+                            const container = document.getElementById('video-container');
+                            const cardHeight = container.clientHeight;
+                            container.scrollTop = index * cardHeight;
+                            console.log(`✅ 恢复到视频索引: ${index}, ID: ${targetId}`);
+                        }, 100);
+                        return;
+                    }
+                } catch (e) {
+                    console.warn("进度解析失败", e);
+                }
+            }
+            // 默认从第一个开始
+            currentIndex = 0;
+        }
+
+        // 保存进度
+        function saveProgress(index) {
+            if (index < 0 || index >= allVideos.length) return;
+            const video = allVideos[index];
+            const data = {
+                id: video.id,
+                index: index,
+                timestamp: Date.now()
+            };
+            // 使用会话 Cookie 或短期 Cookie，这里设为 7 天
+            const date = new Date();
+            date.setDate(date.getDate() + 7);
+            document.cookie = `${COOKIE_PROGRESS}=${encodeURIComponent(JSON.stringify(data))}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
+        }
+
+        // 渲染可见范围 (虚拟滚动核心)
+        function renderVisibleRange() {
+            const container = document.getElementById('video-container');
+            const cardHeight = container.clientHeight || window.innerHeight;
+            
+            // 计算当前应该显示的索引范围
+            // scrollTop / cardHeight 得到大概的索引
+            const scrollIndex = Math.round(container.scrollTop / cardHeight);
+            
+            // 如果索引没变，且 DOM 已经存在，则不需要重绘（优化性能）
+            if (Math.abs(scrollIndex - currentIndex) < 0.5 && container.children.length > 0) {
+                // 仅仅更新激活状态，不重绘 DOM
+                updateActiveState(scrollIndex);
+                return;
+            }
+
+            currentIndex = Math.max(0, Math.min(scrollIndex, allVideos.length - 1));
+            
+            // 确定需要保留的范围 [start, end]
+            const start = Math.max(0, currentIndex - KEEP_RANGE);
+            const end = Math.min(allVideos.length - 1, currentIndex + KEEP_RANGE);
+
+            // 清理不在范围内的 DOM
+            const cards = Array.from(container.children);
+            cards.forEach((card, idx) => {
+                const cardIndex = parseInt(card.dataset.index);
+                if (cardIndex < start || cardIndex > end) {
+                    // 移除 DOM，释放内存 (iframe 会被销毁)
+                    card.remove();
+                }
+            });
+
+            // 补充缺失的 DOM
+            for (let i = start; i <= end; i++) {
+                if (!document.querySelector(`.video-card[data-index="${i}"]`)) {
+                    createVideoCard(i, container);
+                }
+            }
+
+            updateActiveState(currentIndex);
+            saveProgress(currentIndex);
+        }
+
+        function createVideoCard(index, container) {
+            const item = allVideos[index];
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.dataset.index = index;
+            // 初始高度设为 100%，由 CSS 控制
+            card.style.height = '100%'; 
+
+            // 只有当 index == currentIndex 时才立即加载 src，否则可以先不加载 src 或者加载但由 CSS 隐藏？
+            // 为了"还未播放的视频只加载一个"，我们策略是：
+            // 当前 (currentIndex): 立即加载 src
+            // 下一个 (currentIndex + 1): 立即加载 src (预加载)，但不播放 (iframe 内部自控)
+            // 其他: 暂时不设置 src，或者设置 src 但等待进入范围
+            
+            // 优化：为了体验流畅，我们在创建时就设置 src，依靠浏览器自身的缓存和 iframe 生命周期。
+            // 但如果要严格节省流量，可以只对 current 和 current+1 设置 src。
+            const shouldLoadSrc = (index <= currentIndex + 1);
+            const srcAttr = shouldLoadSrc ? `src="${item.url}"` : '';
+            const loadingAttr = shouldLoadSrc ? '' : 'loading="lazy"';
+
+            card.innerHTML = `
+                <iframe class="video-frame" 
+                    ${srcAttr}
+                    ${loadingAttr}
+                    scrolling="no" 
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                    data-index="${index}">
+                </iframe>
+                <div class="interaction-shield"></div>
+                <div class="tap-hint">点击交互<br><span style="font-size:10px;opacity:0.7">(暂停/音量)</span></div>
+                <div class="video-overlay">
+                    <div class="video-account">@${item.tweet_account || 'Unknown'}</div>
+                    <div class="video-meta">
+                        <span>❤️ ${formatNum(item.favorite)}</span>
+                        <span>👁️ ${formatNum(item.pv)}</span>
+                        <span>📅 ${item.posted_at ? new Date(item.posted_at).toLocaleDateString() : ''}</span>
+                    </div>
+                </div>
+            `;
+            
+            // 简单的插入排序，保持 DOM 顺序
+            const nextSibling = Array.from(container.children).find(c => parseInt(c.dataset.index) > index);
+            if (nextSibling) {
+                container.insertBefore(card, nextSibling);
+            } else {
+                container.appendChild(card);
+            }
+
+            // 如果这是当前激活的，立即设置 src (如果之前没设)
+            if (index === currentIndex && !shouldLoadSrc) {
+                 const iframe = card.querySelector('iframe');
+                 iframe.src = item.url;
+            }
+        }
+
+        function updateActiveState(activeIndex) {
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                const idx = parseInt(card.dataset.index);
+                const iframe = card.querySelector('iframe');
+                const item = allVideos[idx];
+
+                if (idx === activeIndex) {
+                    // 激活当前
+                    card.classList.add('active');
+                    // 确保 src 存在
+                    if (!iframe.src || iframe.src === window.location.href) {
+                        iframe.src = item.url;
+                    }
+                } else {
+                    // 取消激活
+                    card.classList.remove('active');
+                    // 可选策略：如果离得太远，上面 renderVisibleRange 已经移除了。
+                    // 如果只是相邻但未激活，我们可以选择不移除 src，让浏览器挂着，
+                    // 或者为了省流，移除 src (但这会导致滑回来要重新加载)
+                    // 鉴于要求"还未播放的只加载一个"，我们保持 iframe 存在但非激活状态通常不会消耗太多 CPU，
+                    // 除非 iframe 内部有定时器。Twitter 的播放器通常在不可见时会暂停。
+                }
+            });
+        }
+
+        function setupScrollListener() {
+            const container = document.getElementById('video-container');
+            let ticking = false;
+
+            container.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        renderVisibleRange();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+                
+                // 防抖保存进度
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    saveProgress(currentIndex);
+                }, 1000);
+            });
+        }
+
+        function setupInteraction() {
+            // 委托事件处理
+            document.getElementById('video-container').addEventListener('click', (e) => {
+                const shield = e.target.closest('.interaction-shield');
+                if (shield) {
+                    const card = shield.parentElement;
+                    const cards = document.querySelectorAll('.video-card');
+                    
+                    // 取消其他
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('active');
+                    });
+                    
+                    // 激活当前
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        function formatNum(num) {
+            if (!num) return '0';
+            num = parseInt(num);
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+            return num.toString();
+        }
+    </script>
+</body>
+</html>
