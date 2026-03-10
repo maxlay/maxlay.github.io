@@ -94,19 +94,25 @@
         /* --- 视频网格 --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(2, 1fr); /* 默认手机 2 列 */
+            gap: 10px;
         }
+        
         .card {
-            background: var(--card-bg); border-radius: 8px; overflow: hidden;
+            background: var(--card-bg); border-radius: 6px; overflow: hidden;
             cursor: pointer; transition: transform 0.2s;
             position: relative; text-decoration: none; color: inherit; display: block;
         }
         .card:active { transform: scale(0.98); }
         .card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.4); }
+        
         .thumb-container {
-            position: relative; width: 100%; padding-top: 177.77%; background: #000;
+            position: relative; width: 100%; 
+            /* 保持 9:16 视频比例，如果需要更短可改为 130% 或 150% */
+            padding-top: 177.77%; 
+            background: #000;
         }
+        
         .thumb-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
         }
@@ -117,23 +123,23 @@
         }
         .card:hover .play-overlay { opacity: 1; }
         .play-icon {
-            font-size: 32px; color: white; background: rgba(0,0,0,0.6);
-            border-radius: 50%; width: 50px; height: 50px;
+            font-size: 24px; color: white; background: rgba(0,0,0,0.6);
+            border-radius: 50%; width: 40px; height: 40px;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid white;
         }
         .duration-badge {
-            position: absolute; bottom: 6px; right: 6px;
+            position: absolute; bottom: 4px; right: 4px;
             background: rgba(0,0,0,0.85); color: white;
-            padding: 2px 5px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2;
+            padding: 2px 4px; border-radius: 3px; font-size: 10px; font-weight: bold; z-index: 2;
         }
-        .info { padding: 10px; }
+        .info { padding: 8px; }
         .title {
-            font-size: 13px; font-weight: 600; margin-bottom: 6px;
+            font-size: 12px; font-weight: 600; margin-bottom: 4px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .meta {
-            font-size: 11px; color: var(--text-sub);
+            font-size: 10px; color: var(--text-sub);
             display: flex; justify-content: space-between;
         }
 
@@ -141,8 +147,8 @@
         .pagination {
             display: flex; 
             justify-content: space-between; 
-            gap: 8px;
-            margin-top: 20px; 
+            gap: 6px;
+            margin-top: 15px; 
             align-items: stretch;
             flex-wrap: nowrap;
             width: 100%;
@@ -153,12 +159,12 @@
 
         .page-btn {
             background: var(--card-bg); border: 1px solid #555;
-            color: white; padding: 8px 5px; border-radius: 6px;
+            color: white; padding: 6px 4px; border-radius: 5px;
             cursor: pointer; transition: 0.2s; font-weight: 500;
             display: flex; align-items: center; justify-content: center;
             flex: 1;
-            font-size: 0.85rem;
-            min-height: 44px;
+            font-size: 0.8rem;
+            min-height: 40px;
             text-align: center;
             overflow: hidden;
         }
@@ -171,24 +177,39 @@
             transform: none; border-color: #333;
         }
 
+        /* 只有顶部的中间按钮可点击 */
         .page-info-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 2px;
             background: #222;
-            padding: 6px 5px;
-            border-radius: 8px;
+            padding: 4px 2px;
+            border-radius: 6px;
             border: 1px solid #444;
             flex: 1;
             min-width: 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            cursor: pointer;
+            cursor: pointer; /* 仅顶部有指针 */
             position: relative;
             z-index: 10;
         }
+        
+        /* 底部中间按钮不可点击样式 */
+        #date-trigger {
+            cursor: default;
+            background: #252525;
+            border-color: #333;
+            box-shadow: none;
+        }
+        #date-trigger:hover {
+            border-color: #333;
+            background: #252525;
+        }
+        #date-trigger::after { content: none; } /* 底部不显示日历图标 */
+
         .page-info-container:hover {
             border-color: var(--accent);
             background: #2a2a2a;
@@ -197,13 +218,13 @@
             content: '📅';
             font-size: 10px;
             position: absolute;
-            top: 4px;
-            right: 6px;
+            top: 2px;
+            right: 4px;
             opacity: 0.5;
         }
 
         .page-date {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: var(--text-main);
             line-height: 1.2;
@@ -214,11 +235,11 @@
         }
 
         .page-count {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--accent);
             background: rgba(29, 185, 84, 0.15);
-            padding: 2px 6px;
-            border-radius: 10px;
+            padding: 1px 4px;
+            border-radius: 8px;
             font-weight: 600;
             white-space: nowrap;
         }
@@ -226,15 +247,16 @@
         .loading { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; }
         .error { color: #ff4444; text-align: center; padding: 20px; }
         
-        /* --- 桌面端适配 --- */
+        /* --- 桌面端适配 (关键修改：一行 6 个) --- */
         @media (min-width: 768px) {
             body { padding: 20px 40px; }
             .stats-main { font-size: 1.1rem; }
             .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
             
+            /* 平板及中等屏幕：4 列 */
             .grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
             }
             
             .pagination {
@@ -263,13 +285,31 @@
             .page-count { font-size: 0.9rem; }
         }
 
+        /* 大屏幕：一行 6 个 (1920px+) */
+        @media (min-width: 1400px) {
+            .grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 18px;
+            }
+            
+            /* 可选：如果您希望大屏幕上的视频卡片高度也相应缩短，以容纳更多行
+               取消下面这行的注释，将比例从 177% (9:16) 改为 130% (约 4:5) 
+            */
+            /* .thumb-container { padding-top: 130%; } */
+            
+            .card:hover { transform: translateY(-6px); }
+            .play-icon { width: 50px; height: 50px; font-size: 32px; }
+            .title { font-size: 14px; }
+            .meta { font-size: 12px; }
+        }
+
         /* --- Flatpickr 深度定制 (手动定位 + 深色主题) --- */
         .flatpickr-calendar {
             background: #2d2d2d !important;
             border: 1px solid #444 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
             border-radius: 8px !important;
-            /* 关键：移除默认定位，由 JS 控制 */
+            /* 移除默认定位，由 JS 控制 */
             left: 0 !important;
             right: auto !important;
             top: 0 !important;
@@ -279,7 +319,6 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s;
-            /* 确保不遮挡 */
             display: block; 
         }
         
@@ -288,7 +327,7 @@
             pointer-events: auto;
         }
 
-        /* 隐藏默认箭头，避免干扰视觉和定位 */
+        /* 隐藏默认箭头 */
         .flatpickr-calendar.arrowTop::before, .flatpickr-calendar.arrowTop::after,
         .flatpickr-calendar.arrowBottom::before, .flatpickr-calendar.arrowBottom::after {
             display: none !important;
@@ -339,9 +378,10 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 顶部分页 -->
+    <!-- 顶部分页 (包含可点击的日期选择器) -->
     <div class="pagination" id="top-pagination" style="display:none;">
         <button class="page-btn" id="top-newer-btn" disabled>最新</button>
+        <!-- 只有这个按钮绑定了点击事件 -->
         <div class="page-info-container" id="top-date-trigger">
             <span class="page-date" id="top-page-date">--</span>
             <span class="page-count" id="top-page-count">0 部</span>
@@ -353,9 +393,10 @@
     <div id="video-grid" class="grid"></div>
     <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
 
-    <!-- 底部分页 -->
+    <!-- 底部分页 (中间按钮不可点击) -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="newer-btn" disabled>最新</button>
+        <!-- 底部中间按钮仅用于展示，无点击事件 -->
         <div class="page-info-container" id="date-trigger">
             <span class="page-date" id="page-date">--</span>
             <span class="page-count" id="page-count">0 部</span>
@@ -416,8 +457,9 @@
         const topNewerBtn = document.getElementById('top-newer-btn');
         const topOlderBtn = document.getElementById('top-older-btn');
         
-        const dateTrigger = document.getElementById('date-trigger');
+        // 仅顶部触发器
         const topDateTrigger = document.getElementById('top-date-trigger');
+        // 底部触发器不再用于打开日历
 
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
@@ -505,13 +547,15 @@
                 });
             }
             updateUI();
-            window.scrollTo(0,0);
+            // 滚动到顶部时稍微偏移，避免遮挡顶部按钮
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function updateUI() {
             const idx = sortedDates.indexOf(currentDateKey);
             const count = groupedData[currentDateKey].length;
             
+            // 同步顶部和底部的文字
             [document.getElementById('page-date'), document.getElementById('top-page-date')].forEach(el => el.innerText = currentDateKey);
             [document.getElementById('page-count'), document.getElementById('top-page-count')].forEach(el => el.innerText = `${count} 部`);
 
@@ -536,7 +580,7 @@
             }
         }
 
-        // 【核心修复】：手动精准定位日历
+        // 【核心修复】：手动精准定位日历到顶部按钮下方
         function positionCalendar(triggerElement) {
             if (!fpInstance || !triggerElement || !fpInstance.calendarContainer) return;
             
@@ -545,7 +589,7 @@
             const scrollY = window.scrollY || window.pageYOffset;
             const scrollX = window.scrollX || window.pageXOffset;
             
-            // 1. 计算水平中心点
+            // 1. 计算水平中心点 (相对于视口)
             const centerLeft = rect.left + (rect.width / 2);
             
             // 2. 计算垂直位置 (按钮底部 + 8px 间距)
@@ -553,26 +597,33 @@
             
             // 3. 应用样式
             calendar.style.position = 'absolute';
-            calendar.style.left = `${centerLeft + scrollX}px`; // 加上滚动偏移
+            calendar.style.left = `${centerLeft + scrollX}px`; 
             calendar.style.top = `${topPos}px`;
             calendar.style.transform = 'translateX(-50%)'; // 向左平移自身宽度的50%，实现完美居中
             calendar.style.right = 'auto';
             calendar.style.bottom = 'auto';
             
-            // 4. 边界检查 (防止超出屏幕右侧)
-            // 强制重绘以获取真实宽度
+            // 4. 边界检查 (防止超出屏幕左右两侧)
             calendar.style.display = 'block'; 
             const calWidth = calendar.offsetWidth;
+            const halfCalWidth = calWidth / 2;
+            const screenRight = window.innerWidth + scrollX;
+            const screenLeft = scrollX;
             
-            if (centerLeft + scrollX + (calWidth / 2) > window.innerWidth) {
-                // 如果右边缘超出，调整 transform 使其贴右（留一点边距）
-                const overflow = (centerLeft + scrollX + (calWidth / 2)) - window.innerWidth + 10;
-                calendar.style.transform = `translateX(calc(-50% - ${overflow}px))`;
-            } else if (centerLeft + scrollX - (calWidth / 2) < 0) {
-                // 如果左边缘超出，调整 transform 使其贴左
-                const underflow = (centerLeft + scrollX - (calWidth / 2));
-                calendar.style.transform = `translateX(calc(-50% - ${underflow}px))`;
+            let transformVal = 'translateX(-50%)';
+            
+            // 检查右边界
+            if (centerLeft + scrollX + halfCalWidth > screenRight - 10) {
+                const overflow = (centerLeft + scrollX + halfCalWidth) - (screenRight - 10);
+                transformVal = `translateX(calc(-50% - ${overflow}px))`;
+            } 
+            // 检查左边界
+            else if (centerLeft + scrollX - halfCalWidth < screenLeft + 10) {
+                const underflow = (screenLeft + 10) - (centerLeft + scrollX - halfCalWidth);
+                transformVal = `translateX(calc(-50% + ${underflow}px))`;
             }
+            
+            calendar.style.transform = transformVal;
         }
 
         function setupEvents() {
@@ -599,8 +650,8 @@
                         if(fpInstance) fpInstance.close();
                     }
                 },
-                position: "auto", // 占位，实际由 JS 控制
-                static: true,     // 关键：设为 static，禁止 flatpickr 自动计算位置
+                position: "auto", 
+                static: true,     // 禁止 flatpickr 自动计算位置
                 appendTo: document.body
             };
 
@@ -612,6 +663,7 @@
 
             fpInstance = flatpickr(hiddenInput, commonConfig);
 
+            // 仅绑定顶部按钮
             const openCalendar = (e, triggerEl) => {
                 e.stopPropagation();
                 currentTriggerElement = triggerEl;
@@ -624,8 +676,10 @@
                 }
             };
 
-            dateTrigger.onclick = (e) => openCalendar(e, dateTrigger);
+            // 只有顶部按钮有点击事件
             topDateTrigger.onclick = (e) => openCalendar(e, topDateTrigger);
+            
+            // 底部按钮无点击事件，仅作展示
             
             // 监听滚动和缩放，动态修正位置
             window.addEventListener('scroll', () => {
@@ -645,7 +699,7 @@
             document.addEventListener('click', (e) => {
                 if(fpInstance && fpInstance.isOpen && 
                    !e.target.closest('.flatpickr-calendar') && 
-                   !e.target.closest('.page-info-container')) {
+                   !e.target.closest('#top-date-trigger')) {
                     fpInstance.close();
                 }
             });
