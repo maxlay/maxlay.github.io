@@ -269,14 +269,18 @@
             border: 1px solid #444 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
             border-radius: 8px !important;
+            /* 关键：移除默认定位，由 JS 控制 */
             left: 0 !important;
-            right: 0 !important;
+            right: auto !important;
+            top: 0 !important;
             transform: none !important;
             margin: 0 !important;
             z-index: 99999 !important;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s;
+            /* 确保不遮挡 */
+            display: block; 
         }
         
         .flatpickr-calendar.open {
@@ -284,6 +288,7 @@
             pointer-events: auto;
         }
 
+        /* 隐藏默认箭头，避免干扰视觉和定位 */
         .flatpickr-calendar.arrowTop::before, .flatpickr-calendar.arrowTop::after,
         .flatpickr-calendar.arrowBottom::before, .flatpickr-calendar.arrowBottom::after {
             display: none !important;
@@ -414,7 +419,6 @@
         const dateTrigger = document.getElementById('date-trigger');
         const topDateTrigger = document.getElementById('top-date-trigger');
 
-        // 【修改点】：将字段名从 posted_at 改为 created_at
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
             const d = new Date(dateStr);
@@ -431,7 +435,6 @@
                 
                 groupedData = {};
                 allData.forEach(item => {
-                    // 【修改点】：使用 item.created_at 进行分组
                     const k = formatDateKey(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
@@ -533,26 +536,42 @@
             }
         }
 
+        // 【核心修复】：手动精准定位日历
         function positionCalendar(triggerElement) {
-            if (!fpInstance || !triggerElement) return;
+            if (!fpInstance || !triggerElement || !fpInstance.calendarContainer) return;
             
             const calendar = fpInstance.calendarContainer;
             const rect = triggerElement.getBoundingClientRect();
             const scrollY = window.scrollY || window.pageYOffset;
+            const scrollX = window.scrollX || window.pageXOffset;
             
-            const left = rect.left + (rect.width / 2);
-            const top = rect.bottom + scrollY + 8; 
+            // 1. 计算水平中心点
+            const centerLeft = rect.left + (rect.width / 2);
             
+            // 2. 计算垂直位置 (按钮底部 + 8px 间距)
+            const topPos = rect.bottom + scrollY + 8;
+            
+            // 3. 应用样式
             calendar.style.position = 'absolute';
-            calendar.style.left = `${left}px`;
-            calendar.style.top = `${top}px`;
-            calendar.style.transform = 'translateX(-50%)'; 
+            calendar.style.left = `${centerLeft + scrollX}px`; // 加上滚动偏移
+            calendar.style.top = `${topPos}px`;
+            calendar.style.transform = 'translateX(-50%)'; // 向左平移自身宽度的50%，实现完美居中
             calendar.style.right = 'auto';
+            calendar.style.bottom = 'auto';
             
-            const calRect = calendar.getBoundingClientRect();
-            if (calRect.right > window.innerWidth) {
-                const adjustment = calRect.right - window.innerWidth + 10;
-                calendar.style.transform = `translateX(calc(-50% - ${adjustment}px))`;
+            // 4. 边界检查 (防止超出屏幕右侧)
+            // 强制重绘以获取真实宽度
+            calendar.style.display = 'block'; 
+            const calWidth = calendar.offsetWidth;
+            
+            if (centerLeft + scrollX + (calWidth / 2) > window.innerWidth) {
+                // 如果右边缘超出，调整 transform 使其贴右（留一点边距）
+                const overflow = (centerLeft + scrollX + (calWidth / 2)) - window.innerWidth + 10;
+                calendar.style.transform = `translateX(calc(-50% - ${overflow}px))`;
+            } else if (centerLeft + scrollX - (calWidth / 2) < 0) {
+                // 如果左边缘超出，调整 transform 使其贴左
+                const underflow = (centerLeft + scrollX - (calWidth / 2));
+                calendar.style.transform = `translateX(calc(-50% - ${underflow}px))`;
             }
         }
 
@@ -571,7 +590,6 @@
                 disable: [
                     date => {
                         const dStr = date.toISOString().split('T')[0];
-                        // 【修改点】：这里依赖 sortedDates，而 sortedDates 已经由 created_at 生成，所以逻辑自动同步
                         return !sortedDates.includes(dStr);
                     }
                 ],
@@ -581,8 +599,8 @@
                         if(fpInstance) fpInstance.close();
                     }
                 },
-                position: "auto",
-                static: true,
+                position: "auto", // 占位，实际由 JS 控制
+                static: true,     // 关键：设为 static，禁止 flatpickr 自动计算位置
                 appendTo: document.body
             };
 
@@ -601,6 +619,7 @@
                 if(fpInstance) {
                     fpInstance.setDate(currentDateKey);
                     fpInstance.open();
+                    // 打开后稍作延迟确保 DOM 渲染完成，再执行定位
                     setTimeout(() => positionCalendar(triggerEl), 10);
                 }
             };
@@ -608,6 +627,7 @@
             dateTrigger.onclick = (e) => openCalendar(e, dateTrigger);
             topDateTrigger.onclick = (e) => openCalendar(e, topDateTrigger);
             
+            // 监听滚动和缩放，动态修正位置
             window.addEventListener('scroll', () => {
                 if(fpInstance && fpInstance.isOpen && currentTriggerElement) {
                     positionCalendar(currentTriggerElement);
@@ -619,6 +639,15 @@
                     positionCalendar(currentTriggerElement);
                 }
                 updateUI();
+            });
+            
+            // 点击其他地方关闭日历
+            document.addEventListener('click', (e) => {
+                if(fpInstance && fpInstance.isOpen && 
+                   !e.target.closest('.flatpickr-calendar') && 
+                   !e.target.closest('.page-info-container')) {
+                    fpInstance.close();
+                }
             });
         }
 
