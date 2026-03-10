@@ -2,8 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title> 🔞 ✖.com 的视频🔞 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> 🔞 ✖.com 的视频🔞 </title>
+    <!-- 引入 Flatpickr 样式 (深色模式兼容) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -14,7 +16,6 @@
             --hover: #3d3d3d;
             --progress-bg: #444;
             --btn-disabled: #2a2a2a;
-            --header-height: 60px;
         }
 
         body {
@@ -22,34 +23,22 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 15px; /* 手机端默认内边距 */
+            padding: 15px;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- 密码保护相关样式 --- */
+        /* --- 密码保护 --- */
         #login-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            backdrop-filter: blur(5px);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); display: flex; justify-content: center;
+            align-items: center; z-index: 99999; backdrop-filter: blur(5px);
         }
-
         .login-box {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 85%;
-            max-width: 320px;
-            border: 1px solid #444;
+            background: var(--card-bg); padding: 30px 20px; border-radius: 12px;
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 85%; max-width: 320px; border: 1px solid #444;
         }
-
-        .login-box h2 { margin-top: 0; color: var(--text-main); font-size: 1.2rem; margin-bottom: 20px; }
+        .login-box h2 { margin-top: 0; font-size: 1.2rem; margin-bottom: 20px; }
         .login-input {
             width: 100%; padding: 14px; margin-bottom: 15px; background: #1a1a1a;
             border: 1px solid #555; color: white; border-radius: 8px;
@@ -58,66 +47,35 @@
         .login-input:focus { border-color: var(--accent); }
         .login-btn {
             width: 100%; padding: 14px; background-color: var(--accent); color: white;
-            border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
-            font-weight: bold; transition: background 0.2s;
+            border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold;
         }
-        .login-btn:hover { background-color: #1ed760; }
         .login-error { color: #ff4444; font-size: 14px; margin-top: 15px; display: none; }
 
-        /* 顶部控制栏 - 深度优化 */
+        /* --- 头部统计 --- */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: nowrap; 
-            overflow: hidden;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #333;
-            height: auto;
-            min-height: 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; flex-wrap: nowrap; overflow: hidden;
+            padding-bottom: 10px; border-bottom: 1px solid #333;
         }
-
         .stats-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap; 
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-shrink: 1;
-            width: 100%;
+            display: flex; align-items: center; gap: 10px; white-space: nowrap;
+            overflow: hidden; flex-shrink: 1; width: 100%;
         }
-
         .stats-main { 
-            font-size: 0.95rem; 
-            color: var(--text-main); 
-            font-weight: 600; 
-            flex-shrink: 0;
+            font-size: 0.9rem; color: var(--text-main); font-weight: 600; flex-shrink: 0; 
         }
-
         .stats-sub {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
+            font-size: 0.8rem; /* 手机端稍小以确保完整显示 */
+            color: var(--accent); font-weight: 600;
             background: rgba(29, 185, 84, 0.1);
-            padding: 3px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            cursor: pointer;
+            padding: 4px 8px; border-radius: 6px;
+            cursor: pointer; border: 1px solid rgba(29, 185, 84, 0.3);
+            flex-shrink: 0; overflow: hidden; text-overflow: ellipsis;
             transition: all 0.2s;
-            border: 1px solid rgba(29, 185, 84, 0.3);
-            flex-shrink: 0;
-            max-width: 45%; /* 防止在极窄屏幕撑开 */
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
+        .stats-sub:hover { background: rgba(29, 185, 84, 0.25); }
 
-        .stats-sub:hover {
-            background: rgba(29, 185, 84, 0.25);
-        }
-
-        /* 进度条 */
+        /* --- 进度条 --- */
         .progress-container {
             width: 100%; height: 4px; background-color: var(--progress-bg);
             border-radius: 2px; margin: 10px 0 15px 0; overflow: hidden;
@@ -126,35 +84,26 @@
         .progress-container.active { display: block; }
         .progress-bar {
             height: 100%; background-color: var(--accent); width: 0%;
-            transition: width 0.3s ease-out; border-radius: 2px;
+            transition: width 0.3s ease-out;
         }
         .progress-text {
             position: absolute; right: 0; top: -18px;
-            font-size: 10px; color: var(--text-sub); white-space: nowrap;
+            font-size: 10px; color: var(--text-sub);
         }
 
-        /* 视频网格 - 响应式核心 */
+        /* --- 视频网格 --- */
         .grid {
             display: grid;
-            /* 手机端默认2列，大屏自动增加 */
-            grid-template-columns: repeat(2, 1fr); 
+            grid-template-columns: repeat(2, 1fr); /* 手机默认2列 */
             gap: 12px;
         }
-
         .card {
             background: var(--card-bg); border-radius: 8px; overflow: hidden;
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; transition: transform 0.2s;
             position: relative; text-decoration: none; color: inherit; display: block;
-            will-change: transform;
         }
-        .card:active {
-            transform: scale(0.98);
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-            background: var(--hover);
-        }
+        .card:active { transform: scale(0.98); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.4); }
         .thumb-container {
             position: relative; width: 100%; padding-top: 177.77%; background: #000;
         }
@@ -182,94 +131,108 @@
         .title {
             font-size: 13px; font-weight: 600; margin-bottom: 6px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            color: var(--text-main); line-height: 1.4;
         }
         .meta {
             font-size: 11px; color: var(--text-sub);
             display: flex; justify-content: space-between;
         }
 
-        /* 分页控件 - 移动端适配核心 */
+        /* --- 分页控件 (三等分核心) --- */
         .pagination {
             display: flex; 
-            justify-content: space-between; /* 两端对齐，中间留白给日期 */
+            justify-content: space-between; 
             gap: 8px;
             margin-top: 20px; 
-            align-items: center; 
+            align-items: stretch; /* 高度拉伸一致 */
             flex-wrap: nowrap;
             width: 100%;
         }
         
         #top-pagination { margin-top: 0; margin-bottom: 15px; }
 
+        /* 左右按钮 */
         .page-btn {
             background: var(--card-bg); border: 1px solid #555;
-            color: white; padding: 8px 10px; border-radius: 6px;
+            color: white; padding: 8px 5px; border-radius: 6px;
             cursor: pointer; transition: 0.2s; font-weight: 500;
             display: flex; align-items: center; justify-content: center;
-            flex: 1; /* 按钮平分剩余空间 */
-            max-width: 100px; /* 限制最大宽度，防止挤压中间 */
+            flex: 1; /* 关键：占据剩余空间的1份 */
             font-size: 0.85rem;
-            min-height: 44px; /* 触摸友好高度 */
+            min-height: 44px;
+            text-align: center;
+            overflow: hidden;
         }
-
         .page-btn:hover:not(:disabled) { 
-            background: var(--accent); 
-            border-color: var(--accent); 
+            background: var(--accent); border-color: var(--accent); 
             transform: translateY(-2px);
         }
-        
         .page-btn:disabled { 
-            opacity: 0.3; 
-            cursor: not-allowed; 
-            background: var(--btn-disabled); 
-            transform: none;
-            border-color: #333;
+            opacity: 0.3; cursor: not-allowed; background: var(--btn-disabled); 
+            transform: none; border-color: #333;
         }
 
+        /* 中间日期按钮 (可点击) */
         .page-info-container {
             display: flex;
-            flex-direction: column; /* 手机上可能堆叠，但这里尝试横排 */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 4px;
             background: #222;
-            padding: 6px 12px;
+            padding: 6px 5px;
             border-radius: 8px;
             border: 1px solid #444;
-            flex: 2; /* 中间日期区域更宽 */
-            min-width: 140px;
+            flex: 1; /* 关键：占据剩余空间的1份，实现三等分 */
+            min-width: 0; /* 允许收缩 */
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            cursor: pointer; /* 提示可点击 */
+            position: relative;
+        }
+        .page-info-container:hover {
+            border-color: var(--accent);
+            background: #2a2a2a;
+        }
+        .page-info-container::after {
+            /* 小日历图标提示 */
+            content: '📅';
+            font-size: 10px;
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            opacity: 0.5;
         }
 
         .page-date {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             color: var(--text-main);
             line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         .page-count {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent);
             background: rgba(29, 185, 84, 0.15);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 10px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .loading { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; }
         .error { color: #ff4444; text-align: center; padding: 20px; }
         
-        /* --- 桌面端媒体查询 (大于 768px) --- */
+        /* --- 桌面端适配 --- */
         @media (min-width: 768px) {
             body { padding: 20px 40px; }
+            .stats-main { font-size: 1.1rem; }
+            .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
             
-            .header { margin-bottom: 20px; }
-            .stats-main { font-size: 1.2rem; }
-            .stats-sub { font-size: 1rem; padding: 4px 12px; }
-
             .grid {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: 20px;
@@ -278,42 +241,81 @@
             .pagination {
                 justify-content: center;
                 gap: 15px;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .page-btn {
-                max-width: 160px;
-                padding: 10px 20px;
+                max-width: 180px;
+                padding: 10px 15px;
                 font-size: 0.95rem;
-                min-height: auto;
             }
 
             .page-info-container {
                 flex-direction: row;
                 gap: 12px;
                 padding: 10px 20px;
-                min-width: 220px;
+                max-width: 250px;
             }
+            .page-info-container::after { content: none; } /* 桌面端隐藏小图标 */
 
-            .page-date { font-size: 1.1rem; }
-            .page-count { font-size: 0.95rem; }
+            .page-date { font-size: 1.1rem; white-space: normal; }
+            .page-count { font-size: 0.9rem; }
         }
 
-        /* --- 超大屏优化 --- */
-        @media (min-width: 1200px) {
-            body { padding: 20px 60px; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+        /* Flatpickr 深色主题覆盖 */
+        .flatpickr-calendar {
+            background: #2d2d2d !important;
+            border: 1px solid #444 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+        }
+        .flatpickr-day {
+            color: #ddd !important;
+        }
+        .flatpickr-day:hover {
+            background: #3d3d3d !important;
+            border-color: #3d3d3d !important;
+        }
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
+            background: var(--accent) !important;
+            border-color: var(--accent) !important;
+            color: white !important;
+        }
+        .flatpickr-months .flatpickr-month {
+            background: #2d2d2d !important;
+            color: #ddd !important;
+            fill: #ddd !important;
+        }
+        .flatpickr-current-month .flatpickr-monthDropdown-months {
+            color: #ddd !important;
+            background: #222 !important;
+        }
+        .flatpickr-current-month input.cur-year {
+            color: #ddd !important;
+            background: #222 !important;
+        }
+        .flatpickr-weekdays {
+            background: #222 !important;
+        }
+        .flatpickr-weekday {
+            color: #aaa !important;
+        }
+        .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
+            color: #555 !important;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
 
-    <!-- 密码保护遮罩层 -->
+    <!-- 密码保护 -->
     <div id="login-overlay">
         <div class="login-box">
             <h2>🔒 访问验证</h2>
             <input type="password" id="passwordInput" class="login-input" placeholder="请输入密码" autofocus>
             <button onclick="checkPassword()" class="login-btn">进入</button>
-            <p id="loginError" class="login-error">密码错误！页面即将关闭...</p>
+            <p id="loginError" class="login-error">密码错误！</p>
         </div>
     </div>
 
@@ -333,10 +335,11 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 顶部分页控件 -->
+    <!-- 顶部分页 (三等分) -->
     <div class="pagination" id="top-pagination" style="display:none;">
         <button class="page-btn" id="top-newer-btn" disabled>最新</button>
-        <div class="page-info-container">
+        <!-- 中间改为可点击的 div/button 混合体，实际由 JS 绑定 flatpickr -->
+        <div class="page-info-container" id="top-date-trigger">
             <span class="page-date" id="top-page-date">--</span>
             <span class="page-count" id="top-page-count">0 部</span>
         </div>
@@ -347,18 +350,22 @@
     <div id="video-grid" class="grid"></div>
     <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
 
-    <!-- 底部分页控件 -->
+    <!-- 底部分页 (三等分) -->
     <div class="pagination" id="pagination" style="display:none;">
         <button class="page-btn" id="newer-btn" disabled>最新</button>
-        <div class="page-info-container">
+        <div class="page-info-container" id="date-trigger">
             <span class="page-date" id="page-date">--</span>
             <span class="page-count" id="page-count">0 部</span>
         </div>
         <button class="page-btn" id="older-btn" disabled>最旧</button>
     </div>
 
+    <!-- 引入 Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/zh.js"></script>
+
     <script>
-        // ================= 密码保护逻辑 =================
+        // ================= 密码逻辑 =================
         const CORRECT_PASSWORD = "821025";
         const COOKIE_NAME = "x_video_auth_verified";
         
@@ -367,296 +374,229 @@
             date.setFullYear(date.getFullYear() + 10);
             document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
         }
-
         function getCookie(name) {
             const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            if (match) return decodeURIComponent(match[2]);
-            return null;
+            return match ? decodeURIComponent(match[2]) : null;
         }
-
         function checkPassword() {
             const input = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('loginError');
-            const overlay = document.getElementById('login-overlay');
-
             if (input === CORRECT_PASSWORD) {
                 setPermanentCookie(COOKIE_NAME, "true");
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                document.getElementById('login-overlay').style.display = 'none';
                 init();
             } else {
-                errorMsg.style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-                setTimeout(() => {
-                    window.close();
-                    if (!window.closed) {
-                        document.body.innerHTML = '<div style="color:red;text-align:center;margin-top:20%;"><h1>⛔ 访问拒绝</h1><p>密码错误</p></div>';
-                    }
-                }, 1500);
+                const err = document.getElementById('loginError');
+                err.style.display = 'block';
+                setTimeout(() => { window.close(); document.body.innerHTML = '<h1 style="color:red;text-align:center">⛔ 拒绝</h1>'; }, 1500);
             }
         }
-
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        (function() {
-            if (getCookie(COOKIE_NAME) === "true") {
-                document.getElementById('login-overlay').style.display = 'none';
-                document.body.style.overflow = 'auto';
-                setTimeout(init, 50);
-            } else {
-                document.body.style.overflow = 'hidden';
-                document.getElementById('loading-msg').style.display = 'none';
-            }
-        })();
-
-        // ================= 核心配置与数据逻辑 =================
-        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json'; 
+        document.getElementById('passwordInput').addEventListener('keypress', e => { if(e.key==='Enter') checkPassword(); });
         
-        let allData = [];
-        let groupedData = {}; 
-        let sortedDates = []; 
-        let currentDateKey = ""; 
+        if (getCookie(COOKIE_NAME) === "true") {
+            document.getElementById('login-overlay').style.display = 'none';
+            setTimeout(init, 50);
+        }
 
-        // DOM 元素
+        // ================= 核心逻辑 =================
+        const DATA_URL = 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/data-part-0.json';
+        let allData = [], groupedData = {}, sortedDates = [], currentDateKey = "";
+        let fpInstance = null; // Flatpickr 实例
+
         const gridEl = document.getElementById('video-grid');
         const loadingEl = document.getElementById('loading-msg');
         const statsTotalEl = document.getElementById('stats-total');
         const statsNewestEl = document.getElementById('stats-newest');
         
-        const paginationEl = document.getElementById('pagination');
-        const topPaginationEl = document.getElementById('top-pagination');
-        
         const newerBtn = document.getElementById('newer-btn');
         const olderBtn = document.getElementById('older-btn');
         const topNewerBtn = document.getElementById('top-newer-btn');
         const topOlderBtn = document.getElementById('top-older-btn');
-
-        const pageDateEl = document.getElementById('page-date');
-        const pageCountEl = document.getElementById('page-count');
-        const topPageDateEl = document.getElementById('top-page-date');
-        const topPageCountEl = document.getElementById('top-page-count');
-
-        const progressContainer = document.getElementById('progress-container');
-        const progressBar = document.getElementById('progress-bar');
-        const progressText = document.getElementById('progress-text');
+        
+        const dateTrigger = document.getElementById('date-trigger');
+        const topDateTrigger = document.getElementById('top-date-trigger');
 
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
-            try {
-                const d = new Date(dateStr);
-                if (isNaN(d.getTime())) return "Unknown";
-                const y = d.getFullYear();
-                const m = String(d.getMonth() + 1).padStart(2, '0');
-                const day = String(d.getDate()).padStart(2, '0');
-                return `${y}-${m}-${day}`;
-            } catch (e) {
-                return "Unknown";
-            }
+            const d = new Date(dateStr);
+            if (isNaN(d.getTime())) return "Unknown";
+            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
         }
 
-        async function loadDataAndGroup() {
-            progressContainer.classList.add('active');
-            updateProgress(0, "下载数据...");
-
+        async function loadData() {
+            document.getElementById('progress-container').classList.add('active');
             try {
                 const res = await fetch(DATA_URL);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-                updateProgress(40, "解析...");
                 const data = await res.json();
+                allData = Array.isArray(data) ? data : (data.data || [data]);
                 
-                if (Array.isArray(data)) {
-                    allData = data;
-                } else if (data.data && Array.isArray(data.data)) {
-                    allData = data.data;
-                } else {
-                    allData = [data];
-                }
-
-                updateProgress(60, "分组...");
                 groupedData = {};
                 allData.forEach(item => {
-                    const dateKey = formatDateKey(item.posted_at);
-                    if (!groupedData[dateKey]) groupedData[dateKey] = [];
-                    groupedData[dateKey].push(item);
+                    const k = formatDateKey(item.posted_at);
+                    if(!groupedData[k]) groupedData[k] = [];
+                    groupedData[k].push(item);
                 });
-
-                sortedDates = Object.keys(groupedData).sort((a, b) => new Date(b) - new Date(a));
-
-                updateProgress(100, "完成");
-                setTimeout(() => { progressContainer.classList.remove('active'); }, 800);
+                
+                sortedDates = Object.keys(groupedData).sort((a,b) => new Date(b)-new Date(a));
                 return true;
-            } catch (err) {
-                throw err;
+            } catch(e) { throw e; }
+            finally {
+                setTimeout(() => document.getElementById('progress-container').classList.remove('active'), 500);
             }
         }
 
-        function updateProgress(percent, text) {
-            progressBar.style.width = `${percent}%`;
-            progressText.innerText = text;
-        }
-
-        async function init() {
-            if (loadingEl.style.display === 'none' && gridEl.children.length > 0) return;
-
+        function init() {
             loadingEl.style.display = 'block';
-            loadingEl.innerText = `加载数据中...`;
-            
-            try {
-                await loadDataAndGroup();
+            loadData().then(() => {
+                if(sortedDates.length === 0) { loadingEl.innerText = "无数据"; return; }
                 
-                if (sortedDates.length === 0) {
-                    loadingEl.innerHTML = "⚠️ 无数据";
-                    return;
-                }
-
-                const totalCount = allData.length;
-                const newestDate = sortedDates[0];
-                const newestCount = groupedData[newestDate].length;
-
-                statsTotalEl.innerText = `共 ${totalCount.toLocaleString()} 视频`;
+                const newest = sortedDates[0];
+                statsTotalEl.innerText = `共 ${allData.length.toLocaleString()} 视频`;
                 statsNewestEl.style.display = 'inline-block';
-                statsNewestEl.onclick = () => { renderPage(newestDate); window.scrollTo(0, 0); };
-                statsNewestEl.innerText = `✨ 最新 (${newestDate}) 更新 ${newestCount} 部`;
+                statsNewestEl.innerText = `✨ 最新 (${newest}) 更新 ${groupedData[newest].length} 部`;
+                statsNewestEl.onclick = () => renderPage(newest);
 
-                const savedDate = localStorage.getItem('videoListLastDate');
-                currentDateKey = (savedDate && sortedDates.includes(savedDate)) ? savedDate : sortedDates[0];
+                const saved = localStorage.getItem('lastDate');
+                currentDateKey = (saved && sortedDates.includes(saved)) ? saved : newest;
 
                 loadingEl.style.display = 'none';
-                paginationEl.style.display = 'flex';
-                topPaginationEl.style.display = 'flex';
+                document.getElementById('pagination').style.display = 'flex';
+                document.getElementById('top-pagination').style.display = 'flex';
                 
                 renderPage(currentDateKey);
                 setupEvents();
-
-            } catch (err) {
-                console.error(err);
-                progressContainer.classList.remove('active');
+            }).catch(err => {
                 loadingEl.innerHTML = `❌ 失败: ${err.message}`;
                 loadingEl.className = 'error';
-            }
+            });
         }
 
         function renderPage(dateKey) {
             currentDateKey = dateKey;
-            localStorage.setItem('videoListLastDate', dateKey);
+            localStorage.setItem('lastDate', dateKey);
             gridEl.innerHTML = '';
-            
             const items = groupedData[dateKey] || [];
-            if (items.length === 0) {
-                gridEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding: 20px;">该日期无数据</div>';
-            } else {
-                items.forEach(item => gridEl.appendChild(createCard(item)));
-            }
-
-            updatePaginationUI();
-            window.scrollTo(0, 0);
-        }
-
-        function createCard(item) {
-            const a = document.createElement('a');
-            a.className = 'card';
-            a.href = item.url;
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
             
-            const dateStr = item.posted_at ? new Date(item.posted_at).toLocaleDateString() : '?';
-            const mins = Math.floor((item.time || 0) / 60);
-            const secs = (item.time || 0) % 60;
-            const durationStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-            const title = item.tweet_account ? `@${item.tweet_account}` : `ID: ${item.id}`;
-
-            a.innerHTML = `
-                <div class="thumb-container">
-                    <img class="thumb-img" src="${item.thumbnail}" loading="lazy" alt="thumb" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
-                    <div class="duration-badge">${durationStr}</div>
-                    <div class="play-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="info">
-                    <div class="title">${title}</div>
-                    <div class="meta">
-                        <span>👁️ ${formatNumber(item.pv)}</span>
-                        <span>❤️ ${formatNumber(item.favorite)}</span>
-                        <span>${dateStr}</span>
-                    </div>
-                </div>
-            `;
-            return a;
+            if(items.length === 0) {
+                gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;">无数据</div>';
+            } else {
+                items.forEach(item => {
+                    const a = document.createElement('a');
+                    a.className = 'card'; a.href = item.url; a.target = '_blank';
+                    const t = item.tweet_account ? `@${item.tweet_account}` : `ID:${item.id}`;
+                    const m = Math.floor((item.time||0)/60), s = (item.time||0)%60;
+                    a.innerHTML = `
+                        <div class="thumb-container">
+                            <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
+                            <div class="duration-badge">${m}:${s.toString().padStart(2,'0')}</div>
+                            <div class="play-overlay"><div class="play-icon">▶</div></div>
+                        </div>
+                        <div class="info">
+                            <div class="title">${t}</div>
+                            <div class="meta">
+                                <span>👁️ ${formatNum(item.pv)}</span>
+                                <span>❤️ ${formatNum(item.favorite)}</span>
+                            </div>
+                        </div>`;
+                    gridEl.appendChild(a);
+                });
+            }
+            updateUI();
+            window.scrollTo(0,0);
         }
 
-        function updatePaginationUI() {
-            const currentIndex = sortedDates.indexOf(currentDateKey);
+        function updateUI() {
+            const idx = sortedDates.indexOf(currentDateKey);
             const count = groupedData[currentDateKey].length;
             
-            pageDateEl.innerText = currentDateKey;
-            pageCountEl.innerText = `${count} 部`;
-            topPageDateEl.innerText = currentDateKey;
-            topPageCountEl.innerText = `${count} 部`;
+            // 更新文本
+            [document.getElementById('page-date'), document.getElementById('top-page-date')].forEach(el => el.innerText = currentDateKey);
+            [document.getElementById('page-count'), document.getElementById('top-page-count')].forEach(el => el.innerText = `${count} 部`);
 
-            const hasNewer = currentIndex > 0;
-            const hasOlder = currentIndex < sortedDates.length - 1;
+            // 按钮状态
+            const hasNew = idx > 0, hasOld = idx < sortedDates.length - 1;
+            [newerBtn, topNewerBtn].forEach(b => b.disabled = !hasNew);
+            [olderBtn, topOlderBtn].forEach(b => b.disabled = !hasOld);
 
-            newerBtn.disabled = !hasNewer;
-            olderBtn.disabled = !hasOlder;
-            topNewerBtn.disabled = !hasNewer;
-            topOlderBtn.disabled = !hasOlder;
-            
-            // 移动端简短文案，桌面端通过CSS自动调整或JS判断也可，这里统一用简短文案保证不换行
-            if (hasNewer) {
-                const d = sortedDates[currentIndex - 1];
-                const c = groupedData[d].length;
-                // 在非常小的屏幕上，可能只显示箭头和"新"
-                const isMobile = window.innerWidth < 400;
-                newerBtn.innerHTML = isMobile ? `⬅ ${d.split('-')[2]}日` : `⬅ ${d} (${c})`;
-                topNewerBtn.innerHTML = newerBtn.innerHTML;
+            // 按钮文字 (自适应长度)
+            const isMobile = window.innerWidth < 600;
+            if(hasNew) {
+                const d = sortedDates[idx-1], c = groupedData[d].length;
+                const txt = isMobile ? `⬅ ${d.slice(5)}` : `⬅ ${d} (${c})`;
+                newerBtn.innerText = txt; topNewerBtn.innerText = txt;
             } else {
-                newerBtn.innerHTML = `已是最新`;
-                topNewerBtn.innerHTML = `已是最新`;
+                newerBtn.innerText = "已是最新"; topNewerBtn.innerText = "已是最新";
             }
-
-            if (hasOlder) {
-                const d = sortedDates[currentIndex + 1];
-                const c = groupedData[d].length;
-                const isMobile = window.innerWidth < 400;
-                olderBtn.innerHTML = isMobile ? `${d.split('-')[2]}日 ➡` : `${d} (${c}) ➡`;
-                topOlderBtn.innerHTML = olderBtn.innerHTML;
+            if(hasOld) {
+                const d = sortedDates[idx+1], c = groupedData[d].length;
+                const txt = isMobile ? `${d.slice(5)} ➡` : `${d} (${c}) ➡`;
+                olderBtn.innerText = txt; topOlderBtn.innerText = txt;
             } else {
-                olderBtn.innerHTML = `已是最旧`;
-                topOlderBtn.innerHTML = `已是最旧`;
+                olderBtn.innerText = "已是最旧"; topOlderBtn.innerText = "已是最旧";
             }
         }
 
         function setupEvents() {
-            const goToNewer = () => {
-                const idx = sortedDates.indexOf(currentDateKey);
-                if (idx > 0) renderPage(sortedDates[idx - 1]);
-            };
-            const goToOlder = () => {
-                const idx = sortedDates.indexOf(currentDateKey);
-                if (idx < sortedDates.length - 1) renderPage(sortedDates[idx + 1]);
+            const goNew = () => { const i=sortedDates.indexOf(currentDateKey); if(i>0) renderPage(sortedDates[i-1]); };
+            const goOld = () => { const i=sortedDates.indexOf(currentDateKey); if(i<sortedDates.length-1) renderPage(sortedDates[i+1]); };
+            
+            newerBtn.onclick = goNew; olderBtn.onclick = goOld;
+            topNewerBtn.onclick = goNew; topOlderBtn.onclick = goOld;
+
+            // 初始化 Flatpickr
+            const commonConfig = {
+                locale: "zh",
+                dateFormat: "Y-m-d",
+                defaultDate: currentDateKey,
+                theme: "dark", // 虽然 CSS 覆盖了，但保留配置
+                disable: [
+                    date => {
+                        // 只有 sortedDates 里的日期才启用
+                        const dStr = date.toISOString().split('T')[0];
+                        return !sortedDates.includes(dStr);
+                    }
+                ],
+                onChange: (selectedDates, dateStr) => {
+                    if(dateStr && sortedDates.includes(dateStr)) {
+                        renderPage(dateStr);
+                    }
+                },
+                // 强制渲染到 body，防止被截断
+                appendTo: document.body
             };
 
-            newerBtn.onclick = goToNewer;
-            olderBtn.onclick = goToOlder;
-            topNewerBtn.onclick = goToNewer;
-            topOlderBtn.onclick = goToOlder;
+            // 销毁旧实例以防重复
+            if(fpInstance) fpInstance.destroy();
             
-            // 窗口大小改变时重新渲染按钮文字以适应屏幕
-            let resizeTimeout;
+            // 绑定两个触发器到同一个逻辑，但 flatpickr 通常绑定一个 input 或元素
+            // 这里我们创建两个实例或者共用逻辑，为了简单，我们只创建一个实例，点击任意一个触发它
+            // 更好的方式：点击任意一个，打开同一个日历
+            
+            const openCalendar = () => {
+                if(!fpInstance) {
+                    fpInstance = flatpickr(document.createElement('input'), {
+                        ...commonConfig,
+                        position: "auto center"
+                    });
+                }
+                fpInstance.setDate(currentDateKey);
+                fpInstance.open();
+            };
+
+            dateTrigger.onclick = openCalendar;
+            topDateTrigger.onclick = openCalendar;
+            
+            // 窗口大小变化时刷新文字
+            let timer;
             window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(updatePaginationUI, 200);
+                clearTimeout(timer);
+                timer = setTimeout(updateUI, 200);
             });
         }
 
-        function formatNumber(num) {
-            if (!num) return '0';
-            num = parseInt(num);
-            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-            if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
-            return num.toString();
+        function formatNum(n) {
+            if(!n) return '0';
+            n = parseInt(n);
+            return n >= 1000000 ? (n/1e6).toFixed(1)+'M' : (n>=1000 ? (n/1e3).toFixed(1)+'k' : n);
         }
     </script>
 </body>
