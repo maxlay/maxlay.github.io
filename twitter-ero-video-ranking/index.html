@@ -585,45 +585,49 @@
             if (!fpInstance || !triggerElement || !fpInstance.calendarContainer) return;
             
             const calendar = fpInstance.calendarContainer;
+            // 获取按钮的精准位置信息（包含滚动偏移）
             const rect = triggerElement.getBoundingClientRect();
-            const scrollY = window.scrollY || window.pageYOffset;
-            const scrollX = window.scrollX || window.pageXOffset;
             
-            // 1. 计算水平中心点 (相对于视口)
-            const centerLeft = rect.left + (rect.width / 2);
+            // 1. 计算水平居中：按钮的水平中心点（相对于文档）
+            const triggerCenterX = rect.left + (rect.width / 2) + window.scrollX;
+            // 2. 计算垂直位置：按钮下沿 + 8px 间距（相对于文档）
+            const triggerBottomY = rect.bottom + window.scrollY + 8;
             
-            // 2. 计算垂直位置 (按钮底部 + 8px 间距)
-            const topPos = rect.bottom + scrollY + 8;
-            
-            // 3. 应用样式
+            // 3. 基础定位样式（绝对定位）
             calendar.style.position = 'absolute';
-            calendar.style.left = `${centerLeft + scrollX}px`; 
-            calendar.style.top = `${topPos}px`;
-            calendar.style.transform = 'translateX(-50%)'; // 向左平移自身宽度的50%，实现完美居中
+            calendar.style.top = `${triggerBottomY}px`;
+            calendar.style.left = `${triggerCenterX}px`;
             calendar.style.right = 'auto';
             calendar.style.bottom = 'auto';
             
-            // 4. 边界检查 (防止超出屏幕左右两侧)
-            calendar.style.display = 'block'; 
+            // 4. 关键：向左平移自身宽度的50%，实现完美居中
+            calendar.style.transform = 'translateX(-50%)';
+            
+            // 5. 边界保护：防止日历超出屏幕可视区域
+            // 先显示日历以获取实际宽度
+            const originalDisplay = calendar.style.display;
+            calendar.style.display = 'block';
             const calWidth = calendar.offsetWidth;
-            const halfCalWidth = calWidth / 2;
-            const screenRight = window.innerWidth + scrollX;
-            const screenLeft = scrollX;
             
-            let transformVal = 'translateX(-50%)';
-            
-            // 检查右边界
-            if (centerLeft + scrollX + halfCalWidth > screenRight - 10) {
-                const overflow = (centerLeft + scrollX + halfCalWidth) - (screenRight - 10);
-                transformVal = `translateX(calc(-50% - ${overflow}px))`;
-            } 
             // 检查左边界
-            else if (centerLeft + scrollX - halfCalWidth < screenLeft + 10) {
-                const underflow = (screenLeft + 10) - (centerLeft + scrollX - halfCalWidth);
-                transformVal = `translateX(calc(-50% + ${underflow}px))`;
+            const calLeftEdge = triggerCenterX - (calWidth / 2);
+            if (calLeftEdge < 10) {
+                // 超出左边界，贴左显示（保留10px边距）
+                calendar.style.left = '10px';
+                calendar.style.transform = 'none';
+            } 
+            // 检查右边界
+            else if (calLeftEdge + calWidth > window.innerWidth - 10) {
+                // 超出右边界，贴右显示（保留10px边距）
+                calendar.style.left = 'auto';
+                calendar.style.right = '10px';
+                calendar.style.transform = 'none';
             }
             
-            calendar.style.transform = transformVal;
+            // 恢复原始显示状态
+            if (originalDisplay !== 'block') {
+                calendar.style.display = originalDisplay;
+            }
         }
 
         function setupEvents() {
