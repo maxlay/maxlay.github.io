@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> 🔞 ✖.com 视频🔞 </title>
+    <title> 🔞 ✖.com 的视频🔞 </title>
     <!-- 引入 Flatpickr 样式 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
@@ -462,6 +462,8 @@
         .waterfall-thumb-container {
             position: relative;
             width: 100%;
+            /* 不再强制固定比例，让图片自然高度决定卡片高度 */
+            /* 但为了加载前不塌陷，可以设一个最小高度或 JS 处理，这里简单处理 */
             background: #000;
         }
 
@@ -694,6 +696,7 @@
             }
 
             // 2. 排序 (降序：最新的在前)
+            // 注意：使用 posted_at 字段，如果不存在则尝试 created_at 作为 fallback
             filteredData.sort((a, b) => {
                 const dateA = new Date(a.posted_at || a.created_at || 0);
                 const dateB = new Date(b.posted_at || b.created_at || 0);
@@ -745,6 +748,8 @@
         function closeAccountModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = ''; // 恢复背景滚动
+            // 可选：清空内容以节省内存
+            // setTimeout(() => { waterfallList.innerHTML = ''; }, 300); 
         }
 
         // 绑定关闭事件
@@ -756,55 +761,22 @@
             }
         });
 
-        // ================= 新增：全局键盘快捷键支持 =================
+        // 支持 ESC 键关闭
         document.addEventListener('keydown', (e) => {
-            // 如果正在输入密码或其他输入框，不触发快捷键
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                return;
-            }
-
-            // 如果日历选择器是打开的，不触发翻页快捷键，以免干扰日历操作
-            const isCalendarOpen = fpInstance && fpInstance.isOpen;
-
-            // 1. 关闭弹窗快捷键：Q 或 ESC
-            if ((e.key === 'q' || e.key === 'Q' || e.key === 'Escape') && modalOverlay.classList.contains('active')) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeAccountModal();
-                return;
-            }
-
-            // 如果弹窗打开，禁止翻页操作
-            if (modalOverlay.classList.contains('active')) {
-                return;
-            }
-
-            // 如果日历打开，禁止翻页操作
-            if (isCalendarOpen) {
-                return;
-            }
-
-            // 2. 翻页快捷键
-            const idx = sortedDates.indexOf(currentDateKey);
-            if (idx === -1) return;
-
-            if (e.key === 'ArrowLeft') {
-                // 左键 -> 前一页 (较新)
-                if (idx > 0) {
-                    renderPage(sortedDates[idx - 1]);
-                }
-            } else if (e.key === 'ArrowRight') {
-                // 右键 -> 后一页 (较旧)
-                if (idx < sortedDates.length - 1) {
-                    renderPage(sortedDates[idx + 1]);
-                }
             }
         });
 
 
         /**
          * 【关键修改】直接截取 JSON 字符串的前 10 位作为日期
+         * 假设格式为 YYYY-MM-DDTHH:mm:ss...
+         * 不做任何时区转换，完全忠实于原始数据
          */
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
+            // 直接截取前 10 个字符 (YYYY-MM-DD)
             if (dateStr.length >= 10) {
                 return dateStr.substring(0, 10);
             }
@@ -820,11 +792,13 @@
                 
                 groupedData = {};
                 allData.forEach(item => {
+                    // 使用新的直接截取函数
                     const k = formatDateKey(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
                 });
                 
+                // 排序逻辑不变，因为 key 已经是 YYYY-MM-DD 格式字符串
                 sortedDates = Object.keys(groupedData).sort((a,b) => {
                     return b.localeCompare(a); 
                 });
@@ -878,10 +852,15 @@
                     const a = document.createElement('a');
                     a.className = 'card'; a.href = item.url; a.target = '_blank';
                     
+                    // 获取账号名称
                     const accountName = item.tweet_account;
                     const displayName = accountName ? `@${accountName}` : `ID:${item.id}`;
                     
                     const m = Math.floor((item.time||0)/60), s = (item.time||0)%60;
+                    
+                    // 修改：将账号名称部分改为可点击的 span
+                    // 如果存在账号，则整个标题都是账号名，直接包裹 span
+                    // 如果不存在账号，则显示 ID，不可点击（或者也可以做成点击搜索 ID，这里按需求只处理账号）
                     
                     let titleHtml = '';
                     if (accountName) {
@@ -960,6 +939,7 @@
                 theme: "dark",
                 disable: [
                     date => {
+                        // 将 Flatpickr 的日期对象格式化为 YYYY-MM-DD 字符串进行匹配
                         const y = date.getFullYear();
                         const m = String(date.getMonth() + 1).padStart(2, '0');
                         const d = String(date.getDate()).padStart(2, '0');
