@@ -14,7 +14,8 @@ on:
 jobs:
   sync-data:
     runs-on: ubuntu-latest
-         TZ: Asia/Shanghai
+    env:
+      TZ: Asia/Shanghai
 
     steps:
       # 1. 检出代码
