@@ -454,47 +454,17 @@
         const topDateTrigger = document.getElementById('top-date-trigger');
 
         /**
-         * 【关键修改】将 ISO 字符串转换为北京时间 (Asia/Shanghai) 的日期键值
-         * 避免直接使用 new Date(str) 导致的时区偏移问题
+         * 【关键修改】直接截取 JSON 字符串的前10位作为日期
+         * 假设格式为 YYYY-MM-DDTHH:mm:ss...
+         * 不做任何时区转换，完全忠实于原始数据
          */
-        function formatDateKeyBeijing(dateStr) {
+        function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
-            
-            // 尝试解析 ISO 格式 YYYY-MM-DDTHH:mm:ss.sssZ 或类似
-            // 我们手动提取部分，假设输入是标准的 ISO 或近似格式
-            // 如果包含 'T'，则按时间解析，否则按日期解析
-            let year, month, day;
-
-            if (dateStr.includes('T')) {
-                // 有具体时间，需要转换时区
-                // 方法：创建 UTC 日期，然后加上 8 小时偏移量，再提取年月日
-                const d = new Date(dateStr);
-                if (isNaN(d.getTime())) return "Unknown";
-
-                // 获取 UTC 时间戳
-                const utcTime = d.getTime();
-                // 北京时间 = UTC + 8 小时
-                const beijingTime = utcTime + (8 * 60 * 60 * 1000);
-                
-                const bd = new Date(beijingTime);
-                year = bd.getUTCFullYear();
-                month = bd.getUTCMonth() + 1;
-                day = bd.getUTCDate();
-            } else {
-                // 纯日期字符串 YYYY-MM-DD，通常视为当地日期或 UTC 零点
-                // 这里假设 JSON 里的纯日期已经是目标日期，或者我们需要按 UTC 零点 +8 小时处理
-                // 为了稳妥，如果是纯日期，我们直接解析，防止跨天
-                const parts = dateStr.split('-');
-                if (parts.length >= 3) {
-                    year = parseInt(parts[0]);
-                    month = parseInt(parts[1]);
-                    day = parseInt(parts[2]);
-                } else {
-                    return "Unknown";
-                }
+            // 直接截取前10个字符 (YYYY-MM-DD)
+            if (dateStr.length >= 10) {
+                return dateStr.substring(0, 10);
             }
-
-            return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            return "Unknown";
         }
 
         async function loadData() {
@@ -506,15 +476,14 @@
                 
                 groupedData = {};
                 allData.forEach(item => {
-                    // 使用新的北京时间转换函数
-                    const k = formatDateKeyBeijing(item.created_at);
+                    // 使用新的直接截取函数
+                    const k = formatDateKey(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
                 });
                 
-                // 排序逻辑不变，因为 key 已经是 YYYY-MM-DD 格式
+                // 排序逻辑不变，因为 key 已经是 YYYY-MM-DD 格式字符串
                 sortedDates = Object.keys(groupedData).sort((a,b) => {
-                    // 确保按日期字符串倒序
                     return b.localeCompare(a); 
                 });
                 
@@ -540,7 +509,6 @@
                 statsNewestEl.onclick = () => renderPage(newest);
 
                 const saved = localStorage.getItem('lastDate');
-                // 检查保存的日期是否还在数据中
                 currentDateKey = (saved && sortedDates.includes(saved)) ? saved : newest;
 
                 loadingEl.style.display = 'none';
@@ -591,7 +559,7 @@
 
         function updateUI() {
             const idx = sortedDates.indexOf(currentDateKey);
-            if (idx === -1) return; // 防御性编程
+            if (idx === -1) return;
             
             const count = groupedData[currentDateKey].length;
             
@@ -639,8 +607,7 @@
                 theme: "dark",
                 disable: [
                     date => {
-                        // Flatpickr 传入的 date 是本地时间对象的开始（00:00:00）
-                        // 我们需要将其格式化为 YYYY-MM-DD 来匹配 sortedDates
+                        // 将 Flatpickr 的日期对象格式化为 YYYY-MM-DD 字符串进行匹配
                         const y = date.getFullYear();
                         const m = String(date.getMonth() + 1).padStart(2, '0');
                         const d = String(date.getDate()).padStart(2, '0');
