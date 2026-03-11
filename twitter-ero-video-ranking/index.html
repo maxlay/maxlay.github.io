@@ -453,11 +453,48 @@
         
         const topDateTrigger = document.getElementById('top-date-trigger');
 
-        function formatDateKey(dateStr) {
+        /**
+         * 【关键修改】将 ISO 字符串转换为北京时间 (Asia/Shanghai) 的日期键值
+         * 避免直接使用 new Date(str) 导致的时区偏移问题
+         */
+        function formatDateKeyBeijing(dateStr) {
             if (!dateStr) return "Unknown";
-            const d = new Date(dateStr);
-            if (isNaN(d.getTime())) return "Unknown";
-            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+            
+            // 尝试解析 ISO 格式 YYYY-MM-DDTHH:mm:ss.sssZ 或类似
+            // 我们手动提取部分，假设输入是标准的 ISO 或近似格式
+            // 如果包含 'T'，则按时间解析，否则按日期解析
+            let year, month, day;
+
+            if (dateStr.includes('T')) {
+                // 有具体时间，需要转换时区
+                // 方法：创建 UTC 日期，然后加上 8 小时偏移量，再提取年月日
+                const d = new Date(dateStr);
+                if (isNaN(d.getTime())) return "Unknown";
+
+                // 获取 UTC 时间戳
+                const utcTime = d.getTime();
+                // 北京时间 = UTC + 8 小时
+                const beijingTime = utcTime + (8 * 60 * 60 * 1000);
+                
+                const bd = new Date(beijingTime);
+                year = bd.getUTCFullYear();
+                month = bd.getUTCMonth() + 1;
+                day = bd.getUTCDate();
+            } else {
+                // 纯日期字符串 YYYY-MM-DD，通常视为当地日期或 UTC 零点
+                // 这里假设 JSON 里的纯日期已经是目标日期，或者我们需要按 UTC 零点 +8 小时处理
+                // 为了稳妥，如果是纯日期，我们直接解析，防止跨天
+                const parts = dateStr.split('-');
+                if (parts.length >= 3) {
+                    year = parseInt(parts[0]);
+                    month = parseInt(parts[1]);
+                    day = parseInt(parts[2]);
+                } else {
+                    return "Unknown";
+                }
+            }
+
+            return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
         }
 
         async function loadData() {
@@ -469,14 +506,23 @@
                 
                 groupedData = {};
                 allData.forEach(item => {
-                    const k = formatDateKey(item.created_at);
+                    // 使用新的北京时间转换函数
+                    const k = formatDateKeyBeijing(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
                 });
                 
-                sortedDates = Object.keys(groupedData).sort((a,b) => new Date(b)-new Date(a));
+                // 排序逻辑不变，因为 key 已经是 YYYY-MM-DD 格式
+                sortedDates = Object.keys(groupedData).sort((a,b) => {
+                    // 确保按日期字符串倒序
+                    return b.localeCompare(a); 
+                });
+                
                 return true;
-            } catch(e) { throw e; }
+            } catch(e) { 
+                console.error("Load error:", e);
+                throw e; 
+            }
             finally {
                 setTimeout(() => document.getElementById('progress-container').classList.remove('active'), 500);
             }
@@ -494,6 +540,7 @@
                 statsNewestEl.onclick = () => renderPage(newest);
 
                 const saved = localStorage.getItem('lastDate');
+                // 检查保存的日期是否还在数据中
                 currentDateKey = (saved && sortedDates.includes(saved)) ? saved : newest;
 
                 loadingEl.style.display = 'none';
@@ -544,6 +591,8 @@
 
         function updateUI() {
             const idx = sortedDates.indexOf(currentDateKey);
+            if (idx === -1) return; // 防御性编程
+            
             const count = groupedData[currentDateKey].length;
             
             [document.getElementById('page-date'), document.getElementById('top-page-date')].forEach(el => el.innerText = currentDateKey);
@@ -570,13 +619,8 @@
             }
         }
 
-        // 【核心修改】：不再计算位置，直接使用 CSS 固定的 top: 230px 和居中
-        // 这个函数现在只负责确保日历打开
         function ensureCalendarPosition() {
-            // 由于 CSS 已经写了 position: fixed; top: 230px; left: 50%; transform: translateX(-50%)
-            // 这里不需要任何 JS 计算，浏览器会自动处理
             if(fpInstance && fpInstance.calendarContainer) {
-                // 强制重绘以确保样式应用
                 fpInstance.calendarContainer.style.display = 'block';
             }
         }
@@ -595,7 +639,12 @@
                 theme: "dark",
                 disable: [
                     date => {
-                        const dStr = date.toISOString().split('T')[0];
+                        // Flatpickr 传入的 date 是本地时间对象的开始（00:00:00）
+                        // 我们需要将其格式化为 YYYY-MM-DD 来匹配 sortedDates
+                        const y = date.getFullYear();
+                        const m = String(date.getMonth() + 1).padStart(2, '0');
+                        const d = String(date.getDate()).padStart(2, '0');
+                        const dStr = `${y}-${m}-${d}`;
                         return !sortedDates.includes(dStr);
                     }
                 ],
@@ -623,21 +672,17 @@
                 if(fpInstance) {
                     fpInstance.setDate(currentDateKey);
                     fpInstance.open();
-                    // 打开后确保位置正确（虽然 CSS 已固定，但调用一下以防万一）
                     setTimeout(() => ensureCalendarPosition(), 10);
                 }
             };
 
-            // 仅绑定顶部按钮
             topDateTrigger.onclick = openCalendar;
             
-            // 监听窗口变化，虽然 fixed 定位通常不需要，但以防字体缩放导致布局微调
             window.addEventListener('resize', () => {
                 updateUI();
                 if(fpInstance && fpInstance.isOpen) ensureCalendarPosition();
             });
             
-            // 点击其他地方关闭日历
             document.addEventListener('click', (e) => {
                 if(fpInstance && fpInstance.isOpen && 
                    !e.target.closest('.flatpickr-calendar') && 
