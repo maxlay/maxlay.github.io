@@ -14,7 +14,9 @@ on:
 jobs:
   sync-data:
     runs-on: ubuntu-latest
-    
+     env:
+      TZ: Asia/Shanghai
+
     steps:
       # 1. 检出代码
       - name: Checkout repository
