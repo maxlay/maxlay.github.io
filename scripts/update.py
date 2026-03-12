@@ -26,9 +26,6 @@ HEADERS_LIST = {
 # 【修改点 1】输出地址：改为相对路径
 OUTPUT_ROOT_DIR = 'twitter-ero-video-ranking'
 
-# 【修改点 2】不再需要 CHUNK_SIZE，因为我们要平均分成 4 份
-# CHUNK_SIZE = 100000 
-
 OLD_URL_PREFIX = "https://pbs.twimg.com/"
 NEW_URL_PREFIX = "https://images.weserv.nl/?url=https://pbs.twimg.com/"
 
@@ -118,13 +115,11 @@ def fetch_all_data():
 def should_include_video(item):
     """
     根据时间和收藏数判断视频是否应该被收录。
-    假设 item['time'] 单位是秒。如果单位是分钟，请调整下方的阈值。
+    假设 item['time'] 单位是秒。
     """
-    # 获取时间和收藏数，设置默认值为 0 以防字段缺失
     t = item.get('time', 0)
     fav = item.get('favorite', 0)
     
-    # 确保数据类型正确 (防止字符串导致比较错误)
     try:
         t = float(t)
         fav = int(fav)
@@ -132,23 +127,14 @@ def should_include_video(item):
         return False
 
     # 规则实现 (时间单位：秒)
-    # 1. time > 10 分钟 (600秒)
     if t > 600:
         return True
-    
-    # 2. 5 分钟 < time <= 10 分钟 (300 < t <= 600), favorite > 100 (代码中写的是3，按你的代码逻辑)
     if 300 < t <= 600:
         return fav > 3
-    
-    # 3. 3 分钟 < time <= 5 分钟 (180 < t <= 300), favorite > 1000 (代码中写的是5，按你的代码逻辑)
     if 180 < t <= 300:
         return fav > 5
-    
-    # 4. 1 分钟 < time <= 3 分钟 (60 < t <= 180), favorite > 10000 (代码中写的是10，按你的代码逻辑)
     if 60 < t <= 180:
         return fav > 10
-    
-    # 5. time <= 1 分钟 (t <= 60), favorite > 100000 (代码中写的是20，按你的代码逻辑)
     if t <= 60:
         return fav > 20
     
@@ -159,7 +145,6 @@ def deduplicate_data(data):
     对数据进行去重：
     1. thumbnail 重复：只保留第 1 条
     2. url_cd + time 组合重复：只保留第 1 条
-    此函数应在筛选和排序之前执行。
     """
     if not data:
         return []
@@ -184,26 +169,21 @@ def deduplicate_data(data):
         combo = (url_cd, time_val)
         
         is_duplicate = False
-        reason = ""
 
         # 检查 thumbnail 重复
         if thumb and thumb in seen_thumbnails:
             is_duplicate = True
-            reason = "thumbnail 重复"
             removed_thumb_count += 1
         
-        # 检查 url_cd + time 组合重复 (如果上面已经判定重复，这里就不需要再检查了)
+        # 检查 url_cd + time 组合重复
         if not is_duplicate and url_cd is not None and time_val is not None:
             if combo in seen_combos:
                 is_duplicate = True
-                reason = "url_cd+time 组合重复"
                 removed_combo_count += 1
 
         if is_duplicate:
-            # print(f"跳过重复项: {reason}") # 调试用，可开启
             continue
 
-        # 保留该条目，并记录指纹
         unique_data.append(item)
         
         if thumb:
@@ -232,16 +212,14 @@ def process_and_split_data(data):
     if len(valid_data) != total:
         print(f"警告: 原始数据中有 {total - len(valid_data)} 条非字典数据已被过滤。")
     
-    # ================= 【新增】去重步骤 (在筛选前) =================
-    # 先进行去重，减少后续筛选和排序的数据量
+    # 去重步骤
     valid_data = deduplicate_data(valid_data)
-    # ===========================================================
 
     if not valid_data:
         print("警告: 去重后没有剩余任何数据，后续步骤将跳过。")
         return
 
-    # ================= 筛选步骤 =================
+    # 筛选步骤
     print("正在根据时间和收藏数条件筛选视频...")
     original_count = len(valid_data)
     filtered_data = [item for item in valid_data if should_include_video(item)]
@@ -253,9 +231,7 @@ def process_and_split_data(data):
         print("警告: 筛选后没有剩余任何数据，后续步骤将跳过。")
         return
     
-    # 更新 valid_data 为筛选后的数据
     valid_data = filtered_data
-    # ===========================================
 
     # 1. 排序：按 created_at 降序
     print("正在按 created_at 字段进行时间降序排序...")
@@ -269,31 +245,30 @@ def process_and_split_data(data):
 
     # 2. 替换 URL
     print("正在替换图片 URL...")
-    # 优化：直接在对象上修改，避免整个大字符串序列化再反序列化的开销
     for item in valid_data:
         if 'thumbnail' in item and item['thumbnail']:
             item['thumbnail'] = item['thumbnail'].replace(OLD_URL_PREFIX, NEW_URL_PREFIX)
     print("URL 替换完成。")
 
-    # 3. 写入文件 (修改部分：平均分成 4 份)
+    # 3. 写入文件 (平均分成 4 份)
     os.makedirs(OUTPUT_ROOT_DIR, exist_ok=True)
     print(f"输出目录: {os.path.abspath(OUTPUT_ROOT_DIR)}")
     
-    num_splits = 4
+    num_splits = 4  # 【关键定义】定义分割数量
     current_total = len(valid_data)
     
-    # 计算每份的基础大小和余数
+    # 【修复点】之前这里写成了 num_split (少了一个 s)，现在修正为 num_splits
     base_size = current_total // num_splits
-    remainder = current_total % num_split
+    remainder = current_total % num_splits
     
     print(f"开始拆分数据为 {num_splits} 份 (总数据量: {current_total})...")
+    print(f"每份基础大小: {base_size}, 余数: {remainder} (前 {remainder} 个文件将多包含 1 条数据)")
     
     files_created = 0
     start_index = 0
     
     for i in range(num_splits):
         # 计算当前块的大小：基础大小 + (如果还有余数则多分 1 个)
-        # 这样可以确保数据尽可能均匀分布，前面的块可能会比后面的多 1 条
         chunk_size = base_size + (1 if i < remainder else 0)
         
         end_index = start_index + chunk_size
