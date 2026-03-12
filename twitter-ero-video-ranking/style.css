@@ -19,6 +19,7 @@ body {
     padding: 15px;
     -webkit-tap-highlight-color: transparent;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 /* --- 密码保护 --- */
@@ -74,6 +75,7 @@ body {
     width: 100%; height: 4px; background-color: var(--progress-bg);
     border-radius: 2px; margin: 10px 0 15px 0; overflow: hidden;
     display: none; position: relative;
+    box-sizing: border-box;
 }
 .progress-container.active { display: block; }
 .progress-bar {
@@ -85,13 +87,15 @@ body {
     font-size: 10px; color: var(--text-sub);
 }
 
-/* ================= 视频网格 (核心修改：支持 9 列) ================= */
+/* ================= 视频网格 (核心修改：稳定 8 列) ================= */
 
 /* 基础移动端：2 列 */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 6px; /* 减小间距以适应更多列 */
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card {
@@ -101,6 +105,7 @@ body {
     height: 100%; 
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 .card:active { transform: scale(0.98); }
 .card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.4); }
@@ -140,6 +145,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 .title {
     font-size: 10px; 
@@ -155,7 +161,7 @@ body {
     margin-top: auto;
 }
 
-/* ================= 响应式调整 (逐步增加列数至 9 列) ================= */
+/* ================= 响应式调整 (目标：8 列) ================= */
 
 /* 平板小屏：3 列 */
 @media (min-width: 500px) {
@@ -182,64 +188,56 @@ body {
 }
 
 /* 中桌面：6 列 */
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
     .grid { grid-template-columns: repeat(6, 1fr); gap: 12px; }
     .play-icon { width: 40px; height: 40px; font-size: 24px; }
     .title { font-size: 13px; }
     .meta { font-size: 10px; }
 }
 
-/* 大桌面：8 列 */
-@media (min-width: 1440px) {
-    .grid { grid-template-columns: repeat(8, 1fr); gap: 14px; }
-    .play-icon { width: 42px; height: 42px; font-size: 26px; }
-    .title { font-size: 13px; }
-}
-
-/* 【核心修改】超大桌面：9 列布局 (目标达成) */
-@media (min-width: 1600px) {
-    body { padding: 20px 40px; }
+/* 【核心修改】大桌面：8 列布局 (触发宽度降低至 1400px 以确保生效) */
+@media (min-width: 1400px) {
+    body { padding: 20px 30px; }
     
     .grid { 
-        grid-template-columns: repeat(9, 1fr); /* 强制 9 列 */
-        gap: 15px; 
+        grid-template-columns: repeat(8, 1fr); /* 强制 8 列 */
+        gap: 14px; 
     }
     
     .card:hover { transform: translateY(-4px); }
     
-    /* 适配 9 列的图标大小 */
+    /* 适配 8 列的图标大小 */
     .play-icon { 
-        width: 44px; height: 44px; font-size: 26px; 
+        width: 42px; height: 42px; font-size: 25px; 
     }
     
-    /* 适配 9 列的字体大小 (防止换行) */
+    /* 适配 8 列的字体大小 */
     .title { 
-        font-size: 12px; /* 稍微缩小以防换行 */
+        font-size: 12px; 
         line-height: 1.35;
     }
     .meta { 
         font-size: 10px; 
     }
     .info {
-        padding: 6px;
+        padding: 5px;
     }
 }
 
-/* 巨幕：10-12 列 (可选) */
-@media (min-width: 2000px) {
+/* 巨幕：10 列 (可选) */
+@media (min-width: 1900px) {
     .grid { grid-template-columns: repeat(10, 1fr); gap: 16px; }
     .title { font-size: 13px; }
     .meta { font-size: 11px; }
 }
 
-/* ================= 分页控件 (Grid 布局实现严格三等分) ================= */
+/* ================= 分页控件 (修复重叠 + 严格三等分) ================= */
 
-/* 统一顶部和底部容器样式 */
 #top-pagination,
 #pagination {
-    display: grid !important; /* 改用 Grid 布局以确保严格等分 */
+    display: grid !important;
     grid-template-columns: 1fr 1fr 1fr; /* 严格三等分 */
-    gap: 6px;
+    gap: 8px; /* 增加间距防止视觉重叠 */
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -247,7 +245,7 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
     position: relative;
-    align-items: stretch; /* 子元素高度拉伸一致 */
+    align-items: stretch;
 }
 
 #top-pagination { 
@@ -255,7 +253,6 @@ body {
     margin-bottom: 15px; 
 }
 
-/* 按钮样式优化 */
 .page-btn {
     background: var(--card-bg); 
     border: 1px solid #555;
@@ -269,9 +266,9 @@ body {
     align-items: center; 
     justify-content: center;
     
-    /* Grid 布局下不需要 flex 属性，但保留以防万一 */
     width: 100%; 
     min-width: 0;
+    box-sizing: border-box; /* 关键：包含边框在宽度内 */
     
     font-size: 0.85rem;
     min-height: 42px;
@@ -294,7 +291,6 @@ body {
     border-color: #333;
 }
 
-/* 中间日期容器样式 */
 .page-info-container {
     display: flex;
     flex-direction: column;
@@ -306,8 +302,9 @@ body {
     border-radius: 6px;
     border: 1px solid #444;
     
-    width: 100%; /* 占满 Grid 单元格 */
+    width: 100%; /* 占满单元格 */
     min-width: 0;
+    box-sizing: border-box; /* 关键：修复重叠的核心 */
     
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -377,8 +374,8 @@ body {
     
     #top-pagination,
     #pagination { 
-        gap: 12px; 
-        max-width: 100%; /* 在大屏幕上依然撑满 */
+        gap: 15px; 
+        max-width: 100%; 
         margin-left: auto; 
         margin-right: auto; 
     }
@@ -392,7 +389,7 @@ body {
     .page-info-container { 
         flex-direction: row; 
         gap: 12px; 
-        padding: 8px 15px; 
+        padding: 8px 12px; /* 稍微减小 padding 防止过宽 */
         min-height: 46px;
     }
     .page-info-container::after { content: none; }
