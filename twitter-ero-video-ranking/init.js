@@ -1,4 +1,4 @@
-// ================= 入口初始化模块 (init.js) - 终极修复版 =================
+// ================= 入口初始化模块 (init.js) - 基于 DOCTYPE.txt 逻辑修复版 =================
 
 /**
  * 更新进度条 UI
@@ -27,6 +27,7 @@ function appInit() {
     loadingEl.innerText = "正在加载数据分片...";
 
     try {
+        // 初始化各模块事件
         if (typeof AccountModal !== 'undefined' && AccountModal.initEvents) {
             AccountModal.initEvents();
         }
@@ -94,101 +95,109 @@ function appInit() {
 }
 
 /**
- * 【核心修复】强制安全关闭弹窗
- * 解决：按 q 后页面无法滚动、无法点击的问题
+ * 【核心修复】基于原文件逻辑的关闭函数
+ * 严格复刻 DOCTYPE.txt 中的行为：仅移除 class，依靠 CSS 处理 pointer-events
+ * 但必须显式恢复 body 滚动，这是原文件可能隐式处理但分离后需要显式调用的
  */
-function forceCloseModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
+function safeCloseModal(modalElement) {
+    if (!modalElement) return;
 
-    // 1. 隐藏主元素
-    modal.style.display = 'none';
+    // 1. 移除 active 类 (触发 CSS transition 和 pointer-events: none)
+    modalElement.classList.remove('active');
     
-    // 2. 移除 active 类 (关键：这通常会控制 opacity 和 pointer-events)
-    modal.classList.remove('active');
-    
-    // 3. 【关键】强制移除遮罩层的指针事件，防止它依然覆盖在页面上拦截点击
-    modal.style.pointerEvents = 'none';
-    
-    // 4. 检查并隐藏内部可能存在的 overlay 子元素
-    const innerOverlay = modal.querySelector('.modal-overlay');
-    if (innerOverlay) {
-        innerOverlay.style.display = 'none';
-        innerOverlay.classList.remove('active');
-        innerOverlay.style.pointerEvents = 'none';
-    }
-
-    // 5. 【关键】恢复 Body 滚动
+    // 2. 【关键】显式恢复 Body 滚动
+    // 原文件可能在打开时设置了 body.style.overflow = 'hidden'，关闭时必须清除
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-    document.body.style.height = '';
-
-    // 6. 【关键】重置焦点到 body，防止焦点丢失或停留在隐藏元素上
+    
+    // 3. 重置焦点，防止焦点丢失导致键盘事件异常
+    // 将焦点移回 body，确保下一次按键能被全局监听器捕获
     document.body.focus({ preventScroll: true });
     
-    console.log(`Modal ${modalId} force closed. Body scroll restored.`);
+    console.log("Modal closed:", modalElement.id);
 }
 
 /**
- * 【修复重点】全局键盘事件监听
+ * 【核心修复】全局键盘事件监听 (严格复刻原文件逻辑)
  */
 function setupGlobalKeyboardListener() {
-    // 先移除可能存在的旧监听器，防止重复绑定
+    // 先移除可能存在的旧监听器
     document.removeEventListener('keydown', globalKeyHandler);
     
-    function globalKeyHandler(event) {
-        // 仅监听 'q' 或 'Q'
-        if (event.key !== 'q' && event.key !== 'Q') return;
-
-        // 如果焦点在输入框内，忽略按键
-        const activeElement = document.activeElement;
-        if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-            return; 
+    function globalKeyHandler(e) {
+        // 如果焦点在输入框内，忽略按键 (防止打字时触发)
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return;
         }
 
-        let handled = false;
-
-        // 1. 检查账号详情弹窗
-        const accountModal = document.getElementById('account-modal');
-        if (accountModal && (accountModal.style.display !== 'none' || accountModal.classList.contains('active'))) {
-            // 优先尝试调用原有关闭函数，如果不行则强制关闭
-            if (typeof closeAccountModal === 'function') {
-                closeAccountModal();
-            } else {
-                forceCloseModal('account-modal');
-            }
-            handled = true;
+        // 【关键】实时检查类名，不依赖外部变量，确保状态绝对同步
+        // 这与原文件逻辑一致：直接查询 DOM 状态
+        const isAccountModalOpen = document.getElementById('account-modal').classList.contains('active');
+        const isManagerModalOpen = document.getElementById('manager-modal').classList.contains('active');
+        
+        // 检查日历是否打开 (如果有 flatpickr 实例)
+        let isCalendarOpen = false;
+        if (window.fpInstance && window.fpInstance.isOpen) {
+            isCalendarOpen = true;
         }
 
-        // 2. 检查管理列表弹窗
-        if (!handled) {
-            const managerModal = document.getElementById('manager-modal');
-            if (managerModal && (managerModal.style.display !== 'none' || managerModal.classList.contains('active'))) {
+        // 处理关闭快捷键 (q, Q, Escape)
+        if (e.key === 'q' || e.key === 'Q' || e.key === 'Escape') {
+            // 优先级：先关管理弹窗，再关账号弹窗 (与原文件逻辑一致)
+            if (isManagerModalOpen) {
+                e.preventDefault(); // 阻止默认行为
                 if (typeof closeManagerModal === 'function') {
                     closeManagerModal();
                 } else {
-                    forceCloseModal('manager-modal');
+                    // 降级处理：直接调用安全关闭
+                    safeCloseModal(document.getElementById('manager-modal'));
                 }
-                handled = true;
+                return; // 【关键】直接返回，不再执行后续任何逻辑
+            }
+            
+            if (isAccountModalOpen) {
+                e.preventDefault();
+                if (typeof closeAccountModal === 'function') {
+                    closeAccountModal();
+                } else {
+                    // 降级处理
+                    safeCloseModal(document.getElementById('account-modal'));
+                }
+                return; // 【关键】直接返回
             }
         }
 
-        // 只阻止默认行为，不阻止冒泡
-        if (handled) {
-            event.preventDefault();
+        // 【关键】如果任意弹窗或日历打开，禁止翻页快捷键
+        // 这一步必须在翻页逻辑之前，且必须基于实时状态
+        if (isAccountModalOpen || isManagerModalOpen || isCalendarOpen) {
+            return;
+        }
+
+        // --- 以下为翻页逻辑 (仅在无弹窗时执行) ---
+        const newerBtn = document.getElementById('newer-btn');
+        const olderBtn = document.getElementById('older-btn');
+        
+        // 模拟原文件的翻页逻辑
+        if (e.key === 'ArrowLeft' && newerBtn && !newerBtn.disabled) {
+            newerBtn.click();
+        } else if (e.key === 'ArrowRight' && olderBtn && !olderBtn.disabled) {
+            olderBtn.click();
         }
     }
 
+    // 绑定监听器
     document.addEventListener('keydown', globalKeyHandler);
 }
 
 // ================= 页面启动逻辑 =================
 
 window.appInit = appInit;
+window.setupGlobalKeyboardListener = setupGlobalKeyboardListener; // 导出供外部调用
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. 绑定密码框回车事件
     const pwdInput = document.getElementById('passwordInput');
     if (pwdInput) {
         pwdInput.addEventListener('keypress', e => { 
@@ -201,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pwdInput.focus();
     }
 
+    // 2. 检查登录状态并初始化
     if (typeof getCookie === 'function' && getCookie(CONFIG.COOKIE_NAME) === "true") {
         document.getElementById('login-overlay').style.display = 'none';
         setTimeout(() => {
@@ -208,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setupGlobalKeyboardListener();
         }, 50);
     } else {
+        // 即使未登录也绑定键盘监听 (以防密码框之外的操作)
         setupGlobalKeyboardListener();
     }
 });

@@ -18,7 +18,7 @@ body {
     margin: 0;
     padding: 15px;
     -webkit-tap-highlight-color: transparent;
-    /* 确保 body 默认可以滚动，防止被 JS 错误锁定 */
+    /* 确保默认可以滚动 */
     overflow-y: auto; 
 }
 
@@ -137,30 +137,35 @@ body {
     display: flex; justify-content: space-between;
 }
 
-/* ================= 分页控件 (顶部 & 底部 三等分布局 - 统一修复) ================= */
+/* ================= 分页控件 (顶部 & 底部 完美复刻三等分) ================= */
 
-/* 通用容器样式：同时应用于 #top-pagination 和 #pagination */
+/* 【核心修复】统一顶部 (#top-pagination) 和底部 (#pagination) 的容器样式 */
 #top-pagination,
 #pagination {
-    display: flex !important;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    width: 100%;
-    max-width: 100%;
-    gap: 6px;
+    display: flex !important;       /* 强制 Flex */
+    justify-content: center;        /* 整体居中 */
+    align-items: stretch;           /* 子元素高度拉伸一致 */
+    flex-wrap: nowrap;              /* 禁止换行 */
+    
+    width: 100%;                    /* 占满父容器宽度 */
+    max-width: 100%;                /* 防止被其他样式限制 */
+    box-sizing: border-box;         /* 包含 padding */
+    
+    gap: 6px;                       /* 元素间距 */
+    padding: 0 5px;                 /* 左右留白 */
+    
     margin-top: 15px;
     margin-bottom: 15px;
-    padding: 0 5px;
-    box-sizing: border-box;
+    position: relative;
 }
 
+/* 顶部特殊调整：去掉上边距，增加下边距 */
 #top-pagination { 
     margin-top: 0; 
     margin-bottom: 15px; 
 }
 
-/* 通用按钮样式 (最新/最旧) - 应用于所有分页按钮 */
+/* 【核心修复】通用按钮样式 (最新/最旧) - 应用于两个区域 */
 .page-btn {
     background: var(--card-bg); 
     border: 1px solid #555;
@@ -170,13 +175,14 @@ body {
     cursor: pointer; 
     transition: 0.2s; 
     font-weight: 500;
+    
     display: flex; 
     align-items: center; 
     justify-content: center;
     
-    /* 【核心】三等分关键属性 */
-    flex: 1 1 0; 
-    min-width: 0; 
+    /* 【关键】三等分核心属性：完全一致 */
+    flex: 1 1 0;        /*  grow | shrink | basis(0表示忽略内容宽度，平均分配) */
+    min-width: 0;       /* 允许内容被压缩，防止文字撑破布局 */
     
     font-size: 0.8rem;
     min-height: 40px;
@@ -199,7 +205,7 @@ body {
     border-color: #333;
 }
 
-/* 日期显示容器 (中间部分) - 统一样式 */
+/* 【核心修复】日期显示容器 (中间部分) - 应用于两个区域 */
 .page-info-container {
     display: flex;
     flex-direction: column;
@@ -211,9 +217,9 @@ body {
     border-radius: 6px;
     border: 1px solid #444;
     
-    /* 【核心】三等分关键属性 */
-    flex: 1 1 0; 
-    min-width: 0; 
+    /* 【关键】三等分核心属性：与按钮完全一致 */
+    flex: 1 1 0;
+    min-width: 0;
     
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -224,6 +230,7 @@ body {
     white-space: nowrap;
 }
 
+/* 日历触发器特殊样式 */
 #date-trigger {
     cursor: default;
     background: #252525;
@@ -283,9 +290,9 @@ body {
     .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
     .grid { grid-template-columns: repeat(4, 1fr); gap: 15px; }
     
-    /* 大屏幕下保持三等分，限制最大总宽度 */
+    /* 大屏幕下保持三等分，但限制最大总宽度以防太宽 */
     #top-pagination,
-    #pagination {
+    #pagination { 
         justify-content: center; 
         gap: 15px; 
         max-width: 900px; 
@@ -358,13 +365,14 @@ body {
     background: rgba(0, 0, 0, 0.85); z-index: 100000;
     display: none; justify-content: center; align-items: center;
     opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px);
-    /* 默认禁止指针事件，只有 active 时才开启 */
-    pointer-events: none; 
+    /* 默认禁止指针事件 */
+    pointer-events: none;
 }
 .modal-overlay.active { 
     display: flex; 
     opacity: 1; 
-    pointer-events: auto; /* 激活时允许点击 */
+    /* 激活时允许指针事件 */
+    pointer-events: auto; 
 }
 .modal-content {
     background: var(--bg-color); width: 90%; max-width: 1200px; height: 90%;
