@@ -16,8 +16,6 @@
             --hover: #3d3d3d;
             --progress-bg: #444;
             --btn-disabled: #2a2a2a;
-            --danger: #ff4444;
-            --warning: #ffbb33;
         }
 
         body {
@@ -348,7 +346,7 @@
             color: #555 !important; cursor: not-allowed;
         }
 
-        /* ================= 账号弹窗 Modal 样式 ================= */
+        /* ================= 新增：账号弹窗 Modal 样式 ================= */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -394,14 +392,6 @@
             flex-shrink: 0;
         }
 
-        .modal-title-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            overflow: hidden;
-        }
-
         .modal-title {
             font-size: 1.2rem;
             font-weight: bold;
@@ -410,45 +400,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 80%;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-
-        .action-icon-btn {
-            background: transparent;
-            border: 1px solid #555;
-            color: var(--text-sub);
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-
-        .action-icon-btn:hover {
-            color: white;
-            border-color: white;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .action-icon-btn.active-fav {
-            color: var(--warning);
-            border-color: var(--warning);
-            background: rgba(255, 187, 51, 0.1);
-        }
-
-        .action-icon-btn.active-bin {
-            color: var(--danger);
-            border-color: var(--danger);
-            background: rgba(255, 68, 68, 0.1);
         }
 
         .modal-close {
@@ -460,7 +411,6 @@
             padding: 0 5px;
             line-height: 1;
             transition: color 0.2s;
-            margin-left: 10px;
         }
 
         .modal-close:hover {
@@ -471,6 +421,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 15px;
+            /* 滚动条样式 */
             scrollbar-width: thin;
             scrollbar-color: var(--accent) var(--bg-color);
         }
@@ -493,7 +444,7 @@
         }
 
         .waterfall-item {
-            break-inside: avoid;
+            break-inside: avoid; /* 防止卡片被分割到不同列 */
             margin-bottom: 10px;
             background: var(--card-bg);
             border-radius: 6px;
@@ -517,7 +468,7 @@
         .waterfall-thumb-img {
             display: block;
             width: 100%;
-            height: auto;
+            height: auto; /* 关键：高度自适应 */
             object-fit: cover;
         }
 
@@ -602,123 +553,6 @@
             padding: 0 2px;
         }
 
-        /* ================= 管理弹窗 (收藏/回收站) 样式 ================= */
-        .manager-list-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .manager-item {
-            background: var(--card-bg);
-            padding: 12px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #333;
-            transition: background 0.2s;
-        }
-
-        .manager-item:hover {
-            background: #333;
-        }
-
-        .manager-item-info {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .manager-item-name {
-            font-weight: bold;
-            color: var(--text-main);
-            font-size: 1rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .manager-item-count {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            margin-top: 4px;
-        }
-
-        .manager-item-actions {
-            display: flex;
-            gap: 8px;
-            margin-left: 10px;
-            flex-shrink: 0;
-        }
-
-        .mgr-btn {
-            padding: 6px 10px;
-            border-radius: 4px;
-            border: none;
-            font-size: 0.8rem;
-            cursor: pointer;
-            color: white;
-            transition: opacity 0.2s;
-        }
-        .mgr-btn:hover { opacity: 0.8; }
-        .mgr-btn-edit { background: #2196f3; }
-        .mgr-btn-del { background: var(--danger); }
-
-        .manager-search-box {
-            width: 100%;
-            padding: 12px;
-            background: #1a1a1a;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        
-        .empty-state {
-            text-align: center;
-            color: var(--text-sub);
-            padding: 40px 20px;
-            font-size: 14px;
-        }
-
-        /* 底部管理按钮区域 */
-        .bottom-manager-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            margin-bottom: 30px; /* 增加底部间距 */
-        }
-
-        .mgr-main-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background: var(--card-bg);
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .mgr-main-btn:hover {
-            background: #3d3d3d;
-            border-color: #666;
-        }
-
-        .mgr-main-btn.fav-btn { color: var(--warning); border-color: rgba(255, 187, 51, 0.3); }
-        .mgr-main-btn.fav-btn:hover { background: rgba(255, 187, 51, 0.1); border-color: var(--warning); }
-
-        .mgr-main-btn.bin-btn { color: var(--danger); border-color: rgba(255, 68, 68, 0.3); }
-        .mgr-main-btn.bin-btn:hover { background: rgba(255, 68, 68, 0.1); border-color: var(--danger); }
-
     </style>
 </head>
 <body>
@@ -773,50 +607,16 @@
         <button class="page-btn" id="older-btn" disabled>最旧</button>
     </div>
 
-    <!-- 新增：底部管理按钮 (收藏夹 & 回收站) -->
-    <div class="bottom-manager-buttons" id="bottom-manager-buttons" style="display:none;">
-        <button class="mgr-main-btn fav-btn" id="btn-open-favorites">
-            <span>⭐</span> 收藏夹
-        </button>
-        <button class="mgr-main-btn bin-btn" id="btn-open-recycle">
-            <span>🗑️</span> 回收站
-        </button>
-    </div>
-
-    <!-- 账号详情弹窗 Modal -->
+    <!-- ================= 新增：账号弹窗 Modal HTML 结构 ================= -->
     <div id="account-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title-group">
-                    <div class="modal-title" id="modal-account-name">账号名称</div>
-                </div>
-                <div class="modal-actions">
-                    <!-- 新增：收藏/回收站按钮 -->
-                    <button class="action-icon-btn" id="btn-toggle-fav" title="加入收藏/取消收藏">⭐</button>
-                    <button class="action-icon-btn" id="btn-toggle-bin" title="加入回收站/还原">🗑️</button>
-                    
-                    <button class="modal-close" id="modal-close-btn">&times;</button>
-                </div>
+                <div class="modal-title" id="modal-account-name">账号名称</div>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="waterfall-list" class="waterfall-container">
                     <!-- 瀑布流卡片将通过 JS 插入这里 -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 通用管理弹窗 (用于收藏夹和回收站列表) -->
-    <div id="manager-modal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 800px; height: 80%;">
-            <div class="modal-header">
-                <div class="modal-title" id="manager-modal-title">管理列表</div>
-                <button class="modal-close" id="manager-modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="manager-search-input" class="manager-search-box" placeholder="搜索账号名称...">
-                <div id="manager-list-content" class="manager-list-container">
-                    <!-- 列表项将通过 JS 插入 -->
                 </div>
             </div>
         </div>
@@ -864,62 +664,6 @@
         let allData = [], groupedData = {}, sortedDates = [], currentDateKey = "";
         let fpInstance = null; 
 
-        // ================= 新增：数据存储与管理逻辑 =================
-        const STORAGE_KEYS = {
-            FAVORITES: 'user_favorites_v1',
-            RECYCLE_BIN: 'user_recycle_bin_v1'
-        };
-
-        function getStorageList(key) {
-            try {
-                const data = localStorage.getItem(key);
-                return data ? JSON.parse(data) : [];
-            } catch (e) {
-                console.error("读取存储失败", e);
-                return [];
-            }
-        }
-
-        function saveStorageList(key, list) {
-            try {
-                localStorage.setItem(key, JSON.stringify(list));
-                return true;
-            } catch (e) {
-                console.error("保存存储失败", e);
-                alert("保存失败，存储空间可能已满。");
-                return false;
-            }
-        }
-
-        function addToStorageList(key, item) {
-            const list = getStorageList(key);
-            if (!list.includes(item)) {
-                list.push(item);
-                saveStorageList(key, list);
-                return true;
-            }
-            return false;
-        }
-
-        function removeFromStorageList(key, item) {
-            let list = getStorageList(key);
-            const initialLen = list.length;
-            list = list.filter(i => i !== item);
-            if (list.length !== initialLen) {
-                saveStorageList(key, list);
-                return true;
-            }
-            return false;
-        }
-
-        function isInStorageList(key, item) {
-            const list = getStorageList(key);
-            return list.includes(item);
-        }
-
-        // 全局变量：当前打开弹窗的账号名
-        let currentModalAccount = null;
-
         const gridEl = document.getElementById('video-grid');
         const loadingEl = document.getElementById('loading-msg');
         const statsTotalEl = document.getElementById('stats-total');
@@ -932,112 +676,16 @@
         
         const topDateTrigger = document.getElementById('top-date-trigger');
 
-        // ================= 弹窗相关逻辑 =================
+        // ================= 新增：弹窗相关逻辑 =================
         const modalOverlay = document.getElementById('account-modal');
         const modalCloseBtn = document.getElementById('modal-close-btn');
         const modalAccountName = document.getElementById('modal-account-name');
         const waterfallList = document.getElementById('waterfall-list');
-        
-        // 操作按钮
-        const btnToggleFav = document.getElementById('btn-toggle-fav');
-        const btnToggleBin = document.getElementById('btn-toggle-bin');
-
-        // 管理弹窗元素
-        const managerModal = document.getElementById('manager-modal');
-        const managerModalTitle = document.getElementById('manager-modal-title');
-        const managerModalClose = document.getElementById('manager-modal-close');
-        const managerListContent = document.getElementById('manager-list-content');
-        const managerSearchInput = document.getElementById('manager-search-input');
-        
-        let currentManagerType = null; // 'favorites' or 'recycleBin'
-
-        function updateAccountModalButtons() {
-            if (!currentModalAccount) return;
-
-            const isFav = isInStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-            const isBin = isInStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount);
-
-            // 更新收藏按钮状态
-            if (isFav) {
-                btnToggleFav.classList.add('active-fav');
-                btnToggleFav.title = "取消收藏";
-            } else {
-                btnToggleFav.classList.remove('active-fav');
-                btnToggleFav.title = "加入收藏";
-            }
-
-            // 更新回收站按钮状态
-            if (isBin) {
-                btnToggleBin.classList.add('active-bin');
-                btnToggleBin.title = "从回收站还原";
-            } else {
-                btnToggleBin.classList.remove('active-bin');
-                btnToggleBin.title = "加入回收站";
-            }
-            
-            // 互斥逻辑提示：如果在回收站，收藏按钮应禁用或提示先还原？
-            // 这里允许同时存在，但逻辑上通常互斥。为了简单，我们允许状态共存，但在加载时回收站优先级高（不加载）。
-            // 如果用户在回收站里点击收藏，应该先移除回收站吗？
-            // 需求说：对回收站内的账号做不加载处理。
-            // 行为定义：点击回收站图标 -> 加入回收站。如果已在收藏，是否自动移除收藏？
-            // 为了体验流畅：加入回收站时，自动从收藏移除。加入收藏时，自动从回收站移除。
-            
-            if (isBin && isFav) {
-                 // 状态异常，强制修正：回收站优先级高，移除收藏
-                 removeFromStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-                 updateAccountModalButtons();
-            }
-        }
-
-        function handleToggleFavorite() {
-            if (!currentModalAccount) return;
-            const isFav = isInStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-            
-            if (isFav) {
-                removeFromStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-                // 提示
-                // showToast(`已取消收藏: ${currentModalAccount}`);
-            } else {
-                // 如果同时在回收站，先移除回收站
-                if (isInStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount)) {
-                    removeFromStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount);
-                }
-                addToStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-                // 如果当前页面已加载，且该账号在回收站逻辑被过滤了，可能需要刷新？
-                // 由于收藏只是置顶，不影响加载，所以无需刷新页面，只需更新按钮
-            }
-            updateAccountModalButtons();
-        }
-
-        function handleToggleRecycle() {
-            if (!currentModalAccount) return;
-            const isBin = isInStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount);
-
-            if (isBin) {
-                removeFromStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount);
-                // 还原后，如果之前因为回收站没显示，现在需要刷新页面才能看到吗？
-                // 是的，因为 loadData 时过滤了。
-                alert(`已还原账号: ${currentModalAccount}\n请刷新页面或切换日期以查看该账号视频。`);
-            } else {
-                // 加入回收站
-                // 如果同时在收藏，先移除收藏
-                if (isInStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount)) {
-                    removeFromStorageList(STORAGE_KEYS.FAVORITES, currentModalAccount);
-                }
-                addToStorageList(STORAGE_KEYS.RECYCLE_BIN, currentModalAccount);
-                alert(`已将账号移入回收站: ${currentModalAccount}\n该账号视频将从列表中隐藏。`);
-                // 加入回收站后，当前页面如果正显示该账号，应该移除吗？
-                // 为了简单，提示用户刷新或切换，或者我们可以直接重新渲染当前页
-                renderPage(currentDateKey); 
-            }
-            updateAccountModalButtons();
-        }
 
         function openAccountModal(accountName) {
             if (!accountName) return;
-            currentModalAccount = accountName;
 
-            // 1. 过滤数据 (注意：这里即使账号在回收站，在弹窗里也应该能看，方便用户管理)
+            // 1. 过滤数据
             const filteredData = allData.filter(item => item.tweet_account === accountName);
 
             if (filteredData.length === 0) {
@@ -1079,6 +727,7 @@
                     </div>
                 `;
 
+                // 5. 点击事件：新标签页打开
                 div.addEventListener('click', () => {
                     if (item.url) {
                         window.open(item.url, '_blank');
@@ -1088,24 +737,18 @@
                 waterfallList.appendChild(div);
             });
 
-            // 5. 更新按钮状态
-            updateAccountModalButtons();
-
             // 6. 显示弹窗
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // 禁止背景滚动
         }
 
         function closeAccountModal() {
             modalOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            currentModalAccount = null;
+            document.body.style.overflow = ''; // 恢复背景滚动
         }
 
-        // 绑定账号弹窗事件
+        // 绑定关闭事件
         modalCloseBtn.addEventListener('click', closeAccountModal);
-        btnToggleFav.addEventListener('click', handleToggleFavorite);
-        btnToggleBin.addEventListener('click', handleToggleRecycle);
         
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
@@ -1113,130 +756,58 @@
             }
         });
 
-        // ================= 管理弹窗逻辑 (收藏夹/回收站列表) =================
-        function openManagerModal(type) {
-            currentManagerType = type;
-            const isFav = type === 'favorites';
-            const storageKey = isFav ? STORAGE_KEYS.FAVORITES : STORAGE_KEYS.RECYCLE_BIN;
-            const title = isFav ? "⭐ 收藏夹管理" : "🗑️ 回收站管理";
-            const emptyText = isFav ? "收藏夹为空，去视频详情页添加吧！" : "回收站空空如也。";
-
-            managerModalTitle.innerText = title;
-            managerSearchInput.value = '';
-            managerModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            renderManagerList(storageKey, emptyText);
-        }
-
-        function closeManagerModal() {
-            managerModal.classList.remove('active');
-            document.body.style.overflow = '';
-            currentManagerType = null;
-        }
-
-        function renderManagerList(storageKey, emptyText) {
-            const list = getStorageList(storageKey);
-            const searchTerm = managerSearchInput.value.toLowerCase();
-            
-            managerListContent.innerHTML = '';
-
-            const filteredList = list.filter(name => name.toLowerCase().includes(searchTerm));
-
-            if (filteredList.length === 0) {
-                managerListContent.innerHTML = `<div class="empty-state">${list.length === 0 ? emptyText : '无匹配结果'}</div>`;
+        // ================= 新增：全局键盘快捷键支持 =================
+        document.addEventListener('keydown', (e) => {
+            // 如果正在输入密码或其他输入框，不触发快捷键
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
                 return;
             }
 
-            // 统计每个账号的视频数量 (可选，稍微耗时，简化为只显示名字)
-            filteredList.forEach(name => {
-                const div = document.createElement('div');
-                div.className = 'manager-item';
-                
-                // 简单统计
-                const count = allData.filter(i => i.tweet_account === name).length;
-
-                div.innerHTML = `
-                    <div class="manager-item-info">
-                        <div class="manager-item-name">@${name}</div>
-                        <div class="manager-item-count">共 ${count} 部视频</div>
-                    </div>
-                    <div class="manager-item-actions">
-                        ${currentManagerType === 'recycleBin' 
-                            ? `<button class="mgr-btn mgr-btn-edit" onclick="restoreAccount('${name}')">还原</button>` 
-                            : ''}
-                        <button class="mgr-btn mgr-btn-del" onclick="removeAccountFromList('${name}', '${storageKey}')">删除</button>
-                    </div>
-                `;
-                managerListContent.appendChild(div);
-            });
-        }
-
-        // 暴露给全局作用域供onclick调用
-        window.removeAccountFromList = function(name, key) {
-            if(confirm(`确定要从列表中移除 @${name} 吗？`)) {
-                removeFromStorageList(key, name);
-                renderManagerList(key, key === STORAGE_KEYS.FAVORITES ? "收藏夹为空" : "回收站为空");
-                // 如果刚从回收站移除，不需要刷新页面，除非用户想看到它出现在列表里
-                // 如果刚从收藏移除，无影响
-            }
-        };
-
-        window.restoreAccount = function(name) {
-            if(confirm(`确定要还原 @${name} 吗？还原后视频将重新出现在列表中。`)) {
-                removeFromStorageList(STORAGE_KEYS.RECYCLE_BIN, name);
-                alert(`已还原 @${name}。请刷新页面或切换日期查看。`);
-                renderManagerList(STORAGE_KEYS.RECYCLE_BIN, "回收站为空");
-            }
-        };
-
-        managerModalClose.addEventListener('click', closeManagerModal);
-        managerModal.addEventListener('click', (e) => {
-            if (e.target === managerModal) closeManagerModal();
-        });
-        managerSearchInput.addEventListener('input', () => {
-            if (currentManagerType) {
-                const key = currentManagerType === 'favorites' ? STORAGE_KEYS.FAVORITES : STORAGE_KEYS.RECYCLE_BIN;
-                const emptyText = currentManagerType === 'favorites' ? "收藏夹为空" : "回收站为空";
-                renderManagerList(key, emptyText);
-            }
-        });
-
-        // 绑定底部按钮
-        document.getElementById('btn-open-favorites').addEventListener('click', () => openManagerModal('favorites'));
-        document.getElementById('btn-open-recycle').addEventListener('click', () => openManagerModal('recycleBin'));
-
-
-        // ================= 全局键盘快捷键支持 =================
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
+            // 如果日历选择器是打开的，不触发翻页快捷键，以免干扰日历操作
             const isCalendarOpen = fpInstance && fpInstance.isOpen;
-            const isAccountModalOpen = modalOverlay.classList.contains('active');
-            const isManagerModalOpen = managerModal.classList.contains('active');
 
-            // 关闭弹窗
-            if ((e.key === 'q' || e.key === 'Q' || e.key === 'Escape')) {
-                if (isManagerModalOpen) { closeManagerModal(); return; }
-                if (isAccountModalOpen) { closeAccountModal(); return; }
+            // 1. 关闭弹窗快捷键：Q 或 ESC
+            if ((e.key === 'q' || e.key === 'Q' || e.key === 'Escape') && modalOverlay.classList.contains('active')) {
+                closeAccountModal();
+                return;
             }
 
-            if (isAccountModalOpen || isManagerModalOpen || isCalendarOpen) return;
+            // 如果弹窗打开，禁止翻页操作
+            if (modalOverlay.classList.contains('active')) {
+                return;
+            }
 
-            // 翻页
+            // 如果日历打开，禁止翻页操作
+            if (isCalendarOpen) {
+                return;
+            }
+
+            // 2. 翻页快捷键
             const idx = sortedDates.indexOf(currentDateKey);
             if (idx === -1) return;
 
             if (e.key === 'ArrowLeft') {
-                if (idx > 0) renderPage(sortedDates[idx - 1]);
+                // 左键 -> 前一页 (较新)
+                if (idx > 0) {
+                    renderPage(sortedDates[idx - 1]);
+                }
             } else if (e.key === 'ArrowRight') {
-                if (idx < sortedDates.length - 1) renderPage(sortedDates[idx + 1]);
+                // 右键 -> 后一页 (较旧)
+                if (idx < sortedDates.length - 1) {
+                    renderPage(sortedDates[idx + 1]);
+                }
             }
         });
 
+
+        /**
+         * 【关键修改】直接截取 JSON 字符串的前 10 位作为日期
+         */
         function formatDateKey(dateStr) {
             if (!dateStr) return "Unknown";
-            if (dateStr.length >= 10) return dateStr.substring(0, 10);
+            if (dateStr.length >= 10) {
+                return dateStr.substring(0, 10);
+            }
             return "Unknown";
         }
 
@@ -1245,29 +816,18 @@
             try {
                 const res = await fetch(DATA_URL);
                 const data = await res.json();
-                const rawData = Array.isArray(data) ? data : (data.data || [data]);
+                allData = Array.isArray(data) ? data : (data.data || [data]);
                 
-                // 获取回收站列表
-                const recycleBin = getStorageList(STORAGE_KEYS.RECYCLE_BIN);
-
-                allData = [];
                 groupedData = {};
-
-                // 过滤回收站 & 分组
-                rawData.forEach(item => {
-                    const account = item.tweet_account;
-                    // 如果账号在回收站，跳过不加载
-                    if (account && recycleBin.includes(account)) {
-                        return; 
-                    }
-
+                allData.forEach(item => {
                     const k = formatDateKey(item.created_at);
                     if(!groupedData[k]) groupedData[k] = [];
                     groupedData[k].push(item);
-                    allData.push(item); // 用于弹窗展示所有数据（包括回收站的，方便管理）
                 });
                 
-                sortedDates = Object.keys(groupedData).sort((a,b) => b.localeCompare(a));
+                sortedDates = Object.keys(groupedData).sort((a,b) => {
+                    return b.localeCompare(a); 
+                });
                 
                 return true;
             } catch(e) { 
@@ -1296,7 +856,6 @@
                 loadingEl.style.display = 'none';
                 document.getElementById('pagination').style.display = 'flex';
                 document.getElementById('top-pagination').style.display = 'flex';
-                document.getElementById('bottom-manager-buttons').style.display = 'flex';
                 
                 renderPage(currentDateKey);
                 setupEvents();
@@ -1310,24 +869,10 @@
             currentDateKey = dateKey;
             localStorage.setItem('lastDate', dateKey);
             gridEl.innerHTML = '';
+            const items = groupedData[dateKey] || [];
             
-            let items = groupedData[dateKey] || [];
-            
-            // === 核心功能：收藏夹置顶 ===
-            const favorites = getStorageList(STORAGE_KEYS.FAVORITES);
-            if (favorites.length > 0) {
-                items.sort((a, b) => {
-                    const aFav = favorites.includes(a.tweet_account);
-                    const bFav = favorites.includes(b.tweet_account);
-                    
-                    if (aFav && !bFav) return -1; // a 是收藏，排前面
-                    if (!aFav && bFav) return 1;  // b 是收藏，排前面
-                    return 0; // 保持原有顺序（按时间倒序已经在分组时大致保证，或者这里可以再细化）
-                });
-            }
-
             if(items.length === 0) {
-                gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;">无数据 (可能被过滤或该日无更新)</div>';
+                gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;">无数据</div>';
             } else {
                 items.forEach(item => {
                     const a = document.createElement('a');
