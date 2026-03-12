@@ -7,61 +7,8 @@
     <!-- 引入 Flatpickr 样式 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
-    <!-- 使用自定义 CSS -->
+    <!-- 【修改点】使用 ghproxy.net 加速 CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- 新增：Footer 样式 -->
-    <style>
-        /* 页脚基础样式 */
-        footer {
-            margin-top: 40px;
-            padding: 30px 15px;
-            border-top: 1px solid #333;
-            background-color: var(--bg-color);
-            color: var(--text-sub);
-            text-align: center;
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        /* 三点内容容器 */
-        .footer-points {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        /* 单个点样式 */
-        .footer-points li {
-            position: relative;
-            white-space: nowrap;
-        }
-
-        /* 桌面端：添加分隔符 • */
-        @media (min-width: 600px) {
-            .footer-points li:not(:last-child)::after {
-                content: "•";
-                margin-left: 12px;
-                color: #555;
-                display: inline-block;
-            }
-        }
-
-        /* 链接样式（如果有） */
-        .footer-points a {
-            color: var(--text-sub);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .footer-points a:hover {
-            color: var(--accent);
-        }
-    </style>
 </head>
 <body>
 
@@ -119,17 +66,6 @@
         <button class="mgr-main-btn bin-btn" id="btn-open-recycle"><span>🗑️</span> 回收站</button>
     </div>
 
-    <!-- 【新增】网站底部 Footer -->
-    <footer>
-        <ul class="footer-points">
-            <li>© 2026 版权所有 密码不定期更改</li>
-            <li>键盘方向键可切换日期显示（Q 键关闭弹窗）</li>
-            <li><p>看视频需安装 <strong><a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</strong></a> 插件。</p>
-            </li>
-            <li>将Referer设置成https://twitter.com/</li>
-        </ul>
-    </footer>
-
     <!-- 账号详情弹窗 -->
     <div id="account-modal" class="modal-overlay">
         <div class="modal-content">
@@ -169,7 +105,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/zh.js"></script>
 
-    <!-- 引入项目 JS 文件 -->
+    <!-- 【修改点】使用 ghproxy.net 加速所有 JS 文件 -->
     <script src="core.js"></script>
     <script src="loader.js"></script>
     <script src="renderer.js"></script>
