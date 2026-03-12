@@ -135,41 +135,68 @@ body {
     display: flex; justify-content: space-between;
 }
 
-/* --- 分页控件 (三等分布局) --- */
+/* ================= 分页控件 (三等分布局 - 已修复) ================= */
 .pagination {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex !important; /* 强制 Flex */
+    justify-content: center; /* 居中容器 */
     gap: 6px;
     margin-top: 15px; 
     align-items: stretch;
     flex-wrap: nowrap;
-    width: 100%;
+    width: 100%; /* 占满全宽 */
+    max-width: 100%; /* 防止被限制 */
     position: relative;
+    box-sizing: border-box;
+    padding: 0 5px;
 }
 
-#top-pagination { margin-top: 0; margin-bottom: 15px; }
+#top-pagination { 
+    margin-top: 0; 
+    margin-bottom: 15px; 
+    width: 100%;
+    max-width: 100%;
+}
 
+/* 通用按钮样式 (最新/最旧) */
 .page-btn {
-    background: var(--card-bg); border: 1px solid #555;
-    color: white; padding: 6px 4px; border-radius: 5px;
-    cursor: pointer; transition: 0.2s; font-weight: 500;
-    display: flex; align-items: center; justify-content: center;
-    flex: 1;
+    background: var(--card-bg); 
+    border: 1px solid #555;
+    color: white; 
+    padding: 6px 4px; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: 0.2s; 
+    font-weight: 500;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    
+    /* 【核心修改】三等分关键属性 */
+    flex: 1 1 0; /* grow, shrink, basis */
+    min-width: 0; /* 允许内容压缩 */
+    
     font-size: 0.8rem;
     min-height: 40px;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
+
 .page-btn:hover:not(:disabled) { 
-    background: var(--accent); border-color: var(--accent); 
+    background: var(--accent); 
+    border-color: var(--accent); 
     transform: translateY(-2px);
 }
 .page-btn:disabled { 
-    opacity: 0.3; cursor: not-allowed; background: var(--btn-disabled); 
-    transform: none; border-color: #333;
+    opacity: 0.3; 
+    cursor: not-allowed; 
+    background: var(--btn-disabled); 
+    transform: none; 
+    border-color: #333;
 }
 
+/* 日期显示容器 (中间部分) */
 .page-info-container {
     display: flex;
     flex-direction: column;
@@ -180,14 +207,18 @@ body {
     padding: 4px 2px;
     border-radius: 6px;
     border: 1px solid #444;
-    flex: 1;
-    min-width: 0;
+    
+    /* 【核心修改】三等分关键属性 */
+    flex: 1 1 0; /* 与按钮同等权重 */
+    min-width: 0; /* 允许内容压缩 */
+    
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     cursor: pointer;
     position: relative;
     z-index: 10;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 #date-trigger {
@@ -224,6 +255,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+    display: block;
 }
 
 .page-count {
@@ -234,19 +266,42 @@ body {
     border-radius: 8px;
     font-weight: 600;
     white-space: nowrap;
+    display: inline-block;
+    margin-top: 2px;
 }
 
 .loading { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; }
 .error { color: #ff4444; text-align: center; padding: 20px; }
 
+/* ================= 响应式调整 ================= */
 @media (min-width: 768px) {
     body { padding: 20px 40px; }
     .stats-main { font-size: 1.1rem; }
     .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
     .grid { grid-template-columns: repeat(4, 1fr); gap: 15px; }
-    .pagination { justify-content: center; gap: 15px; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .page-btn { max-width: 180px; padding: 10px 15px; font-size: 0.95rem; }
-    .page-info-container { flex-direction: row; gap: 12px; padding: 10px 20px; max-width: 250px; }
+    
+    /* 大屏幕下保持三等分，但限制最大总宽度以防太宽 */
+    .pagination { 
+        justify-content: center; 
+        gap: 15px; 
+        max-width: 900px; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+    
+    .page-btn { 
+        /* 在大屏幕上依然保持 flex: 1，但可以增加最小高度或内边距 */
+        padding: 10px 15px; 
+        font-size: 0.95rem; 
+        min-height: 45px;
+    }
+    
+    .page-info-container { 
+        flex-direction: row; 
+        gap: 12px; 
+        padding: 10px 20px; 
+        min-height: 45px;
+    }
     .page-info-container::after { content: none; }
     .page-date { font-size: 1.1rem; white-space: normal; }
     .page-count { font-size: 0.9rem; }
