@@ -26,8 +26,7 @@ HEADERS_LIST = {
 # 【修改点 1】输出地址：改为相对路径
 OUTPUT_ROOT_DIR = 'twitter-ero-video-ranking'
 
-# 【修改点 2】不再需要 CHUNK_SIZE，因为我们要平均分成 4 份
-# CHUNK_SIZE = 100000 
+CHUNK_SIZE = 100000
 
 OLD_URL_PREFIX = "https://pbs.twimg.com/"
 NEW_URL_PREFIX = "https://images.weserv.nl/?url=https://pbs.twimg.com/"
@@ -218,7 +217,7 @@ def deduplicate_data(data):
     return unique_data
 
 def process_and_split_data(data):
-    """排序、替换 URL 并平均拆分写入 4 个文件"""
+    """排序、替换 URL 并拆分写入文件"""
     
     if not data:
         print("没有数据可处理。")
@@ -275,40 +274,24 @@ def process_and_split_data(data):
             item['thumbnail'] = item['thumbnail'].replace(OLD_URL_PREFIX, NEW_URL_PREFIX)
     print("URL 替换完成。")
 
-    # 3. 写入文件 (修改部分：平均分成 4 份)
+    # 3. 写入文件
     os.makedirs(OUTPUT_ROOT_DIR, exist_ok=True)
     print(f"输出目录: {os.path.abspath(OUTPUT_ROOT_DIR)}")
-    
-    num_splits = 4
-    current_total = len(valid_data)
-    
-    # 计算每份的基础大小和余数
-    base_size = current_total // num_splits
-    remainder = current_total % num_split
-    
-    print(f"开始拆分数据为 {num_splits} 份 (总数据量: {current_total})...")
+    print(f"开始拆分 (每块 {CHUNK_SIZE} 条)...")
     
     files_created = 0
-    start_index = 0
+    current_total = len(valid_data)
     
-    for i in range(num_splits):
-        # 计算当前块的大小：基础大小 + (如果还有余数则多分 1 个)
-        # 这样可以确保数据尽可能均匀分布，前面的块可能会比后面的多 1 条
-        chunk_size = base_size + (1 if i < remainder else 0)
-        
-        end_index = start_index + chunk_size
-        chunk = valid_data[start_index:end_index]
-        
-        filename = f'data-part-{i}.json'
+    for i in range(0, current_total, CHUNK_SIZE):
+        chunk = valid_data[i:i+CHUNK_SIZE]
+        filename = f'data-part-{i//CHUNK_SIZE}.json'
         full_path = os.path.join(OUTPUT_ROOT_DIR, filename)
         
         with open(full_path, 'w', encoding='utf-8') as out:
             json.dump(chunk, out, ensure_ascii=False)
         
         files_created += 1
-        print(f"已生成: {filename} (索引 {start_index} 到 {end_index}, 共 {len(chunk)} 条)")
-        
-        start_index = end_index
+        print(f"已生成: {filename} ({len(chunk)} 条)")
 
     print("\n=== 完成! ===")
 
