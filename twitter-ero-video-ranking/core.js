@@ -3,8 +3,9 @@ const CONFIG = {
     PASSWORD: "821025",
     COOKIE_NAME: "x_video_auth_verified",
     // 修改这里：强制指定远程基础地址，末尾必须带 /
-    BASE_URL: 'https://ghproxy.net/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/', 
-    //BASE_URL: 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/', 
+    //BASE_URL: './', 
+    //BASE_URL: 'https://ghproxy.net/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/', 
+    BASE_URL: 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/', 
     //BASE_URL: window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1), // 自动获取当前目录
     DATA_PARTS_COUNT: 4,
     STORAGE_KEYS: {
