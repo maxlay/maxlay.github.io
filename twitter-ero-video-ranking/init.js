@@ -1,4 +1,4 @@
-// ================= 入口初始化模块 (init.js) - 修复版 =================
+// ================= 入口初始化模块 (init.js) - 终极修复版 =================
 
 /**
  * 更新进度条 UI
@@ -27,7 +27,6 @@ function appInit() {
     loadingEl.innerText = "正在加载数据分片...";
 
     try {
-        // 初始化各模块事件
         if (typeof AccountModal !== 'undefined' && AccountModal.initEvents) {
             AccountModal.initEvents();
         }
@@ -95,42 +94,45 @@ function appInit() {
 }
 
 /**
- * 【核心修复】安全的弹窗关闭辅助函数
- * 确保彻底清理遮罩层、恢复滚动、重置焦点
+ * 【核心修复】强制安全关闭弹窗
+ * 解决：按 q 后页面无法滚动、无法点击的问题
  */
-function safeCloseModal(modalElement) {
-    if (!modalElement) return;
+function forceCloseModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
 
-    // 1. 隐藏主容器
-    modalElement.style.display = 'none';
+    // 1. 隐藏主元素
+    modal.style.display = 'none';
     
-    // 2. 移除 active 类 (关键：这通常会移除遮罩层的 opacity 和 pointer-events)
-    modalElement.classList.remove('active');
+    // 2. 移除 active 类 (关键：这通常会控制 opacity 和 pointer-events)
+    modal.classList.remove('active');
     
-    // 3. 如果存在内部的 overlay 子元素，也强制隐藏
-    const overlay = modalElement.querySelector('.modal-overlay-inner') || modalElement;
-    overlay.style.pointerEvents = 'none'; // 防止残留遮挡
+    // 3. 【关键】强制移除遮罩层的指针事件，防止它依然覆盖在页面上拦截点击
+    modal.style.pointerEvents = 'none';
+    
+    // 4. 检查并隐藏内部可能存在的 overlay 子元素
+    const innerOverlay = modal.querySelector('.modal-overlay');
+    if (innerOverlay) {
+        innerOverlay.style.display = 'none';
+        innerOverlay.classList.remove('active');
+        innerOverlay.style.pointerEvents = 'none';
+    }
 
-    // 4. 恢复 body 滚动 (防止背景被锁定)
+    // 5. 【关键】恢复 Body 滚动
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
+    document.body.style.height = '';
 
-    // 5. 将焦点移回主体内容，防止焦点丢失导致键盘事件异常
-    // 尝试聚焦到第一个可点击的视频卡片或主容器
-    const firstCard = document.querySelector('.card');
-    if (firstCard) {
-        firstCard.focus({ preventScroll: true });
-    } else {
-        document.body.focus({ preventScroll: true });
-    }
+    // 6. 【关键】重置焦点到 body，防止焦点丢失或停留在隐藏元素上
+    document.body.focus({ preventScroll: true });
     
-    console.log("Modal safely closed:", modalElement.id);
+    console.log(`Modal ${modalId} force closed. Body scroll restored.`);
 }
 
 /**
- * 【修复重点】全局键盘事件监听 (修复 q 键导致页面无响应)
+ * 【修复重点】全局键盘事件监听
  */
 function setupGlobalKeyboardListener() {
     // 先移除可能存在的旧监听器，防止重复绑定
@@ -140,7 +142,7 @@ function setupGlobalKeyboardListener() {
         // 仅监听 'q' 或 'Q'
         if (event.key !== 'q' && event.key !== 'Q') return;
 
-        // 【关键】如果焦点在输入框内，忽略按键
+        // 如果焦点在输入框内，忽略按键
         const activeElement = document.activeElement;
         if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
             return; 
@@ -148,38 +150,34 @@ function setupGlobalKeyboardListener() {
 
         let handled = false;
 
-        // 1. 检查并关闭账号详情弹窗
+        // 1. 检查账号详情弹窗
         const accountModal = document.getElementById('account-modal');
-        // 判断条件：元素存在 AND (显示不为none OR 拥有active类)
         if (accountModal && (accountModal.style.display !== 'none' || accountModal.classList.contains('active'))) {
-            // 优先调用模块自带的关闭函数（如果有），否则使用安全关闭函数
+            // 优先尝试调用原有关闭函数，如果不行则强制关闭
             if (typeof closeAccountModal === 'function') {
                 closeAccountModal();
             } else {
-                safeCloseModal(accountModal);
+                forceCloseModal('account-modal');
             }
             handled = true;
         }
 
-        // 2. 检查并关闭管理列表弹窗 (收藏夹/回收站)
+        // 2. 检查管理列表弹窗
         if (!handled) {
             const managerModal = document.getElementById('manager-modal');
             if (managerModal && (managerModal.style.display !== 'none' || managerModal.classList.contains('active'))) {
                 if (typeof closeManagerModal === 'function') {
                     closeManagerModal();
                 } else {
-                    safeCloseModal(managerModal);
+                    forceCloseModal('manager-modal');
                 }
                 handled = true;
             }
         }
 
-        // 【重要修改】只阻止默认行为，不要阻止冒泡 (stopPropagation)，除非确实需要
-        // 这里我们只阻止浏览器的默认搜索行为等，不干扰其他点击
+        // 只阻止默认行为，不阻止冒泡
         if (handled) {
-            event.preventDefault(); 
-            // 注意：这里故意没有调用 event.stopPropagation() 
-            // 以防止阻断后续可能需要的 UI 更新或事件传递
+            event.preventDefault();
         }
     }
 
@@ -191,7 +189,6 @@ function setupGlobalKeyboardListener() {
 window.appInit = appInit;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 绑定密码框回车事件
     const pwdInput = document.getElementById('passwordInput');
     if (pwdInput) {
         pwdInput.addEventListener('keypress', e => { 
@@ -204,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
         pwdInput.focus();
     }
 
-    // 2. 检查登录状态
     if (typeof getCookie === 'function' && getCookie(CONFIG.COOKIE_NAME) === "true") {
         document.getElementById('login-overlay').style.display = 'none';
         setTimeout(() => {

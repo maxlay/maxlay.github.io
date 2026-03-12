@@ -18,6 +18,8 @@ body {
     margin: 0;
     padding: 15px;
     -webkit-tap-highlight-color: transparent;
+    /* 确保 body 默认可以滚动，防止被 JS 错误锁定 */
+    overflow-y: auto; 
 }
 
 /* --- 密码保护 --- */
@@ -135,29 +137,30 @@ body {
     display: flex; justify-content: space-between;
 }
 
-/* ================= 分页控件 (三等分布局 - 已修复) ================= */
-.pagination {
-    display: flex !important; /* 强制 Flex */
-    justify-content: center; /* 居中容器 */
-    gap: 6px;
-    margin-top: 15px; 
+/* ================= 分页控件 (顶部 & 底部 三等分布局 - 统一修复) ================= */
+
+/* 通用容器样式：同时应用于 #top-pagination 和 #pagination */
+#top-pagination,
+#pagination {
+    display: flex !important;
+    justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    width: 100%; /* 占满全宽 */
-    max-width: 100%; /* 防止被限制 */
-    position: relative;
-    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    gap: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     padding: 0 5px;
+    box-sizing: border-box;
 }
 
 #top-pagination { 
     margin-top: 0; 
     margin-bottom: 15px; 
-    width: 100%;
-    max-width: 100%;
 }
 
-/* 通用按钮样式 (最新/最旧) */
+/* 通用按钮样式 (最新/最旧) - 应用于所有分页按钮 */
 .page-btn {
     background: var(--card-bg); 
     border: 1px solid #555;
@@ -171,9 +174,9 @@ body {
     align-items: center; 
     justify-content: center;
     
-    /* 【核心修改】三等分关键属性 */
-    flex: 1 1 0; /* grow, shrink, basis */
-    min-width: 0; /* 允许内容压缩 */
+    /* 【核心】三等分关键属性 */
+    flex: 1 1 0; 
+    min-width: 0; 
     
     font-size: 0.8rem;
     min-height: 40px;
@@ -196,7 +199,7 @@ body {
     border-color: #333;
 }
 
-/* 日期显示容器 (中间部分) */
+/* 日期显示容器 (中间部分) - 统一样式 */
 .page-info-container {
     display: flex;
     flex-direction: column;
@@ -208,9 +211,9 @@ body {
     border-radius: 6px;
     border: 1px solid #444;
     
-    /* 【核心修改】三等分关键属性 */
-    flex: 1 1 0; /* 与按钮同等权重 */
-    min-width: 0; /* 允许内容压缩 */
+    /* 【核心】三等分关键属性 */
+    flex: 1 1 0; 
+    min-width: 0; 
     
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -280,8 +283,9 @@ body {
     .stats-sub { font-size: 0.95rem; padding: 4px 12px; }
     .grid { grid-template-columns: repeat(4, 1fr); gap: 15px; }
     
-    /* 大屏幕下保持三等分，但限制最大总宽度以防太宽 */
-    .pagination { 
+    /* 大屏幕下保持三等分，限制最大总宽度 */
+    #top-pagination,
+    #pagination {
         justify-content: center; 
         gap: 15px; 
         max-width: 900px; 
@@ -290,7 +294,6 @@ body {
     }
     
     .page-btn { 
-        /* 在大屏幕上依然保持 flex: 1，但可以增加最小高度或内边距 */
         padding: 10px 15px; 
         font-size: 0.95rem; 
         min-height: 45px;
@@ -355,8 +358,14 @@ body {
     background: rgba(0, 0, 0, 0.85); z-index: 100000;
     display: none; justify-content: center; align-items: center;
     opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px);
+    /* 默认禁止指针事件，只有 active 时才开启 */
+    pointer-events: none; 
 }
-.modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.active { 
+    display: flex; 
+    opacity: 1; 
+    pointer-events: auto; /* 激活时允许点击 */
+}
 .modal-content {
     background: var(--bg-color); width: 90%; max-width: 1200px; height: 90%;
     border-radius: 12px; position: relative; display: flex;
