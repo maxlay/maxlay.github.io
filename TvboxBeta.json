@@ -150,15 +150,6 @@
       "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
     },
     {
-      "key": "爱奇艺",
-      "name": "🦄爱奇艺",
-      "type": 1,
-      "api": "https://iqiyizyapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "天天",
       "name": "🦄天天",
       "type": 3,
@@ -173,6 +164,15 @@
       "api": "csp_Jpys",
       "playerType": 1,
       "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+    },
+    {
+      "key": "爱奇艺",
+      "name": "🦄爱奇艺",
+      "type": 1,
+      "api": "https://iqiyizyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
     },
     {
       "key": "电影先生",
@@ -207,7 +207,7 @@
       "quickSearch": 1,
       "filterable": 0
     }
-  ]
+  ],
 
     "parses": [
     {
