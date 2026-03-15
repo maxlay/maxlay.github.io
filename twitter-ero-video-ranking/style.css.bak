@@ -87,7 +87,7 @@ body {
     font-size: 10px; color: var(--text-sub);
 }
 
-/* ================= 视频网格 (核心修改：稳定 8 列 + 新底部布局) ================= */
+/* ================= 视频网格 (核心修改：稳定 8 列) ================= */
 
 /* 基础移动端：2 列 */
 .grid {
@@ -154,76 +154,12 @@ body {
     line-height: 1.3;
     color: var(--text-main);
 }
-
-/* --- 【修改点】Meta 区域样式更新 --- */
 .meta {
     font-size: 8px; 
     color: var(--text-sub);
-    display: flex; 
-    justify-content: space-between; /* 两端对齐 */
-    align-items: center; /* 垂直居中 */
+    display: flex; justify-content: space-between;
     margin-top: auto;
-    width: 100%;
-    gap: 4px; /* 元素间间距 */
 }
-
-/* 1. 作者名称 (左侧，可伸缩) */
-.meta-author {
-    flex: 1; /* 占据剩余空间 */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: left;
-    opacity: 0.8;
-    font-size: 8px;
-}
-
-/* 2. 收藏数量 (中间/右侧，固定宽度) */
-.meta-fav-count {
-    font-weight: bold;
-    color: var(--warning); /* 使用警告色/金色 */
-    white-space: nowrap;
-    font-size: 8px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    flex-shrink: 0; /* 防止被压缩 */
-}
-
-/* 3. 投送按钮 (最右侧，固定) */
-.cast-btn {
-    background: rgba(29, 185, 84, 0.15);
-    color: var(--accent);
-    border: 1px solid rgba(29, 185, 84, 0.4);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    flex-shrink: 0;
-    outline: none;
-}
-
-.cast-btn:hover {
-    background: var(--accent);
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.cast-btn:active {
-    transform: scale(0.95);
-}
-
-/* 投送状态样式 */
-.cast-btn.sending { opacity: 0.7; cursor: wait; }
-.cast-btn.success { background: var(--accent); color: #fff; border-color: var(--accent); }
-.cast-btn.error { background: var(--danger); color: #fff; border-color: var(--danger); }
 
 /* ================= 响应式调整 (目标：8 列) ================= */
 
@@ -234,10 +170,6 @@ body {
     .title { font-size: 11px; }
     .meta { font-size: 9px; }
     .info { padding: 5px; }
-    
-    .meta-author { font-size: 9px; }
-    .meta-fav-count { font-size: 9px; }
-    .cast-btn { padding: 2px 7px; font-size: 9px; }
 }
 
 /* 平板大屏：4 列 */
@@ -246,10 +178,6 @@ body {
     .play-icon { width: 36px; height: 36px; font-size: 22px; }
     .title { font-size: 12px; }
     .meta { font-size: 9px; }
-
-    .meta-author { font-size: 9px; }
-    .meta-fav-count { font-size: 9px; }
-    .cast-btn { padding: 3px 8px; font-size: 9px; }
 }
 
 /* 小桌面：5 列 */
@@ -257,10 +185,6 @@ body {
     .grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .play-icon { width: 38px; height: 38px; font-size: 24px; }
     .title { font-size: 12px; }
-
-    .meta-author { font-size: 10px; }
-    .meta-fav-count { font-size: 10px; }
-    .cast-btn { padding: 3px 8px; font-size: 10px; }
 }
 
 /* 中桌面：6 列 */
@@ -269,13 +193,9 @@ body {
     .play-icon { width: 40px; height: 40px; font-size: 24px; }
     .title { font-size: 13px; }
     .meta { font-size: 10px; }
-
-    .meta-author { font-size: 10px; }
-    .meta-fav-count { font-size: 10px; }
-    .cast-btn { padding: 3px 9px; font-size: 10px; }
 }
 
-/* 【核心修改】大桌面：8 列布局 */
+/* 【核心修改】大桌面：8 列布局 (触发宽度降低至 1400px 以确保生效) */
 @media (min-width: 1400px) {
     body { padding: 20px 30px; }
     
@@ -286,10 +206,12 @@ body {
     
     .card:hover { transform: translateY(-4px); }
     
+    /* 适配 8 列的图标大小 */
     .play-icon { 
         width: 42px; height: 42px; font-size: 25px; 
     }
     
+    /* 适配 8 列的字体大小 */
     .title { 
         font-size: 12px; 
         line-height: 1.35;
@@ -300,10 +222,6 @@ body {
     .info {
         padding: 5px;
     }
-
-    .meta-author { font-size: 10px; }
-    .meta-fav-count { font-size: 10px; }
-    .cast-btn { padding: 3px 9px; font-size: 10px; }
 }
 
 /* 巨幕：10 列 (可选) */
@@ -311,10 +229,6 @@ body {
     .grid { grid-template-columns: repeat(10, 1fr); gap: 16px; }
     .title { font-size: 13px; }
     .meta { font-size: 11px; }
-    
-    .meta-author { font-size: 11px; }
-    .meta-fav-count { font-size: 11px; }
-    .cast-btn { padding: 4px 10px; font-size: 11px; }
 }
 
 /* ================= 分页控件 (修复重叠 + 严格三等分) ================= */
