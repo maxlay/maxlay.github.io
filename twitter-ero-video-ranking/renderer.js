@@ -63,7 +63,6 @@ const Renderer = {
                 const favCount = item.favorite || 0;
                 const formattedFav = formatNum(favCount);
                 
-                // 【修复】标题为空时不显示文字
                 const titleText = item.title ? item.title : ''; 
 
                 const authorHtml = `
@@ -83,8 +82,8 @@ const Renderer = {
                         <div class="meta">
                             ${authorHtml}
                             <span class="meta-fav-count" title="收藏人数">★ ${formattedFav}</span>
-                            <button class="cast-btn" onclick="event.stopPropagation(); handleCast('${item.url}')">
-                                投送
+                            <button class="cast-btn" onclick="event.stopPropagation(); handleCast('${item.url}', '${item.title || '视频'}')">
+                                投屏
                             </button>
                         </div>
                     </div>
@@ -207,103 +206,108 @@ const Renderer = {
 window.Renderer = Renderer;
 
 /**
- * 【智能通用版】投送处理函数
+ * 【终极系统级投屏版】
  * 策略：
- * 1. 优先尝试 AirPlay (仅限 Safari/iOS/macOS)
- * 2. 若环境不支持 AirPlay (Android/Windows)，自动复制链接并提示用户
- * 
- * 目标：让用户在任何设备上点击都有反馈，尽可能实现投屏。
+ * 1. 尝试 Presentation API (标准投屏)
+ * 2. 尝试 Web Share API (唤起小米/苹果系统投屏菜单)
+ * 3. 降级：复制链接
  */
-async function handleCast(videoUrl) {
+async function handleCast(videoUrl, videoTitle) {
     const btn = event.target.closest('.cast-btn');
     if(!btn) return;
     
     const originalText = btn.innerHTML;
-    
-    // UI 状态：正在尝试...
     btn.innerHTML = '📡';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
     let success = false;
 
-    // --- 尝试 1: AirPlay (Safari 专属) ---
-    // 检查浏览器是否支持 AirPlay API (只有 Safari 支持)
-    if (typeof HTMLMediaElement !== 'undefined' && 
-        HTMLMediaElement.prototype.webkitShowPlaybackTargetPicker) {
-        
+    // --- 尝试 1: Presentation API (W3C 标准，部分安卓浏览器支持) ---
+    if (navigator.presentation && navigator.presentation.defaultRequest) {
         try {
-            // 创建一个隐藏的 video 元素作为 AirPlay 的载体
-            const tempVideo = document.createElement('video');
-            tempVideo.src = videoUrl;
-            tempVideo.style.display = 'none';
-            tempVideo.setAttribute('playsinline', 'true'); // iOS 必要属性
-            document.body.appendChild(tempVideo);
-
-            // 等待元数据加载（确保播放器就绪）
-            await new Promise((resolve, reject) => {
-                if (tempVideo.readyState >= 1) {
-                    resolve();
-                } else {
-                    tempVideo.onloadedmetadata = resolve;
-                    tempVideo.onerror = resolve; // 防止加载失败卡死
-                    setTimeout(() => resolve(), 2000); // 超时保护
-                }
-            });
-
-            // 调用原生 AirPlay 选择器
-            if (tempVideo.webkitShowPlaybackTargetPicker) {
-                tempVideo.webkitShowPlaybackTargetPicker();
-                btn.innerHTML = '✅ AirPlay';
-                btn.style.color = '#4cd964';
-                success = true;
-                
-                // 延迟清理临时元素，防止选择器刚弹出就消失
-                setTimeout(() => {
-                    if(document.body.contains(tempVideo)) {
-                        document.body.removeChild(tempVideo);
-                    }
-                }, 3000);
-            } else {
-                throw new Error("API 不可用");
-            }
-        } catch (err) {
-            console.log("AirPlay 尝试失败:", err);
-            // 失败后不立即 alert，而是落入下方的通用方案
+            const request = navigator.presentation.defaultRequest;
+            request.urls = [videoUrl]; // 某些实现需要 URL
+            // 注意：此 API 在很多移动端浏览器上实现不完整，可能无反应
+            const connection = await request.start();
+            console.log("Presentation connected:", connection);
+            btn.innerHTML = '✅ 投屏中';
+            btn.style.color = '#4cd964';
+            success = true;
+        } catch (e) {
+            console.log("Presentation API 不可用或失败", e);
         }
     }
 
-    // --- 尝试 2: 如果 AirPlay 不可用 (Android/Windows)，执行通用方案 ---
+    // --- 尝试 2: Web Share API (最推荐！唤起小米/苹果系统级菜单) ---
+    if (!success && navigator.share) {
+        try {
+            console.log("尝试唤起系统分享菜单...");
+            await navigator.share({
+                title: videoTitle || '视频投送',
+                text: '点击下方链接在电视上播放',
+                url: videoUrl
+            });
+            // 用户完成分享动作后
+            btn.innerHTML = '✅ 已发送';
+            btn.style.color = '#4cd964';
+            success = true;
+            
+            // 针对小米用户的特别提示
+            setTimeout(() => {
+                alert("💡 操作指引：\n\n1. 在弹出的系统菜单中，寻找【投屏】、【小米视频】、【多屏互动】或【AirPlay】图标。\n2. 点击后选择您的【小米电视】。\n3. 如果菜单中没有投屏选项，请选择【微信/QQ】发送给‘文件传输助手’，然后在电视端打开。");
+                resetBtn(btn, originalText);
+            }, 800);
+            
+            return; // 成功则直接返回
+        } catch (err) {
+            console.log("用户取消分享或不支持 Share API", err);
+            // 不立即失败，继续向下执行
+        }
+    }
+
+    // --- 尝试 3: 针对小米电视的特殊方案 (如果以上都失败) ---
     if (!success) {
-        // 在非 Apple 设备上，Web 端无法直接控制电视播放（除非电视支持 Chromecast 且网页集成 SDK）
-        // 最通用的“投屏”方式是：复制链接 -> 用户在电视播放器中粘贴
-        
+        // 生成一个简易的播放页二维码逻辑太复杂，这里直接采用最稳妥的“复制链接 + 强提示”
         try {
             await navigator.clipboard.writeText(videoUrl);
             
-            // 提示用户
-            const msg = "✅ 链接已复制！\n\n当前设备/浏览器不支持 AirPlay 协议。\n请打开电视上的播放器 (如 Kodi, VLC, 当贝播放器, Apple TV 客户端)，选择【网络播放/URL 播放】，然后粘贴链接。";
-            alert(msg);
+            // 检测是否为小米/Redmi 设备
+            const isXiaomi = /Mi|Xiaomi|Redmi|POCO/.test(navigator.userAgent);
+            const isMac = /Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent);
+            
+            let tipMsg = "✅ 链接已复制！\n\n";
+            
+            if (isXiaomi) {
+                tipMsg += "📺 【小米电视专属操作】\n" +
+                          "方法 A (推荐): 在电视主页打开【手机投屏】App，选择【链接投屏】，粘贴即可。\n" +
+                          "方法 B: 打开电视上的【OK 影视】或【高清播放器】，选择【网络播放】，粘贴链接。\n" +
+                          "方法 C: 重新点击按钮，在弹出的系统菜单中寻找【投屏】图标。";
+            } else if (isMac) {
+                tipMsg += "🍎 【Mac 专属操作】\n" +
+                          "1. 确保电视已开启 AirPlay (设置 -> 通用 -> AirPlay)。\n" +
+                          "2. 重新点击按钮，在分享菜单中选择【隔空播放】。\n" +
+                          "3. 或者在电视上打开浏览器，访问此页面直接播放。";
+            } else {
+                tipMsg += "请在电视上打开播放器 (Kodi/VLC/当贝)，选择【网络播放】并粘贴链接。";
+            }
+            
+            alert(tipMsg);
             
             btn.innerHTML = '📋 已复制';
-            btn.style.color = '#4cd964';
+            btn.style.color = '#faad14';
             success = true;
-        } catch (err) {
-            // 剪贴板 API 失败（如非 HTTPS 环境），降级为 prompt
-            const fallback = prompt("无法自动复制，请手动复制以下链接并在电视上播放:", videoUrl);
-            if(fallback !== null) success = true;
+        } catch (e) {
+            const fallback = prompt("无法自动复制，请手动复制:", videoUrl);
+            if (fallback !== null) {
+                btn.innerHTML = '📋 已复制';
+                btn.style.color = '#faad14';
+                success = true;
+            }
         }
+        
+        setTimeout(() => resetBtn(btn, originalText), 4000);
     }
-
-    // 恢复按钮状态
-    setTimeout(() => {
-        if(success && btn.innerHTML.includes('✅')) {
-            // 保持成功状态几秒
-            setTimeout(() => resetBtn(btn, originalText), 2000);
-        } else {
-            resetBtn(btn, originalText);
-        }
-    }, success ? 0 : 1000);
 }
 
 function resetBtn(btn, text) {
