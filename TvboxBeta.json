@@ -41,7 +41,8 @@
     "wallpaper": "https://bing.img.run/uhd.php",
 
     //"spider": "https://jihulab.com/yoursmile2/TVBox/-/raw/main/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
-    "spider": "http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+    //"spider": "http://cdn.qiaoji8.com/fix251212.jar;md5;31542aefeb80f62c8c7c9d1d5e0a6036",
+    "spider": "http://cdn.qiaoji8.com/fix260313.jar;md5;0b063fd7b1d09fdf6727aaa84bd9a8e5",
 
     "sites": [
     {
