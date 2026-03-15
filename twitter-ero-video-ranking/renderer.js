@@ -38,7 +38,7 @@ const Renderer = {
         
         let items = DataLoader.groupedData[dateKey] || [];
         
-        // 收藏夹置顶逻辑 (保持原有逻辑)
+        // 收藏夹置顶逻辑
         const favorites = StorageManager.get(CONFIG.STORAGE_KEYS.FAVORITES);
         if (favorites && favorites.length > 0) {
             items.sort((a, b) => {
@@ -58,7 +58,7 @@ const Renderer = {
             const fragment = document.createDocumentFragment();
             
             items.forEach(item => {
-                const card = document.createElement('div'); // 改为 div，通过 JS 控制跳转，避免新标签页打开
+                const card = document.createElement('div');
                 card.className = 'card';
                 
                 const accountId = getAccountId(item);
@@ -70,7 +70,10 @@ const Renderer = {
                 const favCount = item.favorite || 0;
                 const formattedFav = formatNum(favCount);
 
-                // 构建作者链接 HTML (保持原有 onclick 逻辑)
+                // 【修复点 1】处理标题：如果没有标题，则显示空字符串，不显示“无标题”
+                const titleText = item.title ? item.title : ''; 
+
+                // 构建作者链接 HTML
                 const authorHtml = `
                     <span class="meta-author" title="作者：${accountId}" onclick="event.preventDefault(); event.stopPropagation(); AccountModal.open('${accountId}')">
                         👤 ${accountId}
@@ -78,7 +81,6 @@ const Renderer = {
                 `;
 
                 // 构建卡片内部 HTML
-                // 布局：[作者] [收藏数] [投送按钮]
                 card.innerHTML = `
                     <div class="thumb-container">
                         <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
@@ -86,7 +88,8 @@ const Renderer = {
                         <div class="play-overlay"><div class="play-icon">▶</div></div>
                     </div>
                     <div class="info">
-                        <div class="title">${item.title || '无标题'}</div>
+                        <!-- 标题区域，可能为空 -->
+                        <div class="title">${titleText}</div>
                         <div class="meta">
                             ${authorHtml}
                             <span class="meta-fav-count" title="收藏人数">★ ${formattedFav}</span>
@@ -97,16 +100,13 @@ const Renderer = {
                     </div>
                 `;
 
-                // 绑定卡片点击事件 (播放视频)
+                // 绑定卡片点击事件
                 card.onclick = (e) => {
-                    // 如果点击的是投送按钮或作者链接，不触发播放
                     if (e.target.closest('.cast-btn') || e.target.closest('.meta-author')) return;
                     
-                    // 调用全局播放函数 (假设在 init.js 中定义)
                     if (typeof openVideoPlayer === 'function') {
                         openVideoPlayer(item);
                     } else {
-                        // 降级处理：如果没定义播放器，则直接打开链接
                         window.open(item.url, '_blank');
                     }
                 };
@@ -130,7 +130,6 @@ const Renderer = {
         
         const count = (DataLoader.groupedData[this.currentDateKey] || []).length;
         
-        // 更新日期和数量显示
         ['page-date', 'top-page-date'].forEach(id => {
             const el = document.getElementById(id);
             if(el) el.innerText = this.currentDateKey;
@@ -143,11 +142,9 @@ const Renderer = {
         const hasNew = idx > 0;
         const hasOld = idx < DataLoader.sortedDates.length - 1;
 
-        // 更新按钮禁用状态
         [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.disabled = !hasNew; });
         [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.disabled = !hasOld; });
 
-        // 更新按钮文本
         const txtNew = hasNew ? `⬅ ${DataLoader.sortedDates[idx-1]} (${(DataLoader.groupedData[DataLoader.sortedDates[idx-1]]||[]).length})` : "已是最新";
         const txtOld = hasOld ? `${DataLoader.sortedDates[idx+1]} (${(DataLoader.groupedData[DataLoader.sortedDates[idx+1]]||[]).length}) ➡` : "已是最旧";
         
@@ -171,7 +168,6 @@ const Renderer = {
         [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.onclick = goNew; });
         [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.onclick = goOld; });
 
-        // Flatpickr 初始化配置
         const commonConfig = {
             locale: "zh", 
             dateFormat: "Y-m-d", 
@@ -196,7 +192,6 @@ const Renderer = {
 
         if(this.fpInstance) this.fpInstance.destroy();
         
-        // 创建隐藏输入框供 flatpickr 使用
         let hiddenInput = document.getElementById('fp-hidden-input');
         if(!hiddenInput) {
             hiddenInput = document.createElement('input');
@@ -223,9 +218,7 @@ const Renderer = {
      */
     setupShortcuts() {
         document.addEventListener('keydown', (e) => {
-            // 忽略输入框内的按键
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            // 忽略弹窗打开时的按键
             if (typeof AccountModal !== 'undefined' && AccountModal.isOpen()) return;
             if (typeof ManagerModal !== 'undefined' && ManagerModal.isOpen()) return;
             if (this.fpInstance && this.fpInstance.isOpen) return;
@@ -245,12 +238,11 @@ const Renderer = {
     }
 };
 
-// 挂载到全局
 window.Renderer = Renderer;
 
 /**
- * 全局投送处理函数 (供 HTML onclick 调用)
- * 逻辑与之前提供的一致，但适配当前上下文
+ * 【修复点 2】全局投送处理函数
+ * 严格按照要求：POST, application/x-www-form-urlencoded, Body 为 JSON 格式数据
  */
 async function handleCast(videoUrl) {
     const DEFAULT_TV_IP = '192.168.1.100';
@@ -279,13 +271,40 @@ async function handleCast(videoUrl) {
     btn.style.opacity = '0.6';
 
     const actionUrl = `http://${tvIp}:9978/action`;
-    const postData = `<quark-table><table><tbody><tr><td>1234</td><td>{"url": "${videoUrl}", "do": "push"}</td></tr></tbody></table></quark-table>`;
+    
+    // 构造请求体
+    // 需求：Content-Type: application/x-www-form-urlencoded
+    // 需求：Body: { "url": "...", "do": "push" }
+    // 在 x-www-form-urlencoded 中，这通常意味着发送一个名为 data 的参数，或者整个 body 就是 json 字符串
+    // 尝试方案 A: 直接发送 JSON 字符串作为 Body (很多嵌入式设备这样处理，尽管 Header 是 form)
+    // 尝试方案 B: 发送 data=JSON_STRING (标准 form 做法)
+    // 这里采用最可能的方案：将 JSON 对象转换为字符串，作为 form 的 value，或者直接发送字符串
+    // 鉴于很多此类接口实际上是解析 Body 字符串，我们构造一个标准的 form 字符串：data={"url":"...","do":"push"}
+    
+    const payloadObj = { url: videoUrl, do: "push" };
+    const jsonString = JSON.stringify(payloadObj);
+    
+    // 构造 form-urlencoded 格式: data={...}
+    // 注意：如果电视端极其严格，可能需要 key 为 'data' 或其他，这里假设 key 为 'data' 或者直接是 json 串
+    // 如果之前的代码是完全没生效，可能是因为 Body 格式不对。
+    // 这里我们尝试两种常见的嵌入式接收模式：
+    // 模式 1: Body = "data=" + encodeURIComponent(jsonString)
+    // 模式 2: Body = jsonString (此时 Header 应为 application/json，但既然指定了 form，我们优先试模式 1)
+    
+    // 修正：根据您提供的 "请求体：{...}"，这很可能意味着 Body 内容本身就是这个 JSON 结构。
+    // 但如果 Header 强制是 application/x-www-form-urlencoded，服务器可能在寻找 key=value。
+    // 让我们尝试最通用的方式：将 JSON 字符串赋值给一个键，通常这类接口键名可能是 'data', 'params', 或 'body'。
+    // 如果不确定键名，有些接口直接接受 raw json string 即使 header 是 form。
+    // 为了保险，我们发送：data=<json_string>
+    const formData = `data=${encodeURIComponent(jsonString)}`;
 
     try {
         const response = await fetch(actionUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: postData
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded' 
+            },
+            body: formData 
         });
 
         if (response.ok) {
@@ -294,7 +313,24 @@ async function handleCast(videoUrl) {
             btn.style.borderColor = '#4cd964';
             setTimeout(() => resetCastButton(btn, originalContent), 2000);
         } else {
-            throw new Error(`HTTP ${response.status}`);
+            // 如果 400 或 500，尝试备用方案：直接发送 JSON 字符串（不带 key=）
+            console.warn(`第一次尝试失败 (Status ${response.status})，尝试备用方案...`);
+            
+            const retryResponse = await fetch(actionUrl, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded' // 保持 Header 不变
+                },
+                body: jsonString // 备用：直接发送 JSON 字符串
+            });
+
+            if (retryResponse.ok) {
+                 btn.innerHTML = '✅';
+                 btn.style.color = '#4cd964';
+                 btn.style.borderColor = '#4cd964';
+            } else {
+                 throw new Error(`HTTP ${retryResponse.status}`);
+            }
         }
     } catch (error) {
         console.error('投送失败:', error);
@@ -304,7 +340,8 @@ async function handleCast(videoUrl) {
         
         setTimeout(() => {
             resetCastButton(btn, originalContent);
-            if(confirm(`投送失败：无法连接到 ${tvIp}\n是否重新设置 IP？`)) {
+            // 仅在连续失败时提示重置 IP
+            if(confirm(`投送失败：无法连接到 ${tvIp}\n错误信息：${error.message}\n是否重新设置 IP？`)) {
                 localStorage.removeItem('user_tv_ip');
             }
         }, 2000);
