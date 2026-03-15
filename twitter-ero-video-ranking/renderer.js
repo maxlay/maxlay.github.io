@@ -207,101 +207,111 @@ const Renderer = {
 window.Renderer = Renderer;
 
 /**
- * 【增强版】投送处理函数
- * 地址：http://192.168.1.100:9978/action
- * 方法：POST
- * 类型：application/x-www-form-urlencoded
+ * 【智能通用版】投送处理函数
+ * 策略：
+ * 1. 优先尝试 AirPlay (仅限 Safari/iOS/macOS)
+ * 2. 若环境不支持 AirPlay (Android/Windows)，自动复制链接并提示用户
+ * 
+ * 目标：让用户在任何设备上点击都有反馈，尽可能实现投屏。
  */
 async function handleCast(videoUrl) {
-    // 默认 IP，可根据需要修改
-    const DEFAULT_TV_IP = '192.168.1.100';
-    let tvIp = localStorage.getItem('user_tv_ip');
-    
-    if (!tvIp) {
-        tvIp = prompt("请输入电视盒子 IP:", DEFAULT_TV_IP);
-        if (!tvIp) return;
-        localStorage.setItem('user_tv_ip', tvIp);
-    }
-
     const btn = event.target.closest('.cast-btn');
     if(!btn) return;
     
     const originalText = btn.innerHTML;
-    const targetUrl = `http://${tvIp}:9978/action`;
     
-    console.log(`[Cast Debug] 目标地址: ${targetUrl}`);
-    console.log(`[Cast Debug] 视频链接: ${videoUrl}`);
-
-    // UI 状态：发送中
+    // UI 状态：正在尝试...
     btn.innerHTML = '📡';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
-    const payload = { url: videoUrl, do: "push" };
-    const jsonStr = JSON.stringify(payload);
-    
-    // 方案 A: 标准 form-urlencoded (data={json})
-    const formData = `data=${encodeURIComponent(jsonStr)}`;
+    let success = false;
 
-    try {
-        console.log(`[Cast Debug] 尝试方案 A (form-data)...`);
+    // --- 尝试 1: AirPlay (Safari 专属) ---
+    // 检查浏览器是否支持 AirPlay API (只有 Safari 支持)
+    if (typeof HTMLMediaElement !== 'undefined' && 
+        HTMLMediaElement.prototype.webkitShowPlaybackTargetPicker) {
         
-        const res = await fetch(targetUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: formData
-        });
+        try {
+            // 创建一个隐藏的 video 元素作为 AirPlay 的载体
+            const tempVideo = document.createElement('video');
+            tempVideo.src = videoUrl;
+            tempVideo.style.display = 'none';
+            tempVideo.setAttribute('playsinline', 'true'); // iOS 必要属性
+            document.body.appendChild(tempVideo);
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        
-        // 成功
-        console.log(`[Cast Debug] 投送成功!`);
-        btn.innerHTML = '✅';
-        btn.style.color = '#4cd964';
-        btn.style.borderColor = '#4cd964';
-        setTimeout(() => resetBtn(btn, originalText), 2000);
-
-    } catch (err) {
-        console.error(`[Cast Debug] 方案 A 失败:`, err);
-        
-        // 智能诊断
-        if (err.message.includes('Failed to fetch')) {
-            alert(`❌ 连接失败 (Failed to fetch)\n\n可能原因：\n1. 电视 IP 错误 或 电视未开机。\n2. 电脑与电视不在同一 WiFi。\n3. 【重要】如果是 HTTPS 网页，请在浏览器地址栏允许“不安全内容 (Insecure Content)”。\n\n当前目标：${targetUrl}`);
-            
-            // 尝试打开新标签页测试连通性
-            if(confirm("是否在新标签页打开该地址以测试连通性？")) {
-                window.open(targetUrl, '_blank');
-            }
-        } else {
-            // 尝试方案 B: 直接发送 JSON 字符串 (某些设备解析器比较特殊)
-            console.log(`[Cast Debug] 尝试方案 B (raw-json)...`);
-            try {
-                const res2 = await fetch(targetUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, // 保持 Header 不变
-                    body: jsonStr // 直接发送 JSON 字符串
-                });
-                if (res2.ok) {
-                    console.log(`[Cast Debug] 方案 B 成功!`);
-                    btn.innerHTML = '✅';
-                    btn.style.color = '#4cd964';
-                    setTimeout(() => resetBtn(btn, originalText), 2000);
-                    return;
+            // 等待元数据加载（确保播放器就绪）
+            await new Promise((resolve, reject) => {
+                if (tempVideo.readyState >= 1) {
+                    resolve();
+                } else {
+                    tempVideo.onloadedmetadata = resolve;
+                    tempVideo.onerror = resolve; // 防止加载失败卡死
+                    setTimeout(() => resolve(), 2000); // 超时保护
                 }
-            } catch (e2) {
-                console.error(`[Cast Debug] 方案 B 也失败:`, e2);
+            });
+
+            // 调用原生 AirPlay 选择器
+            if (tempVideo.webkitShowPlaybackTargetPicker) {
+                tempVideo.webkitShowPlaybackTargetPicker();
+                btn.innerHTML = '✅ AirPlay';
+                btn.style.color = '#4cd964';
+                success = true;
+                
+                // 延迟清理临时元素，防止选择器刚弹出就消失
+                setTimeout(() => {
+                    if(document.body.contains(tempVideo)) {
+                        document.body.removeChild(tempVideo);
+                    }
+                }, 3000);
+            } else {
+                throw new Error("API 不可用");
             }
-            alert(`❌ 投送失败: ${err.message}\n请检查电视端服务是否正常启动。`);
+        } catch (err) {
+            console.log("AirPlay 尝试失败:", err);
+            // 失败后不立即 alert，而是落入下方的通用方案
         }
-        
-        resetBtn(btn, originalText);
     }
+
+    // --- 尝试 2: 如果 AirPlay 不可用 (Android/Windows)，执行通用方案 ---
+    if (!success) {
+        // 在非 Apple 设备上，Web 端无法直接控制电视播放（除非电视支持 Chromecast 且网页集成 SDK）
+        // 最通用的“投屏”方式是：复制链接 -> 用户在电视播放器中粘贴
+        
+        try {
+            await navigator.clipboard.writeText(videoUrl);
+            
+            // 提示用户
+            const msg = "✅ 链接已复制！\n\n当前设备/浏览器不支持 AirPlay 协议。\n请打开电视上的播放器 (如 Kodi, VLC, 当贝播放器, Apple TV 客户端)，选择【网络播放/URL 播放】，然后粘贴链接。";
+            alert(msg);
+            
+            btn.innerHTML = '📋 已复制';
+            btn.style.color = '#4cd964';
+            success = true;
+        } catch (err) {
+            // 剪贴板 API 失败（如非 HTTPS 环境），降级为 prompt
+            const fallback = prompt("无法自动复制，请手动复制以下链接并在电视上播放:", videoUrl);
+            if(fallback !== null) success = true;
+        }
+    }
+
+    // 恢复按钮状态
+    setTimeout(() => {
+        if(success && btn.innerHTML.includes('✅')) {
+            // 保持成功状态几秒
+            setTimeout(() => resetBtn(btn, originalText), 2000);
+        } else {
+            resetBtn(btn, originalText);
+        }
+    }, success ? 0 : 1000);
 }
 
 function resetBtn(btn, text) {
-    btn.innerHTML = text;
-    btn.disabled = false;
-    btn.style.opacity = '1';
-    btn.style.color = '';
-    btn.style.borderColor = '';
+    if(btn) {
+        btn.innerHTML = text;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+    }
 }
