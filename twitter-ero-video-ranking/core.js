@@ -2,14 +2,26 @@
 
 // 1. 全局配置 (替代 config.js)
 window.CONFIG = {
-    BASE_URL: './',              // 数据文件所在目录
-    DATA_PARTS_COUNT: 5,         // 数据分片数量 (data-part-0.json 到 data-part-4.json)
+    // 【关键修改】指向您的远程数据仓库
+    // 注意：确保链接末尾有斜杠 '/'
+    BASE_URL: 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/twitter-ero-video-ranking/', 
+    
+    // 【关键修改】分片数量
+    // 请根据您的实际文件数量调整：
+    // 如果有 data-part-0.json 到 data-part-4.json，这里填 5
+    // 如果有 data-part-0.json 到 data-part-5.json，这里填 6
+    // 报错提示"分片 5"失败，很有可能是因为您只有 0-4 (共5个)，但之前可能配置错了，或者代码逻辑试图多加载一个。
+    // 建议先设为 5 试试 (对应 0,1,2,3,4)
+    DATA_PARTS_COUNT: 4, 
+    
     STORAGE_KEYS: {
         FAVORITES: 'video_calendar_favorites',
         RECYCLE_BIN: 'video_calendar_recycle'
     },
     COOKIE_NAME: 'auth_status'
 };
+
+
 
 // 2. 存储管理模块 (替代 storage-manager.js)
 const StorageManager = {
