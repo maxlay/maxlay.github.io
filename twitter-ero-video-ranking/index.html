@@ -2,122 +2,179 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔞 ✖.com 视频 </title>
-    <!-- Flatpickr 样式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> 🔞 ✖.com 视频🔞 </title>
+    <!-- 引入 Flatpickr 样式 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
-    <!-- 自定义样式 -->
+    
+    <!-- 使用自定义 CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- 新增：Footer 样式 -->
+    <style>
+        /* 页脚基础样式 */
+        footer {
+            margin-top: 40px;
+            padding: 30px 15px;
+            border-top: 1px solid #333;
+            background-color: var(--bg-color);
+            color: var(--text-sub);
+            text-align: center;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* 三点内容容器 */
+        .footer-points {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 单个点样式 */
+        .footer-points li {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        /* 桌面端：添加分隔符 • */
+        @media (min-width: 600px) {
+            .footer-points li:not(:last-child)::after {
+                content: "•";
+                margin-left: 12px;
+                color: #555;
+                display: inline-block;
+            }
+        }
+
+        /* 链接样式（如果有） */
+        .footer-points a {
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-points a:hover {
+            color: var(--accent);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 1. 密码验证层 -->
+    <!-- 登录遮罩 -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2>🔒 请输入访问密码</h2>
-            <input type="password" id="passwordInput" placeholder="输入密码..." autocomplete="off" />
-            <button onclick="checkPassword(document.getElementById('passwordInput').value)">进入系统</button>
-            <p style="font-size:12px;color:#666;margin-top:15px;">提示：本站不存储任何图片和视频</p>
+            <h2>🔒 访问验证</h2>
+            <input type="password" id="passwordInput" class="login-input" placeholder="请输入密码" autofocus>
+            <button onclick="checkPassword(document.getElementById('passwordInput').value)" class="login-btn">进入</button>
+            <p id="loginError" class="login-error">密码错误！</p>
         </div>
     </div>
 
-    <!-- 2. 全局加载提示 Toast (新增核心组件) -->
-    <div id="loading-toast">正在初始化...</div>
-
-    <!-- 3. 主内容区 -->
-    <div class="container">
-        <!-- 顶部导航栏 -->
-        <div class="header">
-            <div class="nav-left">
-                <button id="top-newer-btn" class="nav-btn" disabled>⬅ 前一天</button>
-                <button id="top-older-btn" class="nav-btn" disabled>后一天 ➡</button>
-            </div>
-            
-            <div class="nav-center">
-                <span id="top-page-date" class="date-display">--</span>
-                <span id="top-page-count" class="count-badge">0 部</span>
-                <button id="top-date-trigger" class="nav-btn icon-btn">📅 选择日期</button>
-            </div>
-
-            <div class="nav-right stats">
-                <span class="stat-item">总计：<strong id="stats-total">0</strong></span>
-                <span class="stat-item highlight" id="stats-newest">-</span>
-                <button id="open-manager-btn" class="nav-btn small-btn" title="管理回收站">🗑️ 回收站</button>
-            </div>
-        </div>
-
-        <!-- 4. 进度条容器 -->
-        <div class="progress-container" id="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-            <div class="progress-text" id="progress-text">准备加载...</div>
-        </div>
-
-        <!-- 5. 视频网格区域 -->
-        <div id="video-grid" class="grid">
-            <div id="loading-msg" class="loading-state">
-                <div class="spinner"></div>
-                <p>正在连接服务器...</p>
-            </div>
-        </div>
-        
-        <!-- 6. 底部翻页控件 -->
-        <div id="pagination" class="pagination-bar">
-            <button id="newer-btn" class="nav-btn" disabled>⬅ 前一天</button>
-            <span class="page-info">
-                <span id="page-date">--</span> 
-                (<span id="page-count">0</span> 部)
-            </span>
-            <button id="older-btn" class="nav-btn" disabled>后一天 ➡</button>
+    <!-- 头部统计 -->
+    <div class="header">
+        <div class="stats-container">
+            <div class="stats-main" id="stats-total">准备加载...</div>
+            <div class="stats-sub" id="stats-newest" style="display:none;" title="点击跳转到最新一页">加载中...</div>
         </div>
     </div>
 
-    <!-- 7. 账号详情弹窗 -->
+    <!-- 进度条 -->
+    <div class="progress-container" id="progress-container">
+        <span class="progress-text" id="progress-text">0%</span>
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="pagination" id="top-pagination" style="display:none;">
+        <button class="page-btn" id="top-newer-btn" disabled>最新</button>
+        <div class="page-info-container" id="top-date-trigger">
+            <span class="page-date" id="top-page-date">--</span>
+            <span class="page-count" id="top-page-count">0 部</span>
+        </div>
+        <button class="page-btn" id="top-older-btn" disabled>最旧</button>
+    </div>
+
+    <!-- 视频网格 -->
+    <div id="video-grid" class="grid"></div>
+    <div id="loading-msg" class="loading" style="display:none;">正在初始化...</div>
+
+    <!-- 底部导航 -->
+    <div class="pagination" id="pagination" style="display:none;">
+        <button class="page-btn" id="newer-btn" disabled>最新</button>
+        <div class="page-info-container" id="date-trigger">
+            <span class="page-date" id="page-date">--</span>
+            <span class="page-count" id="page-count">0 部</span>
+        </div>
+        <button class="page-btn" id="older-btn" disabled>最旧</button>
+    </div>
+
+    <!-- 管理按钮 -->
+    <div class="bottom-manager-buttons" id="bottom-manager-buttons" style="display:none;">
+        <button class="mgr-main-btn fav-btn" id="btn-open-favorites"><span>⭐</span> 收藏夹</button>
+        <button class="mgr-main-btn bin-btn" id="btn-open-recycle"><span>🗑️</span> 回收站</button>
+    </div>
+
+    <!-- 【新增】网站底部 Footer -->
+    <footer>
+        <ul class="footer-points">
+            <li>© 2026 版权所有 密码不定期更改<br>
+            键盘方向键可切换日期显示（Q 键关闭弹窗)<br>
+            看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>
+            并将Referer设置成https://twitter.com/</li>
+        </ul>
+    </footer>
+
+    <!-- 账号详情弹窗 -->
     <div id="account-modal" class="modal-overlay">
-        <div class="modal-content modal-large">
-            <div id="account-modal-content">
-                <!-- 动态内容 -->
-            </div>
-            <div id="account-modal-videos" class="modal-grid">
-                <!-- 视频列表 -->
-            </div>
-        </div>
-    </div>
-
-    <!-- 8. 回收站管理弹窗 -->
-    <div id="manager-modal" class="modal-overlay">
-        <div class="modal-content modal-medium">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2>🗑️ 回收站管理</h2>
-                <button id="manager-modal-close" class="close-btn">×</button>
-            </div>
-            <div class="modal-body">
-                <p style="font-size:13px;color:#aaa;margin-bottom:15px;">被移入回收站的账号视频将不再显示。恢复后需重新加载数据。</p>
-                <div id="recycle-list" class="recycle-list">
-                    <!-- 列表内容 -->
+                <div class="modal-actions-left">
+                    <button class="action-icon-btn" id="btn-toggle-fav" title="加入收藏/取消收藏">⭐</button>
+                    <button class="action-icon-btn" id="btn-toggle-bin" title="加入回收站/还原">🗑️</button>
+                </div>
+                <div class="modal-title-group">
+                    <div class="modal-title" id="modal-account-name">账号名称</div>
+                </div>
+                <div class="modal-actions-right">
+                    <button class="modal-close" id="modal-close-btn">&times;</button>
                 </div>
             </div>
+            <div class="modal-body">
+                <div id="waterfall-list" class="waterfall-container"></div>
+            </div>
         </div>
     </div>
 
-    <!-- ================= 脚本引入 (顺序至关重要) ================= -->
-    
-    <!-- 1. 核心库 (配置、存储、工具函数) - 必须最先加载 -->
+    <!-- 管理列表弹窗 -->
+    <div id="manager-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 800px; height: 80%;">
+            <div class="modal-header">
+                <div class="modal-title" id="manager-modal-title">管理列表</div>
+                <button class="modal-close" id="manager-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="manager-search-input" class="manager-search-box" placeholder="搜索账号名称...">
+                <div id="manager-list-content" class="manager-list-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入第三方库 -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/zh.js"></script>
+
+    <!-- 引入项目 JS 文件 -->
     <script src="core.js"></script>
-    
-    <!-- 2. 数据加载模块 -->
     <script src="loader.js"></script>
-    
-    <!-- 3. 渲染与交互模块 -->
     <script src="renderer.js"></script>
     <script src="modal-account.js"></script>
     <script src="modal-manager.js"></script>
-    
-    <!-- 4. 入口初始化 (最后加载) -->
     <script src="init.js"></script>
     
-    <!-- 5. 第三方库 (Flatpickr 日期选择器) -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
 </body>
 </html>

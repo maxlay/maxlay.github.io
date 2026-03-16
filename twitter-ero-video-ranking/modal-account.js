@@ -1,109 +1,107 @@
-// ================= 账号详情弹窗模块 (modal-account.js) =================
+// ================= 账号详情弹窗模块 =================
 const AccountModal = {
-    modalEl: null,
-    closeBtn: null,
-    contentEl: null,
-    videoGridEl: null,
-    currentAccount: '',
+    currentAccount: null,
+    
+    open(accountName) {
+        if (!accountName) return;
+        this.currentAccount = accountName;
 
-    initElements() {
-        this.modalEl = document.getElementById('account-modal');
-        this.closeBtn = document.getElementById('account-modal-close');
-        this.contentEl = document.getElementById('account-modal-content');
-        this.videoGridEl = document.getElementById('account-modal-videos');
-    },
+        const filteredData = DataLoader.allData.filter(item => getAccountId(item) === accountName);
+        if (filteredData.length === 0) { alert("该账号下暂无视频数据。"); return; }
 
-    initEvents() {
-        if (!this.modalEl) return;
-        
-        this.closeBtn?.addEventListener('click', () => this.close());
-        
-        // 点击背景关闭
-        this.modalEl.addEventListener('click', (e) => {
-            if (e.target === this.modalEl) this.close();
+        filteredData.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+
+        const nameEl = document.getElementById('modal-account-name');
+        nameEl.innerHTML = `${accountName} <span class="modal-count">(${filteredData.length})</span>`;
+
+        const listEl = document.getElementById('waterfall-list');
+        listEl.innerHTML = '';
+        filteredData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'waterfall-item';
+            const m = Math.floor((item.time||0)/60), s = (item.time||0)%60;
+            const dateStr = item.posted_at || item.created_at || '';
+            
+            div.innerHTML = `
+                <div class="waterfall-thumb-container">
+                    <img class="waterfall-thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
+                    <div class="waterfall-duration-badge">${m}:${s.toString().padStart(2,'0')}</div>
+                    <div class="waterfall-play-overlay"><div class="play-icon">▶</div></div>
+                </div>
+                <div class="waterfall-info">
+                    <div class="waterfall-date">📅 ${dateStr ? dateStr.substring(0, 10) : ''}</div>
+                </div>
+            `;
+            div.onclick = () => { if(item.url) window.open(item.url, '_blank'); };
+            listEl.appendChild(div);
         });
-    },
 
-    open(accountId) {
-        if (!this.modalEl) {
-            alert("弹窗组件未初始化");
-            return;
-        }
-        
-        this.currentAccount = accountId;
-        this.renderContent(accountId);
-        
-        this.modalEl.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+        this.updateButtons();
+        document.getElementById('account-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
     },
 
     close() {
-        if (!this.modalEl) return;
-        this.modalEl.style.display = 'none';
-        document.body.style.overflow = ''; // 恢复滚动
-        this.currentAccount = '';
+        document.getElementById('account-modal').classList.remove('active');
+        document.body.style.overflow = '';
+        this.currentAccount = null;
     },
 
     isOpen() {
-        return this.modalEl && this.modalEl.style.display === 'flex';
+        return document.getElementById('account-modal').classList.contains('active');
     },
 
-    renderContent(accountId) {
-        if (!this.contentEl) return;
+    updateButtons() {
+        if (!this.currentAccount) return;
+        const isFav = StorageManager.includes(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+        const isBin = StorageManager.includes(CONFIG.STORAGE_KEYS.RECYCLE_BIN, this.currentAccount);
 
-        const videos = DataLoader.allData.filter(item => getAccountId(item) === accountId);
-        const count = videos.length;
+        const btnFav = document.getElementById('btn-toggle-fav');
+        const btnBin = document.getElementById('btn-toggle-bin');
+
+        btnFav.className = `action-icon-btn ${isFav ? 'active-fav' : ''}`;
+        btnFav.title = isFav ? "取消收藏" : "加入收藏";
         
-        // 简单的统计
-        const totalFav = videos.reduce((sum, item) => sum + (item.favorite || 0), 0);
-        const formattedFav = formatNum(totalFav);
+        btnBin.className = `action-icon-btn ${isBin ? 'active-bin' : ''}`;
+        btnBin.title = isBin ? "从回收站还原" : "加入回收站";
 
-        this.contentEl.innerHTML = `
-            <div class="modal-header">
-                <h2>👤 ${accountId}</h2>
-                <button id="account-modal-close" class="close-btn">×</button>
-            </div>
-            <div class="modal-stats">
-                <span>视频数: <strong>${count}</strong></span>
-                <span>总收藏: <strong>${formattedFav}</strong></span>
-                <button class="btn-sm" onclick="ManagerModal.addRecycle('${accountId}')">移入回收站</button>
-            </div>
-            <div id="account-modal-videos" class="modal-grid"></div>
-        `;
-
-        // 重新绑定关闭事件（因为innerHTML重写了header）
-        document.getElementById('account-modal-close')?.addEventListener('click', () => this.close());
-
-        // 渲染该账号的视频列表（简化版，复用卡片样式）
-        const grid = document.getElementById('account-modal-videos');
-        if (videos.length === 0) {
-            grid.innerHTML = '<div style="padding:20px;text-align:center;color:#888;">暂无视频</div>';
-            return;
+        if (isBin && isFav) {
+            StorageManager.remove(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+            this.updateButtons();
         }
+    },
 
-        videos.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            const m = Math.floor((item.time || 0) / 60);
-            const s = (item.time || 0) % 60;
-            card.innerHTML = `
-                <div class="thumb-container">
-                    <img class="thumb-img" src="${item.thumbnail}" loading="lazy">
-                    <div class="duration-badge">${m}:${s.toString().padStart(2, '0')}</div>
-                </div>
-                <div class="info">
-                    <div class="title">${item.title || '无标题'}</div>
-                    <div class="meta">
-                        <span>★ ${formatNum(item.favorite || 0)}</span>
-                    </div>
-                </div>
-            `;
-            card.onclick = () => {
-                if (typeof openVideoPlayer === 'function') openVideoPlayer(item);
-                else window.open(item.url, '_blank');
-            };
-            grid.appendChild(card);
-        });
+    toggleFav() {
+        if (!this.currentAccount) return;
+        const isFav = StorageManager.includes(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+        if (isFav) StorageManager.remove(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+        else {
+            StorageManager.remove(CONFIG.STORAGE_KEYS.RECYCLE_BIN, this.currentAccount);
+            StorageManager.add(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+        }
+        this.updateButtons();
+    },
+
+    toggleBin() {
+        if (!this.currentAccount) return;
+        const isBin = StorageManager.includes(CONFIG.STORAGE_KEYS.RECYCLE_BIN, this.currentAccount);
+        if (isBin) {
+            StorageManager.remove(CONFIG.STORAGE_KEYS.RECYCLE_BIN, this.currentAccount);
+            alert(`已还原账号: ${this.currentAccount}`);
+        } else {
+            StorageManager.remove(CONFIG.STORAGE_KEYS.FAVORITES, this.currentAccount);
+            StorageManager.add(CONFIG.STORAGE_KEYS.RECYCLE_BIN, this.currentAccount);
+            Renderer.renderPage(Renderer.currentDateKey); 
+        }
+        this.updateButtons();
+    },
+
+    initEvents() {
+        document.getElementById('modal-close-btn').onclick = () => this.close();
+        document.getElementById('btn-toggle-fav').onclick = () => this.toggleFav();
+        document.getElementById('btn-toggle-bin').onclick = () => this.toggleBin();
+        document.getElementById('account-modal').onclick = (e) => { if(e.target.id === 'account-modal') this.close(); };
     }
 };
+
 window.AccountModal = AccountModal;

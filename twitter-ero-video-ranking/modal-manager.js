@@ -1,98 +1,83 @@
-// ================= 管理面板模块 (modal-manager.js) =================
+// ================= 收藏与回收站管理模块 =================
 const ManagerModal = {
-    modalEl: null,
-    closeBtn: null,
-    listEl: null,
-    
-    initElements() {
-        this.modalEl = document.getElementById('manager-modal');
-        this.closeBtn = document.getElementById('manager-modal-close');
-        this.listEl = document.getElementById('recycle-list');
-    },
+    currentType: null,
 
-    initEvents() {
-        if (!this.modalEl) return;
-        
-        this.closeBtn?.addEventListener('click', () => this.close());
-        this.modalEl.addEventListener('click', (e) => {
-            if (e.target === this.modalEl) this.close();
-        });
-        
-        // 绑定全局按钮事件 (如果存在)
-        const openBtn = document.getElementById('open-manager-btn');
-        if(openBtn) openBtn.onclick = () => this.open();
-    },
+    open(type) {
+        this.currentType = type;
+        const isFav = type === 'favorites';
+        const key = isFav ? CONFIG.STORAGE_KEYS.FAVORITES : CONFIG.STORAGE_KEYS.RECYCLE_BIN;
+        const title = isFav ? "⭐ 收藏夹管理" : "🗑️ 回收站管理";
+        const emptyText = isFav ? "收藏夹为空" : "回收站为空";
 
-    open() {
-        if (!this.modalEl) return;
-        this.renderList();
-        this.modalEl.style.display = 'flex';
+        document.getElementById('manager-modal-title').innerText = title;
+        document.getElementById('manager-search-input').value = '';
+        document.getElementById('manager-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
+        this.renderList(key, emptyText);
     },
 
     close() {
-        if (!this.modalEl) return;
-        this.modalEl.style.display = 'none';
+        document.getElementById('manager-modal').classList.remove('active');
         document.body.style.overflow = '';
+        this.currentType = null;
     },
 
     isOpen() {
-        return this.modalEl && this.modalEl.style.display === 'flex';
+        return document.getElementById('manager-modal').classList.contains('active');
     },
 
-    addRecycle(accountId) {
-        if(!confirm(`确定要将账号 ${accountId} 移入回收站吗？\n该账号下的所有视频将被隐藏。`)) return;
+    renderList(key, emptyText) {
+        const list = StorageManager.get(key);
+        const term = document.getElementById('manager-search-input').value.toLowerCase();
+        const container = document.getElementById('manager-list-content');
+        container.innerHTML = '';
         
-        const key = CONFIG.STORAGE_KEYS.RECYCLE_BIN;
-        let list = StorageManager.get(key) || [];
-        if (!list.includes(accountId)) {
-            list.push(accountId);
-            StorageManager.set(key, list);
-            alert('已移入回收站。请刷新页面或重新加载数据以生效。');
-            this.close();
-            if(AccountModal.isOpen()) AccountModal.close();
-        }
-    },
-
-    removeRecycle(accountId) {
-        const key = CONFIG.STORAGE_KEYS.RECYCLE_BIN;
-        let list = StorageManager.get(key) || [];
-        list = list.filter(id => id !== accountId);
-        StorageManager.set(key, list);
-        this.renderList(); // 刷新列表
-        // 提示用户需要重新加载数据
-        alert(`已恢复账号 ${accountId}。请点击“重新加载数据”按钮生效。`);
-    },
-
-    clearRecycle() {
-        if(!confirm("确定要清空回收站吗？所有被隐藏的账号将恢复显示。")) return;
-        StorageManager.set(CONFIG.STORAGE_KEYS.RECYCLE_BIN, []);
-        this.renderList();
-        alert("回收站已清空。请重新加载数据。");
-    },
-
-    renderList() {
-        if (!this.listEl) return;
-        const list = StorageManager.get(CONFIG.STORAGE_KEYS.RECYCLE_BIN) || [];
-        
-        if (list.length === 0) {
-            this.listEl.innerHTML = '<div style="text-align:center;padding:20px;color:#888;">回收站为空</div>';
+        const filtered = list.filter(name => name.toLowerCase().includes(term));
+        if (filtered.length === 0) {
+            container.innerHTML = `<div class="empty-state">${list.length === 0 ? emptyText : '无匹配结果'}</div>`;
             return;
         }
 
-        let html = '<ul style="list-style:none;padding:0;margin:0;">';
-        list.forEach(id => {
-            html += `
-                <li style="display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #333;">
-                    <span>👤 ${id}</span>
-                    <button class="btn-sm" onclick="ManagerModal.removeRecycle('${id}')">恢复</button>
-                </li>
+        filtered.forEach(name => {
+            const div = document.createElement('div');
+            div.className = 'manager-item';
+            const isRecycle = this.currentType === 'recycleBin';
+            const actionBtn = isRecycle 
+                ? `<button class="mgr-btn mgr-btn-edit" onclick="ManagerModal.restore('${name}')">还原</button>`
+                : `<button class="mgr-btn mgr-btn-del" onclick="ManagerModal.remove('${name}', '${key}')">删除</button>`;
+            
+            div.innerHTML = `
+                <div class="manager-item-info"><div class="manager-item-name">${name.startsWith('ID:') ? name : '@'+name}</div></div>
+                <div class="manager-item-actions">${actionBtn}</div>
             `;
+            container.appendChild(div);
         });
-        html += '</ul>';
-        html += `<div style="margin-top:20px;text-align:right;"><button class="btn-danger" onclick="ManagerModal.clearRecycle()">清空回收站</button></div>`;
+    },
+
+    remove(name, key) {
+        StorageManager.remove(key, name);
+        this.renderList(key, key === CONFIG.STORAGE_KEYS.FAVORITES ? "收藏夹为空" : "回收站为空");
+    },
+
+    restore(name) {
+        StorageManager.remove(CONFIG.STORAGE_KEYS.RECYCLE_BIN, name);
+        alert(`已还原 ${name}`);
+        this.renderList(CONFIG.STORAGE_KEYS.RECYCLE_BIN, "回收站为空");
+    },
+
+    initEvents() {
+        document.getElementById('manager-modal-close').onclick = () => this.close();
+        document.getElementById('manager-modal').onclick = (e) => { if(e.target.id === 'manager-modal') this.close(); };
+        document.getElementById('manager-search-input').oninput = () => {
+            if(this.currentType) {
+                const key = this.currentType === 'favorites' ? CONFIG.STORAGE_KEYS.FAVORITES : CONFIG.STORAGE_KEYS.RECYCLE_BIN;
+                this.renderList(key, this.currentType === 'favorites' ? "收藏夹为空" : "回收站为空");
+            }
+        };
         
-        this.listEl.innerHTML = html;
+        document.getElementById('btn-open-favorites').onclick = () => this.open('favorites');
+        document.getElementById('btn-open-recycle').onclick = () => this.open('recycleBin');
     }
 };
+
 window.ManagerModal = ManagerModal;
