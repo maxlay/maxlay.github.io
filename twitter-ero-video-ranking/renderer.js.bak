@@ -2,6 +2,15 @@
 const Renderer = {
     currentDateKey: "",
     fpInstance: null,
+    gridEl: null,
+    loadingEl: null,
+    statsTotalEl: null,
+    statsNewestEl: null,
+    newerBtn: null,
+    olderBtn: null,
+    topNewerBtn: null,
+    topOlderBtn: null,
+    topDateTrigger: null,
 
     initElements() {
         this.gridEl = document.getElementById('video-grid');
@@ -18,12 +27,15 @@ const Renderer = {
     renderPage(dateKey) {
         this.currentDateKey = dateKey;
         localStorage.setItem('lastDate', dateKey);
+        
+        if (!this.gridEl) return;
         this.gridEl.innerHTML = '';
+        
         let items = DataLoader.groupedData[dateKey] || [];
         
         // 收藏夹置顶
         const favorites = StorageManager.get(CONFIG.STORAGE_KEYS.FAVORITES);
-        if (favorites.length > 0) {
+        if (favorites && favorites.length > 0) {
             items.sort((a, b) => {
                 const idA = getAccountId(a);
                 const idB = getAccountId(b);
@@ -35,63 +47,106 @@ const Renderer = {
             });
         }
 
-        if(items.length === 0) {
-            this.gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;">无数据</div>';
+        if (items.length === 0) {
+            this.gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666;">该日期暂无视频数据</div>';
         } else {
+            const fragment = document.createDocumentFragment();
+            
             items.forEach(item => {
-                const a = document.createElement('a');
-                a.className = 'card'; a.href = item.url; a.target = '_blank';
+                const card = document.createElement('div');
+                card.className = 'card';
+                
                 const accountId = getAccountId(item);
-                const m = Math.floor((item.time||0)/60), s = (item.time||0)%60;
-                const titleHtml = `<span class="account-link" onclick="event.preventDefault(); event.stopPropagation(); AccountModal.open('${accountId}')">${accountId}</span>`;
+                const m = Math.floor((item.time || 0) / 60);
+                const s = (item.time || 0) % 60;
+                const durationStr = `${m}:${s.toString().padStart(2, '0')}`;
+                const favCount = item.favorite || 0;
+                const formattedFav = formatNum(favCount);
+                
+                // 标题为空时不显示文字
+                const titleText = item.title ? item.title : ''; 
 
-                a.innerHTML = `
+                const authorHtml = `
+                    <span class="meta-author" title="作者：${accountId}" onclick="event.preventDefault(); event.stopPropagation(); AccountModal.open('${accountId}')">
+                        👤 ${accountId}
+                    </span>
+                `;
+
+                // 【已移除投送按钮】只保留作者和收藏数
+                card.innerHTML = `
                     <div class="thumb-container">
                         <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
-                        <div class="duration-badge">${m}:${s.toString().padStart(2,'0')}</div>
+                        <div class="duration-badge">${durationStr}</div>
                         <div class="play-overlay"><div class="play-icon">▶</div></div>
                     </div>
                     <div class="info">
-                        <div class="title">${titleHtml}</div>
+                        <div class="title">${titleText}</div>
                         <div class="meta">
-                            <span>👁️ ${formatNum(item.pv)}</span>
-                            <span>❤️ ${formatNum(item.favorite)}</span>
+                            ${authorHtml}
+                            <span class="meta-fav-count" title="收藏人数">★ ${formattedFav}</span>
                         </div>
-                    </div>`;
-                this.gridEl.appendChild(a);
+                    </div>
+                `;
+
+                card.onclick = (e) => {
+                    // 移除对 cast-btn 的判断，因为按钮已不存在
+                    if (e.target.closest('.meta-author')) return;
+                    if (typeof openVideoPlayer === 'function') {
+                        openVideoPlayer(item);
+                    } else {
+                        window.open(item.url, '_blank');
+                    }
+                };
+
+                fragment.appendChild(card);
             });
+            this.gridEl.appendChild(fragment);
         }
+        
         this.updateUI();
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
     updateUI() {
         const idx = DataLoader.sortedDates.indexOf(this.currentDateKey);
         if (idx === -1) return;
-        const count = DataLoader.groupedData[this.currentDateKey].length;
+        const count = (DataLoader.groupedData[this.currentDateKey] || []).length;
         
-        ['page-date', 'top-page-date'].forEach(id => document.getElementById(id).innerText = this.currentDateKey);
-        ['page-count', 'top-page-count'].forEach(id => document.getElementById(id).innerText = `${count} 部`);
+        ['page-date', 'top-page-date'].forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.innerText = this.currentDateKey;
+        });
+        ['page-count', 'top-page-count'].forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.innerText = `${count} 部`;
+        });
 
-        const hasNew = idx > 0, hasOld = idx < DataLoader.sortedDates.length - 1;
-        [this.newerBtn, this.topNewerBtn].forEach(b => b.disabled = !hasNew);
-        [this.olderBtn, this.topOlderBtn].forEach(b => b.disabled = !hasOld);
+        const hasNew = idx > 0;
+        const hasOld = idx < DataLoader.sortedDates.length - 1;
 
-        const txtNew = hasNew ? `⬅ ${DataLoader.sortedDates[idx-1]} (${DataLoader.groupedData[DataLoader.sortedDates[idx-1]].length})` : "已是最新";
-        const txtOld = hasOld ? `${DataLoader.sortedDates[idx+1]} (${DataLoader.groupedData[DataLoader.sortedDates[idx+1]].length}) ➡` : "已是最旧";
+        [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.disabled = !hasNew; });
+        [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.disabled = !hasOld; });
+
+        const txtNew = hasNew ? `⬅ ${DataLoader.sortedDates[idx-1]} (${(DataLoader.groupedData[DataLoader.sortedDates[idx-1]]||[]).length})` : "已是最新";
+        const txtOld = hasOld ? `${DataLoader.sortedDates[idx+1]} (${(DataLoader.groupedData[DataLoader.sortedDates[idx+1]]||[]).length}) ➡` : "已是最旧";
         
-        [this.newerBtn, this.topNewerBtn].forEach(b => b.innerText = txtNew);
-        [this.olderBtn, this.topOlderBtn].forEach(b => b.innerText = txtOld);
+        [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.innerText = txtNew; });
+        [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.innerText = txtOld; });
     },
 
     setupPagination() {
-        const goNew = () => { const i=DataLoader.sortedDates.indexOf(this.currentDateKey); if(i>0) this.renderPage(DataLoader.sortedDates[i-1]); };
-        const goOld = () => { const i=DataLoader.sortedDates.indexOf(this.currentDateKey); if(i<DataLoader.sortedDates.length-1) this.renderPage(DataLoader.sortedDates[i+1]); };
+        const goNew = () => { 
+            const i = DataLoader.sortedDates.indexOf(this.currentDateKey); 
+            if(i > 0) this.renderPage(DataLoader.sortedDates[i-1]); 
+        };
+        const goOld = () => { 
+            const i = DataLoader.sortedDates.indexOf(this.currentDateKey); 
+            if(i < DataLoader.sortedDates.length - 1) this.renderPage(DataLoader.sortedDates[i+1]); 
+        };
         
-        [this.newerBtn, this.topNewerBtn].forEach(b => b.onclick = goNew);
-        [this.olderBtn, this.topOlderBtn].forEach(b => b.onclick = goOld);
+        [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.onclick = goNew; });
+        [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.onclick = goOld; });
 
-        // Flatpickr 初始化
         const commonConfig = {
             locale: "zh", dateFormat: "Y-m-d", defaultDate: this.currentDateKey, theme: "dark",
             disable: [date => {
@@ -99,38 +154,54 @@ const Renderer = {
                 return !DataLoader.sortedDates.includes(`${y}-${m}-${d}`);
             }],
             onChange: (selectedDates, dateStr) => {
-                if(dateStr && DataLoader.sortedDates.includes(dateStr)) { this.renderPage(dateStr); if(this.fpInstance) this.fpInstance.close(); }
+                if(dateStr && DataLoader.sortedDates.includes(dateStr)) { 
+                    this.renderPage(dateStr); 
+                    if(this.fpInstance) this.fpInstance.close(); 
+                }
             },
             position: "auto", static: true, appendTo: document.body
         };
 
         if(this.fpInstance) this.fpInstance.destroy();
-        const hiddenInput = document.createElement('input');
-        hiddenInput.style.display = 'none';
-        document.body.appendChild(hiddenInput);
+        let hiddenInput = document.getElementById('fp-hidden-input');
+        if(!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.id = 'fp-hidden-input';
+            hiddenInput.style.display = 'none';
+            document.body.appendChild(hiddenInput);
+        }
         this.fpInstance = flatpickr(hiddenInput, commonConfig);
 
-        this.topDateTrigger.onclick = (e) => {
-            e.stopPropagation();
-            if(this.fpInstance) { this.fpInstance.setDate(this.currentDateKey); this.fpInstance.open(); }
-        };
+        if(this.topDateTrigger) {
+            this.topDateTrigger.onclick = (e) => {
+                e.stopPropagation();
+                if(this.fpInstance) { 
+                    this.fpInstance.setDate(this.currentDateKey); 
+                    this.fpInstance.open(); 
+                }
+            };
+        }
     },
     
     setupShortcuts() {
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (AccountModal.isOpen() || ManagerModal.isOpen() || (this.fpInstance && this.fpInstance.isOpen)) return;
+            if (typeof AccountModal !== 'undefined' && AccountModal.isOpen()) return;
+            if (typeof ManagerModal !== 'undefined' && ManagerModal.isOpen()) return;
+            if (this.fpInstance && this.fpInstance.isOpen) return;
             
             const idx = DataLoader.sortedDates.indexOf(this.currentDateKey);
             if (idx === -1) return;
+            
             if (e.key === 'ArrowLeft' && idx > 0) this.renderPage(DataLoader.sortedDates[idx - 1]);
             else if (e.key === 'ArrowRight' && idx < DataLoader.sortedDates.length - 1) this.renderPage(DataLoader.sortedDates[idx + 1]);
             else if (e.key === 'q' || e.key === 'Q' || e.key === 'Escape') {
-                if(ManagerModal.isOpen()) ManagerModal.close();
-                else if(AccountModal.isOpen()) AccountModal.close();
+                if(typeof ManagerModal !== 'undefined' && ManagerModal.isOpen()) ManagerModal.close();
+                else if(typeof AccountModal !== 'undefined' && AccountModal.isOpen()) AccountModal.close();
             }
         });
     }
 };
 
 window.Renderer = Renderer;
+

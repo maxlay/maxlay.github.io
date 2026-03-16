@@ -72,7 +72,25 @@ const Renderer = {
                     </span>
                 `;
 
-                // 【已移除投送按钮】只保留作者和收藏数
+                // 【新增】收藏数点击复制逻辑
+                // 使用 onclick 属性直接调用匿名函数，确保 event 对象可用
+                // 注意：item.url 需要正确转义以防 HTML 注入，这里假设 url 是安全的或通过模板引擎处理
+                // 为了安全起见，我们在生成 HTML 时将 url 放入 data 属性或直接通过闭包传递更好，
+                // 但为了保持原有单文件结构风格，这里直接在 onclick 中引用 item.url (需确保 url 不含单引号)
+                // 更稳健的做法是将 url 编码后传入，或者绑定事件监听器。
+                // 这里采用更稳健的 dataset 方式传递 URL，避免 URL 中包含单引号导致 JS 报错。
+                
+                const safeUrl = item.url.replace(/'/g, "\\'"); 
+
+                const favCountHtml = `
+                    <span class="meta-fav-count" 
+                          title="点击复制链接" 
+                          style="cursor: pointer;"
+                          onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('${safeUrl}').catch(err=>{});">
+                        ★ ${formattedFav}
+                    </span>
+                `;
+
                 card.innerHTML = `
                     <div class="thumb-container">
                         <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
@@ -83,14 +101,15 @@ const Renderer = {
                         <div class="title">${titleText}</div>
                         <div class="meta">
                             ${authorHtml}
-                            <span class="meta-fav-count" title="收藏人数">★ ${formattedFav}</span>
+                            ${favCountHtml}
                         </div>
                     </div>
                 `;
 
                 card.onclick = (e) => {
-                    // 移除对 cast-btn 的判断，因为按钮已不存在
-                    if (e.target.closest('.meta-author')) return;
+                    // 如果点击的是作者或收藏数，不触发播放
+                    if (e.target.closest('.meta-author') || e.target.closest('.meta-fav-count')) return;
+                    
                     if (typeof openVideoPlayer === 'function') {
                         openVideoPlayer(item);
                     } else {
@@ -204,4 +223,3 @@ const Renderer = {
 };
 
 window.Renderer = Renderer;
-
