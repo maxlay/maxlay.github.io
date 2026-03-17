@@ -61,6 +61,18 @@
         .footer-points a:hover {
             color: var(--accent);
         }
+
+        /* 【新增】可点击文本样式 */
+        .clickable-text {
+            cursor: pointer;
+            transition: color 0.2s, text-decoration 0.2s;
+            text-decoration: none;
+            color: inherit; /* 继承父元素颜色 */
+        }
+        .clickable-text:hover {
+            color: var(--accent); /* 悬停时变色 */
+            text-decoration: underline; /* 悬停时显示下划线 */
+        }
     </style>
 </head>
 <body>
@@ -119,13 +131,16 @@
         <button class="mgr-main-btn bin-btn" id="btn-open-recycle"><span>🗑️</span> 回收站</button>
     </div>
 
-    <!-- 【新增】网站底部 Footer -->
+    <!-- 【修改】网站底部 Footer -->
     <footer>
         <ul class="footer-points">
-            <li>© 2026 版权所有 PIN码不定期更改<br>
-            键盘左右键可切换日期显示（Q 键关闭弹窗)<br>
-            看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>
-            将Referer设置成https://twitter.com/</li>
+            <!-- 将长文本拆分，并把“PIN码不定期更改”做成可点击元素 -->
+            <li>© 2026 版权所有</li>
+            <li>
+                <span class="clickable-text" onclick="deleteAuthCookie()" title="点击此处清除cookie验证">PIN码将不定期更改</span>
+            </li>
+            <li>键盘左右键可切换日期显示（Q 键关闭弹窗)</li>
+            <li>看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>将Referer设置成https://twitter.com/</li>
         </ul>
     </footer>
 
@@ -175,6 +190,19 @@
     <script src="modal-account.js"></script>
     <script src="modal-manager.js"></script>
     <script src="init.js"></script>
+    
+    <!-- 【新增】自定义脚本：处理注销逻辑 -->
+    <script>
+        function deleteAuthCookie() {
+            const cookieName = 'x_video_auth_verified';
+            document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            console.log(`尝试删除 Cookie: ${cookieName}`);
+            setTimeout(() => {
+                alert('已清除验证信息 (PIN码)，页面将刷新以重新登录。');
+                window.location.reload();
+            }, 100);
+        }
+    </script>
     
 </body>
 </html>
