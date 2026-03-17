@@ -77,7 +77,7 @@
             z-index: 9999;
             width: 50px;
             height: 50px;
-            background-color: var(--accent, #ff4757); /* 使用主题色，如果没有则用红色 */
+            background-color: var(--accent, #ff4757);
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -96,14 +96,12 @@
             outline: none;
         }
 
-        /* 显示状态 */
         #back-to-top.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        /* 悬停效果 */
         #back-to-top:hover {
             background-color: var(--bg-color, #333);
             color: var(--accent, #ff4757);
@@ -111,7 +109,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* 箭头图标 */
         #back-to-top i {
             font-size: 20px;
             margin-bottom: 2px;
@@ -119,13 +116,11 @@
             line-height: 1;
         }
 
-        /* 进度百分比 */
         #back-to-top span {
             font-size: 10px;
             line-height: 1;
         }
         
-        /* 移动端适配 */
         @media (max-width: 600px) {
             #back-to-top {
                 bottom: 20px;
@@ -133,6 +128,11 @@
                 width: 45px;
                 height: 45px;
             }
+        }
+
+        /* --- 新增：顶部管理按钮的间距调整 --- */
+        #top-manager-buttons {
+            margin-bottom: 15px; /* 与下方导航拉开一点距离 */
         }
     </style>
 </head>
@@ -162,10 +162,10 @@
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- 管理按钮 -->
-    <div class="bottom-manager-buttons" id="bottom-manager-buttons" style="display:none;">
-        <button class="mgr-main-btn fav-btn" id="btn-open-favorites"><span>⭐</span> 收藏夹</button>
-        <button class="mgr-main-btn bin-btn" id="btn-open-recycle"><span>🗑️</span> 回收站</button>
+    <!-- 【修改】顶部管理按钮 (ID 已唯一化) -->
+    <div class="bottom-manager-buttons" id="top-manager-buttons" style="display:none;">
+        <button class="mgr-main-btn fav-btn" id="top-btn-open-favorites"><span>⭐</span> 收藏夹</button>
+        <button class="mgr-main-btn bin-btn" id="top-btn-open-recycle"><span>🗑️</span> 回收站</button>
     </div>
 
     <!-- 顶部导航 -->
@@ -192,7 +192,7 @@
         <button class="page-btn" id="older-btn" disabled>最旧</button>
     </div>
 
-    <!-- 管理按钮 -->
+    <!-- 【保留】底部管理按钮 (ID 保持原样) -->
     <div class="bottom-manager-buttons" id="bottom-manager-buttons" style="display:none;">
         <button class="mgr-main-btn fav-btn" id="btn-open-favorites"><span>⭐</span> 收藏夹</button>
         <button class="mgr-main-btn bin-btn" id="btn-open-recycle"><span>🗑️</span> 回收站</button>
@@ -259,7 +259,7 @@
     <script src="modal-manager.js"></script>
     <script src="init.js"></script>
     
-    <!-- 【新增】自定义脚本：处理注销逻辑 & 返回顶部功能 -->
+    <!-- 【新增】自定义脚本：处理注销逻辑 & 返回顶部 & 按钮同步 -->
     <script>
         // 1. 注销逻辑
         function deleteAuthCookie() {
@@ -279,22 +279,17 @@
             
             if (!backToTopBtn) return;
 
-            // 监听滚动事件
             window.addEventListener('scroll', function() {
-                // 计算滚动高度
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 
-                // 计算百分比
                 let scrollPercent = 0;
                 if (scrollHeight > 0) {
                     scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
                 }
                 
-                // 更新按钮上的百分比文字
                 percentSpan.textContent = scrollPercent + '%';
 
-                // 控制显示/隐藏 (超过 300px 显示)
                 if (scrollTop > 300) {
                     backToTopBtn.classList.add('show');
                 } else {
@@ -302,12 +297,50 @@
                 }
             });
 
-            // 监听点击事件
             backToTopBtn.addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth' // 平滑滚动
+                    behavior: 'smooth'
                 });
+            });
+        })();
+
+        // 3. 【重要】同步顶部和底部管理按钮的显示状态
+        // 由于外部 JS (core.js/init.js) 可能只控制底部的 #bottom-manager-buttons
+        // 我们这里做一个观察器，一旦底部状态改变，立刻同步给顶部
+        (function() {
+            const bottomBtns = document.getElementById('bottom-manager-buttons');
+            const topBtns = document.getElementById('top-manager-buttons');
+            
+            if (!bottomBtns || !topBtns) return;
+
+            // 定义同步函数
+            function syncButtons() {
+                const isBottomVisible = bottomBtns.style.display !== 'none';
+                topBtns.style.display = isBottomVisible ? 'flex' : 'none'; // 假设原样式是 flex，如果是 block 请改回 block
+            }
+
+            // 初始化时同步一次
+            syncButtons();
+
+            // 创建一个 MutationObserver 来监听底部按钮的 style 属性变化
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'style') {
+                        syncButtons();
+                    }
+                });
+            });
+
+            observer.observe(bottomBtns, { attributes: true });
+
+            // 绑定顶部按钮的点击事件到对应的底部按钮逻辑上
+            // 这样点击顶部的“收藏夹”，实际上触发的是底部按钮的点击事件（复用原有逻辑）
+            document.getElementById('top-btn-open-favorites').addEventListener('click', function() {
+                document.getElementById('btn-open-favorites').click();
+            });
+            document.getElementById('top-btn-open-recycle').addEventListener('click', function() {
+                document.getElementById('btn-open-recycle').click();
             });
         })();
     </script>
