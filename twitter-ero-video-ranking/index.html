@@ -10,9 +10,9 @@
     <!-- 使用自定义 CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- 新增：Footer 样式 -->
+    <!-- 新增：Footer 样式 & 返回顶部按钮样式 -->
     <style>
-        /* 页脚基础样式 */
+        /* --- 原有 Footer 样式 --- */
         footer {
             margin-top: 40px;
             padding: 30px 15px;
@@ -24,7 +24,6 @@
             line-height: 1.6;
         }
 
-        /* 三点内容容器 */
         .footer-points {
             display: flex;
             justify-content: center;
@@ -36,13 +35,11 @@
             margin: 0;
         }
 
-        /* 单个点样式 */
         .footer-points li {
             position: relative;
             white-space: nowrap;
         }
 
-        /* 桌面端：添加分隔符 • */
         @media (min-width: 600px) {
             .footer-points li:not(:last-child)::after {
                 content: "•";
@@ -52,7 +49,6 @@
             }
         }
 
-        /* 链接样式（如果有） */
         .footer-points a {
             color: var(--text-sub);
             text-decoration: none;
@@ -62,16 +58,81 @@
             color: var(--accent);
         }
 
-        /* 【新增】可点击文本样式 */
         .clickable-text {
             cursor: pointer;
             transition: color 0.2s, text-decoration 0.2s;
             text-decoration: none;
-            color: inherit; /* 继承父元素颜色 */
+            color: inherit;
         }
         .clickable-text:hover {
-            color: var(--accent); /* 悬停时变色 */
-            text-decoration: underline; /* 悬停时显示下划线 */
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* --- 新增：返回顶部按钮样式 --- */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent, #ff4757); /* 使用主题色，如果没有则用红色 */
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        /* 显示状态 */
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* 悬停效果 */
+        #back-to-top:hover {
+            background-color: var(--bg-color, #333);
+            color: var(--accent, #ff4757);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 箭头图标 */
+        #back-to-top i {
+            font-size: 20px;
+            margin-bottom: 2px;
+            font-style: normal;
+            line-height: 1;
+        }
+
+        /* 进度百分比 */
+        #back-to-top span {
+            font-size: 10px;
+            line-height: 1;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            #back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -80,10 +141,10 @@
     <!-- 登录遮罩 -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2>🔒 PIN验证</h2>
-            <input type="password" id="passwordInput" class="login-input" placeholder="请输入PIN码" autofocus>
+            <h2>🔒 PIN 验证</h2>
+            <input type="password" id="passwordInput" class="login-input" placeholder="请输入 PIN 码" autofocus>
             <button onclick="checkPassword(document.getElementById('passwordInput').value)" class="login-btn">进入</button>
-            <p id="loginError" class="login-error">PIN码错误！</p>
+            <p id="loginError" class="login-error">PIN 码错误！</p>
         </div>
     </div>
 
@@ -133,9 +194,9 @@
 
     <!-- 【修改】网站底部 Footer -->
     <footer>
-            © 2026 版权所有   <span class="clickable-text" onclick="deleteAuthCookie()" title="点击此处清除cookie验证">PIN码将不定期更改</span><br>
+            © 2026 版权所有   <span class="clickable-text" onclick="deleteAuthCookie()" title="点击此处清除 cookie 验证">PIN 码将不定期更改</span><br>
             键盘左右键可切换日期显示（Q 键关闭弹窗)<br>
-            看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>将Referer设置成https://twitter.com/
+            看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>将 Referer 设置成 https://twitter.com/
        
     </footer>
 
@@ -174,6 +235,12 @@
         </div>
     </div>
 
+    <!-- 【新增】返回顶部按钮 HTML -->
+    <button id="back-to-top" title="返回顶部">
+        <i>↑</i>
+        <span id="back-to-top-percent">0%</span>
+    </button>
+
     <!-- 引入第三方库 -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/zh.js"></script>
@@ -186,17 +253,57 @@
     <script src="modal-manager.js"></script>
     <script src="init.js"></script>
     
-    <!-- 【新增】自定义脚本：处理注销逻辑 -->
+    <!-- 【新增】自定义脚本：处理注销逻辑 & 返回顶部功能 -->
     <script>
+        // 1. 注销逻辑
         function deleteAuthCookie() {
             const cookieName = 'x_video_auth_verified';
             document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
             console.log(`尝试删除 Cookie: ${cookieName}`);
             setTimeout(() => {
-                alert('已清除验证信息 (PIN码)，页面将刷新以重新登录。');
+                alert('已清除验证信息 (PIN 码)，页面将刷新以重新登录。');
                 window.location.reload();
             }, 100);
         }
+
+        // 2. 返回顶部功能逻辑
+        (function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            const percentSpan = document.getElementById('back-to-top-percent');
+            
+            if (!backToTopBtn) return;
+
+            // 监听滚动事件
+            window.addEventListener('scroll', function() {
+                // 计算滚动高度
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                
+                // 计算百分比
+                let scrollPercent = 0;
+                if (scrollHeight > 0) {
+                    scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+                }
+                
+                // 更新按钮上的百分比文字
+                percentSpan.textContent = scrollPercent + '%';
+
+                // 控制显示/隐藏 (超过 300px 显示)
+                if (scrollTop > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            // 监听点击事件
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // 平滑滚动
+                });
+            });
+        })();
     </script>
     
 </body>
