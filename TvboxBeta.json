@@ -40,13 +40,16 @@
   "wallpaper": "https://bing.img.run/uhd.php",
   "spider": "http://cdn.qiaoji8.com/fix260313.jar;md5;0b063fd7b1d09fdf6727aaa84bd9a8e5",
   "sites": [
-      {
-      "key": "剧评",
+    {
+      "key": "csp_CZSPP",
       "name": "🦄HuangLeiBeta",
       "type": 3,
-      "api": "csp_Jpys",
+      "api": "csp_Czsapp",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
       "playerType": 1,
-      "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+      "ext": "7lj763gg402i7942463j9j9jh346968hllg7ji54i9i73l2k5l0k"
     },
     {
       "key": "AI3",
@@ -134,6 +137,14 @@
       "ext": "7lj763gg0939791h1l3888jig44gi291li"
     },
     {
+      "key": "剧评",
+      "name": "🦄剧评",
+      "type": 3,
+      "api": "csp_Jpys",
+      "playerType": 1,
+      "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
+    },
+    {
       "key": "爱奇艺",
       "name": "🦄爱奇艺",
       "type": 1,
@@ -162,6 +173,15 @@
       "name": "💠映迷",
       "type": 1,
       "api": "https://www.inmi.app/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "茅台",
+      "name": "🍶茅台",
+      "type": 1,
+      "api": "https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
