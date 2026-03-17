@@ -490,7 +490,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
     border-radius: 8px !important;
     position: fixed !important;
-    top: 120px !important;
+    top: 200px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     right: auto !important;
