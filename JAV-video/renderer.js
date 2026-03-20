@@ -1,9 +1,10 @@
-// ================= renderer.js =================
+// ================= renderer.js (修复版) =================
 const Renderer = {
     allData: [],
     filteredData: [],
     currentPage: 1,
-    pageSize: CONFIG ? CONFIG.PAGE_SIZE : 20, // 兼容 CONFIG 未定义
+    // 【修复1】使用 window.CONFIG 或默认值，避免 CONFIG 未定义错误
+    pageSize: (typeof window !== 'undefined' && window.CONFIG && window.CONFIG.PAGE_SIZE) ? window.CONFIG.PAGE_SIZE : 20,
     totalPages: 1,
     elements: {},
     currentQuery: '',
@@ -14,27 +15,51 @@ const Renderer = {
             prevBtn: document.getElementById('prev-page-btn'),
             nextBtn: document.getElementById('next-page-btn'),
             pageNumsContainer: document.getElementById('pagination-numbers'),
-            stats: document.getElementById('stats-total')
+            // 【修复2】使用 querySelector 匹配 class，因为 HTML 中是 class="stats-main"
+            stats: document.querySelector('.stats-main') || document.getElementById('stats-total')
+        
+        
         };
+        
+        console.log('✅ [Renderer] Elements initialized:', {
+            grid: !!this.elements.grid,
+            prevBtn: !!this.elements.prevBtn,
+            nextBtn: !!this.elements.nextBtn,
+            stats: !!this.elements.stats
+        });
     },
 
     renderAll(data) {
+        console.log('🎨 [Renderer] renderAll called with', data.length, 'items');
+        
+        if (!data || data.length === 0) {
+            console.error('❌ [Renderer] No data provided');
+            return;
+        }
+        
         this.allData = data;
         this.filteredData = data;
         this.initElements();
         
+        // 检查必要元素是否存在
+        if (!this.elements.grid) {
+            console.error('❌ [Renderer] Critical: video-grid element not found!');
+            alert('系统错误：找不到视频网格容器 (#video-grid)');
+            return;
+        }
+
         // 恢复状态
         const savedState = this.loadState();
         if (savedState) {
             this.currentQuery = savedState.query || '';
             this.currentPage = savedState.page || 1;
-            const input = document.getElementById('feature-search-input');
+            const input = document.getElementById('feature-search-input') || document.getElementById('search-input');
             if (input) input.value = this.currentQuery;
             
             if (this.currentQuery) {
                 // 如果有搜索词，先过滤
                 this.filteredData = this.allData.filter(item => {
-                    const q = this.currentQuery;
+                    const q = this.currentQuery.toLowerCase();
                     const fId = (item.feature_id || '').toLowerCase();
                     const title = (item.vod_name || item.title || '').toLowerCase();
                     const vId = (item.vod_id || '').toLowerCase();
@@ -55,6 +80,8 @@ const Renderer = {
         this.renderPage();
         this.renderPaginationControls();
         this.setupEvents();
+        
+        console.log('✅ [Renderer] Initialization complete. Pages:', this.totalPages);
     },
 
     loadState() {
@@ -71,9 +98,13 @@ const Renderer = {
 
     renderPage() {
         if (!this.elements.grid) return;
+        
         const start = (this.currentPage - 1) * this.pageSize;
         const end = start + this.pageSize;
         const pageData = this.filteredData.slice(start, end);
+        
+        console.log(`🎨 [Renderer] Rendering page ${this.currentPage}, items ${start}-${end}`);
+        
         this.elements.grid.innerHTML = '';
 
         if (pageData.length === 0) {
@@ -87,7 +118,7 @@ const Renderer = {
             card.className = 'video-card';
             const id = item.feature_id || item.vod_id || item.id || '';
             
-            // 检查已看
+            // 检查已看（使用全局函数）
             if (typeof isWatched === 'function' && isWatched(id)) {
                 card.classList.add('watched');
             }
@@ -144,6 +175,7 @@ const Renderer = {
                     this.renderPaginationControls();
                     this.updateNavButtons();
                     this.saveState();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 };
             } else if (active) {
                 setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }), 0);
@@ -178,7 +210,7 @@ const Renderer = {
     },
 
     setupEvents() {
-        // 翻页按钮事件已在 renderPaginationControls 中绑定，此处仅需处理独立的上下页按钮（如果有）
+        // 翻页按钮事件
         if (this.elements.prevBtn) {
             this.elements.prevBtn.onclick = () => {
                 if (this.currentPage > 1) {
@@ -186,6 +218,7 @@ const Renderer = {
                     this.renderPage();
                     this.renderPaginationControls();
                     this.saveState();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
         }
@@ -196,6 +229,7 @@ const Renderer = {
                     this.renderPage();
                     this.renderPaginationControls();
                     this.saveState();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
         }
@@ -203,3 +237,4 @@ const Renderer = {
 };
 
 window.Renderer = Renderer;
+console.log('✅ Renderer module loaded');

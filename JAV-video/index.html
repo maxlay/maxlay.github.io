@@ -4,90 +4,675 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>OK 番号视频</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
-        /* --- 保持之前的所有 CSS 不变 --- */
-        body { margin: 0; padding: 0; background: #1a1a1a; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        #login-overlay { display: flex; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; }
-        .login-box { background:#222; padding:40px; border-radius:12px; text-align:center; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .login-input { padding:12px; width:220px; margin-bottom:15px; border-radius:6px; border:1px solid #444; background:#333; color:white; font-size:16px; outline:none; }
-        .login-btn { padding:12px 30px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; font-size:16px; font-weight:bold; }
-        .login-btn:hover { background:#0056b3; }
-        .login-error { color:#ff4444; margin-top:15px; font-size:14px; display:none; }
-        #app-container { display:none; opacity: 0; transition: opacity 0.5s; padding-bottom: 60px; }
-        .header { padding: 15px 20px; background: #222; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 15px; }
-        .stats-main { font-size: 18px; font-weight: bold; color: #ddd; white-space: nowrap; }
-        .top-controls { display: flex; gap: 10px; align-items: center; }
-        .top-search-box { display: flex; gap: 8px; background: #333; padding: 5px 10px; border-radius: 8px; border: 1px solid #444; }
-        .top-search-box input { background: transparent; border: none; color: white; padding: 5px; outline: none; width: 180px; font-size: 14px; }
-        .top-search-box button, .history-btn { background: #007bff; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 13px; white-space: nowrap; }
-        .top-search-box button:hover, .history-btn:hover { background: #0056b3; }
-        .history-btn { background: #28a745; }
-        .history-btn:hover { background: #218838; }
-        .control-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #222; margin: 15px 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); gap: 20px; flex-wrap: nowrap; }
-        .nav-left, .nav-right { flex: 0 0 auto; }
-        .nav-btn { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; white-space: nowrap; }
-        .nav-btn:disabled { background: #444; color: #888; cursor: not-allowed; opacity: 0.6; }
-        .pagination-numbers { flex: 1; display: flex; justify-content: center; align-items: center; gap: 6px; overflow-x: auto; padding: 5px 0; scrollbar-width: none; min-width: 0; }
-        .pagination-numbers::-webkit-scrollbar { display: none; }
-        .page-num-btn { min-width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; background: #333; color: #ccc; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; user-select: none; flex-shrink: 0; }
-        .page-num-btn:hover { background: #444; color: white; }
-        .page-num-btn.active { background: #007bff; color: white; font-weight: bold; transform: scale(1.1); box-shadow: 0 0 10px rgba(0,123,255,0.5); }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 0 20px 40px 20px; }
-        .video-card { background: #222; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
-        .video-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .card-poster { position: relative; padding-top: 56.25%; background: #000; }
-        .card-poster img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .watched-badge { position: absolute; top: 10px; right: 10px; background: rgba(40, 167, 69, 0.9); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: none; }
-        .video-card.watched .watched-badge { display: block; }
-        .video-card.watched .card-poster::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); }
-        .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; font-size: 30px; color: white; opacity: 0; transition: opacity 0.2s; z-index: 5; }
-        .video-card:hover .play-overlay { opacity: 1; }
-        .card-info { padding: 12px; }
-        .card-title { margin: 0; font-size: 15px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #eee; }
-        .card-feature-id { display: block; margin-top: 6px; font-size: 12px; color: #007bff; font-weight: bold; }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-overlay.active { display: flex; }
-        .player-container { width: 90%; max-width: 1000px; aspect-ratio: 16/9; background: #000; border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
-        .close-player { position: absolute; top: -40px; right: 0; color: white; font-size: 30px; cursor: pointer; background: none; border: none; }
-        .history-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 3000; justify-content: center; align-items: center; }
-        .history-modal.active { display: flex; }
-        .history-panel { background: #222; width: 90%; max-width: 800px; max-height: 80vh; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .history-header { padding: 15px 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; }
-        .history-header h3 { margin: 0; font-size: 18px; color: #fff; }
-        .history-actions { display: flex; gap: 10px; }
-        .btn-sm { padding: 5px 10px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; }
-        .btn-clear { background: #dc3545; }
-        .btn-close { background: #6c757d; }
-        .history-content { flex: 1; overflow-y: auto; padding: 20px; }
-        .history-item { display: flex; gap: 15px; padding: 10px; background: #2a2a2a; border-radius: 8px; margin-bottom: 10px; align-items: center; transition: background 0.2s; }
-        .history-item:hover { background: #333; }
-        .history-thumb { width: 120px; height: 68px; border-radius: 4px; object-fit: cover; background: #000; flex-shrink: 0; }
-        .history-info { flex: 1; min-width: 0; }
-        .history-title { font-size: 14px; font-weight: bold; color: #eee; margin: 0 0 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .history-meta { font-size: 12px; color: #888; display: flex; justify-content: space-between; }
-        .history-delete { background: transparent; border: 1px solid #dc3545; color: #dc3545; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; flex-shrink: 0; }
-        .history-delete:hover { background: #dc3545; color: white; }
-        .empty-history { text-align: center; color: #666; padding: 40px; }
-        #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: rgba(0, 123, 255, 0.8); color: white; border: none; border-radius: 50%; font-size: 24px; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 900; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.3s; }
-        #back-to-top:hover { background: #007bff; transform: translateY(-3px); }
-        #back-to-top.show { display: flex; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) {
-            .header { flex-direction: column; align-items: stretch; }
-            .top-controls { width: 100%; justify-content: space-between; }
-            .top-search-box { flex: 1; margin-right: 10px; }
-            .top-search-box input { width: 100%; }
-            .control-bar { flex-direction: row; padding: 10px 15px; gap: 15px; }
-            .nav-btn { padding: 8px 12px; font-size: 13px; }
-            .pagination-numbers { min-width: 0; flex: 1; }
-            .page-num-btn { min-width: 30px; height: 30px; font-size: 12px; }
-            .video-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; padding: 0 10px 20px 10px; }
-            #back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 20px; }
-            .history-item { flex-direction: column; align-items: flex-start; }
-            .history-thumb { width: 100%; height: auto; aspect-ratio: 16/9; }
-            .history-delete { margin-top: 10px; width: 100%; }
-        }
+body { 
+    margin: 0; 
+    padding: 0; 
+    background: #1a1a1a; 
+    color: #fff; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    min-height: 100vh;
+}
+
+#app { 
+    display: none; 
+    opacity: 0; 
+    transition: opacity 0.5s; 
+    padding-bottom: 60px; 
+}
+
+#app-container {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    padding-bottom: 60px;
+}
+
+.login-overlay { 
+    display: flex; 
+    position: fixed; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background:rgba(0,0,0,0.95); 
+    z-index:9999; 
+    justify-content:center; 
+    align-items:center; 
+}
+
+.login-box { 
+    background:#222; 
+    padding:40px; 
+    border-radius:12px; 
+    text-align:center; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+}
+
+.login-box h2 { margin: 0 0 10px 0; color: #fff; }
+.login-box p { color: #aaa; margin-bottom: 20px; }
+
+.login-box input { 
+    padding:12px; 
+    width:220px; 
+    margin-bottom:15px; 
+    border-radius:6px; 
+    border:1px solid #444; 
+    background:#333; 
+    color:white; 
+    font-size:16px; 
+    outline:none; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-box button { 
+    padding:12px 30px; 
+    background:#007bff; 
+    color:white; 
+    border:none; 
+    border-radius:6px; 
+    cursor:pointer; 
+    font-size:16px; 
+    font-weight:bold; 
+    display: block;
+    width: 220px;
+    margin: 0 auto;
+}
+
+.login-box button:hover { background:#0056b3; }
+
+.error-msg { 
+    color:#ff4444; 
+    margin-top:15px; 
+    font-size:14px; 
+    display:none; 
+}
+
+.header { 
+    padding: 15px 20px; 
+    background: #222; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid #333; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+}
+
+.stats-main { font-size: 18px; font-weight: bold; color: #ddd; white-space: nowrap; }
+
+.top-controls { display: flex; gap: 10px; align-items: center; }
+
+.top-search-box { 
+    display: flex; 
+    gap: 8px; 
+    background: #333; 
+    padding: 5px 10px; 
+    border-radius: 8px; 
+    border: 1px solid #444; 
+}
+
+.top-search-box input { 
+    background: transparent; 
+    border: none; 
+    color: white; 
+    padding: 5px; 
+    outline: none; 
+    width: 180px; 
+    font-size: 14px; 
+}
+
+.top-search-box button, .history-btn { 
+    background: #007bff; 
+    color: white; 
+    border: none; 
+    padding: 5px 15px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 13px; 
+    white-space: nowrap; 
+}
+
+.history-btn { background: #28a745; }
+.history-btn:hover { background: #218838; }
+
+.control-bar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 20px; 
+    background: #222; 
+    margin: 15px 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+    gap: 20px; 
+    flex-wrap: nowrap; 
+}
+
+.nav-btn { 
+    padding: 10px 20px; 
+    background: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    white-space: nowrap; 
+    font-size: 14px;
+}
+
+.nav-btn:disabled { 
+    background: #444; 
+    color: #888; 
+    cursor: not-allowed; 
+    opacity: 0.6; 
+}
+
+.pagination-numbers { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 6px; 
+    overflow-x: auto; 
+    padding: 5px 0; 
+    scrollbar-width: none; 
+    min-width: 0; 
+}
+
+.page-num-btn { 
+    min-width: 36px; 
+    height: 36px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: #333; 
+    color: #ccc; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: all 0.2s; 
+    user-select: none; 
+    flex-shrink: 0; 
+}
+
+.page-num-btn:hover { background: #444; color: white; }
+.page-num-btn.active { 
+    background: #007bff; 
+    color: white; 
+    font-weight: bold; 
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0,123,255,0.5); 
+}
+
+.video-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 20px; 
+    padding: 0 20px 40px 20px; 
+    min-height: 400px;
+}
+
+.video-card { 
+    background: #222; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.2s; 
+    position: relative; 
+    height: fit-content;
+}
+
+.video-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
+}
+
+.card-poster { 
+    position: relative; 
+    padding-top: 56.25%; 
+    background: #000; 
+    overflow: hidden;
+}
+
+.card-poster img { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.watched-badge { 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: rgba(40, 167, 69, 0.9); 
+    color: white; 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    font-weight: bold; 
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+    display: none; 
+}
+
+.video-card.watched .watched-badge { display: block; }
+.video-card.watched .card-poster::after { 
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.3); 
+}
+
+.play-overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.2); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 30px; 
+    color: white; 
+    opacity: 0; 
+    transition: opacity 0.2s; 
+    z-index: 5; 
+}
+
+.video-card:hover .play-overlay { opacity: 1; }
+
+.card-info { padding: 12px; }
+.card-title { 
+    margin: 0; 
+    font-size: 15px; 
+    font-weight: 500; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    color: #eee; 
+}
+.card-feature-id { 
+    display: block; 
+    margin-top: 6px; 
+    font-size: 12px; 
+    color: #007bff; 
+    font-weight: bold; 
+}
+
+.loading-tip {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 16px;
+}
+
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.9); 
+    z-index: 2000; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-overlay.active { display: flex; }
+
+.player-container { 
+    width: 90%; 
+    max-width: 1000px; 
+    aspect-ratio: 16/9; 
+    background: #000; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    position: relative; 
+    box-shadow: 0 0 30px rgba(0,0,0,0.8); 
+}
+
+.close-player { 
+    position: absolute; 
+    top: -40px; 
+    right: 0; 
+    color: white; 
+    font-size: 30px; 
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+}
+
+.history-modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.85); 
+    z-index: 3000; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.history-modal.active { display: flex; }
+
+.history-panel { 
+    background: #222; 
+    width: 90%; 
+    max-width: 800px; 
+    max-height: 80vh; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#back-to-top { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    width: 50px; 
+    height: 50px; 
+    background: rgba(0, 123, 255, 0.8); 
+    color: white; 
+    border: none; 
+    border-radius: 50%; 
+    font-size: 24px; 
+    cursor: pointer; 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 900; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+    transition: all 0.3s; 
+}
+
+#back-to-top:hover { 
+    background: #007bff; 
+    transform: translateY(-3px); 
+}
+
+#back-to-top.show { 
+    display: flex; 
+    animation: fadeIn 0.3s; 
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* 历史弹窗容器 */
+.history-modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.9); 
+    z-index: 3000; 
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(5px);
+}
+
+.history-modal.active { display: flex; }
+
+/* 弹窗面板 */
+.history-panel { 
+    background: #2a2a2a; 
+    width: 90%; 
+    max-width: 800px; 
+    max-height: 85vh; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8); 
+    border: 1px solid #444;
+}
+
+/* 头部 */
+.history-header { 
+    padding: 20px; 
+    border-bottom: 1px solid #444; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: #333;
+    flex-shrink: 0;
+}
+
+.history-header h3 { 
+    margin: 0; 
+    font-size: 18px; 
+    color: #fff; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-actions { 
+    display: flex; 
+    gap: 10px; 
+}
+
+/* 按钮样式 */
+.btn-sm { 
+    padding: 8px 16px; 
+    font-size: 13px; 
+    border-radius: 6px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-clear { 
+    background: #dc3545; 
+}
+
+.btn-clear:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+}
+
+.btn-close { 
+    background: #6c757d; 
+}
+
+.btn-close:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* 内容区域 */
+.history-content { 
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 20px;
+    background: #2a2a2a;
+}
+
+/* 空状态 */
+.empty-history { 
+    text-align: center; 
+    color: #888; 
+    padding: 60px 20px;
+    font-size: 14px;
+}
+
+.empty-history::before {
+    content: "🕒";
+    display: block;
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+/* 历史记录项 - 修复后的关键样式 */
+.history-item { 
+    display: flex; 
+    gap: 15px; 
+    padding: 12px; 
+    background: #333; 
+    border-radius: 8px; 
+    margin-bottom: 12px; 
+    align-items: center; 
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.history-item:hover { 
+    background: #3a3a3a; 
+    border-color: #555;
+    transform: translateX(4px);
+}
+
+/* 缩略图 */
+.history-thumb { 
+    width: 120px; 
+    height: 68px; 
+    border-radius: 6px; 
+    object-fit: cover; 
+    background: #222; 
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* 信息区域 */
+.history-info { 
+    flex: 1; 
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.history-title { 
+    font-size: 15px; 
+    font-weight: 600; 
+    color: #eee; 
+    margin: 0 0 6px 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.history-meta { 
+    font-size: 12px; 
+    color: #888; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 删除按钮 */
+.history-delete { 
+    background: transparent; 
+    border: 1px solid #dc3545; 
+    color: #dc3545; 
+    padding: 6px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 12px; 
+    flex-shrink: 0;
+    transition: all 0.2s;
+    margin-left: 10px;
+}
+
+.history-delete:hover { 
+    background: #dc3545; 
+    color: white;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .history-panel {
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 8px;
+    }
+    
+    .history-header {
+        padding: 15px;
+    }
+    
+    .history-header h3 {
+        font-size: 16px;
+    }
+    
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .history-content {
+        padding: 10px;
+    }
+    
+    .history-item {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .history-thumb { 
+        width: 100px; 
+        height: 56px; 
+    }
+    
+    .history-title {
+        font-size: 14px;
+    }
+    
+    .history-delete {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
     </style>
 </head>
 <body>
@@ -113,15 +698,18 @@
 
   <!-- 顶部导航 -->
         <header class="header">
-            <h1>OK 番号视频</h1>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="🔍 搜索...">
-                <button id="search-btn">搜索</button>
-            </div>
-            <div class="nav-actions">
-                <button id="history-btn">🕒 历史</button>
-                <button id="logout-btn" onclick="logout()">退出</button>
-            </div>
+<div class="stats-main" id="stats-total">共 0 部视频</div>
+
+<div class="top-controls">
+    <div class="top-search-box">
+        <input type="text" id="feature-search-input" placeholder="🔍 搜索...">
+        <!-- 加上 class="history-btn" -->
+        <button id="feature-search-btn" class="history-btn">搜索</button>
+    </div>
+    <button id="open-history-btn" class="history-btn">🕒 历史</button>
+    <!-- 添加 class="history-btn" 并移到同一行 -->
+    <button id="logout-btn" class="history-btn" onclick="logout()">退出</button>
+</div>
         </header>
 
         <div class="control-bar">
@@ -138,16 +726,6 @@
         <main id="video-grid" class="video-grid">
             <div class="loading-tip">正在加载视频数据...</div>
         </main>
-        
-                <div class="control-bar">
-            <div class="nav-left">
-                <button id="prev-page-btn" class="nav-btn" disabled>⬅ 上一页</button>
-            </div>
-            <div class="pagination-numbers" id="pagination-numbers"></div>
-            <div class="nav-right">
-                <button id="next-page-btn" class="nav-btn" disabled>下一页 ➡</button>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -176,19 +754,21 @@
         </div>
     </div>
 
-    <!-- 观看历史弹窗 -->
-    <div id="history-modal" class="history-modal">
-        <div class="history-panel">
-            <div class="history-header">
-                <h3>🕒 观看历史</h3>
-                <div class="history-actions">
-                    <button class="btn-sm btn-clear" onclick="clearHistory()">清空全部</button>
-                    <button class="btn-sm btn-close" onclick="toggleHistoryModal(false)">关闭</button>
-                </div>
+<!-- 观看历史弹窗 -->
+<div id="history-modal" class="history-modal">
+    <div class="history-panel">
+        <div class="history-header">
+            <h3>🕒 观看历史</h3>
+            <div class="history-actions">
+                <button class="btn-sm btn-clear" onclick="clearHistory()">清空全部</button>
+                <button class="btn-sm btn-close" onclick="toggleHistoryModal(false)">关闭</button>
             </div>
-            <div class="history-content" id="history-list"></div>
+        </div>
+        <div class="history-content" id="history-list">
+            <!-- 动态内容插入这里 -->
         </div>
     </div>
+</div>
 
     <!-- 脚本加载顺序至关重要 -->
     <!-- 脚本引入顺序很重要 -->
