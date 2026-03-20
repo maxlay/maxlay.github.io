@@ -41,7 +41,7 @@ function showLoginScreen() {
         const pwd = input.value.trim();
         console.log('🔑 [Attempt] Password entered:', pwd ? '***' : '(empty)');
 
-        if (pwd === DEFAULT_PASSWORD) {
+        if (pwd === CONFIG.DEFAULT_PASSWORD) {
             console.log('✅ [Success] Password correct');
             localStorage.setItem(LOGIN_STORAGE_KEY, 'true');
             errorMsg.style.display = 'none';

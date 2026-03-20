@@ -1,7 +1,7 @@
 // ================= core.js =================
 
 const APP_CONFIG = {
-    PASSWORD: '821025',
+    DEFAULT_PASSWORD: '821025', 
     DATA_PARTS_COUNT: 4,
     PAGE_SIZE: 120
 };
@@ -9,3 +9,5 @@ const APP_CONFIG = {
 window.CONFIG = APP_CONFIG;
 
 console.log('✅ Core loaded');
+
+
