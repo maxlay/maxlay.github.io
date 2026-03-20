@@ -70,25 +70,40 @@ function showLoginScreen() {
 }
 
 function showApp() {
-    const app = document.getElementById('app');
-    const loginScreen = document.getElementById('login-screen');
+    const app = document.getElementById('app'); // 注意：原代码可能是 'app-container' 或 'app'，请根据 HTML 实际 ID 确认
+    const loginScreen = document.getElementById('login-screen'); // 确认 ID 是否为 login-screen
     
-    if (loginScreen) loginScreen.style.display = 'none';
+    // 1. 强制隐藏登录层
+    if (loginScreen) {
+        loginScreen.style.display = 'none'; 
+        loginScreen.style.opacity = '0';
+    }
     
+    // 2. 强制显示主应用层
     if (app) {
         app.style.display = 'block';
-        void app.offsetWidth; 
         app.style.opacity = '1';
+        console.log('✅ [Force] App container displayed.');
         
-        console.log('✅ [Init] App displayed');
-        
-        // 【必须存在】显式调用加载函数
-        console.log('🚀 [Init] 手动触发数据加载...'); // 新增日志
-        if (typeof loadVideoData === 'function') {
-            loadVideoData(); 
-        } else {
-            console.error('❌ [Init] 致命错误：找不到 loadVideoData 函数！请检查 loader.js 是否已加载。');
-        }
+        // 3. 尝试加载数据，但加上超时保护或 try-catch
+        setTimeout(() => {
+            if (typeof loadVideoData === 'function') {
+                try {
+                    console.log('🚀 Attempting to load data...');
+                    loadVideoData();
+                } catch (e) {
+                    console.error('❌ Data loading crashed:', e);
+                    alert('数据加载失败，请检查网络连接或数据文件是否存在。\n错误信息:' + e.message);
+                }
+            } else {
+                console.warn('⚠️ loadVideoData function not found. Showing empty grid.');
+                // 可选：在这里手动初始化一个空网格，防止白屏
+                const grid = document.getElementById('video-grid');
+                if(grid) grid.innerHTML = '<div style="padding:20px;text-align:center;">等待数据加载... (若长期显示此项，请检查 loader.js)</div>';
+            }
+        }, 100); // 稍微延迟，确保 UI 先渲染出来
+    } else {
+        console.error('❌ Cannot find #app element! Check your index.html');
     }
 }
 
