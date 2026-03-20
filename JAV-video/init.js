@@ -77,21 +77,18 @@ function showApp() {
     
     if (app) {
         app.style.display = 'block';
-        // 强制重绘以触发过渡动画
         void app.offsetWidth; 
         app.style.opacity = '1';
         
         console.log('✅ [Init] App displayed');
         
-        // ================== 关键修改开始 ==================
-        // 确保在此处调用加载函数
+        // 【必须存在】显式调用加载函数
+        console.log('🚀 [Init] 手动触发数据加载...'); // 新增日志
         if (typeof loadVideoData === 'function') {
-            console.log('🚀 [Init] Starting data load...');
             loadVideoData(); 
         } else {
-            console.error('❌ [Init] loadVideoData function not found! Check loader.js script tag.');
+            console.error('❌ [Init] 致命错误：找不到 loadVideoData 函数！请检查 loader.js 是否已加载。');
         }
-        // ================== 关键修改结束 ==================
     }
 }
 

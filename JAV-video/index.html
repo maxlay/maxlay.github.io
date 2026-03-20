@@ -141,7 +141,17 @@
             </div>
         </div>
     </div>
-
+    <!-- 【修改】网站底部 Footer -->
+    <footer>
+            © 2026 版权所有   <span class="clickable-text" onclick="deleteAuthCookie()" title="点击此处清除 cookie 验证">PIN 码将不定期更改</span><br>
+            键盘左右键可切换上下页（Q 键关闭弹窗)<br>
+             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" target="_blank" class="btn-install">【x.com视频】</a> 
+             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" target="_blank" class="btn-install">【x.com视频】</a> 
+             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" target="_blank" class="btn-install">【x.com视频】</a> 
+             
+       
+    </footer>
+    
     <button id="back-to-top" title="返回顶部">⬆</button>
 
     <!-- 播放器弹窗 -->
@@ -435,18 +445,8 @@
             // 4. 检查数据加载状态 (兜底机制)
             // 如果 loader.js 正常工作，它会调用 Renderer.renderAll()
             // 如果一段时间后 Renderer.allData 还是空的，说明加载失败
-            setTimeout(() => {
-                if (!window.Renderer || !window.Renderer.allData || window.Renderer.allData.length === 0) {
-                    console.warn('⚠️ 数据尚未加载完成，检查 loader.js 或网络请求。');
-                    // 这里可以尝试重新触发加载，或者显示错误提示
-                    const grid = document.getElementById('video-grid');
-                    if(grid && grid.innerHTML.includes('正在加载')) {
-                        // grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:red;">数据加载失败，请检查 network 面板或 loader.js</div>';
-                    }
-                } else {
-                    console.log('✅ 数据已就绪，记录数:', window.Renderer.allData.length);
-                }
-            }, 2000);
+            window.videoDataLoaded = true; // 添加这一行以兼容 index.html 的检查
+            
         });
 
         // 键盘监听
