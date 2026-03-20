@@ -167,21 +167,13 @@
     </div>
 
     <!-- 脚本加载顺序至关重要 -->
-    <!-- 1. 配置 -->
-    <script>
-        // 如果之前有 core.js 定义 CONFIG，这里可以保留，否则直接定义
-        window.CONFIG = window.CONFIG || { PAGE_SIZE: 120 };
-        console.log('✅ [Init] CONFIG loaded');
-    </script>
-    
-    <!-- 2. Renderer (必须先于 loader 定义，因为 loader 会调用它) -->
-    <script src="renderer.js"></script>
-    
-    <!-- 3. Loader (负责获取数据) -->
-    <script src="loader.js"></script>
-    
-    <!-- 4. Init (负责登录等逻辑) -->
-    <script src="init.js"></script>
+<!-- 1. 先加载核心工具和 loader -->
+<script src="core.js"></script>
+<script src="loader.js"></script> 
+
+<!-- 2. 再加载依赖它们的业务逻辑 (init, renderer 等) -->
+<script src="init.js"></script>
+<script src="renderer.js"></script>
 
     <!-- 5. 全局核心逻辑 (播放器、历史、搜索、初始化协调) -->
     <script>

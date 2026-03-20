@@ -70,20 +70,28 @@ function showLoginScreen() {
 }
 
 function showApp() {
-    const overlay = document.getElementById('login-overlay');
-    const app = document.getElementById('app-container');
-
-    if (overlay) overlay.style.display = 'none';
+    const app = document.getElementById('app');
+    const loginScreen = document.getElementById('login-screen');
+    
+    if (loginScreen) loginScreen.style.display = 'none';
+    
     if (app) {
         app.style.display = 'block';
-        // 强制重绘以触发 transition
-        setTimeout(() => {
-            app.style.opacity = '1';
-        }, 50);
+        // 强制重绘以触发过渡动画
+        void app.offsetWidth; 
+        app.style.opacity = '1';
+        
         console.log('✅ [Init] App displayed');
         
-        // 如果数据还没加载，这里可以触发一次检查（可选）
-        // 但通常 loader.js 会独立处理数据加载
+        // ================== 关键修改开始 ==================
+        // 确保在此处调用加载函数
+        if (typeof loadVideoData === 'function') {
+            console.log('🚀 [Init] Starting data load...');
+            loadVideoData(); 
+        } else {
+            console.error('❌ [Init] loadVideoData function not found! Check loader.js script tag.');
+        }
+        // ================== 关键修改结束 ==================
     }
 }
 
