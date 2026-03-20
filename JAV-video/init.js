@@ -2,7 +2,6 @@
 console.log('🔒 [Init] Login module loaded');
 
 const LOGIN_STORAGE_KEY = 'video_site_logged_in';
-const DEFAULT_PASSWORD = '821025'; // <--- 在这里修改您的密码
 
 function checkLogin() {
     const isLoggedIn = localStorage.getItem(LOGIN_STORAGE_KEY) === 'true';

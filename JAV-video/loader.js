@@ -1,6 +1,5 @@
 // ================= 核心常量与工具 =================
 const CONFIG = {
-    PASSWORD: "821025",
     COOKIE_NAME: "x_video_auth_verified",
     
     // ⚠️ 关键配置：
