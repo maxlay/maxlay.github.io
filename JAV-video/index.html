@@ -92,29 +92,35 @@
 </head>
 <body>
 
-    <!-- 登录遮罩 -->
-    <div id="login-overlay">
-        <div class="login-box">
-            <h2 style="margin-top:0;">🔒 访问验证</h2>
-            <input type="password" id="password-input" class="login-input" placeholder="请输入访问密码">
-            <br>
-            <button id="login-btn" class="login-btn">进入系统</button>
-            <div id="login-error" class="login-error">密码错误，请重试</div>
-        </div>
+    <!-- 1. 登录遮罩层 (必须存在，ID 必须为 login-overlay) -->
+    
+  <!-- 添加 id="login-overlay" -->
+<div id="login-overlay" class="login-overlay"> 
+    <div class="login-box">
+        <h2>🔒 访问验证</h2>
+        <p>请输入密码进入系统</p>
+        <!-- 添加 id="password-input" -->
+        <input type="password" id="password-input" placeholder="输入密码..." autocomplete="off">
+        <!-- 添加 id="login-btn" -->
+        <button id="login-btn">进入系统</button>
+        <!-- 添加 id="login-error" (用于显示错误信息) -->
+        <div id="login-error" class="error-msg" style="display:none;">密码错误，请重试</div>
     </div>
+</div>
 
     <!-- 主容器 -->
-<div id="app" style="display:none;">
+<div id="app" class="app-container" style="display:none; opacity:0;">
 
-    <div id="app-contain">
+  <!-- 顶部导航 -->
         <header class="header">
-            <span class="stats-main" id="stats-total">正在加载数据...</span>
-            <div class="top-controls">
-                <div class="top-search-box">
-                    <input type="text" id="feature-search-input" value="" autocomplete="off">
-                    <button id="feature-search-btn">🔍 搜索</button>
-                </div>
-                <button id="open-history-btn" class="history-btn">🕒 历史</button>
+            <h1>OK 番号视频</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="🔍 搜索...">
+                <button id="search-btn">搜索</button>
+            </div>
+            <div class="nav-actions">
+                <button id="history-btn">🕒 历史</button>
+                <button id="logout-btn" onclick="logout()">退出</button>
             </div>
         </header>
 
@@ -128,11 +134,11 @@
             </div>
         </div>
 
-        <div id="video-grid" class="video-grid">
-            <div class="loading" id="loading-msg" style="grid-column: 1/-1; text-align: center; padding: 50px; color: #888;">
-                正在加载视频数据...
-            </div>
-        </div>
+  <!-- 视频网格区域 -->
+        <main id="video-grid" class="video-grid">
+            <div class="loading-tip">正在加载视频数据...</div>
+        </main>
+        
                 <div class="control-bar">
             <div class="nav-left">
                 <button id="prev-page-btn" class="nav-btn" disabled>⬅ 上一页</button>
@@ -185,13 +191,13 @@
     </div>
 
     <!-- 脚本加载顺序至关重要 -->
-<!-- 1. 先加载核心工具和 loader -->
-<script src="core.js"></script>
-<script src="loader.js"></script> 
-
-<!-- 2. 再加载依赖它们的业务逻辑 (init, renderer 等) -->
-<script src="init.js"></script>
-<script src="renderer.js"></script>
+    <!-- 脚本引入顺序很重要 -->
+    <script src="core.js"></script>
+    <script src="loader.js"></script>
+    <script src="renderer.js"></script>
+    <script src="modal-account.js"></script>
+    <script src="modal-manager.js"></script>
+    <script src="init.js"></script>
 
     <!-- 5. 全局核心逻辑 (播放器、历史、搜索、初始化协调) -->
     <script>
