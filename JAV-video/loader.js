@@ -1,3 +1,9 @@
+// ================= 配置区域 =================
+const BASE_FILENAME = 'data-part-';      // 文件名前缀
+const FILE_EXTENSION = '.json';          // 文件扩展名
+const TOTAL_PARTS = 10;                  // 文件总数 (0-9)
+// ===========================================
+
 async function loadVideoData() {
     const loadingMsg = document.getElementById('loading-msg');
     if (loadingMsg) loadingMsg.innerText = `正在加载数据 (0/${TOTAL_PARTS})...`;
@@ -6,8 +12,10 @@ async function loadVideoData() {
     
     // 1. 创建所有加载任务
     for (let i = 0; i < TOTAL_PARTS; i++) {
-        // 【已修改】拼接完整的远程 URL
+        // 拼接完整的远程 URL
         const url = `https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/JAV-video/${BASE_FILENAME}${i}${FILE_EXTENSION}`;
+        
+        console.log(`🔄 [Loader] Fetching: ${url}`); // 增加调试日志
         
         const promise = fetch(url)
             .then(response => {
@@ -55,8 +63,20 @@ async function loadVideoData() {
                     <h3>❌ 数据加载失败</h3>
                     <p><strong>错误信息:</strong> ${error.message}</p>
                     <p>请检查网络连接或 GitHub 链接是否有效。</p>
+                    <p style="font-size:12px; color:#666;">按 F12 查看控制台详细报错</p>
                 </div>
             `;
         }
     }
+}
+
+// 自动启动加载
+console.log('⚙️ [Loader] Module initialized, waiting for DOM...');
+// 确保在登录后或页面加载完成后调用，具体取决于您的架构
+// 如果是在 index.html 中直接调用，请保留下面的监听器，否则由 init.js 控制
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+         // 如果由 init.js 控制登录流程，这里可能不需要立即执行
+         // 此处暂不自动执行，避免与 login 逻辑冲突，建议在 init.js 登录成功后调用
+    });
 }
