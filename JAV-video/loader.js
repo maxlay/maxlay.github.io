@@ -13,7 +13,7 @@ async function loadVideoData() {
     // 1. 创建所有加载任务
     for (let i = 0; i < TOTAL_PARTS; i++) {
         // 拼接完整的远程 URL
-        const url = `https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/JAV-video/${BASE_FILENAME}${i}${FILE_EXTENSION}`;
+        const url = `https://cdn.jsdelivr.net/gh/maxlay/maxlay.github.io@main/JAV-video/${BASE_FILENAME}${i}${FILE_EXTENSION}`;
         
         console.log(`🔄 [Loader] Fetching: ${url}`); // 增加调试日志
         
