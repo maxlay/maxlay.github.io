@@ -118,6 +118,11 @@ const Renderer = {
             card.className = 'video-card';
             const id = item.feature_id || item.vod_id || item.id || '';
             
+            // 【新增】添加 data 属性用于预加载
+            card.dataset.id = id;
+            card.dataset.url = item.vod_play_url || item.url || '';
+            card.dataset.title = item.vod_name || item.title || '';
+            
             // 检查已看（使用全局函数）
             if (typeof isWatched === 'function' && isWatched(id)) {
                 card.classList.add('watched');
