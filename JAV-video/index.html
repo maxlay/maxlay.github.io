@@ -731,8 +731,8 @@ footer a:hover {
     <!-- 【修改】网站底部 Footer -->
     <footer>
             键盘左右键可切换前后页（Q 键关闭弹窗)<br>
-             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" >【X视频】</a> 
-             <a href="https://maxlay.github.io/JAV-video/" >【OK番号】</a> <br>
+             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" >【X.com频视】</a> 
+             <a href="https://maxlay.github.io/JAV-video/" >【OK番号频视】</a> <br>
              <a href="https://123av.com/zh/actresses/cb1b2a008bab33a1" target="_blank" >【123av】</a>
              <a href="https://www.javhdporn.net/pornstar/karen-kaede/" target="_blank" >【javhdporn】</a>
              <a href="https://xxxfree.app" target="_blank" >【xxxfree】</a> 
@@ -748,7 +748,16 @@ footer a:hover {
     <div id="player-modal" class="modal-overlay">
         <div class="player-container">
             <button class="close-player" onclick="closePlayer()">&times;</button>
-            <video id="main-video-player" controls playsinline webkit-playsinline style="width:100%; height:100%;"></video>
+<video id="main-video-player" 
+    controls 
+    playsinline 
+    webkit-playsinline="true"
+    x5-playsinline="true"
+    x5-video-player-type="h5-page"
+    x5-video-player-fullscreen="false"
+    preload="metadata"
+    style="width:100%; height:100%;">
+</video>
         </div>
     </div>
 
@@ -856,47 +865,130 @@ footer a:hover {
         }
 
         // --- 播放器逻辑 (含 24s 跳转) ---
-        function openPlayer(url, title, id, poster) {
-            if (!url) return;
-            console.log('▶️ Opening player:', title, id);
-            isPlayerOpen = true;
-            hasSkipped = false;
-            currentVideoData = { id, title, url, poster: poster || '' };
-            
-            // 尝试补充完整数据
-            if (window.Renderer && window.Renderer.allData) {
-                const full = window.Renderer.allData.find(i => (i.feature_id || i.vod_id || i.id) === id);
-                if (full) currentVideoData = { ...currentVideoData, ...full };
-            }
+ function openPlayer(url, title, id, poster) {
+    if (!url) return;
+    console.log('▶️ Opening player:', title, id);
+    isPlayerOpen = true;
+    hasSkipped = false;
+    currentVideoData = { id, title, url, poster: poster || '' };
+    
+    if (window.Renderer && window.Renderer.allData) {
+        const full = window.Renderer.allData.find(i => (i.feature_id || i.vod_id || i.id) === id);
+        if (full) currentVideoData = { ...currentVideoData, ...full };
+    }
 
-            addToHistory(currentVideoData);
-            markAsWatched(id);
+    addToHistory(currentVideoData);
+    markAsWatched(id);
 
-            playerModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            if (hls) { hls.destroy(); hls = null; }
-            video.src = '';
-            video.load();
+    playerModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    if (hls) { hls.destroy(); hls = null; }
+    video.removeAttribute('src');
+    video.load();
 
-            const startPlayback = () => { video.play().catch(e=>{}); video.focus(); };
-
-            if (url.includes('.m3u8')) {
-                if (Hls.isSupported()) {
-                    hls = new Hls();
-                    hls.loadSource(url);
-                    hls.attachMedia(video);
-                    hls.on(Hls.Events.MANIFEST_PARSED, startPlayback);
-                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = url;
-                    video.addEventListener('loadedmetadata', startPlayback, {once:true});
-                } else { alert('不支持 m3u8'); closePlayer(); }
-            } else {
-                video.src = url;
-                video.addEventListener('loadedmetadata', startPlayback, {once:true});
-            }
+    const startPlayback = () => { 
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(e => {
+                console.log('播放需要用户交互:', e);
+                showPlayHint();
+            });
         }
+    };
 
+    if (url.includes('.m3u8')) {
+        // iOS Safari 原生 HLS
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            console.log('使用原生 HLS 播放 (Safari)');
+            video.src = url;
+            video.addEventListener('loadedmetadata', startPlayback, {once:true});
+            video.addEventListener('canplay', startPlayback, {once:true});
+            setTimeout(() => { if (video.paused) startPlayback(); }, 100);
+        } else if (Hls.isSupported()) {
+            // 【关键修复】安卓 Chrome 优化配置
+            console.log('使用 HLS.js 播放 (Android/Chrome)');
+            
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isChrome = /Chrome/i.test(navigator.userAgent);
+            const isXiaomi = /MIUI|XiaoMi|MiuiBrowser/i.test(navigator.userAgent);
+            
+            console.log('设备检测:', { isAndroid, isChrome, isXiaomi });
+            
+            const hlsConfig = {
+                enableWorker: !(isAndroid && isChrome), // 安卓禁用 worker [^53^]
+                lowLatencyMode: false,
+                backBufferLength: 90,
+                maxBufferLength: 30,
+                maxMaxBufferLength: 60,
+                fragLoadingMaxRetry: 6,
+                manifestLoadingMaxRetry: 4,
+                levelLoadingMaxRetry: 4
+            };
+            
+            hls = new Hls(hlsConfig);
+            
+            // 安卓 Chrome 强制 HTTPS [^59^]
+            if (isAndroid && isChrome && url.startsWith('http:')) {
+                console.warn('⚠️ 安卓 Chrome 需要 HTTPS，自动修复...');
+                url = url.replace('http:', 'https:');
+            }
+            
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                console.log('HLS manifest 加载完成');
+                startPlayback();
+            });
+            
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                console.error('HLS 错误:', data);
+                if (data.fatal) {
+                    switch(data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            // 备选：尝试原生播放
+                            hls.destroy();
+                            hls = null;
+                            video.src = url;
+                            video.addEventListener('loadedmetadata', startPlayback, {once:true});
+                            break;
+                    }
+                }
+            });
+        } else {
+            alert('您的浏览器不支持 HLS 视频播放');
+            closePlayer();
+            return;
+        }
+    } else {
+        video.src = url;
+        video.addEventListener('loadedmetadata', startPlayback, {once:true});
+    }
+    video.focus();
+}
+
+// 播放提示函数
+function showPlayHint() {
+    const existing = document.getElementById('play-hint');
+    if (existing) return;
+    const hint = document.createElement('div');
+    hint.id = 'play-hint';
+    hint.innerHTML = '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:white;padding:20px;border-radius:10px;text-align:center;cursor:pointer;z-index:3001;"><div style="font-size:48px;margin-bottom:10px;">▶️</div><div>点击播放视频</div></div>';
+    hint.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:3000;background:rgba(0,0,0,0.5);';
+    hint.onclick = () => video.play().catch(e => console.log('播放失败:', e));
+    document.body.appendChild(hint);
+    video.addEventListener('play', () => {
+        const h = document.getElementById('play-hint');
+        if (h) h.remove();
+    }, {once:true});
+}
         function closePlayer() {
             if (!isPlayerOpen) return;
             isPlayerOpen = false;
