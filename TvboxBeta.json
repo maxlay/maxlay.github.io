@@ -137,6 +137,16 @@
       "ext": "7lj763gg402i7942463j9j9jh8579590k3hjii5gi4i73l2k5l"
     },
     {
+      "key": "ivdy",
+      "name": "🥰爱电影",
+      "type": 1,
+      "api": "https://www.ivdy.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": ["电影", "电视剧", "综艺", "动漫", "纪录片"]
+    },
+    {
       "key": "爱奇艺",
       "name": "🦄爱奇艺",
       "type": 1,
