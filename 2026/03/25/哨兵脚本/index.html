@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/custom-tech.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="今天写一个Python：智能监控与自动网页弹出哨兵脚本。 一个高可用、动态配置的轮询监控脚本。它的核心任务是持续检查特定 ID网页内容，一旦检测到包含“设定的关键字”的内容，立即自动打开浏览器跳转到详情页查看。  单位的内网主页是一个标准的前台 JS 调用后台 Json 的结构，查看 api 的URL返回数据判断，脚本主要轮询检查新发布的页面有没有包含设定的关键字，有关键字就直接把对应网页保存进日">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哨兵脚本">
+<meta property="og:url" content="https://maxlay.github.io/2026/03/25/%E5%93%A8%E5%85%B5%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="Huanglei">
+<meta property="og:description" content="今天写一个Python：智能监控与自动网页弹出哨兵脚本。 一个高可用、动态配置的轮询监控脚本。它的核心任务是持续检查特定 ID网页内容，一旦检测到包含“设定的关键字”的内容，立即自动打开浏览器跳转到详情页查看。  单位的内网主页是一个标准的前台 JS 调用后台 Json 的结构，查看 api 的URL返回数据判断，脚本主要轮询检查新发布的页面有没有包含设定的关键字，有关键字就直接把对应网页保存进日">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-25T10:55:48.000Z">
+<meta property="article:modified_time" content="2026-03-25T11:11:30.496Z">
+<meta property="article:author" content="HuangLei">
+<meta property="article:tag" content="Huanglei">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://maxlay.github.io/2026/03/25/%E5%93%A8%E5%85%B5%E8%84%9A%E6%9C%AC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>哨兵脚本 | Huanglei</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbb0ba12b85ec26c4c55b8fa19381af9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Huanglei</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">I’m PADI No.1409AZ6094</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志<span class="badge">270</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2026/03/25/%E5%93%A8%E5%85%B5%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          哨兵脚本
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-03-25 18:55:48" itemprop="dateCreated datePublished" datetime="2026-03-25T18:55:48+08:00">2026-03-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天写一个Python：智能监控与自动网页弹出哨兵脚本。</p>
+<p>一个<strong>高可用、动态配置的轮询监控脚本</strong>。它的核心任务是持续检查特定 ID网页内容，一旦检测到包含“设定的关键字”的内容，立即自动打开浏览器跳转到详情页查看。</p>
+<blockquote>
+<p>单位的内网主页是一个标准的前台 JS 调用后台 Json 的结构，查看 api 的URL返回数据判断，脚本主要轮询检查新发布的页面有没有包含设定的关键字，有关键字就直接把对应网页保存进日志并自动打开网页查看。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="🚀-核心工作流程"><a href="#🚀-核心工作流程" class="headerlink" title="🚀 核心工作流程"></a>🚀 核心工作流程</h2><h3 id="1-🛠️-初始化与环境准备"><a href="#1-🛠️-初始化与环境准备" class="headerlink" title="1. 🛠️ 初始化与环境准备"></a>1. 🛠️ 初始化与环境准备</h3><ul>
+<li><strong>日志系统双写</strong>：配置日志同时输出到<strong>控制台</strong>和 <code>monitor_log.txt</code> 文件，确保运行轨迹可追溯。</li>
+<li><strong>加载配置文件</strong>：读取 <code>config.ini</code> 获取关键参数：<ul>
+<li><code>base_url</code>：API 根地址。</li>
+<li><code>current_id</code>：当前监控的起始 ID。</li>
+<li><code>keywords</code>：触发报警的关键字列表。</li>
+<li><code>interval_seconds</code>：默认等待时间（用于异常情况）。</li>
+</ul>
+</li>
+<li><strong>安全校验</strong>：若配置文件缺失，程序直接报错退出，防止盲目运行。</li>
+</ul>
+<h3 id="2-🔄-主循环监控-无限轮询"><a href="#2-🔄-主循环监控-无限轮询" class="headerlink" title="2. 🔄 主循环监控 (无限轮询)"></a>2. 🔄 主循环监控 (无限轮询)</h3><p>程序进入 <code>while True</code> 循环，按以下顺序执行：</p>
+<h4 id="A-🔄-动态重载配置"><a href="#A-🔄-动态重载配置" class="headerlink" title="A. 🔄 动态重载配置"></a>A. 🔄 动态重载配置</h4><ul>
+<li><strong>机制</strong>：每次循环开始时重新读取 <code>config.ini</code>。</li>
+<li><strong>目的</strong>：支持<strong>热更新</strong>。用户可以在程序运行时修改关键字或调整 ID，无需重启程序即可生效。</li>
+</ul>
+<h4 id="B-🌐-发起网络请求"><a href="#B-🌐-发起网络请求" class="headerlink" title="B. 🌐 发起网络请求"></a>B. 🌐 发起网络请求</h4><ul>
+<li><strong>构建 URL</strong>：拼接目标接口 <code>.../detail/by/id/&#123;current_id&#125;</code>。</li>
+<li><strong>发送请求</strong>：使用 <code>requests.get</code> 发起访问，设置 <strong>10秒超时</strong> 防止网络卡死。</li>
+</ul>
+<h4 id="C-🛡️-双层状态过滤-容错核心"><a href="#C-🛡️-双层状态过滤-容错核心" class="headerlink" title="C. 🛡️ 双层状态过滤 (容错核心)"></a>C. 🛡️ 双层状态过滤 (容错核心)</h4><p>程序对响应结果进行严格的两级判断，只有全部通过才视为“成功”：</p>
+<table>
+<thead>
+<tr>
+<th align="left">层级</th>
+<th align="left">判断条件</th>
+<th align="left">判定结果</th>
+<th align="left">后续决策</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>第一层</strong></td>
+<td align="left">HTTP 状态码是否为 <code>200</code>？</td>
+<td align="left">❌ 否</td>
+<td align="left"><strong>失败</strong>：ID 不变，长间隔等待</td>
+</tr>
+<tr>
+<td align="left"><strong>第二层</strong></td>
+<td align="left">业务码 <code>code</code> 是否为 <code>500</code> 且含 “未知异常”？</td>
+<td align="left">❌ 是</td>
+<td align="left"><strong>失败</strong>：ID 不变，长间隔等待</td>
+</tr>
+<tr>
+<td align="left"><strong>最终</strong></td>
+<td align="left">以上均通过</td>
+<td align="left">✅ <strong>成功</strong></td>
+<td align="left">进入数据处理流程</td>
+</tr>
+</tbody></table>
+<h4 id="D-🔍-数据解析与智能兼容"><a href="#D-🔍-数据解析与智能兼容" class="headerlink" title="D. 🔍 数据解析与智能兼容"></a>D. 🔍 数据解析与智能兼容</h4><p>这是代码的<strong>核心修复点</strong>，专门处理 API 返回数据结构不一致的问题：</p>
+<ol>
+<li><strong>获取 <code>data</code> 字段</strong>。</li>
+<li><strong>类型判断</strong>：<ul>
+<li>如果是 <strong>字典 (Dict)</strong> → 直接提取 <code>fl</code>。</li>
+<li>如果是 <strong>列表 (List)</strong> → 取第一个元素 <code>[0]</code> 再提取 <code>fl</code>。</li>
+</ul>
+</li>
+<li><strong>结果</strong>：无论接口返回哪种格式，都能准确拿到 <code>fl</code> 值（如 2, 3, 4…）。</li>
+</ol>
+<h4 id="E-⚡-关键字匹配与动作触发"><a href="#E-⚡-关键字匹配与动作触发" class="headerlink" title="E. ⚡ 关键字匹配与动作触发"></a>E. ⚡ 关键字匹配与动作触发</h4><ul>
+<li><strong>全文扫描</strong>：将返回的 JSON 转为字符串，遍历检查是否包含配置的 <code>keywords</code>。</li>
+<li><strong>命中逻辑</strong>：<ol>
+<li>🚨 <strong>记录警报</strong>：在日志中高亮显示命中的关键字。</li>
+<li>🔗 <strong>构造链接</strong>：生成目标 URL <code>http://www.hhs.zj/html/page/detail_&#123;fl&#125;.html?id=&#123;id&#125;</code>。</li>
+<li>🌍 <strong>自动打开</strong>：调用 <code>open_url_smart</code> 函数，尝试三种方式（<code>os.startfile</code>, <code>webbrowser</code>, <code>subprocess</code>）强制拉起默认浏览器打开该页面。</li>
+</ol>
+</li>
+<li><strong>未命中</strong>：仅记录普通日志，静默处理。</li>
+</ul>
+<h4 id="F-💾-状态持久化与休眠策略"><a href="#F-💾-状态持久化与休眠策略" class="headerlink" title="F. 💾 状态持久化与休眠策略"></a>F. 💾 状态持久化与休眠策略</h4><p>根据本次循环的结果，决定下一步动作：</p>
+<ul>
+<li><p><strong>✅ 成功路径</strong> (请求正常 + 业务正常)：</p>
+<ul>
+<li><strong>ID 递增</strong>：<code>current_id = current_id + 1</code>。</li>
+<li><strong>保存进度</strong>：立即写入 <code>config.ini</code>，防止断电重复消费。</li>
+<li><strong>快速休眠</strong>：等待 <strong>5秒</strong> (<code>FAST_INTERVAL</code>)，迅速检查下一条。</li>
+</ul>
+</li>
+<li><p><strong>❌ 失败路径</strong> (网络错误 &#x2F; 业务异常)：</p>
+<ul>
+<li><strong>ID 保持不变</strong>：下次循环重试同一个 ID，确保不漏数据。</li>
+<li><strong>慢速休眠</strong>：等待 <strong>默认长间隔</strong> (如 30秒)，避免对故障服务器造成压力。</li>
+</ul>
+</li>
+<li><p><strong>⏱️ 精确计时</strong>：</p>
+<ul>
+<li>计算 <code>睡眠时长 = 设定间隔 - 本次耗时</code>。</li>
+<li>确保整体循环频率稳定，不受网络波动影响过大。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="💡-逻辑特点总结"><a href="#💡-逻辑特点总结" class="headerlink" title="💡 逻辑特点总结"></a>💡 逻辑特点总结</h2><ol>
+<li><strong>鲁棒性强</strong>：双重错误检查机制，区分“网络故障”和“业务异常”，并在异常时自动降频保护。</li>
+<li><strong>数据兼容</strong>：完美解决 API 返回结构变动（列表 vs 字典）导致的解析失败问题。</li>
+<li><strong>实时热更</strong>：支持运行时修改配置，运维灵活。</li>
+<li><strong>断点续传</strong>：每次成功后立即保存 ID，意外关闭后重启可从断点继续，<strong>不重不漏</strong>。</li>
+<li><strong>多模态报警</strong>：通过多种底层方法尝试打开浏览器，最大化保证报警动作执行成功。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+    
+		
+	  	<div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+		
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>HuangLei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://maxlay.github.io/2026/03/25/%E5%93%A8%E5%85%B5%E8%84%9A%E6%9C%AC/" title="哨兵脚本">https://maxlay.github.io/2026/03/25/哨兵脚本/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有原创文章（除文末特别标注转载或特殊声明外），均采用知识共享署名。非商业性使用 ,相同方式共享 4.0 国际许可协议 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 进行许可。<br> <strong>您可以：</strong>自由地分享（复制、分发、传播）和演绎（修改、改编、创作衍生作品）。<br> <strong>须遵守署名(BY)：</strong>必须给出适当的信用，提供指向本许可协议的链接，并指出是否进行了修改。转载请注明出处及原文链接。禁止整站搬运、禁止去除作者信息、禁止用于自媒体洗稿盈利。<br> <strong>非商业性使用(NC)：</strong>您不得将本作品用于商业目的。<br> <strong>相同方式共享(SA)：</strong>如果您再混合、转换或者基于本作品进行创作，您必须基于与原作品相同的许可协议分发您的贡献。<br><br> <strong>商业授权：</strong>如需商业用途（包括但不限于出版、付费课程、企业内训等），请事先联系作者获取书面授权。任何形式的商用、二次分发、改编后商用均需授权。本网站所有技术分享严格遵守《中华人民共和国网络安全法》《数据安全法》《个人信息保护法》及相关法律法规。<br> <strong>用途限制：</strong>站内涉及渗透测试、漏洞分析、逆向工程、脚本工具等技术内容，仅限用于合法的教育、学术研究及获得明确授权的安全测试场景。<br> <strong>禁止行为：</strong>任何个人或组织不得利用本站提供的技术信息、代码或工具从事危害网络安全、侵入他人系统、干扰网络正常功能及防护措施等非法活动。<br> <strong>责任自负：</strong>使用者应严格遵守法律法规，因滥用本站内容而导致的任何法律纠纷、经济损失或刑事责任，均由使用者自行承担，与本站及作者无关。作者不对任何因使用本站内容而产生的后果负责。<br><br> <strong>技术具有时效性，本站部分内容可能随时间推移而过时或不准确。作者尽力保证内容的正确性，但不对其准确性、完整性、适用性或及时性做任何明示或暗示的保证。读者在参考本站内容进行实际操作（如修改配置、运行代码）前，请务必在测试环境中验证，并做好数据备份。尊重知识产权，保护网络安全，本站不提供任何系统、网站、设备的渗透目标，所有技术仅用于学习与防护。若您认为本站内容侵犯了您的合法权益，或发现本站存在违法违规内容，请通过左侧电子邮箱联系作者，作者将尽快核实并处理。<br><p style='text-align: right;'>本声明自2012年5月5日起生效</p></strong>
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/03/23/OpenMAIC/" rel="prev" title="OpenMAIC">
+      <i class="fa fa-chevron-left"></i> OpenMAIC
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%9A%80-%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">🚀 核心工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%F0%9F%9B%A0%EF%B8%8F-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">1. 🛠️ 初始化与环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%F0%9F%94%84-%E4%B8%BB%E5%BE%AA%E7%8E%AF%E7%9B%91%E6%8E%A7-%E6%97%A0%E9%99%90%E8%BD%AE%E8%AF%A2"><span class="nav-number">1.2.</span> <span class="nav-text">2. 🔄 主循环监控 (无限轮询)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-%F0%9F%94%84-%E5%8A%A8%E6%80%81%E9%87%8D%E8%BD%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">A. 🔄 动态重载配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-%F0%9F%8C%90-%E5%8F%91%E8%B5%B7%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="nav-number">1.2.2.</span> <span class="nav-text">B. 🌐 发起网络请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%F0%9F%9B%A1%EF%B8%8F-%E5%8F%8C%E5%B1%82%E7%8A%B6%E6%80%81%E8%BF%87%E6%BB%A4-%E5%AE%B9%E9%94%99%E6%A0%B8%E5%BF%83"><span class="nav-number">1.2.3.</span> <span class="nav-text">C. 🛡️ 双层状态过滤 (容错核心)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D-%F0%9F%94%8D-%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%99%BA%E8%83%BD%E5%85%BC%E5%AE%B9"><span class="nav-number">1.2.4.</span> <span class="nav-text">D. 🔍 数据解析与智能兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-%E2%9A%A1-%E5%85%B3%E9%94%AE%E5%AD%97%E5%8C%B9%E9%85%8D%E4%B8%8E%E5%8A%A8%E4%BD%9C%E8%A7%A6%E5%8F%91"><span class="nav-number">1.2.5.</span> <span class="nav-text">E. ⚡ 关键字匹配与动作触发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#F-%F0%9F%92%BE-%E7%8A%B6%E6%80%81%E6%8C%81%E4%B9%85%E5%8C%96%E4%B8%8E%E4%BC%91%E7%9C%A0%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.6.</span> <span class="nav-text">F. 💾 状态持久化与休眠策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-%E9%80%BB%E8%BE%91%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">💡 逻辑特点总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HuangLei"
+      src="/./logo.png">
+  <p class="site-author-name" itemprop="name">HuangLei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">270</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/139067239" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;139067239" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:maxlay@gmail.com" title="E-Mail → mailto:maxlay@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/maxlay" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;maxlay" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://maxlay.github.io/2022/08/03/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99/" title="Movie → https:&#x2F;&#x2F;maxlay.github.io&#x2F;2022&#x2F;08&#x2F;03&#x2F;%E6%8E%A8%E8%8D%90%E4%B8%80%E4%BA%9B%E7%9C%8B%E7%94%B5%E5%BD%B1%E7%9A%84%E7%BD%91%E7%AB%99&#x2F;"><i class="fab fa-youtube fa-fw"></i>Movie</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+
+
+<a href="https://xima.tv/1_M82DLO" target="_blank" class="sidebar-custom-banner" id="ximalaya-banner">
+  <img src="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/ximalaya.png" alt="">
+</a>
+<img src="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/ximalaya-preview.png" class="mouse-follow-img" id="mouse-follow-img" style="display: none;">
+<style>
+.mouse-follow-img {
+  position: fixed;
+  pointer-events: none; /*  */
+  z-index: 9999;
+  width: 220px; /*  */
+  height: auto;
+  transition: opacity 0.1s; /*  */
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const banner = document.getElementById('ximalaya-banner');
+  const followImg = document.getElementById('mouse-follow-img');
+  let isFollowing = false;
+  
+  // banner
+  banner.addEventListener('mouseenter', function() {
+    isFollowing = true;
+    followImg.style.display = 'block';
+    followImg.style.opacity = '0.8'; // 
+  });
+  
+  // banner
+  banner.addEventListener('mousemove', function(e) {
+    if (!isFollowing) return;
+    
+    // 
+    followImg.style.left = (e.clientX + 15) + 'px';
+    followImg.style.top = (e.clientY + 15) + 'px';
+  });
+  
+  // banner
+  banner.addEventListener('mouseleave', function() {
+    isFollowing = false;
+    followImg.style.opacity = '0'; // 
+    setTimeout(() => {
+      followImg.style.display = 'none';
+    }, 100);
+  });
+});
+</script>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+  
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HuangLei</span>
+</div>
+  <div class="powered-by">    
+      <a href="https://maxlay.github.io/sitemap.xml" target="_blank">RSS</a> |
+      <a href="https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/HLbox.json" target="_blank">TVBox</a> 
+ 
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+<style>
+/*  -  */
+@media (min-width: 992px) {
+  /*  */
+  .sidebar-toggle-btn {
+    position: absolute !important;
+    top: 18px !important;
+    left: 11px !important;
+    z-index: 9999 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+  }
+
+  /*  */
+  .sidebar-toggle-btn.active {
+    background: #000 !important;
+    box-shadow: 0 0 15px 2px #39ff14 !important;
+  }
+
+  /* SVG  -  */
+  .sidebar-toggle-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    transition: all 0.5s ease !important;
+    /* currentColor */
+    fill: transparent !important;
+    stroke: #333 !important;
+    stroke-width: 2px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+  /*  -  +  */
+  .sidebar-toggle-btn.active svg {
+    fill: transparent !important;
+    stroke: #ffffff !important; /*  */
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 0 4px #39ff14) !important; /*  */
+    transform: rotate(180deg) !important;
+  }
+
+  /*  */
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(10deg); }
+  }
+
+  .sidebar-toggle-btn {
+    animation: shake 1s ease 0.5s 1 !important;
+  }
+
+  /*  */
+  .container {
+    position: relative !important;
+  }
+
+  /*  Pisces  -  */
+  .main {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+
+  .content-wrap {
+    flex: 1 !important;
+    max-width: none !important;
+  }
+
+  /*  -  */
+  body.sidebar-collapsed .header {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: all 0.5s ease !important;
+  }
+
+  body.sidebar-collapsed .sidebar {
+    flex: 0 0 0px !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: all 0.5s ease !important;
+  }
+
+  /*  -  */
+  body.sidebar-collapsed .main-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.sidebar-collapsed .content-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/*  */
+@media (max-width: 991px) {
+  .sidebar-toggle-btn {
+    display: none !important;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  //  Next 
+  setTimeout(function() {
+    // SVGcurrentColor
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'sidebar-toggle-btn';
+    // SVG
+    toggleBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    `;
+
+    // .container
+    const container = document.querySelector('.container');
+    if (container) {
+      container.insertBefore(toggleBtn, container.firstChild);
+    }
+
+    // localStorage
+    const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    
+    // 
+    if (isCollapsed) {
+      document.body.classList.add('sidebar-collapsed');
+      toggleBtn.classList.add('active');
+    }
+
+    // 
+    let isClicking = false;
+    toggleBtn.addEventListener('click', function() {
+      if (isClicking) return;
+      isClicking = true;
+      
+      const isActive = this.classList.contains('active');
+      
+      if (isActive) {
+        this.classList.remove('active');
+        document.body.classList.remove('sidebar-collapsed');
+        localStorage.setItem('sidebarCollapsed', 'false');
+      } else {
+        this.classList.add('active');
+        document.body.classList.add('sidebar-collapsed');
+        localStorage.setItem('sidebarCollapsed', 'true');
+      }
+      
+      setTimeout(() => {
+        isClicking = false;
+      }, 300);
+    });
+  }, 300);
+});
+</script>
+
+
+
+
+</body>
+</html>
