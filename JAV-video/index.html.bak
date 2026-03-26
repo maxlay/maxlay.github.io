@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OK 番号视频 - 6 线程极速预加载</title>
+    <title>OK 番号视频</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
@@ -731,8 +731,8 @@ footer a:hover {
     <!-- 【修改】网站底部 Footer -->
     <footer>
             键盘左右键可切换前后页（Q 键关闭弹窗)<br>
-             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" >【X.com 频视】</a> 
-             <a href="https://maxlay.github.io/JAV-video/" >【OK 番号频视】</a> <br>
+             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" >【X.com频视】</a> 
+             <a href="https://maxlay.github.io/JAV-video/" >【OK番号频视】</a> <br>
              <a href="https://123av.com/zh/actresses/cb1b2a008bab33a1" target="_blank" >【123av】</a>
              <a href="https://www.javhdporn.net/pornstar/karen-kaede/" target="_blank" >【javhdporn】</a>
              <a href="https://xxxfree.app" target="_blank" >【xxxfree】</a> 
@@ -755,7 +755,7 @@ footer a:hover {
     x5-playsinline="true"
     x5-video-player-type="h5-page"
     x5-video-player-fullscreen="false"
-    preload="auto"
+    preload="metadata"
     style="width:100%; height:100%;">
 </video>
         </div>
@@ -864,241 +864,131 @@ footer a:hover {
             });
         }
 
-        // ==========================================
-        // 【核心修改】固定 6 并发加载器 (Fixed Concurrency Loader)
-        // ==========================================
-        class FixedConcurrencyLoader extends Hls.DefaultConfig.loader {
-            constructor(config) {
-                super(config);
-                this.MAX_CONCURRENCY = 6; // 固定 6 线程
-                this.currentLoads = 0;
-                this.queue = [];
-                console.log(`🚀 [Loader] Initialized with Fixed Concurrency: ${this.MAX_CONCURRENCY} threads`);
-            }
+        // --- 播放器逻辑 (含 24s 跳转) ---
+ function openPlayer(url, title, id, poster) {
+    if (!url) return;
+    console.log('▶️ Opening player:', title, id);
+    isPlayerOpen = true;
+    hasSkipped = false;
+    currentVideoData = { id, title, url, poster: poster || '' };
+    
+    if (window.Renderer && window.Renderer.allData) {
+        const full = window.Renderer.allData.find(i => (i.feature_id || i.vod_id || i.id) === id);
+        if (full) currentVideoData = { ...currentVideoData, ...full };
+    }
 
-            load(context, config, callbacks) {
-                // 如果是 manifest (m3u8 文件)，直接加载，不占用分片并发数
-                if (context.type === 'manifest') {
-                    super.load(context, config, callbacks);
-                    return;
-                }
+    addToHistory(currentVideoData);
+    markAsWatched(id);
 
-                if (this.currentLoads >= this.MAX_CONCURRENCY) {
-                    // 达到并发上限，加入队列等待
-                    // console.log(`⏳ [Loader] Queueing fragment ${context.frag.sn}, active: ${this.currentLoads}`);
-                    this.queue.push(() => {
-                        this._loadInternal(context, config, callbacks);
-                    });
-                } else {
-                    this._loadInternal(context, config, callbacks);
-                }
-            }
+    playerModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    if (hls) { hls.destroy(); hls = null; }
+    video.removeAttribute('src');
+    video.load();
 
-            _loadInternal(context, config, callbacks) {
-                this.currentLoads++;
-                // console.log(`⬇️ [Loader] Starting load ${context.frag.sn}, active: ${this.currentLoads}`);
-                
-                const originalOnSuccess = callbacks.onSuccess;
-                const originalOnError = callbacks.onError;
-                const originalOnTimeout = callbacks.onTimeout;
-
-                // 包装回调，完成后释放槽位并处理队列
-                const releaseSlot = () => {
-                    this.currentLoads--;
-                    // console.log(`⬆️ [Loader] Finished load, active: ${this.currentLoads}`);
-                    this._processQueue();
-                };
-
-                callbacks.onSuccess = (response, stats, context) => {
-                    releaseSlot();
-                    if (originalOnSuccess) originalOnSuccess(response, stats, context);
-                };
-                callbacks.onError = (error, context) => {
-                    releaseSlot();
-                    if (originalOnError) originalOnError(error, context);
-                };
-                callbacks.onTimeout = (stats, context) => {
-                    releaseSlot();
-                    if (originalOnTimeout) originalOnTimeout(stats, context);
-                };
-
-                // 执行实际加载
-                try {
-                    super.load(context, config, callbacks);
-                } catch (e) {
-                    releaseSlot();
-                    throw e;
-                }
-            }
-
-            _processQueue() {
-                if (this.queue.length > 0 && this.currentLoads < this.MAX_CONCURRENCY) {
-                    const nextLoad = this.queue.shift();
-                    // 使用 setTimeout 避免栈溢出，并确保主线程有机会渲染
-                    setTimeout(nextLoad, 0);
-                }
-            }
-            
-            // 销毁时清理
-            destroy() {
-                this.queue = [];
-                this.currentLoads = 0;
-                super.destroy();
-            }
+    const startPlayback = () => { 
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(e => {
+                console.log('播放需要用户交互:', e);
+                //showPlayHint();
+            });
         }
+    };
 
-        // --- 播放器逻辑 (含 24s 跳转 + 6 线程预加载) ---
-        function openPlayer(url, title, id, poster) {
-            if (!url) return;
-            console.log('▶️ Opening player:', title, id);
-            isPlayerOpen = true;
-            hasSkipped = false;
-            currentVideoData = { id, title, url, poster: poster || '' };
+    if (url.includes('.m3u8')) {
+        // iOS Safari 原生 HLS
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            console.log('使用原生 HLS 播放 (Safari)');
+            video.src = url;
+            video.addEventListener('loadedmetadata', startPlayback, {once:true});
+            video.addEventListener('canplay', startPlayback, {once:true});
+            setTimeout(() => { if (video.paused) startPlayback(); }, 100);
+        } else if (Hls.isSupported()) {
+            // 【关键修复】安卓 Chrome 优化配置
+            console.log('使用 HLS.js 播放 (Android/Chrome)');
             
-            if (window.Renderer && window.Renderer.allData) {
-                const full = window.Renderer.allData.find(i => (i.feature_id || i.vod_id || i.id) === id);
-                if (full) currentVideoData = { ...currentVideoData, ...full };
-            }
-
-            addToHistory(currentVideoData);
-            markAsWatched(id);
-
-            playerModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isChrome = /Chrome/i.test(navigator.userAgent);
+            const isXiaomi = /MIUI|XiaoMi|MiuiBrowser/i.test(navigator.userAgent);
             
-            if (hls) { hls.destroy(); hls = null; }
-            video.removeAttribute('src');
-            video.load();
-
-            const startPlayback = () => { 
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(e => {
-                        console.log('播放需要用户交互:', e);
-                    });
-                }
+            console.log('设备检测:', { isAndroid, isChrome, isXiaomi });
+            
+            const hlsConfig = {
+                enableWorker: !(isAndroid && isChrome), // 安卓禁用 worker [^53^]
+                lowLatencyMode: false,
+                backBufferLength: 90,
+                maxBufferLength: 30,
+                maxMaxBufferLength: 60,
+                fragLoadingMaxRetry: 6,
+                manifestLoadingMaxRetry: 4,
+                levelLoadingMaxRetry: 4
             };
-
-            if (url.includes('.m3u8')) {
-                // iOS Safari 原生 HLS
-                if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    console.log('使用原生 HLS 播放 (Safari) - 无法强制 6 线程，依赖系统策略');
-                    video.src = url;
-                    video.addEventListener('loadedmetadata', startPlayback, {once:true});
-                    video.addEventListener('canplay', startPlayback, {once:true});
-                    setTimeout(() => { if (video.paused) startPlayback(); }, 100);
-                } else if (Hls.isSupported()) {
-                    // 【关键修复】安卓 Chrome 优化配置 + 6 线程强制并发
-                    console.log('使用 HLS.js 播放 (Android/Chrome) - 启用 6 线程固定并发预加载');
-                    
-                    const isAndroid = /Android/i.test(navigator.userAgent);
-                    const isChrome = /Chrome/i.test(navigator.userAgent);
-                    const isXiaomi = /MIUI|XiaoMi|MiuiBrowser/i.test(navigator.userAgent);
-                    
-                    console.log('设备检测:', { isAndroid, isChrome, isXiaomi });
-                    
-                    // 激进的缓冲配置：Look-ahead preloading
-                    const hlsConfig = {
-                        // 注入自定义 Loader 实现固定 6 并发
-                        loader: FixedConcurrencyLoader,
-                        
-                        enableWorker: !(isAndroid && isChrome), // 安卓禁用 worker
-                        lowLatencyMode: false,
-                        
-                        // Look-ahead 核心配置：极大化缓冲
-                        backBufferLength: 90,          // 保留过去 90 秒
-                        maxBufferLength: 300,          // 目标缓冲 300 秒 (5 分钟)
-                        maxMaxBufferLength: 600,       // 最大缓冲 600 秒 (10 分钟)
-                        maxBufferSize: 1000 * 1000 * 1000, // 1GB 上限 (不考虑内存消耗)
-                        
-                        // 减少空洞，积极填充
-                        maxBufferHole: 0.5,
-                        highBufferWatchdogPeriod: 3,
-                        
-                        // 重试配置
-                        fragLoadingMaxRetry: 6,
-                        manifestLoadingMaxRetry: 4,
-                        levelLoadingMaxRetry: 4,
-                        fragLoadingMaxRetryTimeout: 64000,
-                        
-                        // 码率策略：始终尝试最高码率以填满带宽
-                        startLevel: -1, 
-                        capLevelToPlayerSize: false, // 不限制分辨率，加载最高清晰度
-                        abrEwmaDefaultEstimate: 5000000, // 假设带宽很高 (5Mbps+)
-                        abrBandWidthFactor: 1,
-                        abrBandWidthUpFactor: 1
-                    };
-                    
-                    hls = new Hls(hlsConfig);
-                    
-                    // 安卓 Chrome 强制 HTTPS
-                    if (isAndroid && isChrome && url.startsWith('http:')) {
-                        console.warn('⚠️ 安卓 Chrome 需要 HTTPS，自动修复...');
-                        url = url.replace('http:', 'https:');
-                    }
-                    
-                    hls.loadSource(url);
-                    hls.attachMedia(video);
-                    
-                    // 监听事件以确认并发效果
-                    hls.on(Hls.Events.FRAG_LOADING, (event, data) => {
-                         // 可选：在控制台观察加载队列
-                         // console.log('Loading frag:', data.frag.sn);
-                    });
-
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        console.log('HLS manifest 加载完成，开始激进预加载...');
-                        startPlayback();
-                    });
-                    
-                    hls.on(Hls.Events.ERROR, (event, data) => {
-                        console.error('HLS 错误:', data);
-                        if (data.fatal) {
-                            switch(data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR:
-                                    console.log("网络错误，尝试恢复...");
-                                    hls.startLoad();
-                                    break;
-                                case Hls.ErrorTypes.MEDIA_ERROR:
-                                    console.log("媒体错误，尝试恢复...");
-                                    hls.recoverMediaError();
-                                    break;
-                                default:
-                                    hls.destroy();
-                                    hls = null;
-                                    video.src = url;
-                                    video.addEventListener('loadedmetadata', startPlayback, {once:true});
-                                    break;
-                            }
-                        }
-                    });
-                } else {
-                    alert('您的浏览器不支持 HLS 视频播放');
-                    closePlayer();
-                    return;
-                }
-            } else {
-                video.src = url;
-                video.addEventListener('loadedmetadata', startPlayback, {once:true});
+            
+            hls = new Hls(hlsConfig);
+            
+            // 安卓 Chrome 强制 HTTPS [^59^]
+            if (isAndroid && isChrome && url.startsWith('http:')) {
+                console.warn('⚠️ 安卓 Chrome 需要 HTTPS，自动修复...');
+                url = url.replace('http:', 'https:');
             }
-            video.focus();
+            
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                console.log('HLS manifest 加载完成');
+                startPlayback();
+            });
+            
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                console.error('HLS 错误:', data);
+                if (data.fatal) {
+                    switch(data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            // 备选：尝试原生播放
+                            hls.destroy();
+                            hls = null;
+                            video.src = url;
+                            video.addEventListener('loadedmetadata', startPlayback, {once:true});
+                            break;
+                    }
+                }
+            });
+        } else {
+            alert('您的浏览器不支持 HLS 视频播放');
+            closePlayer();
+            return;
         }
+    } else {
+        video.src = url;
+        video.addEventListener('loadedmetadata', startPlayback, {once:true});
+    }
+    video.focus();
+}
 
-        // 播放提示函数
-        function showPlayHint() {
-            const existing = document.getElementById('play-hint');
-            if (existing) return;
-            const hint = document.createElement('div');
-            hint.id = 'play-hint';
-            hint.innerHTML = '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:white;padding:20px;border-radius:10px;text-align:center;cursor:pointer;z-index:3001;"><div style="font-size:48px;margin-bottom:10px;">▶️</div><div>点击播放视频</div></div>';
-            hint.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:3000;background:rgba(0,0,0,0.5);';
-            hint.onclick = () => video.play().catch(e => console.log('播放失败:', e));
-            document.body.appendChild(hint);
-            video.addEventListener('play', () => {
-                const h = document.getElementById('play-hint');
-                if (h) h.remove();
-            }, {once:true});
-        }
+// 播放提示函数
+function showPlayHint() {
+    const existing = document.getElementById('play-hint');
+    if (existing) return;
+    const hint = document.createElement('div');
+    hint.id = 'play-hint';
+    hint.innerHTML = '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:white;padding:20px;border-radius:10px;text-align:center;cursor:pointer;z-index:3001;"><div style="font-size:48px;margin-bottom:10px;">▶️</div><div>点击播放视频</div></div>';
+    hint.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:3000;background:rgba(0,0,0,0.5);';
+    hint.onclick = () => video.play().catch(e => console.log('播放失败:', e));
+    document.body.appendChild(hint);
+    video.addEventListener('play', () => {
+        const h = document.getElementById('play-hint');
+        if (h) h.remove();
+    }, {once:true});
+}
         function closePlayer() {
             if (!isPlayerOpen) return;
             isPlayerOpen = false;
@@ -1113,7 +1003,7 @@ footer a:hover {
         playerModal.onclick = (e) => { if (e.target === playerModal) closePlayer(); };
         historyModal.onclick = (e) => { if (e.target === historyModal) toggleHistoryModal(false); };
 
-        // *** 24 秒跳转核心 ***
+        // *** 24秒跳转核心 ***
         video.addEventListener('timeupdate', () => {
             if (!isPlayerOpen || hasSkipped) return;
             if (video.currentTime > 0.5 && video.currentTime < SKIP_TIME) {
@@ -1187,7 +1077,7 @@ footer a:hover {
                 // 更新顶部统计文字
                 const statsEl = document.getElementById('stats-total');
                 if(statsEl) {
-                    statsEl.innerText = query ? `搜索结果："${query}" 共 ${filtered.length} 条` : `总视频数：${allData.length}`;
+                    statsEl.innerText = query ? `搜索结果: "${query}" 共 ${filtered.length} 条` : `总视频数: ${allData.length}`;
                 }
 
                 // 如果没有结果，显示提示
