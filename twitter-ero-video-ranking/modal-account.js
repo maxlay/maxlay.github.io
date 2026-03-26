@@ -32,15 +32,7 @@ const AccountModal = {
                     <div class="waterfall-date">📅 ${dateStr ? dateStr.substring(0, 10) : ''}</div>
                 </div>
             `;
-            div.onclick = () => { 
-                if (item.url) {
-                    if (typeof playVideo === 'function') {
-                        playVideo(item.url, item.title || '未知视频');
-                    } else {
-                        window.open(item.url, '_blank');
-                    }
-                }
-            };
+            div.onclick = () => { if(item.url) window.open(item.url, '_blank'); };
             listEl.appendChild(div);
         });
 
