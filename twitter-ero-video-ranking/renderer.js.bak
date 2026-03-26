@@ -41,7 +41,6 @@ const Renderer = {
             items = items.filter(item => {
                 const accountId = getAccountId(item);
                 return !recycleSet.has(accountId);
-                div.onclick = () => { if(item.url) window.open(item.url, '_blank'); };
             });
         }
 
@@ -107,15 +106,10 @@ const Renderer = {
             return 0;
         });
 
-        card.onclick = (e) => {
-            if (e.target.closest('.meta-author') || e.target.closest('.meta-fav-count')) return;
-            
-            if (typeof openVideoPlayer === 'function') {
-                openVideoPlayer(item);
-            } else {
-                window.open(item.url, '_blank');  // ← 问题在这里！
-            }
-        };
+        if (items.length === 0) {
+            this.gridEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666;">该日期暂无视频数据 (或所有视频作者均在回收站)</div>';
+        } else {
+            const fragment = document.createDocumentFragment();
             
             items.forEach(item => {
                 const card = document.createElement('div');
