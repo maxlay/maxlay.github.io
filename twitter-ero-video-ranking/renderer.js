@@ -41,7 +41,6 @@ const Renderer = {
             items = items.filter(item => {
                 const accountId = getAccountId(item);
                 return !recycleSet.has(accountId);
-                div.onclick = () => { if(item.url) window.open(item.url, '_blank'); };
             });
         }
 
@@ -107,70 +106,67 @@ const Renderer = {
             return 0;
         });
 
-        card.onclick = (e) => {
-            if (e.target.closest('.meta-author') || e.target.closest('.meta-fav-count')) return;
+        // 创建文档片段以提高性能
+        const fragment = document.createDocumentFragment();
             
-            if (typeof openVideoPlayer === 'function') {
-                openVideoPlayer(item);
-            } else {
-                window.open(item.url, '_blank');  // ← 问题在这里！
-            }
-        };
+        items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
             
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                
-                const accountId = getAccountId(item);
-                const m = Math.floor((item.time || 0) / 60);
-                const s = (item.time || 0) % 60;
-                const durationStr = `${m}:${s.toString().padStart(2, '0')}`;
-                const favCount = item.favorite || 0;
-                const formattedFav = formatNum(favCount);
-                
-                const titleText = item.title ? item.title : ''; 
-                const authorHtml = `
-                    <span class="meta-author" title="作者：${accountId}" onclick="event.preventDefault(); event.stopPropagation(); AccountModal.open('${accountId}')">
-                        👤 ${accountId}
-                    </span>
-                `;
-                
-                const safeUrl = item.url.replace(/'/g, "\\'"); 
-                const favCountHtml = `
-                    <span class="meta-fav-count" 
-                          title="点击复制链接" 
-                          style="cursor: pointer;"
-                          onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('${safeUrl}').catch(err=>{});">
-                        ★ ${formattedFav}
-                    </span>
-                `;
-                card.innerHTML = `
-                    <div class="thumb-container">
-                        <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
-                        <div class="duration-badge">${durationStr}</div>
-                        <div class="play-overlay"><div class="play-icon">▶</div></div>
+            const accountId = getAccountId(item);
+            const m = Math.floor((item.time || 0) / 60);
+            const s = (item.time || 0) % 60;
+            const durationStr = `${m}:${s.toString().padStart(2, '0')}`;
+            const favCount = item.favorite || 0;
+            const formattedFav = formatNum(favCount);
+            
+            const titleText = item.title ? item.title : ''; 
+            const authorHtml = `
+                <span class="meta-author" title="作者：${accountId}" onclick="event.preventDefault(); event.stopPropagation(); AccountModal.open('${accountId}')">
+                    👤 ${accountId}
+                </span>
+            `;
+            
+            const safeUrl = item.url.replace(/'/g, "\\'"); 
+            const favCountHtml = `
+                <span class="meta-fav-count" 
+                      title="点击复制链接" 
+                      style="cursor: pointer;"
+                      onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('${safeUrl}').catch(err=>{});">
+                    ★ ${formattedFav}
+                </span>
+            `;
+            
+            card.innerHTML = `
+                <div class="thumb-container">
+                    <img class="thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
+                    <div class="duration-badge">${durationStr}</div>
+                    <div class="play-overlay"><div class="play-icon">▶</div></div>
+                </div>
+                <div class="info">
+                    <div class="title">${titleText}</div>
+                    <div class="meta">
+                        ${authorHtml}
+                        ${favCountHtml}
                     </div>
-                    <div class="info">
-                        <div class="title">${titleText}</div>
-                        <div class="meta">
-                            ${authorHtml}
-                            ${favCountHtml}
-                        </div>
-                    </div>
-                `;
-                card.onclick = (e) => {
-                    if (e.target.closest('.meta-author') || e.target.closest('.meta-fav-count')) return;
-                    
-                    if (typeof openVideoPlayer === 'function') {
-                        openVideoPlayer(item);
-                    } else {
-                        window.open(item.url, '_blank');
-                    }
-                };
-                fragment.appendChild(card);
-            });
-            this.gridEl.appendChild(fragment);
-        }
+                </div>
+            `;
+            
+            // 卡片点击事件 - 必须在 forEach 内部
+            card.onclick = (e) => {
+                if (e.target.closest('.meta-author') || e.target.closest('.meta-fav-count')) return;
+                
+                if (typeof openVideoPlayer === 'function') {
+                    openVideoPlayer(item);
+                } else {
+                    window.open(item.url, '_blank');
+                }
+            };
+            
+            fragment.appendChild(card);
+        });
+        
+        this.gridEl.appendChild(fragment);
         
         this.updateUI();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -179,16 +175,14 @@ const Renderer = {
     updateUI() {
         const idx = DataLoader.sortedDates.indexOf(this.currentDateKey);
         if (idx === -1) return;
-        // 注意：这里的 count 显示的是过滤前的原始数据量，如果需要显示过滤后的数量，需重新计算
-        // 为了性能，这里保持显示原始数据量，或者你可以改为从 DOM 计数，但通常原始数据量更有参考价值
-        const count = (DataLoader.groupedData[this.currentDateKey] || []).length;
+        
+        const actualCount = this.gridEl.querySelectorAll('.card').length;
         
         ['page-date', 'top-page-date'].forEach(id => {
             const el = document.getElementById(id);
             if(el) el.innerText = this.currentDateKey;
         });
-        // 更新显示数量为当前渲染的实际数量 (过滤后)
-        const actualCount = this.gridEl.querySelectorAll('.card').length;
+        
         ['page-count', 'top-page-count'].forEach(id => {
             const el = document.getElementById(id);
             if(el) el.innerText = `${actualCount} 部`;
@@ -199,7 +193,6 @@ const Renderer = {
         [this.newerBtn, this.topNewerBtn].forEach(b => { if(b) b.disabled = !hasNew; });
         [this.olderBtn, this.topOlderBtn].forEach(b => { if(b) b.disabled = !hasOld; });
         
-        // 按钮文字中的数量也建议显示实际可见数量，这里简化处理仍显示原始数据量，如需精确需遍历所有日期数据
         const txtNew = hasNew ? `⬅ ${DataLoader.sortedDates[idx-1]}` : "已是最新";
         const txtOld = hasOld ? `${DataLoader.sortedDates[idx+1]} ➡` : "已是最旧";
         
