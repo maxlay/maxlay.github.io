@@ -625,6 +625,12 @@
         concurrentPlayer.play(url, title);
     }
     
+    // 添加这个函数定义，与 renderer.js 中的调用匹配
+    function openVideoPlayer(item) {
+    if (item && item.url) {
+        playVideo(item.url, item.title || '未知视频');
+    }
+}
     // 关闭播放器
     function closeVideoPlayer() {
         const playerContainer = document.getElementById('video-player');
