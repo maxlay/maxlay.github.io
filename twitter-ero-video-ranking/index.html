@@ -9,7 +9,98 @@
     
     <!-- 使用自定义 CSS -->
     <link rel="stylesheet" href="style.css">
-
+    <style>
+        /* 新增：视频播放器全屏容器 */
+        .video-player-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10000;
+            display: none;
+        }
+        .video-player-container.active {
+            display: flex;
+            flex-direction: column;
+        }
+        .video-player-header {
+            padding: 10px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .video-player-title {
+            color: #fff;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+        .video-player-close {
+            background: #ff4757;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .video-player-stats {
+            color: #888;
+            font-size: 12px;
+            margin-left: 15px;
+            font-family: monospace;
+        }
+        .video-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            position: relative;
+        }
+        video {
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .preload-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: #0f0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .thread-status {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333;
+            margin-right: 2px;
+        }
+        .thread-status.active {
+            background: #0f0;
+            box-shadow: 0 0 5px #0f0;
+        }
+        .thread-status.loading {
+            background: #ff0;
+        }
+    </style>
     <!-- 新增：Footer 样式 & 返回顶部按钮样式 -->
     <style>
         /* --- 原有 Footer 样式 --- */
@@ -268,90 +359,377 @@
     <script src="init.js"></script>
     
     <!-- 【新增】自定义脚本：处理注销逻辑 & 返回顶部 & 按钮同步 -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script>
-        // 1. 注销逻辑
-        function deleteAuthCookie() {
-            const cookieName = 'x_video_auth_verified';
-            document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-            console.log(`尝试删除 Cookie: ${cookieName}`);
-            setTimeout(() => {
-                alert('已清除验证信息 (PIN 码)，页面将刷新以重新登录。');
-                window.location.reload();
-            }, 100);
+    // ==================== 高性能 M3U8 播放器核心 ====================
+    
+    class ConcurrentHlsPlayer {
+        constructor() {
+            this.hls = null;
+            this.video = document.getElementById('hls-video');
+            this.maxConcurrent = 6; // 6线程并发
+            this.activeWorkers = new Set();
+            this.preloadQueue = [];
+            this.preloadedSegments = new Map(); // 已预加载的片段缓存
+            this.stats = { loaded: 0, loading: 0 };
+            this.threadVisual = document.getElementById('thread-visual');
+            this.preloadCountEl = document.getElementById('preload-count');
         }
-
-        // 2. 返回顶部功能逻辑
-        (function() {
-            const backToTopBtn = document.getElementById('back-to-top');
-            const percentSpan = document.getElementById('back-to-top-percent');
+    
+        // 自定义 XHR 加载器 - 修改 Referer
+        createCustomLoader() {
+            const referer = 'https://twitter.com/';
+            const origin = 'https://twitter.com';
             
-            if (!backToTopBtn) return;
-
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                
-                let scrollPercent = 0;
-                if (scrollHeight > 0) {
-                    scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+            return class CustomXhrLoader extends Hls.DefaultConfig.loader {
+                load(context, config, callbacks) {
+                    // 修改请求头
+                    const headers = context.headers || {};
+                    headers['Referer'] = referer;
+                    headers['Origin'] = origin;
+                    context.headers = headers;
+                    
+                    // 调用父类加载
+                    super.load(context, config, callbacks);
                 }
-                
-                percentSpan.textContent = scrollPercent + '%';
-
-                if (scrollTop > 300) {
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        })();
-
-        // 3. 【重要】同步顶部和底部管理按钮的显示状态
-        // 由于外部 JS (core.js/init.js) 可能只控制底部的 #bottom-manager-buttons
-        // 我们这里做一个观察器，一旦底部状态改变，立刻同步给顶部
-        (function() {
-            const bottomBtns = document.getElementById('bottom-manager-buttons');
-            const topBtns = document.getElementById('top-manager-buttons');
+            };
+        }
+    
+        // 6线程并发预加载管理器
+        async preloadManager(levelDetails) {
+            if (!levelDetails || !levelDetails.fragments) return;
             
-            if (!bottomBtns || !topBtns) return;
-
-            // 定义同步函数
-            function syncButtons() {
-                const isBottomVisible = bottomBtns.style.display !== 'none';
-                topBtns.style.display = isBottomVisible ? 'flex' : 'none'; // 假设原样式是 flex，如果是 block 请改回 block
+            const fragments = levelDetails.fragments;
+            const totalFragments = fragments.length;
+            
+            // 初始化预加载队列（从当前播放位置开始）
+            this.preloadQueue = fragments.map((frag, index) => ({
+                index,
+                url: frag.url,
+                loaded: false,
+                loading: false
+            }));
+    
+            // 启动6个工作者线程
+            const workers = [];
+            for (let i = 0; i < this.maxConcurrent; i++) {
+                workers.push(this.workerLoop(i));
             }
-
-            // 初始化时同步一次
-            syncButtons();
-
-            // 创建一个 MutationObserver 来监听底部按钮的 style 属性变化
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.attributeName === 'style') {
-                        syncButtons();
+            
+            // 更新可视化
+            this.updateThreadVisual();
+            
+            await Promise.all(workers);
+        }
+    
+        // 单个工作线程循环
+        async workerLoop(threadId) {
+            while (this.preloadQueue.length > 0) {
+                // 找到下一个未加载的片段
+                const task = this.preloadQueue.find(t => !t.loaded && !t.loading);
+                if (!task) break;
+    
+                task.loading = true;
+                this.activeWorkers.add(threadId);
+                this.updateThreadVisual();
+    
+                try {
+                    await this.fetchSegment(task);
+                    task.loaded = true;
+                    this.stats.loaded++;
+                } catch (e) {
+                    console.warn(`线程${threadId} 加载片段${task.index}失败:`, e);
+                } finally {
+                    task.loading = false;
+                    this.activeWorkers.delete(threadId);
+                    this.updateStats();
+                    this.updateThreadVisual();
+                }
+            }
+        }
+    
+        // 获取单个片段（使用 fetch + 自定义 headers）
+        async fetchSegment(task) {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 30000); // 30秒超时
+    
+            try {
+                const response = await fetch(task.url, {
+                    method: 'GET',
+                    headers: {
+                        'Referer': 'https://twitter.com/',
+                        'Origin': 'https://twitter.com',
+                        'Accept': '*/*',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+                        'Range': 'bytes=0-'
+                    },
+                    signal: controller.signal,
+                    credentials: 'omit'
+                });
+    
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                // 缓存到内存（不考虑内存消耗）
+                const buffer = await response.arrayBuffer();
+                this.preloadedSegments.set(task.index, buffer);
+                
+                clearTimeout(timeout);
+                return buffer;
+            } catch (e) {
+                clearTimeout(timeout);
+                throw e;
+            }
+        }
+    
+        // 更新线程可视化
+        updateThreadVisual() {
+            let html = '';
+            for (let i = 0; i < this.maxConcurrent; i++) {
+                const status = this.activeWorkers.has(i) ? 'active' : '';
+                html += `<span class="thread-status ${status}"></span>`;
+            }
+            if (this.threadVisual) this.threadVisual.innerHTML = html;
+        }
+    
+        // 更新统计
+        updateStats() {
+            if (this.preloadCountEl) {
+                this.preloadCountEl.textContent = this.stats.loaded;
+            }
+        }
+    
+        // 播放视频
+        play(url, title = '未知视频') {
+            const playerContainer = document.getElementById('video-player');
+            const titleEl = document.getElementById('player-title');
+            
+            titleEl.textContent = title;
+            playerContainer.classList.add('active');
+    
+            // 清理旧的 HLS 实例
+            if (this.hls) {
+                this.hls.destroy();
+                this.hls = null;
+            }
+    
+            // 清理缓存
+            this.preloadedSegments.clear();
+            this.stats = { loaded: 0, loading: 0 };
+    
+            if (Hls.isSupported()) {
+                // 使用自定义 loader 配置
+                this.hls = new Hls({
+                    debug: false,
+                    loader: this.createCustomLoader(),
+                    maxBufferLength: 300, // 5分钟缓冲
+                    maxMaxBufferLength: 600, // 10分钟最大缓冲
+                    maxBufferSize: 500 * 1000 * 1000, // 500MB 缓冲（不考虑内存）
+                    maxBufferHole: 0.5,
+                    highBufferWatchdogPeriod: 2,
+                    nudgeOffset: 0.1,
+                    nudgeMaxRetry: 5,
+                    maxFragLookUpTolerance: 0.25,
+                    liveSyncDurationCount: 3,
+                    liveMaxLatencyDurationCount: 10,
+                    enableWorker: true,
+                    enableSoftwareAES: true,
+                    manifestLoadingTimeOut: 10000,
+                    manifestLoadingMaxRetry: 4,
+                    manifestLoadingRetryDelay: 500,
+                    levelLoadingTimeOut: 10000,
+                    levelLoadingMaxRetry: 4,
+                    levelLoadingRetryDelay: 500,
+                    fragLoadingTimeOut: 30000,
+                    fragLoadingMaxRetry: 6,
+                    fragLoadingRetryDelay: 500,
+                    startFragPrefetch: true, // 关键：启用预加载
+                    abrEwmaFastLive: 3.0,
+                    abrEwmaSlowLive: 9.0,
+                    abrEwmaFastVoD: 3.0,
+                    abrEwmaSlowVoD: 9.0
+                });
+    
+                // 绑定到视频元素
+                this.hls.attachMedia(this.video);
+    
+                // 加载 M3U8
+                this.hls.loadSource(url);
+    
+                // 事件监听
+                this.hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+                    console.log('找到', data.levels.length, '个质量级别');
+                    this.video.play();
+                    
+                    // 启动6线程预加载
+                    const levelDetails = this.hls.levels[data.levels.length - 1]?.details;
+                    if (levelDetails) {
+                        this.preloadManager(levelDetails);
                     }
                 });
-            });
-
-            observer.observe(bottomBtns, { attributes: true });
-
-            // 绑定顶部按钮的点击事件到对应的底部按钮逻辑上
-            // 这样点击顶部的“收藏夹”，实际上触发的是底部按钮的点击事件（复用原有逻辑）
-            document.getElementById('top-btn-open-favorites').addEventListener('click', function() {
-                document.getElementById('btn-open-favorites').click();
-            });
-            document.getElementById('top-btn-open-recycle').addEventListener('click', function() {
-                document.getElementById('btn-open-recycle').click();
-            });
-        })();
-    </script>
     
+                this.hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
+                    // 当级别加载完成，启动该级别的并发预加载
+                    this.preloadManager(data.details);
+                });
+    
+                this.hls.on(Hls.Events.FRAG_LOADED, (event, data) => {
+                    this.stats.loaded++;
+                    this.updateStats();
+                });
+    
+                this.hls.on(Hls.Events.ERROR, (event, data) => {
+                    if (data.fatal) {
+                        switch(data.type) {
+                            case Hls.ErrorTypes.NETWORK_ERROR:
+                                console.warn('网络错误，尝试恢复...');
+                                this.hls.startLoad();
+                                break;
+                            case Hls.ErrorTypes.MEDIA_ERROR:
+                                console.warn('媒体错误，尝试恢复...');
+                                this.hls.recoverMediaError();
+                                break;
+                            default:
+                                console.error('致命错误:', data);
+                                this.hls.destroy();
+                                break;
+                        }
+                    }
+                });
+    
+            } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+                // Safari 原生支持
+                this.video.src = url;
+                this.video.addEventListener('loadedmetadata', () => {
+                    this.video.play();
+                });
+            }
+        }
+    
+        // 关闭播放器
+        destroy() {
+            if (this.hls) {
+                this.hls.destroy();
+                this.hls = null;
+            }
+            this.preloadedSegments.clear();
+            this.preloadQueue = [];
+            this.activeWorkers.clear();
+        }
+    }
+    
+    // 全局播放器实例
+    const concurrentPlayer = new ConcurrentHlsPlayer();
+    
+    // 播放视频函数（供其他模块调用）
+    function playVideo(url, title) {
+        concurrentPlayer.play(url, title);
+    }
+    
+    // 关闭播放器
+    function closeVideoPlayer() {
+        const playerContainer = document.getElementById('video-player');
+        playerContainer.classList.remove('active');
+        const video = document.getElementById('hls-video');
+        video.pause();
+        video.src = '';
+        concurrentPlayer.destroy();
+    }
+    
+    // ==================== 原有功能保持不变 ====================
+    
+    // 1. 注销逻辑
+    function deleteAuthCookie() {
+        const cookieName = 'x_video_auth_verified';
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        console.log(`尝试删除 Cookie: ${cookieName}`);
+        setTimeout(() => {
+            alert('已清除验证信息 (PIN 码)，页面将刷新以重新登录。');
+            window.location.reload();
+        }, 100);
+    }
+    
+    // 2. 返回顶部功能逻辑
+    (function() {
+        const backToTopBtn = document.getElementById('back-to-top');
+        const percentSpan = document.getElementById('back-to-top-percent');
+        
+        if (!backToTopBtn) return;
+    
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            let scrollPercent = 0;
+            if (scrollHeight > 0) {
+                scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+            }
+            
+            percentSpan.textContent = scrollPercent + '%';
+    
+            if (scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+    
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    })();
+    
+    // 3. 同步顶部和底部管理按钮的显示状态
+    (function() {
+        const bottomBtns = document.getElementById('bottom-manager-buttons');
+        const topBtns = document.getElementById('top-manager-buttons');
+        
+        if (!bottomBtns || !topBtns) return;
+    
+        function syncButtons() {
+            const isBottomVisible = bottomBtns.style.display !== 'none';
+            topBtns.style.display = isBottomVisible ? 'flex' : 'none';
+        }
+    
+        syncButtons();
+    
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'style') {
+                    syncButtons();
+                }
+            });
+        });
+    
+        observer.observe(bottomBtns, { attributes: true });
+    
+        document.getElementById('top-btn-open-favorites').addEventListener('click', function() {
+            document.getElementById('btn-open-favorites').click();
+        });
+        document.getElementById('top-btn-open-recycle').addEventListener('click', function() {
+            document.getElementById('btn-open-recycle').click();
+        });
+    })();
+    </script>
+    <!-- 高性能视频播放器容器 -->
+<div id="video-player" class="video-player-container">
+    <div class="video-player-header">
+        <div class="video-player-title" id="player-title">视频标题</div>
+        <div class="video-player-stats" id="player-stats">
+            线程: <span id="thread-indicator"></span>
+        </div>
+        <button class="video-player-close" onclick="closeVideoPlayer()">关闭</button>
+    </div>
+    <div class="video-wrapper">
+        <video id="hls-video" controls></video>
+        <div class="preload-indicator">
+            <span>预加载: <span id="preload-count">0</span> 片段</span>
+            <span id="thread-visual"></span>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
