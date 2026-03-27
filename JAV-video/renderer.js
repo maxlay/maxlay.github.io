@@ -36,15 +36,36 @@ const Renderer = {
             console.error('❌ [Renderer] No data provided');
             return;
         }
-        
         this.allData = data;
-        this.allData.sort((a, b) => {
+
+// 【修改开始】替换原有的 sort 代码块
+this.allData.sort((a, b) => {
+    // 1. 获取 vod_id，如果字段不存在则尝试其他 ID 字段，最后转为数字
+    // 如果 ID 是字符串（如 "ABC-123"），则使用字符串比较
+    const idA = a.vod_id || a.id || '0';
+    const idB = b.vod_id || b.id || '0';
+    
+    // 2. 尝试转换为数字进行比较（适用于纯数字 ID）
+    const numA = parseInt(idA);
+    const numB = parseInt(idB);
+    
+    // 如果都是有效的数字，则按数字大小降序
+    if (!isNaN(numA) && !isNaN(numB)) {
+      return numB - numA;
+    }
+    
+    // 如果包含字母（如番号），则按字符串降序 (Z->A)
+    return idB.localeCompare(idA);
+  });
+  // 【修改结束】
+
+       // this.allData.sort((a, b) => {
             // 优先使用 vod_time，如果没有则尝试 created_at，最后用 ID 防错
-            const timeA = new Date(a.vod_time || a.created_at || 0).getTime();
-            const timeB = new Date(b.vod_time || b.created_at || 0).getTime();
+           // const timeA = new Date(a.vod_time || a.created_at || 0).getTime();
+           /// const timeB = new Date(b.vod_time || b.created_at || 0).getTime();
             // 降序：最新的时间在前 (b - a)
-            return timeB - timeA; 
-          });
+           // return timeB - timeA; 
+         // });
         this.filteredData = [...this.allData];
 
         //this.filteredData = data;
