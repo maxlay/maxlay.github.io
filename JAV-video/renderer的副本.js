@@ -38,16 +38,7 @@ const Renderer = {
         }
         
         this.allData = data;
-        this.allData.sort((a, b) => {
-            // 优先使用 vod_time，如果没有则尝试 created_at，最后用 ID 防错
-            const timeA = new Date(a.vod_time || a.created_at || 0).getTime();
-            const timeB = new Date(b.vod_time || b.created_at || 0).getTime();
-            // 降序：最新的时间在前 (b - a)
-            return timeB - timeA; 
-          });
-        this.filteredData = [...this.allData];
-
-        //this.filteredData = data;
+        this.filteredData = data;
         this.initElements();
         
         // 检查必要元素是否存在

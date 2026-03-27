@@ -23,25 +23,13 @@ const AccountModal = {
             alert("该账号下暂无视频数据。"); 
             return; 
         }
-        
-        filteredData.sort((a, b) => {
-            const getTime = (item) => {
-                // 统一处理时间字段
-                const timeStr = item.vod_time || item.created_at || '';
-                const date = new Date(timeStr);
-                return isNaN(date.getTime()) ? 0 : date.getTime();
-            };
-            const timeA = getTime(a);
-            const timeB = getTime(b);
-            // 降序：最新的在前
-            return timeB - timeA; 
-        });
+
         // 排序
-        //filteredData.sort((a, b) => {
-        //    const dateA = new Date(a.created_at || a.vod_time || 0);
-        //    const dateB = new Date(b.created_at || b.vod_time || 0);
-        //    return dateB - dateA;
-        //});
+        filteredData.sort((a, b) => {
+            const dateA = new Date(a.created_at || a.vod_time || 0);
+            const dateB = new Date(b.created_at || b.vod_time || 0);
+            return dateB - dateA;
+        });
 
         // 更新标题
         const nameEl = document.getElementById('modal-account-name');
