@@ -26,20 +26,11 @@ function getCookie(name) {
     return match ? decodeURIComponent(match[2]) : null;
 }
 
-
-async function checkPassword(input) {
+function checkPassword(input) {
     if (input === CONFIG.PASSWORD) {
         setPermanentCookie(CONFIG.COOKIE_NAME, "true");
-        
-        // 【关键】调用 onAuthSuccess 处理后续逻辑
-        // 数据已在后台加载中，如果已完成则秒开
-        if (typeof onAuthSuccess === 'function') {
-            await onAuthSuccess();
-        } else {
-            // 降级处理：直接隐藏遮罩
-            document.getElementById('login-overlay').style.display = 'none';
-            if (typeof appInit === 'function') await appInit();
-        }
+        document.getElementById('login-overlay').style.display = 'none';
+        if (window.appInit) window.appInit();
         return true;
     } else {
         const err = document.getElementById('loginError');
@@ -49,7 +40,6 @@ async function checkPassword(input) {
         }, 1500);
         return false;
     }
-
 }
 
 // ================= 本地存储管理模块 =================

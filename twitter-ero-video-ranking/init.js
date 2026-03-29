@@ -1,4 +1,11 @@
-// ================= 入口初始化模块 (init.js) - 基于 DOCTYPE.txt 逻辑修复版 =================
+// ================= 入口初始化模块 (init.js) - 验证与加载并行版 =================
+
+/**
+ * 全局数据加载 Promise
+ * 页面加载后立即启动，与登录验证并行执行
+ */
+window.dataLoadPromise = null;
+window.dataLoadCompleted = false;
 
 /**
  * 更新进度条 UI
@@ -16,145 +23,178 @@ function updateProgress(percent, text) {
 }
 
 /**
- * 核心应用初始化函数
+ * 启动后台数据加载（与验证并行）
  */
-function appInit() {
+function startBackgroundLoading() {
+    // 避免重复启动
+    if (window.dataLoadPromise) return window.dataLoadPromise;
+    
     const loadingEl = document.getElementById('loading-msg');
-    if (!loadingEl) return;
+    if (loadingEl) {
+        loadingEl.style.display = 'block';
+        loadingEl.className = 'loading';
+        loadingEl.innerText = "后台加载数据中...";
+    }
 
-    loadingEl.style.display = 'block';
-    loadingEl.className = 'loading';
-    loadingEl.innerText = "正在加载数据分片...";
+    window.dataLoadPromise = new Promise((resolve, reject) => {
+        try {
+            if (typeof DataLoader === 'undefined' || !DataLoader.load) {
+                throw new Error("数据加载模块 (DataLoader) 未找到");
+            }
 
-    try {
-        // 初始化各模块事件
-        if (typeof AccountModal !== 'undefined' && AccountModal.initEvents) {
-            AccountModal.initEvents();
-        }
-        if (typeof ManagerModal !== 'undefined' && ManagerModal.initEvents) {
-            ManagerModal.initEvents();
-        }
-
-        if (typeof DataLoader === 'undefined' || !DataLoader.load) {
-            throw new Error("数据加载模块 (DataLoader) 未找到");
-        }
-
-        DataLoader.load(updateProgress)
-            .then(() => {
-                if (!DataLoader.sortedDates || DataLoader.sortedDates.length === 0) { 
-                    loadingEl.innerText = "⚠️ 无可用数据";
-                    loadingEl.className = 'error';
-                    return; 
-                }
-                
-                const newest = DataLoader.sortedDates[0];
-                
-                const statsTotal = document.getElementById('stats-total');
-                if(statsTotal) statsTotal.innerText = `共 ${DataLoader.allData.length.toLocaleString()} 视频`;
-                
-                const statsNewest = document.getElementById('stats-newest');
-                if(statsNewest) {
-                    statsNewest.style.display = 'inline-block';
-                    statsNewest.innerText = `✨ 最新 (${newest}) 更新 ${DataLoader.groupedData[newest].length} 部`;
-                    statsNewest.onclick = () => {
-                        if(typeof Renderer !== 'undefined') Renderer.renderPage(newest);
-                    };
-                }
-
-                const saved = localStorage.getItem('lastDate');
-                const startKey = (saved && DataLoader.sortedDates.includes(saved)) ? saved : newest;
-
-                loadingEl.style.display = 'none';
-                
-                const pagination = document.getElementById('pagination');
-                const topPagination = document.getElementById('top-pagination');
-                const mgrButtons = document.getElementById('bottom-manager-buttons');
-
-                if(pagination) pagination.style.display = 'flex';
-                if(topPagination) topPagination.style.display = 'flex';
-                if(mgrButtons) mgrButtons.style.display = 'flex';
-                
-                if (typeof Renderer !== 'undefined') {
-                    Renderer.initElements();
-                    Renderer.renderPage(startKey);
-                    Renderer.setupPagination();
-                    Renderer.setupShortcuts();
-                }
-            })
-            .catch(err => {
-                console.error("数据加载错误:", err);
-                loadingEl.innerHTML = `❌ 加载失败: ${err.message}`;
+            DataLoader.load(updateProgress)
+                .then(() => {
+                    window.dataLoadCompleted = true;
+                    console.log('[DataLoader] 数据加载完成');
+                    resolve(true);
+                })
+                .catch(err => {
+                    console.error("数据加载错误:", err);
+                    if (loadingEl) {
+                        loadingEl.innerHTML = `❌ 加载失败: ${err.message}`;
+                        loadingEl.className = 'error';
+                    }
+                    reject(err);
+                });
+        } catch (e) {
+            console.error("初始化严重错误:", e);
+            if (loadingEl) {
+                loadingEl.innerHTML = `❌ 系统错误: ${e.message}`;
                 loadingEl.className = 'error';
-            });
-            
-    } catch (e) {
-        console.error("初始化严重错误:", e);
-        loadingEl.innerHTML = `❌ 系统错误: ${e.message}`;
-        loadingEl.className = 'error';
+            }
+            reject(e);
+        }
+    });
+    
+    return window.dataLoadPromise;
+}
+
+/**
+ * 核心应用初始化函数（渲染界面）
+ * 等待数据加载完成后执行
+ */
+async function appInit() {
+    const loadingEl = document.getElementById('loading-msg');
+    
+    // 确保数据加载已完成
+    if (!window.dataLoadCompleted) {
+        if (loadingEl) loadingEl.innerText = "数据加载中，请稍候...";
+        try {
+            await window.dataLoadPromise;
+        } catch (e) {
+            return; // 加载失败，不继续执行
+        }
+    }
+
+    // 初始化各模块事件
+    if (typeof AccountModal !== 'undefined' && AccountModal.initEvents) {
+        AccountModal.initEvents();
+    }
+    if (typeof ManagerModal !== 'undefined' && ManagerModal.initEvents) {
+        ManagerModal.initEvents();
+    }
+
+    if (!DataLoader.sortedDates || DataLoader.sortedDates.length === 0) { 
+        if (loadingEl) {
+            loadingEl.innerText = "⚠️ 无可用数据";
+            loadingEl.className = 'error';
+        }
+        return; 
+    }
+    
+    const newest = DataLoader.sortedDates[0];
+    
+    const statsTotal = document.getElementById('stats-total');
+    if(statsTotal) statsTotal.innerText = `共 ${DataLoader.allData.length.toLocaleString()} 视频`;
+    
+    const statsNewest = document.getElementById('stats-newest');
+    if(statsNewest) {
+        statsNewest.style.display = 'inline-block';
+        statsNewest.innerText = `✨ 最新 (${newest}) 更新 ${DataLoader.groupedData[newest].length} 部`;
+        statsNewest.onclick = () => {
+            if(typeof Renderer !== 'undefined') Renderer.renderPage(newest);
+        };
+    }
+
+    const saved = localStorage.getItem('lastDate');
+    const startKey = (saved && DataLoader.sortedDates.includes(saved)) ? saved : newest;
+
+    if(loadingEl) loadingEl.style.display = 'none';
+    
+    const pagination = document.getElementById('pagination');
+    const topPagination = document.getElementById('top-pagination');
+    const mgrButtons = document.getElementById('bottom-manager-buttons');
+
+    if(pagination) pagination.style.display = 'flex';
+    if(topPagination) topPagination.style.display = 'flex';
+    if(mgrButtons) mgrButtons.style.display = 'flex';
+    
+    // 同步顶部按钮显示
+    const topMgrButtons = document.getElementById('top-manager-buttons');
+    if(topMgrButtons) topMgrButtons.style.display = 'flex';
+    
+    if (typeof Renderer !== 'undefined') {
+        Renderer.initElements();
+        Renderer.renderPage(startKey);
+        Renderer.setupPagination();
+        Renderer.setupShortcuts();
     }
 }
 
 /**
+ * 密码验证成功后的回调（支持秒开）
+ */
+async function onAuthSuccess() {
+    // 隐藏登录遮罩
+    document.getElementById('login-overlay').style.display = 'none';
+    
+    // 等待数据加载完成（如果还没完成）
+    // 如果已完成，会立即继续，实现"秒开"效果
+    await appInit();
+}
+
+/**
  * 【核心修复】基于原文件逻辑的关闭函数
- * 严格复刻 DOCTYPE.txt 中的行为：仅移除 class，依靠 CSS 处理 pointer-events
- * 但必须显式恢复 body 滚动，这是原文件可能隐式处理但分离后需要显式调用的
  */
 function safeCloseModal(modalElement) {
     if (!modalElement) return;
-
-    // 1. 移除 active 类 (触发 CSS transition 和 pointer-events: none)
     modalElement.classList.remove('active');
-    
-    // 2. 【关键】显式恢复 Body 滚动
-    // 原文件可能在打开时设置了 body.style.overflow = 'hidden'，关闭时必须清除
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-    
-    // 3. 重置焦点，防止焦点丢失导致键盘事件异常
-    // 将焦点移回 body，确保下一次按键能被全局监听器捕获
     document.body.focus({ preventScroll: true });
-    
     console.log("Modal closed:", modalElement.id);
 }
 
 /**
- * 【核心修复】全局键盘事件监听 (严格复刻原文件逻辑)
+ * 【核心修复】全局键盘事件监听
  */
 function setupGlobalKeyboardListener() {
-    // 先移除可能存在的旧监听器
     document.removeEventListener('keydown', globalKeyHandler);
     
     function globalKeyHandler(e) {
-        // 如果焦点在输入框内，忽略按键 (防止打字时触发)
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
             return;
         }
 
-        // 【关键】实时检查类名，不依赖外部变量，确保状态绝对同步
-        // 这与原文件逻辑一致：直接查询 DOM 状态
         const isAccountModalOpen = document.getElementById('account-modal').classList.contains('active');
         const isManagerModalOpen = document.getElementById('manager-modal').classList.contains('active');
         
-        // 检查日历是否打开 (如果有 flatpickr 实例)
         let isCalendarOpen = false;
         if (window.fpInstance && window.fpInstance.isOpen) {
             isCalendarOpen = true;
         }
 
-        // 处理关闭快捷键 (q, Q, Escape)
         if (e.key === 'q' || e.key === 'Q' || e.key === 'Escape') {
-            // 优先级：先关管理弹窗，再关账号弹窗 (与原文件逻辑一致)
             if (isManagerModalOpen) {
-                e.preventDefault(); // 阻止默认行为
+                e.preventDefault();
                 if (typeof closeManagerModal === 'function') {
                     closeManagerModal();
                 } else {
-                    // 降级处理：直接调用安全关闭
                     safeCloseModal(document.getElementById('manager-modal'));
                 }
-                return; // 【关键】直接返回，不再执行后续任何逻辑
+                return;
             }
             
             if (isAccountModalOpen) {
@@ -162,24 +202,19 @@ function setupGlobalKeyboardListener() {
                 if (typeof closeAccountModal === 'function') {
                     closeAccountModal();
                 } else {
-                    // 降级处理
                     safeCloseModal(document.getElementById('account-modal'));
                 }
-                return; // 【关键】直接返回
+                return;
             }
         }
 
-        // 【关键】如果任意弹窗或日历打开，禁止翻页快捷键
-        // 这一步必须在翻页逻辑之前，且必须基于实时状态
         if (isAccountModalOpen || isManagerModalOpen || isCalendarOpen) {
             return;
         }
 
-        // --- 以下为翻页逻辑 (仅在无弹窗时执行) ---
         const newerBtn = document.getElementById('newer-btn');
         const olderBtn = document.getElementById('older-btn');
         
-        // 模拟原文件的翻页逻辑
         if (e.key === 'ArrowLeft' && newerBtn && !newerBtn.disabled) {
             newerBtn.click();
         } else if (e.key === 'ArrowRight' && olderBtn && !olderBtn.disabled) {
@@ -187,17 +222,20 @@ function setupGlobalKeyboardListener() {
         }
     }
 
-    // 绑定监听器
     document.addEventListener('keydown', globalKeyHandler);
 }
 
 // ================= 页面启动逻辑 =================
 
 window.appInit = appInit;
-window.setupGlobalKeyboardListener = setupGlobalKeyboardListener; // 导出供外部调用
+window.onAuthSuccess = onAuthSuccess;
+window.setupGlobalKeyboardListener = setupGlobalKeyboardListener;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 绑定密码框回车事件
+    // 1. 【关键】立即启动后台数据加载（与验证并行）
+    startBackgroundLoading();
+    
+    // 2. 绑定密码框回车事件
     const pwdInput = document.getElementById('passwordInput');
     if (pwdInput) {
         pwdInput.addEventListener('keypress', e => { 
@@ -210,15 +248,16 @@ document.addEventListener('DOMContentLoaded', () => {
         pwdInput.focus();
     }
 
-    // 2. 检查登录状态并初始化
+    // 3. 检查登录状态
     if (typeof getCookie === 'function' && getCookie(CONFIG.COOKIE_NAME) === "true") {
+        // 已登录：隐藏遮罩，等待数据加载完成后渲染
         document.getElementById('login-overlay').style.display = 'none';
-        setTimeout(() => {
-            appInit();
-            setupGlobalKeyboardListener();
-        }, 50);
+        onAuthSuccess();
     } else {
-        // 即使未登录也绑定键盘监听 (以防密码框之外的操作)
-        setupGlobalKeyboardListener();
+        // 未登录：显示登录遮罩，数据在后台继续加载
+        // 用户输入密码的同时，数据正在下载
     }
+    
+    // 4. 绑定全局键盘监听
+    setupGlobalKeyboardListener();
 });
