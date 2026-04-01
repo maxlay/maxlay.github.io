@@ -203,8 +203,8 @@
             © 2026 版权所有   <span class="clickable-text" onclick="deleteAuthCookie()" title="点击此处清除 cookie 验证">PIN 码将不定期更改</span><br>
             键盘左右键可切换日期显示（Q 键关闭弹窗)<br>
             看视频需安装 <a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc" target="_blank" class="btn-install">ModHeader</a> 浏览器插件<br>将 Referer 设置成 https://twitter.com/<br>
-             <a href="https://maxlay.github.io/twitter-ero-video-ranking/" >【X.com频视】</a> 
-             <a href="https://maxlay.github.io/JAV-video/" >【OK番号频视】</a> <br>
+             <a href="http://192.168.1.2:8001/" >【X.com频视】</a> 
+             <a href="http://192.168.1.2:8002/" >【OK番号频视】</a> <br>
              <a href="https://123av.com/zh/actresses/cb1b2a008bab33a1" target="_blank" >【123av】</a>
              <a href="https://www.javhdporn.net/pornstar/karen-kaede/" target="_blank" >【javhdporn】</a>
              <a href="https://xxxfree.app" target="_blank" >【xxxfree】</a> 
@@ -214,23 +214,34 @@
              <a href="https://avbebe.com" target="_blank" >【avbebe】</a> 
     </footer>
 
-    <!-- 账号详情弹窗 -->
-    <div id="account-modal" class="modal-overlay">
+
+    <!-- 收藏/回收站管理模态框 -->
+    <div class="modal-overlay" id="manager-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-actions-left">
-                    <button class="action-icon-btn" id="btn-toggle-fav" title="加入收藏/取消收藏">⭐</button>
-                    <button class="action-icon-btn" id="btn-toggle-bin" title="加入回收站/还原">🗑️</button>
-                </div>
-                <div class="modal-title-group">
-                    <div class="modal-title" id="modal-account-name">账号名称</div>
-                </div>
-                <div class="modal-actions-right">
-                    <button class="modal-close" id="modal-close-btn">&times;</button>
-                </div>
+                <span id="manager-modal-title">管理列表</span>
+                <button class="modal-close" id="manager-modal-close">×</button>
             </div>
             <div class="modal-body">
-                <div id="waterfall-list" class="waterfall-container"></div>
+                <input type="text" class="manager-search-box" id="manager-search-input" placeholder="搜索...">
+                <div class="manager-list-container" id="manager-list-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 账号详情模态框 -->
+    <div class="account-modal-overlay" id="account-modal">
+        <div class="account-modal-content">
+            <div class="modal-header-account">
+                <span id="modal-account-name">账号名称</span>
+                <div class="modal-actions">
+                    <div class="action-icon-btn" id="btn-toggle-fav" title="加入收藏">⭐</div>
+                    <div class="action-icon-btn" id="btn-toggle-bin" title="加入回收站">🗑️</div>
+                    <button class="modal-close-account" id="modal-close-btn">×</button>
+                </div>
+            </div>
+            <div class="modal-body-account">
+                <div class="waterfall-container" id="waterfall-list"></div>
             </div>
         </div>
     </div>
