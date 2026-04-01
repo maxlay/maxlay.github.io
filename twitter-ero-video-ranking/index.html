@@ -2,13 +2,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✖.com 视频</title>
-    <!-- 引入 Flatpickr 样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
-    <!-- 使用自定义 CSS -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://npm.elemecdn.com/eruda"></script>
+    <script>eruda.init()</script>
+
 
     <!-- 新增：Footer 样式 & 返回顶部按钮样式 -->
     <style>
@@ -246,29 +247,11 @@
         </div>
     </div>
 
-    <!-- 管理列表弹窗 -->
-    <div id="manager-modal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 800px; height: 80%;">
-            <div class="modal-header">
-                <div class="modal-title" id="manager-modal-title">管理列表</div>
-                <button class="modal-close" id="manager-modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="manager-search-input" class="manager-search-box" placeholder="搜索账号名称...">
-                <div id="manager-list-content" class="manager-list-container"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- 【新增】返回顶部按钮 HTML -->
     <button id="back-to-top" title="返回顶部">
         <i>↑</i>
         <span id="back-to-top-percent">0%</span>
     </button>
-
-    <!-- 引入第三方库 -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/zh.js"></script>
 
     <!-- 引入项目 JS 文件 -->
     <script src="core.js"></script>

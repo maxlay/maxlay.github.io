@@ -1,7 +1,56 @@
 // ================= 账号详情弹窗模块 =================
 const AccountModal = {
     currentAccount: null,
-    
+    open(accountName) {
+        if (!accountName) return;
+        
+        // 添加延迟以确保事件不会被其他操作干扰
+        setTimeout(() => {
+            this.currentAccount = accountName;
+            const filteredData = DataLoader.allData.filter(item => getAccountId(item) === accountName);
+            if (filteredData.length === 0) { 
+                alert("该账号下暂无视频数据。"); 
+                return; 
+            }
+            
+            filteredData.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+            
+            const nameEl = document.getElementById('modal-account-name');
+            nameEl.innerHTML = `${accountName} <span class="modal-count">(${filteredData.length})</span>`;
+            
+            const listEl = document.getElementById('waterfall-list');
+            listEl.innerHTML = '';
+            
+            filteredData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'waterfall-item';
+                const m = Math.floor((item.time||0)/60), s = (item.time||0)%60;
+                const dateStr = item.posted_at || item.created_at || '';
+                
+                div.innerHTML = `
+                    <div class="waterfall-thumb-container">
+                        <img class="waterfall-thumb-img" src="${item.thumbnail}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x533?text=No+Image'">
+                        <div class="waterfall-duration-badge">${m}:${s.toString().padStart(2,'0')}</div>
+                        <div class="waterfall-play-overlay"><div class="play-icon">▶</div></div>
+                    </div>
+                    <div class="waterfall-info">
+                        <div class="waterfall-date">📅 ${dateStr ? dateStr.substring(0, 10) : ''}</div>
+                    </div>
+                `;
+                div.onclick = () => { 
+                    if(item.url) window.open(item.url, '_blank'); 
+                };
+                listEl.appendChild(div);
+            });
+            
+            this.updateButtons();
+            document.getElementById('account-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // 确保弹窗可见
+            document.getElementById('account-modal').style.zIndex = '99999';
+        }, 50); // 50毫秒延迟确保事件处理完成
+    },
     open(accountName) {
         if (!accountName) return;
         this.currentAccount = accountName;

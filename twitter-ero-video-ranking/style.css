@@ -21,7 +21,24 @@ body {
     overflow-y: auto;
     box-sizing: border-box;
 }
+/* 确保移动端弹窗有正确的z-index */
+.account-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* 确保层级足够高 */
+    backdrop-filter: blur(4px);
+}
 
+.account-modal-overlay.active {
+    display: flex;
+}
 /* --- 密码保护 --- */
 #login-overlay {
     position: fixed;

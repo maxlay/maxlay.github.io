@@ -55,6 +55,7 @@ const Renderer = {
         this.gridEl.innerHTML = '';
 
         let items = DataLoader.groupedData[dateKey] || [];
+// 在renderer.js的renderPage方法中找到作者HTML构建部分
 
         // 【新增步骤 1】过滤回收站内的作者视频
         const recycleBin = StorageManager.get(CONFIG.STORAGE_KEYS.RECYCLE_BIN);

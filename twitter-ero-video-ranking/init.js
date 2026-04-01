@@ -6,7 +6,20 @@
  */
 window.dataLoadPromise = null;
 window.dataLoadCompleted = false;
-
+// 在appInit函数中添加移动端优化
+function optimizeForMobile() {
+    // 检测是否为移动设备
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if(isMobile) {
+        // 对移动端优化触摸事件
+        document.addEventListener('touchstart', function(event) {
+            if(event.target.closest('.meta-author')) {
+                event.preventDefault(); // 防止默认行为
+            }
+        }, { passive: false });
+    }
+}
 /**
  * 更新进度条 UI
  */
