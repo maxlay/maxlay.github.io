@@ -6,8 +6,9 @@ const CONFIG = {
     // 1. 代理：保留 wget.la
     // 2. 分支：main (如果报错请尝试改为 master)
     // 3. 文件夹：已修正为 JAV-video
-    BASE_URL: 'https://ghproxy.net/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/JAV-video/', 
-    
+    //BASE_URL: 'https://ghproxy.net/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/JAV-video/', 
+    BASE_URL: 'https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/JAV-video/', 
+
     // ⚠️ 分片数量：4 (加载 data-part-0.json 到 data-part-3.json)
     DATA_PARTS_COUNT: 4,
     
