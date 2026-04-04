@@ -86,34 +86,6 @@
           }
         },
         {
-          "jar": "https://pic7.fukit.cn/autoupload/gE6Y0Af2tjXBCNig6CtNDI12_FRYNb81z6UPhMWD8iI/20260327/HrLk/0X0/03271716.png;md5;eeef228e508181121916f2de8f97ed3d",
-          "key": "云朵",
-          "name": "云朵",
-          "type": 3,
-          "api": "csp_AppGet",
-          "searchable": 1,
-          "changeable": 1,
-          "ext": {
-              "url": "https://yd4kcms.yd4k.top",
-              "dataKey": "Tpmm9FD99lJ8Dexa",
-              "dataIv": "Tpmm9FD99lJ8Dexa"
-          }
-        },
-        {
-          "jar": "https://pic7.fukit.cn/autoupload/gE6Y0Af2tjXBCNig6CtNDI12_FRYNb81z6UPhMWD8iI/20260327/HrLk/0X0/03271716.png;md5;eeef228e508181121916f2de8f97ed3d",
-          "key": "不错",
-          "name": "不错",
-          "type": 3,
-          "searchable": 1,
-          "changeable": 1,
-          "api": "csp_AppGet",
-          "ext": {
-              "url": "https://zbc4kmcs.zbc4k.app",
-              "dataKey": "vE4kR7cF6jS6jH7a",
-              "dataIv": "vE4kR7cF6jS6jH7a"
-          }
-        },
-        {
           "jar": "http://cdn.qiaoji8.com/fix260313.jar;md5;0b063fd7b1d09fdf6727aaa84bd9a8e5",
           "key": "天天",
           "name": "天天┃高峰期用不了就点我换源或者搜索",
@@ -121,7 +93,7 @@
           "api": "csp_TTian",
           "playerType": 2,
           "ext": "7lj763gg0939791h1l3888jig44gi291li"
-      },
+        },
       {
           "jar": "http://cdn.qiaoji8.com/fix260313.jar;md5;0b063fd7b1d09fdf6727aaa84bd9a8e5",
           "key": "巧技二",
