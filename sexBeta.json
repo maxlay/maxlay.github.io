@@ -41,24 +41,60 @@
     "wallpaper": "https://bing.img.run/uhd.php",
     
     "sites": [
-   {
-      "key": "*番号",
-      "name": "🔞番号资源",
-      "type": 1,
-      "quickSearch": 1,
-      "searchable": 1,
-      "filterable": 1,
-      "api": "http://fhapi9.com/api.php/provide/vod/"
-    },
-    {
-      "key": "乐播资源",
-      "name": "🔞乐播资源",
-      "type": 1,
-      "api": "https://lbapi9.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0
-    }
+      {
+        "key": "*番号",
+        "name": "🔞番号1",
+        "type": 1,
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 1,
+        "api": "http://45.89.208.76/api.php/provide/vod/"
+      },
+      {
+        "key": "*番号",
+        "name": "🔞番号2",
+        "type": 1,
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 1,
+        "api": "https://155api.com/api.php/provide/vod/"
+      },
+      {
+        "key": "*番号",
+        "name": "🔞番号3",
+        "type": 1,
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 1,
+        "api": "https://naixxzy.com/api.php/provide/vod/"
+      },
+      {
+        "key": "*番号",
+        "name": "🔞番号4",
+        "type": 1,
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 1,
+        "api": "https://apiyutu.com/api.php/provide//vod/"
+      },
+      {
+        "key": "*番号",
+        "name": "🔞番号5",
+        "type": 1,
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 1,
+        "api": "https://aosikazy.com/api.php/provide/vod/"
+      },
+      {
+        "key": "乐播",
+        "name": "🔞乐播",
+        "type": 1,
+        "api": "https://lbapi9.com/api.php/provide/vod/",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1
+      }
   ],
   "parses": [
     {
