@@ -130,14 +130,17 @@ def should_include_video(item):
     if t > 600:
         return True
     if 300 < t <= 600:
-        return fav > 3
+    #    return fav > 3
+         return fav > 1
     if 180 < t <= 300:
-        return fav > 5
+    #    return fav > 5
+         return fav > 2
     if 60 < t <= 180:
-        return fav > 10
+    #    return fav > 10
+         return fav > 3
     if t <= 60:
-        return fav > 20
-    
+    #   return fav > 20
+        return fav > 4
     return False
 
 def deduplicate_data(data):
