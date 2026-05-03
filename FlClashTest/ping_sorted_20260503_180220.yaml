@@ -1,0 +1,1438 @@
+allow-lan: true
+external-controller: 0.0.0.0:9090
+log-level: info
+mixed-port: 7890
+mode: rule
+proxies:
+- name: '[37ms] 美国(yudou789.top 玉豆免费节点)_16'
+  network: ws
+  port: 443
+  server: 104.17.156.229
+  servername: sss.yaml7.ggff.net
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5aa7d17e-7dc2-46dd-9acf-c3c97440259b
+  ws-opts:
+    headers:
+      Host: sss.yaml7.ggff.net
+    path: /?ed=2048
+- name: '[38ms] 🇭🇰 机场推荐:dafei.de 香港 02'
+  password: 0de37cdc-abff-11ef-b7c6-f23c913c8d2b
+  port: 5228
+  server: 60eb0e99-teisg0-thhfed-1rsuw.cm4.oshuawei.com
+  sni: 60eb0e99-teisg0-thhfed-1rsuw.cm4.oshuawei.com
+  tls: true
+  type: http
+  username: 0de37cdc-abff-11ef-b7c6-f23c913c8d2b
+- alterId: 64
+  cipher: auto
+  name: '[38ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  network: ws
+  port: 443
+  server: 104.19.45.117
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 3b5e258e-8c5e-45d3-b7d2-02c8f5fc0bb2
+  ws-headers:
+    Host: cdnde.irteyz.today
+  ws-path: /
+- name: '[39ms] 🇵🇭 机场推荐:dafei.de 菲律宾 01'
+  password: 0b869f32-657e-11ee-a90c-f23c9313b177
+  port: 3243
+  server: 2f76235a-tehk00-tfn5eh-24c4.ctupro.wkuaishou.com
+  sni: 2f76235a-tehk00-tfn5eh-24c4.ctupro.wkuaishou.com
+  tls: true
+  type: http
+  username: 0b869f32-657e-11ee-a90c-f23c9313b177
+- cipher: aes-128-gcm
+  name: '[39ms] 美国(yudou789.top 玉豆免费节点)_25'
+  password: f97cf7d99d
+  port: 28308
+  server: 45e755.shlswe.xyz
+  type: ss
+  udp: true
+- cipher: aes-128-gcm
+  name: '[43ms] 英国(yudou789.top 玉豆免费节点)_39'
+  password: f97cf7d99d
+  port: 28118
+  server: 45e755.shlswe.xyz
+  type: ss
+  udp: true
+- name: '[44ms] 美国(yudou789.top 玉豆免费节点)_2'
+  network: ws
+  port: 8880
+  server: wangcai115.cloudflare.182682.xyz
+  servername: Telegram-channel-WangCai2
+  tls: false
+  type: vless
+  udp: true
+  uuid: 7890ce31-9a25-4fd4-90e7-80e5823ff510
+  ws-opts:
+    headers:
+      Host: frejd.11258.workers.dev
+    path: /Telegram🇨🇳@WangCai2/?ed=2560
+- cipher: aes-128-gcm
+  name: '[45ms] 美国(yudou789.top 玉豆免费节点)_17'
+  password: JVrsLLN1tkN8oXZO
+  port: 13223
+  server: chengbai02.ascwt179.com
+  type: ss
+  udp: true
+- name: '[48ms] 🇭🇰 机场推荐:dafei.de 香港 04'
+  password: 817d62a8-7910-403d-9845-b7663246f993
+  port: 40014
+  server: hk4.catzz.top
+  skip-cert-verify: false
+  sni: hk4.catzz.top
+  type: anytls
+  udp: true
+- name: '[53ms] 日本(yudou789.top 玉豆免费节点)'
+  network: ws
+  port: 51922
+  server: 8.216.121.234
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- name: '[66ms] 台湾(yudou789.top 玉豆免费节点)'
+  network: ws
+  port: 43
+  server: 220.128.110.108
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- client-fingerprint: chrome
+  name: '[77ms] 🇩🇪 机场推荐:dafei.de 德国 01'
+  network: ws
+  password: 8r<[9'l6hAO#8ZQi
+  port: 443
+  server: 43.160.195.223
+  skip-cert-verify: true
+  sni: Koma-YT.PAGeS.Dev
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: Koma-YT.PAGeS.Dev
+    path: /trTelegram🇨🇳 @WangCai2
+- alterId: 0
+  cipher: auto
+  name: '[79ms] 美国(yudou789.top 玉豆免费节点)_28'
+  port: 54022
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- name: '[82ms] 🇮🇩 机场推荐:dafei.de 印尼 01'
+  password: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  port: 32233
+  server: b20745ba-teisg0-thmjbt-1rk9y.id.oshuawei.com
+  sni: b20745ba-teisg0-thmjbt-1rk9y.id.oshuawei.com
+  tls: true
+  type: http
+  username: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+- name: '[89ms] 新加坡(yudou789.top 玉豆免费节点)_3'
+  network: ws
+  port: 8080
+  server: 20.191.143.151
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- name: '[93ms] 新加坡(yudou789.top 玉豆免费节点)_2'
+  network: ws
+  port: 443
+  server: 20.6.12.145
+  servername: sni.skylee4.cloudns.ch
+  tls: true
+  type: vless
+  udp: true
+  uuid: 06b65903-406d-4a41-8463-6fd5c0ee7798
+  ws-opts:
+    headers:
+      Host: sni.skylee4.cloudns.ch
+    path: /proxyip=ProxyIP.CMLiussss.net
+- name: '[101ms] 新加坡(yudou789.top 玉豆免费节点)'
+  network: ws
+  port: 443
+  server: 101.32.244.117
+  servername: ewgruiehoe.pages.dev
+  tls: true
+  type: vless
+  udp: true
+  uuid: ce069292-c8bf-40dd-a6b1-87818a1e64e9
+  ws-opts:
+    headers:
+      Host: ewgruiehoe.pages.dev
+    path: /socks5://gogo:gogo@185.184.70.120:50088
+- alterId: 64
+  cipher: auto
+  name: '[103ms] 美国(yudou789.top 玉豆免费节点)_13'
+  port: 54022
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- name: '[125ms] 新加坡(yudou789.top 玉豆免费节点)_4'
+  network: ws
+  port: 56047
+  server: 188.209.141.114
+  servername: snippet.gfw.qzz.io
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.gfw.qzz.io
+    path: /danfeng
+- alterId: 0
+  cipher: auto
+  name: '[129ms] 香港(yudou789.top 玉豆免费节点)_2'
+  port: 51556
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- alterId: 0
+  cipher: auto
+  name: '[132ms] 美国(yudou789.top 玉豆免费节点)_50'
+  port: 51556
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- name: '[183ms] 美国(yudou789.top 玉豆免费节点)_20'
+  network: ws
+  port: 8880
+  server: wangcai139.cloudflare.182682.xyz
+  servername: Telegram-channel-WangCai2
+  tls: false
+  type: vless
+  udp: true
+  uuid: 7890ce31-9a25-4fd4-90e7-80e5823ff510
+  ws-opts:
+    headers:
+      Host: frejd.11258.workers.dev
+    path: /Telegram🇨🇳@WangCai2/?ed=2560
+- name: '[184ms] 美国(yudou789.top 玉豆免费节点)_6'
+  network: ws
+  port: 8880
+  server: wangcai15.cloudflare.182682.xyz
+  servername: Telegram-channel-WangCai2
+  tls: false
+  type: vless
+  udp: true
+  uuid: 7890ce31-9a25-4fd4-90e7-80e5823ff510
+  ws-opts:
+    headers:
+      Host: frejd.11258.workers.dev
+    path: /Telegram🇨🇳@WangCai2/?ed=2560
+- name: '[186ms] 美国(yudou789.top 玉豆免费节点)_9'
+  password: Aimer
+  port: 2053
+  server: 167.68.4.199
+  skip-cert-verify: false
+  sni: epge.muarua.filegear-sg.me
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: epge.muarua.filegear-sg.me
+    path: /?ed
+- alterId: 1
+  cipher: auto
+  name: '[186ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  network: ws
+  port: 443
+  server: 104.21.67.220
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: e1aa83ff-b8b5-41b8-a854-fdcd3faa8875
+  ws-headers:
+    Host: us-03.yinriver.top
+  ws-path: /
+- name: '[187ms] 美国(yudou789.top 玉豆免费节点)_10'
+  network: ws
+  port: 2096
+  server: 25.129.197.191
+  servername: sni.my111000.tech
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: sni.my111000.tech
+    path: Telegram🇨🇳@WangCai2/?ed=2560
+- name: '[187ms] 美国(yudou789.top 玉豆免费节点)_1'
+  network: ws
+  port: 443
+  server: 162.159.44.233
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- name: '[189ms] 香港(yudou789.top 玉豆免费节点)_1'
+  password: Aimer
+  port: 2053
+  server: 167.68.4.199
+  skip-cert-verify: false
+  sni: epge.muarua.filegear-sg.me
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: epge.muarua.filegear-sg.me
+    path: /
+- name: '[190ms] 美国(yudou789.top 玉豆免费节点)'
+  password: Aimer
+  port: 2053
+  server: 167.68.4.199
+  skip-cert-verify: false
+  sni: epge.muarua.filegear-sg.me
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: epge.muarua.filegear-sg.me
+    path: /?ed=2560&proxyip=ts.hpc.tw
+- name: '[190ms] 美国(yudou789.top 玉豆免费节点)_8'
+  port: 8443
+  server: 84.17.37.19
+  servername: hkg1.fromblancwithlove.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 394f6981-a782-4779-9a85-e6cf22935d93
+- alterId: 64
+  cipher: auto
+  name: '[191ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  network: ws
+  port: 443
+  server: 104.19.6.62
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 427ab4f5-7369-48c7-9b85-83bc380b0119
+  ws-headers:
+    Host: v2ray-eu.gd1214a.workers.dev
+  ws-path: /ray
+- name: '[191ms] 台湾(yudou789.top 玉豆免费节点)_1'
+  network: ws
+  port: 32770
+  server: 60.248.139.106
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- name: '[193ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  password: 384d1b42-655f-11ed-a8bf-f23c91cfbbc9
+  port: 443
+  server: 2f032de2-teisg0-tfs442-11p9g.sj.hyhuawei.com
+  sni: 2f032de2-teisg0-tfs442-11p9g.sj.hyhuawei.com
+  tls: true
+  type: http
+  username: 384d1b42-655f-11ed-a8bf-f23c91cfbbc9
+- name: '[193ms] 美国(yudou789.top 玉豆免费节点)_3'
+  network: ws
+  port: 2096
+  server: 108.162.198.24
+  servername: snippet.danfeng.com.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: snippet.danfeng.com.cfd
+    path: /danfeng?ed=2560
+- name: '[195ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  password: ae5338ae-9a70-58c9-3d47-7d54a5675715
+  port: 443
+  server: f37508ac-teisg0-tv7dx2-py5w.los.hyhuawei.com
+  skip-cert-verify: true
+  sni: f37508ac-teisg0-tv7dx2-py5w.los.hyhuawei.com
+  type: anytls
+  udp: true
+- name: '[196ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  password: 40fb1315-191a-11ed-b0ca-f23c91cfbbc9
+  port: 8443
+  server: 885bb7be-tegxs0-tfi5fd-1imi4.isp.cdnkuaishou.com
+  sni: 885bb7be-tegxs0-tfi5fd-1imi4.isp.cdnkuaishou.com
+  tls: true
+  type: http
+  username: 40fb1315-191a-11ed-b0ca-f23c91cfbbc9
+- alterId: 0
+  cipher: auto
+  name: '[197ms] 英国(yudou789.top 玉豆免费节点)_38'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[199ms] 英国(yudou789.top 玉豆免费节点)_30'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[200ms] 英国(yudou789.top 玉豆免费节点)_15'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[200ms] 英国(yudou789.top 玉豆免费节点)_10'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[201ms] 英国(yudou789.top 玉豆免费节点)_14'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[201ms] 德国(yudou789.top 玉豆免费节点)'
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[201ms] 英国(yudou789.top 玉豆免费节点)'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[201ms] 英国(yudou789.top 玉豆免费节点)_5'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[202ms] 美国(yudou789.top 玉豆免费节点)_30'
+  port: 180
+  server: 82.198.246.214
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[202ms] 英国(yudou789.top 玉豆免费节点)_37'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[202ms] 英国(yudou789.top 玉豆免费节点)_29'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[202ms] 美国(yudou789.top 玉豆免费节点)_38'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[202ms] 英国(yudou789.top 玉豆免费节点)_25'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[203ms] 英国(yudou789.top 玉豆免费节点)_24'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[203ms] 英国(yudou789.top 玉豆免费节点)_28'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[203ms] 英国(yudou789.top 玉豆免费节点)_8'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: aes-128-gcm
+  name: '[203ms] 美国(yudou789.top 玉豆免费节点)_31'
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[203ms] 英国(yudou789.top 玉豆免费节点)_13'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[203ms] 德国(yudou789.top 玉豆免费节点)_3'
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_3'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: aes-128-gcm
+  name: '[204ms] 美国(yudou789.top 玉豆免费节点)_40'
+  port: 180
+  server: 82.198.246.214
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_16'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_2'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_26'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_22'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 德国(yudou789.top 玉豆免费节点)_4'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 英国(yudou789.top 玉豆免费节点)_32'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 法国(yudou789.top 玉豆免费节点)'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[204ms] 美国(yudou789.top 玉豆免费节点)_39'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 英国(yudou789.top 玉豆免费节点)_35'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 英国(yudou789.top 玉豆免费节点)_9'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: aes-128-gcm
+  name: '[205ms] 美国(yudou789.top 玉豆免费节点)_29'
+  port: 180
+  server: 82.198.246.37
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 英国(yudou789.top 玉豆免费节点)_21'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 英国(yudou789.top 玉豆免费节点)_7'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 德国(yudou789.top 玉豆免费节点)_1'
+  port: 180
+  server: 82.198.246.37
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 英国(yudou789.top 玉豆免费节点)_27'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 美国(yudou789.top 玉豆免费节点)_33'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: aes-128-gcm
+  name: '[205ms] 美国(yudou789.top 玉豆免费节点)_37'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 美国(yudou789.top 玉豆免费节点)_4'
+  port: 180
+  server: 82.198.246.250
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[205ms] 美国(yudou789.top 玉豆免费节点)_32'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_31'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_23'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 美国(yudou789.top 玉豆免费节点)_36'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_4'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_18'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_12'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 美国(yudou789.top 玉豆免费节点)_42'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_6'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 美国(yudou789.top 玉豆免费节点)_35'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[206ms] 英国(yudou789.top 玉豆免费节点)_17'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[207ms] 英国(yudou789.top 玉豆免费节点)_36'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[207ms] 英国(yudou789.top 玉豆免费节点)_33'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[207ms] 英国(yudou789.top 玉豆免费节点)_1'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[208ms] 英国(yudou789.top 玉豆免费节点)_11'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[209ms] 美国(yudou789.top 玉豆免费节点)_11'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[218ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  password: be8cc8f6-0c6a-11f0-a5a3-f23c93141fad
+  port: 3443
+  server: ca9c2f2e-tegxs0-tgmqvb-b4pt.seadc2.cdnbytescm.com
+  sni: ca9c2f2e-tegxs0-tgmqvb-b4pt.seadc2.cdnbytescm.com
+  tls: true
+  type: http
+  username: be8cc8f6-0c6a-11f0-a5a3-f23c93141fad
+- name: '[221ms] 🇰🇷 机场推荐:dafei.de 韩国 02'
+  password: 4729b4c8-1790-11eb-8684-f23c913c8d2b
+  port: 31433
+  server: 371b139e-teisg0-ts40sw-14g76.kr.oshuawei.com
+  sni: 371b139e-teisg0-ts40sw-14g76.kr.oshuawei.com
+  tls: true
+  type: http
+  username: 4729b4c8-1790-11eb-8684-f23c913c8d2b
+- client-fingerprint: chrome
+  name: '[226ms] 🇹🇭 机场推荐:dafei.de 泰国 01'
+  network: tcp
+  password: 9fee2bd1-9076-49f4-8649-32bce2ce7d6f
+  port: 28806
+  server: svip-tg.xiaobaivpn.icu
+  skip-cert-verify: false
+  sni: svip-tg.xiaobaivpn.icu
+  type: trojan
+  udp: true
+- name: '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  password: cd1b0ae0-4010-11ee-953a-f23c9164ca5d
+  port: 443
+  server: 335c666b-teisg0-thtg7i-1lkt0.se.oshuawei.com
+  sni: 335c666b-teisg0-thtg7i-1lkt0.se.oshuawei.com
+  tls: true
+  type: http
+  username: cd1b0ae0-4010-11ee-953a-f23c9164ca5d
+- cipher: aes-128-gcm
+  name: '[242ms] 欧洲(自由之梦免费节点-严禁倒卖) 5'
+  password: suo.yt/ssrsub
+  port: 9443
+  server: ss2.ssrsub.one
+  type: ss
+- name: '[243ms] 俄罗斯(yudou789.top 玉豆免费节点)_1'
+  network: ws
+  port: 2053
+  server: 193.178.172.225
+  servername: sni.111000.dns.army
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: sni.111000.dns.army
+    path: /?ed=2560&https://t.me/WangCai2🇨🇳
+- name: '[246ms] 美国(yudou789.top 玉豆免费节点)_48'
+  network: ws
+  port: 443
+  server: 192.0.54.231
+  servername: babayaga-6i7.pages.dev
+  tls: true
+  type: vless
+  udp: true
+  uuid: 981fca81-5be1-41f8-ac9b-d138e8109943
+  ws-opts:
+    headers:
+      Host: babayaga-6i7.pages.dev
+    path: /?ed=2560&Telegram🇨🇳@WangCai2
+- client-fingerprint: chrome
+  name: '[248ms] 🇸🇬 机场推荐:dafei.de 新加坡 03'
+  network: ws
+  port: 443
+  server: 146.70.30.54
+  servername: xfxl35a.node-edge.gfw.hidns.co
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: xfxl35a.node-edge.gfw.hidns.co
+    path: /danfeng
+- name: '[248ms] 美国(yudou789.top 玉豆免费节点)_22'
+  network: ws
+  port: 8880
+  server: 192.200.160.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime43.workers.dev
+    path: /?ed=2560&https://t.me/WangCai2🇨🇳
+- name: '[249ms] 🇬🇧 机场推荐:dafei.de 英国 01'
+  password: 460749c2-bcef-11ee-89fc-f23c913c8d2b
+  port: 443
+  server: fc1f24d2-teisg0-tubliy-1la7v.uk.oshuawei.com
+  sni: fc1f24d2-teisg0-tubliy-1la7v.uk.oshuawei.com
+  tls: true
+  type: http
+  username: 460749c2-bcef-11ee-89fc-f23c913c8d2b
+- name: '[250ms] 美国(yudou789.top 玉豆免费节点)_43'
+  network: ws
+  port: 8880
+  server: 192.200.160.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime43.workers.dev
+    path: /?ed=2560&https://t.me/WangCai2🇨🇳
+- cipher: chacha20-ietf-poly1305
+  name: '[250ms] 美国(yudou789.top 玉豆免费节点)_15'
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  server: 82.38.31.199
+  type: ss
+  udp: true
+- name: '[254ms] 俄罗斯(yudou789.top 玉豆免费节点)_2'
+  network: ws
+  port: 8443
+  server: 193.178.172.225
+  servername: sni.111000.dns.army
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: sni.111000.dns.army
+    path: /?ed=2560&https://t.me/WangCai2🇨🇳
+- name: '[275ms] 🇫🇷 机场推荐:dafei.de 法国 01'
+  password: 31676725-b0fd-fed2-c857-2da8ce5a6e4f
+  port: 443
+  server: 48c56af3-tegxs0-tey9ea-jjv2.fr.oshuawei.com
+  sni: 48c56af3-tegxs0-tey9ea-jjv2.fr.oshuawei.com
+  tls: true
+  type: http
+  username: 31676725-b0fd-fed2-c857-2da8ce5a6e4f
+- name: '[276ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  port: 9002
+  server: 84.239.49.223
+  skip-cert-verify: true
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[278ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: UT9tFQOdy54SeW_tg-XQN3QkGYoWUpO_88XFXijkrXc
+    short-id: 2da72ce6
+  server: 174.136.205.68
+  servername: navi.bankrate.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 28cd28ee-5f86-4a30-91a8-c972cce1d7b2
+- name: '[284ms] 荷兰(yudou789.top 玉豆免费节点)'
+  network: ws
+  port: 8443
+  server: 193.56.8.103
+  servername: sni.111000.dns.army
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: sni.111000.dns.army
+    path: /
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[285ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: 9WnuH4KUb9-cCqbApq4bVLDhrqhPbpnd5eTn14bGciA
+    short-id: 27e540
+  server: 94.228.219.50
+  servername: hls-svod.itunes.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: f189684b-6213-4c0d-a2e3-cb8860f5d4c5
+- name: '[291ms] 美国(yudou789.top 玉豆免费节点)_52'
+  password: JaFKnqNcvnBT63t3rquidGsln
+  port: 443
+  server: hl-freedom-1.undef.network
+  skip-cert-verify: false
+  sni: HL-FREEDOM-1.UNDEF.NETWORK
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: HL-FREEDOM-1.UNDEF.NETWORK
+    path: /f2fc2a1f
+- cipher: aes-256-cfb
+  name: '[291ms] 🇻🇳 机场推荐:dafei.de 越南 01'
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  server: 103.186.155.117
+  type: ss
+  udp: true
+- name: '[293ms] 荷兰(yudou789.top 玉豆免费节点)_1'
+  password: GZOof2R1ej4yML1NxajR2frGQ
+  port: 443
+  server: hl-freedom-1.undef.network
+  skip-cert-verify: false
+  sni: hl-freedom-1.undef.network
+  tls: true
+  type: trojan
+  udp: true
+- name: '[294ms] 美国(yudou789.top 玉豆免费节点)_26'
+  password: JaFKnqNcvnBT63t3rquidGsln
+  port: 443
+  server: hl-freedom-1.undef.network
+  skip-cert-verify: false
+  sni: HL-FREEDOM-1.UNDEF.NETWORK
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: hl-freedom-1.undef.network
+    path: /f2fc2a1f
+- client-fingerprint: chrome
+  name: '[297ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  network: ws
+  port: 443
+  server: 138.68.146.39
+  servername: xfxl35a.node-edge.gfw.hidns.co
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26524cce-d514-4014-a426-365fb266a14d
+  ws-opts:
+    headers:
+      Host: xfxl35a.node-edge.gfw.hidns.co
+    path: /danfeng
+proxy-groups:
+- interval: 300
+  name: 🚀 自动优选
+  proxies:
+  - '[37ms] 美国(yudou789.top 玉豆免费节点)_16'
+  - '[38ms] 🇭🇰 机场推荐:dafei.de 香港 02'
+  - '[38ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[39ms] 🇵🇭 机场推荐:dafei.de 菲律宾 01'
+  - '[39ms] 美国(yudou789.top 玉豆免费节点)_25'
+  - '[43ms] 英国(yudou789.top 玉豆免费节点)_39'
+  - '[44ms] 美国(yudou789.top 玉豆免费节点)_2'
+  - '[45ms] 美国(yudou789.top 玉豆免费节点)_17'
+  - '[48ms] 🇭🇰 机场推荐:dafei.de 香港 04'
+  - '[53ms] 日本(yudou789.top 玉豆免费节点)'
+  - '[66ms] 台湾(yudou789.top 玉豆免费节点)'
+  - '[77ms] 🇩🇪 机场推荐:dafei.de 德国 01'
+  - '[79ms] 美国(yudou789.top 玉豆免费节点)_28'
+  - '[82ms] 🇮🇩 机场推荐:dafei.de 印尼 01'
+  - '[89ms] 新加坡(yudou789.top 玉豆免费节点)_3'
+  - '[93ms] 新加坡(yudou789.top 玉豆免费节点)_2'
+  - '[101ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[103ms] 美国(yudou789.top 玉豆免费节点)_13'
+  - '[125ms] 新加坡(yudou789.top 玉豆免费节点)_4'
+  - '[129ms] 香港(yudou789.top 玉豆免费节点)_2'
+  - '[132ms] 美国(yudou789.top 玉豆免费节点)_50'
+  - '[183ms] 美国(yudou789.top 玉豆免费节点)_20'
+  - '[184ms] 美国(yudou789.top 玉豆免费节点)_6'
+  - '[186ms] 美国(yudou789.top 玉豆免费节点)_9'
+  - '[186ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  - '[187ms] 美国(yudou789.top 玉豆免费节点)_10'
+  - '[187ms] 美国(yudou789.top 玉豆免费节点)_1'
+  - '[189ms] 香港(yudou789.top 玉豆免费节点)_1'
+  - '[190ms] 美国(yudou789.top 玉豆免费节点)'
+  - '[190ms] 美国(yudou789.top 玉豆免费节点)_8'
+  - '[191ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[191ms] 台湾(yudou789.top 玉豆免费节点)_1'
+  - '[193ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  - '[193ms] 美国(yudou789.top 玉豆免费节点)_3'
+  - '[195ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  - '[196ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  - '[197ms] 英国(yudou789.top 玉豆免费节点)_38'
+  - '[199ms] 英国(yudou789.top 玉豆免费节点)_30'
+  - '[200ms] 英国(yudou789.top 玉豆免费节点)_15'
+  - '[200ms] 英国(yudou789.top 玉豆免费节点)_10'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)_14'
+  - '[201ms] 德国(yudou789.top 玉豆免费节点)'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)_5'
+  - '[202ms] 美国(yudou789.top 玉豆免费节点)_30'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_37'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_29'
+  - '[202ms] 美国(yudou789.top 玉豆免费节点)_38'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_25'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_24'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_28'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_8'
+  - '[203ms] 美国(yudou789.top 玉豆免费节点)_31'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_13'
+  - '[203ms] 德国(yudou789.top 玉豆免费节点)_3'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_3'
+  - '[204ms] 美国(yudou789.top 玉豆免费节点)_40'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_16'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_2'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_26'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_22'
+  - '[204ms] 德国(yudou789.top 玉豆免费节点)_4'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_32'
+  - '[204ms] 法国(yudou789.top 玉豆免费节点)'
+  - '[204ms] 美国(yudou789.top 玉豆免费节点)_39'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_35'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_9'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_29'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_21'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_7'
+  - '[205ms] 德国(yudou789.top 玉豆免费节点)_1'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_27'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_33'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_37'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_4'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_32'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_31'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_23'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_36'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_4'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_18'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_12'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_42'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_6'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_35'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_17'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_36'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_33'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_1'
+  - '[208ms] 英国(yudou789.top 玉豆免费节点)_11'
+  - '[209ms] 美国(yudou789.top 玉豆免费节点)_11'
+  - '[218ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  - '[221ms] 🇰🇷 机场推荐:dafei.de 韩国 02'
+  - '[226ms] 🇹🇭 机场推荐:dafei.de 泰国 01'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  - '[242ms] 欧洲(自由之梦免费节点-严禁倒卖) 5'
+  - '[243ms] 俄罗斯(yudou789.top 玉豆免费节点)_1'
+  - '[246ms] 美国(yudou789.top 玉豆免费节点)_48'
+  - '[248ms] 🇸🇬 机场推荐:dafei.de 新加坡 03'
+  - '[248ms] 美国(yudou789.top 玉豆免费节点)_22'
+  - '[249ms] 🇬🇧 机场推荐:dafei.de 英国 01'
+  - '[250ms] 美国(yudou789.top 玉豆免费节点)_43'
+  - '[250ms] 美国(yudou789.top 玉豆免费节点)_15'
+  - '[254ms] 俄罗斯(yudou789.top 玉豆免费节点)_2'
+  - '[275ms] 🇫🇷 机场推荐:dafei.de 法国 01'
+  - '[276ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[278ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  - '[284ms] 荷兰(yudou789.top 玉豆免费节点)'
+  - '[285ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  - '[291ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[291ms] 🇻🇳 机场推荐:dafei.de 越南 01'
+  - '[293ms] 荷兰(yudou789.top 玉豆免费节点)_1'
+  - '[294ms] 美国(yudou789.top 玉豆免费节点)_26'
+  - '[297ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  tolerance: 50
+  type: url-test
+  url: http://www.baidu.com
+- name: 🌍 手动切换
+  proxies:
+  - 🚀 自动优选
+  - '[37ms] 美国(yudou789.top 玉豆免费节点)_16'
+  - '[38ms] 🇭🇰 机场推荐:dafei.de 香港 02'
+  - '[38ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[39ms] 🇵🇭 机场推荐:dafei.de 菲律宾 01'
+  - '[39ms] 美国(yudou789.top 玉豆免费节点)_25'
+  - '[43ms] 英国(yudou789.top 玉豆免费节点)_39'
+  - '[44ms] 美国(yudou789.top 玉豆免费节点)_2'
+  - '[45ms] 美国(yudou789.top 玉豆免费节点)_17'
+  - '[48ms] 🇭🇰 机场推荐:dafei.de 香港 04'
+  - '[53ms] 日本(yudou789.top 玉豆免费节点)'
+  - '[66ms] 台湾(yudou789.top 玉豆免费节点)'
+  - '[77ms] 🇩🇪 机场推荐:dafei.de 德国 01'
+  - '[79ms] 美国(yudou789.top 玉豆免费节点)_28'
+  - '[82ms] 🇮🇩 机场推荐:dafei.de 印尼 01'
+  - '[89ms] 新加坡(yudou789.top 玉豆免费节点)_3'
+  - '[93ms] 新加坡(yudou789.top 玉豆免费节点)_2'
+  - '[101ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[103ms] 美国(yudou789.top 玉豆免费节点)_13'
+  - '[125ms] 新加坡(yudou789.top 玉豆免费节点)_4'
+  - '[129ms] 香港(yudou789.top 玉豆免费节点)_2'
+  - '[132ms] 美国(yudou789.top 玉豆免费节点)_50'
+  - '[183ms] 美国(yudou789.top 玉豆免费节点)_20'
+  - '[184ms] 美国(yudou789.top 玉豆免费节点)_6'
+  - '[186ms] 美国(yudou789.top 玉豆免费节点)_9'
+  - '[186ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  - '[187ms] 美国(yudou789.top 玉豆免费节点)_10'
+  - '[187ms] 美国(yudou789.top 玉豆免费节点)_1'
+  - '[189ms] 香港(yudou789.top 玉豆免费节点)_1'
+  - '[190ms] 美国(yudou789.top 玉豆免费节点)'
+  - '[190ms] 美国(yudou789.top 玉豆免费节点)_8'
+  - '[191ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[191ms] 台湾(yudou789.top 玉豆免费节点)_1'
+  - '[193ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  - '[193ms] 美国(yudou789.top 玉豆免费节点)_3'
+  - '[195ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  - '[196ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  - '[197ms] 英国(yudou789.top 玉豆免费节点)_38'
+  - '[199ms] 英国(yudou789.top 玉豆免费节点)_30'
+  - '[200ms] 英国(yudou789.top 玉豆免费节点)_15'
+  - '[200ms] 英国(yudou789.top 玉豆免费节点)_10'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)_14'
+  - '[201ms] 德国(yudou789.top 玉豆免费节点)'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)'
+  - '[201ms] 英国(yudou789.top 玉豆免费节点)_5'
+  - '[202ms] 美国(yudou789.top 玉豆免费节点)_30'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_37'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_29'
+  - '[202ms] 美国(yudou789.top 玉豆免费节点)_38'
+  - '[202ms] 英国(yudou789.top 玉豆免费节点)_25'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_24'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_28'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_8'
+  - '[203ms] 美国(yudou789.top 玉豆免费节点)_31'
+  - '[203ms] 英国(yudou789.top 玉豆免费节点)_13'
+  - '[203ms] 德国(yudou789.top 玉豆免费节点)_3'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_3'
+  - '[204ms] 美国(yudou789.top 玉豆免费节点)_40'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_16'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_2'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_26'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_22'
+  - '[204ms] 德国(yudou789.top 玉豆免费节点)_4'
+  - '[204ms] 英国(yudou789.top 玉豆免费节点)_32'
+  - '[204ms] 法国(yudou789.top 玉豆免费节点)'
+  - '[204ms] 美国(yudou789.top 玉豆免费节点)_39'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_35'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_9'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_29'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_21'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_7'
+  - '[205ms] 德国(yudou789.top 玉豆免费节点)_1'
+  - '[205ms] 英国(yudou789.top 玉豆免费节点)_27'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_33'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_37'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_4'
+  - '[205ms] 美国(yudou789.top 玉豆免费节点)_32'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_31'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_23'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_36'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_4'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_18'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_12'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_42'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_6'
+  - '[206ms] 美国(yudou789.top 玉豆免费节点)_35'
+  - '[206ms] 英国(yudou789.top 玉豆免费节点)_17'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_36'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_33'
+  - '[207ms] 英国(yudou789.top 玉豆免费节点)_1'
+  - '[208ms] 英国(yudou789.top 玉豆免费节点)_11'
+  - '[209ms] 美国(yudou789.top 玉豆免费节点)_11'
+  - '[218ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  - '[221ms] 🇰🇷 机场推荐:dafei.de 韩国 02'
+  - '[226ms] 🇹🇭 机场推荐:dafei.de 泰国 01'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  - '[242ms] 欧洲(自由之梦免费节点-严禁倒卖) 5'
+  - '[243ms] 俄罗斯(yudou789.top 玉豆免费节点)_1'
+  - '[246ms] 美国(yudou789.top 玉豆免费节点)_48'
+  - '[248ms] 🇸🇬 机场推荐:dafei.de 新加坡 03'
+  - '[248ms] 美国(yudou789.top 玉豆免费节点)_22'
+  - '[249ms] 🇬🇧 机场推荐:dafei.de 英国 01'
+  - '[250ms] 美国(yudou789.top 玉豆免费节点)_43'
+  - '[250ms] 美国(yudou789.top 玉豆免费节点)_15'
+  - '[254ms] 俄罗斯(yudou789.top 玉豆免费节点)_2'
+  - '[275ms] 🇫🇷 机场推荐:dafei.de 法国 01'
+  - '[276ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[278ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  - '[284ms] 荷兰(yudou789.top 玉豆免费节点)'
+  - '[285ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  - '[291ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[291ms] 🇻🇳 机场推荐:dafei.de 越南 01'
+  - '[293ms] 荷兰(yudou789.top 玉豆免费节点)_1'
+  - '[294ms] 美国(yudou789.top 玉豆免费节点)_26'
+  - '[297ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  type: select
+rules:
+- MATCH,🌍 手动切换
