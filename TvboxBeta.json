@@ -108,53 +108,6 @@
             "jar": "https://oss4liview.moji.com/thd_file/2026/05/02/e007e4cb7e6715074cf8dbe0276b845f.jpg;md5;69a2e21f399421cf1f012a5ad501e31f"
           },
           {
-            "key": "MTV1",
-            "name": "🎙️易听音乐┃带歌词",
-            "type": 3,
-            "api": "csp_MusicGuard",
-            "style": {
-              "type": "rect",
-              "ratio": 1
-            },
-            "playerType": 2,
-            "searchable": 1,
-            "quickSearch": 0,
-            "changeable": 0,
-            "jar": "https://oss4liview.moji.com/thd_file/2026/05/02/e007e4cb7e6715074cf8dbe0276b845f.jpg;md5;69a2e21f399421cf1f012a5ad501e31f"
-          },
-          {
-            "key": "seed",
-            "name": "💡聚剧剧┃四盘",
-            "type": 3,
-            "api": "csp_SeedhubGuard",
-            "ext": "5++kwLhNYm9UrO9wh7Dl7eKamTee4s/5",
-            "searchable": 1,
-            "quickSearch": 1,
-            "changeable": 0,
-            "indexs": 0,
-            "style": {
-              "type": "list"
-            },
-            "jar": "https://oss4liview.moji.com/thd_file/2026/05/02/e007e4cb7e6715074cf8dbe0276b845f.jpg;md5;69a2e21f399421cf1f012a5ad501e31f"
-          },
-          {
-            "key": "ZPan",
-            "name": "🎈聚盘搜┃四盘",
-            "type": 3,
-            "api": "csp_S_zpsGuard",
-            "searchable": 1,
-            "quickSearch": 0,
-            "changeable": 0,
-            "ext": {
-              "siteUrl": "https://ps.i3ei.com/"
-            },
-            "indexs": 0,
-            "style": {
-              "type": "list"
-            },
-            "jar": "https://oss4liview.moji.com/thd_file/2026/05/02/e007e4cb7e6715074cf8dbe0276b845f.jpg;md5;69a2e21f399421cf1f012a5ad501e31f"
-          },
-          {
             "key": "立播",
             "name": "🌟立播┃秒播",
             "type": 3,
