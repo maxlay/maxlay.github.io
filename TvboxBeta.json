@@ -9,6 +9,12 @@
   ],
   "lives": [
     {
+      "name": "推荐线路：裤佬TV直播",
+      "type": 0,
+      "playerType": 2,
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"
+    },
+    {
       "name": "推荐线路：Kimentanm",
       "type": 0,
       "playerType": 2,
@@ -23,14 +29,14 @@
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     },
     {
-      "name": "维修线路：原冰茶",
+      "name": "维修线路：小雨蒙蒙",
       "type": 0,
       "playerType": 2,
       "url": "https://ds65.tv1288.xyz",
       "ua": "bingcha/1.1 (mianfeifenxiang)"
     },
     {
-      "name": "一般线路：应急用",
+      "name": "应急线路：m3u",
       "type": 0,
       "playerType": 2,
       "epg": "http://epg.51zmt.top:8000/e.xml.gz",
@@ -39,8 +45,6 @@
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
   "spider":"https://ncstatic-file.clewm.net/rsrc/2026/0526/13/3c2fe19f3ae9dcf760356cb9e958ef48.jpg;md5;7c546ee0441d827c11541a81c5b98a7b",
-  "warningText":"tv提示:\n📢接口软件永远免费 \n📢Huanglei长期维护",
- 
   "sites": [
 
           {
@@ -226,7 +230,7 @@
           "quickSearch": 1,
           "filterable": 0
         },
-{"key":"豆瓣1","name":"📢公告❤更新0531❤","type":3,"api":"csp_Notice","searchable": 1,"jar":"https://ncstatic-file.clewm.net/rsrc/2026/0307/11/f3b31497ca266ea4f8a89c88e9385f48.jpg;md5;ff4f99fad585f4935fcaa06e3092e44a","ext": "https://tv.nxog.top/m/公告?b=tv"},
+    
 {"key":"荐片","name":"💡荐片｜影视","api":"csp_JianPian","type":3},
 {"key":"热播影视","name":"💡热播｜影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"}},
 {"key":"农民影视","name":"💡农民｜影视","type":3,"api":"csp_Wwys","ext":"https://vip.wwgz.cn:5200"},
@@ -303,17 +307,13 @@
 {"key":"布卡","name":"🧿布卡｜影视","type":3,"api":"csp_XBPQ","jar":"https://ncstatic-file.clewm.net/rsrc/2026/0307/11/98d51d4d95c5cf1b67e74af45cc4445f.jpg;md5;4d860d06ec233dbcb891b76055f099d5","ext":{"\u526f\u6807\u9898":"\u6b27\u6b4c\u4e13\u5c5e","请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","分类url":"https://m.ycblcw.com/;;!H"}},
 {"key":"啊哈DJ网","name":"🧿啊哈｜DJ","type":3,"api":"csp_XBPQ","ext":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/XBPQ/啊哈DJ.json","jar":"https://ncstatic-file.clewm.net/rsrc/2026/0307/11/98d51d4d95c5cf1b67e74af45cc4445f.jpg;md5;4d860d06ec233dbcb891b76055f099d5"},
 {"key":"急救教学","name":"🚑急救｜教学","type":3,"api":"csp_FirstAid","searchable":0,"quickSearch":0,"changeable":0,"style":{"type":"rect","ratio":3.8},"gridview":"0-0-4.1"},
-{"key":"本地","name":"🚤本地｜视频","type":3,"api":"csp_LocalFile"},
 {"key":"呦呦DJ","name":"🌸呦呦｜DJ","type":3,"api":"csp_Djuu","style":{"type":"list"}},
 {"key":"戏曲多多","name":"🌸戏曲｜多多","type":3,"api":"csp_AppLY","style":{"type":"list"}},
 {"key":"919体育","name":"⚽919｜体育","type":3,"api":"csp_919Tiyu","style":{"type":"list"}},
 {"key":"世界听书","name":"🌸世界｜听书","type":3,"api":"csp_TingShijie","style":{"type":"list"}},
 {"key":"采集之王","name":"🐢采集｜合集","type":3,"api":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/drpy2.min.js","ext":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/采集之王.js?type=url&params=https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/json/采集静态.json"},
 {"key":"Douyu","name":"🎮手游┃直播","type":3,"api":"csp_Douyu","jar":"https://ncstatic-file.clewm.net/rsrc/2026/0416/20/1fe667cd217a0c314b8ca59310dbf45d.jpg;md5;a4f403a000bc5e4ebdd9da27fcb05852","searchable":0,"quickSearch":0,"changeable":0,"filterable":1,"timeout":10,"style":{"type":"rect","ratio":1.433}}, 
-{"key":"push_agent","name":"📢手机｜推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0},
-{"key": "应用商店","name": "🛒本地包更新","type": 3,"api": "csp_Market","searchable": 0,"changeable": 0,"ext": "https://tv.nxog.top/zm/sd?b=tv"},
-{"key":"豆瓣3","name":"📢接口软件永远免费","type":3,"api":"csp_Douban","searchable":0},
-{"key":"豆瓣4","name":"📢长期维护切勿贩卖","type":3,"api":"csp_Douban","searchable":0}
+{"key":"本地","name":"🚤本地｜视频","type":3,"api":"csp_LocalFile"}
 
   ],
   "parses": [
@@ -328,45 +328,6 @@
       "url": "Demo"
     },
     {
-      "name": "🚀巧技内部",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/neibu.php?url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "bilibili"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
-    },
-    {
-      "name": "🔥巧技购子",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/gouzi.php?url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "bilibili", "1905", "NetFilx"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
-    },
-    {
-      "name": "⚡️肥猫专用",
-      "type": 1,
-      "url": "http://xn--ihqu10cn4c.xn--z7x900a.live/jx.php?id=2&url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "tucheng", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "yzm", "aliyun", "RJuMao", "bilibili", "1905", "xinvip", "XAL", "qiqi", "XALS", "YuMi-vip"]
-      }
-    },
-    {
-      "name": "🛡️优选算法",
-      "type": 1,
-      "url": "http://1.94.221.189:88/algorithm.php?url="
-    },
-    {
-      "name": "🎬777解析",
-      "type": 0,
-      "url": "https://jx.777jiexi.com/player/?url=",
-      "ext": {
-        "header": {"User-Agent": "okhttp/4.1.0"}
-      }
-    },
-    {
       "name": "📺M3U8TV",
       "type": 0,
       "url": "https://jx.m3u8.tv/jiexi/?url=",
@@ -378,11 +339,6 @@
       "name": "🌪️暴风解析",
       "type": 0,
       "url": "https://bfzyplayer.com/player/?url="
-    },
-    {
-      "name": "🍄蘑菇解析",
-      "type": 0,
-      "url": "https://jx.muguapi.com/m3u8/?url="
     },
     {
       "name": "🐶IKUN解析",
@@ -433,31 +389,9 @@
       }
     },
     {
-      "name": "🕸️JsonPlayer",
-      "type": 0,
-      "url": "https://jx.jsonplayer.com/player/?url=",
-      "ext": {
-        "header": {"User-Agent": "okhttp/4.1.0"}
-      }
-    },
-    {
       "name": "☁️剖云解析",
       "type": 0,
       "url": "https://www.pouyun.com/?url="
-    },
-    {
-      "name": "🎯QIYI官源",
-      "type": 1,
-      "url": "http://39.104.230.177:1122/lxjx/myyk.php?url="
-    },
-    {
-      "name": "🏆推荐首选",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/xiafan.php?url=",
-      "ext": {
-        "flag": ["QD4K", "iyf", "duanju", "gzcj", "GTV", "GZYS", "weggz", "Ace"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
     }
   ],
   "flags": [
