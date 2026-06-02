@@ -23,14 +23,26 @@
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     },
     {
-      "name": "维修线路：原冰茶",
+      "name": "测试线路：裤佬TV直播",
+      "type": 0,
+      "playerType": 2,
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"
+    },
+    {
+      "name": "测试线路：rihou直播",
+      "type": 0,
+      "playerType": 2,
+      "url": "http://rihou.cc:555/gggg.nzk"
+    },
+    {
+      "name": "维修线路：小雨蒙蒙",
       "type": 0,
       "playerType": 2,
       "url": "https://ds65.tv1288.xyz",
       "ua": "bingcha/1.1 (mianfeifenxiang)"
     },
     {
-      "name": "一般线路：应急用",
+      "name": "应急线路：m3u",
       "type": 0,
       "playerType": 2,
       "epg": "http://epg.51zmt.top:8000/e.xml.gz",
