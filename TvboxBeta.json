@@ -328,45 +328,6 @@
       "url": "Demo"
     },
     {
-      "name": "🚀巧技内部",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/neibu.php?url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "bilibili"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
-    },
-    {
-      "name": "🔥巧技购子",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/gouzi.php?url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "bilibili", "1905", "NetFilx"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
-    },
-    {
-      "name": "⚡️肥猫专用",
-      "type": 1,
-      "url": "http://xn--ihqu10cn4c.xn--z7x900a.live/jx.php?id=2&url=",
-      "ext": {
-        "flag": ["qq", "腾讯", "qiyi", "爱奇艺", "奇艺", "youku", "优酷", "tucheng", "sohu", "搜狐", "letv", "乐视", "mgtv", "芒果", "tnmb", "seven", "yzm", "aliyun", "RJuMao", "bilibili", "1905", "xinvip", "XAL", "qiqi", "XALS", "YuMi-vip"]
-      }
-    },
-    {
-      "name": "🛡️优选算法",
-      "type": 1,
-      "url": "http://1.94.221.189:88/algorithm.php?url="
-    },
-    {
-      "name": "🎬777解析",
-      "type": 0,
-      "url": "https://jx.777jiexi.com/player/?url=",
-      "ext": {
-        "header": {"User-Agent": "okhttp/4.1.0"}
-      }
-    },
-    {
       "name": "📺M3U8TV",
       "type": 0,
       "url": "https://jx.m3u8.tv/jiexi/?url=",
@@ -378,11 +339,6 @@
       "name": "🌪️暴风解析",
       "type": 0,
       "url": "https://bfzyplayer.com/player/?url="
-    },
-    {
-      "name": "🍄蘑菇解析",
-      "type": 0,
-      "url": "https://jx.muguapi.com/m3u8/?url="
     },
     {
       "name": "🐶IKUN解析",
@@ -433,31 +389,9 @@
       }
     },
     {
-      "name": "🕸️JsonPlayer",
-      "type": 0,
-      "url": "https://jx.jsonplayer.com/player/?url=",
-      "ext": {
-        "header": {"User-Agent": "okhttp/4.1.0"}
-      }
-    },
-    {
       "name": "☁️剖云解析",
       "type": 0,
       "url": "https://www.pouyun.com/?url="
-    },
-    {
-      "name": "🎯QIYI官源",
-      "type": 1,
-      "url": "http://39.104.230.177:1122/lxjx/myyk.php?url="
-    },
-    {
-      "name": "🏆推荐首选",
-      "type": 1,
-      "url": "https://zy.qiaoji8.com/xiafan.php?url=",
-      "ext": {
-        "flag": ["QD4K", "iyf", "duanju", "gzcj", "GTV", "GZYS", "weggz", "Ace"],
-        "header": {"User-Agent": "okhttp/4.9.1"}
-      }
     }
   ],
   "flags": [
