@@ -9,6 +9,12 @@
   ],
   "lives": [
     {
+      "name": "推荐线路：裤佬TV直播",
+      "type": 0,
+      "playerType": 2,
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"
+    },
+    {
       "name": "推荐线路：Kimentanm",
       "type": 0,
       "playerType": 2,
@@ -21,18 +27,6 @@
       "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
       "logo": "https://epg.v1.mk/logo/{name}.png",
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
-    },
-    {
-      "name": "测试线路：裤佬TV直播",
-      "type": 0,
-      "playerType": 2,
-      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"
-    },
-    {
-      "name": "测试线路：rihou直播",
-      "type": 0,
-      "playerType": 2,
-      "url": "http://rihou.cc:555/gggg.nzk"
     },
     {
       "name": "维修线路：小雨蒙蒙",
@@ -51,8 +45,6 @@
   ],
   "wallpaper": "https://bing.img.run/uhd.php",
   "spider":"https://ncstatic-file.clewm.net/rsrc/2026/0526/13/3c2fe19f3ae9dcf760356cb9e958ef48.jpg;md5;7c546ee0441d827c11541a81c5b98a7b",
-  "warningText":"tv提示:\n📢接口软件永远免费 \n📢Huanglei长期维护",
- 
   "sites": [
 
           {
