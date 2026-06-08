@@ -912,19 +912,6 @@
           "filterable": 1
         },
         {
-          "key": "我的NAS_SMB",
-          "name": "🏠局域网SMB",
-          "type": 3,
-          "api": "csp_Smb",  // 注意：这里取决于你引用的jar包里定义的类名，有的叫 csp_Smb, 有的集成在 csp_Bili等
-          "searchable": 1,
-          "quickSearch": 1,
-          "filterable": 1,
-          "ext": {
-              "server": "smb://192.168.1.2",  // 你的NAS或电脑IP
-              "username": "maxlay",             // 账号
-              "password": ""             // 密码
-          },
-        {
           "key": "本地",
           "name": "🚤本地｜视频",
           "type": 3,
