@@ -25,7 +25,7 @@
       "type": 0,
       "playerType": 2,
       "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-      "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TV/huangsir.m3u"
+      "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TV/huangsir_all_unique.m3u"
     },
     {
       "name": "应急线路：m3u",
