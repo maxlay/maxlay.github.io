@@ -20,7 +20,13 @@
       "logo": "https://epg.v1.mk/logo/{name}.png",
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     },
-
+    {
+      "name": "我的线路：HuangSir",
+      "type": 0,
+      "playerType": 2,
+      "epg": "http://epg.51zmt.top:8000/e.xml.gz",
+      "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TV/huangsir.m3u"
+    }
     {
       "name": "应急线路：m3u",
       "type": 0,
