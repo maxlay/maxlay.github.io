@@ -1,0 +1,3357 @@
+allow-lan: true
+external-controller: 0.0.0.0:9090
+log-level: info
+mixed-port: 7890
+mode: rule
+proxies:
+- client-fingerprint: random
+  name: '[19ms] 中国 011'
+  network: ws
+  port: 443
+  server: visa.cn
+  servername: 5-55sfjslf.ifenxiang.cfd
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 59860b15-b2d9-47f9-9b92-81bd1639fcc5
+  ws-opts:
+    headers:
+      Host: 5-55sfjslf.ifenxiang.cfd
+    path: /?ed=2560
+- name: '[37ms] 美国 067'
+  network: httpupgrade
+  port: 2086
+  server: 104.17.148.22
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0524b266-e736-467a-be59-384d91dea35d
+- client-fingerprint: chrome
+  name: '[37ms] 美国 243'
+  network: ws
+  port: 443
+  server: 104.16.242.72
+  servername: vless3-5xq.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c98a16e4-0dc5-42f0-b3db-30f04525c123
+  ws-opts:
+    headers:
+      Host: vless3-5xq.pages.dev
+- alterId: 64
+  cipher: auto
+  name: '[37ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  network: ws
+  port: 443
+  server: 104.19.45.117
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 3b5e258e-8c5e-45d3-b7d2-02c8f5fc0bb2
+  ws-headers:
+    Host: cdnde.irteyz.today
+  ws-path: /
+- name: '[38ms] 美国 092'
+  network: ws
+  port: 8080
+  server: 104.19.54.50
+  servername: www.speedtest.net.www.zula.ir.cloudflare.com.developsp.ir.svgspeedtest.net.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 206aee35-4001-4001-9e93-c35589eaf2a0
+  ws-opts:
+    headers:
+      Host: www.speedtest.net.www.zula.ir.cloudflare.com.developsp.ir.svgspeedtest.net.
+    path: /
+- name: '[38ms] 美国 095'
+  network: httpupgrade
+  port: 80
+  server: www.speedtest.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 220bafe5-d259-453f-b6b5-9f8988521a66
+- name: '[38ms] 美国 088'
+  network: ws
+  port: 2095
+  server: www.speedtest.net
+  servername: jokervip.ahang-alpha.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2-BYA--CHANEL--JKVPN--JKVPN
+  ws-opts:
+    headers:
+      Host: jokervip.ahang-alpha.ir
+    path: /TELEGRAM--
+- client-fingerprint: chrome
+  name: '[38ms] 美国 246'
+  network: ws
+  port: 443
+  server: 104.18.86.131
+  servername: vless5-edu.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c98a16e4-0dc5-42f0-b3db-30f04525c123
+  ws-opts:
+    headers:
+      Host: vless5-edu.pages.dev
+    path: /?ed
+- client-fingerprint: randomized
+  name: '[38ms] 美国 039'
+  network: ws
+  port: 80
+  server: download.yunzhongzhuan.com
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vless
+  uuid: ca2d8658-9ed6-4e0d-8f58-eaaa021f3baa
+  ws-opts:
+    headers:
+      Host: warp.irss.eu.org
+    path: /?ed=2048
+- client-fingerprint: random
+  name: '[39ms] 美国 104'
+  network: ws
+  port: 443
+  server: 104.18.82.55
+  servername: vless.hubp.de
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 29187857-4a1f-4d1e-88eb-0016771e0dbb
+  ws-opts:
+    headers:
+      Host: vless.hubp.de
+    path: /?ed=2560
+- name: '[39ms] 美国(yudou789.top 玉豆免费节点)_15'
+  network: ws
+  port: 8880
+  server: wangcai115.cloudflare.182682.xyz
+  servername: Telegram-channel-WangCai2
+  tls: false
+  type: vless
+  udp: true
+  uuid: 7890ce31-9a25-4fd4-90e7-80e5823ff510
+  ws-opts:
+    headers:
+      Host: frejd.11258.workers.dev
+    path: /Telegram🇨🇳@WangCai2/?ed=2560
+- name: '[41ms] 美国 201'
+  port: 2096
+  server: 104.17.147.22
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+- alterId: 0
+  cipher: auto
+  name: '[41ms] 美国 404'
+  network: ws
+  port: 443
+  server: www.speedtest.net
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 0f102dbe-1eff-48a1-d2fb-584b25880c3b
+  ws-opts:
+    headers:
+      Host: 0-1panel0-1.net-work-plus.ir
+    path: /0f102dbe-1eff-48a1-d2fb-584b25880c3b
+- client-fingerprint: chrome
+  name: '[41ms] 美国 105'
+  network: ws
+  port: 443
+  server: 104.18.85.29
+  servername: sni.aizrf.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 29187857-4a1f-4d1e-88eb-0016771e0dbb
+  ws-opts:
+    headers:
+      Host: sni.aizrf.com
+    path: /?ed=2560
+- name: '[42ms] 美国 141'
+  network: ws
+  port: 80
+  server: 104.17.147.22
+  servername: redfree8.pooriashop.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: redfree8.pooriashop.ir
+    path: /Telegram
+- name: '[43ms] 美国 211'
+  port: 8443
+  server: 104.17.147.22
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
+- client-fingerprint: chrome
+  name: '[43ms] 美国 155'
+  network: grpc
+  port: 2096
+  server: 104.17.148.22
+  servername: 5ksdjfghshehusd-345893456438-dsfjshdgfjk-34543543gfg.jsfui232.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5f4b761b-7768-4040-bf3d-b8a0bab2ab3a
+- alterId: 1
+  cipher: auto
+  name: '[44ms] 日本 009'
+  network: ws
+  port: 80
+  server: 99.84.128.45
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vmess
+  uuid: efb748ec-c921-42a1-ac9e-1d5485d6c447
+  ws-opts:
+    headers:
+      Host: dsw7q85l34hqa.cloudfront.net
+    path: /download
+- name: '[44ms] 美国 142'
+  network: ws
+  port: 80
+  server: 104.17.148.22
+  servername: redw.pooriam.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: redw.pooriam.ir
+    path: /telegram
+- flow: ''
+  name: '[45ms] 美国 263'
+  network: ws
+  port: 443
+  server: wetest.xn--vip-ob6fs36j.cloudflare.182682.xyz
+  servername: xn--kwr11l51ffzytxy.CMLiussss.dedyn.io
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  ws-opts:
+    headers:
+      Host: xn--kwr11l51ffzytxy.CMLiussss.dedyn.io
+    path: /snippets/ip=tw.tp81.netlib.re:81?ed=2560
+- client-fingerprint: chrome
+  name: '[47ms] 美国 150'
+  network: ws
+  port: 8443
+  server: www.speedtest.net
+  servername: root.dns-23.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 56477377-62f5-41dc-e030-a519d83ba873
+  ws-opts:
+    headers:
+      Host: root.dns-23.ir
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[52ms] 美国 375'
+  network: ws
+  port: 443
+  server: cloudflare.182682.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 7bc6a98a-b741-40bc-ba58-8dec2a196339
+  ws-opts:
+    headers:
+      Host: wv-bs-portrait-glad.trycloudflare.com
+    path: /7bc6a98a-b741-40bc-ba58-8dec2a196339-vm?ed=2048
+- client-fingerprint: randomized
+  name: '[55ms] 美国 037'
+  network: ws
+  port: 80
+  server: fbi.gov
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vless
+  uuid: ca2d8658-9ed6-4e0d-8f58-eaaa021f3baa
+  ws-opts:
+    headers:
+      Host: warp.irss.eu.org
+    path: /?ed=2048
+- client-fingerprint: chrome
+  name: '[56ms] 美国 137'
+  network: ws
+  port: 443
+  server: vinted.fr
+  servername: hdfynpv2c1.farvaharforever.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4e1f0fc6-a7f8-4642-bd35-6a3aa0bb2fc8
+  ws-opts:
+    headers:
+      Host: hdfynpv2c1.farvaharforever.com
+    path: /Iyq035lnud9R8ruNNrqGxZZ2
+- name: '[62ms] 美国 125'
+  network: grpc
+  port: 443
+  server: all.tellmethetrue.shop
+  servername: pqh23v8.hiddendom.shop
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 401374e6-df77-41fb-f638-dad8184f175b
+- alterId: 0
+  cipher: auto
+  name: '[68ms] 日本 003'
+  network: ws
+  port: 14954
+  server: 91.200.242.187
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vmess
+  uuid: efb748ec-c921-42a1-ac9e-1d5485d6c447
+  ws-opts:
+    headers:
+      Host: download.windowsupdate.com
+    path: /download
+- name: '[69ms] 美国 117'
+  port: 80
+  server: 151.101.2.219
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 37953a08-dad2-4f9e-abd3-c7a4ad8910bf
+- name: '[70ms] 美国 219'
+  network: ws
+  port: 443
+  server: cloudflare.182682.xyz
+  servername: de.xiejiang.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a546c4de-2840-49b7-b914-98babd165bb1
+  ws-opts:
+    headers:
+      Host: de.xiejiang.dpdns.org
+    path: /XYXY0721
+- name: '[73ms] 美国 268'
+  network: ws
+  port: 80
+  server: 151.101.128.155
+  servername: fast.net.bomb.xcxcspdnet.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: de3b9471-4d83-4bb2-b894-b287c432ce63
+  ws-opts:
+    headers:
+      Host: fast.net.bomb.xcxcspdnet.net
+    path: /Channel,SPDNET,SPDNET?ed=1024
+- alterId: 0
+  cipher: auto
+  name: '[74ms] 🇭🇰_HK_中国香港->🇹🇼_TW_中国台湾'
+  port: 2510
+  server: world.t.51guangtaobao.com
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 1d3d868e-ae7b-3762-b9d9-a7f267494c7e
+- name: '[75ms] 美国 102'
+  network: xhttp
+  port: 80
+  server: 151.101.2.133
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 275d87d1-221a-4e47-96b1-9a6f76a7daba
+- name: '[76ms] 美国 138'
+  network: ws
+  port: 80
+  server: 151.101.66.133
+  servername: scp-only.ws.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4ea312d7-3844-4ff8-8062-ed2e03ddc2a1
+  ws-opts:
+    headers:
+      Host: scp-only.ws.com
+    path: /ws
+- name: '[77ms] 美国 158'
+  network: xhttp
+  port: 80
+  server: 151.101.194.133
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 64768b60-88b8-4414-80e7-ac04b6223259
+- name: '[77ms] 美国 111'
+  network: ws
+  port: 80
+  server: redbrain.shopping
+  servername: namehmain.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
+  ws-opts:
+    headers:
+      Host: namehmain.com
+    path: /TELEGRAM-
+- client-fingerprint: firefox
+  name: '[80ms] 美国 226'
+  network: ws
+  port: 443
+  server: 151.101.130.228
+  servername: TEL.VMESSORG.http.www.speedtest.net.fast.com.vmessorgg.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ad3cc925-52f0-4834-ab85-602d9c1c08ac
+  ws-opts:
+    headers:
+      Host: TEL.VMESSORG.http.www.speedtest.net.fast.com.vmessorgg.ir
+    path: '/Telegram:'
+- name: '[81ms] 美国 101'
+  network: ws
+  port: 443
+  server: 140.248.128.69
+  servername: Channel-VPNCUSTOMIZE.ir
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 26b63e3a-60f9-4630-b180-fde6c4339602
+  ws-opts:
+    headers:
+      Host: Channel-VPNCUSTOMIZE.ir
+    path: /Channel----VPNCUSTOMIZE?ed=2048
+- name: '[83ms] 美国 096'
+  network: xhttp
+  port: 80
+  server: speedtestcustom.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 240b8e0e-56b3-4b7a-a9e5-7ad323b3e52e
+- name: '[85ms] 美国 181'
+  network: ws
+  port: 80
+  server: ufc.ru
+  servername: Channel-VPNCUSTOMIZE.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 7c9e3c1d-a360-4429-9189-e45a98de7fde
+  ws-opts:
+    headers:
+      Host: Channel-VPNCUSTOMIZE.ir
+    path: /VPNCUSTOMIZE--VPNCUSTOMIZE--VPNCUSTOMIZE--VPNCUSTOMIZE--VPNCUSTOMIZE?ed=2048
+- name: '[86ms] 美国 134'
+  network: ws
+  port: 8080
+  server: www.parsvds.ir
+  servername: FySuMyYk3.aMirsiTesos.sItE.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4b109a2c-9c17-4d1c-9794-4e0a585e498f
+  ws-opts:
+    headers:
+      Host: FySuMyYk3.aMirsiTesos.sItE.
+    path: /telegram=V_2RAYNGVPN
+- name: '[87ms] 新加坡(yudou789.top 玉豆免费节点)'
+  network: ws
+  port: 443
+  server: 20.6.12.145
+  servername: sni.skylee4.cloudns.ch
+  tls: true
+  type: vless
+  udp: true
+  uuid: 06b65903-406d-4a41-8463-6fd5c0ee7798
+  ws-opts:
+    headers:
+      Host: sni.skylee4.cloudns.ch
+    path: /proxyip=ProxyIP.CMLiussss.net
+- alterId: 0
+  cipher: auto
+  name: '[99ms] 美国 376'
+  network: ws
+  port: 443
+  server: wto.org
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: d57ac173-5615-43db-a3f4-dd1aebb2c6e8
+  ws-opts:
+    headers:
+      Host: us01.secntre.com
+    path: /d57ac173-5615-43db-a3f4-dd1aebb2c6e8-vm?ed=2048
+- client-fingerprint: firefox
+  name: '[106ms] 瑞典 006'
+  network: ws
+  port: 443
+  server: Zmaoz.Faculty.Ucdavis.Edu
+  servername: ParsashonamVPN.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: Parsashonam-136
+  ws-opts:
+    headers:
+      Host: ParsashonamVPN.ir
+    path: /
+- name: '[109ms] 瑞典 005'
+  network: ws
+  port: 443
+  server: pscresearch.faculty.ucdavis.edu
+  servername: ihvtcd6ybun.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8d391797-01f4-4393-92d0-504c96ca4c29
+  ws-opts:
+    headers:
+      Host: ihvtcd6ybun.com
+    path: ws/?ed=2048
+- client-fingerprint: random
+  name: '[179ms] 美国 264'
+  network: ws
+  port: 443
+  server: 104.26.4.90
+  servername: 007.xingfu.qzz.io
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d88937d0-ce43-4bf8-9df6-d632810ba9ff
+  ws-opts:
+    headers:
+      Host: 007.xingfu.qzz.io
+    path: /
+- name: '[179ms] 美国(yudou789.top 玉豆免费节点)_11'
+  password: 2bcfbfba-b446-4ad5-93ad-72af9e008f61
+  port: 443
+  server: blackshadow.dpdns.org
+  skip-cert-verify: false
+  sni: blackshadow.dpdns.org
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: blackshadow.dpdns.org
+    path: /195.123.218.174-443
+- name: '[179ms] 美国 068'
+  network: ws
+  port: 8880
+  server: 172.66.40.99
+  servername: websocket.network.www.speedtest.net.kkoccashor.vegaskala.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 05895a24-75bc-4cee-a431-41569577dcc7
+  ws-opts:
+    headers:
+      Host: websocket.network.www.speedtest.net.kkoccashor.vegaskala.com
+    path: /
+- client-fingerprint: chrome
+  name: '[180ms] 美国 322'
+  network: ws
+  port: 8443
+  server: 104.26.6.89
+  servername: YjF03nNq0B.sOlEnTrAa.InFo
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: YjF03nNq0B.sOlEnTrAa.InFo
+    path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+- client-fingerprint: random
+  name: '[180ms] 美国 236'
+  network: ws
+  port: 80
+  server: 172.67.164.239
+  servername: barayeiran.nastaranh.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: bbd2882a-c158-4ae6-b53a-5ae6be8dbcb0
+  ws-opts:
+    headers:
+      Host: barayeiran.nastaranh.dpdns.org
+    path: /BaRAyeIran?ed=2560
+- client-fingerprint: random
+  name: '[181ms] 美国 103'
+  network: ws
+  port: 443
+  server: 172.66.47.63
+  servername: aDD-1cV.pAGeS.Dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2836c061-ea09-45e5-a98e-4ca478e744b0
+  ws-opts:
+    headers:
+      Host: aDD-1cV.pAGeS.Dev
+    path: /f2GYY0YixkpPeMtx/Y2RuLWIxMDAueG4tLWI2Z2FjLmV1Lm9yZw
+- name: '[181ms] 美国 054'
+  network: httpupgrade
+  port: 2052
+  server: 172.67.160.192
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ++mahanvpn++
+- name: '[181ms] 美国 163'
+  network: ws
+  port: 443
+  server: 104.26.1.108
+  servername: blog.ruangguru.com.servpn.my.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6780a3c0-a98c-4622-b894-8e34167f7b31
+  ws-opts:
+    headers:
+      Host: blog.ruangguru.com.servpn.my.id
+    path: /id5?ed=2560/?MTMVPN---MTMVPN---MTMVPN---MTMVPN
+- client-fingerprint: chrome
+  name: '[181ms] 美国 107'
+  network: ws
+  port: 443
+  server: 172.67.174.190
+  servername: w1.sylar8.eu.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 29f8ad12-ea84-431b-bf32-9d3fb5cf2aa2
+  ws-opts:
+    headers:
+      Host: w1.sylar8.eu.org
+    path: /?ed
+- name: '[181ms] 美国 153'
+  network: ws
+  port: 443
+  server: 198.62.62.2
+  servername: smn2.gerlemondns.info
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 598b4251-fd03-48fe-b12d-630ac3adf2e5
+  ws-opts:
+    headers:
+      Host: smn2.gerlemondns.info
+    path: /hjgfdws
+- alterId: 0
+  cipher: auto
+  name: '[181ms] 美国 423'
+  network: ws
+  port: 2086
+  server: 104.26.8.156
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- alterId: 0
+  cipher: auto
+  name: '[181ms] 美国 387'
+  network: xhttp
+  port: 8880
+  server: 104.21.16.1
+  skip-cert-verify: true
+  type: vmess
+  uuid: b447c934-c80c-4239-9274-14eb7b2654c2
+- alterId: 0
+  cipher: auto
+  name: '[182ms] 美国 366'
+  network: ws
+  port: 2086
+  server: 23.227.38.6
+  skip-cert-verify: true
+  type: vmess
+  uuid: 29eebb60-b27b-4a9d-bba5-947763d9205e
+  ws-opts:
+    headers:
+      Host: ip006.dtku47.xyz
+    path: github.com/Alvin9999
+- name: '[182ms] 美国 218'
+  network: ws
+  port: 443
+  server: 172.67.168.193
+  servername: gamang.gpj2.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a50ea41d-10b1-4351-9ae2-6d92f501a3a0
+  ws-opts:
+    headers:
+      Host: gamang.gpj2.dpdns.org
+    path: /Free-VPN-Geo-Project/185.66.165.51-443
+- client-fingerprint: chrome
+  name: '[182ms] 美国 157'
+  network: ws
+  port: 443
+  server: 172.66.44.118
+  servername: configmr.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 63005378-e32e-4e23-bc6e-84812f147a6f
+  ws-opts:
+    headers:
+      Host: configmr.pages.dev
+    path: /VrChX4o5oasIm4In?ed=2560
+- client-fingerprint: randomized
+  name: '[182ms] 美国 220'
+  network: ws
+  port: 443
+  server: 172.67.75.172
+  servername: GErmaNy-exK.pAGEs.DEV
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a6dd00f2-de2a-4c3c-bc0a-0e9818e95dde
+  ws-opts:
+    headers:
+      Host: GErmaNy-exK.pAGEs.DEV
+    path: /Tel-
+- alterId: 0
+  cipher: auto
+  name: '[182ms] 美国 385'
+  network: ws
+  port: 80
+  server: 104.18.2.186
+  skip-cert-verify: true
+  type: vmess
+  uuid: 44c467a9-8f0d-41a5-f00b-86569753e5b0
+  ws-opts:
+    headers:
+      Host: b3.iraniancp.click
+    path: /?ed=2048
+- name: '[182ms] 美国(yudou789.top 玉豆免费节点)_42'
+  network: ws
+  port: 8880
+  server: 213.219.247.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime26.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- name: '[182ms] 美国 176'
+  network: ws
+  port: 443
+  server: 69.84.182.1
+  servername: vbbc.ylks2024.us.kg
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 71ed6628-5870-4d19-8a52-f2a3ba3d4898
+  ws-opts:
+    headers:
+      Host: vbbc.ylks2024.us.kg
+    path: /youlingkaishi
+- name: '[182ms] 美国 122'
+  port: 2053
+  server: 173.245.59.132
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3d6ca650-df5c-43fd-bd69-01a335e1376a
+- client-fingerprint: randomized
+  name: '[183ms] 美国 251'
+  network: ws
+  port: 443
+  server: 198.62.62.4
+  servername: azadnet-7py.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d0298536-d670-4045-bbb1-ddd5ea68683e
+  ws-opts:
+    headers:
+      Host: azadnet-7py.pages.dev
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[183ms] 美国 384'
+  network: ws
+  port: 8080
+  server: 104.17.254.241
+  skip-cert-verify: true
+  type: vmess
+  uuid: 4bb242a7-68db-4bb8-850a-0c112941f0cb
+  ws-opts:
+    headers:
+      Host: n1w3napp4.clockdeny.eu
+    path: /13111/Nextlife
+- client-fingerprint: chrome
+  name: '[183ms] 美国 321'
+  network: ws
+  port: 443
+  server: 104.26.6.89
+  servername: VyFlPo6269.SoLeNtRaA.iNfO
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: VyFlPo6269.SoLeNtRaA.iNfO
+    path: /
+- client-fingerprint: firefox
+  name: '[183ms] 美国 052'
+  network: ws
+  port: 443
+  server: 172.66.40.99
+  servername: w.pdri.blog
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: telegram-id-Arfilter
+  ws-opts:
+    headers:
+      Host: w.pdri.blog
+    path: /telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray?ed=2048
+- client-fingerprint: random
+  name: '[183ms] 美国 265'
+  network: ws
+  port: 443
+  server: 104.26.5.134
+  servername: 007.xingfu.qzz.io
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d88937d0-ce43-4bf8-9df6-d632810ba9ff
+  ws-opts:
+    headers:
+      Host: 007.xingfu.qzz.io
+    path: /
+- client-fingerprint: chrome
+  name: '[183ms] 美国 320'
+  network: ws
+  port: 2096
+  server: 104.26.6.89
+  servername: BtEvEjF8zI.sOlEnTrAa.InFo
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: BtEvEjF8zI.sOlEnTrAa.InFo
+    path: /
+- name: '[183ms] 美国(yudou789.top 玉豆免费节点)_55'
+  network: ws
+  port: 2053
+  server: 162.159.44.66
+  servername: fu.baiproxy.us.ci
+  tls: true
+  type: vless
+  udp: true
+  uuid: 55d9ec38-1b8a-454b-981a-6acfe8f56d8c
+  ws-opts:
+    headers:
+      Host: fu.baiproxy.us.ci
+    path: /?ed=2560
+- name: '[184ms] 荷兰 003'
+  network: ws
+  port: 80
+  server: 45.131.4.85
+  servername: zoomgov.vipren.biz.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2036e2c3-18a5-4eed-9db4-f91a7f02c7d5
+  ws-opts:
+    headers:
+      Host: zoomgov.vipren.biz.id
+    path: /193.123.81.105=443
+- client-fingerprint: chrome
+  name: '[184ms] 美国 199'
+  network: ws
+  port: 443
+  server: 104.16.3.5
+  servername: gulf-d96.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 963816bd-b6e7-4648-abff-8af25bc07d87
+  ws-opts:
+    headers:
+      Host: gulf-d96.pages.dev
+    path: /ecY3gziM8W6ud5yj?ed
+- client-fingerprint: random
+  name: '[184ms] 美国 097'
+  network: ws
+  port: 80
+  server: 172.66.40.99
+  servername: isegaro.ahaysiahzangi.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 25aea050-0f46-478f-83e6-4de68d15c852
+  ws-opts:
+    headers:
+      Host: isegaro.ahaysiahzangi.dpdns.org
+    path: /vpnowl-vpnowl-vpnowl-vpnowl-vpnowl-vpnowl-vpnowl-vpnowl?ed=2560
+- client-fingerprint: random
+  name: '[184ms] 美国 136'
+  network: ws
+  port: 443
+  server: 172.67.163.18
+  servername: crolinde.carlotta.cloudns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4d3e4850-83e4-4e9e-a4c1-0f11c43663e7
+  ws-opts:
+    headers:
+      Host: crolinde.carlotta.cloudns.org
+    path: telegramFreeV2Alpha=88.218.78.212
+- alterId: 0
+  cipher: auto
+  name: '[184ms] 美国 345'
+  network: grpc
+  port: 443
+  server: America.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 33f6d8b0-81f8-4fce-b3df-79dc8fd6d8c5
+- client-fingerprint: firefox
+  name: '[185ms] 中国 012'
+  network: ws
+  port: 443
+  server: 154.92.9.46
+  servername: simorgh.hpcode.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ec8a65ad-aafc-4095-9b8c-ea10890ca629
+  ws-opts:
+    headers:
+      Host: simorgh.hpcode.ir
+    path: /Javid-SHAH-KingRezaPahlavi/?ed=
+- name: '[185ms] 荷兰 040'
+  network: ws
+  port: 2096
+  server: 188.42.145.253
+  servername: gaosir.unfeeling.sbs
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: f61a4285-7264-4d07-9408-7b9ba1922c26
+  ws-opts:
+    headers:
+      Host: gaosir.unfeeling.sbs
+    path: /Telegram🇨🇳
+- name: '[185ms] 美国 156'
+  network: ws
+  port: 80
+  server: 172.67.168.193
+  servername: gamang.gpj2.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 61374417-9218-4065-909b-ad1e3b50aa83
+  ws-opts:
+    headers:
+      Host: gamang.gpj2.dpdns.org
+    path: /Free-VPN-Geo-Project/80.66.85.115-2053
+- name: '[185ms] 美国 081'
+  network: ws
+  port: 80
+  server: 172.66.156.81
+  servername: websocket.network.www.speedtest.net.flutter.dev.russia.pyt.vegaskala.com.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 12c8a33b-a996-445c-bb28-3c60d9ce186e
+  ws-opts:
+    headers:
+      Host: websocket.network.www.speedtest.net.flutter.dev.russia.pyt.vegaskala.com.
+    path: /
+- name: '[186ms] 德国 006'
+  network: ws
+  port: 2096
+  server: 91.206.71.54
+  servername: sni.aizrf.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 12345678-1234-1234-1234-123456789123
+  ws-opts:
+    headers:
+      Host: sni.aizrf.com
+    path: /snippets
+- alterId: 0
+  cipher: auto
+  name: '[186ms] 美国 368'
+  network: ws
+  port: 2086
+  server: ip.sb
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- alterId: 0
+  cipher: auto
+  name: '[186ms] 美国 364'
+  network: ws
+  port: 2086
+  server: 23.227.38.3
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip2.1457230.xyz
+    path: github.com/Alvin9999
+- alterId: 0
+  cipher: auto
+  name: '[186ms] 美国 365'
+  network: ws
+  port: 2086
+  server: 23.227.38.5
+  skip-cert-verify: true
+  type: vmess
+  uuid: 29eebb60-b27b-4a9d-bba5-947763d9205e
+  ws-opts:
+    headers:
+      Host: ip006.freegradely.xyz
+    path: github.com/Alvin9999
+- client-fingerprint: randomized
+  name: '[187ms] 美国 038'
+  network: ws
+  port: 80
+  server: www.visa.com
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vless
+  uuid: ca2d8658-9ed6-4e0d-8f58-eaaa021f3baa
+  ws-opts:
+    headers:
+      Host: warp.irss.eu.org
+    path: /?ed=2048
+- alterId: 0
+  cipher: auto
+  name: '[187ms] 美国 370'
+  network: ws
+  port: 2086
+  server: malaysia.com
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- client-fingerprint: chrome
+  name: '[187ms] 美国 128'
+  network: ws
+  port: 443
+  server: 104.20.30.132
+  servername: gamang.gpj2.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 41b55c53-7776-4727-b05d-1ccf9cc409a5
+  ws-opts:
+    headers:
+      Host: gamang.gpj2.dpdns.org
+    path: /Free-VPN-Geo-Project/91.187.93.166-443
+- name: '[187ms] 美国 119'
+  network: ws
+  port: 443
+  server: 104.21.10.181
+  servername: gamang.gpj1.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3beeaf86-5522-4278-a1e9-b24a776552cd
+  ws-opts:
+    headers:
+      Host: gamang.gpj1.dpdns.org
+    path: /Free-VPN-Geo-Project/181.41.194.176-15565
+- client-fingerprint: chrome
+  name: '[187ms] 美国 080'
+  network: ws
+  port: 2096
+  server: 167.68.42.44
+  servername: kejiland.freewarp.eu.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 12345678-1234-1234-1234-123456789123
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippets
+- name: '[187ms] 荷兰 011'
+  port: 8443
+  server: 45.131.5.252
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+- client-fingerprint: randomized
+  name: '[188ms] 美国 238'
+  network: ws
+  port: 2053
+  server: 104.16.98.3
+  servername: 0p9oj0annx3ywe408ctenbtw3mhacrc7.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c106802e-577e-4dfd-ab45-c65d88af1ef9
+  ws-opts:
+    headers:
+      Host: 0p9oj0annx3ywe408ctenbtw3mhacrc7.pages.dev
+    path: /pBo4JI9ey63R7sN5?ed=2560/?Join_Bade_Channel
+- name: '[188ms] 美国 248'
+  network: httpupgrade
+  port: 8080
+  server: 104.24.0.137
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: cbfbc5e3-4b53-4854-931e-c9ac61719636
+- name: '[188ms] 美国(yudou789.top 玉豆免费节点)_12'
+  password: Aimer
+  port: 2053
+  server: 167.68.4.199
+  skip-cert-verify: false
+  sni: epge.muarua.filegear-sg.me
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: epge.muarua.filegear-sg.me
+    path: /?ed
+- name: '[188ms] 美国 152'
+  network: ws
+  port: 2086
+  server: 162.159.10.162
+  servername: 5-55sfjslf.ifenxiang.cfd
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 59860b15-b2d9-47f9-9b92-81bd1639fcc5
+  ws-opts:
+    headers:
+      Host: 5-55sfjslf.ifenxiang.cfd
+    path: Telegram-
+- client-fingerprint: chrome
+  name: '[188ms] 荷兰 009'
+  network: ws
+  port: 2096
+  server: 45.131.209.190
+  servername: LhCgBjGr29.vElTrIxS.OrG
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+  ws-opts:
+    headers:
+      Host: LhCgBjGr29.vElTrIxS.OrG
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[189ms] 美国 374'
+  network: ws
+  port: 80
+  server: test3.flha.ru
+  skip-cert-verify: true
+  type: vmess
+  uuid: 0730d4e1-3c84-4e06-8b2c-22ab4f591ff6
+  ws-opts:
+    headers:
+      Host: sims-museum-mental-listening.trycloudflare.com
+    path: /0730d4e1-3c84-4e06-8b2c-22ab4f591ff6-vm?ed=2048
+- client-fingerprint: random
+  name: '[189ms] 美国 135'
+  network: ws
+  port: 443
+  server: 104.21.34.163
+  servername: crolinde.carlotta.cloudns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4d3e4850-83e4-4e9e-a4c1-0f11c43663e7
+  ws-opts:
+    headers:
+      Host: crolinde.carlotta.cloudns.org
+    path: /telegram
+- name: '[189ms] 美国 087'
+  network: ws
+  port: 8080
+  server: 104.19.253.213
+  servername: n2w3nv2app4.clockdeny.eu
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1ba6bb71-98f2-4c63-aae3-9e419c801e35
+  ws-opts:
+    headers:
+      Host: n2w3nv2app4.clockdeny.eu
+    path: /13111/Nextlife
+- client-fingerprint: randomized
+  name: '[189ms] 美国 098'
+  network: ws
+  port: 443
+  server: 104.16.34.128
+  servername: ensHOLP-91s.pageS.DEv
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 267613d7-f53f-4005-b642-d6f1f687b7cf
+  ws-opts:
+    headers:
+      Host: ensHOLP-91s.pageS.DEv
+    path: /dQMN2VQLkaE52qWD?ed=2560
+- name: '[189ms] 美国 230'
+  network: ws
+  port: 8443
+  server: 104.24.40.146
+  servername: bitget1.asdasd.click
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: b5441b0d-2147-4898-8a6a-9b2c87f58382
+  ws-opts:
+    headers:
+      Host: bitget1.asdasd.click
+    path: /Telegram
+- name: '[189ms] 美国 091'
+  network: ws
+  port: 80
+  server: 104.21.96.1
+  servername: zoomgov.vipren.biz.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2036e2c3-18a5-4eed-9db4-f91a7f02c7d5
+  ws-opts:
+    headers:
+      Host: zoomgov.vipren.biz.id
+    path: /193.123.81.105=443
+- name: '[190ms] 美国 170'
+  network: grpc
+  port: 2087
+  server: 66.235.200.94
+  servername: smart.titimoji-f6.fun
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6babb657-1524-43bb-b421-11bda27bc9de
+- client-fingerprint: chrome
+  name: '[190ms] 美国 234'
+  network: grpc
+  port: 2087
+  server: 172.64.32.217
+  servername: ba19.bewface-smart.rest
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: bb29c155-d55e-4c07-8403-0581e384f7a2
+- client-fingerprint: randomized
+  name: '[190ms] 荷兰 004'
+  network: ws
+  port: 8443
+  server: 160.153.0.153
+  servername: invincible.fafa20.shop
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 376734bc-4db8-4317-b451-af0262cb01c7
+  ws-opts:
+    headers:
+      Host: invincible.fafa20.shop
+    path: /KvNugxSUpljMOjgF/NzguNDcuMTU3LjY=?ed=2560
+- client-fingerprint: random
+  name: '[190ms] 美国 197'
+  network: ws
+  port: 2087
+  server: www.visa.com.sg
+  servername: vl.hongkong6.qzz.io
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 90c7ad5e-cd15-4314-b39b-aeabd397d592
+  ws-opts:
+    headers:
+      Host: vl.hongkong6.qzz.io
+    path: /
+- name: '[190ms] 美国 118'
+  network: ws
+  port: 2053
+  server: 104.31.16.95
+  servername: ir.akcovufun.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 39a91eaf-a379-4fff-a9c8-1cb01442b76f
+  ws-opts:
+    headers:
+      Host: ir.akcovufun.ir
+    path: /
+- client-fingerprint: chrome
+  name: '[190ms] 美国 324'
+  network: ws
+  port: 8443
+  server: 170.114.46.175
+  servername: YjF03nNq0B.sOlEnTrAa.InFo
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: YjF03nNq0B.sOlEnTrAa.InFo
+    path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+- name: '[190ms] 美国 159'
+  network: ws
+  port: 80
+  server: 104.20.43.81
+  servername: crazy-identity.oneeat.co
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 64d6d0d4-3706-4837-b154-cda2816adcc5
+  ws-opts:
+    headers:
+      Host: crazy-identity.oneeat.co
+    path: /
+- name: '[190ms] 美国 132'
+  port: 2087
+  server: 104.21.69.44
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 48d34244-8fac-4fa4-b4fe-0931474f183d
+- name: '[191ms] 美国 316'
+  network: ws
+  port: 80
+  server: 104.24.56.187
+  servername: a1.ghormehsabzi.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e6236ebc-7334-4bed-977f-0c20bcdfcc00
+  ws-opts:
+    headers:
+      Host: a1.ghormehsabzi.dpdns.org
+    path: /?ed=2560
+- name: '[191ms] 美国 235'
+  network: ws
+  port: 80
+  server: 104.16.0.113
+  servername: barayeiran.nastaranh.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: bbd2882a-c158-4ae6-b53a-5ae6be8dbcb0
+  ws-opts:
+    headers:
+      Host: barayeiran.nastaranh.dpdns.org
+    path: /?ed=2560/?JOKERRVPN
+- name: '[191ms] 美国(yudou789.top 玉豆免费节点)_8'
+  network: ws
+  port: 2053
+  server: 162.159.45.175
+  servername: fu.baiproxy.us.ci
+  tls: true
+  type: vless
+  udp: true
+  uuid: 55d9ec38-1b8a-454b-981a-6acfe8f56d8c
+  ws-opts:
+    headers:
+      Host: fu.baiproxy.us.ci
+    path: /?ed=2560
+- name: '[192ms] 巴西 004'
+  network: ws
+  port: 8443
+  server: 188.114.97.202
+  servername: teslakit1.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c2e177d4-e610-4abd-85cd-1a869d158751
+  ws-opts:
+    headers:
+      Host: teslakit1.pages.dev
+    path: /Tel-
+- client-fingerprint: chrome
+  name: '[192ms] 美国 210'
+  network: ws
+  port: 443
+  server: 104.19.245.206
+  servername: kawaiifreevpn-7ds.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c
+  ws-opts:
+    headers:
+      Host: kawaiifreevpn-7ds.pages.dev
+    path: /?ed=2560
+- name: '[192ms] 美国 169'
+  network: grpc
+  port: 2087
+  server: 173.245.49.20
+  servername: smart.titimoji-f6.fun
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6babb657-1524-43bb-b421-11bda27bc9de
+- name: '[192ms] 美国 154'
+  network: ws
+  port: 80
+  server: 104.16.132.207
+  servername: gozargah2.validbv7996.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5b75d93d-1e40-43a4-af3d-d6cb11fbafe8
+  ws-opts:
+    headers:
+      Host: gozargah2.validbv7996.ir
+    path: /telegram
+- client-fingerprint: chrome
+  name: '[192ms] 美国 323'
+  network: ws
+  port: 2096
+  server: 170.114.46.175
+  servername: 6Dd1Xt31Qm.SoLeNtRaA.iNfO
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: 6Dd1Xt31Qm.SoLeNtRaA.iNfO
+    path: /
+- name: '[192ms] 美国 166'
+  network: grpc
+  port: 2087
+  server: 104.25.177.129
+  servername: smart.titimoji-f6.fun
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6babb657-1524-43bb-b421-11bda27bc9de
+- client-fingerprint: chrome
+  name: '[193ms] 美国 151'
+  network: ws
+  port: 8443
+  server: 104.21.3.219
+  servername: ovhwuxian.pai50288.uk
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 57ba2ab1-a283-42eb-82ee-dc3561a805b8
+  ws-opts:
+    headers:
+      Host: ovhwuxian.pai50288.uk
+    path: /57ba2ab1
+- alterId: 0
+  cipher: auto
+  name: '[193ms] 美国 369'
+  network: ws
+  port: 2086
+  server: japan.com
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- client-fingerprint: chrome
+  name: '[193ms] 荷兰 010'
+  network: ws
+  port: 8443
+  server: 45.131.4.173
+  servername: QtRkJtLt27.pRiMeXaD.OrG
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+  ws-opts:
+    headers:
+      Host: QtRkJtLt27.pRiMeXaD.OrG
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[193ms] 美国 371'
+  network: ws
+  port: 2086
+  server: singapore.com
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- client-fingerprint: chrome
+  name: '[193ms] 美国 240'
+  network: xhttp
+  port: 2083
+  server: 104.21.48.1
+  servername: cho.chonon.sbs
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c4e6a6ef-d782-4a12-a38a-906a61ee5bc1
+- name: '[193ms] 美国(yudou789.top 玉豆免费节点)_16'
+  network: ws
+  port: 8880
+  server: 94.140.0.40
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime26.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- name: '[194ms] 美国(yudou789.top 玉豆免费节点)_4'
+  network: ws
+  port: 2087
+  server: 162.159.39.157
+  servername: 1.proxy2.us.ci
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4859c235-2530-4062-9a0b-ea859cbbf861
+  ws-opts:
+    headers:
+      Host: 1.proxy2.us.ci
+    path: /?ed=2560
+- name: '[194ms] 美国(yudou789.top 玉豆免费节点)'
+  password: Aimer
+  port: 2053
+  server: 167.68.4.199
+  skip-cert-verify: false
+  sni: epge.muarua.filegear-sg.me
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: epge.muarua.filegear-sg.me
+    path: /
+- client-fingerprint: chrome
+  name: '[194ms] 美国 249'
+  network: ws
+  port: 443
+  server: ns1.cloudflare.com
+  servername: cr7.medicaldream.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ccff34b1-44fd-478d-bc0e-5111cb11f5be
+  ws-opts:
+    headers:
+      Host: cr7.medicaldream.ir
+    path: /Telegram
+- name: '[194ms] 美国 144'
+  network: ws
+  port: 443
+  server: 104.21.56.44
+  servername: redw.pooriam.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: redw.pooriam.ir
+    path: /telegram
+- name: '[194ms] 美国 139'
+  network: ws
+  port: 2096
+  server: ipw.gfdv54cvghhgfhgj-njhgj64.info
+  servername: gFN04.alAnhIaHO.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 502ce704-dcec-4f92-9489-505c99ce6c89
+  ws-opts:
+    headers:
+      Host: gFN04.alAnhIaHO.com
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[194ms] 美国 378'
+  network: ws
+  port: 80
+  server: 104.16.61.8
+  skip-cert-verify: true
+  type: vmess
+  uuid: 4804f14b-c1f8-452d-a6ec-eff1490aeac9
+  ws-opts:
+    headers:
+      Host: hdfy6d3.freelines.net
+    path: /lRkGCkYS9X5GDNJYMWXN7kCm3lL
+- client-fingerprint: chrome
+  name: '[195ms] 巴西 002'
+  network: ws
+  port: 443
+  server: 188.114.96.7
+  servername: 1mcijea74uykccq2mzrx-mnghducyf0b.damav48375.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5050e255-4919-4d7f-96c8-30b13d06fdf6
+  ws-opts:
+    headers:
+      Host: 1mcijea74uykccq2mzrx-mnghducyf0b.damav48375.workers.dev
+    path: /nXWz3i2XoxHvOGI4?ed
+- alterId: 0
+  cipher: auto
+  name: '[195ms] 美国 377'
+  network: ws
+  port: 8080
+  server: 104.16.61.8
+  skip-cert-verify: true
+  type: vmess
+  uuid: f584de15-2034-4170-a723-f48c2bae5e0f
+  ws-opts:
+    headers:
+      Host: 6c47-butterfly-6c47.yexoji3749.workers.dev
+    path: /afrhms16v.bestxray.buzz/linkws
+- client-fingerprint: chrome
+  name: '[195ms] 美国 145'
+  network: ws
+  port: 80
+  server: 104.21.56.44
+  servername: redw.pooriam.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: redw.pooriam.ir
+    path: /telegram
+- client-fingerprint: chrome
+  name: '[196ms] 美国 133'
+  network: ws
+  port: 443
+  server: 104.21.36.57
+  servername: banana.fullmargintraders.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 48f477f3-906a-4bb6-be96-8201d8a62a6d
+  ws-opts:
+    headers:
+      Host: banana.fullmargintraders.com
+    path: /wsv/48f477f3-906a-4bb6-be96-8201d8a62a6d
+- client-fingerprint: chrome
+  name: '[196ms] 美国 319'
+  network: ws
+  port: 8443
+  server: 104.254.140.15
+  servername: D0dTpVg4Z3.sOlEnTrAa.InFo
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e999db7a-1b17-4da6-bc37-c9fa24af2e93
+  ws-opts:
+    headers:
+      Host: D0dTpVg4Z3.sOlEnTrAa.InFo
+    path: /
+- name: '[196ms] 哥斯达黎加 001'
+  network: httpupgrade
+  port: 2082
+  server: 190.93.247.56
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 459447f6-3440-48f5-a0fa-de9c22d8d613
+- name: '[196ms] 美国(yudou789.top 玉豆免费节点)_80'
+  network: ws
+  port: 8880
+  server: 91.206.71.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime15.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- client-fingerprint: randomized
+  name: '[196ms] 美国 143'
+  network: ws
+  port: 443
+  server: 104.21.112.1
+  servername: psycho.suex12.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: psycho.suex12.ir
+    path: /Telegram
+- name: '[197ms] 美国 090'
+  network: ws
+  port: 80
+  server: 104.21.112.1
+  servername: zoomgov.vipren.biz.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2036e2c3-18a5-4eed-9db4-f91a7f02c7d5
+  ws-opts:
+    headers:
+      Host: zoomgov.vipren.biz.id
+    path: /193.123.81.105=443
+- name: '[197ms] 美国 146'
+  network: ws
+  port: 8880
+  server: 162.159.252.20
+  servername: reedfree8mahsang2.redorg.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
+  ws-opts:
+    headers:
+      Host: reedfree8mahsang2.redorg.ir
+    path: /?ed=2560
+- name: '[197ms] 美国 215'
+  network: xhttp
+  port: 80
+  server: asdf.sernett.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: SERVERNETT-SERVERNETT1
+- client-fingerprint: random
+  name: '[198ms] 美国 229'
+  network: ws
+  port: 80
+  server: 104.16.6.169
+  servername: coco.mahmoodchitooz.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: b28eb861-1748-4200-ba72-278669edc33b
+  ws-opts:
+    headers:
+      Host: coco.mahmoodchitooz.dpdns.org
+    path: /?ed=2560
+- client-fingerprint: randomized
+  name: '[198ms] 美国 335'
+  network: ws
+  port: 443
+  server: 104.21.1.12
+  servername: photographipictureai.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: f6bd2c47-99da-4bca-bf70-7186aa9e7e06
+  ws-opts:
+    headers:
+      Host: photographipictureai.ir
+    path: /telegram
+- client-fingerprint: random
+  name: '[199ms] 美国 198'
+  network: ws
+  port: 443
+  server: 172.66.132.196
+  servername: dw.alibichareh.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 92f481b6-ad92-43e4-a683-2bb0aeaa9846
+  ws-opts:
+    headers:
+      Host: dw.alibichareh.dpdns.org
+    path: /Tel-
+- alterId: 0
+  cipher: auto
+  name: '[199ms] 美国 367'
+  network: ws
+  port: 2086
+  server: icook.tw
+  skip-cert-verify: true
+  type: vmess
+  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+  ws-opts:
+    headers:
+      Host: ip1.1789034.xyz
+    path: github.com/Alvin9999
+- alterId: 6
+  cipher: auto
+  name: '[201ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  network: ws
+  port: 443
+  server: 107.173.157.168
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 4f6aa0c3-7be1-4eaa-a64c-a23418070422
+  ws-headers:
+    Host: www.shunxin.ml
+  ws-path: /b06fde1/
+- name: '[202ms] 美国 164'
+  network: ws
+  port: 443
+  server: 104.24.219.219
+  servername: vpn.6662221.xyz
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 690e09cb-dd0a-48ee-aaf0-398fd1d127bc
+  ws-opts:
+    headers:
+      Host: vpn.6662221.xyz
+- name: '[204ms] 美国 202'
+  network: ws
+  port: 8443
+  server: ipw.gfdv54cvghhgfhgj-njhgj64.info
+  servername: IyFpLkXk10.jOoLaJoOlA.OrG
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+  ws-opts:
+    headers:
+      Host: IyFpLkXk10.jOoLaJoOlA.OrG
+    path: /
+- name: '[205ms] 美国 214'
+  network: xhttp
+  port: 80
+  server: alo09.sernett.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: SERVERNETT-SERVERNETT1
+- name: '[205ms] 美国 116'
+  network: ws
+  port: 443
+  server: marco67.sylu.net
+  servername: marco67.sylu.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 32698d90-d663-41ff-83e5-c4f74fac12cd
+  ws-opts:
+    headers:
+      Host: marco67.sylu.net
+    path: /
+- name: '[206ms] 美国 205'
+  network: xhttp
+  port: 80
+  server: 151.101.69.6
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9a620099-7df2-4935-9c01-d52a3897512a
+- name: '[215ms] 比利时 008'
+  network: ws
+  port: 2052
+  server: dl5-de4-cdn.fastfilecdn.org
+  servername: dl5-de4-cdn.fastfilecdn.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8ef1b0db-5954-447c-85e5-4f62b107ed61
+  ws-opts:
+    headers:
+      Host: dl5-de4-cdn.fastfilecdn.org
+    path: /
+- name: '[220ms] 🇮🇷_IR_伊朗'
+  network: ws
+  port: 80
+  server: 185.143.233.122
+  tls: false
+  type: vless
+  udp: true
+  uuid: 661f5954-7f13-4c5f-add8-a7c0b250aabd
+  ws-opts:
+    headers:
+      Host: gre.greentab.ir
+    path: /ws
+- client-fingerprint: randomized
+  name: '[230ms] 美国 093'
+  network: ws
+  port: 443
+  server: 167.82.231.255
+  servername: www.ip.gs
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 213b2aa9-JebheAlNosrah
+  ws-opts:
+    headers:
+      Host: www.ip.gs
+    path: /F_ckUAsh0le?ed=2048
+- name: '[232ms] 伊朗 017'
+  network: xhttp
+  port: 443
+  server: 91.98.35.142
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c99f45df-5daf-4610-81ea-b9b4ea7258f4
+- name: '[232ms] 欧洲 001'
+  network: ws
+  port: 443
+  server: 138.199.219.74
+  servername: 138.199.219.74
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9a04ee08-59f3-4de9-8424-6b32f06fbc68
+  ws-opts:
+    headers:
+      Host: 138.199.219.74
+    path: /linkws?ed
+- name: '[232ms] 美国 258'
+  network: ws
+  port: 8443
+  server: 51.91.102.36
+  servername: fei.634676.xyz
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d2965257-0536-4811-a0d5-cdce54e90326
+  ws-opts:
+    headers:
+      Host: fei.634676.xyz
+    path: /?ed=2560
+- name: '[233ms] 伊朗 016'
+  network: xhttp
+  port: 443
+  server: 91.98.35.110
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c99f45df-5daf-4610-81ea-b9b4ea7258f4
+- name: '[235ms] 美国 188'
+  network: httpupgrade
+  port: 8080
+  server: mtn.ivy-net.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8960c969-eebb-4b5a-b480-4662e51893ca
+- client-fingerprint: chrome
+  name: '[235ms] 美国 260'
+  network: ws
+  port: 2095
+  server: 104.18.20.94
+  servername: xijinpingnmsl.s4ar.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  ws-opts:
+    headers:
+      Host: xijinpingnmsl.s4ar.workers.dev
+    path: /?ed
+- name: '[236ms] 德国 017'
+  port: 443
+  server: de1.vlspeed.xyz
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a5b25508-9550-482d-bb62-a36916fff829
+- name: '[236ms] 美国(yudou789.top 玉豆免费节点)_50'
+  network: ws
+  port: 8880
+  server: 192.200.160.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime43.workers.dev
+    path: /?ed=2560&https://t.me/WangCai2🇨🇳
+- name: '[238ms] 伊朗 020'
+  network: xhttp
+  port: 443
+  server: 91.99.7.237
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c99f45df-5daf-4610-81ea-b9b4ea7258f4
+- name: '[240ms] 美国(yudou789.top 玉豆免费节点)_52'
+  network: ws
+  port: 8880
+  server: 109.176.239.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime03.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- name: '[240ms] 伊朗 019'
+  network: xhttp
+  port: 443
+  server: 91.99.217.44
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: c99f45df-5daf-4610-81ea-b9b4ea7258f4
+- name: '[242ms] 伊朗 011'
+  port: 80
+  server: 46.249.110.173
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: Free_HTTPCustom
+- name: '[245ms] 美国 213'
+  network: ws
+  port: 2052
+  server: 104.18.25.112
+  servername: channel--eliv2-ray.crocodilesrver.ir.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ELiV2-RAY---ELiV2-RAY
+  ws-opts:
+    headers:
+      Host: channel--eliv2-ray.crocodilesrver.ir.
+    path: /CHANNEL---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY---ELiV2-RAY?ed=2560
+- alterId: 0
+  cipher: auto
+  name: '[246ms] 美国 372'
+  network: ws
+  port: 80
+  server: 162.159.137.178
+  skip-cert-verify: true
+  type: vmess
+  uuid: 88a25bf3-18af-486f-b194-d87e976c230b
+  ws-opts:
+    headers:
+      Host: 165067316419432025062817003642514.s15.chibaba.filegear-sg.me
+    path: /s15.html
+- name: '[246ms] 🇺🇸_US_美国->🇮🇩_ID_印度尼西亚'
+  network: ws
+  port: 443
+  server: 208.103.161.170
+  servername: ava.game.naver.com.cyylr.eu.cc
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2dc797c8-9588-48a6-bc4a-265c23d87cd6
+  ws-opts:
+    headers:
+      Host: ava.game.naver.com.cyylr.eu.cc
+    path: /id-pusat
+- name: '[246ms] 美国 325'
+  network: ws
+  port: 8080
+  server: 63.141.128.16
+  servername: e.jOin.zEdMoDeOn.oNl.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: edccc2be-382b-4990-90e3-3d2b185c2d79
+  ws-opts:
+    headers:
+      Host: e.jOin.zEdMoDeOn.oNl.
+    path: /Join-ZEDMODEON-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+- client-fingerprint: chrome
+  name: '[247ms] 美国 082'
+  network: ws
+  port: 80
+  server: 104.18.26.90
+  servername: barayeiranmahsang.loseyourself.dpdns.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 148709e4-402b-48dd-8892-ed39b55ea45c
+  ws-opts:
+    headers:
+      Host: barayeiranmahsang.loseyourself.dpdns.org
+    path: /
+- name: '[247ms] 美国 259'
+  network: ws
+  port: 443
+  server: 51.91.251.16
+  servername: fei.634676.xyz
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d2965257-0536-4811-a0d5-cdce54e90326
+  ws-opts:
+    headers:
+      Host: fei.634676.xyz
+    path: /?ed=2560
+- name: '[249ms] 加拿大 001'
+  network: ws
+  port: 80
+  server: mtn----join.outline-vpn.cloud
+  servername: tunn.free.hr
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a93eacd2-2852-4d84-9355-fd1e6477dccc
+  ws-opts:
+    headers:
+      Host: tunn.free.hr
+    path: /?ed=2048
+- name: '[249ms] 美国 223'
+  network: ws
+  port: 8080
+  server: 63.141.128.14
+  servername: a.joIn.zEdMoDeOn.oNl.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a976e0dd-6d59-467d-ba67-fb66596ce010
+  ws-opts:
+    headers:
+      Host: a.joIn.zEdMoDeOn.oNl.
+    path: /Join-ZEDMODEON-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+- name: '[251ms] RO_dcff6_0019'
+  port: 9002
+  server: 84.239.49.164
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  port: 9002
+  server: 84.239.49.215
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[254ms] 俄罗斯 014'
+  network: xhttp
+  port: 443
+  server: 109.120.138.47
+  servername: statue.lnmarketplace.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 7c63f43f-f526-49bb-b5c8-2be26e11ef00
+- name: '[255ms] 裤佬网盘https://526900.xyz'
+  port: 9002
+  server: 84.239.49.214
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[256ms] RO_dcff6_0042'
+  port: 9002
+  server: 84.239.14.157
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- client-fingerprint: chrome
+  name: '[256ms] 伊朗 024'
+  network: ws
+  port: 80
+  server: aio.loophole.biz.id
+  servername: aio.loophole.biz.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: f282b878-8711-45a1-8c69-5564172123c1
+  ws-opts:
+    headers:
+      Host: aio.loophole.biz.id
+    path: /aioproxybot/129.150.49.58-18650
+- client-fingerprint: randomized
+  name: '[256ms] 加拿大 003'
+  network: ws
+  port: 443
+  server: cxc--join.outline-vpn.cloud
+  servername: always-online1.lp-airdrop.top
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: b75b3034-36ab-4979-beae-3d02db1b11ec
+  ws-opts:
+    headers:
+      Host: always-online1.lp-airdrop.top
+    path: Path/Telegram
+- name: '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  port: 9002
+  server: 84.239.49.238
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[256ms] 美国 328'
+  network: ws
+  port: 80
+  server: aio.zipzap.biz.id
+  servername: aio.zipzap.biz.id
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: f282b878-8711-45a1-8c69-5564172123c1
+  ws-opts:
+    headers:
+      Host: aio.zipzap.biz.id
+    path: /aioproxybot/146.190.192.43-80
+- name: '[257ms] RO_dcff6_0018'
+  port: 9002
+  server: 84.239.14.152
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[257ms] RO_dcff6_0021'
+  port: 9002
+  server: 84.239.49.201
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[257ms] 裤佬自用机场https://kelayun.notepin.co/'
+  port: 9002
+  server: 84.239.49.234
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[257ms] RO_dcff6_0020'
+  port: 9002
+  server: 84.239.49.154
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[257ms] RO_dcff6_0017'
+  port: 9002
+  server: 84.239.49.40
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[258ms] RO_dcff6_0040'
+  port: 9002
+  server: 84.239.49.239
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[258ms] RO_dcff6_0047'
+  port: 9002
+  server: 84.239.49.253
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[258ms] RO_dcff6_0036'
+  port: 9002
+  server: 84.239.49.178
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[258ms] RO_dcff6_0015'
+  port: 9002
+  server: 84.239.49.42
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[258ms] 裤佬群聊https://t.me/+j664EmVv8m0wZGVk'
+  port: 9002
+  server: 84.239.49.175
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- alterId: 1
+  cipher: auto
+  name: '[258ms] 德国 001'
+  network: ws
+  port: 8080
+  server: 130.61.253.111
+  skip-cert-verify: false
+  tfo: false
+  tls: false
+  type: vmess
+  uuid: efb748ec-c921-42a1-ac9e-1d5485d6c447
+  ws-opts:
+    headers:
+      Host: download.windowsupdate.com
+    path: /download
+- name: '[258ms] RO_dcff6_0024'
+  port: 9002
+  server: 84.239.49.171
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[259ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  port: 9002
+  server: 84.239.49.231
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[259ms] RO_dcff6_0041'
+  port: 9002
+  server: 84.239.14.158
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[259ms] 裤佬永久官网https://jsnzkpg.com'
+  port: 9002
+  server: 84.239.49.219
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[260ms] RO_dcff6_0027'
+  port: 9002
+  server: 84.239.49.242
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[260ms] RO_dcff6_0016'
+  port: 9002
+  server: 84.239.14.146
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[260ms] RO_dcff6_0043'
+  port: 9002
+  server: 84.239.49.156
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[260ms] RO_dcff6_0031'
+  port: 9002
+  server: 84.239.49.155
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[261ms] RO_dcff6_0022'
+  port: 9002
+  server: 84.239.49.215
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  port: 9002
+  server: 84.239.49.161
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[261ms] 裤佬永久地址https://jsnzkpg.com'
+  port: 9002
+  server: 84.239.49.157
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  port: 9002
+  server: 84.239.49.42
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  port: 9002
+  server: 84.239.49.219
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[261ms] RO_dcff6_0033'
+  port: 9002
+  server: 84.239.49.191
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[261ms] RO_dcff6_0025'
+  port: 9002
+  server: 84.239.49.225
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[262ms] RO_dcff6_0030'
+  port: 9002
+  server: 84.239.49.183
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[262ms] RO_dcff6_0046'
+  port: 9002
+  server: 84.239.49.223
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[262ms] RO_dcff6_0032'
+  port: 9002
+  server: 84.239.49.207
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[262ms] RO_dcff6_0026'
+  port: 9002
+  server: 84.239.49.254
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[263ms] RO_dcff6_0029'
+  port: 9002
+  server: 84.239.49.55
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  port: 9002
+  server: 84.239.49.253
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[263ms] RO_dcff6_0044'
+  port: 9002
+  server: 84.239.14.159
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] RO_dcff6_0045'
+  port: 9002
+  server: 84.239.49.245
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] RO_dcff6_0037'
+  port: 9002
+  server: 84.239.49.227
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  port: 9002
+  server: 84.239.49.155
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[264ms] 备用频道https://t.me/pyapk'
+  port: 9002
+  server: 84.239.49.224
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] RO_dcff6_0035'
+  port: 9002
+  server: 84.239.14.149
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  port: 9002
+  server: 84.239.49.202
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  port: 9002
+  server: 84.239.49.185
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] RO_dcff6_0039'
+  port: 9002
+  server: 84.239.49.249
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] RO_dcff6_0028'
+  port: 9002
+  server: 84.239.49.166
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] 裤佬永久域名https://jsnzkpg.com'
+  port: 9002
+  server: 84.239.14.154
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] TG频道https://t.me/stymei'
+  port: 9002
+  server: 84.239.49.231
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] 共享账号https://id.dhsv.eu.org'
+  port: 9002
+  server: 84.239.49.176
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[266ms] RO_dcff6_0038'
+  port: 9002
+  server: 84.239.49.37
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[267ms] RO_dcff6_0023'
+  port: 9002
+  server: 84.239.49.39
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  port: 9002
+  server: 193.176.84.35
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[267ms] RO_dcff6_0034'
+  port: 9002
+  server: 84.239.49.160
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[276ms] 美国(yudou789.top 玉豆免费节点)_2'
+  network: ws
+  port: 443
+  server: 195.209.82.149
+  servername: s28233.cdn.ngenix.net
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5a478129-3e7e-Fade-99d7-95e1da14fbdc
+  ws-opts:
+    headers:
+      Host: s28233.cdn.ngenix.net
+    path: /
+- name: '[293ms] 意大利 001'
+  network: ws
+  port: 80
+  server: 151.101.242.172
+  servername: Germany.ss.ss
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 62915088-0f71-4592-bf82-3f02d4db1239
+  ws-opts:
+    headers:
+      Host: Germany.ss.ss
+    path: WEDBAZ?ed=2048
+proxy-groups:
+- interval: 300
+  name: 🚀 自动优选
+  proxies:
+  - '[19ms] 中国 011'
+  - '[37ms] 美国 067'
+  - '[37ms] 美国 243'
+  - '[37ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[38ms] 美国 092'
+  - '[38ms] 美国 095'
+  - '[38ms] 美国 088'
+  - '[38ms] 美国 246'
+  - '[38ms] 美国 039'
+  - '[39ms] 美国 104'
+  - '[39ms] 美国(yudou789.top 玉豆免费节点)_15'
+  - '[41ms] 美国 201'
+  - '[41ms] 美国 404'
+  - '[41ms] 美国 105'
+  - '[42ms] 美国 141'
+  - '[43ms] 美国 211'
+  - '[43ms] 美国 155'
+  - '[44ms] 日本 009'
+  - '[44ms] 美国 142'
+  - '[45ms] 美国 263'
+  - '[47ms] 美国 150'
+  - '[52ms] 美国 375'
+  - '[55ms] 美国 037'
+  - '[56ms] 美国 137'
+  - '[62ms] 美国 125'
+  - '[68ms] 日本 003'
+  - '[69ms] 美国 117'
+  - '[70ms] 美国 219'
+  - '[73ms] 美国 268'
+  - '[74ms] 🇭🇰_HK_中国香港->🇹🇼_TW_中国台湾'
+  - '[75ms] 美国 102'
+  - '[76ms] 美国 138'
+  - '[77ms] 美国 158'
+  - '[77ms] 美国 111'
+  - '[80ms] 美国 226'
+  - '[81ms] 美国 101'
+  - '[83ms] 美国 096'
+  - '[85ms] 美国 181'
+  - '[86ms] 美国 134'
+  - '[87ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[99ms] 美国 376'
+  - '[106ms] 瑞典 006'
+  - '[109ms] 瑞典 005'
+  - '[179ms] 美国 264'
+  - '[179ms] 美国(yudou789.top 玉豆免费节点)_11'
+  - '[179ms] 美国 068'
+  - '[180ms] 美国 322'
+  - '[180ms] 美国 236'
+  - '[181ms] 美国 103'
+  - '[181ms] 美国 054'
+  - '[181ms] 美国 163'
+  - '[181ms] 美国 107'
+  - '[181ms] 美国 153'
+  - '[181ms] 美国 423'
+  - '[181ms] 美国 387'
+  - '[182ms] 美国 366'
+  - '[182ms] 美国 218'
+  - '[182ms] 美国 157'
+  - '[182ms] 美国 220'
+  - '[182ms] 美国 385'
+  - '[182ms] 美国(yudou789.top 玉豆免费节点)_42'
+  - '[182ms] 美国 176'
+  - '[182ms] 美国 122'
+  - '[183ms] 美国 251'
+  - '[183ms] 美国 384'
+  - '[183ms] 美国 321'
+  - '[183ms] 美国 052'
+  - '[183ms] 美国 265'
+  - '[183ms] 美国 320'
+  - '[183ms] 美国(yudou789.top 玉豆免费节点)_55'
+  - '[184ms] 荷兰 003'
+  - '[184ms] 美国 199'
+  - '[184ms] 美国 097'
+  - '[184ms] 美国 136'
+  - '[184ms] 美国 345'
+  - '[185ms] 中国 012'
+  - '[185ms] 荷兰 040'
+  - '[185ms] 美国 156'
+  - '[185ms] 美国 081'
+  - '[186ms] 德国 006'
+  - '[186ms] 美国 368'
+  - '[186ms] 美国 364'
+  - '[186ms] 美国 365'
+  - '[187ms] 美国 038'
+  - '[187ms] 美国 370'
+  - '[187ms] 美国 128'
+  - '[187ms] 美国 119'
+  - '[187ms] 美国 080'
+  - '[187ms] 荷兰 011'
+  - '[188ms] 美国 238'
+  - '[188ms] 美国 248'
+  - '[188ms] 美国(yudou789.top 玉豆免费节点)_12'
+  - '[188ms] 美国 152'
+  - '[188ms] 荷兰 009'
+  - '[189ms] 美国 374'
+  - '[189ms] 美国 135'
+  - '[189ms] 美国 087'
+  - '[189ms] 美国 098'
+  - '[189ms] 美国 230'
+  - '[189ms] 美国 091'
+  - '[190ms] 美国 170'
+  - '[190ms] 美国 234'
+  - '[190ms] 荷兰 004'
+  - '[190ms] 美国 197'
+  - '[190ms] 美国 118'
+  - '[190ms] 美国 324'
+  - '[190ms] 美国 159'
+  - '[190ms] 美国 132'
+  - '[191ms] 美国 316'
+  - '[191ms] 美国 235'
+  - '[191ms] 美国(yudou789.top 玉豆免费节点)_8'
+  - '[192ms] 巴西 004'
+  - '[192ms] 美国 210'
+  - '[192ms] 美国 169'
+  - '[192ms] 美国 154'
+  - '[192ms] 美国 323'
+  - '[192ms] 美国 166'
+  - '[193ms] 美国 151'
+  - '[193ms] 美国 369'
+  - '[193ms] 荷兰 010'
+  - '[193ms] 美国 371'
+  - '[193ms] 美国 240'
+  - '[193ms] 美国(yudou789.top 玉豆免费节点)_16'
+  - '[194ms] 美国(yudou789.top 玉豆免费节点)_4'
+  - '[194ms] 美国(yudou789.top 玉豆免费节点)'
+  - '[194ms] 美国 249'
+  - '[194ms] 美国 144'
+  - '[194ms] 美国 139'
+  - '[194ms] 美国 378'
+  - '[195ms] 巴西 002'
+  - '[195ms] 美国 377'
+  - '[195ms] 美国 145'
+  - '[196ms] 美国 133'
+  - '[196ms] 美国 319'
+  - '[196ms] 哥斯达黎加 001'
+  - '[196ms] 美国(yudou789.top 玉豆免费节点)_80'
+  - '[196ms] 美国 143'
+  - '[197ms] 美国 090'
+  - '[197ms] 美国 146'
+  - '[197ms] 美国 215'
+  - '[198ms] 美国 229'
+  - '[198ms] 美国 335'
+  - '[199ms] 美国 198'
+  - '[199ms] 美国 367'
+  - '[201ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[202ms] 美国 164'
+  - '[204ms] 美国 202'
+  - '[205ms] 美国 214'
+  - '[205ms] 美国 116'
+  - '[206ms] 美国 205'
+  - '[215ms] 比利时 008'
+  - '[220ms] 🇮🇷_IR_伊朗'
+  - '[230ms] 美国 093'
+  - '[232ms] 伊朗 017'
+  - '[232ms] 欧洲 001'
+  - '[232ms] 美国 258'
+  - '[233ms] 伊朗 016'
+  - '[235ms] 美国 188'
+  - '[235ms] 美国 260'
+  - '[236ms] 德国 017'
+  - '[236ms] 美国(yudou789.top 玉豆免费节点)_50'
+  - '[238ms] 伊朗 020'
+  - '[240ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[240ms] 伊朗 019'
+  - '[242ms] 伊朗 011'
+  - '[245ms] 美国 213'
+  - '[246ms] 美国 372'
+  - '[246ms] 🇺🇸_US_美国->🇮🇩_ID_印度尼西亚'
+  - '[246ms] 美国 325'
+  - '[247ms] 美国 082'
+  - '[247ms] 美国 259'
+  - '[249ms] 加拿大 001'
+  - '[249ms] 美国 223'
+  - '[251ms] RO_dcff6_0019'
+  - '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[254ms] 俄罗斯 014'
+  - '[255ms] 裤佬网盘https://526900.xyz'
+  - '[256ms] RO_dcff6_0042'
+  - '[256ms] 伊朗 024'
+  - '[256ms] 加拿大 003'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[256ms] 美国 328'
+  - '[257ms] RO_dcff6_0018'
+  - '[257ms] RO_dcff6_0021'
+  - '[257ms] 裤佬自用机场https://kelayun.notepin.co/'
+  - '[257ms] RO_dcff6_0020'
+  - '[257ms] RO_dcff6_0017'
+  - '[258ms] RO_dcff6_0040'
+  - '[258ms] RO_dcff6_0047'
+  - '[258ms] RO_dcff6_0036'
+  - '[258ms] RO_dcff6_0015'
+  - '[258ms] 裤佬群聊https://t.me/+j664EmVv8m0wZGVk'
+  - '[258ms] 德国 001'
+  - '[258ms] RO_dcff6_0024'
+  - '[259ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  - '[259ms] RO_dcff6_0041'
+  - '[259ms] 裤佬永久官网https://jsnzkpg.com'
+  - '[260ms] RO_dcff6_0027'
+  - '[260ms] RO_dcff6_0016'
+  - '[260ms] RO_dcff6_0043'
+  - '[260ms] RO_dcff6_0031'
+  - '[261ms] RO_dcff6_0022'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  - '[261ms] 裤佬永久地址https://jsnzkpg.com'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  - '[261ms] RO_dcff6_0033'
+  - '[261ms] RO_dcff6_0025'
+  - '[262ms] RO_dcff6_0030'
+  - '[262ms] RO_dcff6_0046'
+  - '[262ms] RO_dcff6_0032'
+  - '[262ms] RO_dcff6_0026'
+  - '[263ms] RO_dcff6_0029'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  - '[263ms] RO_dcff6_0044'
+  - '[264ms] RO_dcff6_0045'
+  - '[264ms] RO_dcff6_0037'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[264ms] 备用频道https://t.me/pyapk'
+  - '[264ms] RO_dcff6_0035'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  - '[265ms] RO_dcff6_0039'
+  - '[265ms] RO_dcff6_0028'
+  - '[265ms] 裤佬永久域名https://jsnzkpg.com'
+  - '[265ms] TG频道https://t.me/stymei'
+  - '[265ms] 共享账号https://id.dhsv.eu.org'
+  - '[266ms] RO_dcff6_0038'
+  - '[267ms] RO_dcff6_0023'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[267ms] RO_dcff6_0034'
+  - '[276ms] 美国(yudou789.top 玉豆免费节点)_2'
+  - '[293ms] 意大利 001'
+  tolerance: 50
+  type: url-test
+  url: http://www.baidu.com
+- name: 🌍 手动切换
+  proxies:
+  - 🚀 自动优选
+  - '[19ms] 中国 011'
+  - '[37ms] 美国 067'
+  - '[37ms] 美国 243'
+  - '[37ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[38ms] 美国 092'
+  - '[38ms] 美国 095'
+  - '[38ms] 美国 088'
+  - '[38ms] 美国 246'
+  - '[38ms] 美国 039'
+  - '[39ms] 美国 104'
+  - '[39ms] 美国(yudou789.top 玉豆免费节点)_15'
+  - '[41ms] 美国 201'
+  - '[41ms] 美国 404'
+  - '[41ms] 美国 105'
+  - '[42ms] 美国 141'
+  - '[43ms] 美国 211'
+  - '[43ms] 美国 155'
+  - '[44ms] 日本 009'
+  - '[44ms] 美国 142'
+  - '[45ms] 美国 263'
+  - '[47ms] 美国 150'
+  - '[52ms] 美国 375'
+  - '[55ms] 美国 037'
+  - '[56ms] 美国 137'
+  - '[62ms] 美国 125'
+  - '[68ms] 日本 003'
+  - '[69ms] 美国 117'
+  - '[70ms] 美国 219'
+  - '[73ms] 美国 268'
+  - '[74ms] 🇭🇰_HK_中国香港->🇹🇼_TW_中国台湾'
+  - '[75ms] 美国 102'
+  - '[76ms] 美国 138'
+  - '[77ms] 美国 158'
+  - '[77ms] 美国 111'
+  - '[80ms] 美国 226'
+  - '[81ms] 美国 101'
+  - '[83ms] 美国 096'
+  - '[85ms] 美国 181'
+  - '[86ms] 美国 134'
+  - '[87ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[99ms] 美国 376'
+  - '[106ms] 瑞典 006'
+  - '[109ms] 瑞典 005'
+  - '[179ms] 美国 264'
+  - '[179ms] 美国(yudou789.top 玉豆免费节点)_11'
+  - '[179ms] 美国 068'
+  - '[180ms] 美国 322'
+  - '[180ms] 美国 236'
+  - '[181ms] 美国 103'
+  - '[181ms] 美国 054'
+  - '[181ms] 美国 163'
+  - '[181ms] 美国 107'
+  - '[181ms] 美国 153'
+  - '[181ms] 美国 423'
+  - '[181ms] 美国 387'
+  - '[182ms] 美国 366'
+  - '[182ms] 美国 218'
+  - '[182ms] 美国 157'
+  - '[182ms] 美国 220'
+  - '[182ms] 美国 385'
+  - '[182ms] 美国(yudou789.top 玉豆免费节点)_42'
+  - '[182ms] 美国 176'
+  - '[182ms] 美国 122'
+  - '[183ms] 美国 251'
+  - '[183ms] 美国 384'
+  - '[183ms] 美国 321'
+  - '[183ms] 美国 052'
+  - '[183ms] 美国 265'
+  - '[183ms] 美国 320'
+  - '[183ms] 美国(yudou789.top 玉豆免费节点)_55'
+  - '[184ms] 荷兰 003'
+  - '[184ms] 美国 199'
+  - '[184ms] 美国 097'
+  - '[184ms] 美国 136'
+  - '[184ms] 美国 345'
+  - '[185ms] 中国 012'
+  - '[185ms] 荷兰 040'
+  - '[185ms] 美国 156'
+  - '[185ms] 美国 081'
+  - '[186ms] 德国 006'
+  - '[186ms] 美国 368'
+  - '[186ms] 美国 364'
+  - '[186ms] 美国 365'
+  - '[187ms] 美国 038'
+  - '[187ms] 美国 370'
+  - '[187ms] 美国 128'
+  - '[187ms] 美国 119'
+  - '[187ms] 美国 080'
+  - '[187ms] 荷兰 011'
+  - '[188ms] 美国 238'
+  - '[188ms] 美国 248'
+  - '[188ms] 美国(yudou789.top 玉豆免费节点)_12'
+  - '[188ms] 美国 152'
+  - '[188ms] 荷兰 009'
+  - '[189ms] 美国 374'
+  - '[189ms] 美国 135'
+  - '[189ms] 美国 087'
+  - '[189ms] 美国 098'
+  - '[189ms] 美国 230'
+  - '[189ms] 美国 091'
+  - '[190ms] 美国 170'
+  - '[190ms] 美国 234'
+  - '[190ms] 荷兰 004'
+  - '[190ms] 美国 197'
+  - '[190ms] 美国 118'
+  - '[190ms] 美国 324'
+  - '[190ms] 美国 159'
+  - '[190ms] 美国 132'
+  - '[191ms] 美国 316'
+  - '[191ms] 美国 235'
+  - '[191ms] 美国(yudou789.top 玉豆免费节点)_8'
+  - '[192ms] 巴西 004'
+  - '[192ms] 美国 210'
+  - '[192ms] 美国 169'
+  - '[192ms] 美国 154'
+  - '[192ms] 美国 323'
+  - '[192ms] 美国 166'
+  - '[193ms] 美国 151'
+  - '[193ms] 美国 369'
+  - '[193ms] 荷兰 010'
+  - '[193ms] 美国 371'
+  - '[193ms] 美国 240'
+  - '[193ms] 美国(yudou789.top 玉豆免费节点)_16'
+  - '[194ms] 美国(yudou789.top 玉豆免费节点)_4'
+  - '[194ms] 美国(yudou789.top 玉豆免费节点)'
+  - '[194ms] 美国 249'
+  - '[194ms] 美国 144'
+  - '[194ms] 美国 139'
+  - '[194ms] 美国 378'
+  - '[195ms] 巴西 002'
+  - '[195ms] 美国 377'
+  - '[195ms] 美国 145'
+  - '[196ms] 美国 133'
+  - '[196ms] 美国 319'
+  - '[196ms] 哥斯达黎加 001'
+  - '[196ms] 美国(yudou789.top 玉豆免费节点)_80'
+  - '[196ms] 美国 143'
+  - '[197ms] 美国 090'
+  - '[197ms] 美国 146'
+  - '[197ms] 美国 215'
+  - '[198ms] 美国 229'
+  - '[198ms] 美国 335'
+  - '[199ms] 美国 198'
+  - '[199ms] 美国 367'
+  - '[201ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[202ms] 美国 164'
+  - '[204ms] 美国 202'
+  - '[205ms] 美国 214'
+  - '[205ms] 美国 116'
+  - '[206ms] 美国 205'
+  - '[215ms] 比利时 008'
+  - '[220ms] 🇮🇷_IR_伊朗'
+  - '[230ms] 美国 093'
+  - '[232ms] 伊朗 017'
+  - '[232ms] 欧洲 001'
+  - '[232ms] 美国 258'
+  - '[233ms] 伊朗 016'
+  - '[235ms] 美国 188'
+  - '[235ms] 美国 260'
+  - '[236ms] 德国 017'
+  - '[236ms] 美国(yudou789.top 玉豆免费节点)_50'
+  - '[238ms] 伊朗 020'
+  - '[240ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[240ms] 伊朗 019'
+  - '[242ms] 伊朗 011'
+  - '[245ms] 美国 213'
+  - '[246ms] 美国 372'
+  - '[246ms] 🇺🇸_US_美国->🇮🇩_ID_印度尼西亚'
+  - '[246ms] 美国 325'
+  - '[247ms] 美国 082'
+  - '[247ms] 美国 259'
+  - '[249ms] 加拿大 001'
+  - '[249ms] 美国 223'
+  - '[251ms] RO_dcff6_0019'
+  - '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[254ms] 俄罗斯 014'
+  - '[255ms] 裤佬网盘https://526900.xyz'
+  - '[256ms] RO_dcff6_0042'
+  - '[256ms] 伊朗 024'
+  - '[256ms] 加拿大 003'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[256ms] 美国 328'
+  - '[257ms] RO_dcff6_0018'
+  - '[257ms] RO_dcff6_0021'
+  - '[257ms] 裤佬自用机场https://kelayun.notepin.co/'
+  - '[257ms] RO_dcff6_0020'
+  - '[257ms] RO_dcff6_0017'
+  - '[258ms] RO_dcff6_0040'
+  - '[258ms] RO_dcff6_0047'
+  - '[258ms] RO_dcff6_0036'
+  - '[258ms] RO_dcff6_0015'
+  - '[258ms] 裤佬群聊https://t.me/+j664EmVv8m0wZGVk'
+  - '[258ms] 德国 001'
+  - '[258ms] RO_dcff6_0024'
+  - '[259ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  - '[259ms] RO_dcff6_0041'
+  - '[259ms] 裤佬永久官网https://jsnzkpg.com'
+  - '[260ms] RO_dcff6_0027'
+  - '[260ms] RO_dcff6_0016'
+  - '[260ms] RO_dcff6_0043'
+  - '[260ms] RO_dcff6_0031'
+  - '[261ms] RO_dcff6_0022'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  - '[261ms] 裤佬永久地址https://jsnzkpg.com'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  - '[261ms] RO_dcff6_0033'
+  - '[261ms] RO_dcff6_0025'
+  - '[262ms] RO_dcff6_0030'
+  - '[262ms] RO_dcff6_0046'
+  - '[262ms] RO_dcff6_0032'
+  - '[262ms] RO_dcff6_0026'
+  - '[263ms] RO_dcff6_0029'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  - '[263ms] RO_dcff6_0044'
+  - '[264ms] RO_dcff6_0045'
+  - '[264ms] RO_dcff6_0037'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[264ms] 备用频道https://t.me/pyapk'
+  - '[264ms] RO_dcff6_0035'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  - '[265ms] RO_dcff6_0039'
+  - '[265ms] RO_dcff6_0028'
+  - '[265ms] 裤佬永久域名https://jsnzkpg.com'
+  - '[265ms] TG频道https://t.me/stymei'
+  - '[265ms] 共享账号https://id.dhsv.eu.org'
+  - '[266ms] RO_dcff6_0038'
+  - '[267ms] RO_dcff6_0023'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[267ms] RO_dcff6_0034'
+  - '[276ms] 美国(yudou789.top 玉豆免费节点)_2'
+  - '[293ms] 意大利 001'
+  type: select
+rules:
+- MATCH,🌍 手动切换
