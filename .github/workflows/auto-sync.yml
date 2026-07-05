@@ -39,7 +39,6 @@ jobs:
       # 4. 运行脚本
       - name: Run Python Script
         run: |
-          python scripts/db.py  
           python scripts/update.py
         env:
           PYTHONUNBUFFERED: 1
