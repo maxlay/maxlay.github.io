@@ -1,4 +1,4 @@
-name: Auto Sync Twitter Data
+name: Auto Running
 
 on:
   schedule:
