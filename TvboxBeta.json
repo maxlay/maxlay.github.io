@@ -1,12 +1,6 @@
 {
   "lives": [
     {
-      "name": "推荐线路：裤佬TV直播",
-      "type": 0,
-      "playerType": 2,
-      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"
-    },
-    {
       "name": "推荐线路：Kimentanm",
       "type": 0,
       "playerType": 2,
@@ -19,13 +13,6 @@
       "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
       "logo": "https://epg.v1.mk/logo/{name}.png",
       "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
-    },
-    {
-      "name": "我的线路：HuangSir",
-      "type": 0,
-      "playerType": 2,
-      "epg": "http://epg.51zmt.top:8000/e.xml.gz",
-      "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TV/huangsir_all_unique.m3u"
     },
     {
       "name": "应急线路：m3u",
