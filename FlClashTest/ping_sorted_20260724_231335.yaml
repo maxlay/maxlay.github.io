@@ -1,0 +1,1160 @@
+allow-lan: true
+external-controller: 0.0.0.0:9090
+log-level: info
+mixed-port: 7890
+mode: rule
+proxies:
+- alterId: 2
+  cipher: auto
+  client-fingerprint: chrome
+  name: '[52ms] 🇺🇸 机场推荐:dafei.de 美国 21'
+  network: tcp
+  port: 30845
+  server: v45.hdacd.com
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  xudp: true
+- alpn:
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: '[89ms] 🇺🇸 机场推荐:dafei.de 美国 25'
+  network: ws
+  port: 443
+  server: 104.19.149.174
+  servername: l-j--vMiTiVPN---MiTiVPN-o.MAQROR.ir
+  tls: true
+  type: vless
+  udp: true
+  uuid: c19735a7-ff97-a112-3f07-60e500f7719b
+  ws-opts:
+    headers:
+      Host: l-j-v-MiTiVPN---MiTiVPN-o.MAQROR.ir
+      User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36
+        (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.116 Mobile Safari/537.36
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=ams
+  xudp: true
+- client-fingerprint: chrome
+  name: '[100ms] 🇺🇸 机场推荐:dafei.de 美国 20'
+  network: ws
+  port: 443
+  server: 104.17.108.103
+  servername: l-j-o-MiTiVPN---MiTiVPN-o.MAQROR.ir
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: vless
+  udp: true
+  uuid: c19735a7-ff97-a112-3f07-60e500f7719b
+  ws-opts:
+    headers:
+      Host: l-j--bMiTiVPN---MiTiVPN-o.MAQROR.ir
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=sweden
+- alterId: 64
+  cipher: auto
+  name: '[100ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  network: ws
+  port: 443
+  server: 104.19.45.117
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 3b5e258e-8c5e-45d3-b7d2-02c8f5fc0bb2
+  ws-headers:
+    Host: cdnde.irteyz.today
+  ws-path: /
+- name: '[151ms] 🇨🇳 机场推荐:dafei.de 台湾 01'
+  password: exaxgqkKkd0TAMrCxeonWg==
+  port: 1443
+  server: twmoon1-cdn-route.couldflare-cdn.com
+  sni: twmoon1-cdn-route.couldflare-cdn.com
+  tls: true
+  type: http
+  udp: true
+  username: mrwdfNTD8M79LCukCieldrqZWqs=
+- name: '[194ms] 🇮🇳 机场推荐:dafei.de 印度 01'
+  password: ''
+  port: 1088
+  server: 144.24.111.128
+  skip-cert-verify: true
+  type: socks5
+  username: ''
+- alterId: 64
+  cipher: auto
+  name: '[210ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  network: ws
+  port: 443
+  server: 104.19.6.62
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 427ab4f5-7369-48c7-9b85-83bc380b0119
+  ws-headers:
+    Host: v2ray-eu.gd1214a.workers.dev
+  ws-path: /ray
+- alpn:
+  - http/1.1
+  client-fingerprint: chrome
+  name: '[215ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  network: ws
+  port: 443
+  server: 69.46.46.87
+  servername: x4g-production-ee29.up.railway.app
+  tls: true
+  type: vless
+  udp: true
+  uuid: f411d02a-fff5-86a4-9f02-cfd75fa76d41
+  ws-opts:
+    headers:
+      Host: x4g-production-ee29.up.railway.app
+    path: /ws/f411d02a-fff5-86a4-9f02-cfd75fa76d41
+- alterId: 6
+  cipher: auto
+  name: '[217ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  network: ws
+  port: 443
+  server: 107.173.157.168
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 4f6aa0c3-7be1-4eaa-a64c-a23418070422
+  ws-headers:
+    Host: www.shunxin.ml
+  ws-path: /b06fde1/
+- name: '[218ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  port: 9002
+  server: 138.199.35.210
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[219ms] 🇺🇸 机场推荐:dafei.de 美国 11'
+  port: 9002
+  server: 138.199.35.202
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- alpn:
+  - http/1.1
+  client-fingerprint: chrome
+  name: '[221ms] 🇺🇸 机场推荐:dafei.de 美国 19'
+  network: ws
+  password: MITIVPN
+  port: 443
+  server: 104.16.72.50
+  skip-cert-verify: true
+  sni: win-mitivpn-----mitivpn.Maqror.ir
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/45.0.2454.85 Safari/537.36
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=winde
+- name: '[221ms] 🇺🇸 机场推荐:dafei.de 美国 15'
+  port: 9002
+  server: 138.199.35.206
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[224ms] 🇺🇸 机场推荐:dafei.de 美国 14'
+  port: 9002
+  server: 138.199.35.211
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[226ms] 🇨🇦 机场推荐:dafei.de 加拿大 02'
+  network: ws
+  port: 8443
+  server: ad-013.orbitqgr7v.info
+  servername: ad-013.orbitqgr7v.info
+  tls: true
+  type: vless
+  udp: true
+  uuid: 304a1e62-eb26-4b44-994e-b96a70fff9b4
+  ws-opts:
+    headers:
+      Host: ad-013.orbitqgr7v.info
+    path: /
+- name: '[227ms] 🇺🇸 机场推荐:dafei.de 美国 13'
+  port: 9002
+  server: 138.199.35.203
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[227ms] 🇺🇸 机场推荐:dafei.de 美国 01'
+  password: ''
+  port: 9002
+  server: 138.199.35.209
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: ''
+- name: '[227ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  port: 9002
+  server: 138.199.35.213
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[227ms] 🇺🇸 机场推荐:dafei.de 美国 10'
+  port: 9002
+  server: 138.199.35.200
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[228ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  port: 9002
+  server: 138.199.35.204
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[230ms] 🇺🇸 机场推荐:dafei.de 美国 16'
+  port: 9002
+  server: 138.199.35.201
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  port: 9002
+  server: 138.199.35.198
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- alpn:
+  - h2
+  client-fingerprint: chrome
+  name: '[231ms] 🇺🇸 机场推荐:dafei.de 美国 27'
+  network: ws
+  port: 443
+  server: marzban-node-production-43c6.up.railway.app
+  servername: marzban-node-production-43c6.up.railway.app
+  tls: true
+  type: vless
+  udp: true
+  uuid: 415b3724-2fdd-4962-b4f1-d45cd06d9989
+  ws-opts:
+    headers:
+      Host: marzban-node-production-43c6.up.railway.app
+      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.17
+        (KHTML, like Gecko) Chrome/10.0.649.0 Safari/534.17
+    path: /vless
+  xudp: true
+- client-fingerprint: chrome
+  name: '[231ms] 🇺🇸 机场推荐:dafei.de 美国 18'
+  network: ws
+  password: c206d543-023d-46cc-9d5a-1f0f2fc16323
+  port: 443
+  server: 188.164.248.122
+  skip-cert-verify: false
+  sni: space.byu.id.yxls.eu.cc
+  type: trojan
+  ws-opts:
+    headers:
+      Host: space.byu.id.yxls.eu.cc
+    path: /in-pdr
+- name: '[232ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  port: 9002
+  server: 138.199.35.199
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[233ms] 🇩🇪 机场推荐:dafei.de 德国 09'
+  network: ws
+  port: 443
+  server: 80.71.232.52
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- alpn:
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: '[234ms] 🇺🇸 机场推荐:dafei.de 美国 26'
+  network: ws
+  port: 443
+  server: timazadi-production-9b32.up.railway.app
+  servername: timazadi-production-9b32.up.railway.app
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3d533755-f2ac-6bbe-bf88-fbce6841aa15
+  ws-opts:
+    headers:
+      Host: timazadi-production-9b32.up.railway.app
+      User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; ANE-LX3 Build/HUAWEIANE-LX3)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36
+    path: /ws/3d533755-f2ac-6bbe-bf88-fbce6841aa15
+  xudp: true
+- name: '[234ms] 🇺🇸 机场推荐:dafei.de 美国 03'
+  password: ''
+  port: 9002
+  server: 138.199.35.219
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: ''
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: '[234ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: lWJaKBaMPs0NYHGCbfsrmn64R4juEQEvfmHNnL741Ek
+    short-id: 27d53dfed8185f24
+  server: 89.125.48.179
+  servername: www.mozilla.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: 40a9bfd0-c0e4-4736-a8c3-1ae41ef0fdb3
+- name: '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 37'
+  port: 9002
+  server: 84.239.14.152
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- multiplexing: MULTIPLEXING_LOW
+  name: '[236ms] 🇺🇸 机场推荐:dafei.de 美国 02'
+  password: dongtaiwang.com
+  port: 34567
+  server: 157.254.223.44
+  transport: TCP
+  type: mieru
+  username: dongtaiwang.com
+- name: '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 48'
+  port: 9002
+  server: 84.239.49.49
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[238ms] 🇩🇪 机场推荐:dafei.de 德国 12'
+  network: ws
+  port: 443
+  server: 64.188.68.11
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  port: 9002
+  server: 84.239.49.38
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 60'
+  port: 9002
+  server: 84.239.49.159
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[241ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  port: 9002
+  server: 84.239.49.157
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- alterId: 1
+  cipher: auto
+  name: '[245ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  network: ws
+  port: 443
+  server: 104.21.67.220
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: e1aa83ff-b8b5-41b8-a854-fdcd3faa8875
+  ws-headers:
+    Host: us-03.yinriver.top
+  ws-path: /
+- name: '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 57'
+  port: 9002
+  server: 84.239.14.159
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
+  port: 9002
+  server: 84.239.49.53
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[246ms] 🇩🇪 机场推荐:dafei.de 德国 11'
+  network: ws
+  port: 443
+  server: 91.107.171.251
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[247ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 53'
+  port: 9002
+  server: 84.239.49.219
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[248ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 12'
+  port: 9002
+  server: 84.239.49.209
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 26'
+  port: 9002
+  server: 84.239.49.220
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 55'
+  port: 9002
+  server: 84.239.49.192
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 49'
+  port: 9002
+  server: 84.239.49.154
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 14'
+  port: 9002
+  server: 84.239.49.214
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 35'
+  port: 9002
+  server: 84.239.14.160
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  port: 9002
+  server: 84.239.49.57
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  port: 9002
+  server: 84.239.14.149
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  port: 9002
+  server: 84.239.49.163
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 42'
+  port: 9002
+  server: 84.239.49.55
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 27'
+  port: 9002
+  server: 84.239.49.58
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 17'
+  port: 9002
+  server: 193.176.84.25
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 34'
+  port: 9002
+  server: 84.239.49.227
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[254ms] 🇩🇪 机场推荐:dafei.de 德国 14'
+  network: ws
+  port: 443
+  server: 185.37.8.234
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[255ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 41'
+  port: 9002
+  server: 84.239.49.212
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 25'
+  password: ''
+  port: 9002
+  server: 84.239.49.173
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: ''
+- name: '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 20'
+  port: 9002
+  server: 84.239.49.189
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 44'
+  port: 9002
+  server: 84.239.49.204
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 21'
+  port: 9002
+  server: 84.239.49.183
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
+  port: 9002
+  server: 84.239.49.253
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 43'
+  port: 9002
+  server: 84.239.49.37
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 46'
+  port: 9002
+  server: 193.176.84.21
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[259ms] 🇩🇪 机场推荐:dafei.de 德国 10'
+  network: ws
+  port: 443
+  server: 152.228.216.146
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 03'
+  port: 9002
+  server: 84.239.14.146
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 31'
+  port: 9002
+  server: 84.239.49.234
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 33'
+  port: 9002
+  server: 84.239.49.41
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  port: 9002
+  server: 84.239.49.51
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 40'
+  port: 9002
+  server: 84.239.49.178
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  port: 9002
+  server: 84.239.49.182
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[262ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  port: 9002
+  server: 138.199.35.197
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 30'
+  port: 9002
+  server: 84.239.49.170
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 32'
+  port: 9002
+  server: 84.239.49.211
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[263ms] 🇳🇱 机场推荐:dafei.de 荷兰 01'
+  port: 9002
+  server: 84.17.47.150
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 56'
+  port: 9002
+  server: 84.239.14.156
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  port: 9002
+  server: 84.239.49.196
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 28'
+  port: 9002
+  server: 84.239.49.247
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 36'
+  port: 9002
+  server: 84.239.49.185
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 29'
+  port: 9002
+  server: 84.239.49.156
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 15'
+  port: 9002
+  server: 84.239.49.207
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 50'
+  port: 9002
+  server: 193.176.84.24
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 04'
+  port: 9002
+  server: 84.239.49.200
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[266ms] 🇩🇪 机场推荐:dafei.de 德国 06'
+  network: ws
+  port: 443
+  server: 45.89.63.101
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 16'
+  port: 9002
+  server: 84.239.49.225
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 59'
+  port: 9002
+  server: 84.239.49.201
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- cipher: aes-256-cfb
+  name: '[267ms] 🇺🇸 机场推荐:dafei.de 美国 24'
+  password: amazonskr05
+  port: 443
+  server: 34.207.112.128
+  type: ss
+- name: '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 45'
+  port: 9002
+  server: 193.176.84.17
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  port: 9002
+  server: 84.239.49.186
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 51'
+  port: 9002
+  server: 84.239.49.208
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  port: 9002
+  server: 84.239.49.160
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[271ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 39'
+  port: 9002
+  server: 84.239.49.249
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 54'
+  port: 9002
+  server: 84.239.49.48
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[273ms] 🇩🇪 机场推荐:dafei.de 德国 08'
+  network: ws
+  port: 443
+  server: 140.238.208.210
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- client-fingerprint: chrome
+  name: '[276ms] 🇩🇪 机场推荐:dafei.de 德国 07'
+  network: ws
+  port: 443
+  server: 51.77.58.226
+  servername: cloudflare.vhub.pro
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0b0e9802-3a94-4cb0-83e3-293b94a1ee2e
+  ws-opts:
+    headers:
+      Host: cloudflare.vhub.pro
+    path: /websocket
+- name: '[277ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 58'
+  port: 9002
+  server: 84.239.49.187
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[279ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 38'
+  port: 9002
+  server: 193.176.84.32
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  port: 9002
+  server: 193.176.84.39
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[285ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  port: 9002
+  server: 84.239.49.42
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- client-fingerprint: chrome
+  encryption: none
+  name: '[285ms] 🇩🇪 机场推荐:dafei.de 德国 16'
+  network: ws
+  port: 8443
+  server: ad-005.novayjr9g.info
+  servername: ad-005.novayjr9g.info
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2e1eb27b-9b56-40e9-a2f8-b959bc71736e
+  ws-opts:
+    headers:
+      Host: ad-005.novayjr9g.info
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/46.0.2490.86 Safari/537.36
+    path: /
+  xudp: true
+- name: '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 47'
+  port: 9002
+  server: 193.176.84.40
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: '[288ms] 🇱🇻 机场推荐:dafei.de 拉脱维亚 01'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: ACeYESUJvHiKiAGjO3JqBFne0LF5jYwqo4M8Gng9MlU
+    short-id: 8fe2cfd693d773fb
+  server: vs-lv1.vibesignal.space
+  servername: ajax.googleapis.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: d2aeb078-90db-4f90-b334-623bcbea8d31
+  xudp: true
+- name: '[289ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  port: 9002
+  server: 156.146.59.7
+  sin: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+- name: '[293ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 22'
+  password: ''
+  port: 9002
+  server: 84.239.49.242
+  skip-cert-verify: true
+  sub_tag: noCache
+  tls: true
+  type: http
+  username: ''
+proxy-groups:
+- interval: 300
+  name: 🚀 自动优选
+  proxies:
+  - '[52ms] 🇺🇸 机场推荐:dafei.de 美国 21'
+  - '[89ms] 🇺🇸 机场推荐:dafei.de 美国 25'
+  - '[100ms] 🇺🇸 机场推荐:dafei.de 美国 20'
+  - '[100ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[151ms] 🇨🇳 机场推荐:dafei.de 台湾 01'
+  - '[194ms] 🇮🇳 机场推荐:dafei.de 印度 01'
+  - '[210ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[215ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  - '[217ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[218ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  - '[219ms] 🇺🇸 机场推荐:dafei.de 美国 11'
+  - '[221ms] 🇺🇸 机场推荐:dafei.de 美国 19'
+  - '[221ms] 🇺🇸 机场推荐:dafei.de 美国 15'
+  - '[224ms] 🇺🇸 机场推荐:dafei.de 美国 14'
+  - '[226ms] 🇨🇦 机场推荐:dafei.de 加拿大 02'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 13'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 01'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 10'
+  - '[228ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 16'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  - '[231ms] 🇺🇸 机场推荐:dafei.de 美国 27'
+  - '[231ms] 🇺🇸 机场推荐:dafei.de 美国 18'
+  - '[232ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  - '[233ms] 🇩🇪 机场推荐:dafei.de 德国 09'
+  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 26'
+  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 03'
+  - '[234ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  - '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 37'
+  - '[236ms] 🇺🇸 机场推荐:dafei.de 美国 02'
+  - '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 48'
+  - '[238ms] 🇩🇪 机场推荐:dafei.de 德国 12'
+  - '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  - '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 60'
+  - '[241ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[245ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  - '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 57'
+  - '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
+  - '[246ms] 🇩🇪 机场推荐:dafei.de 德国 11'
+  - '[247ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 53'
+  - '[248ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 12'
+  - '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 26'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 55'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 49'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 14'
+  - '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 35'
+  - '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 42'
+  - '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 27'
+  - '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 17'
+  - '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 34'
+  - '[254ms] 🇩🇪 机场推荐:dafei.de 德国 14'
+  - '[255ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 41'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 25'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 20'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 44'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 21'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 43'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 46'
+  - '[259ms] 🇩🇪 机场推荐:dafei.de 德国 10'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 03'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 31'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 33'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 40'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  - '[262ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  - '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 30'
+  - '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 32'
+  - '[263ms] 🇳🇱 机场推荐:dafei.de 荷兰 01'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 56'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 28'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 36'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 29'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 15'
+  - '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 50'
+  - '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 04'
+  - '[266ms] 🇩🇪 机场推荐:dafei.de 德国 06'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 16'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 59'
+  - '[267ms] 🇺🇸 机场推荐:dafei.de 美国 24'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 45'
+  - '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  - '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 51'
+  - '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[271ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 39'
+  - '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 54'
+  - '[273ms] 🇩🇪 机场推荐:dafei.de 德国 08'
+  - '[276ms] 🇩🇪 机场推荐:dafei.de 德国 07'
+  - '[277ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 58'
+  - '[279ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 38'
+  - '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[285ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  - '[285ms] 🇩🇪 机场推荐:dafei.de 德国 16'
+  - '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 47'
+  - '[288ms] 🇱🇻 机场推荐:dafei.de 拉脱维亚 01'
+  - '[289ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  - '[293ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 22'
+  tolerance: 50
+  type: url-test
+  url: http://www.baidu.com
+- name: 🌍 手动切换
+  proxies:
+  - 🚀 自动优选
+  - '[52ms] 🇺🇸 机场推荐:dafei.de 美国 21'
+  - '[89ms] 🇺🇸 机场推荐:dafei.de 美国 25'
+  - '[100ms] 🇺🇸 机场推荐:dafei.de 美国 20'
+  - '[100ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 17'
+  - '[151ms] 🇨🇳 机场推荐:dafei.de 台湾 01'
+  - '[194ms] 🇮🇳 机场推荐:dafei.de 印度 01'
+  - '[210ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[215ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  - '[217ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[218ms] 🇺🇸 机场推荐:dafei.de 美国 04'
+  - '[219ms] 🇺🇸 机场推荐:dafei.de 美国 11'
+  - '[221ms] 🇺🇸 机场推荐:dafei.de 美国 19'
+  - '[221ms] 🇺🇸 机场推荐:dafei.de 美国 15'
+  - '[224ms] 🇺🇸 机场推荐:dafei.de 美国 14'
+  - '[226ms] 🇨🇦 机场推荐:dafei.de 加拿大 02'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 13'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 01'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 07'
+  - '[227ms] 🇺🇸 机场推荐:dafei.de 美国 10'
+  - '[228ms] 🇺🇸 机场推荐:dafei.de 美国 08'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 16'
+  - '[230ms] 🇺🇸 机场推荐:dafei.de 美国 05'
+  - '[231ms] 🇺🇸 机场推荐:dafei.de 美国 27'
+  - '[231ms] 🇺🇸 机场推荐:dafei.de 美国 18'
+  - '[232ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  - '[233ms] 🇩🇪 机场推荐:dafei.de 德国 09'
+  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 26'
+  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 03'
+  - '[234ms] 🇳🇱 机场推荐:dafei.de 荷兰 02'
+  - '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 37'
+  - '[236ms] 🇺🇸 机场推荐:dafei.de 美国 02'
+  - '[236ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 48'
+  - '[238ms] 🇩🇪 机场推荐:dafei.de 德国 12'
+  - '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 13'
+  - '[239ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 60'
+  - '[241ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[245ms] 欧洲(自由之梦免费节点-严禁倒卖) 7'
+  - '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 57'
+  - '[246ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
+  - '[246ms] 🇩🇪 机场推荐:dafei.de 德国 11'
+  - '[247ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 53'
+  - '[248ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 12'
+  - '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 26'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 55'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 49'
+  - '[250ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 14'
+  - '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 35'
+  - '[251ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 05'
+  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 42'
+  - '[253ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 27'
+  - '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 17'
+  - '[254ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 34'
+  - '[254ms] 🇩🇪 机场推荐:dafei.de 德国 14'
+  - '[255ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 41'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 25'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 20'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 44'
+  - '[256ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 21'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 43'
+  - '[257ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 46'
+  - '[259ms] 🇩🇪 机场推荐:dafei.de 德国 10'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 03'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 31'
+  - '[260ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 33'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 19'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 40'
+  - '[261ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 18'
+  - '[262ms] 🇺🇸 机场推荐:dafei.de 美国 09'
+  - '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 30'
+  - '[262ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 32'
+  - '[263ms] 🇳🇱 机场推荐:dafei.de 荷兰 01'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 56'
+  - '[263ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 08'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 28'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 36'
+  - '[264ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 29'
+  - '[265ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 15'
+  - '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 50'
+  - '[266ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 04'
+  - '[266ms] 🇩🇪 机场推荐:dafei.de 德国 06'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 16'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 59'
+  - '[267ms] 🇺🇸 机场推荐:dafei.de 美国 24'
+  - '[267ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 45'
+  - '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 06'
+  - '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 51'
+  - '[270ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[271ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 39'
+  - '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 54'
+  - '[273ms] 🇩🇪 机场推荐:dafei.de 德国 08'
+  - '[276ms] 🇩🇪 机场推荐:dafei.de 德国 07'
+  - '[277ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 58'
+  - '[279ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 38'
+  - '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 01'
+  - '[285ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 02'
+  - '[285ms] 🇩🇪 机场推荐:dafei.de 德国 16'
+  - '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 47'
+  - '[288ms] 🇱🇻 机场推荐:dafei.de 拉脱维亚 01'
+  - '[289ms] 🇺🇸 机场推荐:dafei.de 美国 12'
+  - '[293ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 22'
+  type: select
+rules:
+- MATCH,🌍 手动切换
