@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"maxlay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="★ 钱难挣屎难吃，回家上网还慢？     不是因为宽带的带宽不够，而是因为 DNS 解析不够快，耽误了你拔剑的速度。   如何加快 DNS 解析？ Mosdns 是一个由 IrineSistiana 开发的、开源的、插件化的 DNS 转发器&#x2F;解析器。它主要使用 Go 语言编写，以其高性能、低内存占用和极高的配置灵活性而在进阶用户、Homelab 爱好者以及软路由社区中广受欢迎。">
+  <meta name="description" content="★ 钱难挣屎难吃，回家上网还慢？     不是因为宽带的带宽不够，而是因为 DNS 解析不够快，耽误了你拔剑的速度。   如何加快 DNS 解析？ Mosdns  是一个插件化、模块化的高性能 DNS 转发&#x2F;解析器，由 IrineSistiana 开发。它的核心原理与传统 DNS 服务器（如 Bind, Unbound）不同，它不直接进行递归解析，而是作为一个智能中间件（Mid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mosdns">
 <meta property="og:url" content="https://maxlay.github.io/2026/07/25/mosdns/index.html">
 <meta property="og:site_name" content="Huanglei">
-<meta property="og:description" content="★ 钱难挣屎难吃，回家上网还慢？     不是因为宽带的带宽不够，而是因为 DNS 解析不够快，耽误了你拔剑的速度。   如何加快 DNS 解析？ Mosdns 是一个由 IrineSistiana 开发的、开源的、插件化的 DNS 转发器&#x2F;解析器。它主要使用 Go 语言编写，以其高性能、低内存占用和极高的配置灵活性而在进阶用户、Homelab 爱好者以及软路由社区中广受欢迎。">
+<meta property="og:description" content="★ 钱难挣屎难吃，回家上网还慢？     不是因为宽带的带宽不够，而是因为 DNS 解析不够快，耽误了你拔剑的速度。   如何加快 DNS 解析？ Mosdns  是一个插件化、模块化的高性能 DNS 转发&#x2F;解析器，由 IrineSistiana 开发。它的核心原理与传统 DNS 服务器（如 Bind, Unbound）不同，它不直接进行递归解析，而是作为一个智能中间件（Mid">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-25T05:12:53.000Z">
-<meta property="article:modified_time" content="2026-07-25T06:00:43.190Z">
+<meta property="article:modified_time" content="2026-07-25T07:44:18.856Z">
 <meta property="article:author" content="HuangLei">
 <meta property="article:tag" content="Huanglei">
 <meta name="twitter:card" content="summary">
@@ -254,7 +254,7 @@
 </div>
 
 <p><strong>如何加快 DNS 解析？</strong></p>
-<p><strong>Mosdns</strong> 是一个由 IrineSistiana 开发的、开源的、插件化的 <strong>DNS 转发器&#x2F;解析器</strong>。它主要使用 Go 语言编写，以其高性能、低内存占用和极高的配置灵活性而在进阶用户、Homelab 爱好者以及软路由社区中广受欢迎。</p>
+<p><strong>Mosdns</strong>  是一个<strong>插件化、模块化的高性能 DNS 转发&#x2F;解析器</strong>，由 IrineSistiana 开发。它的核心原理与传统 DNS 服务器（如 Bind, Unbound）不同，它不直接进行递归解析，而是作为一个<strong>智能中间件（Middleware）</strong>，通过“管道（Pipeline）”模式处理 DNS 请求。</p>
 <p>与传统的 DNS 软件（如 Bind, Unbound, Dnsmasq）相比，<strong>Mosdns</strong>  的设计哲学更偏向于“<strong>模块化</strong>”和“<strong>可编程性</strong>”。</p>
 <p>在家里的软路由上部署<strong>Mosdns</strong> ，手机平板电视电脑都指向本地Wifi 软路由的 DNS，网速飞起！</p>
 <span id="more"></span>
@@ -298,6 +298,78 @@
 <h3 id="方式-A：修改路由器-DHCP-的-DNS（推荐）"><a href="#方式-A：修改路由器-DHCP-的-DNS（推荐）" class="headerlink" title="方式 A：修改路由器 DHCP 的 DNS（推荐）"></a>方式 A：修改路由器 DHCP 的 DNS（推荐）</h3><p>登录你的主路由器管理后台，找到 <strong>DHCP 设置</strong> → <strong>DNS 服务器</strong>，填入 RS66 的内网 IP（例如 <code>192.168.1.2</code>）。保存后，所有设备重新获取 IP 后即可生效。</p>
 <h3 id="方式-B：手动指定设备-DNS"><a href="#方式-B：手动指定设备-DNS" class="headerlink" title="方式 B：手动指定设备 DNS"></a>方式 B：手动指定设备 DNS</h3><p>在电脑&#x2F;手机的网络设置里，把 DNS 手动改为 RS66 的 IP。</p>
 <h2 id="七、常用维护命令"><a href="#七、常用维护命令" class="headerlink" title="七、常用维护命令"></a>七、常用维护命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">docker compose logs -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 mosdns</span></span><br><span class="line">docker compose restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置后重载（不需要重启容器）</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mosdns mosdns reload</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 以下是 <strong>Mosdns</strong>  的核心工作原理详解：</p>
+</blockquote>
+<h2 id="八、-关键处理机制"><a href="#八、-关键处理机制" class="headerlink" title="八、 关键处理机制"></a>八、 关键处理机制</h2><h4 id="A-并发查询与竞速（Fastest-Response-x2F-Racing）"><a href="#A-并发查询与竞速（Fastest-Response-x2F-Racing）" class="headerlink" title="A. 并发查询与竞速（Fastest Response &#x2F; Racing）"></a>A. 并发查询与竞速（Fastest Response &#x2F; Racing）</h4><p>这是 <strong>Mosdns</strong>  最著名的特性之一。</p>
+<ul>
+<li><strong>原理：</strong> 针对同一个域名，<strong>Mosdns</strong>  可以同时向多个上游 DNS（例如：阿里 DNS + Cloudflare + Google）发送查询请求。</li>
+<li><strong>优选：</strong> 哪个上游先返回结果，就立即采用该结果并回复给客户端，同时取消其他未完成的请求。</li>
+<li><strong>目的：</strong> 解决跨境网络延迟问题，确保用户总是获得最快的解析速度。</li>
+</ul>
+<h4 id="B-智能分流（Split-DNS）"><a href="#B-智能分流（Split-DNS）" class="headerlink" title="B. 智能分流（Split DNS）"></a>B. 智能分流（Split DNS）</h4><p><strong>Mosdns</strong>  可以根据规则决定请求的去向，实现“国内域名走国内 DNS，国外域名走加密 DNS”。</p>
+<ul>
+<li><strong>匹配逻辑：</strong> 支持基于域名列表（GFWList, ChinaList）、GeoIP、正则表达式等多种匹配方式。</li>
+</ul>
+<h4 id="C-多级缓存与-ECS"><a href="#C-多级缓存与-ECS" class="headerlink" title="C. 多级缓存与 ECS"></a>C. 多级缓存与 ECS</h4><ul>
+<li><strong>内存缓存：</strong> 内置高性能内存缓存，遵循 TTL 规范。</li>
+<li><strong>ECS (EDNS Client Subnet)：</strong> 支持传递客户端子网信息，使 CDN 能够根据用户的真实 IP 而非 DNS 出口 IP 返回最优节点，避免“联通用户被解析到电信 CDN”的问题。</li>
+<li><strong>Cache Dump&#x2F;Load：</strong> 支持重启后加载磁盘缓存，防止服务重启导致缓存失效。</li>
+</ul>
+<h4 id="D-协议转换与加密"><a href="#D-协议转换与加密" class="headerlink" title="D. 协议转换与加密"></a>D. 协议转换与加密</h4><p><strong>Mosdns</strong>  充当了协议网关的角色：</p>
+<ul>
+<li><strong>入站：</strong> 支持 UDP&#x2F;TCP&#x2F;DoH&#x2F;DoT。</li>
+<li><strong>出站：</strong> 可以将传统的 UDP 查询转换为 DoH&#x2F;DoT&#x2F;DoQ 发送给上游，防止 ISP 劫持和污染。</li>
+<li><strong>HTTP&#x2F;3 &amp; 0-RTT：</strong> 较新版本支持基于 QUIC 的 DoQ 和 HTTP&#x2F;3，进一步降低握手延迟。</li>
+</ul>
+<h2 id="九、为什么选择-MOSDNS？（对比传统方案）"><a href="#九、为什么选择-MOSDNS？（对比传统方案）" class="headerlink" title="九、为什么选择 MOSDNS？（对比传统方案）"></a>九、为什么选择 MOSDNS？（对比传统方案）</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>传统 DNS (Unbound&#x2F;Bind)</th>
+<th>SmartDNS</th>
+<th>MOSDNS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>定位</strong></td>
+<td>全功能递归&#x2F;权威服务器</td>
+<td>轻量级测速转发器</td>
+<td>可编程 DNS 中间件</td>
+</tr>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>低，配置复杂</td>
+<td>中，主要专注测速</td>
+<td><strong>极高</strong>，完全自定义流程</td>
+</tr>
+<tr>
+<td><strong>并发竞速</strong></td>
+<td>不支持&#x2F;弱</td>
+<td>核心功能</td>
+<td>支持，且可配置策略</td>
+</tr>
+<tr>
+<td><strong>脚本&#x2F;逻辑</strong></td>
+<td>无</td>
+<td>有限</td>
+<td>支持 Lua 脚本(新版)&#x2F;复杂序列</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>高</td>
+<td>高</td>
+<td><strong>极高</strong> (Go语言+零拷贝优化)</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>根区管理、企业内网</td>
+<td>路由器简单加速</td>
+<td>复杂网络环境、精细化分流</td>
+</tr>
+</tbody></table>
+<h2 id="十、-总结"><a href="#十、-总结" class="headerlink" title="十、 总结"></a>十、 总结</h2><p><strong>Mosdns</strong>  的原理就是 <strong>“解耦”与“重组”</strong>。它将 DNS 解析过程拆解为缓存、匹配、转发、修改等独立单元，允许用户像搭积木一样根据自己的网络环境组装出最适合的 DNS 处理流程。它特别适合需要<strong>抗污染、低延迟、精准分流</strong>的高级网络环境。</p>
 
     </div>
 
@@ -396,7 +468,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">一、准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E5%90%AF%E9%A3%9E%E7%89%9B-OS-%E7%9A%84-SSH"><span class="nav-number">1.1.</span> <span class="nav-text">1. 开启飞牛 OS 的 SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SSH-%E7%99%BB%E5%BD%95-RS66"><span class="nav-number">1.2.</span> <span class="nav-text">2. SSH 登录 RS66</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA-mosdns-%E7%9B%AE%E5%BD%95%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、创建 mosdns 目录和配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%93%E7%94%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">1. 创建专用目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yaml"><span class="nav-number">2.2.</span> <span class="nav-text">2. 创建配置文件 config.yaml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%90%AF%E5%8A%A8-mosdns"><span class="nav-number">3.</span> <span class="nav-text">四、启动 mosdns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AA%8C%E8%AF%81-DNS-%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">五、验证 DNS 是否正常工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%8A%8A-RS66-%E8%AE%BE%E4%B8%BA%E5%86%85%E7%BD%91-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E5%85%B3%E9%94%AE%E4%B8%80%E6%AD%A5%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">六、把 RS66 设为内网 DNS 服务器（关键一步）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-A%EF%BC%9A%E4%BF%AE%E6%94%B9%E8%B7%AF%E7%94%B1%E5%99%A8-DHCP-%E7%9A%84-DNS%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">方式 A：修改路由器 DHCP 的 DNS（推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-B%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87-DNS"><span class="nav-number">5.2.</span> <span class="nav-text">方式 B：手动指定设备 DNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E7%94%A8%E7%BB%B4%E6%8A%A4%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">七、常用维护命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">一、准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E5%90%AF%E9%A3%9E%E7%89%9B-OS-%E7%9A%84-SSH"><span class="nav-number">1.1.</span> <span class="nav-text">1. 开启飞牛 OS 的 SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SSH-%E7%99%BB%E5%BD%95-RS66"><span class="nav-number">1.2.</span> <span class="nav-text">2. SSH 登录 RS66</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA-mosdns-%E7%9B%AE%E5%BD%95%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、创建 mosdns 目录和配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%93%E7%94%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">1. 创建专用目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yaml"><span class="nav-number">2.2.</span> <span class="nav-text">2. 创建配置文件 config.yaml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%90%AF%E5%8A%A8-mosdns"><span class="nav-number">3.</span> <span class="nav-text">四、启动 mosdns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AA%8C%E8%AF%81-DNS-%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">五、验证 DNS 是否正常工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%8A%8A-RS66-%E8%AE%BE%E4%B8%BA%E5%86%85%E7%BD%91-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E5%85%B3%E9%94%AE%E4%B8%80%E6%AD%A5%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">六、把 RS66 设为内网 DNS 服务器（关键一步）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-A%EF%BC%9A%E4%BF%AE%E6%94%B9%E8%B7%AF%E7%94%B1%E5%99%A8-DHCP-%E7%9A%84-DNS%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">方式 A：修改路由器 DHCP 的 DNS（推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-B%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87-DNS"><span class="nav-number">5.2.</span> <span class="nav-text">方式 B：手动指定设备 DNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E7%94%A8%E7%BB%B4%E6%8A%A4%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">七、常用维护命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81-%E5%85%B3%E9%94%AE%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="nav-number">7.</span> <span class="nav-text">八、 关键处理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-%E5%B9%B6%E5%8F%91%E6%9F%A5%E8%AF%A2%E4%B8%8E%E7%AB%9E%E9%80%9F%EF%BC%88Fastest-Response-x2F-Racing%EF%BC%89"><span class="nav-number">7.0.1.</span> <span class="nav-text">A. 并发查询与竞速（Fastest Response &#x2F; Racing）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-%E6%99%BA%E8%83%BD%E5%88%86%E6%B5%81%EF%BC%88Split-DNS%EF%BC%89"><span class="nav-number">7.0.2.</span> <span class="nav-text">B. 智能分流（Split DNS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98%E4%B8%8E-ECS"><span class="nav-number">7.0.3.</span> <span class="nav-text">C. 多级缓存与 ECS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D-%E5%8D%8F%E8%AE%AE%E8%BD%AC%E6%8D%A2%E4%B8%8E%E5%8A%A0%E5%AF%86"><span class="nav-number">7.0.4.</span> <span class="nav-text">D. 协议转换与加密</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-MOSDNS%EF%BC%9F%EF%BC%88%E5%AF%B9%E6%AF%94%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">九、为什么选择 MOSDNS？（对比传统方案）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81-%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">十、 总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

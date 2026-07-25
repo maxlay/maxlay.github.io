@@ -250,7 +250,7 @@
 </div>
 
 <p><strong>如何加快 DNS 解析？</strong></p>
-<p><strong>Mosdns</strong> 是一个由 IrineSistiana 开发的、开源的、插件化的 <strong>DNS 转发器&#x2F;解析器</strong>。它主要使用 Go 语言编写，以其高性能、低内存占用和极高的配置灵活性而在进阶用户、Homelab 爱好者以及软路由社区中广受欢迎。</p>
+<p><strong>Mosdns</strong>  是一个<strong>插件化、模块化的高性能 DNS 转发&#x2F;解析器</strong>，由 IrineSistiana 开发。它的核心原理与传统 DNS 服务器（如 Bind, Unbound）不同，它不直接进行递归解析，而是作为一个<strong>智能中间件（Middleware）</strong>，通过“管道（Pipeline）”模式处理 DNS 请求。</p>
 <p>与传统的 DNS 软件（如 Bind, Unbound, Dnsmasq）相比，<strong>Mosdns</strong>  的设计哲学更偏向于“<strong>模块化</strong>”和“<strong>可编程性</strong>”。</p>
 <p>在家里的软路由上部署<strong>Mosdns</strong> ，手机平板电视电脑都指向本地Wifi 软路由的 DNS，网速飞起！</p>
           <!--noindex-->
