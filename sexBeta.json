@@ -1,90 +1,48 @@
 {
-    "headers": [
+  "lives": [
     {
-        "host": "hlsztemgsplive.miguvideo.com",
-        "header": {
-            "User-Agent": "bingcha/1.1 (mianfeifenxiang) "
-        }
-    }
-    ],
-    "lives": [
-    {
-        "name": "推荐线路：原冰茶",
-        "type": 0,
-        "playerType": 2,
-        "url": "https://ds65.tv1288.xyz",
-        "ua": "bingcha/1.1 (mianfeifenxiang) "
+      "name": "推荐线路：Kimentanm",
+      "type": 0,
+      "playerType": 2,
+      "url": "https://wget.la/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
     },
     {
-        "name": "推荐线路：Kimentanm",
-        "type": 0,
-        "playerType": 2,
-        "url": "https://wget.la/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
+      "name": "推荐线路：develop202",
+      "type": 0,
+      "playerType": 2,
+      "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
+      "logo": "https://epg.v1.mk/logo/{name}.png",
+      "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
     },
     {
-        "name": "推荐线路：develop202", 
-        "type": 0, 
-        "playerType": 2, 
-        "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
-        "logo": "https://epg.v1.mk/logo/{name}.png", 
-        "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
-    }, 
-    {
-        "name": "一般线路：应急用", 
-        "type": 0, 
-        "playerType": 2, 
-        "epg": "http://epg.51zmt.top:8000/e.xml.gz", 
-        "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/e35f0d11ed45b80b208f1b5478b739ef.m3u"
+      "name": "应急线路：m3u",
+      "type": 0,
+      "playerType": 2,
+      "epg": "http://epg.51zmt.top:8000/e.xml.gz",
+      "url": "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/TV/e35f0d11ed45b80b208f1b5478b739ef.m3u"
     }
-    ],
+  ],
 
     "wallpaper": "https://bing.img.run/uhd.php",
     
     "sites": [
       {
-        "key": "*番号",
-        "name": "🔞番号1",
+        "key": "*麻豆",
+        "name": "🔞麻豆",
         "type": 1,
         "quickSearch": 1,
         "searchable": 1,
         "filterable": 1,
-        "api": "http://45.89.208.76/api.php/provide/vod/"
+        "api": "https://www.madou.io/api.php/provide/vod/"
       },
       {
         "key": "*番号",
-        "name": "🔞番号2",
+        "name": "🔞155",
         "type": 1,
         "quickSearch": 1,
         "searchable": 1,
         "filterable": 1,
         "api": "https://155api.com/api.php/provide/vod/"
-      },
-      {
-        "key": "*番号",
-        "name": "🔞番号3",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://naixxzy.com/api.php/provide/vod/"
-      },
-      {
-        "key": "*番号",
-        "name": "🔞番号4",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://apiyutu.com/api.php/provide//vod/"
-      },
-      {
-        "key": "*番号",
-        "name": "🔞番号5",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://aosikazy.com/api.php/provide/vod/"
       },
       {
         "key": "乐播",
