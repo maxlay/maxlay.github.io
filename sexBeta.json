@@ -45,15 +45,6 @@
         "api": "https://www.madou.io/api.php/provide/vod/"
       },
       {
-        "key": "*麻豆3",
-        "name": "🔞麻豆3",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://www.bt4.cc/api.php/provide/vod/"
-      },
-      {
         "key": "*番号",
         "name": "🔞155",
         "type": 1,
