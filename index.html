@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志<span class="badge">278</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志<span class="badge">279</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -185,6 +185,93 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2026/08/16/AdGuardHome/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/./logo.png">
+      <meta itemprop="name" content="HuangLei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanglei">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/08/16/AdGuardHome/" class="post-title-link" itemprop="url">AdGuardHome</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-08-16 10:24:43" itemprop="dateCreated datePublished" datetime="2026-08-16T10:24:43+08:00">2026-08-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前写过一篇AdGuardHome，今天在飞牛 OS 的应用商店给软路由安装了AdGuardHome，为全屋完成 DNS 智能转发，下面聊聊我的配置：</p>
+<p>1、DNS 设置：</p>
+<p>上游 DNS 服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 国内主用</span><br><span class="line">[/*.cn/]https://dns.alidns.com/dns-query</span><br><span class="line">[/*.qq.com/]https://dns.alidns.com/dns-query</span><br><span class="line">[/*.bilibili.com/]https://dns.alidns.com/dns-query</span><br><span class="line"># 微软/Steam 香港节点</span><br><span class="line">[/*.microsoft.com/]https://dns.alidns.com/dns-query</span><br><span class="line">[/github.com/]https://dns.alidns.com/dns-query</span><br><span class="line">[/github.io/]https://dns.alidns.com/dns-query</span><br><span class="line">[/*.githubusercontent.com/]https://dns.alidns.com/dns-query</span><br><span class="line">[/*.githubassets.com/]https://dns.alidns.com/dns-query</span><br><span class="line"># 默认兜底 →  DoH</span><br><span class="line">2400:3200::1</span><br><span class="line">223.5.5.5</span><br><span class="line">223.6.6.6</span><br><span class="line">https://dns.alidns.com/dns-query</span><br><span class="line">https://doh.pub/dns-query</span><br><span class="line">#https://dns.cloudflare.com/dns-query</span><br><span class="line"># 兜底纯 UDP(断网也能解析)</span><br></pre></td></tr></table></figure>
+
+<p>选：最快的 IP 地址</p>
+<p>后备 DNS 服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 浙江移动宽带 ISP 的 DNS</span><br><span class="line">211.140.13.188</span><br><span class="line">211.140.188.188</span><br></pre></td></tr></table></figure>
+
+<p>Bootstrap DNS 服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">223.5.5.5</span><br><span class="line">119.29.29.29</span><br><span class="line">2400:3200::1</span><br><span class="line">2402:4e00::</span><br><span class="line">2001:dc7:1000::1</span><br></pre></td></tr></table></figure>
+
+<p>选：启动EDNS客户端子网 ｜ 选：启动DESSEC</p>
+<p>DNS 缓存配置</p>
+<p>选：启用缓存 ｜ 选：乐观缓存</p>
+<p>2、过滤器：</p>
+<p>DNS黑名单</p>
+<p>删除所有后新建，只用这一个：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/hululu1068/AdGuard-Rule@main/rule/all.txt">https://cdn.jsdelivr.net/gh/hululu1068/AdGuard-Rule@main/rule/all.txt</a></p>
+<p>3、把家里所有需要上网的设备DNS都指向软路由，具体地址可以看“设置指导”，完工！</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+		
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -907,90 +994,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maxlay.github.io/2026/04/08/Anaconda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/./logo.png">
-      <meta itemprop="name" content="HuangLei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanglei">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/04/08/Anaconda/" class="post-title-link" itemprop="url">Anaconda</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2026-04-08 20:41:10" itemprop="dateCreated datePublished" datetime="2026-04-08T20:41:10+08:00">2026-04-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近需要在单位的电脑上跑 Python 脚本，所以像 Anaconda这样一键安装的懒人包值得推荐。</p>
-<p>Anaconda 是一个用于科学计算和数据分析的 Python 和 R 的发行版。</p>
-<p>它不是一个单一的软件，而是一个<strong>集成了众多工具和库的“超级大礼包”</strong>，旨在简化包管理和部署。</p>
-<p>下载地址：</p>
-<p><a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a></p>
-<p>符合我macOS 10.15.8要求的是<a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/Anaconda3-2023.09-0-MacOSX-x86_64.pkg">Anaconda3-2023.09-0-MacOSX-x86_64.pkg</a> </p>
-<p>Windows没什么限制，可以下<a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Windows-x86_64.exe">Anaconda3-2025.12-2-Windows-x86_64.exe</a></p>
-<p>安装好Anaconda，改清华源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2026/04/08/Anaconda/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-		
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1061,7 +1064,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
