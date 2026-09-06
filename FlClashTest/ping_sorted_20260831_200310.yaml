@@ -1,0 +1,2836 @@
+allow-lan: true
+external-controller: 0.0.0.0:9090
+log-level: info
+mixed-port: 7890
+mode: rule
+proxies:
+- encryption: none
+  name: '[0ms] 荷兰 003'
+  network: ws
+  port: 8880
+  server: 45.131.4.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime59.workers.dev
+- name: '[0ms] 美国 184'
+  network: ws
+  port: 80
+  server: 104.16.209.187
+  servername: divine-hall-8adb-ppal03.niyabi6636.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 20cf8a2b-e301-4240-9c03-20883249a287
+  ws-opts:
+    headers:
+      Host: divine-hall-8adb-ppal03.niyabi6636.workers.dev
+    path: /?ed=2560
+- name: '[0ms] 新加坡 002'
+  network: ws
+  port: 8880
+  server: 114.129.43.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime04.workers.dev
+    path: /
+- client-fingerprint: chrome
+  name: '[0ms] 荷兰 019'
+  network: xhttp
+  port: 443
+  server: 45.130.125.76
+  servername: www.multiplydose.cc.cd
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1f9d104e-ca0e-4202-ba4b-a0afb969c747
+- encryption: none
+  name: '[0ms] 美国 025'
+  network: ws
+  port: 2096
+  security: tls
+  server: 104.26.5.134
+  servername: joey.freen1.de5.net
+  tls: true
+  type: vless
+  uuid: 7f50ec42-4673-41e2-94be-ae6253909def
+  ws-opts:
+    headers:
+      Host: joey.freen1.de5.net
+    path: /?ed=2048
+- alterId: 0
+  cipher: auto
+  name: '[0ms] 香港(yudou789.top 玉豆免费节点)_1'
+  port: 51556
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- alterId: 0
+  cipher: auto
+  name: '[0ms] 🇸🇬 新加坡(自由之梦免费节点-严禁倒卖)'
+  network: ws
+  port: 443
+  server: 52.221.217.29
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: f5cf2870-5ba2-4b2d-b2d4-e72f3fb4d46d
+  ws-headers:
+    Host: oker.ga
+  ws-path: /
+- cipher: aes-256-gcm
+  name: '[0ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖)'
+  password: LkFAzkzXkSCRYa2CsRdL8cGb
+  port: 110
+  server: 23.98.43.172
+  type: ss
+- name: '[0ms] 美国 185'
+  network: ws
+  port: 80
+  server: 104.24.198.111
+  servername: divine-hall-8adb-ppal03.niyabi6636.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 20cf8a2b-e301-4240-9c03-20883249a287
+  ws-opts:
+    headers:
+      Host: divine-hall-8adb-ppal03.niyabi6636.workers.dev
+    path: /?ed=2560
+- client-fingerprint: chrome
+  name: '[0ms] 美国 026'
+  network: ws
+  port: 80
+  security: 'false'
+  server: 104.17.25.132
+  type: vless
+  uuid: 73d17f62-d0c0-4c90-903c-a2b3f3806cca
+  ws-opts:
+    headers:
+      Host: fragrant-tooth-a5b7.cajeba6448.workers.dev
+    path: /?ed=2048
+- client-fingerprint: ''
+  name: '[0ms] 美国 186'
+  network: ws
+  port: 2087
+  server: 104.18.26.90
+  servername: iopl90nn.bingnet.online
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 213426db-afb7-48d1-ae51-5093317212df
+  ws-opts:
+    headers:
+      Host: iopl90nn.bingnet.online
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[0ms] 美国(yudou789.top 玉豆免费节点)_82'
+  port: 54022
+  server: 103.181.164.145
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- client-fingerprint: chrome
+  name: '[0ms] 日本 002'
+  network: ws
+  port: 56271
+  server: 146.56.106.51
+  servername: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  skip-cert-verify: true
+  sni: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  tfo: false
+  tls: true
+  type: vless
+  udp: false
+  uuid: 00000000-0000-4000-8000-000000000000
+  ws-opts:
+    headers:
+      Host: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+    path: /
+- name: '[0ms] 巴林 001'
+  network: ws
+  port: 8444
+  server: 188.137.235.179
+  servername: nl3.meshbeat.online
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1f619326-cd93-4d6b-aebe-e0b5f8831d02
+  ws-opts:
+    headers:
+      Host: nl3.meshbeat.online
+    path: /api/v1/devices/7c05e2fb91/telemetry
+- alterId: 0
+  cipher: auto
+  name: '[1ms] 英国(yudou789.top 玉豆免费节点)_56'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[1ms] 英国 002'
+  network: ws
+  port: 8880
+  server: 195.26.229.50
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime56.workers.dev
+    path: /?ed=2560&https:/t.me/youtube
+- client-fingerprint: ''
+  name: '[1ms] 美国 187'
+  network: ws
+  port: 2087
+  server: 104.21.55.47
+  servername: iopl90nn.bingnet.online
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 213426db-afb7-48d1-ae51-5093317212df
+  ws-opts:
+    headers:
+      Host: iopl90nn.bingnet.online
+    path: /
+- client-fingerprint: chrome
+  name: '[1ms] 美国 188'
+  network: ws
+  port: 2087
+  server: 172.64.152.23
+  servername: iopl90nn.bingnet.online
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 213426db-afb7-48d1-ae51-5093317212df
+  ws-opts:
+    headers:
+      Host: iopl90nn.bingnet.online
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: '[1ms] 美国 027'
+  network: ws
+  port: 80
+  server: 104.21.1.5
+  type: vless
+  uuid: eb295cd7-a389-4cde-9598-ce126b0910bc
+  ws-opts:
+    headers:
+      Host: v2configlab.v2configlab2.workers.dev
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[2ms] 美国 733'
+  network: ws
+  port: 443
+  server: khvwycch.cymlr.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: db39ef95-4245-418a-84c0-14c202f29bc6
+  ws-opts:
+    headers:
+      Host: khvwycch.cymlr.xyz
+    path: /videnset
+- alterId: 0
+  cipher: auto
+  name: '[2ms] 美国 738'
+  network: ws
+  port: 443
+  server: www.digitalocean.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 3a3e263d-223f-49cc-bbdb-f7e07a55e6fe
+  ws-opts:
+    headers:
+      Host: by.6111.online
+    path: /111111.online
+- client-fingerprint: chrome
+  name: '[2ms] 英国 001'
+  network: ws
+  port: 35555
+  server: 144.24.64.13
+  servername: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  skip-cert-verify: true
+  sni: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  tfo: false
+  tls: true
+  type: vless
+  udp: false
+  uuid: 00000000-0000-4000-8000-000000000000
+  ws-opts:
+    headers:
+      Host: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+    path: /
+- name: '[2ms] 伊朗 010'
+  network: tcp
+  port: 15300
+  server: 194.36.174.160
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1f216ab5-b0bb-44f4-8222-a05eb8c8cc7c
+- alterId: 0
+  cipher: auto
+  name: '[8ms] 美国 744'
+  network: ws
+  port: 443
+  server: ac2088.herokuapp.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: d1babe08-f8ac-490b-b66f-9be27467f3cc
+  ws-opts:
+    headers:
+      Host: ac2088.herokuapp.com
+    path: /d1babe08-f8ac-490b-b66f-9be27467f3cc-vmess
+- alterId: 64
+  cipher: auto
+  name: '[8ms] 美国 742'
+  network: ws
+  port: 443
+  server: cdnde.irteyz.today
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 3b5e258e-8c5e-45d3-b7d2-02c8f5fc0bb2
+  ws-opts:
+    headers:
+      Host: cdnde.irteyz.today
+    path: /
+- name: '[17ms] 德国 023'
+  network: tcp
+  port: 2087
+  server: 167.233.54.146
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4077de3d-64cb-41cb-bee2-9178210e5fb4
+- alterId: 0
+  cipher: auto
+  name: '[17ms] 美国 709'
+  network: ws
+  port: 443
+  server: 190.93.244.3
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 56a2188b-2ab7-402c-b9b8-34847fdf0958
+  ws-opts:
+    headers:
+      Host: oplg1.zhujicn2.com
+    path: /5QNROSRV
+- name: '[17ms] 俄罗斯 011'
+  network: tcp
+  port: 443
+  server: 213.156.152.110
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 41a9711b-5b34-4fd8-a877-85c6f4d0e418
+- alterId: 0
+  cipher: auto
+  name: '[18ms] 荷兰 009'
+  network: ws
+  port: 443
+  server: 130.185.122.177
+  skip-cert-verify: true
+  type: vmess
+  uuid: f232d454-b014-4e00-a7ae-430341909db4
+  ws-opts:
+    headers:
+      Host: 130.185.122.177
+    path: /
+- name: '[18ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  port: 9090
+  server: 104.248.151.93
+  type: http
+- alterId: 0
+  cipher: auto
+  name: '[18ms] 美国(yudou789.top 玉豆免费节点)_68'
+  port: 180
+  server: 82.198.246.250
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[20ms] 🇦🇺 机场推荐:dafei.de 澳大利亚 01'
+  port: 443
+  server: 159.13.44.228
+  skip-cert-verify: true
+  tls: true
+  type: http
+- client-fingerprint: chrome
+  name: '[32ms] 美国 228'
+  network: ws
+  port: 443
+  server: 172.67.139.85
+  servername: cxrolvpn.vipserver2.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 429efff7-16bd-499e-85a5-a6f4b89c2773
+  ws-opts:
+    headers:
+      Host: cxrolvpn.vipserver2.workers.dev
+    path: /K2w7vCx3fNcdCrSc?ed=2560
+- name: '[32ms] 伊朗 026'
+  network: tcp
+  port: 9090
+  server: 2.144.4.229
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6562c4bb-4feb-4b23-ae63-53ee4aa473aa
+- alterId: 1
+  cipher: auto
+  name: '[71ms] 美国 634'
+  network: ws
+  port: 443
+  server: 172.67.194.2
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: alvvin.click
+    path: linkvws
+- name: '[74ms] 美国 502'
+  network: tcp
+  port: 22224
+  server: 18.168.171.125
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: '[75ms] 荷兰 007'
+  network: ws
+  port: 8880
+  server: 194.53.53.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime51.workers.dev
+    path: /
+- name: '[80ms] 日本 004'
+  network: tcp
+  password: BxceQaOe
+  port: 25982
+  server: 52.195.148.119
+  skip-cert-verify: true
+  sni: t.me%2Fripaojiedian
+  type: trojan
+- cipher: chacha20-ietf-poly1305
+  name: '[82ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 2'
+  password: 3927806a-3e97-4841-8d98-384bcf9518bf
+  port: 23004
+  server: superstar.hk.04.free.srayx.xyz
+  type: ss
+- name: '[92ms] 美国 509'
+  network: tcp
+  port: 22223
+  server: 51.102.158.171
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- alterId: 0
+  cipher: auto
+  name: '[93ms] 英国 006'
+  network: tcp
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: true
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- client-fingerprint: chrome
+  name: '[93ms] 美国 312'
+  network: ws
+  port: 443
+  server: 151.101.56.6
+  servername: c12.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 63650025-84ff-4272-cfd4-61e7b9ee8834
+  ws-opts:
+    headers:
+      Host: c12.com
+    path: /?TELEGRAM--BYA--CHANEL---
+- name: '[94ms] 伊朗 004'
+  network: tcp
+  port: 1000
+  server: 193.151.130.42
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 083399de-c587-47b3-aa4b-7ae55e40d68f
+- alterId: 0
+  cipher: auto
+  name: '[94ms] 英国 031'
+  network: ws
+  port: 443
+  server: 185.162.228.110
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- client-fingerprint: chrome
+  name: '[105ms] 伊朗 014'
+  network: xhttp
+  port: 8443
+  server: 185.215.228.157
+  servername: ca.lebas2.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2d9de6ea-56c9-422d-a4ad-cac95b8e0881
+- client-fingerprint: chrome
+  name: '[106ms] 美国 046'
+  network: ws
+  port: 56671
+  server: 173.249.210.53
+  servername: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  skip-cert-verify: true
+  sni: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  tfo: false
+  tls: true
+  type: vless
+  udp: false
+  uuid: 00000000-0000-4000-8000-000000000000
+  ws-opts:
+    headers:
+      Host: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: '[107ms] 美国 048'
+  network: ws
+  port: 2083
+  security: tls
+  server: 172.66.47.45
+  servername: wk1.f1w.de5.net
+  tls: true
+  type: vless
+  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  ws-opts:
+    headers:
+      Host: wk1.f1w.de5.net
+    path: /
+- name: '[107ms] 澳大利亚 004'
+  network: tcp
+  port: 24477
+  server: 43.163.241.110
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2bc72bec-0c2a-4c6b-aa9f-138bfce7ba0d
+- name: '[113ms] 法国 012'
+  network: grpc
+  port: 8880
+  server: 151.115.164.134
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- alterId: 0
+  cipher: auto
+  name: '[113ms] 美国(yudou789.top 玉豆免费节点)_30'
+  port: 180
+  server: 82.198.246.214
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[115ms] 🇮🇹 机场推荐:dafei.de 意大利 02'
+  port: 1999
+  server: 185.201.65.242
+  type: http
+- cipher: aes-256-gcm
+  name: '[116ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 5'
+  password: aYNeKDMzYQYw4KbUbJA8Wszq
+  port: 31944
+  server: 66.115.182.79
+  type: ss
+- alterId: 0
+  cipher: auto
+  name: '[116ms] 美国 633'
+  network: ws
+  port: 443
+  server: 104.21.91.73
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 45f63e92-f782-4cac-84b8-e61cb5a5bfd0
+  ws-opts:
+    headers:
+      Host: adenc35.fixedlfoat.top
+    path: /linkws
+- alterId: 0
+  cipher: auto
+  name: '[116ms] 美国 637'
+  network: ws
+  port: 443
+  server: 104.21.21.88
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: odelia.autos
+    path: linkvws
+- name: '[118ms] 🇨🇿 机场推荐:dafei.de 捷克 02'
+  port: 443
+  server: 185.216.35.130
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[120ms] 斯洛文尼亚 001'
+  network: ws
+  port: 8880
+  server: 92.53.189.40
+  servername: vms.lifetime19.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime19.workers.dev
+    path: /
+- client-fingerprint: chrome
+  name: '[120ms] 美国 205'
+  network: ws
+  port: 443
+  server: 172.67.71.217
+  servername: download-93w.pages.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2df56fd0-d1b7-4793-b877-acd356d960f7
+  ws-opts:
+    headers:
+      Host: download-93w.pages.dev
+    path: /?ed=8080
+- client-fingerprint: chrome
+  name: '[120ms] 荷兰 017'
+  network: tcp
+  port: 443
+  server: 130.185.123.32
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 14f493a7-242a-4add-8413-cecc063b3ce3
+- name: '[120ms] 英国 027'
+  network: tcp
+  port: 22223
+  server: 51.24.175.55
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- alterId: 0
+  cipher: auto
+  name: '[121ms] 美国(yudou789.top 玉豆免费节点)_34'
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[122ms] 美国 125'
+  network: ws
+  port: 2087
+  server: 104.24.67.123
+  servername: panel.berzulo.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 04c28ab4-4997-4a73-9bd4-7cc6c9f6bcba
+  ws-opts:
+    headers:
+      Host: panel.berzulo.ir
+    path: /
+- name: '[122ms] 🇨🇿 机场推荐:dafei.de 捷克 01'
+  port: 800
+  server: 185.71.233.84
+  type: http
+- name: '[122ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
+  port: 9090
+  server: 128.199.254.13
+  type: http
+- alterId: 1
+  cipher: auto
+  name: '[122ms] 美国 632'
+  network: ws
+  port: 443
+  server: 104.21.31.183
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: octavi.cfd
+    path: linkvws
+- name: '[122ms] 美国 137'
+  network: grpc
+  port: 2087
+  server: 162.159.46.235
+  servername: finland.hiytocloud.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 06430296-e070-4048-ba38-3662c09e52bc
+- alterId: 0
+  cipher: auto
+  name: '[126ms] 中国 045'
+  network: http
+  port: 50797
+  server: 124.221.131.176
+  skip-cert-verify: true
+  type: vmess
+  uuid: fa4b6f8f-1264-45ec-9651-6160c12cabc5
+- alterId: 1
+  cipher: auto
+  name: '[126ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 6'
+  network: ws
+  port: 60021
+  server: 52.175.79.113
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: e1aa83ff-b8b5-41b8-a854-fdcd3faa8875
+  ws-headers:
+    Host: 52.175.79.113
+  ws-path: /
+- name: '[127ms] 日本 003'
+  network: ws
+  port: 33940
+  security: tls
+  server: 140.238.33.0
+  servername: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+  tls: true
+  type: vless
+  uuid: 00000000-0000-4000-8000-000000000000
+  ws-opts:
+    headers:
+      Host: 57vanjkxjo3kejbf4o2iul6z4o.gike.dpdns.org
+    path: /
+- name: '[129ms] 乌克兰 005'
+  network: tcp
+  port: 17262
+  server: 87.76.154.21
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8d1bef3f-e128-428f-b6a1-d11b2010eed4
+- name: '[131ms] 美国 300'
+  network: tcp
+  port: 443
+  server: 167.99.138.52
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 603819a3-dd65-408a-abab-15d8dc49887f
+- cipher: aes-256-gcm
+  name: '[132ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 13'
+  password: n8w4StnbVD9dmXYn4Ajt87EA
+  port: 31572
+  server: 143.244.56.230
+  type: ss
+- name: '[132ms] 美国(yudou789.top 玉豆免费节点)_52'
+  network: ws
+  port: 8880
+  server: 109.176.239.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime03.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- alterId: 0
+  cipher: auto
+  name: '[133ms] 美国 095'
+  network: ws
+  port: 443
+  server: 209.126.84.189
+  skip-cert-verify: true
+  type: vmess
+  uuid: 2c981164-9b93-4bca-94ff-b78d3f8498d7
+  ws-opts:
+    headers:
+      Host: 209.126.84.189
+    path: /vmessws
+- client-fingerprint: chrome
+  name: '[134ms] 美国 384'
+  network: ws
+  port: 443
+  server: 69.46.46.106
+  servername: quiet-beacon-9ee5-production.up.railway.app
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9cc29319-4f39-d763-5c1f-1796fff0a03b
+  ws-opts:
+    headers:
+      Host: quiet-beacon-9ee5-production.up.railway.app
+    path: /ws/9cc29319-4f39-d763-5c1f-1796fff0a03b
+- cipher: aes-256-gcm
+  name: '[135ms] 欧洲(自由之梦免费节点-严禁倒卖) 22'
+  password: CUndSZnYsPKcu6Kj8THVMBHD
+  port: 39772
+  server: 193.29.106.5
+  type: ss
+- client-fingerprint: chrome
+  name: '[138ms] 美国 332'
+  network: ws
+  port: 2087
+  server: 172.64.147.104
+  servername: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  ws-opts:
+    headers:
+      Host: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+    path: /
+- name: '[140ms] 荷兰 038'
+  network: tcp
+  port: 62145
+  server: 158.101.219.7
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- name: '[142ms] 美国 192'
+  network: ws
+  port: 8880
+  server: 104.16.98.215
+  servername: steep-thunder-97fa.108-d10.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 23187ddc-16a5-432d-bf4e-dd42a7ae39f7
+  ws-opts:
+    headers:
+      Host: steep-thunder-97fa.108-d10.workers.dev
+    path: /
+- name: '[142ms] 美国 365'
+  network: tcp
+  port: 62145
+  server: 157.137.210.242
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- name: '[142ms] 美国 032'
+  network: ws
+  port: 8880
+  server: 104.129.167.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime44.workers.dev
+    path: /
+- name: '[144ms] 美国 031'
+  network: ws
+  port: 8880
+  server: 108.162.193.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime56.workers.dev
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[145ms] 美国 655'
+  network: ws
+  port: 443
+  server: 141.101.114.102
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
+  ws-opts:
+    headers:
+      Host: clash6.ssr-free.xyz
+    path: /dongtaiwang.com
+- name: '[146ms] 美国 121'
+  network: tcp
+  port: 1161
+  server: 147.182.156.111
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0336579a-8cc8-0288-cfc1-890ba73094d8
+- name: '[148ms] 罗马尼亚 002'
+  network: tcp
+  port: 20615
+  server: 89.34.230.155
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2fb65709-0be4-4003-b10b-86de70d9b75d
+- name: '[149ms] 法国 011'
+  network: grpc
+  port: 8880
+  server: 151.115.164.120
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- name: '[152ms] 巴西 019'
+  network: ws
+  port: 2096
+  server: 188.114.96.2
+  servername: peekconfig.peekconf1.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8d82944e-17b9-473f-a456-dec9a6e21471
+  ws-opts:
+    headers:
+      Host: peekconfig.peekconf1.workers.dev
+    path: /eyJqdW5rIjoidnlSRWhQQ3ZCNGZRNHVYMyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzJhMDI6ODk4OjE0Njo2NDo6XSJdfQ
+- alterId: 0
+  cipher: auto
+  name: '[153ms] 美国(yudou789.top 玉豆免费节点)_28'
+  port: 180
+  server: 82.198.246.37
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[156ms] 美国 189'
+  network: xhttp
+  port: 2052
+  server: 172.64.152.23
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2271c50f-ac7a-4d7f-8b04-64085b0daa56
+- name: '[156ms] 荷兰 020'
+  network: ws
+  port: 80
+  server: 45.130.125.160
+  servername: sRv79.hAMiIbaR.CoM
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 22c15b3f-e205-48e2-9b30-1a2c3480e7b2
+  ws-opts:
+    headers:
+      Host: sRv79.hAMiIbaR.CoM
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[157ms] 韩国 003'
+  network: tcp
+  port: 443
+  server: 140.238.2.250
+  skip-cert-verify: true
+  type: vmess
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+- alterId: 1
+  cipher: auto
+  name: '[158ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 20'
+  network: ws
+  port: 80
+  server: 15.152.36.152
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: f8edd893-1dc0-47ce-b8fb-07986210a939
+  ws-headers:
+    Host: pull.free.video.10010.com
+  ws-path: /
+- alterId: 6
+  cipher: auto
+  name: '[160ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  network: ws
+  port: 443
+  server: 107.173.157.168
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 4f6aa0c3-7be1-4eaa-a64c-a23418070422
+  ws-headers:
+    Host: www.shunxin.ml
+  ws-path: /b06fde1/
+- alterId: 1
+  cipher: auto
+  name: '[162ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 3'
+  network: ws
+  port: 80
+  server: 65.52.181.87
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 140fcbf2-6376-406b-ad68-3eaabf9dd4a4
+  ws-headers:
+    Host: 044.HK.AP.POP.BIGAIRPORT.NET
+  ws-path: /
+- name: '[163ms] 法国 013'
+  network: grpc
+  port: 8880
+  server: 151.115.164.37
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- alterId: 0
+  cipher: auto
+  name: '[164ms] 澳大利亚 008'
+  network: ws
+  port: 443
+  server: 203.24.108.10
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 17b2a313-37a0-4945-a8e4-e63375506b4a
+  ws-opts:
+    headers:
+      Host: lg10.cfcdn1.xyz
+    path: /A2DJOPFT
+- name: '[165ms] 美国 367'
+  network: tcp
+  port: 62145
+  server: 157.137.235.147
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- cipher: aes-256-gcm
+  name: '[165ms] 欧洲(自由之梦免费节点-严禁倒卖) 9'
+  password: CUndSZnYsPKcu6Kj8THVMBHD
+  port: 39772
+  server: 91.205.230.158
+  type: ss
+- flow: ''
+  name: '[166ms] 德国 040'
+  network: tcp
+  port: 62145
+  server: 134.98.136.110
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- name: '[170ms] 美国 190'
+  network: xhttp
+  port: 2052
+  server: 104.17.122.116
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 22fff84b-dd89-489d-bc4c-794f664b92a2
+- alterId: 2
+  cipher: auto
+  name: '[171ms] 美国(yudou789.top 玉豆免费节点)_83'
+  port: 30808
+  server: v8.hdacd.com
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- alterId: 4
+  cipher: auto
+  name: '[176ms] 美国 014'
+  network: ws
+  port: 443
+  server: 154.94.218.130
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: aba50dd4-5484-3b05-b14a-4661caf862d5
+  ws-opts:
+    headers:
+      Host: viibah6u.com
+    path: /
+- client-fingerprint: chrome
+  name: '[178ms] 美国 293'
+  network: ws
+  port: 443
+  server: 170.114.46.6
+  servername: support.zoom.us.yxls.eu.cc
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5aafc2be-9348-4dec-b896-f4a91253bbca
+  ws-opts:
+    headers:
+      Host: support.zoom.us.yxls.eu.cc
+    path: /id-tksi
+- alterId: 0
+  cipher: auto
+  name: '[179ms] 美国 010'
+  network: ws
+  port: 80
+  server: 141.193.213.20
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: a55b7d77-d251-4e31-a76e-22d09ac69eb0
+  ws-opts:
+    headers:
+      Host: sanggoro6.nextvpn.cc
+    path: /
+- name: '[179ms] 巴西 007'
+  network: ws
+  port: 2095
+  server: 188.114.97.6
+  servername: daRk-CHOICEzJa8lf7vEO.SPORTLANd.cOmPany.
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 371dd7e4-c3ff-42de-aebc-0ab3bc62fb2d
+  ws-opts:
+    headers:
+      Host: daRk-CHOICEzJa8lf7vEO.SPORTLANd.cOmPany.
+    path: /?ed=2048
+- alterId: 0
+  cipher: auto
+  name: '[179ms] 伯利兹 009'
+  network: ws
+  port: 443
+  server: 203.30.191.191
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- name: '[180ms] 立陶宛 002'
+  network: ws
+  port: 8880
+  server: 89.116.180.40
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime09.workers.dev
+    path: /?ed=2560
+- name: '[180ms] 美国 337'
+  network: tcp
+  port: 443
+  server: 13.40.188.81
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 7e6a38f4-7150-4eff-ae68-579852357ddb
+- name: '[181ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  port: 9002
+  server: 193.176.84.22
+  skip-cert-verify: true
+  tls: true
+  type: http
+- alterId: 0
+  cipher: auto
+  name: '[181ms] 英国(yudou789.top 玉豆免费节点)_10'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[181ms] 美国 736'
+  network: ws
+  port: 443
+  server: 172.67.77.95
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 1bff15f1-a71d-4f07-b8bf-9471708eff8b
+  ws-opts:
+    headers:
+      Host: nat.998808.xyz
+    path: /fthe4gsefgtdu
+- cipher: aes-256-gcm
+  name: '[183ms] 欧洲(自由之梦免费节点-严禁倒卖) 14'
+  password: J9Y2ncrdPEC38gwydNFFGBna
+  port: 35294
+  server: 89.187.163.210
+  type: ss
+- name: '[184ms] 荷兰 011'
+  network: ws
+  port: 12068
+  server: 85.17.145.65
+  servername: mypanel.unixzone.us
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 05caca6c-9e97-4c0f-8edf-7b88a6e572c5
+  ws-opts:
+    headers:
+      Host: mypanel.unixzone.us
+    path: /
+- alterId: 64
+  cipher: auto
+  name: '[185ms] 美国 592'
+  network: ws
+  port: 443
+  server: 64.32.8.216
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+  ws-opts:
+    headers:
+      Host: www.58116899.xyz
+    path: /path/1704188270531
+- alterId: 0
+  cipher: auto
+  name: '[186ms] 巴西 030'
+  network: ws
+  port: 443
+  server: 188.114.96.3
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: oliv.beauty
+    path: linkvws
+- encryption: none
+  name: '[186ms] 德国 003'
+  network: tcp
+  port: 443
+  server: 136.244.94.171
+  type: vless
+  uuid: 52516534-4986-4959-b30b-a89463eed9af
+- alterId: 64
+  cipher: auto
+  name: '[187ms] 欧洲(自由之梦免费节点-严禁倒卖)'
+  network: ws
+  port: 443
+  server: 46.182.107.154
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 130c9f2e-42b1-4ebf-b345-e26456a061f9
+  ws-headers:
+    Host: www.05222027.xyz
+  ws-path: /footers
+- alterId: 0
+  cipher: aes-128-gcm
+  name: '[188ms] 美国(yudou789.top 玉豆免费节点)_33'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[189ms] 伯利兹 020'
+  network: ws
+  port: 443
+  server: 203.30.188.121
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- alterId: 0
+  cipher: auto
+  name: '[190ms] 美国 731'
+  network: ws
+  port: 443
+  server: 172.67.178.127
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 26b5fbcf-d199-407e-e8bf-96d7489d247d
+  ws-opts:
+    headers:
+      Host: en1.wanwushenghua.me
+    path: /123
+- name: '[191ms] 法国 014'
+  network: grpc
+  port: 8880
+  server: 151.115.164.43
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- alterId: 1
+  cipher: auto
+  name: '[192ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 7'
+  network: ws
+  port: 80
+  server: 23.100.94.69
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 140fcbf2-6376-406b-ad68-3eaabf9dd4a4
+  ws-headers:
+    Host: 045.HK.AP.POP.BIGAIRPORT.NET
+  ws-path: /
+- alterId: 64
+  cipher: auto
+  name: '[193ms] 欧洲(自由之梦免费节点-严禁倒卖) 2'
+  network: ws
+  port: 443
+  server: 46.182.107.39
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: d3133484-f2bf-4b0c-8d38-f8e645b65687
+  ws-headers:
+    Host: www.07890885.xyz
+  ws-path: /footers
+- alterId: 0
+  cipher: auto
+  name: '[193ms] 美国 652'
+  network: ws
+  port: 443
+  server: 141.101.114.150
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
+  ws-opts:
+    headers:
+      Host: clash6.ssr-free.xyz
+    path: /dongtaiwang.com
+- name: '[195ms] 美国 058'
+  network: ws
+  port: 8880
+  server: 72.167.230.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime51.workers.dev
+- cipher: aes-256-gcm
+  name: '[195ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 14'
+  password: LJcChRsGQRhywrtXUU55TLTu
+  port: 47861
+  server: 143.244.57.99
+  type: ss
+- name: '[197ms] 德国 020'
+  network: tcp
+  port: 443
+  server: 5.75.193.127
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 32894620-d039-4269-b57b-08647f3dc31c
+- alterId: 0
+  cipher: auto
+  name: '[199ms] 美国(yudou789.top 玉豆免费节点)_27'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[201ms] 美国 456'
+  network: tcp
+  port: 64584
+  server: 212.87.199.63
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d3b59f6e-fab9-46ca-afec-bc240c4899f9
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[201ms] 伊朗 016'
+  network: xhttp
+  port: 2000
+  server: 79.175.134.57
+  servername: fin2.wpflstudio.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2d9de6ea-56c9-422d-a4ad-cac95b8e0881
+- encryption: none
+  name: '[202ms] 比利时 002'
+  network: tcp
+  port: 443
+  server: 155.117.127.137
+  type: vless
+  uuid: 5a20b5d0-3a98-4792-9559-95f4e24277ec
+- cipher: aes-256-gcm
+  name: '[203ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 8'
+  password: 4ejJ8n5ddLuYDUHGXJre2ufJ
+  port: 48938
+  server: 212.103.49.149
+  type: ss
+- name: '[203ms] 荷兰 022'
+  network: ws
+  port: 443
+  server: 45.130.125.96
+  servername: dfsuporte.garena.com.ex33r.eu.cc
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 28607fa7-db30-47d6-942a-f5744e4be9ad
+  ws-opts:
+    headers:
+      Host: dfsuporte.garena.com.ex33r.eu.cc
+    path: /id-pusat
+- name: '[203ms] 美国 201'
+  network: ws
+  port: 443
+  server: 108.162.195.58
+  servername: learn00.evany.de5.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 29ca503d-e6b8-4509-b666-48133f450857
+  ws-opts:
+    headers:
+      Host: learn00.evany.de5.net
+    path: /fdip=tw.william.us.ci!txt
+- client-fingerprint: chrome
+  name: '[205ms] 美国 377'
+  network: ws
+  port: 8443
+  server: 172.66.0.106
+  servername: ez-5b84bf.nova-871f4314daa6.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 97481668-f1d3-4fbc-bae8-8fbce8d5305f
+  ws-opts:
+    headers:
+      Host: ez-5b84bf.nova-871f4314daa6.workers.dev
+    path: /
+- name: '[205ms] 新加坡 006'
+  network: tcp
+  port: 44915
+  server: 134.122.202.244
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0ca45842-71e2-47fe-889f-9e75f93ea459
+- alterId: 64
+  cipher: auto
+  name: '[206ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  network: ws
+  port: 443
+  server: 104.19.6.62
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 427ab4f5-7369-48c7-9b85-83bc380b0119
+  ws-headers:
+    Host: v2ray-eu.gd1214a.workers.dev
+  ws-path: /ray
+- alterId: 2
+  cipher: auto
+  name: '[208ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 16'
+  network: ws
+  port: 54494
+  server: 20.89.104.95
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 178e04a9-7474-3f14-9a88-f5717984c95d
+  ws-headers:
+    Host: 20.89.104.95
+  ws-path: index
+- name: '[210ms] 伊朗 012'
+  network: grpc
+  port: 443
+  server: 46.249.103.67
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2c11796c-d642-4d80-819b-226ddba44561
+- client-fingerprint: chrome
+  name: '[212ms] 伊朗 013'
+  network: xhttp
+  port: 443
+  server: 31.58.182.33
+  servername: deu683.lackerdeu.org
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2cca8201-c93e-40eb-bd8a-fea4170c169e
+- name: '[212ms] 波兰 005'
+  network: tcp
+  port: 443
+  server: 89.167.17.75
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 19773cc6-89a3-47c6-bc10-885460cd2b7b
+- name: '[212ms] 美国 368'
+  network: tcp
+  port: 62145
+  server: 157.137.236.160
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- name: '[214ms] 美国 034'
+  network: ws
+  port: 8880
+  server: 45.40.151.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime42.workers.dev
+    path: /
+- name: '[216ms] 德国 037'
+  network: ws
+  port: 46498
+  server: 176.65.140.210
+  servername: bobo.badrangteb.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 80c83a71-185b-459a-9503-1de94f5b515a
+  ws-opts:
+    headers:
+      Host: bobo.badrangteb.ir
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[216ms] 美国 664'
+  network: ws
+  port: 443
+  server: 172.67.125.28
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 81d93f62-15a2-4994-adb9-0b5d906aac7e
+  ws-opts:
+    headers:
+      Host: 38.72img.xyz
+    path: /
+- client-fingerprint: chrome
+  name: '[219ms] 美国 213'
+  network: ws
+  port: 443
+  server: 69.46.46.102
+  servername: esken-production.up.railway.app
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3501f229-7cc1-bc11-278f-cfb12cf5579f
+  ws-opts:
+    headers:
+      Host: esken-production.up.railway.app
+    path: /ws/3501f229-7cc1-bc11-278f-cfb12cf5579f
+- name: '[219ms] 立陶宛 001'
+  network: ws
+  port: 8880
+  server: 88.216.66.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime04.workers.dev
+- alterId: 0
+  cipher: auto
+  name: '[219ms] 美国 653'
+  network: ws
+  port: 443
+  server: 172.66.43.1
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 81d93f62-15a2-4994-adb9-0b5d906aac7e
+  ws-opts:
+    headers:
+      Host: 38.72img.xyz
+    path: /
+- name: '[221ms] 美国 122'
+  network: tcp
+  port: 8080
+  server: 143.246.136.234
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 037ec3f3-d983-4f05-9ae2-03f0c1d7977c
+- name: '[222ms] 美国 030'
+  network: ws
+  port: 8880
+  server: 50.62.198.50
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime39.workers.dev
+    path: /?ed=2560
+- name: '[223ms] 美国 302'
+  network: ws
+  port: 80
+  server: 172.67.151.222
+  servername: y670.0h0.ccwu.cc
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 60c4d55d-bee3-4719-9568-aabf45153f9f
+  ws-opts:
+    headers:
+      Host: y670.0h0.ccwu.cc
+    path: /gPvZ4oCcNDyuc3szX7xhuvpEm
+- alterId: 0
+  cipher: auto
+  name: '[223ms] 美国(yudou789.top 玉豆免费节点)_59'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[224ms] 美国(yudou789.top 玉豆免费节点)_29'
+  port: 180
+  server: 82.198.246.233
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- name: '[224ms] 法国 015'
+  network: grpc
+  port: 8880
+  server: 151.115.165.172
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- name: '[224ms] 🇫🇷 机场推荐:dafei.de 法国 17'
+  port: 443
+  server: 103.82.101.43
+  skip-cert-verify: true
+  sni: 76d1d3ecadca44efa2339867d7dfc9a1-8e928736d0f8dbdc.apache-iv.com
+  tls: true
+  type: http
+- name: '[224ms] 法国 016'
+  network: grpc
+  port: 8880
+  server: 151.115.166.221
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- name: '[225ms] 美国(yudou789.top 玉豆免费节点)_58'
+  network: ws
+  port: 8880
+  server: 188.164.248.50
+  tls: false
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime26.workers.dev
+    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
+- name: '[225ms] 法国 018'
+  network: grpc
+  port: 8880
+  server: 151.115.167.188
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- cipher: aes-256-gcm
+  name: '[226ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 10'
+  password: CXSjgD7u7Ar7GxkZ4CgTMUsj
+  port: 45329
+  server: 107.175.104.84
+  type: ss
+- name: '[227ms] 美国 499'
+  network: tcp
+  port: 22224
+  server: 18.156.147.82
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- flow: ''
+  name: '[228ms] 美国 200'
+  network: tcp
+  port: 8443
+  server: 158.23.49.45
+  servername: mexicotrash.duckdns.org
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2808bf00-f7af-4b8b-85cb-6bb5cfa4cba6
+- alterId: 0
+  cipher: auto
+  name: '[229ms] 美国 762'
+  network: ws
+  port: 80
+  server: 15.204.31.63
+  skip-cert-verify: true
+  type: vmess
+  uuid: ab4a729f-e4d4-4a78-8c24-3107c5e4faee
+  ws-opts:
+    headers:
+      Host: 15.204.31.63
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[230ms] 美国 764'
+  network: ws
+  port: 80
+  server: 162.19.224.175
+  skip-cert-verify: true
+  type: vmess
+  uuid: 42ba278d-65e0-4743-8707-e18ed98cfed5
+  ws-opts:
+    headers:
+      Host: 162.19.224.175
+    path: /vmess
+- alterId: 0
+  cipher: auto
+  name: '[234ms] 澳大利亚 009'
+  network: ws
+  port: 443
+  server: 203.24.108.8
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- alterId: 0
+  cipher: auto
+  name: '[234ms] 美国 688'
+  network: ws
+  port: 443
+  server: 141.101.114.17
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
+  ws-opts:
+    headers:
+      Host: clash6.ssr-free.xyz
+    path: /dongtaiwang.com
+- name: '[237ms] 荷兰 037'
+  network: tcp
+  port: 62145
+  server: 158.101.208.5
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- alterId: 0
+  cipher: auto
+  name: '[238ms] 美国 715'
+  network: ws
+  port: 443
+  server: 172.67.145.166
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- alterId: 0
+  cipher: auto
+  name: '[238ms] 英国 032'
+  network: ws
+  port: 443
+  server: 185.162.228.230
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 17b2a313-37a0-4945-a8e4-e63375506b4a
+  ws-opts:
+    headers:
+      Host: lg10.cfcdn1.xyz
+    path: /A2DJOPFT
+- name: '[241ms] 美国 203'
+  network: ws
+  port: 80
+  server: 104.16.38.60
+  servername: hidden-river-df80-ppal03.bewome9099.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2ab04aa0-5f28-432f-96c7-d168d09973d8
+  ws-opts:
+    headers:
+      Host: hidden-river-df80-ppal03.bewome9099.workers.dev
+    path: /?ed=2560
+- alterId: 0
+  cipher: auto
+  name: '[242ms] 美国 669'
+  network: ws
+  port: 443
+  server: 104.29.64.2
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: f33957e8-372e-4fba-99ed-f4db32cce9e5
+  ws-opts:
+    headers:
+      Host: fr2.cfcdn4.xyz
+    path: /ray
+- name: '[244ms] 美国 283'
+  network: ws
+  port: 443
+  server: 199.232.78.160
+  servername: alesis724.global.ssl.fastly.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 52c0dab9-2187-49a4-8e31-f1db94bd7a9e
+  ws-opts:
+    headers:
+      Host: alesis724.global.ssl.fastly.net
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[245ms] 美国(yudou789.top 玉豆免费节点)_36'
+  port: 180
+  server: 82.198.246.9
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 0
+  cipher: auto
+  name: '[245ms] 巴西 001'
+  network: ws
+  port: 443
+  server: 188.114.97.110
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 9e6ceeff-2546-3690-ac00-6fcdf31dec94
+  ws-opts:
+    headers:
+      Host: v2fly.samrt.website
+    path: /
+- alterId: 1
+  cipher: auto
+  name: '[246ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 11'
+  network: ws
+  port: 80
+  server: 23.99.121.10
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: e1aa83ff-b8b5-41b8-a854-fdcd3faa8875
+  ws-headers:
+    Host: 23.99.121.10
+  ws-path: /
+- name: '[247ms] 美国 366'
+  network: tcp
+  port: 62145
+  server: 157.137.222.243
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- alterId: 0
+  cipher: auto
+  name: '[248ms] 美国 708'
+  network: ws
+  port: 443
+  server: 66.235.200.21
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 56a2188b-2ab7-402c-b9b8-34847fdf0958
+  ws-opts:
+    headers:
+      Host: oplg1.zhujicn2.com
+    path: /5QNROSRV
+- name: '[250ms] 美国 193'
+  network: ws
+  port: 80
+  server: 104.24.248.204
+  servername: withered-wave-ee0b-ppal03.faxip46069.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2370f4d8-6694-4e51-8c72-b2782ae96a59
+  ws-opts:
+    headers:
+      Host: withered-wave-ee0b-ppal03.faxip46069.workers.dev
+    path: /?ed=2560
+- name: '[250ms] 美国 264'
+  network: ws
+  port: 443
+  server: 141.193.213.21
+  servername: amoosamiii.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4f013568-a58b-4b04-b5dd-4d52bf1c33a4
+  ws-opts:
+    headers:
+      Host: amoosamiii.net
+    path: /poiuyws
+- client-fingerprint: chrome
+  name: '[256ms] 美国 406'
+  network: ws
+  port: 8443
+  server: 162.159.253.41
+  servername: ratatouille.adaspoloandco.com
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: a47c49ec-6eaa-44ce-9108-8427426a1123
+  ws-opts:
+    headers:
+      Host: ratatouille.adaspoloandco.com
+    path: /admin.php
+- name: '[257ms] 法国 017'
+  network: grpc
+  port: 8880
+  server: 151.115.166.68
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+- cipher: aes-256-gcm
+  name: '[258ms] 欧洲(自由之梦免费节点-严禁倒卖) 24'
+  password: CUndSZnYsPKcu6Kj8THVMBHD
+  port: 39772
+  server: 5.253.206.69
+  type: ss
+- alterId: 0
+  cipher: auto
+  name: '[258ms] 美国 018'
+  network: ws
+  port: 443
+  server: 47.83.19.148
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
+  ws-opts:
+    headers:
+      Host: 6JDvArazgU3qQR6Q.v.3dns.vip
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[259ms] 美国(yudou789.top 玉豆免费节点)_31'
+  port: 180
+  server: 82.198.246.37
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- cipher: aes-256-gcm
+  name: '[260ms] 欧洲(自由之梦免费节点-严禁倒卖) 18'
+  password: BdRWC38L5JUDMTYNNxJGcUwB
+  port: 49396
+  server: 91.245.254.107
+  type: ss
+- name: '[261ms] 德国 021'
+  network: tcp
+  port: 29
+  server: 194.77.220.41
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 35c13bb9-9d22-4d89-bfd2-76fe7abf04ff
+- alterId: 1
+  cipher: auto
+  name: '[263ms] 巴西 027'
+  network: ws
+  port: 443
+  server: 188.114.97.7
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: waynn.makeup
+    path: linkvws
+- alterId: 64
+  cipher: auto
+  name: '[264ms] 美国 590'
+  network: ws
+  port: 443
+  server: 142.4.96.5
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+  ws-opts:
+    headers:
+      Host: www.37511588.xyz
+    path: /path/1704363182493
+- client-fingerprint: chrome
+  name: '[264ms] us|3f57|puddincat07@Telegram'
+  network: ws
+  password: humanity
+  port: '443'
+  server: 104.19.229.21
+  skip-cert-verify: false
+  sni: www.ignitelimit.com
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/534.17
+        (KHTML, like Gecko) Chrome/10.0.649.0 Safari/534.17
+    path: assignment
+- name: '[264ms] 美国 194'
+  network: ws
+  port: 80
+  server: 172.64.78.198
+  servername: withered-wave-ee0b-ppal03.faxip46069.workers.dev
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2370f4d8-6694-4e51-8c72-b2782ae96a59
+  ws-opts:
+    headers:
+      Host: withered-wave-ee0b-ppal03.faxip46069.workers.dev
+    path: /?ed=2560
+- cipher: aes-256-gcm
+  name: '[264ms] 欧洲(自由之梦免费节点-严禁倒卖) 13'
+  password: x23Z4LGkGDkThZ9Kaz4DURQp
+  port: 40093
+  server: 37.19.199.209
+  type: ss
+- name: '[265ms] 德国 025'
+  network: tcp
+  port: 36632
+  server: 3.120.187.17
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4d259f79-e02b-4aa3-ebde-92c177df2d87
+- alterId: 64
+  cipher: auto
+  name: '[265ms] 中国 029'
+  network: ws
+  port: 31000
+  server: 45.199.138.185
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 078eb24d-8d1d-4fbd-b914-ee58a897a35e
+  ws-opts:
+    headers:
+      Host: www.15697065.xyz
+    path: /path/1704363182493
+- name: '[266ms] 美国 483'
+  network: tcp
+  port: 22224
+  server: 13.39.243.4
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- client-fingerprint: chrome
+  name: '[266ms] 美国 257'
+  network: ws
+  port: 443
+  server: 51.91.251.198
+  servername: support.zoom.us.yxls.eu.cc
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4d10c997-4781-4cd9-82c3-15453523e12c
+  ws-opts:
+    headers:
+      Host: support.zoom.us.yxls.eu.cc
+    path: /sg-melbi
+- alterId: 0
+  cipher: auto
+  name: '[267ms] 法国(yudou789.top 玉豆免费节点)_1'
+  port: 180
+  server: 82.198.246.97
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- alterId: 1
+  cipher: auto
+  name: '[267ms] 巴西 028'
+  network: ws
+  port: 443
+  server: 188.114.96.2
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
+    headers:
+      Host: ophelia.mom
+    path: linkvws
+- name: '[268ms] 荷兰 023'
+  network: tcp
+  port: 443
+  server: 62.238.125.246
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 327ea57c-5743-4a24-816a-90bb2a3595cf
+- alterId: 1
+  cipher: auto
+  name: '[269ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 5'
+  network: ws
+  port: 80
+  server: 23.99.103.85
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 140fcbf2-6376-406b-ad68-3eaabf9dd4a4
+  ws-headers:
+    Host: 050.HK.AP.POP.BIGAIRPORT.NET
+  ws-path: /
+- alterId: 0
+  cipher: auto
+  name: '[269ms] 美国 727'
+  network: ws
+  port: 443
+  server: 172.67.201.14
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: c5a2d7b8-bf84-4f97-8577-b9b87f2baaf7
+  ws-opts:
+    headers:
+      Host: oplg1.cfcdn2.xyz
+    path: /AUIKN8AU
+- name: '[272ms] 美国 503'
+  network: tcp
+  port: 22222
+  server: 18.169.233.193
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  port: 9002
+  server: 193.176.84.34
+  skip-cert-verify: true
+  sni: www.bing.com
+  sub_tag: noCache
+  tls: true
+  type: http
+- alterId: 0
+  cipher: auto
+  name: '[275ms] 澳大利亚 001'
+  network: ws
+  port: 13118
+  server: 140.83.57.20
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 1f01e389-fbcb-494c-e46a-210ec36329c2
+  ws-opts:
+    headers:
+      Host: sg.11160321.de5.net
+    path: /
+- name: '[277ms] 英国 003'
+  network: ws
+  port: 8880
+  server: 77.75.199.30
+  type: vless
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime59.workers.dev
+- cipher: aes-256-gcm
+  name: '[277ms] 欧洲(自由之梦免费节点-严禁倒卖) 11'
+  password: CjchzpwdSjRtDjezYMwx9BKM
+  port: 50232
+  server: 37.19.199.209
+  type: ss
+- name: '[278ms] 日本 007'
+  network: ws
+  port: 80
+  server: 151.101.110.219
+  servername: franseeeeeee.global.ssl.fastly.net
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2fe74ab0-1995-4ee8-90ff-e8ad9d1206e6
+  ws-opts:
+    headers:
+      Host: franseeeeeee.global.ssl.fastly.net
+    path: /api
+- cipher: aes-256-cfb
+  name: '[280ms] 🇬🇧_GB_英国'
+  password: amazonskr05
+  port: 443
+  server: 18.132.203.206
+  skip-cert-verify: true
+  type: ss
+  udp: true
+- cipher: aes-256-gcm
+  name: '[280ms] 欧洲(自由之梦免费节点-严禁倒卖) 8'
+  password: YyCBeDdYX4cadHpCkkmdJLq8
+  port: 43893
+  server: 138.199.17.130
+  type: ss
+- encryption: none
+  name: '[281ms] 美国 055'
+  network: ws
+  port: 8880
+  server: 172.64.146.127
+  type: vless
+  uuid: 7890ce31-9a25-4fd4-90e7-80e5823ff510
+  ws-opts:
+    headers:
+      Host: frejd.11258.workers.dev
+    path: /telegram🇨🇳
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[292ms] 伊朗 015'
+  network: xhttp
+  port: 443
+  server: 185.88.177.40
+  servername: german2.fluentfast.ir
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2d9de6ea-56c9-422d-a4ad-cac95b8e0881
+proxy-groups:
+- interval: 300
+  name: 🚀 自动优选
+  proxies:
+  - '[0ms] 荷兰 003'
+  - '[0ms] 美国 184'
+  - '[0ms] 新加坡 002'
+  - '[0ms] 荷兰 019'
+  - '[0ms] 美国 025'
+  - '[0ms] 香港(yudou789.top 玉豆免费节点)_1'
+  - '[0ms] 🇸🇬 新加坡(自由之梦免费节点-严禁倒卖)'
+  - '[0ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖)'
+  - '[0ms] 美国 185'
+  - '[0ms] 美国 026'
+  - '[0ms] 美国 186'
+  - '[0ms] 美国(yudou789.top 玉豆免费节点)_82'
+  - '[0ms] 日本 002'
+  - '[0ms] 巴林 001'
+  - '[1ms] 英国(yudou789.top 玉豆免费节点)_56'
+  - '[1ms] 英国 002'
+  - '[1ms] 美国 187'
+  - '[1ms] 美国 188'
+  - '[1ms] 美国 027'
+  - '[2ms] 美国 733'
+  - '[2ms] 美国 738'
+  - '[2ms] 英国 001'
+  - '[2ms] 伊朗 010'
+  - '[8ms] 美国 744'
+  - '[8ms] 美国 742'
+  - '[17ms] 德国 023'
+  - '[17ms] 美国 709'
+  - '[17ms] 俄罗斯 011'
+  - '[18ms] 荷兰 009'
+  - '[18ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  - '[18ms] 美国(yudou789.top 玉豆免费节点)_68'
+  - '[20ms] 🇦🇺 机场推荐:dafei.de 澳大利亚 01'
+  - '[32ms] 美国 228'
+  - '[32ms] 伊朗 026'
+  - '[71ms] 美国 634'
+  - '[74ms] 美国 502'
+  - '[75ms] 荷兰 007'
+  - '[80ms] 日本 004'
+  - '[82ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 2'
+  - '[92ms] 美国 509'
+  - '[93ms] 英国 006'
+  - '[93ms] 美国 312'
+  - '[94ms] 伊朗 004'
+  - '[94ms] 英国 031'
+  - '[105ms] 伊朗 014'
+  - '[106ms] 美国 046'
+  - '[107ms] 美国 048'
+  - '[107ms] 澳大利亚 004'
+  - '[113ms] 法国 012'
+  - '[113ms] 美国(yudou789.top 玉豆免费节点)_30'
+  - '[115ms] 🇮🇹 机场推荐:dafei.de 意大利 02'
+  - '[116ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 5'
+  - '[116ms] 美国 633'
+  - '[116ms] 美国 637'
+  - '[118ms] 🇨🇿 机场推荐:dafei.de 捷克 02'
+  - '[120ms] 斯洛文尼亚 001'
+  - '[120ms] 美国 205'
+  - '[120ms] 荷兰 017'
+  - '[120ms] 英国 027'
+  - '[121ms] 美国(yudou789.top 玉豆免费节点)_34'
+  - '[122ms] 美国 125'
+  - '[122ms] 🇨🇿 机场推荐:dafei.de 捷克 01'
+  - '[122ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
+  - '[122ms] 美国 632'
+  - '[122ms] 美国 137'
+  - '[126ms] 中国 045'
+  - '[126ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 6'
+  - '[127ms] 日本 003'
+  - '[129ms] 乌克兰 005'
+  - '[131ms] 美国 300'
+  - '[132ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 13'
+  - '[132ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[133ms] 美国 095'
+  - '[134ms] 美国 384'
+  - '[135ms] 欧洲(自由之梦免费节点-严禁倒卖) 22'
+  - '[138ms] 美国 332'
+  - '[140ms] 荷兰 038'
+  - '[142ms] 美国 192'
+  - '[142ms] 美国 365'
+  - '[142ms] 美国 032'
+  - '[144ms] 美国 031'
+  - '[145ms] 美国 655'
+  - '[146ms] 美国 121'
+  - '[148ms] 罗马尼亚 002'
+  - '[149ms] 法国 011'
+  - '[152ms] 巴西 019'
+  - '[153ms] 美国(yudou789.top 玉豆免费节点)_28'
+  - '[156ms] 美国 189'
+  - '[156ms] 荷兰 020'
+  - '[157ms] 韩国 003'
+  - '[158ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 20'
+  - '[160ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[162ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 3'
+  - '[163ms] 法国 013'
+  - '[164ms] 澳大利亚 008'
+  - '[165ms] 美国 367'
+  - '[165ms] 欧洲(自由之梦免费节点-严禁倒卖) 9'
+  - '[166ms] 德国 040'
+  - '[170ms] 美国 190'
+  - '[171ms] 美国(yudou789.top 玉豆免费节点)_83'
+  - '[176ms] 美国 014'
+  - '[178ms] 美国 293'
+  - '[179ms] 美国 010'
+  - '[179ms] 巴西 007'
+  - '[179ms] 伯利兹 009'
+  - '[180ms] 立陶宛 002'
+  - '[180ms] 美国 337'
+  - '[181ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[181ms] 英国(yudou789.top 玉豆免费节点)_10'
+  - '[181ms] 美国 736'
+  - '[183ms] 欧洲(自由之梦免费节点-严禁倒卖) 14'
+  - '[184ms] 荷兰 011'
+  - '[185ms] 美国 592'
+  - '[186ms] 巴西 030'
+  - '[186ms] 德国 003'
+  - '[187ms] 欧洲(自由之梦免费节点-严禁倒卖)'
+  - '[188ms] 美国(yudou789.top 玉豆免费节点)_33'
+  - '[189ms] 伯利兹 020'
+  - '[190ms] 美国 731'
+  - '[191ms] 法国 014'
+  - '[192ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 7'
+  - '[193ms] 欧洲(自由之梦免费节点-严禁倒卖) 2'
+  - '[193ms] 美国 652'
+  - '[195ms] 美国 058'
+  - '[195ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 14'
+  - '[197ms] 德国 020'
+  - '[199ms] 美国(yudou789.top 玉豆免费节点)_27'
+  - '[201ms] 美国 456'
+  - '[201ms] 伊朗 016'
+  - '[202ms] 比利时 002'
+  - '[203ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 8'
+  - '[203ms] 荷兰 022'
+  - '[203ms] 美国 201'
+  - '[205ms] 美国 377'
+  - '[205ms] 新加坡 006'
+  - '[206ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[208ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 16'
+  - '[210ms] 伊朗 012'
+  - '[212ms] 伊朗 013'
+  - '[212ms] 波兰 005'
+  - '[212ms] 美国 368'
+  - '[214ms] 美国 034'
+  - '[216ms] 德国 037'
+  - '[216ms] 美国 664'
+  - '[219ms] 美国 213'
+  - '[219ms] 立陶宛 001'
+  - '[219ms] 美国 653'
+  - '[221ms] 美国 122'
+  - '[222ms] 美国 030'
+  - '[223ms] 美国 302'
+  - '[223ms] 美国(yudou789.top 玉豆免费节点)_59'
+  - '[224ms] 美国(yudou789.top 玉豆免费节点)_29'
+  - '[224ms] 法国 015'
+  - '[224ms] 🇫🇷 机场推荐:dafei.de 法国 17'
+  - '[224ms] 法国 016'
+  - '[225ms] 美国(yudou789.top 玉豆免费节点)_58'
+  - '[225ms] 法国 018'
+  - '[226ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 10'
+  - '[227ms] 美国 499'
+  - '[228ms] 美国 200'
+  - '[229ms] 美国 762'
+  - '[230ms] 美国 764'
+  - '[234ms] 澳大利亚 009'
+  - '[234ms] 美国 688'
+  - '[237ms] 荷兰 037'
+  - '[238ms] 美国 715'
+  - '[238ms] 英国 032'
+  - '[241ms] 美国 203'
+  - '[242ms] 美国 669'
+  - '[244ms] 美国 283'
+  - '[245ms] 美国(yudou789.top 玉豆免费节点)_36'
+  - '[245ms] 巴西 001'
+  - '[246ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 11'
+  - '[247ms] 美国 366'
+  - '[248ms] 美国 708'
+  - '[250ms] 美国 193'
+  - '[250ms] 美国 264'
+  - '[256ms] 美国 406'
+  - '[257ms] 法国 017'
+  - '[258ms] 欧洲(自由之梦免费节点-严禁倒卖) 24'
+  - '[258ms] 美国 018'
+  - '[259ms] 美国(yudou789.top 玉豆免费节点)_31'
+  - '[260ms] 欧洲(自由之梦免费节点-严禁倒卖) 18'
+  - '[261ms] 德国 021'
+  - '[263ms] 巴西 027'
+  - '[264ms] 美国 590'
+  - '[264ms] us|3f57|puddincat07@Telegram'
+  - '[264ms] 美国 194'
+  - '[264ms] 欧洲(自由之梦免费节点-严禁倒卖) 13'
+  - '[265ms] 德国 025'
+  - '[265ms] 中国 029'
+  - '[266ms] 美国 483'
+  - '[266ms] 美国 257'
+  - '[267ms] 法国(yudou789.top 玉豆免费节点)_1'
+  - '[267ms] 巴西 028'
+  - '[268ms] 荷兰 023'
+  - '[269ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 5'
+  - '[269ms] 美国 727'
+  - '[272ms] 美国 503'
+  - '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[275ms] 澳大利亚 001'
+  - '[277ms] 英国 003'
+  - '[277ms] 欧洲(自由之梦免费节点-严禁倒卖) 11'
+  - '[278ms] 日本 007'
+  - '[280ms] 🇬🇧_GB_英国'
+  - '[280ms] 欧洲(自由之梦免费节点-严禁倒卖) 8'
+  - '[281ms] 美国 055'
+  - '[292ms] 伊朗 015'
+  tolerance: 50
+  type: url-test
+  url: http://www.baidu.com
+- name: 🌍 手动切换
+  proxies:
+  - 🚀 自动优选
+  - '[0ms] 荷兰 003'
+  - '[0ms] 美国 184'
+  - '[0ms] 新加坡 002'
+  - '[0ms] 荷兰 019'
+  - '[0ms] 美国 025'
+  - '[0ms] 香港(yudou789.top 玉豆免费节点)_1'
+  - '[0ms] 🇸🇬 新加坡(自由之梦免费节点-严禁倒卖)'
+  - '[0ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖)'
+  - '[0ms] 美国 185'
+  - '[0ms] 美国 026'
+  - '[0ms] 美国 186'
+  - '[0ms] 美国(yudou789.top 玉豆免费节点)_82'
+  - '[0ms] 日本 002'
+  - '[0ms] 巴林 001'
+  - '[1ms] 英国(yudou789.top 玉豆免费节点)_56'
+  - '[1ms] 英国 002'
+  - '[1ms] 美国 187'
+  - '[1ms] 美国 188'
+  - '[1ms] 美国 027'
+  - '[2ms] 美国 733'
+  - '[2ms] 美国 738'
+  - '[2ms] 英国 001'
+  - '[2ms] 伊朗 010'
+  - '[8ms] 美国 744'
+  - '[8ms] 美国 742'
+  - '[17ms] 德国 023'
+  - '[17ms] 美国 709'
+  - '[17ms] 俄罗斯 011'
+  - '[18ms] 荷兰 009'
+  - '[18ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  - '[18ms] 美国(yudou789.top 玉豆免费节点)_68'
+  - '[20ms] 🇦🇺 机场推荐:dafei.de 澳大利亚 01'
+  - '[32ms] 美国 228'
+  - '[32ms] 伊朗 026'
+  - '[71ms] 美国 634'
+  - '[74ms] 美国 502'
+  - '[75ms] 荷兰 007'
+  - '[80ms] 日本 004'
+  - '[82ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 2'
+  - '[92ms] 美国 509'
+  - '[93ms] 英国 006'
+  - '[93ms] 美国 312'
+  - '[94ms] 伊朗 004'
+  - '[94ms] 英国 031'
+  - '[105ms] 伊朗 014'
+  - '[106ms] 美国 046'
+  - '[107ms] 美国 048'
+  - '[107ms] 澳大利亚 004'
+  - '[113ms] 法国 012'
+  - '[113ms] 美国(yudou789.top 玉豆免费节点)_30'
+  - '[115ms] 🇮🇹 机场推荐:dafei.de 意大利 02'
+  - '[116ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 5'
+  - '[116ms] 美国 633'
+  - '[116ms] 美国 637'
+  - '[118ms] 🇨🇿 机场推荐:dafei.de 捷克 02'
+  - '[120ms] 斯洛文尼亚 001'
+  - '[120ms] 美国 205'
+  - '[120ms] 荷兰 017'
+  - '[120ms] 英国 027'
+  - '[121ms] 美国(yudou789.top 玉豆免费节点)_34'
+  - '[122ms] 美国 125'
+  - '[122ms] 🇨🇿 机场推荐:dafei.de 捷克 01'
+  - '[122ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
+  - '[122ms] 美国 632'
+  - '[122ms] 美国 137'
+  - '[126ms] 中国 045'
+  - '[126ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 6'
+  - '[127ms] 日本 003'
+  - '[129ms] 乌克兰 005'
+  - '[131ms] 美国 300'
+  - '[132ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 13'
+  - '[132ms] 美国(yudou789.top 玉豆免费节点)_52'
+  - '[133ms] 美国 095'
+  - '[134ms] 美国 384'
+  - '[135ms] 欧洲(自由之梦免费节点-严禁倒卖) 22'
+  - '[138ms] 美国 332'
+  - '[140ms] 荷兰 038'
+  - '[142ms] 美国 192'
+  - '[142ms] 美国 365'
+  - '[142ms] 美国 032'
+  - '[144ms] 美国 031'
+  - '[145ms] 美国 655'
+  - '[146ms] 美国 121'
+  - '[148ms] 罗马尼亚 002'
+  - '[149ms] 法国 011'
+  - '[152ms] 巴西 019'
+  - '[153ms] 美国(yudou789.top 玉豆免费节点)_28'
+  - '[156ms] 美国 189'
+  - '[156ms] 荷兰 020'
+  - '[157ms] 韩国 003'
+  - '[158ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 20'
+  - '[160ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 18'
+  - '[162ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 3'
+  - '[163ms] 法国 013'
+  - '[164ms] 澳大利亚 008'
+  - '[165ms] 美国 367'
+  - '[165ms] 欧洲(自由之梦免费节点-严禁倒卖) 9'
+  - '[166ms] 德国 040'
+  - '[170ms] 美国 190'
+  - '[171ms] 美国(yudou789.top 玉豆免费节点)_83'
+  - '[176ms] 美国 014'
+  - '[178ms] 美国 293'
+  - '[179ms] 美国 010'
+  - '[179ms] 巴西 007'
+  - '[179ms] 伯利兹 009'
+  - '[180ms] 立陶宛 002'
+  - '[180ms] 美国 337'
+  - '[181ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
+  - '[181ms] 英国(yudou789.top 玉豆免费节点)_10'
+  - '[181ms] 美国 736'
+  - '[183ms] 欧洲(自由之梦免费节点-严禁倒卖) 14'
+  - '[184ms] 荷兰 011'
+  - '[185ms] 美国 592'
+  - '[186ms] 巴西 030'
+  - '[186ms] 德国 003'
+  - '[187ms] 欧洲(自由之梦免费节点-严禁倒卖)'
+  - '[188ms] 美国(yudou789.top 玉豆免费节点)_33'
+  - '[189ms] 伯利兹 020'
+  - '[190ms] 美国 731'
+  - '[191ms] 法国 014'
+  - '[192ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 7'
+  - '[193ms] 欧洲(自由之梦免费节点-严禁倒卖) 2'
+  - '[193ms] 美国 652'
+  - '[195ms] 美国 058'
+  - '[195ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 14'
+  - '[197ms] 德国 020'
+  - '[199ms] 美国(yudou789.top 玉豆免费节点)_27'
+  - '[201ms] 美国 456'
+  - '[201ms] 伊朗 016'
+  - '[202ms] 比利时 002'
+  - '[203ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 8'
+  - '[203ms] 荷兰 022'
+  - '[203ms] 美国 201'
+  - '[205ms] 美国 377'
+  - '[205ms] 新加坡 006'
+  - '[206ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 19'
+  - '[208ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 16'
+  - '[210ms] 伊朗 012'
+  - '[212ms] 伊朗 013'
+  - '[212ms] 波兰 005'
+  - '[212ms] 美国 368'
+  - '[214ms] 美国 034'
+  - '[216ms] 德国 037'
+  - '[216ms] 美国 664'
+  - '[219ms] 美国 213'
+  - '[219ms] 立陶宛 001'
+  - '[219ms] 美国 653'
+  - '[221ms] 美国 122'
+  - '[222ms] 美国 030'
+  - '[223ms] 美国 302'
+  - '[223ms] 美国(yudou789.top 玉豆免费节点)_59'
+  - '[224ms] 美国(yudou789.top 玉豆免费节点)_29'
+  - '[224ms] 法国 015'
+  - '[224ms] 🇫🇷 机场推荐:dafei.de 法国 17'
+  - '[224ms] 法国 016'
+  - '[225ms] 美国(yudou789.top 玉豆免费节点)_58'
+  - '[225ms] 法国 018'
+  - '[226ms] 🇺🇸 美国(自由之梦免费节点-严禁倒卖) 10'
+  - '[227ms] 美国 499'
+  - '[228ms] 美国 200'
+  - '[229ms] 美国 762'
+  - '[230ms] 美国 764'
+  - '[234ms] 澳大利亚 009'
+  - '[234ms] 美国 688'
+  - '[237ms] 荷兰 037'
+  - '[238ms] 美国 715'
+  - '[238ms] 英国 032'
+  - '[241ms] 美国 203'
+  - '[242ms] 美国 669'
+  - '[244ms] 美国 283'
+  - '[245ms] 美国(yudou789.top 玉豆免费节点)_36'
+  - '[245ms] 巴西 001'
+  - '[246ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 11'
+  - '[247ms] 美国 366'
+  - '[248ms] 美国 708'
+  - '[250ms] 美国 193'
+  - '[250ms] 美国 264'
+  - '[256ms] 美国 406'
+  - '[257ms] 法国 017'
+  - '[258ms] 欧洲(自由之梦免费节点-严禁倒卖) 24'
+  - '[258ms] 美国 018'
+  - '[259ms] 美国(yudou789.top 玉豆免费节点)_31'
+  - '[260ms] 欧洲(自由之梦免费节点-严禁倒卖) 18'
+  - '[261ms] 德国 021'
+  - '[263ms] 巴西 027'
+  - '[264ms] 美国 590'
+  - '[264ms] us|3f57|puddincat07@Telegram'
+  - '[264ms] 美国 194'
+  - '[264ms] 欧洲(自由之梦免费节点-严禁倒卖) 13'
+  - '[265ms] 德国 025'
+  - '[265ms] 中国 029'
+  - '[266ms] 美国 483'
+  - '[266ms] 美国 257'
+  - '[267ms] 法国(yudou789.top 玉豆免费节点)_1'
+  - '[267ms] 巴西 028'
+  - '[268ms] 荷兰 023'
+  - '[269ms] 🇭🇰 香港(自由之梦免费节点-严禁倒卖) 5'
+  - '[269ms] 美国 727'
+  - '[272ms] 美国 503'
+  - '[272ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[275ms] 澳大利亚 001'
+  - '[277ms] 英国 003'
+  - '[277ms] 欧洲(自由之梦免费节点-严禁倒卖) 11'
+  - '[278ms] 日本 007'
+  - '[280ms] 🇬🇧_GB_英国'
+  - '[280ms] 欧洲(自由之梦免费节点-严禁倒卖) 8'
+  - '[281ms] 美国 055'
+  - '[292ms] 伊朗 015'
+  type: select
+rules:
+- MATCH,🌍 手动切换
