@@ -61,6 +61,15 @@
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1
+      },
+      {
+        "key": "我的软路由",
+        "name": "🔞123AV",
+        "type": 1,
+        "api": "http://192.168.1.2:8888/",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1
       }
   ],
   "parses": [
