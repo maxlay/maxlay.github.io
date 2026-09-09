@@ -63,14 +63,24 @@
         "filterable": 1
       },
       {
-        "key": "我的软路由",
+        "key": "myjson_drpy",
         "name": "🔞123AV",
-        "type": 1,
-        "api": "http://192.168.1.2:8888/month/2026-09.json",
+        "type": 3,
+        "api": "csp_DRPY",
+        "ext": "http://192.168.1.2:8888/mine.js",
         "searchable": 1,
         "quickSearch": 1,
-        "filterable": 1
+        "filterable": 0
       }
+      // {
+      //   "key": "我的软路由",
+      //   "name": "🔞123AV",
+      //   "type": 1,
+      //   "api": "http://192.168.1.2:8888/month/2026-09.json",
+      //   "searchable": 1,
+      //   "quickSearch": 1,
+      //   "filterable": 1
+      // }
   ],
   "parses": [
     {
