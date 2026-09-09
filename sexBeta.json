@@ -26,33 +26,33 @@
     "wallpaper": "https://bing.img.run/uhd.php",
     
     "sites": [
-      {
-        "key": "*麻豆1",
-        "name": "🔞麻豆1",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://www.9191md.me/api.php/provide/vod/"
-      },
-      {
-        "key": "*麻豆2",
-        "name": "🔞麻豆2",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://www.madou.io/api.php/provide/vod/"
-      },
-      {
-        "key": "*番号",
-        "name": "🔞155",
-        "type": 1,
-        "quickSearch": 1,
-        "searchable": 1,
-        "filterable": 1,
-        "api": "https://155api.com/api.php/provide/vod/"
-      },
+      // {
+      //   "key": "*麻豆1",
+      //   "name": "🔞麻豆1",
+      //   "type": 1,
+      //   "quickSearch": 1,
+      //   "searchable": 1,
+      //   "filterable": 1,
+      //   "api": "https://www.9191md.me/api.php/provide/vod/"
+      // },
+      // {
+      //   "key": "*麻豆2",
+      //   "name": "🔞麻豆2",
+      //   "type": 1,
+      //   "quickSearch": 1,
+      //   "searchable": 1,
+      //   "filterable": 1,
+      //   "api": "https://www.madou.io/api.php/provide/vod/"
+      // },
+      // {
+      //   "key": "*番号",
+      //   "name": "🔞155",
+      //   "type": 1,
+      //   "quickSearch": 1,
+      //   "searchable": 1,
+      //   "filterable": 1,
+      //   "api": "https://155api.com/api.php/provide/vod/"
+      // },
       {
         "key": "乐播",
         "name": "🔞乐播",
@@ -66,7 +66,7 @@
         "key": "我的软路由",
         "name": "🔞123AV",
         "type": 1,
-        "api": "http://192.168.1.2:8888/tvbox.json",
+        "api": "http://192.168.1.2:8888/month/2026-09.json",
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1
