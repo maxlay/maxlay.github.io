@@ -61,17 +61,17 @@
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1
-      },
-      {
-        "key": "myjson_drpy",
-        "name": "🔞123AV",
-        "type": 0,
-        "api": "csp_DRPY",
-        "ext": "http://192.168.1.2:8888/mine.js",
-        "searchable": 1,
-        "quickSearch": 1,
-        "filterable": 0
       }
+      // {
+      //   "key": "myjson_drpy",
+      //   "name": "🔞123AV",
+      //   "type": 0,
+      //   "api": "csp_DRPY",
+      //   "ext": "http://192.168.1.2:8888/mine.js",
+      //   "searchable": 1,
+      //   "quickSearch": 1,
+      //   "filterable": 0
+      // }
       // {
       //   "key": "我的软路由",
       //   "name": "🔞123AV",
