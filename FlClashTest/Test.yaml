@@ -3,731 +3,306 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: '[37ms] 🏁 未知-9A57D47E'
-  type: vless
-  server: 104.17.213.97
-  port: 2096
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: sd.cbb.j3.ink
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 615b457e-fb2a-4bb7-854b-99c0e2c16b2a
-  ws-opts:
-    early-data-header-name: Sec-WebSocket-Protocol
-    headers:
-      Host: sd.cbb.j3.ink
-    max-early-data: 2560
-    path: /go.php/picture
-- name: '[38ms] 🏁 未知-FB368F1D'
-  type: vless
-  server: 104.18.45.137
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: amooaliii.net
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 72d1797c-cef8-410a-b8fd-db9104dc3cb0
-  ws-opts:
-    headers:
-      Host: amooaliii.net
-    path: /jdhfyws
-- name: '[38ms] 🏁 未知-1B9640A7'
-  type: vless
-  server: 104.18.35.13
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[38ms] 🏁 未知-61625CA9'
-  type: vless
-  server: 172.64.52.134
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[39ms] 🏁 未知-13F7F814'
-  type: vless
-  server: 172.64.147.226
-  port: 2083
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: freetools-h2s.pages.dev
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 1189bc23-27f7-47c1-89d4-1e6843a09cb6
-  ws-opts:
-    headers:
-      Host: freetools-h2s.pages.dev
-    path: /
-- name: '[39ms] 🏁 未知-7C8B4D44'
-  type: vless
-  server: 172.64.53.65
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[40ms] 🏁 未知-FDE6F46C'
-  type: vless
-  server: 172.64.52.240
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[40ms] 🏁 未知-77B23099'
-  type: vless
-  server: cf2.466688.xyz
-  port: 8443
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: pavah949141.pages.dev
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: pavah949141.pages.dev
-    path: /project?ed
-- name: '[41ms] 🏁 未知-C02D7B93'
-  type: vless
-  server: 104.21.88.79
-  port: 443
-  alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: wCJrQ-2NT3xECUTlUWF4qaO79rw-rZjk.BOZBozgHANDI-362.wORkers.dEv
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: c2146d30-8e83-4cdd-9b08-368ba0a49b77
-  ws-opts:
-    headers:
-      Host: wcjrq-2nt3xecutluwf4qao79rw-rzjk.bozbozghandi-362.workers.dev
-    path: /eyJqdW5rIjoickhvV0xvdWdacyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzI2MDI6ZmM1OTpiMDo2NDo6XSJdfQ
-- name: '[41ms] 🏁 未知-E7925D00'
-  type: vless
-  server: 104.18.44.198
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[41ms] 🏁 未知-29EEEC26'
-  type: vless
-  server: 104.18.45.249
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[41ms] 🏁 未知-E389B266'
-  type: vless
-  server: 172.64.52.152
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[41ms] 🏁 未知-CA629B79'
-  type: vless
-  server: 104.19.53.23
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: true
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[41ms] 🏁 未知-A390A5FE'
-  type: vless
-  server: 172.64.53.27
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[41ms] 🏁 未知-A6E719AB'
-  type: vless
-  server: cf1.466688.xyz
-  port: 2087
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: febeyop587.pages.dev
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: febeyop587.pages.dev
-    path: /pics/share/teacher?ed
-- name: '[41ms] 🏁 未知-A257413E'
-  type: vless
-  server: 172.64.52.18
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[42ms] 🏁 未知-FE29EC23'
-  type: vless
-  server: cf1.466688.xyz
-  port: 2053
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: balafi7691.pages.dev
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: balafi7691.pages.dev
-    path: /jump/tv/content?ed
-- name: '[42ms] 🏁 未知-8EC678B8'
-  type: vless
-  server: 172.64.53.34
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[43ms] 🇨🇳CN中國丨yoyapai.com'
-  type: vless
-  server: jp.sofast.live
-  port: 52683
-  uuid: 5aaa5259-f924-4682-a4a3-149d472a9dcc
+- name: '[31ms] 🇨🇳_CN_中国->🇺🇸_US_美国'
+  type: vmess
+  server: goldcnmltyljgfwgov.vip67.wogcnmnnagfwgov.com
+  port: 11267
+  uuid: 605956ee-544d-308e-8b90-51e67c6ea8da
+  alterId: 2
+  cipher: auto
   tls: false
-  skip-cert-verify: false
+  skip-cert-verify: true
   udp: true
-- name: '[43ms] 🏁 未知-CD8C8F62'
-  type: vless
-  server: cf1.466688.xyz
-  port: 8443
-  client-fingerprint: chrome
+- name: '[35ms] 🇨🇳_CN_中国'
+  type: vmess
+  server: 120.48.133.162
+  port: 10086
+  uuid: fde10e39-48bb-4dcf-b3ba-71d711323a54
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: true
   network: ws
-  packet-encoding: xudp
-  servername: febeyop587.pages.dev
-  skip-cert-verify: false
-  tls: true
   udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: febeyop587.pages.dev
-    path: /service?ed
-- name: '[44ms] 🏁 未知-69341B41'
-  type: vless
-  server: 172.64.146.229
+- alpn:
+  - h3
+  - h2
+  client-fingerprint: chrome
+  name: '[41ms] 🇯🇵JP_2|4.2MB/s'
+  network: ws
   port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+  server: saas.sin.fan
+  servername: snip.edgeoneai.cc.cd
   tls: true
+  type: vless
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  uuid: 495c7195-85b8-498a-bf20-2ea9ce9175b5
   ws-opts:
     headers:
-      Host: t1s1.rittbo.kdns.fr
+      Host: snip.edgeoneai.cc.cd
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
     path: /
-- name: '[45ms] 🇺🇸US美國丨yoyapai.com_8'
-  type: vless
-  server: cf.090227.xyz
-  port: 443
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  network: ws
-  servername: t1s1.rittbo.kdns.fr
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  udp: true
-- name: '[45ms] 🏁 未知-E8A46F99'
-  type: vless
-  server: 104.17.121.98
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: unnes.ac.id.yxls.eu.cc
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 0ac0a6f0-d3f0-47f1-8de4-ce785e515a5c
-  ws-opts:
-    headers:
-      Host: unnes.ac.id.yxls.eu.cc
-    path: /ca-cl
-- name: '[63ms] 美国 154'
-  type: vless
-  network: ws
-  server: 151.101.194.228
-  port: 80
-  uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
-  servername: joinxvproxybedee.ir
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  tfo: false
-  client-fingerprint: chrome
-  ws-opts:
-    headers:
-      Host: joinxvproxybedee.ir
-    path: /
-- name: '[78ms] 🏁 未知-55D9C4FA'
-  type: vless
-  server: 157.230.254.149
-  port: 443
-  client-fingerprint: chrome
+  xudp: true
+- client-fingerprint: ios
   flow: xtls-rprx-vision
-  network: raw
-  packet-encoding: xudp
+  name: '[42ms] 🇸🇬SG_1|4.5MB/s'
+  port: 47592
   reality-opts:
-    public-key: uDC0dV4encJJZ84nnweP4g8ggzgaxGGphSYfhV2ATxw
-    short-id: 0963b9822ae8b87e
-  servername: www.ocbc.com
-  skip-cert-verify: false
+    public-key: WIQGJ43m8ym13-VZ57mAtWY5vOwHMHEpnLV8caw2-kA
+    short-id: f38326f99edf
+  server: dghk2610.supertoolify.com
+  servername: www.lamer.com.sg
   tls: true
-  udp: true
-  uuid: 2864749a-b45d-52c3-0f36-e64224f5480f
-- name: '[87ms] 🇨🇦 加拿大-60BD41F0'
   type: vless
-  server: 162.159.45.201
-  port: 2083
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
+  udp: true
+  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+- name: '[44ms] 美国 082'
+  type: vmess
   network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[89ms] 🇨🇦 加拿大-6B764FA7'
-  type: vless
-  server: 162.159.38.101
+  server: 104.21.91.254
   port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  skip-cert-verify: true
   tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: waynn.makeup
+    path: linkvws
+- name: '[44ms] 🇲🇾 马来西亚 | MYS'
+  server: dghk2610.supertoolify.com
+  port: 46984
+  type: vless
+  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+  tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+    short-id: 9c3c0f8ec8b4af12
+  servername: www.lamer.com.sg
+  client-fingerprint: ios
+- name: '[52ms] 🇭🇰 香港 | HKG 6'
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1003
+  server: o6uhrzkj.zf-mix.9999231.xyz
+  skip-cert-verify: true
+  sni: hkfash.9999231.xyz
+  type: anytls
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  name: '[98ms] 🇯🇵 日本 | JPN #2'
-  network: ws
+- name: '[57ms] 🇭🇰 香港 | HKG 10'
+  server: t4.qifei.app
   port: 443
-  server: 161.33.29.51
-  servername: asia.csmaster.site
-  tls: true
   type: vless
+  uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
+  tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
+  servername: s3.ap-east-1.amazonaws.com
+  client-fingerprint: random
   udp: true
-  uuid: a853e120-3570-462b-aec1-e8f3d4f92d24
-  ws-opts:
-    headers:
-      Host: asia.csmaster.site
-    path: /
-- name: '[113ms] 🇨🇦 加拿大-E6E9C639'
-  type: vless
-  server: 162.159.44.180
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
+- name: '[58ms] 中国 001'
+  type: vmess
   network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[118ms] 🇯🇵 日本-5266E1B4'
-  type: vless
-  server: 161.33.3.222
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[139ms] 🏁 未知-DBAFD812'
-  type: vless
-  server: 172.64.151.158
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[139ms] 🏁 未知-080EC619'
-  type: trojan
-  server: 38.207.169.105
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  sni: tjsp.hhxaf.cc.cd
-  ws-opts:
-    headers:
-      Host: tjsp.hhxaf.cc.cd
-    path: /
-- name: '[154ms] 🇨🇦 加拿大-85E9118D'
-  type: vless
-  server: img.yust.eu.org
-  port: 443
-  allowInsecure: '0'
-  client-fingerprint: chrome
-  insecure: '0'
-  network: ws
-  servername: wz1.fum.ccwu.cc
-  skip-cert-verify: false
-  tls: true
-  uuid: 4c1b83e4-5ade-46a8-966d-1eeb7a8dcc65
-  ws-opts:
-    headers:
-      Host: wz1.fum.ccwu.cc
-    path: /proxyip=sjc.o00o.ooo
-- name: '[161ms] 🇨🇦 加拿大-77487906'
-  type: vless
-  server: 162.159.45.15
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[161ms] 🏁 未知-B4D8B0D3'
-  type: vless
-  server: 162.159.21.206
-  port: 2083
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[162ms] 🇫🇷FR法國丨yoyapai.com_1'
-  type: vless
-  server: 104.27.82.154
-  port: 8880
-  uuid: fb5058f5-a9ed-424e-9ed7-33d455438286
-  network: ws
+  server: yh1.dtku41.xyz
+  port: 8080
+  uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
   tls: false
+  alterId: 0
+  cipher: auto
   ws-opts:
-    path: /pyip=ProxyIP.SG.CMLiussss.net
     headers:
-      Host: old-violet-a5ce.29-440.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[163ms] 🏁 未知-F811ADA0'
+      Host: uh-lawyers-instruments-kernel.trycloudflare.com
+    path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
+- name: '[60ms] 🇭🇰 香港 | HKG 7'
+  server: 2610sgdodo.volkvpn.com
+  port: 35715
   type: vless
-  server: 172.64.40.49
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
   tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: 7GvJVbR6BRhtrc8-rcZvB8qTFUF1LPeM_MmoZ04mBxo
+    short-id: 54cca3c1c1c7
+  servername: www.apple.com
+  client-fingerprint: ios
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  name: '[163ms] 🇹🇷[www.v2nodes.com] vless-TR-1... #3'
-  network: ws
-  port: 8443
-  server: shop.neexbyte.ir
-  tls: true
-  type: vless
-  uuid: 8bb52771-052e-40b5-ab53-c6e151ad2290
-  ws-opts:
-    headers:
-      Host: shop.neexbyte.ir
-    path: /
-- name: '[166ms] 🏁 未知-86ABFADB'
-  type: vless
-  server: 104.16.4.14
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: true
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[166ms] 🏁 未知-750C29A2'
+- name: '[66ms] 🇰🇷_KR_韩国'
   type: trojan
-  server: 104.16.174.34
+  server: pure-kodiak.rooster465.autos
   port: 443
-  network: ws
-  password: humanity
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  ws-opts:
-    headers:
-      Host: www.ignitelimit.com
-    path: /assignment
-- name: '[169ms] 🇺🇸US_23|2.9MB/s'
-  port: 9002
-  server: 138.199.35.204
+  password: UX82473651
+  sni: pure-kodiak.rooster465.autos
   skip-cert-verify: true
+  udp: true
+- name: '[79ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  port: 443
+  server: 43.160.239.37
+  skip-cert-verify: true
+  sub_tag: noCache
   tls: true
   type: http
-- name: '[169ms] 🇺🇸US美國丨yoyapai.com_10'
-  type: vless
-  server: 162.159.60.167
+  udp: true
+- name: '[81ms] 🇰🇷 韩国 | KOR 5'
+  server: 34.22.111.30
   port: 443
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  type: vless
+  uuid: cb2abff3-5fe6-4b5a-aa19-5739deb285b6
+  tls: true
+  reality-opts:
+    public-key: M0QKczb2MzOH45qDViIAbb9LPrVVyCp880D4HlwIKnA
+    short-id: 8685f8b4d9f4f51e
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+  udp: true
+- name: '[85ms] 🇰🇷 韩国 | KOR 6'
+  server: kr4-r.link-t7.com
+  port: 10049
+  type: vless
+  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
+  tls: true
+  reality-opts:
+    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+    short-id: 686c0ef0
+  servername: s0.awsstatic.com
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: update
+  udp: true
+- name: '[86ms] 🇻🇳_越南_40'
+  type: vless
+  server: 160.25.74.91
+  port: 443
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098ue79dbcd4s783.gogocs.xyz
+  tls: true
+  flow: xtls-rprx-vision
+  skip-cert-verify: true
+  udp: true
+- name: '[87ms] 🇭🇰 香港 | HKG 5'
+  server: 2610sgdodo.volkvpn.com
+  port: 25102
+  type: vless
+  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+  tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: EG-jzQw1RyOwAM4L9rMKondSx7cyFmPyv1OP7xXkIk4
+    short-id: cbd39bea0805e2
+  servername: www.kaidee.com
+  client-fingerprint: ios
+- name: '[93ms] 🇸🇬_SG_新加坡_2'
+  type: trojan
+  server: ace-liger.rooster465.autos
+  port: 443
+  password: UX82473651
+  sni: ace-liger.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[94ms] 新加坡(yudou789.top 玉豆免费节点)'
   network: ws
-  servername: t1s1.rittbo.kdns.fr
+  port: 443
+  server: 20.6.12.145
+  servername: sni.skylee4.cloudns.ch
+  tls: true
+  type: vless
+  udp: true
+  uuid: 06b65903-406d-4a41-8463-6fd5c0ee7798
+  ws-opts:
+    headers:
+      Host: sni.skylee4.cloudns.ch
+    path: /proxyip=ProxyIP.CMLiussss.net
+- name: '[94ms] 🇸🇬_SG_新加坡_1'
+  type: trojan
+  server: musical-mouse.rooster465.autos
+  port: 443
+  password: UX82473651
+  sni: musical-mouse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[105ms] 🇰🇷_韩国_152'
+  type: vless
+  server: 220.71.172.2
+  port: 16034
+  uuid: bfa5cd1f-1465-4850-b7c9-08e1a63dac2c
+  network: ws
+  servername: jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev
   tls: true
   client-fingerprint: chrome
   ws-opts:
-    path: /
+    path: /@Marisa_kristi
     headers:
-      Host: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+      Host: jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev
+  skip-cert-verify: true
   udp: true
-- name: '[170ms] ❓未知丨yoyapai.com_21'
-  type: trojan
-  server: 104.26.14.137
+- name: '[107ms] 🇭🇰 香港 | HKG 8'
+  server: 20.205.14.234
+  port: 26480
+  type: vless
+  uuid: 01de63ee-d2d6-4842-b2f0-d54c7eca267a
+  tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: thefrz26hPQjCrKszJ6m_41nLmThPGkTEKBjYVDGM0E
+  servername: addons.mozilla.org
+  client-fingerprint: firefox
+- name: '[111ms] 🇯🇵 日本 | JPN 7'
+  server: japro02.xyy123.bid
   port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
+  type: vless
+  uuid: 23af32ca-bea1-4a5e-bebb-04d1b1b633bc
+  tls: true
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: sDKrtAJk2VP_w1w7cFi2O86RdlvQ2E2An5xsRdJlgGE
+    short-id: 6d962e8d8a0dce
+  servername: p-nt-www-amazon-com-kalias.amazon.com
+  client-fingerprint: chrome
+- name: '[149ms] 美国 071'
+  type: vmess
+  network: ws
+  server: skk.moe
+  port: 8080
+  uuid: 54d4d640-731c-4572-d0d4-e8a617816470
+  skip-cert-verify: true
+  alterId: 0
+  cipher: auto
   ws-opts:
-    path: /assignment
     headers:
-      Host: www.ignitelimit.com
-  udp: true
-- name: '[171ms] 美国 022'
+      Host: icu4.mac2win.top
+    path: /
+- name: '[155ms] 美国 029'
+  type: vmess
+  network: ws
+  server: cg1c04.waimaojd.com
+  port: 443
+  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  servername: cg1c04.waimaojd.com
+  skip-cert-verify: true
+  tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: cg1c04.waimaojd.com
+    path: /api/v1/graphql
+- client-fingerprint: chrome
+  name: '[160ms] 🏳[www.v2nodes.com] vless- #5'
+  network: ws
+  port: 443
+  server: 199.232.78.170
+  servername: Speedtest.net
+  tls: true
+  type: vless
+  uuid: 88888888-8888-8888-8888-888888888888
+  ws-opts:
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+    path: /
+- name: '[164ms] 美国 022'
   type: vmess
   network: ws
   server: 104.26.4.57
@@ -740,1392 +315,820 @@ proxies:
     headers:
       Host: ssrsub.v03.ssrsub.com
     path: /api/v3/download.getFile
-- name: '[176ms] 🇺🇸 美国-76C728BF'
-  type: http
-  server: 65d28bb6-t9zts0-tan99f-1rdqg.sjc.oshuawei.com
-  port: 443
-  password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
-  sni: 65d28bb6-t9zts0-tan99f-1rdqg.sjc.oshuawei.com
-  tls: true
-  username: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
-- name: '[181ms] 🇨🇦CA加拿大丨yoyapai.com'
-  type: vless
-  server: 155.46.167.30
-  port: 8880
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  network: ws
-  tls: false
-  ws-opts:
-    headers:
-      Host: vms.lifetime50.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[181ms] 🇹🇼[www.v2nodes.com] vless-TW-1... #1'
-  network: ws
-  port: 443
-  server: argo6.5671234.xyz
-  servername: argo6.5671234.xyz
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  uuid: 08aaab35-a42d-4755-a03e-20c18cb1b3e8
-  ws-opts:
-    headers:
-      Host: argo6.5671234.xyz
-    path: /e8e2cecb6188f7fb
-- name: '[181ms] 🇺🇸US美國丨yoyapai.com_3'
-  type: vless
-  server: 108.162.194.135
-  port: 443
-  uuid: 659a9075-d5ab-4fd2-bf34-b37043fae832
-  network: ws
-  servername: nbhhh.mrcool.kdns.fr
-  tls: true
-  ws-opts:
-    path: /
-    headers:
-      Host: nbhhh.mrcool.kdns.fr
-  skip-cert-verify: false
-  udp: true
-- name: '[182ms] 🏁 未知-FA38D0F9'
-  type: vless
-  server: 104.21.74.63
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: amooaliii.net
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 72d1797c-cef8-410a-b8fd-db9104dc3cb0
-  ws-opts:
-    headers:
-      Host: amooaliii.net
-    path: /jdhfyws
-- name: '[184ms] 🏁 未知-6D3C819E'
-  type: vless
-  server: 108.162.196.3
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[184ms] 🇺🇸US美國丨yoyapai.com_4'
-  type: vless
-  server: support.zoom.us
-  port: 443
-  uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
-  network: ws
-  servername: support.zoom.us.yxls.eu.cc
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /sg-amz
-    headers:
-      Host: support.zoom.us.yxls.eu.cc
-  skip-cert-verify: false
-  udp: true
-- name: '[184ms] 🇺🇸 机场推荐:dafei.de 美国 35'
-  password: None
-  port: 9002
-  server: 138.199.35.217
-  skip-cert-verify: true
-  tls: true
-  type: http
-- name: '[185ms] 🏁 未知-3BA251BA'
-  type: vless
-  server: 162.159.3.141
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[185ms] 🏁 未知-1D204FA7'
-  type: vless
-  server: 162.159.11.57
-  port: 2083
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[186ms] 🏳️_未知_163'
-  type: vless
-  server: 8.47.69.0
-  port: 2053
-  uuid: 9d672694-c146-422e-b3b5-3717a38a0fcc
-  network: ws
-  servername: vless.api-music-fa.com
-  tls: true
-  ws-opts:
-    path: /api/voip/updates/static/fr2035
-    headers:
-      Host: fr.api-music-fa.com
-  skip-cert-verify: true
-  udp: true
-- name: '[186ms] 🏁 未知-02091F69'
-  type: trojan
-  server: 162.159.3.176
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  skip-cert-verify: false
-  sni: tjsp.hhxaf.cc.cd
-  ws-opts:
-    headers:
-      Host: tjsp.hhxaf.cc.cd
-    path: /
-- name: '[187ms] 🏁 未知-1A8E2FF9'
-  type: vless
-  server: 162.159.13.71
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: nbhhh.mrcool.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 659a9075-d5ab-4fd2-bf34-b37043fae832
-  ws-opts:
-    headers:
-      Host: nbhhh.mrcool.kdns.fr
-    path: /proxyip=dc844a1f.tp15333.ip.090227.xyz
-- name: '[188ms] 🏁 未知-C459400E'
-  type: vless
-  server: 162.159.24.39
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
 - client-fingerprint: chrome
-  name: '[188ms] 🇮🇹[www.v2nodes.com] vless-IT-2...'
+  name: '[177ms] 🇭🇰[www.v2nodes.com] vless-HK-1... #1'
   network: ws
   port: 443
-  server: 188.114.98.0
-  servername: tn1r.eu.cc
+  server: tg.juntham.cn
+  servername: tg.juntham.cn
   tls: true
   type: vless
-  uuid: 22424ee2-6fe3-42ca-9749-6d4c5a8acc82
+  uuid: da8aa4cc-4f76-4248-a289-41f25713b6e2
   ws-opts:
     headers:
-      Host: tn1r.eu.cc
-    path: /id-pusat
-- name: '[189ms] 美国(yudou789.top 玉豆免费节点)_77'
-  network: ws
-  port: 8880
-  server: 188.164.248.40
-  tls: false
-  type: vless
-  udp: true
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  ws-opts:
-    headers:
-      Host: vms.lifetime26.workers.dev
-    path: /?ed=2560&https://t.me/YouTube@小青科学网🇨🇳
-- name: '[189ms] ❓未知丨yoyapai.com_2'
-  type: vless
-  server: 91.206.71.8
-  port: 80
-  uuid: c20a0bcf-aa6f-4c35-9e62-a39b47b04e73
-  network: ws
-  tls: false
-  ws-opts:
-    path: /pyip=Telegram🇨🇳+@WangCai2
-    headers:
-      Host: round-haze-8783.294.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[189ms] 🏁 未知-EE83ECE3'
-  type: vless
-  server: 162.159.1.170
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
+      Host: tg.juntham.cn
     path: /
-- name: '[189ms] 🇬🇧 英国-92F5ED96'
-  type: vless
-  server: 162.159.46.24
+- name: '[184ms] 美国 023'
+  type: vmess
+  network: ws
+  server: t1.620720.xyz
   port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
+  skip-cert-verify: true
   tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  alterId: 0
+  cipher: auto
   ws-opts:
     headers:
-      Host: t1s1.rittbo.kdns.fr
+      Host: t1.620720.xyz
     path: /
-- name: '[189ms] 🏁 未知-3299D6F6'
-  type: vless
-  server: 172.67.176.31
+- name: '[189ms] 美国 016'
+  type: vmess
+  network: ws
+  server: 162.159.5.6
   port: 8080
-  network: ws
-  packet-encoding: xudp
-  skip-cert-verify: false
-  udp: true
-  uuid: b3a5f201-eeaf-40c8-909c-72f4860cefc8
-  ws-opts:
-    early-data-header-name: Sec-WebSocket-Protocol
-    headers:
-      Host: orange-bonus-abd9.dalvandimohammadmahdi.workers.dev
-    max-early-data: 2560
-    path: /eyJqdW5rIjoiUWtMSnFJZFM2S3JnIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6W119
-- name: '[190ms] 🏁 未知-BFCA360E'
-  type: vless
-  server: 104.16.72.101
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: unnes.ac.id.yxls.eu.cc
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 0ac0a6f0-d3f0-47f1-8de4-ce785e515a5c
-  ws-opts:
-    headers:
-      Host: unnes.ac.id.yxls.eu.cc
-    path: /ca-cl
-- name: '[190ms] 🏳️_未知_157'
-  type: vless
-  server: 104.21.70.21
-  port: 443
-  uuid: c4edb87e-8544-4fa4-bd1c-b0cda9a34b46
-  network: ws
-  servername: a.cwvps.eu.org
-  tls: true
-  ws-opts:
-    path: /ws
-  skip-cert-verify: true
-  udp: true
-- name: '[190ms] 🏁 未知-710AF91F'
-  type: vless
-  server: 162.159.5.231
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[190ms] 🏁 未知-A7BFA22D'
-  type: vless
-  server: 172.64.42.44
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[190ms] 🇫🇷FR法國丨yoyapai.com'
-  type: vless
-  server: 104.17.64.70
-  port: 8880
-  uuid: 220046c3-0081-4c22-a648-83a52bc3a0d5
-  network: ws
+  uuid: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96
   tls: false
+  alterId: 0
+  cipher: auto
   ws-opts:
-    path: /pyip=ProxyIP.SG.CMLiussss.net
     headers:
-      Host: yellow-sky-38b3.154-d73.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[191ms] 🏁 未知-B737AAA2'
-  type: vless
-  server: 162.159.21.235
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+      Host: pcs-referenced-camera-concerns.trycloudflare.com
+    path: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96-vm
+- name: '[195ms] 🇺🇸_US_美国_2'
+  type: vmess
+  server: guanwang.awsno.com
+  port: 443
+  uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+  alterId: 0
+  cipher: auto
   tls: true
+  skip-cert-verify: true
+  servername: guanwang.awsno.com
+  network: ws
+  ws-opts:
+    path: /hls/cctv5phd.m3u8
+    headers:
+      Host: guanwang.awsno.com
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+- name: '[195ms] 美国 018'
+  type: vmess
+  network: ws
+  server: 172.67.116.48
+  port: 80
+  uuid: 22a13aa2-4854-44cb-e090-ec71ab84b1ff
+  tls: false
+  alterId: 0
+  cipher: auto
   ws-opts:
     headers:
-      Host: t1s1.rittbo.kdns.fr
+      Host: wap.hostmjj.com
     path: /
-- name: '[191ms] 🇺🇸 机场推荐:dafei.de 美国 36'
-  password: 'null'
-  port: 9002
-  server: 138.199.35.205
+- name: '[195ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  port: 443
+  server: 44.228.137.206
   skip-cert-verify: true
+  sub_tag: noCache
   tls: true
   type: http
-  username: 'null'
-- name: '[191ms] 🇺🇸US美國丨yoyapai.com_5'
-  type: vless
-  server: 104.24.9.6
-  port: 443
-  uuid: 407ecce0-dc85-465f-89f5-e520e9378baf
-  network: ws
-  servername: ld.223350.xyz
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /
-    headers:
-      Host: ld.223350.xyz
-  skip-cert-verify: false
   udp: true
-- name: '[191ms] 🏁 未知-9DF2D176'
-  type: trojan
-  server: 104.16.174.124
-  port: 443
+- client-fingerprint: chrome
+  name: '[197ms] 🇮🇹[www.v2nodes.com] vless-IT-4...'
   network: ws
-  password: humanity
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  ws-opts:
-    headers:
-      Host: www.ignitelimit.com
-    path: /assignment
-- name: '[192ms] 🏁 未知-5CCBCE5F'
-  type: vless
-  server: 199.181.197.1
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: kakoolnews.hellowhatnow.workers.dev
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 12cb0a24-0438-4980-8617-9c93205895fa
-  ws-opts:
-    headers:
-      Host: kakoolnews.hellowhatnow.workers.dev
-    path: /
-- name: '[192ms] 🏁 未知-36C418D6'
-  type: trojan
-  server: 104.16.72.101
-  port: 443
-  network: ws
-  password: 6c862415-30d2-4813-8e49-42e99a0bd415
-  sni: space.byu.id.yxls.eu.cc
-  ws-opts:
-    headers:
-      Host: space.byu.id.yxls.eu.cc
-    path: /us-gllc
-- name: '[193ms] 🇸🇬SG新加坡丨yoyapai.com'
-  type: vless
-  server: 172.64.94.251
-  port: 8880
-  uuid: fb5058f5-a9ed-424e-9ed7-33d455438286
-  network: ws
-  tls: false
-  ws-opts:
-    path: /pyip=ProxyIP.SG.CMLiussss.net
-    headers:
-      Host: old-violet-a5ce.29-440.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[193ms] 🇨🇦 加拿大-A5C0CBC1'
-  type: vless
-  server: 162.159.36.73
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[193ms] 🏁 未知-60CF7172'
-  type: trojan
-  server: 162.159.15.39
-  port: 8443
-  client-fingerprint: chrome
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  skip-cert-verify: false
-  sni: tjsp.hhxaf.cc.cd
-  ws-opts:
-    headers:
-      Host: tjsp.hhxaf.cc.cd
-    path: /
-- name: '[193ms] 🇺🇸US美國丨yoyapai.com_9'
-  type: vless
-  server: 162.159.10.87
-  port: 443
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  network: ws
-  servername: t1s1.rittbo.kdns.fr
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  udp: true
-- name: '[193ms] 🏁 未知-06AEB86D'
-  type: vless
-  server: 199.232.245.90
-  port: 443
-  network: ws
-  packet-encoding: xudp
-  servername: default.ssl.fastly.net
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: d27a232b-de94-4204-9bae-b0c243c6b93c
-  ws-opts:
-    headers:
-      Host: newip.global.ssl.fastly.neT.
-    path: /
-- name: '[194ms] 🏁 未知-EF62774D'
-  type: vless
-  server: 162.159.4.2
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[194ms] 🇨🇦 加拿大-32FC48A9'
-  type: vless
-  server: 162.159.34.23
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[194ms] 🇩🇪_DE_德国_1'
-  type: vless
-  server: 45.80.111.7
-  port: 443
-  uuid: 926bc4cd-709e-4e90-8aa7-78db75fbe86b
-  network: ws
-  servername: 2--ldej--MiTiVPN---MiTiVPN-o.KingNetwork.ir
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de2---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-    headers:
-      Host: De2-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.KinGNetWork.iR
-  skip-cert-verify: true
-  udp: true
-- name: '[195ms] 🏁 未知-F9E3DADF'
-  type: trojan
-  server: 162.159.193.202
-  port: 443
-  alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  network: ws
-  password: humanity
-  skip-cert-verify: true
-  sni: www.calmloud.com
-  ws-opts:
-    headers:
-      Host: www.calmloud.com
-    path: /assignment
-- name: '[195ms] 🏁 未知-E3A0A1B6'
-  type: vless
-  server: 172.64.40.79
-  port: 2083
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[195ms] 🏁 未知-152685E2'
-  type: vless
-  server: 172.64.150.246
-  port: 2083
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[196ms] 🏁 未知-8A910603'
-  type: vless
-  server: 172.64.35.37
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[196ms] 🏁 未知-D2340395'
-  type: vless
-  server: 198.41.223.238
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[197ms] 🇺🇸 美国-9417856B'
-  type: vless
-  server: 8.39.125.143
-  port: 2087
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: sd.cbb.j3.ink
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 615b457e-fb2a-4bb7-854b-99c0e2c16b2a
-  ws-opts:
-    early-data-header-name: Sec-WebSocket-Protocol
-    headers:
-      Host: sd.cbb.j3.ink
-    max-early-data: 2560
-    path: /go/tags
-- name: '[197ms] 🇺🇸 美国-D9D3D06E'
-  type: vless
-  server: 162.159.3.186
-  port: 8443
-  network: ws
-  packet-encoding: xudp
-  servername: wz1.fum.ccwu.cc
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: 4c1b83e4-5ade-46a8-966d-1eeb7a8dcc65
-  ws-opts:
-    headers:
-      Host: wz1.fum.ccwu.cc
-    path: /proxyip=sjc.o00o.ooo
-- name: '[199ms] 🇨🇦CA加拿大丨yoyapai.com_9'
-  type: trojan
-  server: 104.16.174.44
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-  udp: true
-- name: '[199ms] 🏁 未知-7C46C7B6'
-  type: vless
-  server: 190.93.245.219
-  port: 443
-  alpn:
-  - h2
-  - http/1.1
-  client-fingerprint: chrome
-  network: ws
-  servername: steep-disk-97e3.tmp3445678.workers.dev
-  skip-cert-verify: false
-  tls: true
-  uuid: 9f397d58-c976-4ef5-915c-7a5908e1a9ac
-  ws-opts:
-    early-data-header-name: Sec-WebSocket-Protocol
-    headers:
-      Host: steep-disk-97e3.tmp3445678.workers.dev
-    max-early-data: 2048
-    path: /assets/MTIwLjIwNC41MS4z/
-- name: '[200ms] 🏁 未知-21D87F63'
-  type: trojan
-  server: 45.130.125.32
-  port: 443
-  network: ws
-  password: humanity
-  sni: www.calmloud.com
-  ws-opts:
-    headers:
-      Host: www.calmloud.com
-    path: /assignment
-- name: '[200ms] 🇸🇬[www.v2nodes.com] vless-SG-1... #6'
-  network: ws
-  port: 8880
-  server: 45.80.111.45
-  tls: false
-  type: vless
-  uuid: 5ffd914e-9594-4198-8327-145f096f8e4c
-  ws-opts:
-    headers:
-      Host: cnd.singapure.mygold.stream
-    path: /cdn/assets/stream
-- name: '[201ms] 🏁 未知-AB126CB3'
-  type: vless
-  server: 162.159.1.37
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[201ms] 🇺🇸US美国丨yoyapai.com_2'
-  type: vless
-  server: 129.153.71.28
-  port: 28863
-  uuid: b3a15df4-c8ad-4e98-b427-7a679aee2b18
-  network: ws
-  servername: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[203ms] 🏁 未知-4A5B144B'
-  type: vless
-  server: 162.159.48.245
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[205ms] 🏁 未知-5952ADC1'
-  type: vless
-  server: 162.159.43.30
   port: 2096
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: sd.cbb.j3.ink
-  skip-cert-verify: false
+  server: 188.114.97.6
+  servername: PEekCoNFig.hAMRahfreE2.wORKERs.dEv
   tls: true
-  udp: true
-  uuid: 615b457e-fb2a-4bb7-854b-99c0e2c16b2a
+  type: vless
+  uuid: c648c6d0-4d3e-4f51-8ee6-4fcdbdddd684
   ws-opts:
     headers:
-      Host: sd.cbb.j3.ink
-    path: /cn/data/images
-- name: '[205ms] 🇺🇸_美国_118'
+      Host: peekconfig.hamrahfree2.workers.dev
+    path: /eyJqdW5rIjoibTBZdXp5cm93NSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzJhMDI6ODk4OjE0Njo2NDo6XSIsIlsyNjAyOmZjNTk6MTE6NjQ6Ol0iLCJbMjYwMjpmYzU5OmIwOjY0OjpdIl19
+- name: '[199ms] 🇺🇸 美国 | USA 4'
+  server: 172.190.134.233
+  port: 26490
   type: vless
-  server: 209.206.51.240
-  port: 443
-  uuid: 573c6482-37db-454a-8c31-5b45a338a580
-  network: ws
-  servername: and-75r.pages.dev
+  uuid: 03e52750-0c85-42c1-a30b-b2e35da7abbb
   tls: true
-  client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: f4aZkLbmSLe874qztsQi5UPJq-9wonTRqOpHnQdiIm8
+  servername: addons.mozilla.org
+  client-fingerprint: firefox
+- name: '[200ms] 美国 019'
+  type: vmess
+  network: ws
+  server: 104.21.8.157
+  port: 2082
+  uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
+  tls: false
+  alterId: 0
+  cipher: auto
   ws-opts:
+    headers:
+      Host: s1c.v2.v001sss.xyz
     path: /
-    headers:
-      Host: and-75r.pages.dev
-  skip-cert-verify: true
-  udp: true
-- name: '[206ms] 🇨🇦 加拿大-BE6D983B'
-  type: vless
-  server: 162.159.42.182
-  port: 443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
+- name: '[200ms] 美国 017'
+  type: vmess
   network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[209ms] 🇺🇸US美国丨yoyapai.com_14'
-  type: vless
-  server: 104.16.72.101
+  server: russia.com
   port: 8880
-  uuid: ddef628e-e3a8-43c4-85eb-bd767a5f3b13
-  network: ws
+  uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
   tls: false
+  alterId: 0
+  cipher: auto
   ws-opts:
-    path: /pyip
     headers:
-      Host: autumn-forest-3479.121-488.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[210ms] 🏁 未知-44F458D9'
-  type: vless
-  server: 162.159.4.221
-  port: 8443
-  client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  network: ws
-  packet-encoding: xudp
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+      Host: ssrsub.v03.ssrsub.com
+    path: /api/v3/download.getFile
+- name: '[201ms] US_speednode_0143'
+  port: 9002
+  server: 138.199.35.198
+  skip-cert-verify: true
   tls: true
+  type: http
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: '[211ms] 🇺🇸US美國丨yoyapai.com'
-  type: vless
-  server: 45.131.208.4
-  port: 80
-  uuid: 424fa201-3f94-479e-b533-d5257cf9a207
+- client-fingerprint: firefox
+  name: '[202ms] 🇷🇴[www.v2nodes.com] vless-RO-1...'
   network: ws
-  tls: false
+  port: 2087
+  server: 46.183.16.4
+  servername: ro1.b0w.ir
+  tls: true
+  type: vless
+  uuid: 69d76969-4c52-40f5-ac1d-303571634362
   ws-opts:
     path: /
+- name: '[202ms] 美国 021'
+  type: vmess
+  network: ws
+  server: 104.21.234.52
+  port: 80
+  uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+  tls: false
+  alterId: 0
+  cipher: auto
+  ws-opts:
     headers:
-      Host: floral-thunder-10d3.82-67d.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[212ms] 🏁 未知-0ECF0CE6'
-  type: trojan
-  server: 104.21.67.196
+      Host: a.prapt1.ir
+    path: /
+- name: '[204ms] 美国 028'
+  type: vmess
+  network: ws
+  server: cg1c01.waimaojd.com
   port: 443
+  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  servername: cg1c01.waimaojd.com
+  tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: cg1c01.waimaojd.com
+    path: /api/v1/graphql
+- name: '[208ms] US_speednode_0133'
+  port: 443
+  server: fan.365747.xyz
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[209ms] 🇫🇷 法国 | FRA'
+  network: ws
+  password: humanity
+  port: 443
+  server: 162.159.91.211
+  skip-cert-verify: true
+  sni: www.calmlunch.com
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: '[215ms] 波兰 002'
+  type: vmess
+  network: ws
+  server: cg1c14.waimaojd.com
+  port: 443
+  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  servername: cg1c14.waimaojd.com
+  skip-cert-verify: true
+  tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: cg1c14.waimaojd.com
+    path: /api/v1/graphql
+- name: '[215ms] 🇺🇸_US_美国->🇬🇧_GB_英国'
+  type: vmess
+  server: https.http.www.net.com.ramseyv2.ir.
+  port: 80
+  uuid: 10029c03-5d2f-4185-aab2-cbf91eef7361
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /d3d3LmlyYW5ob3N0LmNvbQ==?ed=2560
+    headers:
+      Host: https.http.www.net.com.ramseyv2.ir.
+  udp: true
+- name: '[219ms] 波兰 001'
+  type: vmess
+  network: ws
+  server: cg1c07.waimaojd.com
+  port: 443
+  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  servername: cg1c07.waimaojd.com
+  tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: cg1c07.waimaojd.com
+    path: /api/v1/graphql
+- name: '[219ms] 🇳🇱 荷兰 | NLD'
+  server: pl-waw.dontblockmepls.com
+  port: 2063
+  type: vless
+  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  tls: true
   alpn:
-  - h3
   - h2
   - http/1.1
+  flow: xtls-rprx-vision
+  reality-opts:
+    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
+  servername: rusbid.de
   client-fingerprint: chrome
-  grpc-opts:
-    grpc-service-name: /58079/mehdi
-  network: grpc
-  password: YNuQCAHivL
-  skip-cert-verify: false
-  sni: manager.xyzxz.qzz.io
-- name: '[216ms] 🇳🇱 机场推荐:dafei.de 荷兰 28'
-  port: 443
-  server: 5.255.118.82
-  skip-cert-verify: true
-  tls: true
-  type: http
-- name: '[219ms] 🇩🇪 机场推荐:dafei.de 德国 15'
-  port: 443
-  server: 87.106.223.158
-  skip-cert-verify: true
-  tls: true
-  type: http
-- name: '[221ms] 🏁 未知-46902A73'
-  type: trojan
-  server: 162.159.193.22
-  port: 443
-  alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  network: ws
-  password: humanity
-  skip-cert-verify: true
-  sni: www.calmloud.com
-  ws-opts:
-    headers:
-      Host: www.calmloud.com
-    path: /assignment
-- name: '[226ms] 法国 002'
-  type: vless
-  network: ws
-  server: 151.101.123.1
-  port: 80
-  uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
-  servername: foffmelo.com
-  skip-cert-verify: false
-  tls: true
   udp: true
-  tfo: false
-  client-fingerprint: chrome
-  ws-opts:
-    headers:
-      Host: foffmelo.com
-    path: /olem/ws?ed=2560
-- name: '[228ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
-  port: 9443
-  server: 135.136.1.2
+- name: '[221ms] 🇮🇹IT_2|1.9MB/s'
+  port: 443
+  server: 185.183.105.130
   skip-cert-verify: true
   tls: true
   type: http
-- name: '[229ms] 美国 187'
+- name: '[221ms] 罗马尼亚 002'
   type: vmess
   network: ws
-  server: 169.197.143.89
+  server: 37.120.236.251
   port: 443
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: ed162daa-ee20-44ed-830f-b522c501387a
   skip-cert-verify: true
   tls: true
+  alterId: 64
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: www.42088326.xyz
+    path: /path/143013092425
+- name: '[222ms] 🇺🇸US_2|1.4MB/s'
+  port: 443
+  server: 12.221.146.147
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[226ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  port: 443
+  server: 38.28.193.188
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[228ms] 🇬🇧 英国 | GBR'
+  network: ws
+  password: humanity
+  port: 443
+  server: 213.1.145.50
+  skip-cert-verify: true
+  sni: www.calmlunch.com
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: '[232ms] 🇩🇪_德国_34'
+  type: vless
+  server: usself.yandex-api.com
+  port: 443
+  uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
+  servername: usself.yandex-api.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: random
+  reality-opts:
+    public-key: HXFe_cPryw01zqXchAFjZciDAS4UJg1-xScx6vjgjjY
+    short-id: 7f2e9c4b1a8d6e25
+  skip-cert-verify: true
+  udp: true
+- name: '[236ms] 🇦🇪_阿拉伯联合酋长国_43'
+  type: vless
+  server: 157.228.150.34
+  port: 443
+  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+  servername: addons.mozilla.org
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: randomized
+  reality-opts:
+    public-key: NOw-idkk3OCn-N0IRS93leujH4ik-E749O2T5BYJQ0M
+    short-id: 3cef317b
+  skip-cert-verify: true
+  udp: true
+- name: '[236ms] 🇳🇱 机场推荐:dafei.de 荷兰 14'
+  port: 443
+  server: 152.53.107.196
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[237ms] 美国 020'
+  type: vmess
+  network: ws
+  server: 172.67.130.140
+  port: 2082
+  uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
+  tls: false
   alterId: 0
   cipher: auto
   ws-opts:
     headers:
-      Host: vk.com
-    path: /linkvws
-- name: '[229ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
-  port: 9090
-  server: 104.248.151.93
-  type: http
-- name: '[229ms] 🇦🇪_阿拉伯联合酋长国_47'
-  type: vless
-  server: 103.71.23.244
-  port: 443
-  uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
-  network: ws
-  servername: shin-ra.ccwu.cc
-  tls: true
-  ws-opts:
+      Host: s1c.v2.v001sss.xyz
     path: /
-    headers:
-      Host: shin-ra.ccwu.cc
-  skip-cert-verify: true
-  udp: true
-- name: '[231ms] ❓未知丨yoyapai.com_3'
-  type: vless
-  server: www.gov.se
-  port: 8080
-  uuid: 989d58b8-d2ea-4d28-b5ff-0f3cd078f2cf
-  network: ws
-  servername: www.gov.se
-  tls: false
-  ws-opts:
-    path: /
-    headers:
-      Host: sdf23g-billowing-moon-348e.mzm468gc.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: '[234ms] 🇺🇸 机场推荐:dafei.de 美国 41'
-  port: 9443
-  server: 198.44.138.27
-  skip-cert-verify: true
-  tls: true
-  type: http
-- name: '[236ms] 美國丨yoyapai.com'
-  type: trojan
-  server: www.ignitelimit.com
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: '[240ms] 🇩🇪DE_1|1014KB/s'
   port: 443
-  password: humanity
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
+  reality-opts:
+    public-key: 5fkwwCKZzMsE6Eb_b3iqluu-1AWIfnYl-p0N3EL9Al8
+    short-id: 2c9a2790ad5900b2
+  server: 217.60.179.244
+  servername: ge-s-1.pythonmakemigreat.wiki
+  tls: true
+  type: vless
+  udp: true
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
+- cipher: aes-256-cfb
+  name: '[241ms] 🇫🇷 法国 | FRA #3'
+  password: amazonskr05
+  port: 443
+  server: 51.44.86.16
+  type: ss
   udp: true
 - client-fingerprint: chrome
-  name: '[241ms] 🏳[www.v2nodes.com] vless- #11'
-  network: ws
-  port: 8443
-  server: 141.193.213.20
-  servername: u.srilankangrill.online
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  uuid: 29c3dd6b-b164-40ca-a0d5-f06aca52a8b2
-  ws-opts:
-    headers:
-      Host: u.srilankangrill.online
-    path: /
-- name: '[246ms] 🏳️_未知_89'
-  type: vless
-  server: 172.67.217.240
-  port: 443
-  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-  network: ws
-  servername: jp3.yohototo.top
-  tls: true
-  ws-opts:
-    path: /tyxyws
-  skip-cert-verify: true
-  udp: true
-- name: '[246ms] 🇷🇺 俄罗斯-4B548E8C'
-  type: vless
-  server: 95.181.213.5
-  port: 443
-  client-fingerprint: edge
   flow: xtls-rprx-vision
-  packet-encoding: xudp
-  reality-opts:
-    public-key: Ac5rtr-Pm4OPkfMps_b97GQmh-ez2sEP_N5X0EQBoF4
-    short-id: 5ce8c5e79aa9
-  servername: velory.space
-  skip-cert-verify: false
+  name: '[241ms] 🇳🇱NL_1|1.3MB/s'
+  port: 8443
+  server: alb1.keepverify.net
   tls: true
+  type: vless
   udp: true
-  uuid: 12a49340-fd9c-4a70-8ebc-d2cf0dd36b2a
-- name: '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
-  port: 9002
-  server: 193.176.84.21
-  skip-cert-verify: true
-  sni: www.bing.com
-  tls: true
-  type: http
-- name: '[253ms] 🇳🇱 机场推荐:dafei.de 荷兰 30'
-  port: 9443
-  server: 149.36.51.161
+  uuid: 595a6246-d7b0-48bc-a5f0-17068aec2e88
+- name: '[247ms] 🇨🇿CZ_1|1.2MB/s'
+  port: 443
+  server: 185.216.35.66
   skip-cert-verify: true
   tls: true
   type: http
-- name: '[253ms] 🏁 未知-8D901980'
-  type: trojan
-  server: 188.253.12.15
-  port: 46424
-  password: 4f4d1167-ef14-4304-9bce-0740472503ef
-  skip-cert-verify: true
-  sni: de.01.naiun.bilibili.com
-- name: '[258ms] 🏁 未知-34EA6C12'
-  type: trojan
-  server: 104.18.17.216
+- name: '[248ms] 🇱🇹 机场推荐:dafei.de 立陶宛 01'
   port: 443
-  alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  network: ws
-  password: humanity
-  sni: www.calmloud.com
-  ws-opts:
-    path: /assignment
-- name: '[263ms] 哈萨克斯坦 001'
-  type: vmess
-  network: ws
-  server: 217.76.64.195
-  port: 443
-  uuid: 4abdf58e-0516-468d-9571-fe25cb4897ef
-  skip-cert-verify: true
-  tls: true
-  alterId: 0
-  cipher: auto
-  ws-opts:
-    headers:
-      Host: skuone.serveminecraft.net
-    path: /
-- name: '[264ms] 瑞典 006'
-  type: vless
-  server: sto5.vpntype.dev
-  port: 443
-  uuid: 601ad357-c8cf-491f-98e6-62175e130658
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  tfo: false
-  client-fingerprint: chrome
-  flow: xtls-rprx-vision
-- name: '[265ms] 🇺🇸 机场推荐:dafei.de 美国 70'
-  port: 8443
-  server: 129.212.181.253
+  server: 89.124.11.9
   skip-cert-verify: true
   tls: true
   type: http
 - client-fingerprint: random
-  name: '[269ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #4'
+  name: '[248ms] 🇭🇺[www.v2nodes.com] vless-HU-6...'
   network: ws
   port: 8443
-  server: 194.87.143.165
-  servername: wsru1.wba-pn.ru
+  server: 37.221.210.113
+  servername: free.cndyw.ggff.net
   tls: true
   type: vless
-  uuid: f9613819-d2fe-4b3a-a2e6-40c184c6854c
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
   ws-opts:
     headers:
-      Host: 194.87.143.165
-    path: /
-- name: '[270ms] 🇨🇿 捷克-F0286BA3'
-  type: vless
-  server: 144.31.218.147
+      Host: free.cndyw.ggff.net
+    path: pyip=bpb.yousef.isegaro.com
+- name: '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  port: 9002
+  server: 193.176.84.25
+  skip-cert-verify: true
+  sni: www.bing.com
+  tls: true
+  type: http
+- name: '[249ms] 🇮🇹IT_1|1.6MB/s'
+  password: None
   port: 443
-  client-fingerprint: chrome
+  server: 185.183.105.146
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[250ms] 🇨🇭 机场推荐:dafei.de 瑞士 01'
+  port: 9443
+  server: 37.120.213.210
+  skip-cert-verify: true
+  sub_tag: R002-260618
+  tls: true
+  type: http
+  udp: true
+- client-fingerprint: chrome
+  name: '[250ms] 🇧🇪 比利时 | BEL #1'
+  network: ws
+  port: 2053
+  server: 141.227.137.177
+  servername: kkkk-xcd.pages.dev
+  tls: true
+  type: vless
+  udp: true
+  uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
+  ws-opts:
+    headers:
+      Host: kkkk-xcd.pages.dev
+    path: /
+- name: '[252ms] 🇺🇸_美国_33'
+  type: vless
+  server: 198.98.48.110
+  port: 57233
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098u8fad5a44s552.gogocs.xyz
+  tls: true
   flow: xtls-rprx-vision
-  packet-encoding: xudp
+  client-fingerprint: chrome
+  skip-cert-verify: true
+  udp: true
+- name: '[254ms] 🇩🇪_德国_35'
+  type: vless
+  server: 159.195.239.91
+  port: 443
+  uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
+  servername: usself.yandex-api.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: random
   reality-opts:
-    public-key: V3uMWEfDQAPFP6o5ED8Jtk0rJBPs7IlOLf_Wh8w_jXc
-    short-id: 76132b3b39704c44
-  servername: ger.hatvpn.org
-  skip-cert-verify: false
-  tls: true
-  udp: true
-  uuid: e3e90161-fe65-443a-a3a4-e0e3a73704ca
-- name: '[275ms] 🇺🇸 美国-15E672A5'
-  type: hysteria2
-  server: 161.104.88.46
-  port: 443
-  password: 2d83ea00-2813-448d-bee6-14eaf7f52e13
+    public-key: HXFe_cPryw01zqXchAFjZciDAS4UJg1-xScx6vjgjjY
+    short-id: 7f2e9c4b1a8d6e25
   skip-cert-verify: true
-  sni: k71530.w-mebel.pro
-  tfo: false
-- name: '[279ms] 🏁 未知-8B92FFE0'
+  udp: true
+- encryption: mlkem768x25519plus.native.0rtt.opKdG01g_6N4XciPyF_LeRIlGsHRVgArleiuhLInRH8
+  name: '[254ms] 🇫🇮FI_1|2.3MB/s'
+  port: 36465
+  server: fintest2.povrak.ir
   type: vless
-  server: 62.60.229.255
-  port: 443
-  client-fingerprint: chrome
-  network: ws
-  packet-encoding: xudp
-  servername: billowing-scene-fd36.amirmohammad13860008.workers.dev
-  skip-cert-verify: false
-  tls: true
   udp: true
-  uuid: d9f20a29-239e-46ab-82bb-fa0d69e480f9
-  ws-opts:
-    headers:
-      Host: billowing-scene-fd36.amirmohammad13860008.workers.dev
-    path: /proxyip=13.192.18.59
-- name: '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
-  port: 9002
-  server: 193.176.84.20
-  skip-cert-verify: true
-  tls: true
-  type: http
-  udp: true
-- name: '[285ms] NL_speednode_0007'
-  port: 9002
-  server: 84.17.47.148
-  skip-cert-verify: true
-  tls: true
-  type: http
-  udp: true
-- name: '[285ms] 🇺🇸 US美國丨yoyapai.com_1'
+  uuid: e69dba87-f883-46a3-858e-c66defc02588
+  xudp: true
+- name: '[256ms] 🇺🇸_美国_39'
   type: vless
-  server: 167.82.101.251
-  port: 443
-  uuid: d27a232b-de94-4204-9bae-b0c243c6b93c
-  network: ws
-  servername: default.ssl.fastly.net
-  tls: true
-  ws-opts:
-    path: /
-    headers:
-      Host: newip.global.ssl.fastly.neT.
-  skip-cert-verify: false
-  udp: true
-- name: '[286ms] 🇷🇺RU俄罗斯丨yoyapai.com_8'
-  type: vless
-  server: 200.165.235.78
-  port: 443
-  uuid: 238e492b-bc20-4380-92b6-135d39112ca4
-  servername: api8.eaglors.com
+  server: 192.227.169.125
+  port: 10829
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098u764943ccs478.gogocs.xyz
   tls: true
   flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  skip-cert-verify: true
+  udp: true
+- alpn:
+  - ''
+  alterId: '0'
+  cipher: auto
+  name: '[258ms] 🇫🇷FR_2|1.6MB/s'
+  port: 55277
+  server: fertest3.povrak.ir
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 5551d2e8-d3d4-42d2-95c8-fb780b4f6e6d
+  xudp: true
+- name: '[259ms] 🇲🇩[www.v2nodes.com] vless-MD-4...'
+  network: ws
+  port: 443
+  server: 185.153.198.86
+  servername: free.cndyw.ggff.net
+  tls: false
+  type: vless
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+  ws-opts:
+    headers:
+      Host: free.cndyw.ggff.net
+    path: pyip=bpb.yousef.isegaro.comfp=randomsecurity=tls
+- name: '[261ms] 🇩🇪DE_3|1.1MB/s'
+  port: 9002
+  server: 158.173.154.1
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[262ms] 🇳🇱_荷兰_32'
+  type: vless
+  server: 193.142.59.97
+  port: 10829
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098ueb8953b4s861.gogocs.xyz
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  skip-cert-verify: true
+  udp: true
+- name: '[265ms] US_speednode_0140'
+  password: None
+  port: 443
+  server: purposebydesig.club
+  tls: true
+  type: http
+  udp: true
+- name: '[265ms] 伊朗 001'
+  type: vmess
+  network: ws
+  server: hms082.gwdef.sbs
+  port: 443
+  uuid: bc864078-dcf3-4bf4-8dbf-ca9f200b56be
+  tls: true
+  alterId: 0
+  cipher: auto
+  ws-opts:
+    headers:
+      Host: gwdef.sbs
+    path: /linkws
+- name: '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  password: None
+  port: 9002
+  server: 193.176.84.21
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[269ms] 日期：10-09'
+  type: vless
+  server: f0b7.n9ne.com.tr
+  port: 35306
+  uuid: e81e1114-99b5-4fea-aafc-84426e845a14
+  servername: n9ne.com.tr
+  tls: true
   client-fingerprint: qq
   reality-opts:
-    public-key: Nb9IwEEhUHEbHSc6e5uYTjxDgN4ZExhDckM3OgYhj2o
-    short-id: 52ccb3687fe0b7ec
-  skip-cert-verify: false
+    public-key: NHurz_4uphCHgIbrnr3HRzfsq-LmIaPaUopWwHNJ8HU
+    short-id: ceb4496ab0cc7a9f
+  skip-cert-verify: true
   udp: true
+- name: '[271ms] 🇮🇹_意大利_25'
+  type: vless
+  server: 185.119.19.105
+  port: 10829
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098u2c5f47d6s8746.gogocs.xyz
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  skip-cert-verify: true
+  udp: true
+- name: '[273ms] 每天更新，请加电报群防止失联'
+  type: vless
+  server: 103.244.145.138
+  port: 443
+  uuid: e75ad2eb-6c1f-45ce-8023-f5f10875df66
+  servername: zsde.eu-cdn294.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: f4EJP55daJRlJkcZbbGsY-gFGGFGiXPPdfVxtNWQPCE
+    short-id: c8621ebb1e56abb3
+  skip-cert-verify: true
+  udp: true
+- client-fingerprint: chrome
+  name: '[274ms] 🇲🇽[www.v2nodes.com] vless-MX-1...'
+  network: ws
+  port: 443
+  server: 131.196.253.141
+  servername: kclx.eu.org
+  tls: true
+  type: vless
+  uuid: 0575005f-0ba9-4d6d-85e0-4a6a8cbafc1b
+  ws-opts:
+    headers:
+      Host: kclx.eu.org
+    path: /154.16.10.34-8080
+- name: '[275ms] RO_speednode_0097'
+  password: None
+  port: 9002
+  server: 193.176.84.23
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- client-fingerprint: random
+  grpc-opts:
+    grpc-service-name: grpc-ru
+  name: '[278ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #3'
+  network: grpc
+  port: 443
+  server: xsru1.ddnsfree.com
+  servername: xsru1.ddnsfree.com
+  tls: true
+  type: vless
+  uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
+- name: '[279ms] RO_speednode_0126'
+  port: 9002
+  server: 193.176.84.39
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[281ms] 🇬🇧GB_2|1019KB/s'
+  port: 443
+  server: 212.102.63.61
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[281ms] 🇫🇷FR_2|1.1MB/s'
+  port: 9443
+  server: 213.139.9.142
+  skip-cert-verify: true
+  tls: true
+  type: http
+- name: '[282ms] 美国 229'
+  type: vless
+  server: 51.81.36.78
+  port: 443
+  uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
+  servername: 147135011033.sec21org.com
+  skip-cert-verify: false
+  tls: true
+  udp: true
+  tfo: false
+  client-fingerprint: chrome
+- client-fingerprint: chrome
+  name: '[284ms] 🇮🇱[www.v2nodes.com] vless-IL-1... #1'
+  network: ws
+  port: 443
+  server: 185.253.75.119
+  servername: ccc.010304.xyz
+  tls: true
+  type: vless
+  uuid: d342d11e-d224-4463-b982-532309285094
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /
+- name: '[285ms] 🇨🇦_加拿大_9'
+  type: vless
+  server: 209.200.246.61
+  port: 443
+  uuid: ab9929fd-ab22-48e3-8723-480733c0eca9
+  servername: ca.vpnskyline.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: NO3w10fOUvwK8L7vzCVPDLWIKYCHDaB6ealdMnv4jS4
+    short-id: e287e3906e3c
+  skip-cert-verify: true
+  udp: true
+- name: '[286ms] RO_speednode_0124'
+  port: 9002
+  server: 193.176.84.32
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: '[286ms] 美国 212'
+  type: vless
+  server: 15.204.166.17
+  port: 443
+  uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
+  servername: 147135010072.sec21org.com
+  skip-cert-verify: false
+  tls: true
+  udp: true
+  tfo: false
+  client-fingerprint: chrome
+- name: '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  password: 'null'
+  port: 9002
+  server: 193.176.84.32
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: 'null'
+- name: '[288ms] 🇭🇰_香港_30'
+  type: vless
+  server: 212.192.15.191
+  port: 443
+  uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
+  servername: u695098u54d73951s298.kukuss.top
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  skip-cert-verify: true
+  udp: true
+- name: '[296ms] 🇦🇱 机场推荐:dafei.de 阿尔巴尼亚 03'
+  port: 443
+  server: 31.171.154.66
+  skip-cert-verify: true
+  tls: true
+  type: http
 proxy-groups:
 - name: 🚀 自动优选
   type: url-test
   proxies:
-  - '[37ms] 🏁 未知-9A57D47E'
-  - '[38ms] 🏁 未知-FB368F1D'
-  - '[38ms] 🏁 未知-1B9640A7'
-  - '[38ms] 🏁 未知-61625CA9'
-  - '[39ms] 🏁 未知-13F7F814'
-  - '[39ms] 🏁 未知-7C8B4D44'
-  - '[40ms] 🏁 未知-FDE6F46C'
-  - '[40ms] 🏁 未知-77B23099'
-  - '[41ms] 🏁 未知-C02D7B93'
-  - '[41ms] 🏁 未知-E7925D00'
-  - '[41ms] 🏁 未知-29EEEC26'
-  - '[41ms] 🏁 未知-E389B266'
-  - '[41ms] 🏁 未知-CA629B79'
-  - '[41ms] 🏁 未知-A390A5FE'
-  - '[41ms] 🏁 未知-A6E719AB'
-  - '[41ms] 🏁 未知-A257413E'
-  - '[42ms] 🏁 未知-FE29EC23'
-  - '[42ms] 🏁 未知-8EC678B8'
-  - '[43ms] 🇨🇳CN中國丨yoyapai.com'
-  - '[43ms] 🏁 未知-CD8C8F62'
-  - '[44ms] 🏁 未知-69341B41'
-  - '[45ms] 🇺🇸US美國丨yoyapai.com_8'
-  - '[45ms] 🏁 未知-E8A46F99'
-  - '[63ms] 美国 154'
-  - '[78ms] 🏁 未知-55D9C4FA'
-  - '[87ms] 🇨🇦 加拿大-60BD41F0'
-  - '[89ms] 🇨🇦 加拿大-6B764FA7'
-  - '[98ms] 🇯🇵 日本 | JPN #2'
-  - '[113ms] 🇨🇦 加拿大-E6E9C639'
-  - '[118ms] 🇯🇵 日本-5266E1B4'
-  - '[139ms] 🏁 未知-DBAFD812'
-  - '[139ms] 🏁 未知-080EC619'
-  - '[154ms] 🇨🇦 加拿大-85E9118D'
-  - '[161ms] 🇨🇦 加拿大-77487906'
-  - '[161ms] 🏁 未知-B4D8B0D3'
-  - '[162ms] 🇫🇷FR法國丨yoyapai.com_1'
-  - '[163ms] 🏁 未知-F811ADA0'
-  - '[163ms] 🇹🇷[www.v2nodes.com] vless-TR-1... #3'
-  - '[166ms] 🏁 未知-86ABFADB'
-  - '[166ms] 🏁 未知-750C29A2'
-  - '[169ms] 🇺🇸US_23|2.9MB/s'
-  - '[169ms] 🇺🇸US美國丨yoyapai.com_10'
-  - '[170ms] ❓未知丨yoyapai.com_21'
-  - '[171ms] 美国 022'
-  - '[176ms] 🇺🇸 美国-76C728BF'
-  - '[181ms] 🇨🇦CA加拿大丨yoyapai.com'
-  - '[181ms] 🇹🇼[www.v2nodes.com] vless-TW-1... #1'
-  - '[181ms] 🇺🇸US美國丨yoyapai.com_3'
-  - '[182ms] 🏁 未知-FA38D0F9'
-  - '[184ms] 🏁 未知-6D3C819E'
-  - '[184ms] 🇺🇸US美國丨yoyapai.com_4'
-  - '[184ms] 🇺🇸 机场推荐:dafei.de 美国 35'
-  - '[185ms] 🏁 未知-3BA251BA'
-  - '[185ms] 🏁 未知-1D204FA7'
-  - '[186ms] 🏳️_未知_163'
-  - '[186ms] 🏁 未知-02091F69'
-  - '[187ms] 🏁 未知-1A8E2FF9'
-  - '[188ms] 🏁 未知-C459400E'
-  - '[188ms] 🇮🇹[www.v2nodes.com] vless-IT-2...'
-  - '[189ms] 美国(yudou789.top 玉豆免费节点)_77'
-  - '[189ms] ❓未知丨yoyapai.com_2'
-  - '[189ms] 🏁 未知-EE83ECE3'
-  - '[189ms] 🇬🇧 英国-92F5ED96'
-  - '[189ms] 🏁 未知-3299D6F6'
-  - '[190ms] 🏁 未知-BFCA360E'
-  - '[190ms] 🏳️_未知_157'
-  - '[190ms] 🏁 未知-710AF91F'
-  - '[190ms] 🏁 未知-A7BFA22D'
-  - '[190ms] 🇫🇷FR法國丨yoyapai.com'
-  - '[191ms] 🏁 未知-B737AAA2'
-  - '[191ms] 🇺🇸 机场推荐:dafei.de 美国 36'
-  - '[191ms] 🇺🇸US美國丨yoyapai.com_5'
-  - '[191ms] 🏁 未知-9DF2D176'
-  - '[192ms] 🏁 未知-5CCBCE5F'
-  - '[192ms] 🏁 未知-36C418D6'
-  - '[193ms] 🇸🇬SG新加坡丨yoyapai.com'
-  - '[193ms] 🇨🇦 加拿大-A5C0CBC1'
-  - '[193ms] 🏁 未知-60CF7172'
-  - '[193ms] 🇺🇸US美國丨yoyapai.com_9'
-  - '[193ms] 🏁 未知-06AEB86D'
-  - '[194ms] 🏁 未知-EF62774D'
-  - '[194ms] 🇨🇦 加拿大-32FC48A9'
-  - '[194ms] 🇩🇪_DE_德国_1'
-  - '[195ms] 🏁 未知-F9E3DADF'
-  - '[195ms] 🏁 未知-E3A0A1B6'
-  - '[195ms] 🏁 未知-152685E2'
-  - '[196ms] 🏁 未知-8A910603'
-  - '[196ms] 🏁 未知-D2340395'
-  - '[197ms] 🇺🇸 美国-9417856B'
-  - '[197ms] 🇺🇸 美国-D9D3D06E'
-  - '[199ms] 🇨🇦CA加拿大丨yoyapai.com_9'
-  - '[199ms] 🏁 未知-7C46C7B6'
-  - '[200ms] 🏁 未知-21D87F63'
-  - '[200ms] 🇸🇬[www.v2nodes.com] vless-SG-1... #6'
-  - '[201ms] 🏁 未知-AB126CB3'
-  - '[201ms] 🇺🇸US美国丨yoyapai.com_2'
-  - '[203ms] 🏁 未知-4A5B144B'
-  - '[205ms] 🏁 未知-5952ADC1'
-  - '[205ms] 🇺🇸_美国_118'
-  - '[206ms] 🇨🇦 加拿大-BE6D983B'
-  - '[209ms] 🇺🇸US美国丨yoyapai.com_14'
-  - '[210ms] 🏁 未知-44F458D9'
-  - '[211ms] 🇺🇸US美國丨yoyapai.com'
-  - '[212ms] 🏁 未知-0ECF0CE6'
-  - '[216ms] 🇳🇱 机场推荐:dafei.de 荷兰 28'
-  - '[219ms] 🇩🇪 机场推荐:dafei.de 德国 15'
-  - '[221ms] 🏁 未知-46902A73'
-  - '[226ms] 法国 002'
-  - '[228ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
-  - '[229ms] 美国 187'
-  - '[229ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
-  - '[229ms] 🇦🇪_阿拉伯联合酋长国_47'
-  - '[231ms] ❓未知丨yoyapai.com_3'
-  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 41'
-  - '[236ms] 美國丨yoyapai.com'
-  - '[241ms] 🏳[www.v2nodes.com] vless- #11'
-  - '[246ms] 🏳️_未知_89'
-  - '[246ms] 🇷🇺 俄罗斯-4B548E8C'
-  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
-  - '[253ms] 🇳🇱 机场推荐:dafei.de 荷兰 30'
-  - '[253ms] 🏁 未知-8D901980'
-  - '[258ms] 🏁 未知-34EA6C12'
-  - '[263ms] 哈萨克斯坦 001'
-  - '[264ms] 瑞典 006'
-  - '[265ms] 🇺🇸 机场推荐:dafei.de 美国 70'
-  - '[269ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #4'
-  - '[270ms] 🇨🇿 捷克-F0286BA3'
-  - '[275ms] 🇺🇸 美国-15E672A5'
-  - '[279ms] 🏁 未知-8B92FFE0'
-  - '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
-  - '[285ms] NL_speednode_0007'
-  - '[285ms] 🇺🇸 US美國丨yoyapai.com_1'
-  - '[286ms] 🇷🇺RU俄罗斯丨yoyapai.com_8'
+  - '[31ms] 🇨🇳_CN_中国->🇺🇸_US_美国'
+  - '[35ms] 🇨🇳_CN_中国'
+  - '[41ms] 🇯🇵JP_2|4.2MB/s'
+  - '[42ms] 🇸🇬SG_1|4.5MB/s'
+  - '[44ms] 美国 082'
+  - '[44ms] 🇲🇾 马来西亚 | MYS'
+  - '[52ms] 🇭🇰 香港 | HKG 6'
+  - '[57ms] 🇭🇰 香港 | HKG 10'
+  - '[58ms] 中国 001'
+  - '[60ms] 🇭🇰 香港 | HKG 7'
+  - '[66ms] 🇰🇷_KR_韩国'
+  - '[79ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  - '[81ms] 🇰🇷 韩国 | KOR 5'
+  - '[85ms] 🇰🇷 韩国 | KOR 6'
+  - '[86ms] 🇻🇳_越南_40'
+  - '[87ms] 🇭🇰 香港 | HKG 5'
+  - '[93ms] 🇸🇬_SG_新加坡_2'
+  - '[94ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[94ms] 🇸🇬_SG_新加坡_1'
+  - '[105ms] 🇰🇷_韩国_152'
+  - '[107ms] 🇭🇰 香港 | HKG 8'
+  - '[111ms] 🇯🇵 日本 | JPN 7'
+  - '[149ms] 美国 071'
+  - '[155ms] 美国 029'
+  - '[160ms] 🏳[www.v2nodes.com] vless- #5'
+  - '[164ms] 美国 022'
+  - '[177ms] 🇭🇰[www.v2nodes.com] vless-HK-1... #1'
+  - '[184ms] 美国 023'
+  - '[189ms] 美国 016'
+  - '[195ms] 🇺🇸_US_美国_2'
+  - '[195ms] 美国 018'
+  - '[195ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  - '[197ms] 🇮🇹[www.v2nodes.com] vless-IT-4...'
+  - '[199ms] 🇺🇸 美国 | USA 4'
+  - '[200ms] 美国 019'
+  - '[200ms] 美国 017'
+  - '[201ms] US_speednode_0143'
+  - '[202ms] 🇷🇴[www.v2nodes.com] vless-RO-1...'
+  - '[202ms] 美国 021'
+  - '[204ms] 美国 028'
+  - '[208ms] US_speednode_0133'
+  - '[209ms] 🇫🇷 法国 | FRA'
+  - '[215ms] 波兰 002'
+  - '[215ms] 🇺🇸_US_美国->🇬🇧_GB_英国'
+  - '[219ms] 波兰 001'
+  - '[219ms] 🇳🇱 荷兰 | NLD'
+  - '[221ms] 🇮🇹IT_2|1.9MB/s'
+  - '[221ms] 罗马尼亚 002'
+  - '[222ms] 🇺🇸US_2|1.4MB/s'
+  - '[226ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  - '[228ms] 🇬🇧 英国 | GBR'
+  - '[232ms] 🇩🇪_德国_34'
+  - '[236ms] 🇦🇪_阿拉伯联合酋长国_43'
+  - '[236ms] 🇳🇱 机场推荐:dafei.de 荷兰 14'
+  - '[237ms] 美国 020'
+  - '[240ms] 🇩🇪DE_1|1014KB/s'
+  - '[241ms] 🇫🇷 法国 | FRA #3'
+  - '[241ms] 🇳🇱NL_1|1.3MB/s'
+  - '[247ms] 🇨🇿CZ_1|1.2MB/s'
+  - '[248ms] 🇱🇹 机场推荐:dafei.de 立陶宛 01'
+  - '[248ms] 🇭🇺[www.v2nodes.com] vless-HU-6...'
+  - '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[249ms] 🇮🇹IT_1|1.6MB/s'
+  - '[250ms] 🇨🇭 机场推荐:dafei.de 瑞士 01'
+  - '[250ms] 🇧🇪 比利时 | BEL #1'
+  - '[252ms] 🇺🇸_美国_33'
+  - '[254ms] 🇩🇪_德国_35'
+  - '[254ms] 🇫🇮FI_1|2.3MB/s'
+  - '[256ms] 🇺🇸_美国_39'
+  - '[258ms] 🇫🇷FR_2|1.6MB/s'
+  - '[259ms] 🇲🇩[www.v2nodes.com] vless-MD-4...'
+  - '[261ms] 🇩🇪DE_3|1.1MB/s'
+  - '[262ms] 🇳🇱_荷兰_32'
+  - '[265ms] US_speednode_0140'
+  - '[265ms] 伊朗 001'
+  - '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[269ms] 日期：10-09'
+  - '[271ms] 🇮🇹_意大利_25'
+  - '[273ms] 每天更新，请加电报群防止失联'
+  - '[274ms] 🇲🇽[www.v2nodes.com] vless-MX-1...'
+  - '[275ms] RO_speednode_0097'
+  - '[278ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #3'
+  - '[279ms] RO_speednode_0126'
+  - '[281ms] 🇬🇧GB_2|1019KB/s'
+  - '[281ms] 🇫🇷FR_2|1.1MB/s'
+  - '[282ms] 美国 229'
+  - '[284ms] 🇮🇱[www.v2nodes.com] vless-IL-1... #1'
+  - '[285ms] 🇨🇦_加拿大_9'
+  - '[286ms] RO_speednode_0124'
+  - '[286ms] 美国 212'
+  - '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[288ms] 🇭🇰_香港_30'
+  - '[296ms] 🇦🇱 机场推荐:dafei.de 阿尔巴尼亚 03'
   url: https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
@@ -2133,139 +1136,99 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 自动优选
-  - '[37ms] 🏁 未知-9A57D47E'
-  - '[38ms] 🏁 未知-FB368F1D'
-  - '[38ms] 🏁 未知-1B9640A7'
-  - '[38ms] 🏁 未知-61625CA9'
-  - '[39ms] 🏁 未知-13F7F814'
-  - '[39ms] 🏁 未知-7C8B4D44'
-  - '[40ms] 🏁 未知-FDE6F46C'
-  - '[40ms] 🏁 未知-77B23099'
-  - '[41ms] 🏁 未知-C02D7B93'
-  - '[41ms] 🏁 未知-E7925D00'
-  - '[41ms] 🏁 未知-29EEEC26'
-  - '[41ms] 🏁 未知-E389B266'
-  - '[41ms] 🏁 未知-CA629B79'
-  - '[41ms] 🏁 未知-A390A5FE'
-  - '[41ms] 🏁 未知-A6E719AB'
-  - '[41ms] 🏁 未知-A257413E'
-  - '[42ms] 🏁 未知-FE29EC23'
-  - '[42ms] 🏁 未知-8EC678B8'
-  - '[43ms] 🇨🇳CN中國丨yoyapai.com'
-  - '[43ms] 🏁 未知-CD8C8F62'
-  - '[44ms] 🏁 未知-69341B41'
-  - '[45ms] 🇺🇸US美國丨yoyapai.com_8'
-  - '[45ms] 🏁 未知-E8A46F99'
-  - '[63ms] 美国 154'
-  - '[78ms] 🏁 未知-55D9C4FA'
-  - '[87ms] 🇨🇦 加拿大-60BD41F0'
-  - '[89ms] 🇨🇦 加拿大-6B764FA7'
-  - '[98ms] 🇯🇵 日本 | JPN #2'
-  - '[113ms] 🇨🇦 加拿大-E6E9C639'
-  - '[118ms] 🇯🇵 日本-5266E1B4'
-  - '[139ms] 🏁 未知-DBAFD812'
-  - '[139ms] 🏁 未知-080EC619'
-  - '[154ms] 🇨🇦 加拿大-85E9118D'
-  - '[161ms] 🇨🇦 加拿大-77487906'
-  - '[161ms] 🏁 未知-B4D8B0D3'
-  - '[162ms] 🇫🇷FR法國丨yoyapai.com_1'
-  - '[163ms] 🏁 未知-F811ADA0'
-  - '[163ms] 🇹🇷[www.v2nodes.com] vless-TR-1... #3'
-  - '[166ms] 🏁 未知-86ABFADB'
-  - '[166ms] 🏁 未知-750C29A2'
-  - '[169ms] 🇺🇸US_23|2.9MB/s'
-  - '[169ms] 🇺🇸US美國丨yoyapai.com_10'
-  - '[170ms] ❓未知丨yoyapai.com_21'
-  - '[171ms] 美国 022'
-  - '[176ms] 🇺🇸 美国-76C728BF'
-  - '[181ms] 🇨🇦CA加拿大丨yoyapai.com'
-  - '[181ms] 🇹🇼[www.v2nodes.com] vless-TW-1... #1'
-  - '[181ms] 🇺🇸US美國丨yoyapai.com_3'
-  - '[182ms] 🏁 未知-FA38D0F9'
-  - '[184ms] 🏁 未知-6D3C819E'
-  - '[184ms] 🇺🇸US美國丨yoyapai.com_4'
-  - '[184ms] 🇺🇸 机场推荐:dafei.de 美国 35'
-  - '[185ms] 🏁 未知-3BA251BA'
-  - '[185ms] 🏁 未知-1D204FA7'
-  - '[186ms] 🏳️_未知_163'
-  - '[186ms] 🏁 未知-02091F69'
-  - '[187ms] 🏁 未知-1A8E2FF9'
-  - '[188ms] 🏁 未知-C459400E'
-  - '[188ms] 🇮🇹[www.v2nodes.com] vless-IT-2...'
-  - '[189ms] 美国(yudou789.top 玉豆免费节点)_77'
-  - '[189ms] ❓未知丨yoyapai.com_2'
-  - '[189ms] 🏁 未知-EE83ECE3'
-  - '[189ms] 🇬🇧 英国-92F5ED96'
-  - '[189ms] 🏁 未知-3299D6F6'
-  - '[190ms] 🏁 未知-BFCA360E'
-  - '[190ms] 🏳️_未知_157'
-  - '[190ms] 🏁 未知-710AF91F'
-  - '[190ms] 🏁 未知-A7BFA22D'
-  - '[190ms] 🇫🇷FR法國丨yoyapai.com'
-  - '[191ms] 🏁 未知-B737AAA2'
-  - '[191ms] 🇺🇸 机场推荐:dafei.de 美国 36'
-  - '[191ms] 🇺🇸US美國丨yoyapai.com_5'
-  - '[191ms] 🏁 未知-9DF2D176'
-  - '[192ms] 🏁 未知-5CCBCE5F'
-  - '[192ms] 🏁 未知-36C418D6'
-  - '[193ms] 🇸🇬SG新加坡丨yoyapai.com'
-  - '[193ms] 🇨🇦 加拿大-A5C0CBC1'
-  - '[193ms] 🏁 未知-60CF7172'
-  - '[193ms] 🇺🇸US美國丨yoyapai.com_9'
-  - '[193ms] 🏁 未知-06AEB86D'
-  - '[194ms] 🏁 未知-EF62774D'
-  - '[194ms] 🇨🇦 加拿大-32FC48A9'
-  - '[194ms] 🇩🇪_DE_德国_1'
-  - '[195ms] 🏁 未知-F9E3DADF'
-  - '[195ms] 🏁 未知-E3A0A1B6'
-  - '[195ms] 🏁 未知-152685E2'
-  - '[196ms] 🏁 未知-8A910603'
-  - '[196ms] 🏁 未知-D2340395'
-  - '[197ms] 🇺🇸 美国-9417856B'
-  - '[197ms] 🇺🇸 美国-D9D3D06E'
-  - '[199ms] 🇨🇦CA加拿大丨yoyapai.com_9'
-  - '[199ms] 🏁 未知-7C46C7B6'
-  - '[200ms] 🏁 未知-21D87F63'
-  - '[200ms] 🇸🇬[www.v2nodes.com] vless-SG-1... #6'
-  - '[201ms] 🏁 未知-AB126CB3'
-  - '[201ms] 🇺🇸US美国丨yoyapai.com_2'
-  - '[203ms] 🏁 未知-4A5B144B'
-  - '[205ms] 🏁 未知-5952ADC1'
-  - '[205ms] 🇺🇸_美国_118'
-  - '[206ms] 🇨🇦 加拿大-BE6D983B'
-  - '[209ms] 🇺🇸US美国丨yoyapai.com_14'
-  - '[210ms] 🏁 未知-44F458D9'
-  - '[211ms] 🇺🇸US美國丨yoyapai.com'
-  - '[212ms] 🏁 未知-0ECF0CE6'
-  - '[216ms] 🇳🇱 机场推荐:dafei.de 荷兰 28'
-  - '[219ms] 🇩🇪 机场推荐:dafei.de 德国 15'
-  - '[221ms] 🏁 未知-46902A73'
-  - '[226ms] 法国 002'
-  - '[228ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 24'
-  - '[229ms] 美国 187'
-  - '[229ms] 🇸🇬 机场推荐:dafei.de 新加坡 01'
-  - '[229ms] 🇦🇪_阿拉伯联合酋长国_47'
-  - '[231ms] ❓未知丨yoyapai.com_3'
-  - '[234ms] 🇺🇸 机场推荐:dafei.de 美国 41'
-  - '[236ms] 美國丨yoyapai.com'
-  - '[241ms] 🏳[www.v2nodes.com] vless- #11'
-  - '[246ms] 🏳️_未知_89'
-  - '[246ms] 🇷🇺 俄罗斯-4B548E8C'
-  - '[252ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 23'
-  - '[253ms] 🇳🇱 机场推荐:dafei.de 荷兰 30'
-  - '[253ms] 🏁 未知-8D901980'
-  - '[258ms] 🏁 未知-34EA6C12'
-  - '[263ms] 哈萨克斯坦 001'
-  - '[264ms] 瑞典 006'
-  - '[265ms] 🇺🇸 机场推荐:dafei.de 美国 70'
-  - '[269ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #4'
-  - '[270ms] 🇨🇿 捷克-F0286BA3'
-  - '[275ms] 🇺🇸 美国-15E672A5'
-  - '[279ms] 🏁 未知-8B92FFE0'
-  - '[284ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 09'
-  - '[285ms] NL_speednode_0007'
-  - '[285ms] 🇺🇸 US美國丨yoyapai.com_1'
-  - '[286ms] 🇷🇺RU俄罗斯丨yoyapai.com_8'
+  - '[31ms] 🇨🇳_CN_中国->🇺🇸_US_美国'
+  - '[35ms] 🇨🇳_CN_中国'
+  - '[41ms] 🇯🇵JP_2|4.2MB/s'
+  - '[42ms] 🇸🇬SG_1|4.5MB/s'
+  - '[44ms] 美国 082'
+  - '[44ms] 🇲🇾 马来西亚 | MYS'
+  - '[52ms] 🇭🇰 香港 | HKG 6'
+  - '[57ms] 🇭🇰 香港 | HKG 10'
+  - '[58ms] 中国 001'
+  - '[60ms] 🇭🇰 香港 | HKG 7'
+  - '[66ms] 🇰🇷_KR_韩国'
+  - '[79ms] 🇸🇬 机场推荐:dafei.de 新加坡 02'
+  - '[81ms] 🇰🇷 韩国 | KOR 5'
+  - '[85ms] 🇰🇷 韩国 | KOR 6'
+  - '[86ms] 🇻🇳_越南_40'
+  - '[87ms] 🇭🇰 香港 | HKG 5'
+  - '[93ms] 🇸🇬_SG_新加坡_2'
+  - '[94ms] 新加坡(yudou789.top 玉豆免费节点)'
+  - '[94ms] 🇸🇬_SG_新加坡_1'
+  - '[105ms] 🇰🇷_韩国_152'
+  - '[107ms] 🇭🇰 香港 | HKG 8'
+  - '[111ms] 🇯🇵 日本 | JPN 7'
+  - '[149ms] 美国 071'
+  - '[155ms] 美国 029'
+  - '[160ms] 🏳[www.v2nodes.com] vless- #5'
+  - '[164ms] 美国 022'
+  - '[177ms] 🇭🇰[www.v2nodes.com] vless-HK-1... #1'
+  - '[184ms] 美国 023'
+  - '[189ms] 美国 016'
+  - '[195ms] 🇺🇸_US_美国_2'
+  - '[195ms] 美国 018'
+  - '[195ms] 🇺🇸 机场推荐:dafei.de 美国 06'
+  - '[197ms] 🇮🇹[www.v2nodes.com] vless-IT-4...'
+  - '[199ms] 🇺🇸 美国 | USA 4'
+  - '[200ms] 美国 019'
+  - '[200ms] 美国 017'
+  - '[201ms] US_speednode_0143'
+  - '[202ms] 🇷🇴[www.v2nodes.com] vless-RO-1...'
+  - '[202ms] 美国 021'
+  - '[204ms] 美国 028'
+  - '[208ms] US_speednode_0133'
+  - '[209ms] 🇫🇷 法国 | FRA'
+  - '[215ms] 波兰 002'
+  - '[215ms] 🇺🇸_US_美国->🇬🇧_GB_英国'
+  - '[219ms] 波兰 001'
+  - '[219ms] 🇳🇱 荷兰 | NLD'
+  - '[221ms] 🇮🇹IT_2|1.9MB/s'
+  - '[221ms] 罗马尼亚 002'
+  - '[222ms] 🇺🇸US_2|1.4MB/s'
+  - '[226ms] 🇺🇸 机场推荐:dafei.de 美国 22'
+  - '[228ms] 🇬🇧 英国 | GBR'
+  - '[232ms] 🇩🇪_德国_34'
+  - '[236ms] 🇦🇪_阿拉伯联合酋长国_43'
+  - '[236ms] 🇳🇱 机场推荐:dafei.de 荷兰 14'
+  - '[237ms] 美国 020'
+  - '[240ms] 🇩🇪DE_1|1014KB/s'
+  - '[241ms] 🇫🇷 法国 | FRA #3'
+  - '[241ms] 🇳🇱NL_1|1.3MB/s'
+  - '[247ms] 🇨🇿CZ_1|1.2MB/s'
+  - '[248ms] 🇱🇹 机场推荐:dafei.de 立陶宛 01'
+  - '[248ms] 🇭🇺[www.v2nodes.com] vless-HU-6...'
+  - '[249ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 11'
+  - '[249ms] 🇮🇹IT_1|1.6MB/s'
+  - '[250ms] 🇨🇭 机场推荐:dafei.de 瑞士 01'
+  - '[250ms] 🇧🇪 比利时 | BEL #1'
+  - '[252ms] 🇺🇸_美国_33'
+  - '[254ms] 🇩🇪_德国_35'
+  - '[254ms] 🇫🇮FI_1|2.3MB/s'
+  - '[256ms] 🇺🇸_美国_39'
+  - '[258ms] 🇫🇷FR_2|1.6MB/s'
+  - '[259ms] 🇲🇩[www.v2nodes.com] vless-MD-4...'
+  - '[261ms] 🇩🇪DE_3|1.1MB/s'
+  - '[262ms] 🇳🇱_荷兰_32'
+  - '[265ms] US_speednode_0140'
+  - '[265ms] 伊朗 001'
+  - '[268ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 10'
+  - '[269ms] 日期：10-09'
+  - '[271ms] 🇮🇹_意大利_25'
+  - '[273ms] 每天更新，请加电报群防止失联'
+  - '[274ms] 🇲🇽[www.v2nodes.com] vless-MX-1...'
+  - '[275ms] RO_speednode_0097'
+  - '[278ms] 🇷🇺[www.v2nodes.com] vless-RU-1... #3'
+  - '[279ms] RO_speednode_0126'
+  - '[281ms] 🇬🇧GB_2|1019KB/s'
+  - '[281ms] 🇫🇷FR_2|1.1MB/s'
+  - '[282ms] 美国 229'
+  - '[284ms] 🇮🇱[www.v2nodes.com] vless-IL-1... #1'
+  - '[285ms] 🇨🇦_加拿大_9'
+  - '[286ms] RO_speednode_0124'
+  - '[286ms] 美国 212'
+  - '[287ms] 🇷🇴 机场推荐:dafei.de 罗马尼亚 07'
+  - '[288ms] 🇭🇰_香港_30'
+  - '[296ms] 🇦🇱 机场推荐:dafei.de 阿尔巴尼亚 03'
   - DIRECT
 rules:
 - MATCH,🌍 手动切换
