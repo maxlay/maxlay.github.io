@@ -7,12 +7,10 @@
       "url": "https://wget.la/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
     },
     {
-      "name": "推荐线路：develop202",
+      "name": "私人播放源",
       "type": 0,
       "playerType": 2,
-      "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
-      "logo": "https://epg.v1.mk/logo/{name}.png",
-      "url": "https://wget.la/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"
+      "url": "http://192.168.1.2:1905/interface.m3u"
     },
     {
       "name": "应急线路：m3u",
