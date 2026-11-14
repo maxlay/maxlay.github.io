@@ -873,8 +873,10 @@ var CAT_UI = window.CAT_UI;
 
         })
     }
-    //开始学习！短视频优先，最多同时打开 PARALLEL 个窗口
+    //开始学习！短视频优先；跨标签维护活跃窗口，最多 PARALLEL 个
     const PARALLEL_LEARN_WINDOWS = 6
+    const LEARNER_STALE_MS = 20000  // 超过 20s 无心跳视为已关闭
+    const HEARTBEAT_MS = 5000
 
     function getVideoDurationSeconds(v) {
         if (!v || typeof v !== 'object') return Number.MAX_SAFE_INTEGER
@@ -888,12 +890,6 @@ var CAT_UI = window.CAT_UI;
             if (v[k] == null || v[k] === '') continue
             const n = Number(v[k])
             if (!Number.isNaN(n) && n > 0) {
-                // 常见：小于 300 更像「分钟」，否则当秒
-                if (n > 0 && n < 300 && !String(v[k]).includes('.')) {
-                    // 无法区分时统一按数值排序即可；优先把明显是分钟的放大成秒便于比较
-                    // 若字段名含 minute 则按分钟
-                    if (/minute/i.test(k)) return n * 60
-                }
                 if (/minute/i.test(k)) return n * 60
                 return n
             }
@@ -949,11 +945,65 @@ var CAT_UI = window.CAT_UI;
         })
     }
 
+    // ---------- 活跃学习窗口登记（跨标签共享） ----------
+    function readLearners() {
+        const list = GM_getValue('activeLearners') || []
+        const now = Date.now()
+        return list.filter(x => x && x.id && (now - (x.lastBeat || 0)) < LEARNER_STALE_MS)
+    }
+
+    function writeLearners(list) {
+        GM_setValue('activeLearners', list)
+        GM_setValue('activeLearnerCount', list.length)
+    }
+
+    function getActiveLearnerCount() {
+        const list = readLearners()
+        // 顺便写回清理后的列表
+        writeLearners(list)
+        return list.length
+    }
+
+    function registerLearner(tabId, playId) {
+        const list = readLearners().filter(x => x.id !== tabId)
+        list.push({ id: tabId, playId: playId || '', lastBeat: Date.now(), url: location.href })
+        writeLearners(list)
+        return list.length
+    }
+
+    function heartbeatLearner(tabId, playId) {
+        const list = readLearners()
+        let found = false
+        for (const x of list) {
+            if (x.id === tabId) {
+                x.lastBeat = Date.now()
+                if (playId) x.playId = playId
+                x.url = location.href
+                found = true
+                break
+            }
+        }
+        if (!found) {
+            list.push({ id: tabId, playId: playId || '', lastBeat: Date.now(), url: location.href })
+        }
+        writeLearners(list)
+        return list.length
+    }
+
+    function unregisterLearner(tabId) {
+        const list = readLearners().filter(x => x.id !== tabId)
+        writeLearners(list)
+        return list.length
+    }
+
+    function clearAllLearners() {
+        writeLearners([])
+    }
+
     // 收集所有未完成小节，按时长升序
     async function collectIncompleteVideos(classlist) {
         const records = (classlist && classlist.records) || []
         const incomplete = []
-        // 控制并发，避免一次打爆接口
         const concurrency = 5
         for (let i = 0; i < records.length; i += concurrency) {
             const chunk = records.slice(i, i + concurrency)
@@ -975,12 +1025,13 @@ var CAT_UI = window.CAT_UI;
             results.forEach(list => incomplete.push(...list))
         }
         incomplete.sort((a, b) => a.duration - b.duration || a.progress - b.progress)
-        console.log('未完成小节(短→长):', incomplete.map(x => ({
-            title: x.title, duration: x.duration, progress: x.progress, playId: x.playId
+        console.log('未完成小节(短→长):', incomplete.length, incomplete.slice(0, 10).map(x => ({
+            title: x.title, duration: x.duration, progress: x.progress
         })))
         return incomplete
     }
 
+    // 只补齐空位，绝不超过 PARALLEL；已在学的 playId 不重复打开
     async function opennewtab(classlist) {
         const incomplete = await collectIncompleteVideos(classlist)
         if (!incomplete.length) {
@@ -989,21 +1040,35 @@ var CAT_UI = window.CAT_UI;
             return
         }
 
-        // 记录本轮队列，供播放页学完后接下一节
-        try {
-            GM_setValue('learnQueue', incomplete.map(x => ({
-                classuuid: x.classuuid,
-                playId: x.playId,
-                duration: x.duration
-            })))
-        } catch (e) {}
+        GM_setValue('learnQueue', incomplete.map(x => ({
+            classuuid: x.classuuid,
+            playId: x.playId,
+            duration: x.duration
+        })))
 
-        const onDetail = window.location.href.indexOf('https://www.zjce.gov.cn/videos/detail') === 0
-        const toOpen = incomplete.slice(0, PARALLEL_LEARN_WINDOWS)
-        let opened = 0
-        // 先开 _blank，最后再 _self，避免当前页跳转导致后续弹窗代码来不及执行
+        const active = readLearners()
+        const activePlayIds = new Set(active.map(x => x.playId).filter(Boolean))
+        const slots = Math.max(0, PARALLEL_LEARN_WINDOWS - active.length)
+        console.log(`当前活跃窗口 ${active.length}/${PARALLEL_LEARN_WINDOWS}，可再开 ${slots}`)
+
+        if (slots <= 0) {
+            try { CAT_UI.Message.success(`已有 ${active.length} 个窗口在学，不再新开`) } catch (e) {}
+            return
+        }
+
+        // 跳过已在其它窗口播放的 playId
+        const candidates = incomplete.filter(x => !activePlayIds.has(x.playId))
+        const toOpen = candidates.slice(0, slots)
+        if (!toOpen.length) {
+            try { CAT_UI.Message.success(`活跃 ${active.length} 个窗口，暂无新课可开`) } catch (e) {}
+            return
+        }
+
+        const onDetail = location.href.indexOf('https://www.zjce.gov.cn/videos/detail') === 0
+        // 先 _blank 再 _self，避免当前页卸载打断
         const selfItem = (!onDetail && toOpen.length) ? toOpen[0] : null
         const blankItems = selfItem ? toOpen.slice(1) : toOpen
+        let opened = 0
         for (const item of blankItems) {
             const url = `https://www.zjce.gov.cn/videos/detail/${item.classuuid}?bizType=1&playId=${item.playId}`
             console.log('新窗口学习:', item)
@@ -1013,23 +1078,18 @@ var CAT_UI = window.CAT_UI;
         }
         if (selfItem) {
             const url = `https://www.zjce.gov.cn/videos/detail/${selfItem.classuuid}?bizType=1&playId=${selfItem.playId}`
-            console.log('当前页学习最短视频:', selfItem)
+            console.log('当前页学习:', selfItem)
             window.open(url, '_self')
             opened++
         }
         try {
-            CAT_UI.Message.success(`短视频优先：已尝试打开 ${opened}/${toOpen.length} 个窗口（目标 ${PARALLEL_LEARN_WINDOWS} 个）`)
+            CAT_UI.Message.success(`短视频优先：新开 ${opened} 个（当前目标并行 ${PARALLEL_LEARN_WINDOWS}）`)
         } catch (e) {}
     }
 
-    // 播放页学完后：切到队列里下一个未完成的短视频（同窗口）
-    async function openNextShortVideo(currentPlayId) {
-        let queue = GM_getValue('learnQueue') || []
-        // 去掉当前已完成的
-        queue = queue.filter(x => x.playId !== currentPlayId)
-        GM_setValue('learnQueue', queue)
-
-        // 用最新进度再筛一遍（队列可能过期）
+    // 同窗口接下一节；先注销再跳转，由新页面重新登记
+    async function openNextShortVideo(tabId, currentPlayId) {
+        if (tabId) unregisterLearner(tabId)
         try {
             const classlist = await getclasslist()
             const incomplete = await collectIncompleteVideos(classlist)
@@ -1038,8 +1098,11 @@ var CAT_UI = window.CAT_UI;
                 playId: x.playId,
                 duration: x.duration
             })))
-            if (incomplete.length) {
-                const next = incomplete[0]
+            // 避开其它窗口正在学的
+            const activePlayIds = new Set(readLearners().map(x => x.playId).filter(Boolean))
+            const next = incomplete.find(x => x.playId !== currentPlayId && !activePlayIds.has(x.playId))
+                || incomplete.find(x => x.playId !== currentPlayId)
+            if (next) {
                 const url = `https://www.zjce.gov.cn/videos/detail/${next.classuuid}?bizType=1&playId=${next.playId}`
                 console.log('接下一节短视频:', next)
                 window.open(url, '_self')
@@ -1087,64 +1150,67 @@ var CAT_UI = window.CAT_UI;
         const [yiwancheng, setyiwancheng] = CAT_UI.useState("")
         const [learnstatus, setlearnstatus] = CAT_UI.useState("")
         const [learntext, setlearntext] = CAT_UI.useState("")
-        // let learnstatus = GM_getValue('learnstatus')
-        CAT_UI.useEffect(() => {
+        const [runningCount, setRunningCount] = CAT_UI.useState(0)
 
+        // 定时刷新活跃窗口数
+        CAT_UI.useEffect(() => {
+            const tick = () => setRunningCount(getActiveLearnerCount())
+            tick()
+            const t = setInterval(tick, 2000)
+            return () => clearInterval(t)
+        }, [])
+
+        CAT_UI.useEffect(() => {
             const ltext = GM_getValue('learnstatus') === false ? '开始学习' : '结束学习'
             console.log("GM_getValue('learnstatus'):", GM_getValue('learnstatus'))
             setlearntext(ltext)
-            const a = getuser().then(res => {
+            getuser().then(res => {
+                if (!res) return
                 setusername(res.userName)
                 setworkaddress(res.unitPosition)
                 user = res.userName
                 address = res.unitPosition
-                const b = gettriantask().then(resu => {
-                    return new Promise((resolve, reject) => {
-                        let tasknum = 0
-                        let learnnum = 0
-                        for (let i = 0; i < resu.codeRuleList.length; i++) {
-                            if (resu.codeRuleList[i].codeRule === '网络自学学时数') {
-                                const { examCreditStr, gainCredit } = resu.codeRuleList[i]
-                                setmubiao(examCreditStr)
-                                setyiwancheng(gainCredit)
-                                tasknum = examCreditStr
-                                learnnum = gainCredit
-                                resolve({ examCreditStr, gainCredit })
-                            }
+                gettriantask().then(resu => {
+                    if (!resu || !resu.codeRuleList) return
+                    let tasknum = 0
+                    let learnnum = 0
+                    for (let i = 0; i < resu.codeRuleList.length; i++) {
+                        if (resu.codeRuleList[i].codeRule === '网络自学学时数') {
+                            const { examCreditStr, gainCredit } = resu.codeRuleList[i]
+                            setmubiao(examCreditStr)
+                            setyiwancheng(gainCredit)
+                            tasknum = examCreditStr
+                            learnnum = gainCredit
                         }
-
-                    })
-
-                    // console.log("resu:", resu)
-                }).then((resx) => {
-                    const { yiwancheng, mubiao } = resx
+                    }
                     const a = GM_getValue('learnstatus')
-                    console.log("a:", a)
                     if (a) {
-                        if (yiwancheng >= parseInt(mubiao)) {
-                            console.log("yiwancheng:", resx)
-                            console.log("mubiao:", resx)
+                        if (learnnum >= parseFloat(tasknum)) {
                             CAT_UI.Message.success(`学习完成!`)
                             setlearntext('开始学习')
-                            console.log('学习完成')
                             GM_setValue('learnstatus', false)
+                            clearAllLearners()
                         } else {
                             setlearntext('结束学习')
-                            GM_setValue('learnstatus', true)
-                            main()
+                            // 仅在非视频详情页、且还有空位时补开窗口，避免每个标签都 main() 狂开
+                            const onDetail = location.href.indexOf('https://www.zjce.gov.cn/videos/detail') === 0
+                            const active = getActiveLearnerCount()
+                            if (!onDetail && active < PARALLEL_LEARN_WINDOWS) {
+                                console.log(`首页/其它页补位：活跃 ${active}/${PARALLEL_LEARN_WINDOWS}`)
+                                main()
+                            } else {
+                                console.log(`跳过自动 main：onDetail=${onDetail}, active=${active}`)
+                            }
                         }
                     }
                 })
             })
-
-
-            //   console.log(a)
         }, [])
+
         return CAT_UI.Space([
             CAT_UI.Text(`用户:${username}`, {
                 style: { fontSize: "16px" },
             }),
-            // CAT_UI.Divider(null, { type: "horizontal" }),
             CAT_UI.Text(`单位:${workaddress}`, {
                 style: { fontSize: "16px" },
             }),
@@ -1157,6 +1223,9 @@ var CAT_UI = window.CAT_UI;
             CAT_UI.Text(`完成:${yiwancheng >= mubiao ? "已完成" : "未完成"}`, {
                 style: { fontSize: "16px" },
             }),
+            CAT_UI.Text(`学习窗口: ${runningCount} / ${PARALLEL_LEARN_WINDOWS}`, {
+                style: { fontSize: "16px", fontWeight: "bold", color: runningCount >= PARALLEL_LEARN_WINDOWS ? "#00b42a" : "#168cff" },
+            }),
             CAT_UI.Button(learntext, {
                 type: "primary",
                 onClick: () => {
@@ -1166,16 +1235,19 @@ var CAT_UI = window.CAT_UI;
                             CAT_UI.Message.success(`学完了！`)
                             setlearntext('开始学习')
                             GM_setValue('learnstatus', false)
+                            clearAllLearners()
                         } else {
                             setlearntext('结束学习')
                             GM_setValue('learnstatus', true)
+                            // 用户手势下开窗，成功率更高
                             main()
                         }
-                    }else{
+                    } else {
                         GM_setValue('learnstatus', false)
                         setlearntext('开始学习')
+                        clearAllLearners()
+                        CAT_UI.Message.success('已停止学习（请手动关闭多余窗口）')
                     }
-
                 },
             }),
         ], {
@@ -1225,7 +1297,19 @@ var CAT_UI = window.CAT_UI;
     const runurl = window.location.href
     if (runurl.indexOf("https://www.zjce.gov.cn/videos/detail") === 0 && GM_getValue('learnstatus')) {
 
-        // 获取当前视频的完成情况（更稳健：始终 resolve，避免挂起）
+        // 本标签唯一 ID，用于跨窗口登记
+        const tabId = 'tab_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9)
+        const params0 = getUrlParams()
+        registerLearner(tabId, params0.playId)
+        const hbTimer = setInterval(() => {
+            const p = getUrlParams()
+            heartbeatLearner(tabId, p.playId)
+        }, HEARTBEAT_MS)
+        window.addEventListener('beforeunload', () => {
+            clearInterval(hbTimer)
+            unregisterLearner(tabId)
+        })
+
         function getVideoStatus(uuid, playid) {
             return new Promise(resolve => {
                 const baseurl = "https://www.zjce.gov.cn/gateway/resource/portal/video/info/info"
@@ -1284,14 +1368,12 @@ var CAT_UI = window.CAT_UI;
             })
         }
 
-        // 统一判断是否已学满（兼容 number / string / 略大于 100 的情况）
         function isProgressComplete(status) {
             if (!status) return false
             const p = Number(status.progress)
             return !Number.isNaN(p) && p >= 100
         }
 
-        // 带重试的完成检测：服务端进度往往比 ended 事件晚几秒才更新到 100
         async function checkAndMaybeLeave(reason, retries = 6, delayMs = 1500) {
             const params = getUrlParams()
             for (let i = 0; i < retries; i++) {
@@ -1302,8 +1384,8 @@ var CAT_UI = window.CAT_UI;
                     console.log(`[${reason}] 已满100%，切换下一节短视频`)
                     clearInterval(inter)
                     clearInterval(inter2)
-                    const paramsDone = getUrlParams()
-                    await openNextShortVideo(paramsDone.playId)
+                    clearInterval(hbTimer)
+                    await openNextShortVideo(tabId, params.playId)
                     return true
                 }
                 if (i < retries - 1) {
@@ -1313,11 +1395,9 @@ var CAT_UI = window.CAT_UI;
             return false
         }
 
-        // 这里是视频播放界面
         const videodiv = await elmGetter.get('video')
         console.log(videodiv)
 
-        // 每 5 秒强制 4 倍速 + 静音 + 播放（防止暂停/卡顿）
         const inter = setInterval(function () {
             try {
                 videodiv.playbackRate = 4
@@ -1328,39 +1408,36 @@ var CAT_UI = window.CAT_UI;
             } catch (e) {}
         }, 5000)
 
-        // 每 5 秒轮询服务端进度（原注释写「10分钟」实际是 5 秒，保持 5 秒更灵敏）
         let checking = false
         const inter2 = setInterval(async function () {
             if (checking) return
             checking = true
             try {
                 const params = getUrlParams()
+                heartbeatLearner(tabId, params.playId)
                 const videostatus = await getVideoStatus(params.videoid, params.playId)
                 console.log('[定时] progress=', videostatus && videostatus.progress)
                 if (isProgressComplete(videostatus)) {
                     clearInterval(inter)
                     clearInterval(inter2)
-                    const paramsDone = getUrlParams()
-                    await openNextShortVideo(paramsDone.playId)
+                    clearInterval(hbTimer)
+                    await openNextShortVideo(tabId, params.playId)
                 }
             } finally {
                 checking = false
             }
         }, 5000)
 
-        // 启动时也查一次当前进度
         ;(async () => {
             const params = getUrlParams()
             const videostatus = await getVideoStatus(params.videoid, params.playId)
             console.log('[启动] progress=', videostatus && videostatus.progress)
         })()
 
-        // 播放结束：先重试等待服务端进度落库，未满再重播
         videodiv.addEventListener("ended", async function () {
             console.log("播放结束，开始确认服务端进度…")
             const done = await checkAndMaybeLeave('ended', 6, 1500)
             if (!done) {
-                // 仍未满 100%：继续重播，让观看时长继续上报
                 try {
                     videodiv.playbackRate = 4
                     videodiv.muted = true
@@ -1372,7 +1449,7 @@ var CAT_UI = window.CAT_UI;
             }
         }, false)
 
-
     }
+
 
 })()
