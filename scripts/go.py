@@ -18,19 +18,19 @@ from datetime import datetime
 
 # 【必填】私人订阅
 MY_SUBSCRIPTIONS = [
-    "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/FlClashTest/Test.yaml"
+    "https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/FlClashTest/Test.yaml"
 ]
 
 # 【可选】公共节点池
 PUBLIC_NODE_POOLS = [
-    "https://wget.la/https://raw.githubusercontent.com/ssrsub/ssr/master/clash.yaml",
-    "https://wget.la/https://github.com/PuddinCat/BestClash/blob/main/proxies.yaml",
-    "https://wget.la/https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml",
-    "https://wget.la/https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
-    "https://wget.la/https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
-    "https://wget.la/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
-    "https://wget.la/https://raw.githubusercontent.com/zyzmzyz/free-nodes/master/Clash.yml",
-    "https://wget.la/https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
+    "https://raw.githubusercontent.com/ssrsub/ssr/master/clash.yaml",
+    "https://github.com/PuddinCat/BestClash/blob/main/proxies.yaml",
+    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml",
+    "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
+    "https://raw.githubusercontent.com/zyzmzyz/free-nodes/master/Clash.yml",
+    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
 ]
 
 # --- 兼容性配置 ---
