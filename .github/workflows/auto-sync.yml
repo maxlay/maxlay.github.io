@@ -38,18 +38,6 @@ jobs:
             pip install requests PyYAML
           fi
 
-      # 4. 运行原来的 update.py（如果还需要的话）
-      - name: Run update.py (twitter ranking)
-        run: |
-          if [ -f scripts/update.py ]; then
-            python scripts/update.py
-          else
-            echo "scripts/update.py 不存在，跳过"
-          fi
-        env:
-          PYTHONUNBUFFERED: 1
-        continue-on-error: true   # 即使失败也不中断后续
-
       # 5. 运行节点测速脚本（核心）
       - name: Run proxy ping & sort script
         run: |
