@@ -1,0 +1,77 @@
+name: Auto Running
+
+on:
+  schedule:
+    # 每 12 小时运行一次（UTC）
+    # 北京时间大约 08:00 和 20:00
+    - cron: '0 */12 * * *'
+  
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  sync-data:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'   # 建议用 3.11 或 3.12
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f scripts/requirements.txt ]; then
+            pip install -r scripts/requirements.txt
+          else
+            pip install requests PyYAML
+          fi
+
+      # 4. 运行原来的 update.py（如果还需要的话）
+      - name: Run update.py (twitter ranking)
+        run: |
+          if [ -f scripts/update.py ]; then
+            python scripts/update.py
+          else
+            echo "scripts/update.py 不存在，跳过"
+          fi
+        env:
+          PYTHONUNBUFFERED: 1
+        continue-on-error: true   # 即使失败也不中断后续
+
+      # 5. 运行节点测速脚本（核心）
+      - name: Run proxy ping & sort script
+        run: |
+          python scripts/go.py   # 或你实际放的文件名
+        env:
+          PYTHONUNBUFFERED: 1
+
+      # 6. 提交并推送更改
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # 添加需要提交的文件
+          git add FlClashTest/Test.yaml || true
+          git add twitter-ero-video-ranking/ || true
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "chore: auto update FlClashTest nodes & ranking data [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
