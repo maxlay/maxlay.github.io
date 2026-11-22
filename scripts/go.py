@@ -1,26 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-GitHub Actions 专用版本：
-- 订阅拉取 + 清洗 + TCP 测速
-- 结果直接覆盖写入 FlClashTest/Test.yaml
+GitHub Actions 专用版本（无测速）：
+- 拉取订阅 + 清洗 + 去重
+- 直接覆盖写入 FlClashTest/Test.yaml
 """
 
 import requests
 import yaml
 import base64
-import asyncio
-import socket
-import time
 import os
 import re
 import sys
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor
 
 # ==================== 🔧 用户配置区域 ====================
 
-# 【必填】填入您的订阅链接
+# 【必填】私人订阅
 MY_SUBSCRIPTIONS = [
     "https://wget.la/https://raw.githubusercontent.com/maxlay/maxlay.github.io/main/FlClashTest/Test.yaml"
 ]
@@ -37,14 +33,8 @@ PUBLIC_NODE_POOLS = [
     "https://wget.la/https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
 ]
 
-# --- 测速配置 ---
-MAX_LATENCY_INIT = 300      # 最大延迟阈值 (ms)
-CONCURRENT_PING = 200       # GitHub Actions 建议适当降低并发
-PING_TIMEOUT = 0.8          # 单个 Ping 超时 (秒)
-PING_COUNT = 5              # 每个节点测试次数
-
 # --- 兼容性配置 ---
-KEEP_XHTTP = False
+KEEP_XHTTP = False          # 部分 FlClash 内核不支持 xhttp，默认丢弃
 TEST_URL = "https://www.gstatic.com/generate_204"
 
 # 输出文件（相对仓库根目录，直接覆盖）
@@ -62,23 +52,29 @@ def fetch_url(url):
         print(f"   ⚠️  获取失败: {e}")
         return None
 
+
 def decode_base64(content):
     try:
         missing_padding = len(content) % 4
         if missing_padding:
             content += '=' * (4 - missing_padding)
         decoded = base64.b64decode(content).decode('utf-8')
-        if decoded.strip().startswith('proxies:') or decoded.strip().startswith('- name:') or decoded.strip().startswith('{'):
+        if (decoded.strip().startswith('proxies:') or
+            decoded.strip().startswith('- name:') or
+            decoded.strip().startswith('{')):
             return decoded
     except Exception:
         pass
     return content
 
+
 def parse_proxies(content):
     if not content:
         return []
     content = content.strip()
-    if content.startswith('ey') or content.startswith('cHJveGllcw') or '\n' not in content:
+    if (content.startswith('ey') or
+        content.startswith('cHJveGllcw') or
+        '\n' not in content):
         content = decode_base64(content)
     try:
         data = yaml.safe_load(content)
@@ -106,8 +102,11 @@ UUID_RE = re.compile(
     r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
 )
 NEED_FIELDS = {
-    'vless': ['uuid'], 'vmess': ['uuid'], 'trojan': ['password'],
-    'ss': ['cipher', 'password'], 'hysteria2': ['password'],
+    'vless': ['uuid'],
+    'vmess': ['uuid'],
+    'trojan': ['password'],
+    'ss': ['cipher', 'password'],
+    'hysteria2': ['password'],
 }
 
 
@@ -127,6 +126,7 @@ def sanitize_proxy(p):
     if not server:
         return None
     p['server'] = str(server).strip()
+
     try:
         port = int(p.get('port'))
     except (TypeError, ValueError):
@@ -139,8 +139,10 @@ def sanitize_proxy(p):
     name = re.sub(r'[\r\n\t]+', ' ', name).strip()
     p['name'] = name or f"{p['server']}:{port}"
 
+    # 去掉空值
     p = {k: v for k, v in p.items() if v not in (None, '', {}, [])}
 
+    # 必填字段检查
     for k in NEED_FIELDS.get(ptype, []):
         if k not in p:
             return None
@@ -152,16 +154,19 @@ def sanitize_proxy(p):
     if ptype == 'vless' and p.get('encryption') in ('none', ''):
         p.pop('encryption', None)
 
+    # 强制转字符串
     for k in ('password', 'uuid', 'cipher', 'username'):
         if k in p:
             p[k] = str(p[k])
 
+    # 传输层处理
     net = p.get('network')
     if net == 'xhttp' and not KEEP_XHTTP:
         return None
     if net == 'tcp':
         p.pop('network', None)
 
+    # 指纹处理
     fp = p.get('client-fingerprint')
     if fp is None and p.get('fp'):
         fp = p['fp']
@@ -172,6 +177,7 @@ def sanitize_proxy(p):
         else:
             p.pop('client-fingerprint', None)
 
+    # Reality 处理
     if str(p.get('security', '')).lower() == 'reality' or 'reality-opts' in p:
         ro = p.get('reality-opts')
         ro = dict(ro) if isinstance(ro, dict) else {}
@@ -208,6 +214,7 @@ def sanitize_all(proxies):
 
 
 def deduplicate(proxies):
+    """按 (type, server, port, 凭据) 去重"""
     seen = set()
     unique = []
     for p in proxies:
@@ -219,79 +226,15 @@ def deduplicate(proxies):
     return unique
 
 
-def ping_tcp(host, port, timeout=2):
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        start_time = time.time()
-        result = sock.connect_ex((host, int(port)))
-        end_time = time.time()
-        sock.close()
-        if result == 0:
-            return (end_time - start_time) * 1000
-        return None
-    except Exception:
+def generate_config(proxies):
+    if not proxies:
         return None
 
-
-async def ping_node_async(loop, executor, idx, p):
-    server = p.get('server')
-    port = p.get('port')
-    if not server or not port:
-        return idx, None
-
-    def do_ping():
-        delays = []
-        for _ in range(PING_COUNT):
-            d = ping_tcp(server, port, PING_TIMEOUT)
-            if d is not None:
-                delays.append(d)
-        if delays:
-            return sum(delays) / len(delays)
-        return None
-
-    try:
-        result = await loop.run_in_executor(executor, do_ping)
-        if result is not None and 0 < result < MAX_LATENCY_INIT:
-            return idx, result
-        return idx, None
-    except Exception:
-        return idx, None
-
-
-async def batch_ping(proxies):
-    print(f"\n🚀 开始 TCP 端口测试 ({len(proxies)} 个节点)...")
-    loop = asyncio.get_running_loop()
-    executor = ThreadPoolExecutor(max_workers=CONCURRENT_PING)
-
-    tasks = [ping_node_async(loop, executor, i, p) for i, p in enumerate(proxies)]
-
-    valid = {}
-    for n, coro in enumerate(asyncio.as_completed(tasks), 1):
-        idx, delay = await coro
-        if delay is not None:
-            valid[idx] = delay
-        if n % 100 == 0 or n == len(tasks):
-            print(f"   进度：{n}/{len(tasks)} (当前有效：{len(valid)})")
-
-    executor.shutdown(wait=False)
-
-    result = sorted(
-        ((proxies[i], d) for i, d in valid.items()),
-        key=lambda x: x[1]
-    )
-    print(f"   ✅ TCP 测试完成。有效节点：{len(result)} 个")
-    return result
-
-
-def generate_config(results):
-    if not results:
-        return None
-
+    # 保证节点名全局唯一
     final_proxies = []
     used_names = set()
-    for p, latency in results:
-        base = f"[{int(latency)}ms] {p['name']}"
+    for p in proxies:
+        base = p['name']
         new_name = base
         n = 2
         while new_name in used_names:
@@ -341,7 +284,6 @@ def validate_config(config):
 
 
 def save_config(config):
-    """直接覆盖写入 FlClashTest/Test.yaml"""
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         yaml.safe_dump(
@@ -355,16 +297,16 @@ def save_config(config):
 
 
 def main():
-    print("ℹ️  测速模式：纯 TCP 连接测试（GitHub Actions 环境）")
+    print("ℹ️  模式：仅合并 + 清洗 + 去重（无测速）")
     print(f"⏰ 运行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     all_proxies = []
-    urls = MY_SUBSCRIPTIONS + PUBLIC_NODE_POOLS
 
     print("\n========================================")
     print("📥 正在获取订阅")
     print("========================================")
 
+    # 私人订阅
     print(f"\n🔹 私人订阅 ({len(MY_SUBSCRIPTIONS)} 个)")
     for idx, url in enumerate(MY_SUBSCRIPTIONS, 1):
         content = fetch_url(url)
@@ -375,6 +317,7 @@ def main():
         else:
             print(f"   ❌ {idx}/{len(MY_SUBSCRIPTIONS)} | 获取失败")
 
+    # 公共订阅
     print(f"\n🔹 公共订阅 ({len(PUBLIC_NODE_POOLS)} 个)")
     for idx, url in enumerate(PUBLIC_NODE_POOLS, 1):
         content = fetch_url(url)
@@ -397,24 +340,14 @@ def main():
     print(f"🔄 去重后：{len(unique_proxies)} 个节点")
     print("========================================")
 
-    async def run():
-        ping_results = await batch_ping(unique_proxies)
-
-        if not ping_results:
-            print("\n❌ 没有延迟合格的节点")
-            sys.exit(1)
-
-        config = generate_config(ping_results)
-        if config:
-            validate_config(config)
-            save_config(config)
-
-            print(f"\n🎉 成功！共写入 {len(config['proxies'])} 个节点")
-            print("🏆 延迟最低的 5 个节点:")
-            for i, p in enumerate(config['proxies'][:5]):
-                print(f"   {i+1}. {p['name']}")
-
-    asyncio.run(run())
+    config = generate_config(unique_proxies)
+    if config:
+        validate_config(config)
+        save_config(config)
+        print(f"\n🎉 成功！共写入 {len(config['proxies'])} 个节点")
+    else:
+        print("\n❌ 生成配置失败")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
