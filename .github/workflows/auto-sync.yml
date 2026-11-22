@@ -2,13 +2,11 @@ name: Auto Running
 
 on:
   schedule:
-    # 每 8 小时运行一次，每天运行 3 次。 (UTC 时间)
-    # 具体时间点：00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00 (UTC)
-    # 对应北京时间：08:00, 11:00, 14:00, 17:00, 20:00, 23:00, 次日 02:00， 05:00 
-    # 每次 2 分钟的运行时间，每天消耗 15 分钟，每月最多消耗 465 分钟
+    # 每 12 小时运行一次（UTC）
+    # 北京时间大约 08:00 和 20:00
     - cron: '0 */12 * * *'
   
-  # 允许手动触发，方便测试
+  # 允许手动触发
   workflow_dispatch:
 
 jobs:
@@ -28,30 +26,37 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'   # 建议用 3.11 或 3.12
 
       # 3. 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f scripts/requirements.txt ]; then pip install -r scripts/requirements.txt; fi
+          if [ -f scripts/requirements.txt ]; then
+            pip install -r scripts/requirements.txt
+          else
+            pip install requests PyYAML
+          fi
 
-      # 4. 运行脚本
-      - name: Run Python Script
+      # 5. 运行节点测速脚本（核心）
+      - name: Run proxy ping & sort script
         run: |
-          python scripts/update.py
+          python scripts/go.py   # 或你实际放的文件名
         env:
           PYTHONUNBUFFERED: 1
 
-      # 5. 提交并推送更改
+      # 6. 提交并推送更改
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
+          # 添加需要提交的文件
+          git add FlClashTest/Test.yaml || true
+          git add twitter-ero-video-ranking/ || true
+          
           if [ -n "$(git status --porcelain)" ]; then
-            git add twitter-ero-video-ranking/
-            git commit -m "chore: auto update twitter video ranking data [skip ci]"
+            git commit -m "chore: auto update FlClashTest nodes & ranking data [skip ci]"
             git push
           else
             echo "No changes to commit."
